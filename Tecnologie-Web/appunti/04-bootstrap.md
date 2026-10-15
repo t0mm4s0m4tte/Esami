@@ -4,13 +4,15 @@ Fonte: Drive › Terzo anno › Tecnologie Web › Slide Deck - Lab › "02 - Bo
 
 ## Mappa degli argomenti
 
-- Cos'è Bootstrap e perché un framework CSS
-- Installazione (CDN, file locali, npm, Sass) e meta viewport
-- Layout: breakpoint, container, griglia a 12 colonne
-- Classi di utilità (spaziature, display/flex, colori, testo)
-- Componenti (bottoni, card, navbar, form, tabelle) e componenti interattivi
-- Icone, dark mode, personalizzazione
-- Accessibilità, vantaggi e svantaggi
+- [Cos'è Bootstrap e perché serve](#cosè-bootstrap-e-perché-serve)
+- [Installazione](#installazione)
+- [Layout: breakpoint, container, griglia](#layout-breakpoint-container-griglia)
+- [Classi di utilità](#classi-di-utilità)
+- [Componenti](#componenti)
+- [Icone, dark mode, personalizzazione](#icone-dark-mode-personalizzazione)
+- [Accessibilità, vantaggi e svantaggi](#accessibilità-vantaggi-e-svantaggi)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Cos'è Bootstrap e perché serve
 

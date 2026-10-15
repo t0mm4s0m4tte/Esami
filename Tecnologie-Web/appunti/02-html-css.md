@@ -4,13 +4,13 @@ Fonte: Drive › Terzo anno › Tecnologie Web › Slide Deck - Lab › "01 - UI
 
 ## Mappa degli argomenti
 
-- Il browser come ambiente di esecuzione: vista, DOM, sandbox
-- HTML: elementi, attributi, struttura del documento, blocco vs linea
-- Link, testo, tabelle, multimedia, elementi strutturali, form
-- CSS: regole, selettori (semplici, compositi, complessi), cascata, specificità, ereditarietà
-- Proprietà e valori CSS
-- Layout: display-outside e display-inside (flow, flex, grid, none)
-- Strumenti: SCSS/SASS, Bootstrap, Tailwind
+- [Il browser come ambiente di esecuzione](#il-browser-come-ambiente-di-esecuzione)
+- [HTML: un linguaggio di annotazione](#html-un-linguaggio-di-annotazione)
+- [CSS: Cascading Style Sheets](#css-cascading-style-sheets)
+- [Layout](#layout)
+- [Strumenti per CSS](#strumenti-per-css)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Il browser come ambiente di esecuzione
 

@@ -3,14 +3,18 @@
 **Fonte**: Buzano-Radeschi, Lezioni 25-26 (`Lezioni_25-26.pdf`: prodotti hermitiani, autoaggiunti, teorema spettrale), slide manoscritte di Manno `Lezione32_Alg.pdf` (forme quadratiche, forma canonica, carattere) e `Lezione33_Alg.pdf` (regola di Cartesio, coniche; OCR molto rumoroso). Il **criterio di Sylvester non compare in nessuna fonte** che ho letto: è riportato come teorema standard, marcato [DA VERIFICARE se in programma]. Calcoli miei: [INT], verificati al computer.
 
 ## Mappa
-- Prodotti hermitiani, matrici hermitiane, endomorfismi autoaggiunti (25)
-- Teorema spettrale e sua versione per matrici simmetriche (26)
-- Forme quadratiche: forma canonica, carattere (definita, semidefinita, indefinita) (Manno 32)
-- Regola di Cartesio per i segni degli autovalori (Manno 33)
-- Criterio di Sylvester [DA VERIFICARE]
-- Cenni alle coniche (Manno 33)
 
 ---
+
+- [1. Prodotti hermitiani e matrici hermitiane](#1-prodotti-hermitiani-e-matrici-hermitiane)
+- [2. Endomorfismi autoaggiunti](#2-endomorfismi-autoaggiunti)
+- [3. Il teorema spettrale](#3-il-teorema-spettrale)
+- [4. Forme quadratiche: forma canonica e carattere](#4-forme-quadratiche-forma-canonica-e-carattere)
+- [5. Regola di Cartesio: segno delle radici senza risolvere](#5-regola-di-cartesio-segno-delle-radici-senza-risolvere)
+- [6. Criterio di Sylvester [DA VERIFICARE se in programma]](#6-criterio-di-sylvester-da-verificare-se-in-programma)
+- [7. Cenni alle coniche (Manno 33)](#7-cenni-alle-coniche-manno-33)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Prodotti hermitiani e matrici hermitiane
 

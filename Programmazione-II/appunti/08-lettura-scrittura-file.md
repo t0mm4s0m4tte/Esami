@@ -3,7 +3,13 @@
 Fonte: Drive > "PDF " > `11_Lettura_Scrittura_File.pdf`.
 
 ## Mappa
+
 Il file presenta il file come risorsa persistente il cui formato va condiviso fra i programmi, le funzioni `fopen`, `fclose`, `feof`, `fscanf` e `fprintf`, e un caso di studio con termometro e cruscotto.
+
+- [Concetti](#concetti)
+- [Codice essenziale](#codice-essenziale)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Concetti
 Un file è una risorsa e si usa con il solito ciclo in tre tempi:

@@ -3,13 +3,15 @@
 Fonte: Lezione 02 (ISA parte 2), Lab 1-2-4 (slide). Dove segnalato "[libro]" il dettaglio proviene dalla conoscenza standard del libro Patterson-Hennessy / specifica RISC-V, non dalle slide estratte.
 
 ## Mappa
-- Filosofia RISC-V, estensioni
-- Registri e convenzioni
-- Istruzioni aritmetiche, immediati
-- Accesso alla memoria (load/store, endian, allineamento)
-- Istruzioni logiche e shift
-- Formati R, I, S (SB) e codifica binaria
-- Indirizzamento di array
+
+- [RISC-V in breve](#risc-v-in-breve)
+- [Registri e memoria](#registri-e-memoria)
+- [Istruzioni aritmetiche](#istruzioni-aritmetiche)
+- [Accesso alla memoria](#accesso-alla-memoria)
+- [Operazioni logiche e shift](#operazioni-logiche-e-shift)
+- [Formati delle istruzioni (tutte lunghe 32 bit)](#formati-delle-istruzioni-tutte-lunghe-32-bit)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## RISC-V in breve
 RISC-V nasce a Berkeley nel 2010 (Waterman, Lee, Asanovic). Non è un'azienda né una CPU: è una ISA, cioè una specifica, ed è uno standard aperto e privo di licenze. Questo è ciò che lo distingue dalle ISA proprietarie e lo rende adatto a un corso come questo.

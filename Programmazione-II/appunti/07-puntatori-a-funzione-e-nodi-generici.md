@@ -3,7 +3,14 @@
 Fonte: Drive > "PDF " > `9_Puntatori_a_funzione.pdf` e la parte finale di `8_Alberi_pt3.pdf` ("Strumenti avanzati per la gestione della memoria").
 
 ## Mappa
+
 Il capitolo parte dall'idea che anche le funzioni sono dati con un indirizzo in RAM, mostra come dichiarare, assegnare e invocare puntatori a funzione e come raccoglierli in un array di handler, e arriva al nodo generico con `void*` e campi funzione (con typedef di tipi funzione), che permette di riusare lo stesso codice per interi e per stringhe.
+
+- [Puntatori a funzione](#puntatori-a-funzione)
+- [Array di puntatori a funzione (vettore delle interruzioni)](#array-di-puntatori-a-funzione-vettore-delle-interruzioni)
+- [Nodo generico: `void*` + funzioni](#nodo-generico-void--funzioni)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Puntatori a funzione
 Anche il codice di un programma risiede nella RAM e ha un indirizzo base, perciò una variabile puntatore può contenerlo: la funzione diventa un dato che si può memorizzare, passare e richiamare. La sintassi è `tipo-ritorno (*nome)(tipi args)`, e le tonde attorno a `*nome` sono obbligatorie (senza si dichiarerebbe una funzione che restituisce un puntatore). Si assegna l'indirizzo della funzione e si invoca con `(*puntfunz)(args)`.

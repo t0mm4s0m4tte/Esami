@@ -3,12 +3,14 @@
 **Fonte:** doc Drive "Basi di Dati - Appunti" (Teoria, Lezioni 01-02) + slide Lezioni 01-02. Corso B, UniTO.
 
 ## Mappa
-- Sistema informativo vs informatico; dato vs informazione
-- Archivi indipendenti -> DBMS; ANSI/SPARC; indipendenza fisica/logica
-- Ciclo di progettazione (requisiti, concettuale, logica, fisica)
-- Modello relazionale: schema/istanza, tupla, NULL, grado/cardinalità
-- Vincoli: locali, chiavi, integrità referenziale
-- Storia (anni '60 -> NoSQL)
+
+- [Concetti base](#concetti-base)
+- [ANSI/SPARC (1975, 3 livelli)](#ansisparc-1975-3-livelli)
+- [Ciclo di progettazione](#ciclo-di-progettazione)
+- [Modello relazionale](#modello-relazionale)
+- [Storia (1 riga)](#storia-1-riga)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Concetti base
 

@@ -2,7 +2,16 @@
 Fonte: doc Appunti (Lez. 04, 07, 08 [UML], 09 [leak]).
 
 ## Mappa
+
 Il file parte dai costruttori (quello di default, l'overloading, la signature) e passa alla differenza tra identità ed equivalenza, cioè tra alias e copia. Su queste basi costruisce l'esempio degli aggregati di oggetti, Contact/AddressBook, con la sua invariante e la rimozione in O(1). Segue una sintesi dello UML per classi e relazioni, e infine il security leak, che mostra come l'aliasing possa rompere l'incapsulamento e come la copia difensiva lo ripari.
+
+- [1. Costruttori (Lez. 04)](#1-costruttori-lez-04)
+- [2. Identità vs equivalenza](#2-identità-vs-equivalenza)
+- [3. Contact / AddressBook (Lez. 07)](#3-contact--addressbook-lez-07)
+- [4. UML class diagram (Lez. 08)](#4-uml-class-diagram-lez-08)
+- [5. Security leak (Lez. 09)](#5-security-leak-lez-09)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Costruttori (Lez. 04)
 Il costruttore ha un compito preciso: garantire che ogni oggetto nasca in uno **stato iniziale valido**, preparando il terreno all'invariante di classe vista nel file 01. Se non se ne scrive nessuno, Java fornisce un costruttore di default implicito che inizializza i campi a int 0, double 0.0, riferimenti null. Attenzione però a un tranello classico: **appena si definisce un costruttore, anche solo con parametri, il default implicito sparisce**, e codice come `new C()` smette di compilare.

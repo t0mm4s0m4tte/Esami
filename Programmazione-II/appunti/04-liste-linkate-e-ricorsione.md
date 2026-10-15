@@ -3,7 +3,14 @@
 Fonte: Drive > "PDF " > `4_Strutture_dati_ricorsive.pdf`, `4_Modificare_lista_linkata.pdf`, `5_Funzioni_ricorsive_su_liste.pdf`, `6_Ricorsione_su_liste_complessa.pdf`.
 
 ## Mappa
+
 Il capitolo parte dalla definizione ricorsiva di lista e dal suo tipo C, con gli errori tipici di accesso (NULL, nodo fantasma); affronta poi la modifica della testa, per valore (v1) o per riferimento (v2); passa alla ricorsione (somma, rimozione dell'intera lista, ricorsione in testa vs in coda); e termina con le liste ordinate (inserzione ordinata, conteggio) e i tipi di liste. È il cuore del corso: stack, queue, set e alberi riusano gli stessi pattern.
+
+- [Definizione e tipo](#definizione-e-tipo)
+- [Modificare la testa](#modificare-la-testa)
+- [Ricorsione su liste](#ricorsione-su-liste)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Definizione e tipo
 Una lista è o **vuota** (NULL) oppure **un elemento seguito da una lista**. La definizione è ricorsiva perché si ripete lo stesso *tipo*, non lo stesso elemento: dentro ogni nodo c'è una lista più corta. In C una variabile lista contiene un riferimento a un nodo oppure NULL, e **NULL termina la lista ed è fondamentale**: è il segnale che non c'è altro da percorrere.

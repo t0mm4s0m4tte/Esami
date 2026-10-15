@@ -3,7 +3,16 @@
 Fonte: Drive > "PDF " > `3_Strutture_in_memoria_e_padding.pdf`, `10_Union.pdf`.
 
 ## Mappa
+
 Il file tratta i tipi composti del C: le struct con typedef, l'accesso ai campi e gli array di struct; come la memoria le dispone (padding e `sizeof`); la loro allocazione dinamica con `->`, `free` e NULL; il passaggio a funzione per valore o per puntatore; infine le union, le tagged union e la differenza di dominio fra unione e prodotto cartesiano.
+
+- [struct e typedef](#struct-e-typedef)
+- [Padding](#padding)
+- [Allocazione dinamica e accesso](#allocazione-dinamica-e-accesso)
+- [Passaggio di struct a funzione](#passaggio-di-struct-a-funzione)
+- [union](#union)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## struct e typedef
 Una struct raggruppa sotto un unico nome dati di tipo diverso, e con `typedef` le si dà un nome di tipo comodo da usare. I campi vengono allocati **nell'ordine di dichiarazione**, anche quando hanno dimensioni diverse. Fra variabili dello stesso tipo struct l'assegnazione è lecita e copia campo per campo, mentre il confronto con `==` non è consentito: se serve, va scritto a mano campo per campo.

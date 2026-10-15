@@ -3,14 +3,19 @@
 **Fonte**: compiti scritti 2022 (`CompitoScritto_2022_06.pdf` esercizio sui polinomi, `CompitoScritto_2022_02.pdf` famiglia A_k) per i testi; svolgimenti miei [INT], tutti verificati al computer (sympy). I compiti 2022_07 e 2022_09 hanno i coefficienti rovinati dall'estrazione (es. "13a+13c"): non li ho risolti per non inventare i testi [DA VERIFICARE sul PDF originale]. Per la teoria: file 09 (matrice associata, Ker, Im), 10 (autovalori), 14 (spettrale).
 
 ## Mappa
-- Schema standard di un esercizio sugli endomorfismi (matrice, Ker/Im, autovalori, diagonalizzabilità)
-- Esercizi 1-2: endomorfismo di R₂[x] (compito 29/06/2022)
-- Esercizio 3: famiglia A_k (compito 02/2022)
-- Esercizi 4-5: R³ simmetrico e trasposizione in R^{2,2}
-- Esercizio 6: famiglia con parametro 2×2
-- Esercizi misti: geometria e forme quadratiche
 
 ---
+
+- [Lo schema da applicare sempre](#lo-schema-da-applicare-sempre)
+- [Esercizio 1 (29/06/2022, primo testo)](#esercizio-1-29062022-primo-testo)
+- [Esercizio 2 (29/06/2022, quarto testo)](#esercizio-2-29062022-quarto-testo)
+- [Esercizio 3 (Febbraio 2022): famiglia A_k](#esercizio-3-febbraio-2022-famiglia-a_k)
+- [Esercizio 4: endomorfismo simmetrico di R³ [INT]](#esercizio-4-endomorfismo-simmetrico-di-r³-int)
+- [Esercizio 5: trasposizione in R^{2,2} [INT]](#esercizio-5-trasposizione-in-r22-int)
+- [Esercizio 6: A_k=[[1,1],[k,1]] [INT]](#esercizio-6-a_k11k1-int)
+- [Esercizi misti](#esercizi-misti)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Lo schema da applicare sempre
 

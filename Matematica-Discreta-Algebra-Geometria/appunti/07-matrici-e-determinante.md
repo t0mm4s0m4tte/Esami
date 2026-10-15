@@ -3,12 +3,14 @@
 **Fonte**: Buzano-Radeschi, Lezioni 8-10 (`Lezioni_08-10.pdf`), Lezione 6 (matrici) e compiti d'esame. Esercizi 8.15-10.11 del PDF; soluzioni calcolate e verificate al computer.
 
 ## Mappa
-- Trasposta, rango, prodotto riga per colonna, traccia
-- Determinante: definizione (permutazioni), n=1,2,3, matrici triangolari, sviluppo di Laplace
-- Proprietà del determinante, mosse di Gauss, teorema di Binet
-- Cofattori, matrice inversa, invertibilità
 
 ---
+
+- [1. Operazioni](#1-operazioni)
+- [2. Determinante](#2-determinante)
+- [3. Cofattori e matrice inversa](#3-cofattori-e-matrice-inversa)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Operazioni
 

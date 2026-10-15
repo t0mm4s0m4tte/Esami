@@ -3,7 +3,14 @@
 Fonte: Lezione 10 (IO).
 
 ## Mappa
+
 Il capitolo parte da come la CPU parla con le periferiche (controllori e registri di I/O, memory mapped o isolated), passa ai tre modi di gestire il trasferimento (polling con busy waiting, interrupt, DMA), distingue interrupt asincroni e trap sincrone, e chiude con il meccanismo di eccezione di RISC-V (CSR, SEPC, SCAUSE, STVEC, ecc.).
+
+- [Comunicazione CPU - dispositivi](#comunicazione-cpu---dispositivi)
+- [Tre modi di I/O](#tre-modi-di-io)
+- [Eccezioni in RISC-V (materiale aggiuntivo, slide da Giorgi)](#eccezioni-in-risc-v-materiale-aggiuntivo-slide-da-giorgi)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Comunicazione CPU - dispositivi
 La CPU non pilota direttamente una periferica: tra i due sta un **controllore**, che traduce i comandi della CPU in segnali comprensibili alla periferica e, al contrario, i segnali della periferica in dati utilizzabili dalla CPU. L'intuizione è che per la CPU ogni dispositivo si riduce a un piccolo insieme di **registri** (di dati, di comando, di stato), ciascuno con un proprio indirizzo: leggere e scrivere quei registri è il modo di "parlare" col dispositivo.

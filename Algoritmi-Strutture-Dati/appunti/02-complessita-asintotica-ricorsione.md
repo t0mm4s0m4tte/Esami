@@ -3,7 +3,18 @@
 Fonte: doc Drive "Appunti" (sezioni: Complessità asintotica, Tempo di calcolo, Relazioni di O, Dispensa, Relazioni di ricorrenza, Ricorsione). La sezione sul Master theorem è **[INT]**: integrazione mia, non presente nelle fonti dell'utente.
 
 ## Mappa
+
 Si parte da come si misura il costo di un algoritmo (funzione T(n), casi migliore/peggiore/medio) e dalle notazioni O, Ω, Θ, o con le loro proprietà; si vedono le regole per analizzare pseudocodice (con PARTITION come caso istruttivo), la nozione di ottimalità, poi il divide et impera con Merge sort e Quick sort e le relative ricorrenze (inclusa la sezione [INT] sul Master theorem), e infine la ricorsione nelle sue forme (lineare, di coda, ad albero) confrontata con l'iterazione.
+
+- [Costo e casi](#costo-e-casi)
+- [Notazioni (definizioni)](#notazioni-definizioni)
+- [Regole per pseudocodice](#regole-per-pseudocodice)
+- [Complessità del problema e ottimalità](#complessità-del-problema-e-ottimalità)
+- [Divide et impera](#divide-et-impera)
+- [Il Master theorem [INT]](#il-master-theorem-int)
+- [Ricorsione](#ricorsione)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Costo e casi
 

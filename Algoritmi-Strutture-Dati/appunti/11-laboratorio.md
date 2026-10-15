@@ -3,7 +3,18 @@
 Fonte: doc Drive "Appunti" (sezione Laboratorio: Lab 01, 02, 03.1, 03.2, 05, 07, 09). Dati utili per eventuali domande sul lab/orale e per ricordare le specifiche dei progetti.
 
 ## Mappa
+
 Lab 01 Git/GitLab; Lab 02 Unit testing (TDD, Unity) e Makefile; Lab 03.1 Doxygen e debugging; Lab 03.2 HybridSort; Lab 05 libreria Hash Table (ex2); Lab 07 Priority Queue con heap ternario e scheduler (ex3); Lab 09 libreria Grafi con BFS (ex4).
+
+- [Lab 01 - Git](#lab-01---git)
+- [Lab 02 - Unit testing e Makefile](#lab-02---unit-testing-e-makefile)
+- [Lab 03.1 - Doxygen e debug](#lab-031---doxygen-e-debug)
+- [Lab 03.2 - HybridSort](#lab-032---hybridsort)
+- [Lab 05 - Hash table (ex2)](#lab-05---hash-table-ex2)
+- [Lab 07 - Priority queue con heap ternario (ex3)](#lab-07---priority-queue-con-heap-ternario-ex3)
+- [Lab 09 - Grafi sparsi (ex4)](#lab-09---grafi-sparsi-ex4)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Lab 01 - Git
 

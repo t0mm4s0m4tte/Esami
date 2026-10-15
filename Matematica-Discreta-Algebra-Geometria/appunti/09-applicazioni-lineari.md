@@ -3,12 +3,17 @@
 **Fonte**: Buzano-Radeschi, Lezioni 14-16 (`Lezioni_14-16.pdf`), con esercizi 14.15, 15.14, 16.3 e esempi 15.8-16.10. Alcuni segni persi nell'estrazione sono stati ricostruiti controllando i risultati (indicato dove).
 
 ## Mappa
-- Definizione, esempi e non esempi, L_A
-- Nucleo e immagine, iniettività/suriettività, **teorema della dimensione**
-- Isomorfismi
-- Matrice associata, cambiamento di base, composizione, endomorfismi, similitudine
 
 ---
+
+- [1. Definizione](#1-definizione)
+- [2. Nucleo e immagine](#2-nucleo-e-immagine)
+- [3. Isomorfismi](#3-isomorfismi)
+- [4. Matrice associata](#4-matrice-associata)
+- [5. Cambiamento di base](#5-cambiamento-di-base)
+- [6. Endomorfismi e similitudine](#6-endomorfismi-e-similitudine)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Definizione
 

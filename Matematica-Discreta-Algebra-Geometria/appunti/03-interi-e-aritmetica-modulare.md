@@ -5,13 +5,21 @@ Mori, *Lezioni di Matematica Discreta*, cap. 4 e cap. 7: dal PDF su Drive l'estr
 Quanto segue oltre il §1 è **teoria standard ricostruita (non estratta dalle fonti)**: contrassegnata [DA VERIFICARE su Mori cap. 4/7 prima dell'esame]. Gli esempi numerici sono stati calcolati e controllati con software.
 
 ## Mappa degli argomenti
+
 1. Divisibilità, invertibili, irriducibili/primi (da Mori)
 2. Divisione euclidea, MCD, algoritmo di Euclide, identità di Bézout [DA VERIFICARE]
 3. Teorema fondamentale dell'aritmetica [DA VERIFICARE]
 4. Congruenze, classi resto Z_n, operazioni ben definite [DA VERIFICARE]
 5. Z_n*, funzione di Eulero, Eulero-Fermat, equazioni congruenziali, CRT [DA VERIFICARE]
-
 ---
+
+- [1. Divisibilità (Mori 4.1-4.3)](#1-divisibilità-mori-41-43)
+- [2. Divisione euclidea, MCD, Euclide, Bézout [DA VERIFICARE]](#2-divisione-euclidea-mcd-euclide-bézout-da-verificare)
+- [3. Teorema fondamentale dell'aritmetica [DA VERIFICARE]](#3-teorema-fondamentale-dellaritmetica-da-verificare)
+- [4. Congruenze e classi resto [DA VERIFICARE]](#4-congruenze-e-classi-resto-da-verificare)
+- [5. Z_n*, Eulero, equazioni, CRT [DA VERIFICARE]](#5-z_n-eulero-equazioni-crt-da-verificare)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Divisibilità (Mori 4.1-4.3)
 

@@ -4,15 +4,17 @@ Fonte: Drive › Terzo anno › Tecnologie Web › Slide Deck - TWeb › "02 - P
 
 ## Mappa degli argomenti
 
-- Caratteristiche di JavaScript / ECMAScript, linguaggi interpretati
-- Eseguire JavaScript nel browser (script, defer, module)
-- Tipi, variabili, array, oggetti, classi, operatori, cicli
-- Funzioni, scope, closure, programmazione funzionale sugli array
-- Moduli (import/export)
-- DOM e DOM API: navigare, modificare, interfacce
-- Eventi, event loop asincrono, bubbling e capturing
-- Prototipi, costruttori, classi, `this`
-- TypeScript, npm, tsconfig, compilazione
+- [Caratteristiche del linguaggio](#caratteristiche-del-linguaggio)
+- [Tipi, variabili, array, oggetti](#tipi-variabili-array-oggetti)
+- [Funzioni, scope, closure](#funzioni-scope-closure)
+- [Moduli](#moduli)
+- [Il DOM](#il-dom)
+- [Eventi e event loop asincrono](#eventi-e-event-loop-asincrono)
+- [Prototipi, costruttori, classi, `this`](#prototipi-costruttori-classi-this)
+- [Asincronia oltre le callback: Promise, async/await, fetch](#asincronia-oltre-le-callback-promise-asyncawait-fetch)
+- [TypeScript](#typescript)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Caratteristiche del linguaggio
 

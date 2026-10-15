@@ -3,13 +3,15 @@
 Fonte: Lezione 00 (Introduzione al corso), Lezione 01 (ISA parte 1) - slide Drago, a.a. 2024/25. Testo di riferimento: Patterson-Hennessy, *Struttura e progetto dei calcolatori - Progettare con RISC-V*, 2a ed. (le slide non lo sostituiscono, dice il docente).
 
 ## Mappa degli argomenti
-- Organizzazione del corso / esame
-- Storia in breve (generazioni)
-- Livelli come macchine virtuali (struttura a cipolla)
-- Architettura vs organizzazione
-- Macchina di Von Neumann, ciclo fetch-decode-execute
-- Ciclo di vita del software (compilatore, assemblatore)
-- Prestazioni
+
+- [Corso ed esame (dalla Lezione 00)](#corso-ed-esame-dalla-lezione-00)
+- [Storia (cultura, in breve)](#storia-cultura-in-breve)
+- [Livelli come macchine virtuali](#livelli-come-macchine-virtuali)
+- [Macchina di Von Neumann](#macchina-di-von-neumann)
+- [Ciclo di vita del software](#ciclo-di-vita-del-software)
+- [Prestazioni](#prestazioni)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Corso ed esame (dalla Lezione 00)
 Il corso vale 6 CFU, ripartiti in Teoria (4 CFU, 32 ore) e Laboratorio (2 CFU, 20 ore). Si segue il Corso B (cognomi E-O) con il docente Idilio Drago, ma il programma è identico per A, B e C. Gli obiettivi sono tre:

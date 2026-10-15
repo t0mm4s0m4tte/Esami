@@ -3,7 +3,15 @@
 Fonte: doc Drive "Appunti" (Confini inferiori, Problema inverso, Esponenziale veloce, Programmazione dinamica).
 
 ## Mappa
+
 Il file parte dai confini superiori e inferiori di un problema (con Gemelli, Somma17 e il limite Ω(n log n) per l'ordinamento tramite alberi di decisione, più Counting sort come eccezione apparente), prosegue con un esercizio tipo di miglioramento di complessità (Jack vs Fast-Jack) e con l'esponenziale veloce (slowExp, fastExp ricorsivo e iterativo), e si chiude con la programmazione dinamica su Fibonacci e LCS. Per risolvere le ricorrenze qui incontrate vale anche il Master theorem [INT] del file 02.
+
+- [Confini](#confini)
+- [Jack / Fast-Jack (lunghezza massima di una sequenza consecutiva di dispari in V[0..n-1])](#jack--fast-jack-lunghezza-massima-di-una-sequenza-consecutiva-di-dispari-in-v0n-1)
+- [Esponenziale veloce (x^n, n naturale)](#esponenziale-veloce-xn-n-naturale)
+- [Programmazione dinamica (DP)](#programmazione-dinamica-dp)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Confini
 

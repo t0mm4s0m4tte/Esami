@@ -5,6 +5,7 @@ Nelle fonti leggibili compaiono solo: la definizione di **gruppo** e di **campo*
 I capitoli 5 (Permutazioni), 6 (Gruppi) di Mori **non erano leggibili** (estrazione troncata a metà cap. 4; Facchini è una scansione vuota). Tutto il resto è **teoria standard ricostruita [DA VERIFICARE su Mori cap. 5-6]**. Gli esempi sono calcolati e controllati con software.
 
 ## Mappa
+
 1. Gruppo: definizione ed esempi (da Buzano + Mori cap. 2)
 2. Permutazioni: notazione a due righe, cicli, prodotto, inversa [DA VERIFICARE]
 3. Scambi/trasposizioni, segno, parità [DA VERIFICARE]
@@ -12,8 +13,17 @@ I capitoli 5 (Permutazioni), 6 (Gruppi) di Mori **non erano leggibili** (estrazi
 5. Sottogruppi, Lagrange, ordine di un elemento [DA VERIFICARE]
 6. Omomorfismi, nucleo e immagine [DA VERIFICARE]
 7. Gruppi ciclici [DA VERIFICARE]
-
 ---
+
+- [1. Gruppo](#1-gruppo)
+- [2. Permutazioni [DA VERIFICARE]](#2-permutazioni-da-verificare)
+- [3. Scambi (trasposizioni) e segno [DA VERIFICARE, parzialmente confermato da Buzano Lez. 9]](#3-scambi-trasposizioni-e-segno-da-verificare-parzialmente-confermato-da-buzano-lez-9)
+- [4. Periodo (ordine) [DA VERIFICARE]](#4-periodo-ordine-da-verificare)
+- [5. Sottogruppi, Lagrange [DA VERIFICARE]](#5-sottogruppi-lagrange-da-verificare)
+- [6. Omomorfismi [DA VERIFICARE]](#6-omomorfismi-da-verificare)
+- [7. Gruppi ciclici [DA VERIFICARE]](#7-gruppi-ciclici-da-verificare)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Gruppo
 

@@ -2,10 +2,14 @@
 Fonte: doc Appunti (Lez. 17, 18, 19, 23 es. 3-4).
 
 ## Mappa
-- Modello Leaf-Branch (composite) invece di null
-- Invariante BST, metodi, insert/remove ricorsivi
-- Visite (pre/in/post/livelli), livello(), leavesAt()
-- Versione generica `Tree<T extends Comparable<T>>`
+
+- [1. Struttura](#1-struttura)
+- [2. Algoritmi](#2-algoritmi)
+- [3. Visite](#3-visite)
+- [4. Esempio svolto (TestTree)](#4-esempio-svolto-testtree)
+- [5. Generico](#5-generico)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Struttura
 Un albero binario di ricerca (BST) è, come la lista, una struttura definita induttivamente: o è vuoto, oppure è una radice con due sottoalberi. L'ordinamento si impone con l'**invariante** "sinistra < radice < destra", senza duplicati, e richiede quindi un ordine totale sugli elementi (Comparable). Il vantaggio è la ricerca: a ogni confronto si scarta metà dell'albero, per un costo O(log n) nel caso medio.

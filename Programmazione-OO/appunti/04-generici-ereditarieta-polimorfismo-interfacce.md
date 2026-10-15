@@ -2,11 +2,15 @@
 Fonte: doc Appunti (Lez. 11-16, 18 [equals], 19-20).
 
 ## Mappa
-- Generici (classi, metodi statici, raw type, erasure, autoboxing, bounded)
-- Ereditarietà (extends, super, protected, override/hiding), assert vs if
-- Tipo apparente/esatto, binding dinamico, sottotipo, cast, instanceof
-- Classi astratte (Figura), interfacce (Comparable)
-- equals: override vs overload
+
+- [1. Generici (Lez. 11)](#1-generici-lez-11)
+- [2. Ereditarietà (Lez. 12-13)](#2-ereditarietà-lez-12-13)
+- [3. Tipo apparente/esatto e binding dinamico (Lez. 14-15)](#3-tipo-apparenteesatto-e-binding-dinamico-lez-14-15)
+- [4. Classi astratte (Lez. 16)](#4-classi-astratte-lez-16)
+- [5. Interfacce, Comparable, generici vincolati (Lez. 19-20)](#5-interfacce-comparable-generici-vincolati-lez-19-20)
+- [6. equals: override vs overload (Lez. 18)](#6-equals-override-vs-overload-lez-18)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Generici (Lez. 11)
 Il problema di partenza è la duplicazione: senza generici servono classi diverse per ogni tipo (PairIS, NodeInteger...) oppure una classe su Object con cast manuali, che spostano gli errori a runtime. I generici trasferiscono il controllo dei tipi al **compilatore**, che rifiuta gli usi scorretti prima dell'esecuzione.

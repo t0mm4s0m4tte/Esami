@@ -3,7 +3,18 @@
 **Fonte**: Doc "Sistemi Operativi - Appunti", Teoria Cap 06-07. Il codice di `test_and_set`/`compare_and_swap` per il lock manca nel doc: lo scheletro sotto è `[INT]` standard.
 
 ## Mappa
+
 Il capitolo parte dalla race condition e dal problema della sezione critica (con i suoi 3 requisiti), presenta le soluzioni software (Peterson) e hardware (TAS, CAS, mutex/spinlock), poi gli strumenti di livello più alto (semafori, monitor). Discute i problemi tipici (deadlock, starvation, priority inversion, usi scorretti), i problemi classici (bounded buffer, readers-writers, dining philosophers) e come i SO reali (Solaris, Windows, Linux), Pthreads e alcune alternative affrontano la questione.
+
+- [Race condition](#race-condition)
+- [Sezione critica](#sezione-critica)
+- [Soluzioni base](#soluzioni-base)
+- [Semafori](#semafori)
+- [Problemi](#problemi)
+- [Problemi classici (soluzioni)](#problemi-classici-soluzioni)
+- [Sincronizzazione nei SO reali](#sincronizzazione-nei-so-reali)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Race condition
 Quando più processi accedono a dati condivisi e il risultato dipende dall'ordine in cui le istruzioni si intrecciano, si ha una race condition. L'esempio base è `counter++` / `counter--`, che **non sono atomici**: ciascuno si compila in load, add e store sui registri. Esempio della fonte (counter=5): P esegue r1=counter; r1=r1+1; C esegue r2=counter; r2=r2-1; poi P fa counter=r1 (6) e C fa counter=r2 (**4**). Il risultato 4 è errato, perché ci si aspettava 5.

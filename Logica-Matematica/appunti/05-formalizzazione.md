@@ -2,7 +2,19 @@
 Fonte: Drive "Logica Matematica - Appunti" (Formalizzazione, Esercizi di Formalizzazione, Simboli logici pt.2 §8), "Formulario" (pattern), "Sintesi" §5 e §10. (ET) = esercizio tipo svolto da me.
 
 ## Mappa
+
 Formalizzare significa tradurre una frase in italiano in una formula del primo ordine, ed è la parte del corso che più si impara con l'allenamento. Il capitolo raccoglie le regole di traduzione (∀→, ∃∧, negazioni), i pattern ricorrenti (aritmetici, di conteggio e unicità, di parentela), il modo di ricavare formule da diagrammi di Hasse o grafi, e le scelte preliminari di linguaggio e universo del discorso, che condizionano tutto il resto.
+
+- [Procedura](#procedura)
+- [Regole d'oro](#regole-doro)
+- [Pattern aritmetici (Formulario/Sintesi)](#pattern-aritmetici-formulariosintesi)
+- [Conteggio e identità (si usa "=")](#conteggio-e-identità-si-usa-)
+- [Parentele (B(x,y)= x genitore di y, D(x)= x maschio)](#parentele-bxy-x-genitore-di-y-dx-x-maschio)
+- [Esercizi dalle fonti](#esercizi-dalle-fonti)
+- [Formule da diagrammi (Sintesi §10)](#formule-da-diagrammi-sintesi-10)
+- [Esercizi tipo (ET)](#esercizi-tipo-et)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Procedura
 Prima di scrivere una formula bisogna decidere in che mondo si sta parlando, e per questo conviene seguire sempre gli stessi passi.

@@ -3,12 +3,22 @@
 **Fonte:** doc Drive "Basi di Dati - Appunti" (Laboratorio 01, 03, 04, 05) + slide Lab. Corso B.
 
 ## Mappa
+
 1. Ciclo di vita e fasi della progettazione
 2. Raccolta/pulizia requisiti (glossario)
 3. Modello E-R: entità, relazioni, attributi, cardinalità, identificatori, generalizzazioni
 4. Pattern e reificazione; strategie; qualità dello schema
 5. Progettazione logica: carico, ridondanze, eliminazione generalizzazioni, traduzione
 6. Caso Impiegati/Organigramma
+
+- [1. Fasi](#1-fasi)
+- [2. Requisiti](#2-requisiti)
+- [3. Modello E-R](#3-modello-e-r)
+- [4. Pattern, reificazione, strategie](#4-pattern-reificazione-strategie)
+- [5. Progettazione logica](#5-progettazione-logica)
+- [6. Caso Impiegati](#6-caso-impiegati)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Fasi
 

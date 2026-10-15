@@ -3,14 +3,18 @@
 **Fonte**: A. Mori, *Lezioni di Matematica Discreta*, cap. 3 (letto per intero). Gli esercizi svolti in fondo sono gli Es. 3.4-3.14 del libro (soluzioni calcolate qui e ricontrollate numericamente).
 
 ## Mappa degli argomenti
-- Cardinalità: equipollenza, ≤, Schröder-Bernstein, finito/infinito, I_n, piccioni, numerabilità
-- Inclusione-esclusione (2 e 3 insiemi)
-- Metodo delle scelte successive (prodotto cartesiano, funzioni A→B)
-- Ordinamenti (n!), anagrammi, disposizioni (con/senza ripetizione)
-- Combinazioni, coefficienti binomiali, Stiefel, Newton, Σ C(n,k)=2ⁿ
-- Combinazioni con ripetizione
 
 ---
+
+- [1. Insiemi finiti e cardinalità](#1-insiemi-finiti-e-cardinalità)
+- [2. Principio di inclusione-esclusione](#2-principio-di-inclusione-esclusione)
+- [3. Metodo delle scelte successive](#3-metodo-delle-scelte-successive)
+- [4. Ordinamenti, anagrammi, disposizioni](#4-ordinamenti-anagrammi-disposizioni)
+- [5. Combinazioni e coefficienti binomiali](#5-combinazioni-e-coefficienti-binomiali)
+- [6. Combinazioni con ripetizione](#6-combinazioni-con-ripetizione)
+- [Esercizi tipo (soluzioni controllate)](#esercizi-tipo-soluzioni-controllate)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Insiemi finiti e cardinalità
 

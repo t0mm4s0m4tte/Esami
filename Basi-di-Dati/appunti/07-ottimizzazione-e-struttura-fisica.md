@@ -3,12 +3,22 @@
 **Fonte:** doc Drive "Basi di Dati - Appunti" (Lezione 05; Lezione 11 §3-7) + slide Lez. 11. Corso B.
 
 ## Mappa
+
 1. Perché: costo I/O
 2. Ottimizzazione logica (euristiche, 7 passi) e fisica
 3. Dizionario dati e fattore di selettività; stima join
 4. Pagine, RID, metodi di accesso e costi
 5. B+ alberi e data entries; euristiche di progettazione fisica
 6. Ottimizzatore fisico e algoritmi di join
+
+- [1. Costo](#1-costo)
+- [2. Ottimizzazione](#2-ottimizzazione)
+- [3. Statistiche e selettività](#3-statistiche-e-selettività)
+- [4. Organizzazione fisica](#4-organizzazione-fisica)
+- [5. B+ alberi](#5-b-alberi)
+- [6. Ottimizzatore fisico](#6-ottimizzatore-fisico)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Costo
 

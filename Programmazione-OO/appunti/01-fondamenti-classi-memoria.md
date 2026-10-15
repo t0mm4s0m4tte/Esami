@@ -2,11 +2,15 @@
 Fonte: doc "Principi di Programmazione Orientata agli Oggetti - Appunti" (Lezioni 01-03, 05-06 + Lab 1).
 
 ## Mappa
-- Perché OOP: complessità, scomposizione OO vs algoritmica, astrazione, incapsulamento, IS-A / PART-OF
-- Classe vs oggetto, Stack/Heap/Area classi, null, static vs istanza, this
-- Visibilità, getter/setter, immutabilità
-- Assert, invarianti di classe, programmazione difensiva
-- Java vs C (array, parametri)
+
+- [1. Concetti (Lez. 01)](#1-concetti-lez-01)
+- [2. Classe, oggetto, memoria (Lez. 02)](#2-classe-oggetto-memoria-lez-02)
+- [3. Incapsulamento in pratica (Lez. 03)](#3-incapsulamento-in-pratica-lez-03)
+- [4. Stack (array) e assert (Lez. 05)](#4-stack-array-e-assert-lez-05)
+- [5. Invarianti e design difensivo (Lez. 06)](#5-invarianti-e-design-difensivo-lez-06)
+- [6. Array C vs Java (Lab 1)](#6-array-c-vs-java-lab-1)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Concetti (Lez. 01)
 La programmazione orientata agli oggetti nasce per governare la complessità. Un programma non si scompone più come una sequenza di passi (scomposizione algoritmica, come in C), ma come un insieme di **agenti che si scambiano messaggi** in una relazione client-server. Il vantaggio principale è il riuso: un componente come il "Gestore Appelli" può servire sia lo studente sia il docente senza essere riscritto. Dietro c'è anche un limite cognitivo (Miller): la mente umana tiene presenti poche cose alla volta, quindi si ragiona per "pezzi" (chunking), ognuno dei quali nasconde il proprio interno.

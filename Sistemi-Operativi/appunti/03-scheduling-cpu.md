@@ -3,7 +3,15 @@
 **Fonte**: Doc "Sistemi Operativi - Appunti", Teoria Cap 05. `[INT]` = integrazione standard/calcolo mio, non nelle fonti: **ricontrollare a mano** gli esempi numerici `[INT]`.
 
 ## Mappa
+
 Il capitolo spiega perché serve uno scheduler (alternanza di burst CPU e I/O), come si distinguono scheduling preemptive e nonpreemptive, quali criteri si usano per giudicare un algoritmo (utilizzo, throughput, turnaround, waiting, response) e poi passa in rassegna FCFS, SJF/SRTF, Priority, Round Robin, Multilevel Queue e Multilevel Feedback Queue. Chiude con il real-time.
+
+- [Concetti](#concetti)
+- [Algoritmi](#algoritmi)
+- [Real-time](#real-time)
+- [Esempio svolto `[INT]` (calcolato da me, standard)](#esempio-svolto-int-calcolato-da-me-standard)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Concetti
 Un processo alterna **CPU burst** e **I/O burst**: il multiprogramming funziona perché mentre un processo attende l'I/O la CPU può servirne un altro. Lo **CPU scheduler** sceglie quale processo della *ready queue* eseguire; il **dispatcher** concretizza la scelta (context switch, passaggio a user mode, salto al punto giusto del programma) e il tempo che impiega si chiama **dispatch latency**.

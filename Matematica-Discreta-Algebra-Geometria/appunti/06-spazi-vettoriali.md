@@ -3,13 +3,16 @@
 **Fonte**: Buzano-Radeschi, *Algebra Lineare e Geometria*, Lezioni 5-7 (`Lezioni_05-07.pdf`), con integrazioni dai compiti d'esame (Prove 1-7, Compiti 2019-2023, cartella Prove d'Esame). Esercizi 5.6-7.15 del PDF.
 
 ## Mappa
-- Spazio euclideo Rⁿ, operazioni su vettori
-- Gruppo, campo, spazio vettoriale (assiomi) ed esempi
-- Spazi di matrici M(m,n), matrici speciali
-- Sottospazi, combinazioni lineari, Span
-- Indipendenza lineare, basi, dimensione, coordinate
 
 ---
+
+- [1. Rⁿ](#1-rⁿ)
+- [2. Spazio vettoriale](#2-spazio-vettoriale)
+- [3. Matrici speciali (Def 6.3) e sottospazi](#3-matrici-speciali-def-63-e-sottospazi)
+- [4. Combinazioni lineari e Span](#4-combinazioni-lineari-e-span)
+- [5. Indipendenza, basi, dimensione](#5-indipendenza-basi-dimensione)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Rⁿ
 

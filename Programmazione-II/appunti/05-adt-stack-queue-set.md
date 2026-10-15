@@ -3,7 +3,15 @@
 Fonte: Drive > "PDF " > `7_ADT_Code_Stack_Set_pt1.pdf`, `pt2.pdf`, `pt3.pdf`. Gli ADT sono un esame tipico: sapere interfaccia + 2 implementazioni (array, lista).
 
 ## Mappa
+
 Il capitolo spiega che cos'è un ADT (con l'esempio della radio) e lo applica a tre strutture: lo stack (LIFO), realizzato con lista e con array; la queue (FIFO), realizzata con array circolare e con lista; il set/multiset, realizzato con lista, funzioni variadiche e liste ordinate. Tutte riusano i pattern di puntatori e ricorsione del file 04.
+
+- [ADT](#adt)
+- [Stack (pila), LIFO](#stack-pila-lifo)
+- [Queue (coda), FIFO](#queue-coda-fifo)
+- [Set e multiset](#set-e-multiset)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## ADT
 Un Abstract Data Type è un tipo di dato definito **indipendentemente dall'implementazione**: ha un dominio (lo stato) e un insieme di operazioni (l'interfaccia, cioè le specifiche delle operazioni). Chi lo usa non ha bisogno di conoscerne l'interno. Nell'esempio della radio lo stato è la coppia `<accesa/spenta, canale>` e le operazioni sono accendi, spegni e sintonizza. La conseguenza importante è che un ADT può avere molte implementazioni: cambiando il tipo di dato interno si aggiornano le funzioni **senza cambiare l'interfaccia**, e il codice che lo usa continua a funzionare (esercizio consigliato).

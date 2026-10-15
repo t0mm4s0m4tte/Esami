@@ -3,7 +3,16 @@
 Fonte: doc Drive "Appunti" (Alberi rosso neri).
 
 ## Mappa
+
 Si definiscono le proprietà e l'altezza nera, si dimostra il bound logaritmico sull'altezza, si introducono le rotazioni e poi si vedono i due fix-up: inserimento (3 casi) e cancellazione (casi 1-3 con sottocasi 3.1-3.4).
+
+- [Definizione](#definizione)
+- [Altezza](#altezza)
+- [Rotazioni](#rotazioni)
+- [Inserimento](#inserimento)
+- [Cancellazione](#cancellazione)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Definizione
 

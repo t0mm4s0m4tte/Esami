@@ -3,7 +3,17 @@
 **Fonte**: Doc "Sistemi Operativi - Appunti", Teoria Cap 08 (esempi numerici dalla fonte e verificati da me).
 
 ## Mappa
+
 Il capitolo definisce il deadlock a partire dal modello di sistema, elenca le 4 condizioni necessarie e il grafo di allocazione, poi passa in rassegna le strategie di gestione: prevenzione, evitamento (stato sicuro, algoritmo del Banchiere), rilevamento, ripristino, oppure ignorare il problema.
+
+- [Concetti](#concetti)
+- [Prevenzione (negare una condizione)](#prevenzione-negare-una-condizione)
+- [Evitamento](#evitamento)
+- [Rilevamento](#rilevamento)
+- [Ripristino](#ripristino)
+- [Confronto](#confronto)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Concetti
 Il **modello** di sistema prevede tipi di risorsa R1..Rm, ciascuno con Wi istanze; un processo usa una risorsa in tre passi: request, use, release. Un deadlock si verifica quando un insieme di processi attende all'infinito risorse tenute da altri dello stesso insieme. Condizione necessaria è che valgano **simultaneamente** quattro condizioni:

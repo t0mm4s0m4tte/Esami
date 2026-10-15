@@ -3,6 +3,7 @@
 **Fonte:** doc Drive "Basi di Dati - Appunti" (Lezioni 08, 09, 10, 14) + slide "La teoria della normalizzazione" 1-3 ed esercizi (Lez. 14). Corso B.
 
 ## Mappa
+
 1. Perché normalizzare: anomalie
 2. Dipendenze funzionali (DF), assiomi di Armstrong, teoremi derivati
 3. Chiusura X⁺, ricerca delle chiavi, attributi estranei
@@ -11,6 +12,17 @@
 6. 3NF, attributi primi, copertura minimale, algoritmo di sintesi
 7. ER ↔ normalizzazione; de-normalizzazione
 8. Esercizi svolti (R(A..G), PARTITA, COMUNE, da ER)
+
+- [1. Anomalie](#1-anomalie)
+- [2. Dipendenze funzionali](#2-dipendenze-funzionali)
+- [3. Chiusura X⁺ e chiavi](#3-chiusura-x-e-chiavi)
+- [4. Scomposizione](#4-scomposizione)
+- [5. BCNF](#5-bcnf)
+- [6. 3NF](#6-3nf)
+- [7. ER e normalizzazione; pratica](#7-er-e-normalizzazione-pratica)
+- [8. Esercizi svolti](#8-esercizi-svolti)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Anomalie
 

@@ -3,12 +3,24 @@
 **Fonte:** doc Drive "Basi di Dati - Appunti" (Laboratorio 07, 08, 09, 10, 11) + slide Lab. Standard di riferimento: SQL-92. DBMS di laboratorio: PostgreSQL (pgAdmin 4).
 
 ## Mappa
+
 1. DDL: domini, tabelle, vincoli, integrità referenziale, ALTER, DROP
 2. DML: INSERT/DELETE/UPDATE
 3. Query: SELECT-FROM-WHERE, join, outer join, self-join
 4. Aggregati, GROUP BY, HAVING
 5. Operatori insiemistici, query nidificate, ANY/ALL/IN, EXISTS
 6. PostgreSQL (object-relational, MVCC, trigger, EXPLAIN)
+
+- [1. DDL](#1-ddl)
+- [2. DML](#2-dml)
+- [3. Query base](#3-query-base)
+- [4. Join (sintassi esplicita)](#4-join-sintassi-esplicita)
+- [5. Aggregati e raggruppamenti](#5-aggregati-e-raggruppamenti)
+- [6. Insiemistici e nidificate](#6-insiemistici-e-nidificate)
+- [7. PostgreSQL (Lab 07)](#7-postgresql-lab-07)
+- [Query tipo (schema S-P-SP; risultati calcolati sui dati delle note)](#query-tipo-schema-s-p-sp-risultati-calcolati-sui-dati-delle-note)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. DDL
 

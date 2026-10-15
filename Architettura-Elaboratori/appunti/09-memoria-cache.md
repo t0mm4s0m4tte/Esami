@@ -3,11 +3,16 @@
 Fonte: Lezione 09 (Gerarchia della Memoria e Cache). Gli esempi numerici "dal libro" sono segnalati. Sezioni 5.8 (write) e 5.9 (miss) del libro sono "approfondimenti non inclusi nel programma" secondo le slide.
 
 ## Mappa
-- Memoria principale, endianness
-- Gerarchia, località temporale e spaziale
-- Cache: hit/miss, blocchi, tag, bit di validità
-- Mappatura diretta, completamente associativa, set-associativa
-- Politica di rimpiazzo (LRU), scrittura (write-through / write-back), gestione miss
+
+- [Memoria principale](#memoria-principale)
+- [Gerarchia e località](#gerarchia-e-località)
+- [Cache: concetti](#cache-concetti)
+- [Mappatura diretta (direct mapped)](#mappatura-diretta-direct-mapped)
+- [Completamente associativa](#completamente-associativa)
+- [Set-associativa a k vie](#set-associativa-a-k-vie)
+- [Gestione di miss e scritture](#gestione-di-miss-e-scritture)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Memoria principale
 La memoria principale è un insieme di celle (locazioni) tutte della stessa dimensione, ciascuna con un indirizzo da 0 a n-1. La cella è l'unità minima indirizzabile: oggi è di 8 bit (un byte), mentre 4 o 8 byte formano una parola. Il numero di bit dell'indirizzo determina quante celle si possono indirizzare. Sull'ordine dei byte in una parola si distinguono **big endian** (SPARC, IBM) e **little endian** (Intel, RISC-V).

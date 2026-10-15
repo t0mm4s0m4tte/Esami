@@ -2,7 +2,15 @@
 Fonte: Drive "Logica Matematica - Appunti" (Insiemi, Relazioni, Funzioni), "Formulario", "Sintesi", "Esercizi" (es. 1-2). (ET) = esercizio tipo svolto da me.
 
 ## Mappa
+
 Il capitolo costruisce il vocabolario matematico che userà tutto il resto del corso. Si parte dagli insiemi (estensionalità, inclusione, operazioni, insieme potenza, prodotto), si passa alle relazioni (n-arie e binarie, le loro proprietà, equivalenze e partizioni, ordini e diagrammi di Hasse) e si arriva alle funzioni come relazioni speciali (immagine e controimmagine, iniettività, suriettività, biettività, inversa).
+
+- [Insiemi](#insiemi)
+- [Relazioni](#relazioni)
+- [Funzioni](#funzioni)
+- [Esempi / esercizi svolti](#esempi--esercizi-svolti)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Insiemi
 Un insieme è determinato esclusivamente dai suoi elementi: è il principio di **estensionalità**, A=B ⇔ ∀x(x∈A↔x∈B). Ne segue che ordine e ripetizioni non contano ({3,2,3,-1}={-1,2,3}) e che per provare un'uguaglianza si dimostra la doppia inclusione, A=B ⇔ A⊆B e B⊆A. Occorre distinguere con cura l'appartenenza dall'inclusione: 1∈ℕ, mentre l'insieme dei pari è ⊆ℕ. L'insieme vuoto è incluso in ogni insieme per verità vacua (∅⊆A sempre). Le inclusioni numeriche ℕ⊂ℤ⊂ℚ⊂ℝ sono tutte strette (√2∈ℝ∖ℚ; si ricordi anche che 0,999…=1).

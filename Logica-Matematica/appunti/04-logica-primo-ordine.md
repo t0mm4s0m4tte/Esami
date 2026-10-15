@@ -2,7 +2,16 @@
 Fonte: Drive "Logica Matematica - Appunti" (Linguaggi del primo ordine, Termini, Formule, Variabili libere e vincolate, Strutture, Interpretazione, Conseguenza logica/validità/soddisfacibilità), "Formulario", "Sintesi" §2-3. (ET) = esercizio tipo svolto da me.
 
 ## Mappa
+
 La logica proposizionale non può esprimere frasi come "ogni numero ha un successore", perché non guarda dentro le proposizioni. Il primo ordine aggiunge ciò che manca: un linguaggio L = Const ∪ Fun ∪ Rel (simboli con arietà), le variabili Vbl, l'uguaglianza =, i connettivi ¬∧∨→↔ e i quantificatori ∀∃. Il capitolo segue lo schema già visto: prima la sintassi (termini, formule atomiche e composte, variabili libere e vincolate, enunciati), poi la semantica (L-strutture, assegnazioni, interpretazione di termini e formule), infine verità, validità, soddisfacibilità e conseguenza per gli enunciati.
+
+- [Sintassi](#sintassi)
+- [Variabili libere/vincolate](#variabili-liberevincolate)
+- [Semantica](#semantica)
+- [Esempi dalle fonti](#esempi-dalle-fonti)
+- [Esercizi tipo (ET)](#esercizi-tipo-et)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Sintassi
 Nel primo ordine esistono due categorie sintattiche distinte, e confonderle è l'errore più frequente. I **termini** denotano *elementi* dell'universo (non verità): Term0=Vbl∪Const e Term(n+1)=Term(n) ∪ {f(t1..tk) | k=ar(f)}. Un simbolo di relazione non costruisce mai termini, per cui f(R(x,y)) è un errore: le relazioni producono formule, le funzioni producono termini. Anche qui ht(t) è il minimo n con t∈Term(n), cioè l'altezza dell'albero meno uno, e lh è il numero di simboli. Un esempio dalla fonte: h(f(h(x,z,g(f(c),y))),g(x,f(g(z,y))),f(h(f(z),h(y,c,x),z))), con ar f=1, g=2, h=3, ha lh=48 e ht=5 (ricontrollato: 48 simboli senza virgole, profondità di parentesi 5).

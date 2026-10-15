@@ -3,7 +3,17 @@
 Fonte: doc Drive "Appunti" (Tabelle hash). Gli esercizi svolti (11.2) e il Lab 05 sono da integrare dai PDF [DA VERIFICARE se già coperti: vedi README].
 
 ## Mappa
+
 Il file introduce il dizionario (Insert, Search, Delete) e la sua realizzazione più veloce ma costosa in spazio, l'indirizzamento diretto; spiega poi come l'hashing risolva il problema dello spazio al prezzo delle collisioni (funzione hash, metodi di divisione e moltiplicazione), le due strategie per gestirle (concatenamento e indirizzamento aperto con ispezione lineare, quadratica e doppio hashing), l'analisi del concatenamento e un confronto finale.
+
+- [Dizionario e indirizzamento diretto](#dizionario-e-indirizzamento-diretto)
+- [Hashing](#hashing)
+- [Concatenamento (liste di trabocco)](#concatenamento-liste-di-trabocco)
+- [Indirizzamento aperto](#indirizzamento-aperto)
+- [Analisi del concatenamento (slide 11)](#analisi-del-concatenamento-slide-11)
+- [Confronto](#confronto)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Dizionario e indirizzamento diretto
 

@@ -3,11 +3,14 @@
 Fonte: Lab 3 (decisioni), Lab 5 (jal/jalr, stringhe), Lab 6 (stack, convenzioni, procedure annidate), snippet `fib` nella Lezione 9. Le slide di teoria "ISA parte 3" (salti/procedure) NON sono nel Drive: il materiale deriva dai Lab; dettagli aggiuntivi "[libro]". Lab 7 (Ricorsione) assente dal Drive.
 
 ## Mappa
-- Salti condizionati e incondizionati; traduzione di if/else, while, for, do-while
-- Procedure: jal, jalr, ra, a0-a7
-- Stack, frame, register spilling, convenzioni di chiamata
-- Procedure annidate e ricorsione
-- Stringhe ASCII
+
+- [Salti e decisioni](#salti-e-decisioni)
+- [Procedure](#procedure)
+- [Stack e convenzioni di chiamata](#stack-e-convenzioni-di-chiamata)
+- [Ricorsione (snippet `fib` dalla Lezione 9)](#ricorsione-snippet-fib-dalla-lezione-9)
+- [Stringhe (Lab 5)](#stringhe-lab-5)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Salti e decisioni
 Le decisioni si realizzano con i salti condizionati (branch), che confrontano due registri e saltano a un'etichetta se la condizione è vera. Il formato è SB e le istruzioni sono `beq`, `bne`, `blt`, `bge`, `bltu`, `bgeu`; le pseudoistruzioni come `bgt`, `ble`, `beqz`, `bnez` si ottengono scambiando gli operandi. Per il salto incondizionato c'è la pseudoistruzione `j label`, equivalente a `jal x0, label`.

@@ -3,10 +3,15 @@
 Fonte: Lezione 04 (Circuiti Combinatori), Lab 8 (circuiti logici combinatori, CircuitVerse).
 
 ## Mappa
-- Circuiti digitali, porte, algebra di Boole, forme canoniche
-- Decoder, multiplexer
-- Half adder, full adder
-- ALU a 1 bit, a n bit; sottrazione, NOR, slt, overflow, zero
+
+- [Circuiti digitali](#circuiti-digitali)
+- [Decoder](#decoder)
+- [Multiplexer (selettore)](#multiplexer-selettore)
+- [Addizionatori](#addizionatori)
+- [ALU a 1 bit (bit slice)](#alu-a-1-bit-bit-slice)
+- [Esercizi tipo](#esercizi-tipo)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Circuiti digitali
 Un circuito digitale lavora con due soli valori logici, 0 e 1, rappresentati da intervalli di tensione (per esempio 0-1 V e 2-5 V), e trasforma ingressi x1..xn in uscite z1..zm. Si distinguono i circuiti **combinatori**, in cui l'uscita è funzione soltanto degli ingressi, e i **sequenziali**, in cui dipende anche da uno stato (file 06).

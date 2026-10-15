@@ -2,7 +2,18 @@
 Fonte: Drive "Logica Matematica - Appunti" (Schede 1, Simboli logici pt.1-2, Sintassi, Semantica, Conseguenza logica) + "Formulario" + "Sintesi". Esercizi tipo marcati (ET) = svolti da me, non presenti nelle fonti.
 
 ## Mappa
+
 Il capitolo parte dai connettivi e dalle loro tavole di verità, passa alle equivalenze notevoli e alla completezza funzionale, poi separa con cura la sintassi (le formule come stringhe: Prop(L), altezza, lunghezza, albero, parsing) dalla semantica (interpretazioni, valutazioni, modelli). Chiude con le nozioni di tautologia, soddisfacibilità e conseguenza logica, che sono il vero oggetto di studio e verranno riprese quasi identiche nel primo ordine (file 04).
+
+- [Connettivi (V=1, F=0)](#connettivi-v1-f0)
+- [Equivalenze da sapere a memoria](#equivalenze-da-sapere-a-memoria)
+- [Sintassi](#sintassi)
+- [Semantica](#semantica)
+- [Conseguenza ed equivalenza](#conseguenza-ed-equivalenza)
+- [Esempi svolti (dalle fonti)](#esempi-svolti-dalle-fonti)
+- [Esercizi tipo (ET)](#esercizi-tipo-et)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Connettivi (V=1, F=0)
 La logica proposizionale studia come la verità di una frase composta dipende soltanto dalla verità delle sue parti. Ogni connettivo è quindi una funzione sui valori {0,1}, descritta interamente da una tavola:

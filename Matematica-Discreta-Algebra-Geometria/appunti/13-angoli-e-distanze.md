@@ -3,11 +3,13 @@
 **Fonte**: Buzano-Radeschi, Lezione 24 (`Lezioni_22-24.pdf`: Lo Spazio Euclideo III). Esempi 24.3, 24.8, 24.12, 24.18 dal testo (ricostruiti dove segnato); gli esempi marcati [INT] sono miei, verificati al computer.
 
 ## Mappa
-- Angolo fra rette, retta e piano, piani (incidenti)
-- Distanze: punto-punto, punto-retta, rette parallele e sghembe, punto-piano
-- Collegamento con prodotto vettoriale e proiezione ortogonale (file 11-12)
 
 ---
+
+- [1. Angoli fra sottospazi incidenti](#1-angoli-fra-sottospazi-incidenti)
+- [2. Distanze fra sottospazi disgiunti](#2-distanze-fra-sottospazi-disgiunti)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Angoli fra sottospazi incidenti
 

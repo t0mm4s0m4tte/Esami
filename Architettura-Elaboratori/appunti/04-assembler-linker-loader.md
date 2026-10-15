@@ -3,11 +3,16 @@
 Fonte: Lezione 03 (Assembler, Linker e Loader), Lab 1 (direttive, RARS).
 
 ## Mappa
-- Linguaggio assembly, pseudo-istruzioni, direttive, macro
-- Assemblatore a due passi, symbol table
-- Linker: moduli oggetto, rilocazione, risoluzione riferimenti
-- Formato ELF, loader
-- Binding, linking statico vs dinamico
+
+- [Assembly](#assembly)
+- [Assemblatore](#assemblatore)
+- [Linker](#linker)
+- [ELF (file oggetto UNIX)](#elf-file-oggetto-unix)
+- [Loader](#loader)
+- [Binding, linking statico/dinamico](#binding-linking-staticodinamico)
+- [Layout di memoria (da Lab 1, RARS)](#layout-di-memoria-da-lab-1-rars)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Assembly
 Il linguaggio assembly ha una corrispondenza quasi uno-a-uno con le istruzioni dell'ISA, ma offre alcune comodità al programmatore: etichette simboliche, allocazione di variabili, costanti e macro. Per questo bisogna distinguere con attenzione quattro cose diverse che compaiono in un sorgente.

@@ -4,16 +4,19 @@
 **Parte del corso**: Matematica Discreta (esame unico MDAG, 12 CFU).
 
 ## Mappa degli argomenti
-- Insiemi: definizione, appartenenza, quantificatori e loro negazione, insieme vuoto, cardinalità
-- Sottoinsiemi, insieme delle parti P(A), doppia inclusione
-- N e assiomi di Peano, principio di induzione (esempi)
-- Operazioni: intersezione, unione, differenza, complementare, De Morgan, distributività
-- Ricoprimenti, partizioni, insieme quoziente, problema della buona definizione
-- Prodotto cartesiano
-- Funzioni: dominio/codominio/grafico, immagine, controimmagine, iniettiva/suriettiva/biettiva
-- Composizione, funzione inversa, operazioni binarie, elemento neutro, invertibili, potenze
 
 ---
+
+- [1. Insiemi: definizioni base](#1-insiemi-definizioni-base)
+- [2. Numeri naturali e induzione](#2-numeri-naturali-e-induzione)
+- [3. Operazioni tra insiemi](#3-operazioni-tra-insiemi)
+- [4. Ricoprimenti, partizioni, quozienti](#4-ricoprimenti-partizioni-quozienti)
+- [5. Prodotto cartesiano](#5-prodotto-cartesiano)
+- [6. Funzioni](#6-funzioni)
+- [7. Composizione e inversa](#7-composizione-e-inversa)
+- [8. Operazioni binarie](#8-operazioni-binarie)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Insiemi: definizioni base
 

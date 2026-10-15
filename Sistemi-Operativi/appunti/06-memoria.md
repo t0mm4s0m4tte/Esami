@@ -3,7 +3,13 @@
 **Fonte**: Doc "Sistemi Operativi - Appunti", Teoria Cap 09-10. `[INT]` = integrazione/calcolo mio non nelle fonti. Il Cap 10 del doc **non** descrive la gestione del page fault passo-passo, il COW, la formula EAT del demand paging: vedi "Dubbi".
 
 ## Mappa
+
 Il capitolo segue il percorso che va dallo spazio logico a quello fisico: base/limit, address binding e MMU; allocazione contigua con frammentazione e compattazione; segmentazione e paging con TLB/EAT, protezione e pagine condivise; strutture alternative per la page table; swapping e architetture reali (Intel IA-32/x86-64, ARM). Il Cap 10 aggiunge la memoria virtuale: demand paging, page replacement (FIFO, OPT, LRU, second-chance), allocazione dei frame, thrashing e working set.
+
+- [Memoria principale](#memoria-principale)
+- [Memoria virtuale (Cap 10)](#memoria-virtuale-cap-10)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Memoria principale
 La CPU accede direttamente solo a registri (1 ciclo) e RAM (con stall); la **cache** attenua il divario. Poiché più processi condividono la RAM serve una protezione hardware, realizzata con una coppia **base + limit register**: un indirizzo logico è valido se `0 <= addr < limit`, l'indirizzo fisico è `base + addr` e una violazione genera un trap al SO.

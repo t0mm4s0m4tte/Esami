@@ -3,13 +3,16 @@
 **Fonte**: Buzano-Radeschi, Lezioni 22-24 (`Lezioni_22-24.pdf`: Lo Spazio Euclideo I-II-III), quiz dei compiti 2023-06 e 2023-07. Sempre prodotto scalare euclideo su Rⁿ. Il testo estratto ha segni e entrate persi in alcuni esempi: dove ho ricostruito è scritto "ricostruito"; i calcoli miei sono marcati [INT] e verificati al computer.
 
 ## Mappa
-- Isometrie e matrici ortogonali; rotazioni e riflessioni del piano (22)
-- Prodotto vettoriale in R³: definizione, proprietà, area (22-23)
-- Forma cartesiana e parametrica; sottospazi affini, giacitura (23)
-- Intersezioni e posizioni reciproche di rette e piani (23, [INT])
-- Angoli e distanze: nel file 13
 
 ---
+
+- [1. Isometrie e matrici ortogonali](#1-isometrie-e-matrici-ortogonali)
+- [2. Prodotto vettoriale in R³](#2-prodotto-vettoriale-in-r³)
+- [3. Forma cartesiana e forma parametrica](#3-forma-cartesiana-e-forma-parametrica)
+- [4. Intersezioni](#4-intersezioni)
+- [5. Posizioni reciproche di rette e piani in R³ [INT, metodo standard]](#5-posizioni-reciproche-di-rette-e-piani-in-r³-int-metodo-standard)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Isometrie e matrici ortogonali
 

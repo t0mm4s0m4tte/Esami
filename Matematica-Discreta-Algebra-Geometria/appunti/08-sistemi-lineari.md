@@ -3,14 +3,17 @@
 **Fonte**: Buzano-Radeschi, Lezioni 11-13 (`Lezioni_11-13.pdf`) e compiti d'esame 2019-2023 (quiz sui sistemi). Esempi 11.7-13.6 e Es. 11.11, 12.9 del PDF verificati.
 
 ## Mappa
-- Sistema lineare, matrice dei coefficienti e completa, mosse di Gauss
-- Algoritmo di Gauss (scalini) e Gauss-Jordan; rango = numero di pivot
-- Come scrivere tutte le soluzioni (parametri liberi)
-- Sistema omogeneo associato, struttura delle soluzioni (sottospazio affine)
-- Teorema di Rouché-Capelli, sistemi con parametro
-- Applicazioni: (in)dipendenza, generatori, basi, coordinate, codici correttori
 
 ---
+
+- [1. Sistema, matrici, mosse di Gauss](#1-sistema-matrici-mosse-di-gauss)
+- [2. Algoritmo di Gauss e Gauss-Jordan](#2-algoritmo-di-gauss-e-gauss-jordan)
+- [3. Descrizione esplicita delle soluzioni](#3-descrizione-esplicita-delle-soluzioni)
+- [4. Sistema omogeneo associato e struttura di S](#4-sistema-omogeneo-associato-e-struttura-di-s)
+- [5. Teorema di Rouché-Capelli](#5-teorema-di-rouché-capelli)
+- [6. Applicazioni (Lezione 13)](#6-applicazioni-lezione-13)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Sistema, matrici, mosse di Gauss
 

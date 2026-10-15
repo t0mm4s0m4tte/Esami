@@ -2,8 +2,11 @@
 Fonte: doc Appunti (Lez. 21 eccezioni, Lez. 22 pattern).
 
 ## Mappa
-- Eccezioni: gerarchia, checked/unchecked, try-catch-finally, throw/throws, custom, factory
-- Design pattern GoF: Singleton, Composite, State (+ Iterator)
+
+- [1. Eccezioni (Lez. 21)](#1-eccezioni-lez-21)
+- [2. Design pattern (Lez. 22)](#2-design-pattern-lez-22)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Eccezioni (Lez. 21)
 Finora gli errori sono stati gestiti con `assert` o con valori di ritorno "speciali" come -1, soluzioni limitate perché ambigue o disattivate di default. L'eccezione offre un canale separato: è un **oggetto** (istanza di Exception e derivate) che segnala un errore "fuori banda", lasciando il valore di ritorno al risultato vero. Essendo un oggetto, porta anche stato: `getMessage()` e campi custom.

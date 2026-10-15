@@ -3,13 +3,16 @@
 **Fonte**: Buzano-Radeschi, Lezioni 19-21 (`Lezioni_19-21.pdf`). In questo blocco il campo è sempre K=R (servono positività e radici quadrate). Esempi 19.4-21.8 verificati.
 
 ## Mappa
-- Prodotto scalare (bilineare simmetrico), degenere, definito positivo; prodotto euclideo
-- Matrici simmetriche e prodotti scalari, matrice associata, cambiamento di base, congruenza
-- Forme quadratiche
-- Norma, Cauchy-Schwarz, disuguaglianza triangolare, distanza, angolo
-- Ortogonalità, complemento ortogonale, proiezione, coefficienti di Fourier, Gram-Schmidt
 
 ---
+
+- [1. Definizioni](#1-definizioni)
+- [2. Matrici simmetriche](#2-matrici-simmetriche)
+- [3. Forme quadratiche](#3-forme-quadratiche)
+- [4. Norma, disuguaglianze, distanza, angolo (g definito positivo)](#4-norma-disuguaglianze-distanza-angolo-g-definito-positivo)
+- [5. Ortogonalità e proiezioni](#5-ortogonalità-e-proiezioni)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Definizioni
 

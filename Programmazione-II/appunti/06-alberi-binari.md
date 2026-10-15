@@ -3,7 +3,16 @@
 Fonte: Drive > "PDF " > `8_Alberi_pt1.pdf`, `pt2.pdf`, `pt3.pdf`. Nota: pt2 (BFS) si interrompe a metà della simulazione.
 
 ## Mappa
+
 Il capitolo fissa la terminologia degli alberi, definisce il tipo C e l'albero ordinato (BST), presenta le operazioni (init, crea_nodo, add con percorso, add_ord, rimuovi_tutto) e le visite: in profondità (DFS: pre/in/post-order, anche con uno stack esplicito) e in ampiezza (BFS, con una coda). Il nodo generico (`void*`) è nel file 07.
+
+- [Terminologia](#terminologia)
+- [Albero ordinato / BST](#albero-ordinato--bst)
+- [Tipo e operazioni base](#tipo-e-operazioni-base)
+- [Visite in profondità (DFS), ricorsive (con backtracking)](#visite-in-profondità-dfs-ricorsive-con-backtracking)
+- [Visita in ampiezza (BFS)](#visita-in-ampiezza-bfs)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Terminologia
 Una lista, una coda o uno stack sono strutture lineari: ogni nodo ha al più un successore e un predecessore. L'**albero** rompe la prima restrizione, perché un nodo può avere molti successori, ma conserva la seconda: ha al più un predecessore. L'**albero binario** limita i successori a due, il sinistro e il destro. Tutto il vocabolario che segue serve a descrivere questa forma.

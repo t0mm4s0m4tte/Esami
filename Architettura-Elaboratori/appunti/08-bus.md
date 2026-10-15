@@ -3,11 +3,16 @@
 Fonte: Lezione 08 (Bus).
 
 ## Mappa
-- Architettura classica a bus condiviso vs moderni punto-punto
-- Linee dati / indirizzi / controllo
-- Dispositivi attivi e passivi
-- Larghezza, clocking (sincrono/asincrono), arbitraggio
-- Da bus paralleli a seriali
+
+- [Definizione](#definizione)
+- [Dispositivi](#dispositivi)
+- [Progettazione: tre problemi](#progettazione-tre-problemi)
+- [Bus sincrono](#bus-sincrono)
+- [Bus asincrono](#bus-asincrono)
+- [Arbitraggio](#arbitraggio)
+- [Dal parallelo al seriale; sistemi attuali](#dal-parallelo-al-seriale-sistemi-attuali)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Definizione
 Il **bus** è l'insieme di linee elettriche che collegano i moduli di un elaboratore (CPU, memoria, I/O), e il **protocollo del bus** è l'insieme di regole che governa la comunicazione sulle sue linee. Esistono bus di sistema (che collegano CPU, memoria e I/O) e bus interni al chip.

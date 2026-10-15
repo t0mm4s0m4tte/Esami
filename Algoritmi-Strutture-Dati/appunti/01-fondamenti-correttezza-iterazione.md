@@ -3,7 +3,16 @@
 Fonte: doc Drive "Algoritmi e Strutture Dati - Appunti" (sezioni: Problemi e Algoritmi, Correttezza e terminazione, Iterazione, Esercitazione, Ordinamento).
 
 ## Mappa
+
 Il file parte da che cosa sia un problema computazionale e un algoritmo (con Euclide e Kadane come primi esempi e con i limiti dell'insolubile e dell'intrattabile), passa agli strumenti per dimostrare che un algoritmo fa ciò che promette (specifica, induzione, invarianti, terminazione), mostra come l'invariante si possa usare per *progettare* i cicli (ricerca binaria, moltiplicazione alla russa) e chiude con gli ordinamenti elementari (Selection e Insertion sort) e il confronto fra ricerca lineare e binaria.
+
+- [Problemi e algoritmi](#problemi-e-algoritmi)
+- [Correttezza e terminazione](#correttezza-e-terminazione)
+- [Iterazione e accumulatori](#iterazione-e-accumulatori)
+- [Ordinamenti elementari: costi](#ordinamenti-elementari-costi)
+- [Ricerca lineare vs binaria](#ricerca-lineare-vs-binaria)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Problemi e algoritmi
 

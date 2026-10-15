@@ -3,7 +3,14 @@
 Fonte: doc Drive "Appunti" (Algoritmi greedy MST; Cammini minimi e algoritmo di Dijkstra).
 
 ## Mappa
+
 Prima l'albero di copertura minimo: definizioni, arco sicuro, taglio e teorema del taglio, poi Kruskal (con Union-Find) e Prim (con coda di priorità). Poi i cammini minimi da sorgente singola: formulazione, lemmi, Relax, Dijkstra con dimostrazione di correttezza, il problema dei pesi negativi e la complessità; infine le integrazioni dalle slide 18 e 19.
+
+- [MST](#mst)
+- [Cammini minimi (sorgente singola)](#cammini-minimi-sorgente-singola)
+- [Integrazioni dalle slide (18 e 19)](#integrazioni-dalle-slide-18-e-19)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## MST
 

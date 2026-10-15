@@ -3,7 +3,15 @@
 Fonte: doc Drive "Appunti" (Code di priorità) + Lab 07 (heap ternario, vedi 11-laboratorio.md).
 
 ## Mappa
+
 Si definiscono heap max e min, la loro rappresentazione su array e la posizione delle foglie; poi le operazioni Insert, ExtractMaximum, Heapify, BuildHeap e infine Heapsort, con il codice delle slide.
+
+- [Heap](#heap)
+- [Operazioni](#operazioni)
+- [Heapsort](#heapsort)
+- [Codice (slide 15)](#codice-slide-15)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Heap
 

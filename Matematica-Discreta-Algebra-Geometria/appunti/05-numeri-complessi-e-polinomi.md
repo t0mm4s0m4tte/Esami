@@ -4,12 +4,15 @@
 Nota: nell'estrazione del PDF molti segni "-" e simboli sono andati persi; quando un esercizio è ambiguo è segnalato.
 
 ## Mappa
-- Insiemi numerici N⊂Z⊂Q⊂R⊂C, costruzione di R (successioni di Cauchy), √2 irrazionale, campo
-- Numeri complessi: operazioni, coniugio, modulo, inverso, piano complesso
-- Forma polare, esponenziale e^{iθ}, prodotto, radici n-esime
-- Polinomi: grado, divisione con resto, radici, molteplicità, teorema fondamentale dell'algebra, coefficienti reali
 
 ---
+
+- [1. Insiemi numerici e R](#1-insiemi-numerici-e-r)
+- [2. Numeri complessi](#2-numeri-complessi)
+- [3. Forma polare e radici](#3-forma-polare-e-radici)
+- [4. Polinomi](#4-polinomi)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Insiemi numerici e R
 

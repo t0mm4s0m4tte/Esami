@@ -3,11 +3,19 @@
 Fonte: Lezione 06 (DataPath), Lezione 07 (Controller), Lab 10 (RISC-TO). Processore a **ciclo singolo** (un'istruzione per ciclo di clock). Le tabelle dei segnali nel PDF sono immagini: le righe marcate [libro] sono ricostruite dal libro e vanno verificate.
 
 ## Mappa
-- Istruzioni supportate, componenti, temporizzazione
-- Datapath per R, load/store, beq; datapath unificato
-- Controllo ALU (ALUOp) e unità di controllo principale
-- Esecuzione passo-passo
-- RISC-TO (Lab 10)
+
+- [Obiettivo e componenti](#obiettivo-e-componenti)
+- [Fetch](#fetch)
+- [Datapath tipo R (`add x1,x2,x3`)](#datapath-tipo-r-add-x1x2x3)
+- [Load/store](#loadstore)
+- [beq (tipo SB)](#beq-tipo-sb)
+- [Datapath unificato](#datapath-unificato)
+- [Controllo della ALU (livello 2, a due stadi di decodifica)](#controllo-della-alu-livello-2-a-due-stadi-di-decodifica)
+- [Unità di controllo principale](#unità-di-controllo-principale)
+- [Esecuzione passo-passo (tutte: fetch + PC+4)](#esecuzione-passo-passo-tutte-fetch--pc4)
+- [RISC-TO (Lab 10)](#risc-to-lab-10)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Obiettivo e componenti
 Questo capitolo mette insieme i blocchi dei capitoli precedenti (register file, ALU, memorie) per costruire un vero processore. Per semplicità si considera un sottoinsieme di istruzioni, sufficiente a mostrare tutte le idee: le istruzioni di tipo R (`add, sub, and, or`), `lw`, `sw` e `beq`. Il processore è a ciclo singolo: ogni istruzione si esegue interamente in un ciclo di clock.

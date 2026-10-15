@@ -2,10 +2,14 @@
 Fonte: doc Appunti (Lez. 08 ArrayExt, 09, 10, 15 MiniLinkedList, 20 ListExt).
 
 ## Mappa
-- ArrayExt (raddoppio, shifting)
-- Node, DynamicStack
-- Metodi statici su liste (NodeUtil): iterativi/ricorsivi
-- MiniLinkedList e costo O(n^2); pattern Iterator; Iterable/Iterator
+
+- [1. ArrayExt (Lez. 08)](#1-arrayext-lez-08)
+- [2. Node e DynamicStack (Lez. 09-10)](#2-node-e-dynamicstack-lez-09-10)
+- [3. NodeUtil: metodi statici su liste (Lez. 10)](#3-nodeutil-metodi-statici-su-liste-lez-10)
+- [4. MiniLinkedList e Iterator (Lez. 15)](#4-minilinkedlist-e-iterator-lez-15)
+- [5. Iterable / Iterator (Lez. 20)](#5-iterable--iterator-lez-20)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. ArrayExt (Lez. 08)
 Un array ha dimensione fissa, ma spesso non si sa in anticipo quanti elementi serviranno. ArrayExt risolve il problema con un array che si allarga da solo quando si riempie. L'invariante è `0 <= size <= array.length && array.length > 0`: la lunghezza deve essere positiva perché con length 0 il raddoppio non produrrebbe mai spazio.

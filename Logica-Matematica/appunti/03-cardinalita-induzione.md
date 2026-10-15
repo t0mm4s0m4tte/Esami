@@ -2,7 +2,15 @@
 Fonte: Drive "Logica Matematica - Appunti" (Cenni di Cardinalità, Le diverse forme del Principio di Induzione), "Formulario" (tabelle cardinalità), "Sintesi" §8. (ET) = esercizio tipo svolto da me.
 
 ## Mappa
+
 Il capitolo ha due metà legate da un tema comune: ragionare sull'infinito. La prima misura la "taglia" degli insiemi tramite biezioni e iniezioni (equipotenza, ≾, Cantor-Schröder-Bernstein, numerabili, teorema di Cantor su P(X), continuo). La seconda studia le diverse forme del principio di induzione (semplice, da k, forte, strutturale, principio del minimo, invarianti di ciclo), che sono lo strumento per dimostrare proprietà di infiniti oggetti costruiti passo dopo passo.
+
+- [Cardinalità](#cardinalità)
+- [Induzione](#induzione)
+- [Esercizi svolti (dalle fonti)](#esercizi-svolti-dalle-fonti)
+- [Esercizi tipo (ET)](#esercizi-tipo-et)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Cardinalità
 Per confrontare insiemi infiniti non si possono contare gli elementi, ma si possono accoppiare. Due insiemi sono equipotenti, X≃Y (|X|=|Y|), quando esiste una biezione tra loro, e questa è una relazione di equivalenza. Si scrive |X|≤|Y| (X≾Y) quando esiste un'iniezione X→Y, il che per X≠∅ equivale a dire che esiste una suriezione Y→X. Un insieme è finito se è equipotente a {0,…,n-1}; l'infinito è semplicemente il non-finito, e lo si riconosce perché ha una biezione con un suo sottoinsieme proprio (n↦n+1 tra ℕ e ℕ∖{0}) e contiene una copia di ℕ.

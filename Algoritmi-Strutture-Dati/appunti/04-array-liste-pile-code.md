@@ -3,7 +3,14 @@
 Fonte: doc Drive "Appunti" (Array statici e dinamici, Liste, Pile e code).
 
 ## Mappa
+
 Il file confronta le due strutture di base con cui si realizza un insieme dinamico (operazioni insert/search/delete, più min, max, successor, predecessor se le chiavi sono ordinate): gli array, statici e ridimensionabili con la relativa analisi ammortizzata, e le liste semplici con le loro operazioni ricorsive e iterative (cons/head/tail, lunghezza, insert/delete, clone, reverse, liste ordinate, union, mergesort). Chiude con pile (LIFO) e code (FIFO) realizzate sia su array sia su liste.
+
+- [Array](#array)
+- [Liste semplici (nodo: info, next)](#liste-semplici-nodo-info-next)
+- [Pile (LIFO) e code (FIFO)](#pile-lifo-e-code-fifo)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Array
 

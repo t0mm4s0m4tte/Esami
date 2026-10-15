@@ -2,7 +2,17 @@
 Fonte: Drive "Logica Matematica - Appunti" (Relazioni §9, Reticoli), "Formulario" (Hasse, reticolo), "Sintesi" §9. (ET) = esercizio tipo svolto da me. Il documento Appunti si interrompe a metà della dimostrazione di CSB (§7).
 
 ## Mappa
+
 Questo capitolo prende gli ordini parziali introdotti nel file 02 e ne studia la struttura fine. Si parte da poset, estremo superiore e inferiore, minimo e massimo, e si arriva ai reticoli e alla dualità; si osserva che un reticolo si può vedere sia come struttura relazionale (L_ord) sia come struttura algebrica (L_ret). Seguono la completezza e il teorema di Tarski-Knaster, gli omomorfismi e i sottoreticoli, la distributività (con i reticoli proibiti N5 e M3) e alcune costruzioni (somme, prodotti, Down(P)).
+
+- [Poset e reticoli](#poset-e-reticoli)
+- [Completezza](#completezza)
+- [Morfismi, sottoreticoli](#morfismi-sottoreticoli)
+- [Distributività](#distributività)
+- [Costruzioni](#costruzioni)
+- [Esercizi svolti / tipo (ET)](#esercizi-svolti--tipo-et)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Poset e reticoli
 Un poset ⟨P,≤⟩ è un insieme con una relazione riflessiva, antisimmetrica e transitiva. Dato X⊆P, un **maggiorante** è un elemento p maggiore o uguale a ogni x∈X; il **sup X** è il *minimo dei maggioranti* (unico, se esiste) e l'inf X è il massimo dei minoranti. La clausola "se esiste" è essenziale: due elementi incomparabili in fondo, sotto due maggioranti a loro volta incomparabili, non hanno sup, perché l'insieme dei maggioranti non ha un minimo.

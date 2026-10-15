@@ -3,11 +3,17 @@
 Fonte: Lezione 05 (Reti Sequenziali), Lab 9 (circuiti sequenziali).
 
 ## Mappa
-- Circuiti sequenziali vs combinatori
-- Latch SR (NOR), clock, latch SR/D sincronizzati, trasparenza
-- Flip-flop D (fronte di salita/discesa)
-- Buffer tri-state, registri, register file
-- Organizzazione di memorie, RAM (SRAM/DRAM), ROM
+
+- [Dal combinatorio al sequenziale](#dal-combinatorio-al-sequenziale)
+- [Latch SR (porte NOR)](#latch-sr-porte-nor)
+- [Clock](#clock)
+- [Latch sincronizzati](#latch-sincronizzati)
+- [Flip-flop D](#flip-flop-d)
+- [Buffer tri-state](#buffer-tri-state)
+- [Registri e register file](#registri-e-register-file)
+- [Memorie](#memorie)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Dal combinatorio al sequenziale
 I circuiti combinatori non ricordano nulla, ma un calcolatore deve conservare dati. In un circuito sequenziale la funzione calcolata dipende anche da uno **stato interno**, memorizzato in elementi di memoria, e quindi dalla storia degli ingressi. L'elemento più semplice è un latch a 1 bit, specificato così: ingressi `i` e `β` (store), uscita `o`. Se β=1 il nuovo stato è s' = i (store); se β=0 è s' = s (hold). In sintesi, con β=0 l'uscita mantiene lo stato e con β=1 prende i.

@@ -3,6 +3,7 @@
 **Fonte:** doc Drive "Basi di Dati - Appunti" (Lezioni 03, 04, 06) + slide. Schema di riferimento: PAZIENTI, REPARTI, MEDICI, RICOVERI (vedi file 01).
 
 ## Mappa
+
 1. Operatori base: σ, π, ∪ ∩ −, ρ, ×, join, semi-join
 2. Composizione e correttezza sintattica
 3. Negazione (inessenziale/essenziale), U−P, massimo, "un solo"
@@ -11,6 +12,16 @@
 6. Outer join
 7. Proprietà/equivalenze (per ottimizzazione -> file 07)
 8. Calcolo relazionale su tuple (TRC) e legame con SQL; limiti
+
+- [1. Operatori](#1-operatori)
+- [2. Negazione](#2-negazione)
+- [3. Quantificazione universale: quoziente](#3-quantificazione-universale-quoziente)
+- [4. NULL e logica a tre valori (3VL)](#4-null-e-logica-a-tre-valori-3vl)
+- [5. Outer join](#5-outer-join)
+- [6. Proprietà (base dell'ottimizzazione logica)](#6-proprietà-base-dellottimizzazione-logica)
+- [7. Calcolo relazionale su tuple (TRC) con range](#7-calcolo-relazionale-su-tuple-trc-con-range)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Operatori
 

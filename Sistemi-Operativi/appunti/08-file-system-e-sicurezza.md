@@ -3,7 +3,14 @@
 **Fonte**: Doc "Sistemi Operativi - Appunti", Teoria Cap 13, 14, 16. `[INT]` = calcolo/integrazione mia. Il doc copre solo **protezione file** (Cap 13) e **metodi di allocazione** (Cap 14); mancano directory, mount, free-space management, journaling (vedi Dubbi). Cap 15 (Protezione) non è nel programma.
 
 ## Mappa
+
 Il capitolo ha tre blocchi. Il primo riguarda la protezione dei file: tipi di accesso, UID/GID, modello Unix (rwx) e ACL di Windows. Il secondo i metodi di allocazione: contigua (extent), collegata (FAT) e indicizzata (inode UFS). Il terzo la sicurezza: violazioni, minacce ai programmi e a sistemi/reti, crittografia, difese e il caso Windows.
+
+- [Protezione dei file](#protezione-dei-file)
+- [Allocazione dei file](#allocazione-dei-file)
+- [Sicurezza (Cap 16)](#sicurezza-cap-16)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Protezione dei file
 Il proprietario di un file controlla *cosa* si può fare e *da chi*. I tipi di accesso sono read, write, execute, append, delete e list, e le identità sono **UID** (utente) e **GID** (gruppo). Il modello **Unix** distingue 3 classi (owner, group, others/public) e 3 permessi (r=4, w=2, x=1), da cui la notazione ottale. Per esempio `chmod 761 game` assegna all'owner 7 = rwx, al gruppo 6 = rw-, agli altri 1 = --x. Il primo carattere di `ls -l` indica il tipo (`-` file, `d` directory, `p` FIFO); i comandi sono `chmod`, `chgrp`, `chown`. Il modello è semplice e prevedibile, ma poco flessibile: non c'è un deny esplicito per un singolo utente di un gruppo.

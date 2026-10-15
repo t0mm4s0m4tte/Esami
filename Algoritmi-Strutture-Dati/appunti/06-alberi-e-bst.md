@@ -3,7 +3,15 @@
 Fonte: doc Drive "Appunti" (Alberi, Alberi di Ricerca). Gli esercizi 13.2 sono nei PDF [DA VERIFICARE se coperti: vedi README].
 
 ## Mappa
+
 Si parte dalle definizioni e dalla terminologia degli alberi, con le varianti e le rappresentazioni in memoria; si passa alle visite in profondità e in ampiezza (ricorsiva, con pila, con coda); infine si studiano i BST: ricerca, minimo/massimo, successore, inserimento, cancellazione, effetto dell'ordine di inserimento e visite in-order e pre-order.
+
+- [Alberi](#alberi)
+- [Visite](#visite)
+- [BST](#bst)
+- [Codice dalle slide (13)](#codice-dalle-slide-13)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Alberi
 

@@ -3,10 +3,18 @@
 **Fonte:** doc Drive "Basi di Dati - Appunti" (Lezioni 07, 11 §1-2, 12, 13) + slide Lez. 11-13 (es. T1/T2 bancarie, log T1-T5). Corso B.
 
 ## Mappa
+
 1. Transazione, COMMIT/ROLLBACK, verifica differita, ciclo di vita
 2. ACID e componenti responsabili
 3. Concorrenza: interleaving, storie, view-equivalenza, lock, 2PL, granularità
 4. Ripristino: memoria stabile, log, FORCE LOG, UNDO/REDO, checkpoint, dump/restore
+
+- [1. Transazione](#1-transazione)
+- [2. ACID e responsabili](#2-acid-e-responsabili)
+- [3. Concorrenza](#3-concorrenza)
+- [4. Ripristino (Lez. 13)](#4-ripristino-lez-13)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Transazione
 

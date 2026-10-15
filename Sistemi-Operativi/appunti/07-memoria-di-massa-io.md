@@ -3,7 +3,16 @@
 **Fonte**: Doc "Sistemi Operativi - Appunti", Teoria Cap 11-12. `[INT]` = calcolo mio non nelle fonti. Il Cap 11 del doc tratta **solo lo scheduling del disco**: niente RAID, SSD, struttura disco, gestione swap (vedi Dubbi).
 
 ## Mappa
+
 Il capitolo ha due parti. Nella prima si analizzano le prestazioni del disco (seek, latenza rotazionale) e gli algoritmi di disk scheduling: FCFS, SSTF, SCAN, C-SCAN, C-LOOK. Nella seconda si passa all'I/O: hardware (porta, bus, controller, registri, memory-mapped I/O), meccanismi di trasferimento (polling, interrupt, DMA), interfaccia applicativa, sottosistema I/O del kernel e ciclo di vita di una richiesta.
+
+- [Disk scheduling](#disk-scheduling)
+- [Hardware I/O](#hardware-io)
+- [Meccanismi di trasferimento](#meccanismi-di-trasferimento)
+- [Interfaccia applicativa](#interfaccia-applicativa)
+- [Sottosistema I/O del kernel](#sottosistema-io-del-kernel)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Disk scheduling
 Il tempo di accesso al disco è la somma del **seek time** (muovere il braccio, circa proporzionale alla distanza) e della **latenza rotazionale**. Il SO può ottimizzare soltanto il seek, quindi l'obiettivo degli algoritmi è minimizzare il movimento totale della testina; la rotazione non è controllabile dal SO.

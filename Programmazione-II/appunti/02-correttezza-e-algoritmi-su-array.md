@@ -3,7 +3,13 @@
 Fonte: Drive > "PDF " > `2_Correttezza.pdf` (a.a. 2023-24, esempi dal prof. F. Damiani). Il PDF si interrompe a metà dell'insertion sort: il resto (bubble/selection, `insertion`) NON è nelle slide.
 
 ## Mappa
+
 Si parte dall'idea di specifica di una funzione e dai due predicati P_IN / P_OUT (con la notazione con apice per i valori iniziali), si definiscono correttezza parziale, terminazione e correttezza, si descrive il metodo di progettazione per raffinamenti successivi con test suite, e si applica tutto a esempi (minimo, cerca, scambia, scambia_p) e a due algoritmi classici: ricerca binaria e insertion sort.
+
+- [Concetti](#concetti)
+- [Codice essenziale](#codice-essenziale)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Concetti
 Il filo conduttore del capitolo è che una funzione deve fare ciò che dice la **specifica**, e che questo si ottiene progettando il codice, non provando finché il compilatore e il debugger smettono di protestare ("non è un programmatore chi si fa guidare dal compilatore o dal debugger"). Gli errori possibili sono di diversa gravità:

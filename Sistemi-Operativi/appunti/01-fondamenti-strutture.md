@@ -3,7 +3,18 @@
 **Fonte**: Google Doc "Sistemi Operativi - Appunti" (Teoria Cap 01-02 + sezione "Handmade" Cap 1-2). Tag `[INT]` = integrazione standard NON presente nelle fonti.
 
 ## Mappa
+
 Il capitolo parte dal ruolo del SO (macchina virtuale e gestore di risorse), distingue kernel, programmi di sistema e middleware, poi spiega i meccanismi hardware che rendono possibile il controllo (interrupt, eccezioni, dual mode, timer, system call). Passa quindi alle architetture (single-core, multicore, UMA/NUMA, cluster, big.LITTLE), ai servizi offerti, alle diverse strutture interne e infine a boot e debugging.
+
+- [Ruolo del sistema operativo](#ruolo-del-sistema-operativo)
+- [Interrupt, eccezioni e dual mode](#interrupt-eccezioni-e-dual-mode)
+- [Multiprogrammazione, multicore e architetture](#multiprogrammazione-multicore-e-architetture)
+- [Servizi del SO](#servizi-del-so)
+- [System call e API](#system-call-e-api)
+- [Strutture del sistema operativo](#strutture-del-sistema-operativo)
+- [Boot e debugging](#boot-e-debugging)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Ruolo del sistema operativo
 Il SO è l'intermediario tra l'hardware e le applicazioni, e svolge due funzioni complementari: da un lato estende l'ISA della macchina fornendo una macchina virtuale più comoda da programmare, dall'altro alloca e controlla le risorse (CPU, memoria, I/O) tra i programmi che le richiedono. Il **kernel** è l'unico programma sempre in esecuzione; i *programmi di sistema* (shell, utility) sono invece normali programmi che girano in user context e non fanno parte del kernel. Sui dispositivi mobili all'insieme si aggiunge il middleware, che offre servizi alle applicazioni sopra il kernel.

@@ -3,7 +3,17 @@
 Fonte: doc Drive "Appunti" (Grafi; Ordinamento topologico e componenti connesse). Il titolo menziona "componenti connesse" ma il doc non sviluppa l'algoritmo [DA VERIFICARE nei PDF 17].
 
 ## Mappa
+
 Si parte dalle definizioni (grafi orientati e non) e dalle rappresentazioni (matrice e liste di adiacenza); poi BFS e DFS, la DFS temporizzata con colori, tempi d/f, teorema delle parentesi e classificazione degli archi; infine l'ordinamento topologico con la sua dimostrazione e, dalle slide 17, aciclicità, teorema del cammino bianco e componenti fortemente connesse.
+
+- [Definizioni](#definizioni)
+- [Rappresentazioni](#rappresentazioni)
+- [BFS e DFS](#bfs-e-dfs)
+- [DFS temporizzata](#dfs-temporizzata)
+- [Ordinamento topologico](#ordinamento-topologico)
+- [Integrazioni dalle slide (17): aciclicità, cammino bianco, componenti fortemente connesse](#integrazioni-dalle-slide-17-aciclicità-cammino-bianco-componenti-fortemente-connesse)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Definizioni
 

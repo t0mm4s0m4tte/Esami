@@ -3,7 +3,13 @@
 **Fonte**: Doc "Sistemi Operativi - Appunti", Teoria Cap 03-04 (+ Lab 03 per il lato UNIX, vedi `09-laboratorio-unix.md`). `[INT]` = integrazione standard non nelle fonti.
 
 ## Mappa
+
 Il capitolo distingue il processo (entità attiva) dal programma (entità passiva) e i processi indipendenti da quelli cooperanti. Per questi ultimi servono meccanismi di IPC (memoria condivisa o message passing, con socket, RPC e pipe come strumenti concreti). Si passa poi ai thread: benefici, legge di Amdahl, modelli di mapping, librerie, threading implicito, problemi tipici e implementazioni in Windows e Linux.
+
+- [Processi e IPC](#processi-e-ipc)
+- [Thread](#thread)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Processi e IPC
 Un **processo** è un programma in esecuzione; un processo multithread ha più program counter. Quando i processi sono **cooperanti** condividono informazioni, ottengono speedup, modularità e convenienza, ma hanno bisogno di un modo per scambiarsi dati. Nota importante: stati del processo (new, ready, running, waiting, terminated), PCB e context switch **non sono trattati** nel doc di Cap 3 [INT, NON NELLE FONTI]; vanno ripassati dal libro (Silberschatz, 10 ed.) se richiesti. Per UNIX gli stati mostrati da `ps` sono nel Lab 03.

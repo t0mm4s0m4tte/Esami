@@ -4,14 +4,17 @@ Fonte: Drive › Terzo anno › Tecnologie Web › Slide Deck - TWeb › "01 –
 
 ## Mappa degli argomenti
 
-- Web, HTTP, URL, DNS
-- HTML come linguaggio di markup e ipertesto
-- Risorse statiche e dinamiche, programmi lato server
-- Pagine passive e interattive, programmi lato client
-- Anatomia di una transazione HTTP e ciclo del browser
-- Struttura di richieste e risposte HTTP (metodi, header, MIME, status code)
-- Applicazione full stack (client-side + server-side)
-- Front-end e back-end, architettura a strati
+- [Cos'è il Web e come si indirizzano le risorse](#cosè-il-web-e-come-si-indirizzano-le-risorse)
+- [HTML e ipertesto](#html-e-ipertesto)
+- [Risorse statiche, dinamiche e programmi lato server](#risorse-statiche-dinamiche-e-programmi-lato-server)
+- [Anatomia di una transazione HTTP](#anatomia-di-una-transazione-http)
+- [Pagine passive, interattive e programmi lato client](#pagine-passive-interattive-e-programmi-lato-client)
+- [Struttura di richieste e risposte HTTP](#struttura-di-richieste-e-risposte-http)
+- [L'applicazione web completa: client-side + server-side ("full stack")](#lapplicazione-web-completa-client-side--server-side-full-stack)
+- [Front-end e back-end, architettura a strati](#front-end-e-back-end-architettura-a-strati)
+- [Integrazioni da fonti esterne](#integrazioni-da-fonti-esterne)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Cos'è il Web e come si indirizzano le risorse
 

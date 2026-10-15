@@ -3,7 +3,16 @@
 Fonte: Drive > Programmazione II > "PDF " > `0_Introduzione.pdf`, `1_Organizzazione_del_software.pdf` (slide prof. C. Baroglio, a.a. 2024-25).
 
 ## Mappa
+
 Il file parte dalle regole del gioco (come funziona l'esame), poi spiega perché conviene scrivere software riusabile, come si spezza un programma C in più file `.c` / `.h`, che cosa fa il compilatore quando lo trasforma in un eseguibile e come si organizza un progetto su disco con il comando `gcc` corrispondente.
+
+- [Modalità d'esame (dal corso a.a. 2024-25 - [DA VERIFICARE] per a.a. 2026-27)](#modalità-desame-dal-corso-aa-2024-25---da-verificare-per-aa-2026-27)
+- [Proprietà del buon software](#proprietà-del-buon-software)
+- [Codice su più file](#codice-su-più-file)
+- [Compilatore: 4 fasi](#compilatore-4-fasi)
+- [Organizzazione cartelle](#organizzazione-cartelle)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## Modalità d'esame (dal corso a.a. 2024-25 - [DA VERIFICARE] per a.a. 2026-27)
 L'esame si compone di due parti indipendenti:

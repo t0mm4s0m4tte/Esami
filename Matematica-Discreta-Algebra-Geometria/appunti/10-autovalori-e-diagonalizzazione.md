@@ -3,13 +3,16 @@
 **Fonte**: Buzano-Radeschi, Lezioni 17-18 (`Lezioni_17-18.pdf`), con le Lezioni 27 e 33 di Manno (slide manoscritte 2024, in OCR) per il criterio e la matrice diagonalizzante. Tutti gli esempi numerici verificati al computer; i segni persi nell'estrazione sono stati ricostruiti (indicato).
 
 ## Mappa
-- Autovettori/autovalori di un endomorfismo T: V→V
-- Endomorfismo e matrice diagonalizzabile, matrice diagonalizzante
-- Perché le diagonali sono comode (potenze)
-- Polinomio caratteristico, autospazi, molteplicità algebrica e geometrica
-- Teorema di diagonalizzabilità, esempi con parametro
 
 ---
+
+- [1. Definizioni](#1-definizioni)
+- [2. Diagonalizzabilità](#2-diagonalizzabilità)
+- [3. Polinomio caratteristico](#3-polinomio-caratteristico)
+- [4. Autospazi e molteplicità](#4-autospazi-e-molteplicità)
+- [5. Teorema di diagonalizzabilità](#5-teorema-di-diagonalizzabilità)
+- [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
+- [Dubbi](#dubbi)
 
 ## 1. Definizioni
 
