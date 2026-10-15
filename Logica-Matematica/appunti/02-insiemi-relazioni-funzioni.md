@@ -7,14 +7,34 @@ Il capitolo costruisce il vocabolario matematico che userà tutto il resto del c
 ## Insiemi
 Un insieme è determinato esclusivamente dai suoi elementi: è il principio di **estensionalità**, A=B ⇔ ∀x(x∈A↔x∈B). Ne segue che ordine e ripetizioni non contano ({3,2,3,-1}={-1,2,3}) e che per provare un'uguaglianza si dimostra la doppia inclusione, A=B ⇔ A⊆B e B⊆A. Occorre distinguere con cura l'appartenenza dall'inclusione: 1∈ℕ, mentre l'insieme dei pari è ⊆ℕ. L'insieme vuoto è incluso in ogni insieme per verità vacua (∅⊆A sempre). Le inclusioni numeriche ℕ⊂ℤ⊂ℚ⊂ℝ sono tutte strette (√2∈ℝ∖ℚ; si ricordi anche che 0,999…=1).
 
-Le operazioni insiemistiche sono la traduzione dei connettivi logici: l'intersezione ∩ corrisponde a ∧, l'unione ∪ a ∨, la differenza ∖ a "x∈A∧x∉B", la differenza simmetrica △ è (A∪B)∖(A∩B), il complemento è A^C=U∖A. Si estendono a famiglie arbitrarie: ∪_{i∈I}Ai={x|∃i x∈Ai} e ∩_{i}={x|∀i x∈Ai}, dove il quantificatore fa lo stesso lavoro di ∨ e ∧ su infiniti addendi. Valgono le leggi di De Morgan, (A∪B)^C = A^C∩B^C e (A∩B)^C = A^C∪B^C, e la distribuzione A∩(B∪C)=(A∩B)∪(A∩C).
+Le operazioni insiemistiche sono la traduzione dei connettivi logici:
+- l'intersezione ∩ corrisponde a ∧;
+- l'unione ∪ a ∨;
+- la differenza ∖ a "x∈A∧x∉B";
+- la differenza simmetrica △ è (A∪B)∖(A∩B);
+- il complemento è A^C=U∖A.
+
+Si estendono a famiglie arbitrarie: ∪_{i∈I}Ai={x|∃i x∈Ai} e ∩_{i}={x|∀i x∈Ai}, dove il quantificatore fa lo stesso lavoro di ∨ e ∧ su infiniti addendi. Valgono le leggi di De Morgan, (A∪B)^C = A^C∩B^C e (A∩B)^C = A^C∪B^C, e la distribuzione A∩(B∪C)=(A∩B)∪(A∩C).
 
 Questa corrispondenza non è un'analogia: ogni tautologia proposizionale dà un'identità insiemistica, e viceversa per confutare un'identità si può usare la tavola di verità, perché la riga con esito F indica il tipo di punto x che fa da controesempio. Due costruzioni importanti completano il quadro. L'insieme potenza P(A) ha 2^n elementi se |A|=n (P({0,1,2}) ne ha 8); se A={1} si ha P(A)={∅,A} e P(P(A))={∅,{∅},{A},{∅,A}}. Il prodotto A×B è l'insieme delle coppie ordinate, per cui (0,1)≠(1,0), e A^n è l'insieme delle n-uple.
 
 ## Relazioni
 Una relazione n-aria è un sottoinsieme di un prodotto A0×…×A(n-1): quella unaria è un predicato (un sottoinsieme), e una tabella di database è proprio una relazione n-aria in cui ogni riga è una n-upla. Nel caso binario si scrive a R b per (a,b)∈R; il dominio è dom(R)={a|∃b aRb}, il range è rng(R)={b|∃a aRb} e l'inversa è R⁻¹={(b,a)|(a,b)∈R}.
 
-Per una relazione su un insieme A contano cinque proprietà: riflessiva (∀x xRx), simmetrica (xRy→yRx), antisimmetrica (xRy∧yRx→x=y), transitiva (xRy∧yRz→xRz) e irriflessiva (∀x¬xRx). L'antisimmetria va maneggiata con cautela, perché NON è il contrario della simmetria: una relazione può essere simmetrica e antisimmetrica insieme (la sola diagonale), oppure nessuna delle due. Combinando le proprietà si ottengono i tipi che interessano davvero: il **preordine** (riflessiva e transitiva), l'**ordine parziale** (riflessiva, antisimmetrica, transitiva: ≤, la divisibilità |, l'inclusione ⊆), l'**ordine stretto** (irriflessiva e transitiva: <) e l'**equivalenza** (riflessiva, simmetrica, transitiva). Gli esempi geometrici aiutano a ricordare le differenze: il parallelismo è un'equivalenza, "avere intersezione non vuota" è riflessiva e simmetrica ma non transitiva, l'ortogonalità è simmetrica ma né riflessiva né transitiva.
+Per una relazione su un insieme A contano cinque proprietà:
+- **riflessiva**: ∀x xRx;
+- **simmetrica**: xRy→yRx;
+- **antisimmetrica**: xRy∧yRx→x=y;
+- **transitiva**: xRy∧yRz→xRz;
+- **irriflessiva**: ∀x¬xRx.
+
+L'antisimmetria va maneggiata con cautela, perché NON è il contrario della simmetria: una relazione può essere simmetrica e antisimmetrica insieme (la sola diagonale), oppure nessuna delle due. Combinando le proprietà si ottengono i tipi che interessano davvero:
+- **preordine**: riflessiva e transitiva;
+- **ordine parziale**: riflessiva, antisimmetrica, transitiva (≤, la divisibilità |, l'inclusione ⊆);
+- **ordine stretto**: irriflessiva e transitiva (<);
+- **equivalenza**: riflessiva, simmetrica, transitiva.
+
+Gli esempi geometrici aiutano a ricordare le differenze: il parallelismo è un'equivalenza, "avere intersezione non vuota" è riflessiva e simmetrica ma non transitiva, l'ortogonalità è simmetrica ma né riflessiva né transitiva.
 
 Il legame più importante è quello tra equivalenze e partizioni. Data un'equivalenza E su A, la classe di a è [a]_E={x|xEa} e l'insieme delle classi è il quoziente A/E; le classi sono blocchi non vuoti, a due a due disgiunti, la cui unione è A, cioè una partizione, e viceversa ogni partizione definisce un'equivalenza (quella "stare nello stesso blocco"). Ad esempio la congruenza mod 2 su ℤ ha due classi, [0] i pari e [1] i dispari. Un'osservazione sulla divisibilità in ℕ: è un ordine con 1 minimo e **0 massimo**, perché ogni numero divide 0.
 
@@ -23,7 +43,12 @@ Gli ordini si disegnano con il **diagramma di Hasse**: i punti sono gli elementi
 ## Funzioni
 Una funzione f: A→B è una relazione che soddisfa due condizioni, **totalità** (∀a∃b) e **univocità** (a ogni a corrisponde un solo b). Il dominio è A, il codominio è B, e l'immagine (range) rng(f)={f(a)} è un sottoinsieme del codominio: non vanno confusi, perché molte questioni (a partire dalla suriettività) dipendono dal codominio dichiarato. Per C⊆A l'immagine è f[C], per D⊆B la controimmagine è f⁻¹[D]={a|f(a)∈D}, sempre un insieme, anche se vuoto; la scrittura f⁻¹(b) è ambigua (insieme o elemento) e conviene evitarla. Si usano inoltre la restrizione f↾C e la composizione (g∘f)(a)=g(f(a)): con f=x² e g=2x+3 si ha (g∘f)(2)=11 e (g∘f)(x)=2x²+3. Un'operazione n-aria su A è una funzione f:A^n→A (chiusura): la sottrazione non è un'operazione su ℕ perché 3-5∉ℕ, lo è invece su ℤ.
 
-Le tre proprietà fondamentali si leggono in termini di frecce: **iniettiva** f(a1)=f(a2)⇒a1=a2 (al più una freccia in arrivo su ogni elemento di B), **suriettiva** ∀b∃a f(a)=b (almeno una freccia), **biettiva** quando valgono entrambe, nel qual caso esiste la vera funzione inversa f⁻¹. Sul grafico cartesiano una retta verticale taglia il grafico in al più un punto se è una funzione; una retta orizzontale lo taglia in al più un punto se è iniettiva e in almeno un punto se è suriettiva.
+Le tre proprietà fondamentali si leggono in termini di frecce:
+- **iniettiva**: f(a1)=f(a2)⇒a1=a2 (al più una freccia in arrivo su ogni elemento di B);
+- **suriettiva**: ∀b∃a f(a)=b (almeno una freccia);
+- **biettiva**: quando valgono entrambe, nel qual caso esiste la vera funzione inversa f⁻¹.
+
+Sul grafico cartesiano una retta verticale taglia il grafico in al più un punto se è una funzione; una retta orizzontale lo taglia in al più un punto se è iniettiva e in almeno un punto se è suriettiva.
 
 La differenza tra finito e infinito è il tranello ricorrente. Tra insiemi finiti di pari cardinalità iniettiva e suriettiva sono equivalenti (principio dei cassetti), ma nell'infinito questo cade: n↦n+1 in ℕ è iniettiva non suriettiva, mentre la somma +:ℕ²→ℕ è suriettiva non iniettiva ((1,1) e (0,2) vanno entrambi in 2). Restano valide alcune implicazioni: se f è iniettiva e B finito allora A è finito, se f è suriettiva e A finito allora B è finito. Sono invece **false** "f iniettiva ⇒ ogni controimmagine ha esattamente un elemento" (può essere vuota) e "f iniettiva e B infinito ⇒ A infinito". Infine ogni f: X→Y induce l'equivalenza x1 R_f x2 ⇔ f(x1)=f(x2), con la proiezione canonica X→X/R_f; per la congruenza mod n si ha z1≡z2 mod n, per x² le classi sono {r,-r}.
 

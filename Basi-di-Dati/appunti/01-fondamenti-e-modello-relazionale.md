@@ -14,7 +14,13 @@
 
 Ogni organizzazione ha un **sistema informativo**: il sottosistema che acquisisce, elabora, conserva e distribuisce le informazioni necessarie al suo funzionamento (ciclo: raccolta, archiviazione, elaborazione, distribuzione). Il **sistema informatico** è soltanto la parte di questo sistema che è automatizzata: un'azienda ha un sistema informativo anche se tiene tutto su fogli di carta. Su questo sfondo va distinto il **dato**, una rappresentazione formalizzata come "Mario 275", dall'**informazione**, che è il dato interpretato nel suo contesto (275 è il numero di una stanza? un importo?). Una **base di dati** è allora una collezione di dati *strutturati, persistenti* (con vita indipendente dai programmi che li usano) e *a minima ridondanza*.
 
-L'idea di base di dati nasce come reazione al modello degli **archivi indipendenti**, in cui ogni applicazione gestisce i propri file. Il risultato è eterogeneità dei formati, difficoltà di interscambio, ridondanza (e quindi incoerenza tra copie dello stesso dato) e mancanza di una visione unitaria dell'organizzazione. Lo slogan che riassume il cambio di prospettiva è "Prima i dati, poi le applicazioni": si progetta il patrimonio informativo una volta sola e le applicazioni vi si appoggiano. A garantirlo è il **DBMS**, che offre la definizione degli schemi (i metadati), i vincoli di integrità, la gestione degli accessi e della concorrenza e il recovery dopo i guasti: tutte funzioni che con i file sparsi toccherebbe reimplementare in ogni programma.
+L'idea di base di dati nasce come reazione al modello degli **archivi indipendenti**, in cui ogni applicazione gestisce i propri file. Il risultato è eterogeneità dei formati, difficoltà di interscambio, ridondanza (e quindi incoerenza tra copie dello stesso dato) e mancanza di una visione unitaria dell'organizzazione. Lo slogan che riassume il cambio di prospettiva è "Prima i dati, poi le applicazioni": si progetta il patrimonio informativo una volta sola e le applicazioni vi si appoggiano. A garantirlo è il **DBMS**, che offre:
+- la definizione degli schemi (i metadati);
+- i vincoli di integrità;
+- la gestione degli accessi e della concorrenza;
+- il recovery dopo i guasti.
+
+Sono tutte funzioni che con i file sparsi toccherebbe reimplementare in ogni programma.
 
 ## ANSI/SPARC (1975, 3 livelli)
 
@@ -30,7 +36,13 @@ Questa stratificazione produce i due tipi di indipendenza, che sono la ragione p
 
 ## Ciclo di progettazione
 
-La costruzione di una base di dati procede per livelli di astrazione decrescente: l'analisi dei requisiti (indipendente dal DBMS) precede la progettazione **concettuale** (modello E-R, anch'essa indipendente dal DBMS), poi la **logica** (modello relazionale, che dipende dal tipo di DBMS) e infine la **fisica** (dipende dal DBMS specifico). Dettagli in `04-progettazione-er-e-logica.md`.
+La costruzione di una base di dati procede per livelli di astrazione decrescente:
+1. **analisi dei requisiti** (indipendente dal DBMS);
+2. progettazione **concettuale** (modello E-R, anch'essa indipendente dal DBMS);
+3. progettazione **logica** (modello relazionale, che dipende dal tipo di DBMS);
+4. progettazione **fisica** (dipende dal DBMS specifico).
+
+Dettagli in `04-progettazione-er-e-logica.md`.
 
 ## Modello relazionale
 
@@ -42,14 +54,23 @@ L'informazione mancante o ignota si rappresenta con **NULL**, che appartiene a o
 
 Non tutte le istanze costruibili sono accettabili: i vincoli dicono quali lo sono. I vincoli **locali** (intra-relazionali) riguardano una sola relazione: il dominio (l'atomicità dei valori è la 1NF), il NOT NULL, le restrizioni e i confronti (per esempio Inizio < Fine, età < 120).
 
-La nozione centrale è quella di chiave. Una **superchiave** sk ⊆ A è un insieme di attributi che identifica univocamente le tuple: t_i[sk]=t_j[sk] => t_i=t_j. Una **chiave candidata** è una superchiave *minimale*, cioè a cui non si può togliere alcun attributo senza perdere la proprietà. La **chiave primaria** è la candidata scelta dal progettista, e tutti i suoi attributi sono NOT NULL.
+La nozione centrale è quella di chiave:
+- una **superchiave** sk ⊆ A è un insieme di attributi che identifica univocamente le tuple: t_i[sk]=t_j[sk] => t_i=t_j;
+- una **chiave candidata** è una superchiave *minimale*, cioè a cui non si può togliere alcun attributo senza perdere la proprietà;
+- la **chiave primaria** è la candidata scelta dal progettista, e tutti i suoi attributi sono NOT NULL.
 
 Il secondo vincolo fondamentale è l'**integrità referenziale** (chiave esterna, FK): ∀ t ∈ r(Rs) ∃ t' ∈ r(Rh) con t[B]=t'[PK], con domini compatibili. A parole: ogni valore della FK deve comparire come chiave nella relazione referenziata. Oltre ai vincoli di schema ci sono le **business rules** (per esempio "ogni titolare di mutuo è titolare di c/c"). Lo **stato di una BD** è l'insieme delle istanze che soddisfano tutti i vincoli, locali e globali.
 
 **Esempio** (RICOVERI(PAZ, Inizio, Fine, Reparto)): {PAZ,Inizio,Fine} è superchiave; {PAZ,Inizio} è chiave candidata, ed è minimale perché né PAZ né Inizio da soli bastano (un paziente può essere ricoverato più volte e in una data possono iniziare molti ricoveri).
 
 ### Schema di riferimento "RicoveriOspedalieri"
-Lo schema usato in tutto il corso (e in questi appunti) è: PAZIENTI(COD, Cognome, Nome, Residenza, AnnoNascita) · MEDICI(MATR, Cognome, Nome, Residenza, Reparto -> REPARTI) · REPARTI(COD, Nome-Rep, Primario -> MEDICI) · RICOVERI(PAZ -> PAZIENTI, Inizio, Fine, Reparto -> REPARTI). Da notare la dipendenza circolare MEDICI-REPARTI (un medico appartiene a un reparto, un reparto ha un primario che è un medico), che avrà conseguenze sulla creazione delle tabelle in SQL.
+Lo schema usato in tutto il corso (e in questi appunti) è:
+- PAZIENTI(COD, Cognome, Nome, Residenza, AnnoNascita);
+- MEDICI(MATR, Cognome, Nome, Residenza, Reparto -> REPARTI);
+- REPARTI(COD, Nome-Rep, Primario -> MEDICI);
+- RICOVERI(PAZ -> PAZIENTI, Inizio, Fine, Reparto -> REPARTI).
+
+Da notare la dipendenza circolare MEDICI-REPARTI (un medico appartiene a un reparto, un reparto ha un primario che è un medico), che avrà conseguenze sulla creazione delle tabelle in SQL.
 
 ## Storia (1 riga)
 Anni '60 file system, gerarchico (IBM), reticolare (CODASYL) -> 1970 Codd, relazionale -> '80-'90 SQL-89/99, OO, distribuiti, OLAP -> oggi Big Data, NoSQL/NewSQL/GraphDB, coesistenza di tecnologie.

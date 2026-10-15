@@ -13,7 +13,12 @@ I limiti inferiori più semplici da ottenere sono quelli "banali": si deve almen
 
 Nel problema dei **Gemelli** (esistono duplicati in A[1..n]?) l'approccio diretto TWINS confronta tutte le coppie in n^2 passi; la variante TWINS' evita le ripetizioni e fa n(n-1)/2 confronti, ma resta O(n^2) perché le costanti non contano; con TWINS'' si ordina prima (O(n log n)) e poi si cercano duplicati fra elementi adiacenti (O(n)), ottenendo **O(n log n)** contro un lower bound banale Ω(n).
 
-Il problema **Somma17** (due elementi la cui somma è 17) è più fortunato: la forza bruta è O(n^2), il lower bound è Ω(n), e **SUM17'** lo raggiunge con un vettore caratteristico C[0..17] inizializzato a false (O(1)), riempito ponendo C[A[i]]=true per ogni A[i]<=17 (O(n)), e poi percorso con due indici convergenti i=0, j=17 finché C[i]&&C[j] (al più 9 iterazioni, O(1)). In totale **O(n), ottimo**.
+Il problema **Somma17** (due elementi la cui somma è 17) è più fortunato: la forza bruta è O(n^2), il lower bound è Ω(n), e **SUM17'** lo raggiunge con un vettore caratteristico C[0..17]:
+1. si inizializza C a false (O(1));
+2. lo si riempie ponendo C[A[i]]=true per ogni A[i]<=17 (O(n));
+3. lo si percorre con due indici convergenti i=0, j=17 finché C[i]&&C[j] (al più 9 iterazioni, O(1)).
+
+In totale **O(n), ottimo**.
 
 Il risultato più importante è sull'**ordinamento per confronti**. L'upper bound è O(n log n) (Merge sort) e il lower bound banale Ω(n): il gap è chiuso con un argomento strutturale. Ogni algoritmo basato su confronti si rappresenta con un **albero di decisione**, in cui i nodi interni sono i confronti, i rami gli esiti e le foglie gli output possibili. Per essere corretto l'albero deve avere almeno una foglia per ogni permutazione dell'input, quindi almeno **n!** foglie. Un albero binario con s foglie ha altezza almeno log2 s, perciò h >= log2(n!) ∈ **Ω(n log n)** (per Stirling, ovvero per il fatto già visto che log(n!)∈Θ(n log n)). Ne segue che **Merge sort e Heapsort sono ottimi**.
 
@@ -60,7 +65,10 @@ Lo slowExp ha insegnato che dividere un problema non basta se i sottoproblemi si
 3. eliminare le ripetizioni con la **memoization** (top-down, si ricordano i risultati già calcolati);
 4. passare alla versione **bottom-up** iterativa, che riempie la tabella dai sottoproblemi piccoli ai grandi.
 
-Il caso più semplice è **Fibonacci**, f_n=f_{n-1}+f_{n-2} con f1=f2=1. La versione ricorsiva FIB soddisfa T_n=T_{n-1}+T_{n-2}+1 ed è Θ(Φ^n), con Φ≈1.618 (Fib(n) ≈ Φ^n/√5). Tre versioni la rendono lineare: la memoization salva ogni valore al primo calcolo; la versione bottom-up riempie un vettore in ordine; la versione iterativa si accorge che servono solo gli ultimi due valori e porta lo spazio a O(1).
+Il caso più semplice è **Fibonacci**, f_n=f_{n-1}+f_{n-2} con f1=f2=1. La versione ricorsiva FIB soddisfa T_n=T_{n-1}+T_{n-2}+1 ed è Θ(Φ^n), con Φ≈1.618 (Fib(n) ≈ Φ^n/√5). Tre versioni la rendono lineare:
+- la **memoization** salva ogni valore al primo calcolo;
+- la versione **bottom-up** riempie un vettore in ordine;
+- la versione **iterativa** si accorge che servono solo gli ultimi due valori e porta lo spazio a O(1).
 
 ```
 FIB-MEMOIZATION(n,memo): if memo[n]!=nil return memo[n]
@@ -70,7 +78,11 @@ FIB-BOTTOMUP: FIB[1]=FIB[2]=1; for i=3..n FIB[i]=FIB[i-1]+FIB[i-2]   // Θ(n) te
 FIB-ITER: FIBA=FIBB=1; for i=3..n { tmp=FIBA+FIBB; FIBB=FIBA; FIBA=tmp }  // O(1) spazio; return FIBA
 ```
 
-L'esempio più ricco è la **LCS** (massima sottosequenza comune di due stringhe). Una sottosequenza Z di X si ottiene cancellando zero o più elementi di X, e X_i indica il prefisso di lunghezza i. Il problema ha sottostruttura ottima, espressa da due lemmi: se x_m=y_n, allora LCS(X,Y) = LCS(X_{m-1},Y_{n-1}) seguita da x_m (Lemma 1); se x_m≠y_n, la LCS è la più lunga tra LCS(X_{m-1},Y) e LCS(X,Y_{n-1}) (Lemma 2). Tradotta direttamente in ricorsione, produce T(n)=2T(n-1)+1, cioè Θ(2^n), perché gli stessi sottoproblemi (prefissi) vengono ricalcolati moltissime volte. Poiché i sottoproblemi distinti sono solo (m+1)(n+1) coppie di prefissi, si tabula la **lunghezza** c[i,j] con la ricorrenza
+L'esempio più ricco è la **LCS** (massima sottosequenza comune di due stringhe). Una sottosequenza Z di X si ottiene cancellando zero o più elementi di X, e X_i indica il prefisso di lunghezza i. Il problema ha sottostruttura ottima, espressa da due lemmi:
+- **Lemma 1**: se x_m=y_n, allora LCS(X,Y) = LCS(X_{m-1},Y_{n-1}) seguita da x_m;
+- **Lemma 2**: se x_m≠y_n, la LCS è la più lunga tra LCS(X_{m-1},Y) e LCS(X,Y_{n-1}).
+
+Tradotta direttamente in ricorsione, produce T(n)=2T(n-1)+1, cioè Θ(2^n), perché gli stessi sottoproblemi (prefissi) vengono ricalcolati moltissime volte. Poiché i sottoproblemi distinti sono solo (m+1)(n+1) coppie di prefissi, si tabula la **lunghezza** c[i,j] con la ricorrenza
 
 **c[i,j] = 0 se i=0 o j=0; c[i-1,j-1]+1 se x_i=y_j; max(c[i,j-1], c[i-1,j]) altrimenti.**
 

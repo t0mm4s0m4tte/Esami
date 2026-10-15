@@ -7,7 +7,13 @@ Il file parte da che cosa sia un problema computazionale e un algoritmo (con Euc
 
 ## Problemi e algoritmi
 
-Un **problema** computazionale è, in sostanza, una relazione R = {(istanza, risposta) | soddisfano un criterio}: a ogni istanza possono corrispondere una o più risposte accettabili. Un **algoritmo** è un metodo meccanico per passare dall'istanza a una risposta, e perché meriti il nome deve avere quattro proprietà: essere **finito** (termina sempre), **deterministico**, **non ambiguo** e **generale** (funziona per tutte le istanze, non solo per alcune). È proprio la proprietà di finitezza che costringe, più avanti, a occuparsi di terminazione oltre che di correttezza.
+Un **problema** computazionale è, in sostanza, una relazione R = {(istanza, risposta) | soddisfano un criterio}: a ogni istanza possono corrispondere una o più risposte accettabili. Un **algoritmo** è un metodo meccanico per passare dall'istanza a una risposta, e perché meriti il nome deve avere quattro proprietà:
+- **finito** (termina sempre);
+- **deterministico**;
+- **non ambiguo**;
+- **generale** (funziona per tutte le istanze, non solo per alcune).
+
+È proprio la proprietà di finitezza che costringe, più avanti, a occuparsi di terminazione oltre che di correttezza.
 
 L'esempio classico è l'algoritmo di **Euclide**, che poggia sull'identità MCD(a,b) = MCD(b, a mod b) con MCD(a,0)=a: a ogni passo la coppia si riduce senza cambiare il suo massimo comun divisore, finché il secondo numero si annulla. Ad esempio MCD(345,150): 345=150·2+45, 150=45·3+15, 45=15·3+0, quindi il risultato è 15. Il costo è **O(log m)**, a fronte dell'approccio per fattorizzazione che costa O(sqrt m): qui l'astuzia matematica vale un salto di ordine di grandezza.
 
@@ -49,7 +55,12 @@ DIV-REC(a,b)            // pre a>=0, b>0
  return q,r             // post a=bq+r ∧ 0<=r<b
 ```
 
-Per gli algoritmi iterativi l'analogo dell'induzione è l'**invariante di ciclo**: una proprietà vera prima del ciclo e conservata da ogni iterazione, in modo che alla fine, sommata alla negazione della guardia, implichi la post-condizione. La dimostrazione ha sempre tre fasi: **Inizializzazione** (l'invariante vale all'ingresso), **Mantenimento** (se vale all'inizio di un'iterazione, vale alla fine) e **Terminazione** (Inv ∧ ¬Guardia ⇒ Post). Sulla divisione iterativa, il mantenimento si riduce a osservare che b(q+1)+(r-b)=bq+r=a e che r>=b garantisce r-b>=0.
+Per gli algoritmi iterativi l'analogo dell'induzione è l'**invariante di ciclo**: una proprietà vera prima del ciclo e conservata da ogni iterazione, in modo che alla fine, sommata alla negazione della guardia, implichi la post-condizione. La dimostrazione ha sempre tre fasi:
+1. **Inizializzazione**: l'invariante vale all'ingresso;
+2. **Mantenimento**: se vale all'inizio di un'iterazione, vale alla fine;
+3. **Terminazione**: Inv ∧ ¬Guardia ⇒ Post.
+
+Sulla divisione iterativa, il mantenimento si riduce a osservare che b(q+1)+(r-b)=bq+r=a e che r>=b garantisce r-b>=0.
 
 ```
 DIV-IT(a,b): r:=a; q:=0

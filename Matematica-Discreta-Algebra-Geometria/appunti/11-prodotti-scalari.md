@@ -13,9 +13,18 @@
 
 ## 1. Definizioni
 
-Finora gli spazi vettoriali avevano solo somma e scalari: non c'era modo di parlare di lunghezze o angoli. Il prodotto scalare aggiunge esattamente questa struttura. Su uno spazio V reale è una funzione ⟨·,·⟩: V×V→R che soddisfa (1) ⟨v+v',w⟩=⟨v,w⟩+⟨v',w⟩; (2) ⟨λv,w⟩=λ⟨v,w⟩; (3) ⟨v,w⟩=⟨w,v⟩ (simmetria). La simmetria trasferisce al secondo fattore la linearità del primo, quindi il prodotto è bilineare, e in particolare ⟨v,0⟩=0.
+Finora gli spazi vettoriali avevano solo somma e scalari: non c'era modo di parlare di lunghezze o angoli. Il prodotto scalare aggiunge esattamente questa struttura. Su uno spazio V reale è una funzione ⟨·,·⟩: V×V→R che soddisfa:
+1. ⟨v+v',w⟩=⟨v,w⟩+⟨v',w⟩;
+2. ⟨λv,w⟩=λ⟨v,w⟩;
+3. ⟨v,w⟩=⟨w,v⟩ (simmetria).
 
-Due proprietà descrivono quanto il prodotto è "buono". È **degenere** se esiste v≠0 con ⟨v,w⟩=0 per ogni w; è **definito positivo** se ⟨v,v⟩>0 per ogni v≠0. Un prodotto definito positivo è sempre non degenere (Prop 19.3: se v fosse degenere si avrebbe ⟨v,v⟩=0). Il prototipo è il prodotto **euclideo su Rⁿ**, ⟨x,y⟩ = ᵗx·y = x1y1+...+xnyn, definito positivo perché ⟨x,x⟩=Σx_i²>0 se x≠0.
+La simmetria trasferisce al secondo fattore la linearità del primo, quindi il prodotto è bilineare, e in particolare ⟨v,0⟩=0.
+
+Due proprietà descrivono quanto il prodotto è "buono":
+- è **degenere** se esiste v≠0 con ⟨v,w⟩=0 per ogni w;
+- è **definito positivo** se ⟨v,v⟩>0 per ogni v≠0.
+
+Un prodotto definito positivo è sempre non degenere (Prop 19.3: se v fosse degenere si avrebbe ⟨v,v⟩=0). Il prototipo è il prodotto **euclideo su Rⁿ**, ⟨x,y⟩ = ᵗx·y = x1y1+...+xnyn, definito positivo perché ⟨x,x⟩=Σx_i²>0 se x≠0.
 
 **Esempi (19.4)** su R_2[x]:
 - ⟨p,q⟩=p(0)q(0)+p(1)q(1)+p(2)q(2) è definito positivo: ⟨p,p⟩=0 forza p ad avere 3 radici, ma ha grado ≤2, quindi p=0.
@@ -40,7 +49,13 @@ Una **forma quadratica** è un polinomio omogeneo di grado 2 in x1..xn, e ogni f
 
 Quando il prodotto è definito positivo si può misurare la lunghezza: la **norma** è ‖v‖=√⟨v,v⟩. Nel caso euclideo è ‖x‖=√(x1²+...+xn²), mentre per S=[[2,1],[1,1]] è ‖x‖=√(2x1²+x2²+2x1x2).
 
-La **Prop 20.10** raccoglie le proprietà fondamentali: (1) ‖v‖>0 se v≠0 e ‖0‖=0; (2) ‖λv‖=|λ|‖v‖; (3) **|⟨v,w⟩| ≤ ‖v‖‖w‖** (Cauchy-Schwarz); (4) **‖v+w‖ ≤ ‖v‖+‖w‖** (disuguaglianza triangolare). Per dimostrare (3) si parte dal fatto che per ogni a,b vale 0≤‖av+bw‖²=a²‖v‖²+b²‖w‖²+2ab⟨v,w⟩; scegliendo a=‖w‖² e b=-⟨v,w⟩ si ottiene 0≤‖w‖⁴‖v‖²-⟨v,w⟩²‖w‖², e dividendo per ‖w‖² si ha ⟨v,w⟩²≤‖v‖²‖w‖². La (4) segue da ‖v+w‖²=‖v‖²+‖w‖²+2⟨v,w⟩≤(‖v‖+‖w‖)² per la (3).
+La **Prop 20.10** raccoglie le proprietà fondamentali:
+1. ‖v‖>0 se v≠0 e ‖0‖=0;
+2. ‖λv‖=|λ|‖v‖;
+3. **|⟨v,w⟩| ≤ ‖v‖‖w‖** (Cauchy-Schwarz);
+4. **‖v+w‖ ≤ ‖v‖+‖w‖** (disuguaglianza triangolare).
+
+Per dimostrare (3) si parte dal fatto che per ogni a,b vale 0≤‖av+bw‖²=a²‖v‖²+b²‖w‖²+2ab⟨v,w⟩; scegliendo a=‖w‖² e b=-⟨v,w⟩ si ottiene 0≤‖w‖⁴‖v‖²-⟨v,w⟩²‖w‖², e dividendo per ‖w‖² si ha ⟨v,w⟩²≤‖v‖²‖w‖². La (4) segue da ‖v+w‖²=‖v‖²+‖w‖²+2⟨v,w⟩≤(‖v‖+‖w‖)² per la (3).
 
 La **distanza** fra punti è d(P,Q)=‖PQ‖=‖Q-P‖ (il vettore PQ è Q-P): è positiva se P≠Q, simmetrica, e soddisfa la **disuguaglianza triangolare** d(P,R)≤d(P,Q)+d(Q,R). L'**angolo** fra v,w≠0 è il θ∈[0,π] con **cosθ=⟨v,w⟩/(‖v‖‖w‖)**, ben definito proprio grazie a Cauchy-Schwarz (che garantisce che il rapporto stia in [-1,1]); l'angolo è acuto, retto o ottuso a seconda che ⟨v,w⟩ sia >0, =0 o <0.
 

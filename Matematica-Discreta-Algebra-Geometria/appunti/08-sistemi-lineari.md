@@ -16,11 +16,19 @@
 
 Un sistema lineare di k equazioni in n incognite, Σ_j a_ij x_j = b_i, si codifica in due matrici: **A**, la matrice dei coefficienti (k×n), e **b**, il vettore dei termini noti; affiancandole si ottiene la **matrice completa C = (A|b)** (k×(n+1)). In forma matriciale il sistema è **Ax = b**, che si può leggere anche come x1A¹+...+xnAⁿ = b, dove le Aʲ sono le colonne di A: risolvere il sistema significa cercare i modi di scrivere b come combinazione lineare delle colonne. Questa doppia lettura è la chiave per collegare i sistemi a tutto il resto del corso.
 
-L'idea per risolvere è sostituire il sistema con uno equivalente ma più semplice, usando le **mosse di Gauss**, che non cambiano l'insieme S⊂Kⁿ delle soluzioni (Prop 11.4): (I) scambiare due righe Ri↔Rj; (II) moltiplicare una riga per λ≠0; (III) sostituire Ri con Ri + λRj.
+L'idea per risolvere è sostituire il sistema con uno equivalente ma più semplice, usando le **mosse di Gauss**, che non cambiano l'insieme S⊂Kⁿ delle soluzioni (Prop 11.4):
+- **(I)** scambiare due righe Ri↔Rj;
+- **(II)** moltiplicare una riga per λ≠0;
+- **(III)** sostituire Ri con Ri + λRj.
 
 ## 2. Algoritmo di Gauss e Gauss-Jordan
 
-Si chiama **pivot** di una riga il suo primo elemento non nullo, e **matrice a scalini** una matrice in cui il pivot di ogni riga sta strettamente a destra del pivot della riga precedente (con le righe nulle in fondo). L'algoritmo di **Gauss** porta una matrice in questa forma procedendo colonna per colonna: se C11=0 si scambia con una riga che abbia C_i1≠0 (se l'intera colonna è nulla si passa alla successiva), poi per ogni i≥2 si fa Ri → Ri - (C_i1/C11)R1 per azzerare la colonna sotto il pivot, e si ripete tutto sulla sottomatrice senza la prima riga e la prima colonna. Il **Gauss-Jordan** prosegue oltre: dopo Gauss si azzerano gli elementi **sopra** ogni pivot con mosse (III) e si rendono i pivot uguali a 1 con mosse (II), ottenendo la matrice ridotta (rref).
+Si chiama **pivot** di una riga il suo primo elemento non nullo, e **matrice a scalini** una matrice in cui il pivot di ogni riga sta strettamente a destra del pivot della riga precedente (con le righe nulle in fondo). L'algoritmo di **Gauss** porta una matrice in questa forma procedendo colonna per colonna:
+1. se C11=0 si scambia con una riga che abbia C_i1≠0 (se l'intera colonna è nulla si passa alla successiva);
+2. per ogni i≥2 si fa Ri → Ri - (C_i1/C11)R1 per azzerare la colonna sotto il pivot;
+3. si ripete tutto sulla sottomatrice senza la prima riga e la prima colonna.
+
+Il **Gauss-Jordan** prosegue oltre: dopo Gauss si azzerano gli elementi **sopra** ogni pivot con mosse (III) e si rendono i pivot uguali a 1 con mosse (II), ottenendo la matrice ridotta (rref).
 
 Il **rango** rk(A) è il numero di pivot di una qualsiasi riduzione a scalini (le mosse non lo cambiano). Per calcolare il solo rango basta Gauss; per scrivere le soluzioni di solito conviene Gauss-Jordan.
 
@@ -51,7 +59,10 @@ Su un campo infinito ne segue il **Cor 12.7**: le soluzioni sono 0, 1 oppure inf
 - rk(A|b) = rk A = n ⇒ una sola soluzione;
 - rk(A|b) = rk A < n ⇒ infinite (∞^{n-rk A}).
 
-Per le matrici quadrate (**Cor 12.8**), Ax=b ha un'unica soluzione ⇔ rk A=n ⇔ det A≠0, e allora x=A⁻¹b; per il sistema omogeneo Ax=0 ciò significa che c'è solo x=0 se det≠0 e infinite soluzioni altrimenti. Nel gergo d'esame "∞¹ soluzioni" vuol dire rk A = rk(A|b) = n-1 e "∞² soluzioni" vuol dire n-2 (per n=3: rk=1). I quiz tipici sul rango sono: sistema 3×3 con infinite soluzioni ⇒ rk(A)=rk(A|b)<3 (in particolare det A=0, rk(A|b)<3); senza soluzioni ⇒ rk A < rk(A|b); con una sola soluzione ⇒ rk A = 3.
+Per le matrici quadrate (**Cor 12.8**), Ax=b ha un'unica soluzione ⇔ rk A=n ⇔ det A≠0, e allora x=A⁻¹b; per il sistema omogeneo Ax=0 ciò significa che c'è solo x=0 se det≠0 e infinite soluzioni altrimenti. Nel gergo d'esame "∞¹ soluzioni" vuol dire rk A = rk(A|b) = n-1 e "∞² soluzioni" vuol dire n-2 (per n=3: rk=1). I quiz tipici sul rango sono, per un sistema 3×3:
+- infinite soluzioni ⇒ rk(A)=rk(A|b)<3 (in particolare det A=0, rk(A|b)<3);
+- senza soluzioni ⇒ rk A < rk(A|b);
+- una sola soluzione ⇒ rk A = 3.
 
 **Esempio con parametro** (12.9): x+ky=4-k, kx+4y=4, k∈R. R2→R2-kR1: [[1,k|4-k],[0,4-k²|4-4k+k²]], con 4-4k+k² = (k-2)².
 - k=2: seconda riga 0=0 ⇒ rk A=rk(A|b)=1 ⇒ ∞¹ soluzioni (una retta).

@@ -14,7 +14,12 @@
 
 ## Lo schema da applicare sempre
 
-Gli esercizi sugli endomorfismi dei compiti 2022 hanno quasi sempre la stessa struttura in tre domande: (1) scrivere la matrice rappresentativa in una base data; (2) trovare una base di Ker(f) e di Im(f); (3) trovare autovalori e autospazi e dire se f è diagonalizzabile. La matrice è la chiave di tutto, perché poi ogni altra domanda si risolve su di essa. Si costruisce calcolando le immagini dei vettori della base e mettendo le loro **coordinate in colonna**; attenzione all'ordine della base (per esempio nel compito di settembre 2022 la base è (x²,x,1), non (1,x,x²), e questo riordina righe e colonne). Kernel e immagine si ricavano con Gauss: i vettori del nucleo risolvono Ax=0, e una base dell'immagine è formata dalle colonne di A corrispondenti ai pivot. Gli autovalori sono le radici di det(A−tI); per ciascun autovalore con molteplicità algebrica ≥2 si confronta m_g=n−rk(A−λI) con m_a. Un'osservazione utile come controllo: se rk A=2 su 3, allora 0 è autovalore con autospazio Ker A di dimensione 1, e dim Ker + dim Im = 3 (teorema della dimensione). Ricordate infine che un autovettore di R₂[x] è un **polinomio**: dopo aver trovato le coordinate bisogna riscriverlo come polinomio.
+Gli esercizi sugli endomorfismi dei compiti 2022 hanno quasi sempre la stessa struttura in tre domande:
+1. scrivere la matrice rappresentativa in una base data;
+2. trovare una base di Ker(f) e di Im(f);
+3. trovare autovalori e autospazi e dire se f è diagonalizzabile.
+
+La matrice è la chiave di tutto, perché poi ogni altra domanda si risolve su di essa. Si costruisce calcolando le immagini dei vettori della base e mettendo le loro **coordinate in colonna**; attenzione all'ordine della base (per esempio nel compito di settembre 2022 la base è (x²,x,1), non (1,x,x²), e questo riordina righe e colonne). Kernel e immagine si ricavano con Gauss: i vettori del nucleo risolvono Ax=0, e una base dell'immagine è formata dalle colonne di A corrispondenti ai pivot. Gli autovalori sono le radici di det(A−tI); per ciascun autovalore con molteplicità algebrica ≥2 si confronta m_g=n−rk(A−λI) con m_a. Un'osservazione utile come controllo: se rk A=2 su 3, allora 0 è autovalore con autospazio Ker A di dimensione 1, e dim Ker + dim Im = 3 (teorema della dimensione). Ricordate infine che un autovettore di R₂[x] è un **polinomio**: dopo aver trovato le coordinate bisogna riscriverlo come polinomio.
 
 ## Esercizio 1 (29/06/2022, primo testo)
 
@@ -39,7 +44,10 @@ Stesso schema con p1=−4−4x², p2=−2−x−3x², p3=2−x+x². La matrice n
 
 ## Esercizio 3 (Febbraio 2022): famiglia A_k
 
-Si consideri al variare di k∈R la matrice A_k=[[1,0,0],[k,2,0],[2,k−3,1]] (lettura della matrice dal PDF: l'estrazione è confusa, gli elementi potrebbero essere diversi [DA VERIFICARE]). Si chiede: (a) per quali k A_k non è invertibile e una base del nucleo in quei casi; (b) la diagonalizzabilità al variare di k; (c) per k=3 esiste N invertibile con N⁻¹A₃N diagonale?
+Si consideri al variare di k∈R la matrice A_k=[[1,0,0],[k,2,0],[2,k−3,1]] (lettura della matrice dal PDF: l'estrazione è confusa, gli elementi potrebbero essere diversi [DA VERIFICARE]). Si chiede:
+- (a) per quali k A_k non è invertibile e una base del nucleo in quei casi;
+- (b) la diagonalizzabilità al variare di k;
+- (c) per k=3 esiste N invertibile con N⁻¹A₃N diagonale?
 
 *(a)* La matrice è triangolare inferiore: det A_k=1·2·1=2≠0 per ogni k. Quindi **A_k è sempre invertibile** e non c'è nessun nucleo da descrivere. Questo risultato è insolito per la domanda posta: se la matrice letta fosse corretta la domanda (a) avrebbe risposta "mai" [DA VERIFICARE sul PDF originale].
 
@@ -57,7 +65,12 @@ Sia f: R^{2,2}→R^{2,2}, f(X)=ᵗX. Nella base (E11,E12,E21,E22) la matrice è 
 
 ## Esercizio 6: A_k=[[1,1],[k,1]] [INT]
 
-Il polinomio caratteristico è (1−t)²−k, con radici t=1±√k. Se **k>0** ci sono due radici reali distinte ⇒ diagonalizzabile su R. Se **k=0** c'è l'unico autovalore 1 doppio e A−I=[[0,1],[0,0]] ha rango 1 ⇒ m_g=1<2 ⇒ non diagonalizzabile. Se **k<0** non ci sono radici reali ⇒ non diagonalizzabile su R, ma lo è su C (due radici complesse distinte 1±i√|k|). Conclusione: diagonalizzabile su R ⇔ k>0; su C ⇔ k≠0.
+Il polinomio caratteristico è (1−t)²−k, con radici t=1±√k.
+- **k>0**: due radici reali distinte ⇒ diagonalizzabile su R.
+- **k=0**: l'unico autovalore 1 è doppio e A−I=[[0,1],[0,0]] ha rango 1 ⇒ m_g=1<2 ⇒ non diagonalizzabile.
+- **k<0**: nessuna radice reale ⇒ non diagonalizzabile su R, ma lo è su C (due radici complesse distinte 1±i√|k|).
+
+Conclusione: diagonalizzabile su R ⇔ k>0; su C ⇔ k≠0.
 
 ---
 

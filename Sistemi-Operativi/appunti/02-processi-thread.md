@@ -18,11 +18,22 @@ I due modelli di IPC rispondono a un compromesso classico. Con la memoria condiv
 | Sincronizzazione | esplicita, a carico del programmatore | implicita (rendezvous) |
 | Uso | stessa macchina, molti dati | locale e distribuito |
 
-Il classico banco di prova è il **produttore-consumatore** con un buffer circolare limitato, gestito con due indici: `in` (primo posto libero) e `out` (primo posto pieno). Il buffer è pieno quando `(in+1)%BUFFER_SIZE == out` (si spreca quindi uno slot) ed è vuoto quando `in == out`. In POSIX la memoria condivisa si crea con `shm_open()` (crea l'oggetto e ritorna un fd), `ftruncate()` (ne fissa la dimensione) e `mmap()` (ne ottiene un puntatore locale).
+Il classico banco di prova è il **produttore-consumatore** con un buffer circolare limitato, gestito con due indici: `in` (primo posto libero) e `out` (primo posto pieno). Il buffer è pieno quando `(in+1)%BUFFER_SIZE == out` (si spreca quindi uno slot) ed è vuoto quando `in == out`. In POSIX la memoria condivisa si crea in tre passi:
+1. `shm_open()` crea l'oggetto e ritorna un fd;
+2. `ftruncate()` ne fissa la dimensione;
+3. `mmap()` ne ottiene un puntatore locale.
 
-Nel message passing le scelte di progetto sono tre. Il collegamento può essere **diretto** (`send(P,msg)`, un link per coppia di processi, creato automaticamente) o **indiretto** (mailbox/porte, link condiviso da più processi). La sincronizzazione può essere con send/receive **bloccanti** (sincrono) o **non bloccanti** (asincrono); se entrambe sono bloccanti si ha il **rendezvous**. Il buffer può avere capacità **zero** (rendezvous), **limitata** (n) o **illimitata**. Esempi reali: Mach usa solo message passing (mailbox Kernel e Notify per ogni task); Windows usa **LPC**, valido solo sulla macchina locale, con porte (una connection port e due porte private di comunicazione).
+Nel message passing le scelte di progetto sono tre:
+- **collegamento**: **diretto** (`send(P,msg)`, un link per coppia di processi, creato automaticamente) o **indiretto** (mailbox/porte, link condiviso da più processi);
+- **sincronizzazione**: send/receive **bloccanti** (sincrono) o **non bloccanti** (asincrono); se entrambe sono bloccanti si ha il **rendezvous**;
+- **buffer**: capacità **zero** (rendezvous), **limitata** (n) o **illimitata**.
 
-Tre strumenti concreti completano il quadro. Un **socket** è un endpoint identificato da IP e porta. Una **RPC** si realizza con uno stub lato client (che fa il marshalling dei parametri in un formato indipendente dalla macchina, ad esempio XDR, per risolvere i problemi di endianness) e uno stub lato server. Le **pipe ordinarie** sono unidirezionali e richiedono una relazione di parentela; le **named pipe** sono bidirezionali e collegano anche processi non correlati.
+Esempi reali: Mach usa solo message passing (mailbox Kernel e Notify per ogni task); Windows usa **LPC**, valido solo sulla macchina locale, con porte (una connection port e due porte private di comunicazione).
+
+Tre strumenti concreti completano il quadro:
+- un **socket** è un endpoint identificato da IP e porta;
+- una **RPC** si realizza con uno stub lato client (che fa il marshalling dei parametri in un formato indipendente dalla macchina, ad esempio XDR, per risolvere i problemi di endianness) e uno stub lato server;
+- le **pipe ordinarie** sono unidirezionali e richiedono una relazione di parentela; le **named pipe** sono bidirezionali e collegano anche processi non correlati.
 
 ## Thread
 Un **thread** è l'unità di utilizzo della CPU e condivide con gli altri thread dello stesso processo codice, dati e file aperti. I benefici sono la condivisione delle risorse, l'economia (creazione e context switch più leggeri di quelli di un processo), la scalabilità sui multicore e la reattività. Due termini vanno distinti con cura: la **concorrenza** significa che più task fanno progressi (anche su un solo core, con interleaving), il **parallelismo** significa esecuzione realmente simultanea (multicore). Il parallelismo si divide in *data parallelism* (stessa operazione su sottoinsiemi di dati) e *task parallelism* (thread diversi con operazioni diverse).
@@ -40,7 +51,10 @@ Il modo in cui i thread utente si mappano su quelli kernel definisce concorrenza
 | Two-level | M:M + possibilità di legare un thread a un kernel thread | IRIX, HP-UX, Tru64, Solaris vecchio |
 
 ### Librerie e threading implicito
-Le librerie principali sono Pthreads (standard IEEE 1003.1c, con `pthread_create` e `pthread_join`), quella di Windows (`CreateThread`, `WaitForSingleObject`) e Java (`Thread`/`Runnable`, `start()` che invoca `run()`, `join()`). Il **threading implicito** sposta la gestione dei thread da programmatore a compilatore/runtime: il *thread pool* tiene thread pre-creati da riusare e limita il loro numero; *OpenMP* usa direttive come `#pragma omp parallel for` per marcare regioni parallele; *GCD* di Apple usa blocchi `^{}` messi in dispatch queue **serial** (FIFO) o **concurrent**, con 3 code globali per priorità.
+Le librerie principali sono Pthreads (standard IEEE 1003.1c, con `pthread_create` e `pthread_join`), quella di Windows (`CreateThread`, `WaitForSingleObject`) e Java (`Thread`/`Runnable`, `start()` che invoca `run()`, `join()`). Il **threading implicito** sposta la gestione dei thread da programmatore a compilatore/runtime:
+- il *thread pool* tiene thread pre-creati da riusare e limita il loro numero;
+- *OpenMP* usa direttive come `#pragma omp parallel for` per marcare regioni parallele;
+- *GCD* di Apple usa blocchi `^{}` messi in dispatch queue **serial** (FIFO) o **concurrent**, con 3 code globali per priorità.
 
 ### Problemi con i thread
 Il multithreading complica alcune operazioni classiche, che conviene ricordare per tipo di problema:

@@ -14,7 +14,14 @@ Un circuito digitale lavora con due soli valori logici, 0 e 1, rappresentati da 
 I mattoni di base sono le porte primitive NOT, AND, OR, NAND, NOR, XOR, realizzate con transistor usati come interruttori. Nei disegni, l'incrocio di due linee senza punto significa che non c'è contatto. Le slide descrivono i circuiti anche in Verilog: `assign X = ~A;` `~(A | B)` `A & B` `A ^ B`.
 
 ### Algebra di Boole (identità utili)
-L'algebra di Boole fornisce le regole per manipolare le espressioni e semplificare i circuiti. Identity: A·1=A, A+0=A. Null: A·0=0, A+1=1. Idempotenza: A·A=A, A+A=A. Inverso: A·Ā=0, A+Ā=1. Commutativa, associativa, distributiva (anche A+BC=(A+B)(A+C)), assorbimento A(A+B)=A, A+AB=A. **De Morgan**: ¬(AB)=Ā+B̄, ¬(A+B)=Ā·B̄.
+L'algebra di Boole fornisce le regole per manipolare le espressioni e semplificare i circuiti:
+- **Identity**: A·1=A, A+0=A;
+- **Null**: A·0=0, A+1=1;
+- **Idempotenza**: A·A=A, A+A=A;
+- **Inverso**: A·Ā=0, A+Ā=1;
+- commutativa, associativa, distributiva (anche A+BC=(A+B)(A+C));
+- **assorbimento**: A(A+B)=A, A+AB=A;
+- **De Morgan**: ¬(AB)=Ā+B̄, ¬(A+B)=Ā·B̄.
 
 ### Forme canoniche e sintesi
 Qualunque funzione data da una tabella di verità si può scrivere in due forme duali: la **FND** (somma di prodotti, fatta di mintermini) e la **FNC** (prodotto di somme, fatta di maxtermini). Dalla FND si ricava direttamente un circuito: un AND per ogni riga della tabella con uscita 1, e un OR che le raccoglie tutte. I passi sono:

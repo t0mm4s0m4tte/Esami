@@ -12,11 +12,23 @@
 
 ## 1. Fasi
 
-La progettazione di una base di dati è un pezzo del ciclo di vita del sistema informativo, che comprende studio di fattibilità, raccolta e analisi dei requisiti, progettazione, implementazione, validazione/collaudo e funzionamento. Dentro la progettazione dei dati si distinguono tre fasi con obiettivi diversi: la **concettuale** stabilisce *cosa* rappresentare, producendo con il modello E-R uno schema indipendente dal DBMS; la **logica** stabilisce *come* rappresentarlo nel modello relazionale, tramite ristrutturazione e normalizzazione; la **fisica** decide la memorizzazione e punta all'efficienza. L'ordine conta: un errore concettuale non si ripara con l'ottimizzazione fisica.
+La progettazione di una base di dati è un pezzo del ciclo di vita del sistema informativo, che comprende studio di fattibilità, raccolta e analisi dei requisiti, progettazione, implementazione, validazione/collaudo e funzionamento. Dentro la progettazione dei dati si distinguono tre fasi con obiettivi diversi:
+1. la **concettuale** stabilisce *cosa* rappresentare, producendo con il modello E-R uno schema indipendente dal DBMS;
+2. la **logica** stabilisce *come* rappresentarlo nel modello relazionale, tramite ristrutturazione e normalizzazione;
+3. la **fisica** decide la memorizzazione e punta all'efficienza.
+
+L'ordine conta: un errore concettuale non si ripara con l'ottimizzazione fisica.
 
 ## 2. Requisiti
 
-I requisiti arrivano da interviste, da normative, regolamenti e modulistica e da eventuali sistemi legacy, e di norma sono ambigui. La pulizia segue cinque regole: (1) costruire un **glossario** che risolva sinonimi e omonimi; (2) astrarre il concetto (per esempio "giudizio finale" diventa "votazione in decimi", che è computabile); (3) standardizzare la sintassi ("Per [entità] rappresentiamo [attributi]"); (4) scomporre in frasi atomiche; (5) separare dati e funzioni. Le specifiche così ottenute si riorganizzano per cluster omogenei e si affianca l'analisi delle **operazioni** con la loro frequenza, che servirà nella fase logica.
+I requisiti arrivano da interviste, da normative, regolamenti e modulistica e da eventuali sistemi legacy, e di norma sono ambigui. La pulizia segue cinque regole:
+1. costruire un **glossario** che risolva sinonimi e omonimi;
+2. astrarre il concetto (per esempio "giudizio finale" diventa "votazione in decimi", che è computabile);
+3. standardizzare la sintassi ("Per [entità] rappresentiamo [attributi]");
+4. scomporre in frasi atomiche;
+5. separare dati e funzioni.
+
+Le specifiche così ottenute si riorganizzano per cluster omogenei e si affianca l'analisi delle **operazioni** con la loro frequenza, che servirà nella fase logica.
 
 ## 3. Modello E-R
 
@@ -40,7 +52,12 @@ Lo schema E-R si completa con la **documentazione**: un dizionario dei dati (ent
 
 ## 4. Pattern, reificazione, strategie
 
-Alcune situazioni si ripresentano e hanno una soluzione tipica. Il **part-of** modella una dipendenza esistenziale: Cinema --(1,N)-- Sala(1,1). L'**instance-of** separa un concetto astratto dalle sue istanze concrete: Volo (astratto) --(1,N)-- Volo Reale (data, orario). La **storicizzazione** si ottiene con un'entità intermedia che porta le date: Persona -(1,1)- Impiego -(0,N)- Azienda, con DataInizio/DataFine su Impiego. L'**evoluzione di concetto** è il caso Progetto -> Progetto Accettato, in cui solo la figlia ha il Finanziamento. Per le **ternarie**, se esistono dipendenze funzionali (per esempio un operatore svolge sempre la stessa attività in una sede) si può scomporle in binarie.
+Alcune situazioni si ripresentano e hanno una soluzione tipica:
+- il **part-of** modella una dipendenza esistenziale: Cinema --(1,N)-- Sala(1,1);
+- l'**instance-of** separa un concetto astratto dalle sue istanze concrete: Volo (astratto) --(1,N)-- Volo Reale (data, orario);
+- la **storicizzazione** si ottiene con un'entità intermedia che porta le date: Persona -(1,1)- Impiego -(0,N)- Azienda, con DataInizio/DataFine su Impiego;
+- l'**evoluzione di concetto** è il caso Progetto -> Progetto Accettato, in cui solo la figlia ha il Finanziamento;
+- per le **ternarie**, se esistono dipendenze funzionali (per esempio un operatore svolge sempre la stessa attività in una sede) si può scomporle in binarie.
 
 La **reificazione** è la tecnica che unifica molti di questi casi: promuovere una relazione (o un attributo) a entità. Per esempio l'Esame, relazione N:M tra Studente e Corso con attributi Voto e Data, diventa un'entità Esame con due relazioni 1:N.
 
@@ -83,7 +100,14 @@ Un'altra ristrutturazione è il **partizionamento/accorpamento** di concetti, pe
 
 Sugli identificatori: la PK dev'essere immutabile, semplice e non opzionale; altrimenti si introducono **chiavi surrogate**.
 
-**Caso Sede-Dipartimento-Impiegato-Progetto**: Sede(Città,Via,CAP) · Progetto(Nome,Budget) · Dipartimento(Nome,Sede,Telefono,Direttore) · Impiegato(Codice,Cognome,NomeDip*,SedeDip*,Data*) · Partecipazione(Impiegato,Progetto). FK: Dipartimento.Sede -> Sede, Dipartimento.Direttore -> Impiegato, Impiegato(NomeDip,SedeDip) -> Dipartimento, Partecipazione -> Impiegato/Progetto. La scelta è mettere la FK nell'Impiegato (NULL per i non assegnati), evitando un join; se i senza-dipartimento sono tanti, meglio una tabella di afferenza separata.
+**Caso Sede-Dipartimento-Impiegato-Progetto**:
+- Sede(Città,Via,CAP);
+- Progetto(Nome,Budget);
+- Dipartimento(Nome,Sede,Telefono,Direttore);
+- Impiegato(Codice,Cognome,NomeDip*,SedeDip*,Data*);
+- Partecipazione(Impiegato,Progetto).
+
+FK: Dipartimento.Sede -> Sede, Dipartimento.Direttore -> Impiegato, Impiegato(NomeDip,SedeDip) -> Dipartimento, Partecipazione -> Impiegato/Progetto. La scelta è mettere la FK nell'Impiegato (NULL per i non assegnati), evitando un join; se i senza-dipartimento sono tanti, meglio una tabella di afferenza separata.
 
 ## 6. Caso Impiegati
 

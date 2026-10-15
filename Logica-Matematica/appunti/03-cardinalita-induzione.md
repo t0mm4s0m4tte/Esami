@@ -17,7 +17,12 @@ Un insieme è **numerabile** se è equipotente a ℕ, cioè se si può elencare 
 | ℕ^{<ℕ} (sequenze finite), programmi Java, A* | numerabile | f(⟨m0..mk⟩)=p0^{m0+1}·…·pk^{mk+1} |
 | ℝ, P(ℕ), {0,1}^ℕ, ℕ^ℕ, [a,b], ℝ² | continuo = |P(ℕ)| | più che numerabile |
 
-Il prodotto, l'unione e l'intersezione di insiemi numerabili sono numerabili; se A è infinito e |B|≤|A| allora |A×B|=|A|; se A è infinito e B finito allora A∖B ha ancora cardinalità |A|. La distinzione da non perdere è tra le sequenze **finite** su un alfabeto numerabile, che sono numerabili (si codificano con i numeri primi come in tabella), e le sequenze **infinite** A^ℕ con |A|≥2, che sono più che numerabili. Vale anche il principio dei cassetti: se m>n oggetti sono in n cassetti, un cassetto ne contiene almeno 2.
+Alcune regole di calcolo:
+- il prodotto, l'unione e l'intersezione di insiemi numerabili sono numerabili;
+- se A è infinito e |B|≤|A| allora |A×B|=|A|;
+- se A è infinito e B finito allora A∖B ha ancora cardinalità |A|.
+
+La distinzione da non perdere è tra le sequenze **finite** su un alfabeto numerabile, che sono numerabili (si codificano con i numeri primi come in tabella), e le sequenze **infinite** A^ℕ con |A|≥2, che sono più che numerabili. Vale anche il principio dei cassetti: se m>n oggetti sono in n cassetti, un cassetto ne contiene almeno 2.
 
 Che esistano insiemi non numerabili lo mostra **Cantor**: |X|<|P(X)|. La prova è diagonale: se esistesse una g:X→P(X) suriettiva, l'insieme Y={x|x∉g(x)} sarebbe g(x̄) per qualche x̄, e allora x̄∈Y⇔x̄∉Y, assurdo. Ne segue |ℕ|<|P(ℕ)| e quindi una gerarchia infinita di infiniti sempre più grandi. Il continuo è proprio la cardinalità di P(ℕ): |ℝ|=|P(ℕ)|, perché ℝ≾P(ℚ) tramite r↦{q∈ℚ|q<r} (iniettiva per la densità di ℚ), e ℝ²≃ℝ intrecciando le espansioni decimali (con l'avvertenza che 0,499…=0,500…, che si risolve con CSB).
 
@@ -26,7 +31,10 @@ L'induzione serve a dimostrare ∀n P(n) senza verificare infiniti casi. Nella f
 
 Con l'induzione forte è strettamente imparentato il **principio del minimo** (buon ordinamento): ogni A⊆ℕ non vuoto ha un minimo, che equivale all'assenza di catene discendenti infinite. Lo si usa anche per la terminazione dei cicli, esibendo una funzione variante a valori in ℕ che decresce strettamente a ogni iterazione. L'induzione **strutturale** estende lo schema agli insiemi definiti ricorsivamente (Prop(L), Term, Fml): si verifica la proprietà sugli atomi e si mostra che si trasmette lungo le regole di costruzione, il che equivale a un'induzione sull'altezza ht.
 
-In informatica l'induzione si presenta come **invariante di ciclo**: per `while(b) S` si trova una proprietà vera prima del ciclo e preservata da S. Si distingue la correttezza parziale (se il programma termina, l'output è corretto) dalla totale (termina ed è corretto). Per la divisione per sottrazioni l'invariante è X=q·D+r. Alcuni casi classici completano il quadro. Fallacia: nella "dimostrazione" sulle n rette per un punto il passo da n=2 a 3 fallisce, perché le due sotto-famiglie non condividono due rette. Ricoprimento: un quadrato 2^n a cui manca un quadretto si ricopre con tessere a L dividendolo in 4 blocchi 2^{n-1} e mettendo una tessera L al centro. Chomp: su una tavoletta n×n si toglie un blocco (n-1)×(n-1) e si replica simmetricamente.
+In informatica l'induzione si presenta come **invariante di ciclo**: per `while(b) S` si trova una proprietà vera prima del ciclo e preservata da S. Si distingue la correttezza parziale (se il programma termina, l'output è corretto) dalla totale (termina ed è corretto). Per la divisione per sottrazioni l'invariante è X=q·D+r. Alcuni casi classici completano il quadro:
+- **fallacia**: nella "dimostrazione" sulle n rette per un punto il passo da n=2 a 3 fallisce, perché le due sotto-famiglie non condividono due rette;
+- **ricoprimento**: un quadrato 2^n a cui manca un quadretto si ricopre con tessere a L dividendolo in 4 blocchi 2^{n-1} e mettendo una tessera L al centro;
+- **Chomp**: su una tavoletta n×n si toglie un blocco (n-1)×(n-1) e si replica simmetricamente.
 
 ## Esercizi svolti (dalle fonti)
 1. Σ_{i=0}^n i = n(n+1)/2: base 0=0; passo: n(n+1)/2+(n+1)=(n+1)(n+2)/2.

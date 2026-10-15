@@ -26,5 +26,23 @@ Convenzioni: `[DA VERIFICARE]` = dato ambiguo, perso nell'estrazione o non prese
 02 -> 03 -> 11 (ISA e programmazione assembly) -> 05 -> 06 -> 07 (hardware) -> 09 -> 08 -> 10 -> 04 -> 01 -> 12.
 
 ## Programma ufficiale (dal doc "Argomenti dei Corsi - I Anno")
-Teoria: ISA RISC-V parte 1 e 2; Assembler, Linker e Loader; Logica digitale (combinatori e sequenziali); Processore RISC-V (Datapath e Controller); Il Bus; Gerarchia della memoria e cache; IO.
-Laboratorio: Lab 1 RARS e istruzioni aritmetiche; 2 operazioni logiche; 3 decisioni; 4 operandi in memoria e array; 5 stringhe e procedure; 6 procedure annidate; 7 ricorsione; 8 ALU a 4 bit; 9 register file/sequenziali; 10 processore "RISC-TO".
+Teoria:
+- ISA RISC-V parte 1 e 2;
+- Assembler, Linker e Loader;
+- Logica digitale (combinatori e sequenziali);
+- Processore RISC-V (Datapath e Controller);
+- Il Bus;
+- Gerarchia della memoria e cache;
+- IO.
+
+Laboratorio:
+1. RARS e istruzioni aritmetiche;
+2. operazioni logiche;
+3. decisioni;
+4. operandi in memoria e array;
+5. stringhe e procedure;
+6. procedure annidate;
+7. ricorsione;
+8. ALU a 4 bit;
+9. register file/sequenziali;
+10. processore "RISC-TO".

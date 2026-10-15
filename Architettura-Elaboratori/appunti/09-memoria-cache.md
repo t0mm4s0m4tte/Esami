@@ -20,7 +20,14 @@ Le CPU sono molto più veloci delle memorie, e nessuna tecnologia è insieme vel
 ## Cache: concetti
 La memoria principale, di 2^n byte, si può vedere come M = 2^n/k blocchi di k byte, mentre la cache ha C linee di k byte con C << M. Quando la CPU chiede una parola può accadere un **hit**, se la parola è già in cache e va subito alla CPU (si parla di hit rate e tempo di hit), oppure un **miss**, se il blocco va caricato dalla memoria in cache e poi inviato alla CPU (miss rate e **penalità di miss**).
 
-Nel progettare una cache si affrontano diversi problemi: la dimensione totale (più grande significa più prestazioni e più costo), la dimensione della linea, il modo di tracciare il contenuto, la scelta tra cache unificata o separata per istruzioni e dati (architettura Harvard, con accessi in parallelo) e il numero di livelli (oggi fino a 3). Aumentare la dimensione del blocco non è sempre vantaggioso: ci sono meno blocchi e la penalità di miss cresce.
+Nel progettare una cache si affrontano diversi problemi:
+- la dimensione totale (più grande significa più prestazioni e più costo);
+- la dimensione della linea;
+- il modo di tracciare il contenuto;
+- la scelta tra cache unificata o separata per istruzioni e dati (architettura Harvard, con accessi in parallelo);
+- il numero di livelli (oggi fino a 3).
+
+Aumentare la dimensione del blocco non è sempre vantaggioso: ci sono meno blocchi e la penalità di miss cresce.
 
 ## Mappatura diretta (direct mapped)
 Nella mappatura diretta ogni blocco di memoria ha **una sola** posizione possibile in cache: `linea = (indirizzo del blocco) mod (numero di blocchi in cache)`. Poiché più blocchi condividono la stessa linea, per sapere se la linea contiene il blocco giusto servono un **tag** (i bit alti dell'indirizzo) e un **bit di validità**. L'indirizzo si scompone in [ tag | indice | offset di byte nel blocco ]: l'offset vale log2(byte per blocco), l'indice log2(numero di linee) e il tag è il resto.
@@ -57,7 +64,9 @@ Un **miss di istruzione** si gestisce in quattro passi (richiede una modifica al
 3. scrivi la parola nel blocco di cache, aggiorna il tag con i bit alti dell'indirizzo e metti a 1 il bit di validità;
 4. riavvia l'istruzione dalla fetch (troverà l'istruzione in cache).
 
-I miss sui dati sono analoghi. Per le scritture esistono due politiche. Nel **write-through** ogni scrittura modifica anche la memoria (se il dato non è in cache lo si carica prima): le prestazioni sono scarse, perciò si usa un **buffer di scrittura**. Nel **write-back** si scrive solo in cache e la memoria viene aggiornata quando il blocco viene sostituito (serve un bit di "dirty" [libro]); è più complesso ma più efficiente.
+I miss sui dati sono analoghi. Per le scritture esistono due politiche:
+- **write-through**: ogni scrittura modifica anche la memoria (se il dato non è in cache lo si carica prima); le prestazioni sono scarse, perciò si usa un **buffer di scrittura**;
+- **write-back**: si scrive solo in cache e la memoria viene aggiornata quando il blocco viene sostituito (serve un bit di "dirty" [libro]); è più complesso ma più efficiente.
 
 ## Cose da saper fare all'esame
 - Spiegare località temporale/spaziale con un esempio di codice (loop, array).

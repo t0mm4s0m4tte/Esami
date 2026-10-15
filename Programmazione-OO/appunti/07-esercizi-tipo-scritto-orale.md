@@ -4,7 +4,11 @@ Fonte: doc Appunti (Lez. 23 Esercizi 1-6, Lez. 14/18 esperimenti, ComparaBottigl
 Questo file raccoglie gli esercizi svolti e le domande per il ripasso finale. Ogni sezione richiama la teoria dei file precedenti: i temi ricorrenti sono i tipi e il binding (file 04), le liste (03) e gli alberi (05).
 
 ## A. Tipi, binding, cast (stile Lez. 23 es. 2 e 5)
-Gli esercizi di questo tipo presentano una gerarchia di classi (o interfacce) e chiedono, per ogni riga, se compila e cosa stampa. Nell'**Esercizio 2** ci sono le classi A, B (astratta) e C. Togliere `m2()` da B è **corretto** solo se nessuna chiamata a m2 usa B come tipo apparente. `A obj2 = new B();` è un **errore**, perché B è astratta. `A obj3 = new C(); obj3.m1();` è accettato e stampa `C.m1` e poi `B.m1` (tramite `super.m1()`). `A obj4 = new C(); obj4.m2(obj4);` è un **errore**, perché il tipo apparente A non ha m2.
+Gli esercizi di questo tipo presentano una gerarchia di classi (o interfacce) e chiedono, per ogni riga, se compila e cosa stampa. Nell'**Esercizio 2** ci sono le classi A, B (astratta) e C:
+- togliere `m2()` da B è **corretto** solo se nessuna chiamata a m2 usa B come tipo apparente;
+- `A obj2 = new B();` è un **errore**, perché B è astratta;
+- `A obj3 = new C(); obj3.m1();` è accettato e stampa `C.m1` e poi `B.m1` (tramite `super.m1()`);
+- `A obj4 = new C(); obj4.m2(obj4);` è un **errore**, perché il tipo apparente A non ha m2.
 
 L'**Esercizio 5** riguarda invece le interfacce:
 - togliere `m1()` da C va bene se C è astratta (delega a D);
@@ -19,7 +23,14 @@ Il metodo di risoluzione è sempre lo stesso, in quattro passi:
 4. per i cast: compilazione con la regola generale (esiste un sottotipo comune), runtime con il tipo vero.
 
 ## B. Liste (Es. 1 e 6)
-**inComune(p,q)** deve restituire true se esiste un indice in cui le due liste hanno lo stesso elemento. Esempi: `[5,7]` e `[8,7,1]` -> true (7 all'indice 1); `[4,3,2]` e `[1,2,2]` -> true; `[1,2,3]` e `[3,2,1]` -> true (2 in posizione 1); `[1,2]` e `[2,1]` -> **false**; `[]` e `[1,2]` -> false. La soluzione ricorsiva scorre in parallelo le due liste:
+**inComune(p,q)** deve restituire true se esiste un indice in cui le due liste hanno lo stesso elemento. Esempi:
+- `[5,7]` e `[8,7,1]` -> true (7 all'indice 1);
+- `[4,3,2]` e `[1,2,2]` -> true;
+- `[1,2,3]` e `[3,2,1]` -> true (2 in posizione 1);
+- `[1,2]` e `[2,1]` -> **false**;
+- `[]` e `[1,2]` -> false.
+
+La soluzione ricorsiva scorre in parallelo le due liste:
 
 ```java
 static boolean inComune(Node p, Node q){

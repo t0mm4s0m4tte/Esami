@@ -26,13 +26,35 @@ Gli spazi vettoriali astraggono proprio ciò che accade in Rⁿ: ciò che serve 
 
 Dagli assiomi si ricava, per esempio, la **Prop 5.5**: 0·v = 0_V (infatti 0v=(0+0)v=0v+0v ⇒ 0v=0). L'Esercizio 5.11 aggiunge λ0_V=0, (-λ)v = -(λv) = λ(-v) e λ(v-w)=λv-λw.
 
-Gli esempi sono molti e vari: K su se stesso; **Kⁿ** (operazioni termine a termine); le successioni in K; le funzioni [0,1]→K (somma e prodotto puntuali); **K[x]**; K_k[x], i polinomi di grado ≤k (ma NON quelli di grado esattamente k per k≥1, perché la somma può abbassare il grado e manca lo 0); C, che è spazio su C e anche su R; le matrici M(m,n,K) m×n con somma e prodotto per scalare termine a termine; M(m,1,K)=K^m. Gli Es. 5.9-5.10 ricordano che {0,1} con 1+1=0 è il campo Z_2 e che Z_p con p primo è un campo.
+Gli esempi sono molti e vari:
+- K su se stesso;
+- **Kⁿ** (operazioni termine a termine);
+- le successioni in K;
+- le funzioni [0,1]→K (somma e prodotto puntuali);
+- **K[x]**;
+- K_k[x], i polinomi di grado ≤k (ma NON quelli di grado esattamente k per k≥1, perché la somma può abbassare il grado e manca lo 0);
+- C, che è spazio su C e anche su R;
+- le matrici M(m,n,K) m×n con somma e prodotto per scalare termine a termine; M(m,1,K)=K^m.
+
+Gli Es. 5.9-5.10 ricordano che {0,1} con 1+1=0 è il campo Z_2 e che Z_p con p primo è un campo.
 
 ## 3. Matrici speciali (Def 6.3) e sottospazi
 
-Fra le matrici quadrate n×n ce ne sono di cinque tipi con struttura particolare: **diagonale** (a_ij=0 per i≠j); **triangolare superiore** (a_ij=0 per i>j) o **inferiore** (a_ij=0 per i<j); **simmetrica** (a_ij=a_ji, equivalente a ᵗA=A); **antisimmetrica** (a_ij=-a_ji, equivalente a ᵗA=-A, e ha diagonale nulla). La matrice nulla è di tutti e cinque i tipi. Gli insiemi D(n), T_s(n), T_i(n), S(n), A(n) sono **sottospazi** di M(n).
+Fra le matrici quadrate n×n ce ne sono di cinque tipi con struttura particolare:
+- **diagonale**: a_ij=0 per i≠j;
+- **triangolare superiore**: a_ij=0 per i>j;
+- **triangolare inferiore**: a_ij=0 per i<j;
+- **simmetrica**: a_ij=a_ji, equivalente a ᵗA=A;
+- **antisimmetrica**: a_ij=-a_ji, equivalente a ᵗA=-A, e ha diagonale nulla.
 
-Un **sottospazio** (Def 6.2) di V è un sottoinsieme W⊆V che soddisfa (1) 0∈W; (2) v,v'∈W ⇒ v+v'∈W; (3) v∈W, λ∈K ⇒ λv∈W. In tal caso W è esso stesso uno spazio vettoriale. Valgono sempre {0} ⊆ W ⊆ V (sottospazi banali).
+La matrice nulla è di tutti e cinque i tipi. Gli insiemi D(n), T_s(n), T_i(n), S(n), A(n) sono **sottospazi** di M(n).
+
+Un **sottospazio** (Def 6.2) di V è un sottoinsieme W⊆V che soddisfa:
+1. 0∈W;
+2. v,v'∈W ⇒ v+v'∈W;
+3. v∈W, λ∈K ⇒ λv∈W.
+
+In tal caso W è esso stesso uno spazio vettoriale. Valgono sempre {0} ⊆ W ⊆ V (sottospazi banali).
 
 Nella pratica c'è un test rapido: un sottoinsieme definito da equazioni lineari **omogenee** è un sottospazio (ad esempio W={x+y-z=0}⊂R³ ha dimensione 2 e base (1,0,1),(0,1,1)); se l'equazione non è omogenea (x+y-z=1) il sottoinsieme non contiene 0 e dunque non è un sottospazio (è un sottospazio affine, vedi file 08/12). Per lo stesso motivo una retta non passante per l'origine non è un sottospazio.
 

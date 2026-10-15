@@ -16,12 +16,26 @@ La **gerarchia** parte da `Throwable`, che si divide in `Error` (problemi irrecu
 | compilatore | obbliga try-catch o `throws` | nessun obbligo |
 | esempi | IOException, FileNotFoundException, DenZeroException | NullPointerException, ArithmeticException, ClassCastException, NumberFormatException, IndexOutOfBounds, IllegalArgument/StateException |
 
-Il meccanismo sintattico ha due parole facilmente confuse: `throw` è l'istruzione imperativa che lancia l'eccezione, `throws` è la clausola nella firma, un contratto verso il chiamante. Dal lato di chi gestisce, `try` racchiude il codice a rischio, `catch` interviene se il tipo è compatibile, `finally` viene sempre eseguito (pulizia delle risorse). Alcune regole di buon uso:
+Il meccanismo sintattico ha due parole facilmente confuse:
+- `throw` è l'istruzione imperativa che lancia l'eccezione;
+- `throws` è la clausola nella firma, un contratto verso il chiamante.
+
+Dal lato di chi gestisce:
+- `try` racchiude il codice a rischio;
+- `catch` interviene se il tipo è compatibile;
+- `finally` viene sempre eseguito (pulizia delle risorse).
+
+Alcune regole di buon uso:
 - non catturare `Throwable`;
 - mai un catch vuoto (il "swallowing" nasconde l'errore);
 - i catch vanno **ordinati dal più specifico al più generico**, altrimenti quelli specifici sono irraggiungibili.
 
-Un pattern d'uso frequente è il **ciclo di recupero**: segnala, chiedi, leggi, ritenta (`while(!done){ try{...done=true;} catch(...){...} }`). Esempi di eccezioni unchecked: `1/0` (Arithmetic); `(Float)"ciao"` (ClassCast, da prevenire con instanceof); `Integer.parseInt("ciao")` (NumberFormat); `a[10]` su `new int[10]` (IndexOutOfBounds); `obj.toString()` su null (NPE).
+Un pattern d'uso frequente è il **ciclo di recupero**: segnala, chiedi, leggi, ritenta (`while(!done){ try{...done=true;} catch(...){...} }`). Esempi di eccezioni unchecked:
+- `1/0`: Arithmetic;
+- `(Float)"ciao"`: ClassCast, da prevenire con instanceof;
+- `Integer.parseInt("ciao")`: NumberFormat;
+- `a[10]` su `new int[10]`: IndexOutOfBounds;
+- `obj.toString()` su null: NPE.
 
 Le eccezioni rimpiazzano gli assert quando il controllo riguarda l'API pubblica. In Bottle e Stack si passa da `assert` (debug, controlli interni) a **IllegalArgumentException / IllegalStateException** per far rispettare il contratto verso i client, ad esempio con una quantità negativa. Il perfezionamento è la **static factory method** (Frazione): il costruttore diventa `private` e si espone `public static Frazione create(int n, int d) throws DenZeroException`. Se la validazione fallisce l'oggetto non viene creato, quindi ogni istanza esistente è ben formata.
 
@@ -40,7 +54,12 @@ public class Database { private static Database instance;
 ```
 
 ### Composite (strutturale)
-Permette di trattare in modo uniforme parti singole e composizioni di parti, ed è la stessa idea del Leaf/Branch degli alberi. Si compone di tre ruoli: **Component** (astratta, con l'interfaccia comune; i suoi `add()`/`remove()` di default lanciano `SinglePartException`), **Composite** (aggrega i figli, ad esempio in un `Vector`, e delega) e **Leaf** (elemento atomico). Nell'esempio del computer, Monitor, RAM e CPU sono SinglePart; MainSystem è CPU+HardDisk+RAM; Computer è MainSystem+Monitor+Tastiera (CompoundPart). Chiamare `add()` su una foglia produce l'eccezione.
+Permette di trattare in modo uniforme parti singole e composizioni di parti, ed è la stessa idea del Leaf/Branch degli alberi. Si compone di tre ruoli:
+- **Component**: astratta, con l'interfaccia comune; i suoi `add()`/`remove()` di default lanciano `SinglePartException`;
+- **Composite**: aggrega i figli, ad esempio in un `Vector`, e delega;
+- **Leaf**: elemento atomico.
+
+Nell'esempio del computer, Monitor, RAM e CPU sono SinglePart; MainSystem è CPU+HardDisk+RAM; Computer è MainSystem+Monitor+Tastiera (CompoundPart). Chiamare `add()` su una foglia produce l'eccezione.
 
 ### State (comportamentale)
 Evita le cascate di if/else sullo stato, rigide e contrarie all'estendibilità, delegando il comportamento all'oggetto che rappresenta lo stato corrente (composizione). C'è un **Context** (Clock) e degli stati concreti che a loro volta cambiano lo stato chiamando `clock.setState()`. Per l'orologio la tabella delle transizioni è:

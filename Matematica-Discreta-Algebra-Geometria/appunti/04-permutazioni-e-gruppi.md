@@ -52,7 +52,11 @@ L'ordine di σ, cioè il minimo m≥1 con σ^m = id, è il **mcm delle lunghezze
 
 Un **sottogruppo** H ≤ G è un sottoinsieme non vuoto chiuso per prodotto e inverso (equivalentemente: contiene e ed è chiuso per * e per inverso; oppure a*b⁻¹∈H per ogni a,b∈H). L'**ordine** |G| è il numero di elementi, e l'**ordine di un elemento** ord(a) è il minimo n≥1 con aⁿ=e, pari all'ordine del sottogruppo ciclico ⟨a⟩ = {aⁿ} generato da a.
 
-Il risultato centrale è il **teorema di Lagrange**: se G è finito e H ≤ G allora |H| divide |G|. L'idea è che G è unione disgiunta di classi laterali aH, tutte di cardinalità |H|. Le conseguenze sono molte: ord(a) divide |G|; a^|G| = e; i gruppi di ordine primo sono ciclici; applicandolo a G=Z_n*, con |G|=φ(n), si ottiene **Eulero** a^φ(n)≡1, e con n=p si ottiene **Fermat**. Questo è il legame con il file 03.
+Il risultato centrale è il **teorema di Lagrange**: se G è finito e H ≤ G allora |H| divide |G|. L'idea è che G è unione disgiunta di classi laterali aH, tutte di cardinalità |H|. Le conseguenze sono molte:
+- ord(a) divide |G|;
+- a^|G| = e;
+- i gruppi di ordine primo sono ciclici;
+- applicandolo a G=Z_n*, con |G|=φ(n), si ottiene **Eulero** a^φ(n)≡1, e con n=p si ottiene **Fermat**. Questo è il legame con il file 03.
 
 ## 6. Omomorfismi [DA VERIFICARE]
 
@@ -60,7 +64,12 @@ Un'applicazione f: G→G' è un **omomorfismo** se rispetta l'operazione, f(ab) 
 
 ## 7. Gruppi ciclici [DA VERIFICARE]
 
-Un gruppo G è **ciclico** se G = ⟨g⟩ per un opportuno g. Lo sono (Z,+) e (Z_n,+); in Z_n gli elementi [a] con MCD(a,n)=1 sono generatori, e sono φ(n). Ogni sottogruppo di un gruppo ciclico è ciclico, un gruppo ciclico di ordine n ha un unico sottogruppo per ogni divisore di n, e ogni gruppo ciclico di ordine n è isomorfo a (Z_n,+). Invece (Z_n*,·) non sempre è ciclico: lo è per n primo (es. Z_7* = ⟨3⟩ perché 3 ha ordine 6), ma Z_8* non lo è.
+Un gruppo G è **ciclico** se G = ⟨g⟩ per un opportuno g. Lo sono (Z,+) e (Z_n,+); in Z_n gli elementi [a] con MCD(a,n)=1 sono generatori, e sono φ(n). Valgono tre proprietà:
+- ogni sottogruppo di un gruppo ciclico è ciclico;
+- un gruppo ciclico di ordine n ha un unico sottogruppo per ogni divisore di n;
+- ogni gruppo ciclico di ordine n è isomorfo a (Z_n,+).
+
+Invece (Z_n*,·) non sempre è ciclico: lo è per n primo (es. Z_7* = ⟨3⟩ perché 3 ha ordine 6), ma Z_8* non lo è.
 
 ---
 

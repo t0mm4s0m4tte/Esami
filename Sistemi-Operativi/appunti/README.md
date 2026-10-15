@@ -35,7 +35,16 @@ Convenzione: `[INT]` = integrazione standard o calcolo mio, **non** presente nel
 8. **Teoria**: confronti (shm vs msg, modelli thread, microkernel vs monolitico, polling/interrupt/DMA, simmetrica vs asimmetrica).
 
 ## Lacune delle fonti (da colmare con libro/slide) - [DA VERIFICARE]
-Le fonti lasciano scoperti alcuni punti, da integrare con libro e slide. Per il Cap 3 mancano stati del processo, PCB, context switch e creazione/terminazione in generale (c'è solo la parte UNIX nel Lab 03). Per il Cap 10 mancano la gestione del page fault, il copy-on-write, l'EAT con page fault, l'allocazione proporzionale e la kernel memory. Nel Cap 11 mancano la struttura di HDD/SSD, il RAID e la gestione dello swap space, e nei Cap 13-14 directory, mount, free-space management, journaling, VFS e link. Mancano inoltre esempi numerici di scheduling oltre FCFS (24,3,3), così come i testi d'esame e le modalità d'esame (scritto/orale/laboratorio).
+Le fonti lasciano scoperti alcuni punti, da integrare con libro e slide:
+- **Cap 3**: stati del processo, PCB, context switch e creazione/terminazione in generale (c'è solo la parte UNIX nel Lab 03);
+- **Cap 10**: gestione del page fault, copy-on-write, EAT con page fault, allocazione proporzionale, kernel memory;
+- **Cap 11**: struttura di HDD/SSD, RAID, gestione dello swap space;
+- **Cap 13-14**: directory, mount, free-space management, journaling, VFS, link;
+- esempi numerici di scheduling oltre FCFS (24,3,3), testi d'esame e modalità d'esame (scritto/orale/laboratorio).
 
 ## Errori/incoerenze trovate nelle fonti
-Le fonti contengono qualche imprecisione. I numeri dei segnali nella tabella del Lab 06 sono quelli BSD/macOS e non quelli Linux (SIGSTOP 17, SIGCHLD 20, SIGUSR1 30). "XDL" nel Cap 3 è in realtà XDR, e per `lseek` su pipe l'errno su Linux è `ESPIPE` (non `EPIPE`). Nel Cap 11, infine, per C-SCAN e C-LOOK la fonte non dà il movimento totale, che è stato calcolato in `07` (382 e 322).
+Le fonti contengono qualche imprecisione:
+- i numeri dei segnali nella tabella del Lab 06 sono quelli BSD/macOS e non quelli Linux (SIGSTOP 17, SIGCHLD 20, SIGUSR1 30);
+- "XDL" nel Cap 3 è in realtà XDR;
+- per `lseek` su pipe l'errno su Linux è `ESPIPE` (non `EPIPE`);
+- nel Cap 11 per C-SCAN e C-LOOK la fonte non dà il movimento totale, che è stato calcolato in `07` (382 e 322).

@@ -49,6 +49,10 @@ Le formule sono quelle da avere a memoria il giorno dell'esame, divise per argom
 - **Recovery**: REDO(LC) in avanti, UNDO(LA) all'indietro, abort ignorati
 
 ## Dubbi aperti da passare al tutor (aggregati)
-Le incertezze emerse lungo i file 01-07 sono qui raccolte per essere sottoposte al tutor. Sulla normalizzazione (file 05) ce ne sono tre: lo schema ESAMI dichiarato "in BCNF" nella Lez. 09 contiene CP→Co, quindi in realtà sarebbe solo in 3NF; nella soluzione di PARTITA sembra mancare la relazione R(SC,SO,C); e in COMUNE la dipendenza No→Pr implica nomi unici, in contrasto con la motivazione sulle omonimie. Nel file 03 resta il dubbio sullo script Ricoveri, che combina `NOT NULL` con `ON DELETE SET NULL`. Sulle transazioni (file 06) non è chiaro se deadlock, strict 2PL e cascading rollback rientrino nel programma. Nel file 04 il calcolo di ridondanza su Città dà numeri diversi tra le note (3.500/12.000) e il ricalcolo (≈2.500/≈11.000).
+Le incertezze emerse lungo i file 01-07 sono qui raccolte per essere sottoposte al tutor:
+- **normalizzazione (file 05)**: lo schema ESAMI dichiarato "in BCNF" nella Lez. 09 contiene CP→Co, quindi in realtà sarebbe solo in 3NF; nella soluzione di PARTITA sembra mancare la relazione R(SC,SO,C); in COMUNE la dipendenza No→Pr implica nomi unici, in contrasto con la motivazione sulle omonimie;
+- **SQL (file 03)**: lo script Ricoveri combina `NOT NULL` con `ON DELETE SET NULL`;
+- **transazioni (file 06)**: non è chiaro se deadlock, strict 2PL e cascading rollback rientrino nel programma;
+- **progettazione (file 04)**: il calcolo di ridondanza su Città dà numeri diversi tra le note (3.500/12.000) e il ricalcolo (≈2.500/≈11.000).
 
 Restano infine lacune delle fonti: mancano Lab 02 e Lab 06 nelle note, i diagrammi E-R non sono disponibili in testo, e il doc "Argomenti dei Corsi - II Anno" non contiene la sezione Basi di Dati (solo SO, ASD, Probabilità), per cui il programma d'esame ufficiale non è verificato.

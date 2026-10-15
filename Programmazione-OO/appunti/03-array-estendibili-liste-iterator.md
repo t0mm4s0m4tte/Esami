@@ -72,7 +72,12 @@ Java formalizza il pattern con due interfacce: `Iterable<E>` (offre `iterator()`
 
 Il caso di studio è **ListExt**, che implements `Iterable<Integer>` e `Comparable<ListExt>`. Il suo iteratore `ListIterator implements Iterator<Integer>` ha un campo `next` di tipo Node: il metodo `next()` prende l'elemento, avanza il riferimento e restituisce l'`Integer`.
 
-Il `compareTo` di ListExt è lessicografico, come il confronto tra parole, e si scrive con un while su p,q finché sono entrambi non null: A<B se alla prima differenza elem(A)<elem(B) oppure se A è un prefisso di B; A==B se entrambe finiscono insieme; A>B nel caso simmetrico. Poiché le liste sono mutabili, l'esito può cambiare: due liste uguali (`compareTo==0`) smettono di esserlo dopo, ad esempio, `b.set(7,100)`.
+Il `compareTo` di ListExt è lessicografico, come il confronto tra parole, e si scrive con un while su p,q finché sono entrambi non null:
+- A<B se alla prima differenza elem(A)<elem(B) oppure se A è un prefisso di B;
+- A==B se entrambe finiscono insieme;
+- A>B nel caso simmetrico.
+
+Poiché le liste sono mutabili, l'esito può cambiare: due liste uguali (`compareTo==0`) smettono di esserlo dopo, ad esempio, `b.set(7,100)`.
 
 ## Cose da saper fare all'esame
 - Scrivere iterativo e ricorsivo: length, sum, max, member, equals, sorted, toString su Node.

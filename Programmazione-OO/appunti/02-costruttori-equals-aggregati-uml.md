@@ -25,9 +25,18 @@ public class Contact { private String name, email;
   public String toString(){ return " - " + name + " : " + email; } }
 ```
 
-AddressBook memorizza i contatti in un array parzialmente riempito, e per questo servono due numeri distinti: `maxContacts` (la capacità) e `numContacts` (quanti sono validi). Non esiste un `getContacts()`: restituire l'array violerebbe l'incapsulamento (vedi sezione 5). La correttezza della classe poggia su una invariante in tre parti: l'occupazione è contigua, negli indici 0..numContacts-1; i nomi sono unici (senza distinguere maiuscole/minuscole); e vale `0 <= numContacts <= capacità`. Ogni operazione deve ricevere l'array in questo stato e lasciarlo così.
+AddressBook memorizza i contatti in un array parzialmente riempito, e per questo servono due numeri distinti: `maxContacts` (la capacità) e `numContacts` (quanti sono validi). Non esiste un `getContacts()`: restituire l'array violerebbe l'incapsulamento (vedi sezione 5). La correttezza della classe poggia su una invariante in tre parti:
+- l'occupazione è contigua, negli indici 0..numContacts-1;
+- i nomi sono unici (senza distinguere maiuscole/minuscole);
+- vale `0 <= numContacts <= capacità`.
 
-Le operazioni ruotano attorno a un metodo privato `findIndex(String n)`, che scorre fino a numContacts con `equalsIgnoreCase`. Come valore di "non trovato" restituisce una **sentinella** pari a `numContacts` (il primo indice non valido), scelta preferibile a -1 perché resta coerente con l'invariante. Sopra di esso le operazioni si limitano a difendere l'invariante: `add` fallisce (false) se il nome è duplicato o la rubrica è piena, `changeName` fallisce se l'origine è assente o il nuovo nome è già presente, `changeEmail` restituisce false se il contatto è assente e `findEmail` restituisce `""` nello stesso caso.
+Ogni operazione deve ricevere l'array in questo stato e lasciarlo così.
+
+Le operazioni ruotano attorno a un metodo privato `findIndex(String n)`, che scorre fino a numContacts con `equalsIgnoreCase`. Come valore di "non trovato" restituisce una **sentinella** pari a `numContacts` (il primo indice non valido), scelta preferibile a -1 perché resta coerente con l'invariante. Sopra di esso le operazioni si limitano a difendere l'invariante:
+- `add` fallisce (false) se il nome è duplicato o la rubrica è piena;
+- `changeName` fallisce se l'origine è assente o il nuovo nome è già presente;
+- `changeEmail` restituisce false se il contatto è assente;
+- `findEmail` restituisce `""` nello stesso caso.
 
 La **rimozione in O(1)** sfrutta il fatto che l'ordine non conta: si trova l'indice i, si decrementa `numContacts` e si copia l'ultimo elemento nella posizione liberata, `contacts[i] = contacts[numContacts]`. Con [c0,c1,c2] e rimozione di c0 si ottiene [c2,c1,c2] con numContacts=2: c0 non ha più riferimenti (finisce al GC), mentre l'alias di c2 in fondo è invisibile perché fuori dall'intervallo valido. È una "rimozione logica" che non preserva l'ordine.
 

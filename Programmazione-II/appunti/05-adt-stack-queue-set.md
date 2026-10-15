@@ -18,9 +18,20 @@ void sintonizza(radio *r, int c) { r->canale = c; }
 (Nelle slide `int accensione=OFF;` dentro la struct è sintatticamente errato in C: refuso, serve un init.)
 
 ## Stack (pila), LIFO
-Lo stack è una pila: l'ultimo elemento inserito è il primo a uscire. Le operazioni sono push (aggiungi in cima), pop (rimuovi dalla cima), empty, full (se la capienza è limitata) e peek (legge senza rimuovere). L'interfaccia è `void push(tipo el, stack *s)`, `tipo pop(stack *s)`, `int empty(stack s)`, `int full(stack s)`, `tipo peek(stack s)`; in C `int` fa da booleano (0 = falso).
+Lo stack è una pila: l'ultimo elemento inserito è il primo a uscire. Le operazioni, con la loro interfaccia (in C `int` fa da booleano, 0 = falso), sono:
+- **push**, aggiungi in cima: `void push(tipo el, stack *s)`;
+- **pop**, rimuovi dalla cima: `tipo pop(stack *s)`;
+- **empty**: `int empty(stack s)`;
+- **full**, se la capienza è limitata: `int full(stack s)`;
+- **peek**, legge senza rimuovere: `tipo peek(stack s)`.
 
-Le applicazioni mostrano perché la struttura è così diffusa: lo stack di esecuzione (record di attivazione), l'inversione di una stringa (push delle lettere, poi pop), la valutazione di espressioni (forma prefissa/postfissa), il tasto back del browser, le politiche LRU nei sistemi operativi e la visita in profondità di un albero.
+Le applicazioni mostrano perché la struttura è così diffusa:
+- lo stack di esecuzione (record di attivazione);
+- l'inversione di una stringa (push delle lettere, poi pop);
+- la valutazione di espressioni (forma prefissa/postfissa);
+- il tasto back del browser;
+- le politiche LRU nei sistemi operativi;
+- la visita in profondità di un albero.
 
 ### Implementazione con lista (riusa `liste.h`)
 Con una lista lo stack è quasi gratuito: la cima è la testa, push è l'inserzione in testa e pop la cancellazione dalla testa. Lo stack è vuoto esattamente quando la lista è NULL e non è mai pieno. Poiché `pop` deve poter segnalare il caso "nulla da togliere", si restituisce `NOVALUE`, una costante ad hoc fuori dal range significativo, e il chiamante controlla `if (result != NOVALUE)`; se non esiste un valore adatto si restituiscono due valori (dato più flag di validità).

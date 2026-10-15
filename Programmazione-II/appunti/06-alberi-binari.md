@@ -8,9 +8,20 @@ Il capitolo fissa la terminologia degli alberi, definisce il tipo C e l'albero o
 ## Terminologia
 Una lista, una coda o uno stack sono strutture lineari: ogni nodo ha al più un successore e un predecessore. L'**albero** rompe la prima restrizione, perché un nodo può avere molti successori, ma conserva la seconda: ha al più un predecessore. L'**albero binario** limita i successori a due, il sinistro e il destro. Tutto il vocabolario che segue serve a descrivere questa forma.
 
-I nodi si distinguono per la loro posizione. La **radice** è l'unico nodo senza predecessore; una **foglia** è un nodo senza figli, e l'insieme delle foglie è la **frontiera**; un **nodo interno** ha almeno un figlio (anche la radice, se ha figli). Fra due nodi collegati da un **arco** orientato si parla di **padre/genitore** e **figlio**; gli **antecedenti/antenati** di un nodo sono quelli sul percorso radice->nodo, i **discendenti** quelli nel suo sottoalbero. Il **percorso assoluto** va dalla radice a un nodo ed è unico, quindi identifica il nodo; il **percorso relativo** collega due nodi qualsiasi, e alcuni archi vi sono percorsi in senso inverso. Un **sottoalbero** è un albero contenuto in un albero, e ogni nodo ha un sottoalbero sinistro e uno destro.
+I nodi si distinguono per la loro posizione:
+- la **radice** è l'unico nodo senza predecessore;
+- una **foglia** è un nodo senza figli, e l'insieme delle foglie è la **frontiera**;
+- un **nodo interno** ha almeno un figlio (anche la radice, se ha figli).
 
-Le misure sono quattro. La **distanza** fra due nodi è il numero di archi del percorso relativo; la **profondità di un nodo** è la sua distanza dalla radice (radice a profondità 0); la **profondità dell'albero** è la massima profondità dei nodi, quindi 0 se c'è solo la radice e **-1 per l'albero vuoto**; il **grado** di un nodo è il numero dei suoi figli. Un albero di grado N si dice **completo** se tutte le foglie sono a profondità N e tutti gli interni hanno N figli (formulazione della slide; [DA VERIFICARE] il testo parla di "profondità N" ma per albero binario completo di profondità h intende grado 2 - ambiguità della slide). Un **albero degenere** ha tutti i nodi con al più un figlio e quindi si riduce a una lista. Infine la **definizione ricorsiva**: un albero o è vuoto o è un nodo con successori che sono alberi (al più 2 per noi). Questa definizione è ciò che rende naturali le funzioni ricorsive sugli alberi, come già per le liste.
+Fra due nodi collegati da un **arco** orientato si parla di **padre/genitore** e **figlio**; gli **antecedenti/antenati** di un nodo sono quelli sul percorso radice->nodo, i **discendenti** quelli nel suo sottoalbero. Il **percorso assoluto** va dalla radice a un nodo ed è unico, quindi identifica il nodo; il **percorso relativo** collega due nodi qualsiasi, e alcuni archi vi sono percorsi in senso inverso. Un **sottoalbero** è un albero contenuto in un albero, e ogni nodo ha un sottoalbero sinistro e uno destro.
+
+Le misure sono quattro:
+- la **distanza** fra due nodi è il numero di archi del percorso relativo;
+- la **profondità di un nodo** è la sua distanza dalla radice (radice a profondità 0);
+- la **profondità dell'albero** è la massima profondità dei nodi, quindi 0 se c'è solo la radice e **-1 per l'albero vuoto**;
+- il **grado** di un nodo è il numero dei suoi figli.
+
+Un albero di grado N si dice **completo** se tutte le foglie sono a profondità N e tutti gli interni hanno N figli (formulazione della slide; [DA VERIFICARE] il testo parla di "profondità N" ma per albero binario completo di profondità h intende grado 2 - ambiguità della slide). Un **albero degenere** ha tutti i nodi con al più un figlio e quindi si riduce a una lista. Infine la **definizione ricorsiva**: un albero o è vuoto o è un nodo con successori che sono alberi (al più 2 per noi). Questa definizione è ciò che rende naturali le funzioni ricorsive sugli alberi, come già per le liste.
 
 ## Albero ordinato / BST
 Se i valori dei nodi sono ordinabili, si possono disporre in modo che per ogni nodo n con figli i valori nel sottoalbero sinistro siano < valore(n) < i valori nel sottoalbero destro. Un albero binario ordinato così è un **albero binario di ricerca** (BST). Il vantaggio è che per cercare un valore si sa a ogni nodo da che parte andare; il vincolo è che ogni operazione che modifica l'albero deve lasciarlo ordinato.

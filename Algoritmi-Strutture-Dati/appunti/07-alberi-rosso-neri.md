@@ -29,7 +29,11 @@ Il lemma b dice che per la regola del rosso bh(T) ≥ h/2. Allora n ≥ 2^{h/2} 
 
 Le rotazioni sono lo strumento con cui si ripara l'albero senza distruggere l'ordine dei BST: costano O(1), preservano la proprietà BST e l'ordine in-order, e cambiano solo i colori e la forma locale. La **Left-Rotate(T,x)**, applicabile se x ha un figlio destro y non nullo, fa diventare y radice del sottoalbero e x suo figlio sinistro, mentre il vecchio figlio sinistro di y (β) diventa figlio destro di x. La **Right-Rotate(T,y)** è speculare: x, figlio sinistro di y, diventa radice, y diventa figlio destro di x, e il vecchio figlio destro di x diventa figlio sinistro di y.
 
-Il codice dalle slide della Left-Rotate(T,x) è: y:=x.right; x.right:=y.left; se y.left≠nil y.left.parent:=x; y.parent:=x.parent; aggiorna T / x.parent.left / x.parent.right a y; y.left:=x; x.parent:=y.
+Il codice dalle slide della Left-Rotate(T,x) procede così:
+1. y:=x.right;
+2. x.right:=y.left; se y.left≠nil, y.left.parent:=x;
+3. y.parent:=x.parent, e si aggiorna T / x.parent.left / x.parent.right a y;
+4. y.left:=x; x.parent:=y.
 
 ## Inserimento
 

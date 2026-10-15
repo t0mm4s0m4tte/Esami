@@ -31,7 +31,13 @@ L'idea guida dell'ottimizzazione logica, l'**euristica d'oro**, è ridurre prest
 
 ## 3. Statistiche e selettività
 
-Per scegliere fra piani alternativi il DBMS ha bisogno di stimare le dimensioni dei risultati intermedi, e lo fa con le statistiche del **dizionario dati**: CARD(r) è il numero di tuple, SIZE(t) l'ampiezza media di una tupla, VAL(A,r) il numero di valori distinti di A, NPAGE(r) = CARD(r)/fattore di bloccaggio. Da queste si ricava il **fattore di selettività f_p** di un predicato, cioè la frazione di tuple che lo soddisfa, assumendo una distribuzione uniforme:
+Per scegliere fra piani alternativi il DBMS ha bisogno di stimare le dimensioni dei risultati intermedi, e lo fa con le statistiche del **dizionario dati**:
+- CARD(r): numero di tuple;
+- SIZE(t): ampiezza media di una tupla;
+- VAL(A,r): numero di valori distinti di A;
+- NPAGE(r) = CARD(r)/fattore di bloccaggio.
+
+Da queste si ricava il **fattore di selettività f_p** di un predicato, cioè la frazione di tuple che lo soddisfa, assumendo una distribuzione uniforme:
 
 | Predicato | f |
 |---|---|
@@ -58,7 +64,13 @@ La **pagina** (= blocco, 4-8 KB; i blocchi fisici sono 512 B-4 KB) è l'unità d
 
 Il record è indirizzato da un **RID = [PID, i]**, dove i è l'indice nell'array degli offset. Questa indirezione permette di compattare o riordinare i record dentro la pagina senza cambiare l'indirizzo visto dall'esterno: è la base dell'**indipendenza fisica**.
 
-I **metodi di accesso** sono: seriale (pagine come nel file system, non ordinate), sequenziale (ordinate su un attributo), tabellare (con indici) e diretto (hash, O(1)). Con N = numero di pagine, i costi sono: **seriale** ricerca con successo (N+1)/2, insuccesso N; **sequenziale** insuccesso (N+1)/2, perché la ricerca si ferma superato il valore. Per tabelle grandi la soluzione sono gli indici.
+I **metodi di accesso** sono:
+- **seriale**: pagine come nel file system, non ordinate;
+- **sequenziale**: ordinate su un attributo;
+- **tabellare**: con indici;
+- **diretto**: hash, O(1).
+
+Con N = numero di pagine, i costi sono: **seriale** ricerca con successo (N+1)/2, insuccesso N; **sequenziale** insuccesso (N+1)/2, perché la ricerca si ferma superato il valore. Per tabelle grandi la soluzione sono gli indici.
 
 ## 5. B+ alberi
 
@@ -81,7 +93,9 @@ Indicizzare tutto non conviene, perché ogni indice appesantisce INSERT/UPDATE/D
 
 ## 6. Ottimizzatore fisico
 
-Per le selezioni congiuntive σ_{p1∧p2∧…} ci sono due strategie: (a) fare l'**intersezione dei RID** restituiti dagli indici disponibili, in RAM; oppure (b) usare l'indice **più selettivo** (min f) e verificare gli altri predicati sulle tuple caricate.
+Per le selezioni congiuntive σ_{p1∧p2∧…} ci sono due strategie:
+- fare l'**intersezione dei RID** restituiti dagli indici disponibili, in RAM;
+- usare l'indice **più selettivo** (min f) e verificare gli altri predicati sulle tuple caricate.
 
 Il **join** è l'operatore più oneroso, e non va mai simulato con cicli nidificati nell'applicazione: il DBMS sceglie tra **Nested Loop, Merge Join** (input ordinati) e **Hash Join** in base a buffer e statistiche. `EXPLAIN` mostra il piano scelto.
 

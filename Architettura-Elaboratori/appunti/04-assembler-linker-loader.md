@@ -12,7 +12,12 @@ Fonte: Lezione 03 (Assembler, Linker e Loader), Lab 1 (direttive, RARS).
 ## Assembly
 Il linguaggio assembly ha una corrispondenza quasi uno-a-uno con le istruzioni dell'ISA, ma offre alcune comodità al programmatore: etichette simboliche, allocazione di variabili, costanti e macro. Per questo bisogna distinguere con attenzione quattro cose diverse che compaiono in un sorgente.
 
-Le **pseudo-istruzioni** sono alias per una o più istruzioni vere e non compaiono come tali nel programma oggetto: tipici esempi sono `li`, `la`, `mv`, `not`, `j`, `ret`, `bgt`, `ble`, `nop`. La `la` è espansa con `auipc` (+ `addi`) [Lab 4; il dettaglio in RARS]. Le **direttive** iniziano con il punto e istruiscono l'assemblatore senza generare istruzioni: `.text` (codice), `.data` (dati), `.globl label` (simbolo globale), `.word` (32 bit), `.byte`, `.string`, `.eqv NOME VALORE` (costante).
+Le **pseudo-istruzioni** sono alias per una o più istruzioni vere e non compaiono come tali nel programma oggetto: tipici esempi sono `li`, `la`, `mv`, `not`, `j`, `ret`, `bgt`, `ble`, `nop`. La `la` è espansa con `auipc` (+ `addi`) [Lab 4; il dettaglio in RARS]. Le **direttive** iniziano con il punto e istruiscono l'assemblatore senza generare istruzioni:
+- `.text`: codice;
+- `.data`: dati;
+- `.globl label`: simbolo globale;
+- `.word` (32 bit), `.byte`, `.string`: allocazione di dati;
+- `.eqv NOME VALORE`: costante.
 
 Una **macro** è un nome dato a una sequenza di istruzioni; richiede un header (il nome), un corpo e una direttiva di fine definizione. L'esempio della slide è lo scambio di due registri con un terzo di appoggio. Non va confusa con una procedura: la macro è espansa in linea dall'assemblatore (nessun jal/ret), mentre la procedura è un unico codice che viene chiamato.
 
@@ -30,12 +35,23 @@ Un programma reale è formato da più moduli tradotti separatamente, e ciascun m
 3. aggiunge a ogni indirizzo di memoria una **relocation constant** (= indirizzo di partenza del modulo);
 4. aggiorna le istruzioni che riferiscono altri moduli con l'indirizzo corretto (riferimenti esterni).
 
-**Esempio svolto (slide)**: procedure A e B in due moduli, con il risultato che A sta a 0x400000 e B a 0x400100. `jal` usa indirizzamento relativo al PC, quindi la `jal` da A a B vale 0x400100 - 0x400004 = 252 dec, mentre la `jal` da B ad A vale 0x400000 - 0x400104 = -260 dec. La procedura di calcolo è: (a) lunghezze dei moduli, (b) base di ciascuno, (c) per ogni jal/dato si ricalcola offset = indirizzo_dest - indirizzo_istruzione (per il PC-relative) oppure base_dati + offset (gp-relative).
+**Esempio svolto (slide)**: procedure A e B in due moduli, con il risultato che A sta a 0x400000 e B a 0x400100. `jal` usa indirizzamento relativo al PC, quindi la `jal` da A a B vale 0x400100 - 0x400004 = 252 dec, mentre la `jal` da B ad A vale 0x400000 - 0x400104 = -260 dec. La procedura di calcolo è:
+1. si ricavano le lunghezze dei moduli;
+2. si fissa la base di ciascuno;
+3. per ogni jal/dato si ricalcola offset = indirizzo_dest - indirizzo_istruzione (per il PC-relative) oppure base_dati + offset (gp-relative).
 
 Nell'esempio l'indirizzo di Y viene aggiornato rispetto al registro `gp` (x3), con valore indicato sulla slide come "0000 0000 1000 0000" esa [DA VERIFICARE quante cifre/valore]. Non ricostruibile dal testo estratto.
 
 ## ELF (file oggetto UNIX)
-Il file oggetto in formato ELF è organizzato in sezioni: un object file header (dimensione e posizione delle altre parti), il **text segment** (codice macchina), lo **static data segment** (dati statici/dinamici), la **relocation information** (istruzioni e dati che dipendono da indirizzi assoluti), la **symbol table** (etichette non risolte, per esempio riferimenti a moduli esterni) e le informazioni di debugging. Su Windows il formato equivalente è PE.
+Il file oggetto in formato ELF è organizzato in sezioni:
+- **object file header**: dimensione e posizione delle altre parti;
+- **text segment**: codice macchina;
+- **static data segment**: dati statici/dinamici;
+- **relocation information**: istruzioni e dati che dipendono da indirizzi assoluti;
+- **symbol table**: etichette non risolte, per esempio riferimenti a moduli esterni;
+- informazioni di debugging.
+
+Su Windows il formato equivalente è PE.
 
 ## Loader
 Al momento dell'esecuzione il sistema operativo carica l'eseguibile dal disco in memoria. I passi del loader sono:

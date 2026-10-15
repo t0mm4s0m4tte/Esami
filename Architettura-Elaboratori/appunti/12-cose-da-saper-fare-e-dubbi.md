@@ -32,10 +32,21 @@ Gli esercizi sono il modo più sicuro di verificare la comprensione, perché all
 - I/O: descrivere interrupt hardware/software; confronto polling/interrupt/DMA.
 
 ## Strategia di recupero (suggerita, a partire da oggi = 2026-10-13)
-Conviene cominciare da ISA e procedure (file 02-03) insieme al laboratorio (11), perché sono il cuore pratico del corso e vanno esercitati scrivendo il codice a mano. Poi si passa a logica e ALU (05-06) e al datapath (07), che si ripassano meglio rifacendo i disegni. Cache, bus e I/O (08-10) sono soprattutto teoria, da ripassare con due o tre esercizi. Infine l'assembler/linker (04), di cui bastano i passi memorizzati e un esempio numerico. In parallelo bisogna procurarsi i temi d'esame passati e le tabelle del libro (RISC-V reference card) [DA VERIFICARE se disponibili su Moodle: non in Drive].
+1. ISA e procedure (file 02-03) insieme al laboratorio (11): sono il cuore pratico del corso e vanno esercitati scrivendo il codice a mano.
+2. Logica e ALU (05-06) e datapath (07): si ripassano meglio rifacendo i disegni.
+3. Cache, bus e I/O (08-10): soprattutto teoria, da ripassare con due o tre esercizi.
+4. Assembler/linker (04): bastano i passi memorizzati e un esempio numerico.
+
+In parallelo bisogna procurarsi i temi d'esame passati e le tabelle del libro (RISC-V reference card) [DA VERIFICARE se disponibili su Moodle: non in Drive].
 
 ## Lacune del materiale (dichiarate)
-Gli appunti sono stati ricavati dal materiale disponibile e hanno dei buchi che è bene conoscere. Il **Lab 7 (Ricorsione)** manca nel Drive. Per la **teoria "ISA parte 3"** (salti, procedure, stack) non c'è una lezione dedicata: è stata ricavata dai Lab 3, 5, 6 e da snippet della Lez. 9, più la conoscenza standard del libro [dove indicato]. Il **libro** (PDF da ~264 MB: `Struttura e Progetto dei Calcolatori - Progettare con RISC V.pdf`) non è stato letto in questa passata, quindi i dettagli marcati [libro] vanno verificati lì (capitoli 1, 2, 3(ALU), 4, 5; Appendice A (logica) e RISC-V reference card). Le **figure e tabelle** delle slide (control table, equazioni, diagrammi temporali, valori dell'esempio di linking) non sono estraibili dal testo e sono indicate come [DA VERIFICARE]. I **temi d'esame passati** sono assenti, quindi il formato reale dello scritto non è noto. Infine il documento "Architettura degli Elaboratori - Appunti" su Drive è quasi vuoto (1 KB) e non c'è nulla da integrare.
+Gli appunti sono stati ricavati dal materiale disponibile e hanno dei buchi che è bene conoscere:
+- il **Lab 7 (Ricorsione)** manca nel Drive;
+- per la **teoria "ISA parte 3"** (salti, procedure, stack) non c'è una lezione dedicata: è stata ricavata dai Lab 3, 5, 6 e da snippet della Lez. 9, più la conoscenza standard del libro [dove indicato];
+- il **libro** (PDF da ~264 MB: `Struttura e Progetto dei Calcolatori - Progettare con RISC V.pdf`) non è stato letto in questa passata, quindi i dettagli marcati [libro] vanno verificati lì (capitoli 1, 2, 3(ALU), 4, 5; Appendice A (logica) e RISC-V reference card);
+- le **figure e tabelle** delle slide (control table, equazioni, diagrammi temporali, valori dell'esempio di linking) non sono estraibili dal testo e sono indicate come [DA VERIFICARE];
+- i **temi d'esame passati** sono assenti, quindi il formato reale dello scritto non è noto;
+- il documento "Architettura degli Elaboratori - Appunti" su Drive è quasi vuoto (1 KB) e non c'è nulla da integrare.
 
 ## Dubbi da passare al tutor
 Sono i punti su cui le slide non bastano a decidere cosa studiare in profondità.

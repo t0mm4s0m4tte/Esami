@@ -38,13 +38,28 @@ Il `DOCTYPE` è un preambolo che dichiara la versione della specifica (esiste pe
 
 ### Tipi di elementi e contenuto
 
-`HTML` indica il documento, `HEAD` e `BODY` lo dividono in intestazione e corpo. `SECTION` divide in sezioni, `DIV` è una suddivisione generica senza semantica, `NAV` un'area di navigazione, `ARTICLE` un testo da leggere (utile per distinguerlo in una UI complessa dove molti elementi sono widget e non materiale di lettura). `H1`...`H6` sono titoli di importanza decrescente, `P` un paragrafo, `IMG` un'immagine (richiede la URL come attributo, perché l'immagine è un file indipendente sul server), `EM` testo enfatizzato (corsivo di default), `STRONG` testo molto enfatizzato (grassetto di default).
+I tipi principali sono:
+- `HTML`: il documento; `HEAD` e `BODY` lo dividono in intestazione e corpo;
+- `SECTION`: divide in sezioni;
+- `DIV`: suddivisione generica senza semantica;
+- `NAV`: area di navigazione;
+- `ARTICLE`: testo da leggere (utile per distinguerlo in una UI complessa dove molti elementi sono widget e non materiale di lettura);
+- `H1`...`H6`: titoli di importanza decrescente;
+- `P`: paragrafo;
+- `IMG`: immagine (richiede la URL come attributo, perché l'immagine è un file indipendente sul server);
+- `EM`: testo enfatizzato (corsivo di default);
+- `STRONG`: testo molto enfatizzato (grassetto di default).
 
 Alcuni elementi hanno contenuto testuale (`H1`, `EM`), altri sotto-elementi (`SECTION` contiene due `DIV`), alcuni nessun contenuto (`IMG`), altri un misto (`P` può contenere testo, un `EM`, altro testo). Si può mettere qualsiasi elemento dentro un altro? "Sì e no": il browser cerca di visualizzare comunque, ma non tutto ha senso. In prima approssimazione gli elementi sono **a blocco** (definiscono un riquadro) oppure **in linea** (seguono il fluire del testo). In un documento ben fatto gli elementi a blocco stanno solo dentro altri elementi a blocco: un blocco dentro un elemento in linea provoca comportamenti imprevisti. Se si usa HTML per progettare UI conviene una visualizzazione ben strutturata, prevedibile e indipendente dalle "strategie compensative" del browser.
 
 ### Collegamenti ipertestuali
 
-Si usa l'elemento `A` (anchor), che può contenere sia elementi in linea sia a blocco. La destinazione sta nell'attributo `href`, che deve essere una URL valida. Può essere **esterna** (dominio e path completi, dominio diverso dal documento corrente), **assoluta** (stesso dominio, path completo dalla radice del dominio, che parte con `/`) o **relativa** (stesso dominio, path relativo al documento attuale). Il contenuto di `A` è l'*hotspot*, cioè ciò su cui cliccare.
+Si usa l'elemento `A` (anchor), che può contenere sia elementi in linea sia a blocco. La destinazione sta nell'attributo `href`, che deve essere una URL valida. Può essere:
+- **esterna**: dominio e path completi, dominio diverso dal documento corrente;
+- **assoluta**: stesso dominio, path completo dalla radice del dominio, che parte con `/`;
+- **relativa**: stesso dominio, path relativo al documento attuale.
+
+Il contenuto di `A` è l'*hotspot*, cioè ciò su cui cliccare.
 
 ### Testo, tabelle, multimedia
 
@@ -56,13 +71,26 @@ Le **tabelle** servono per presentare dati con righe e colonne, **non** per disp
 
 ### Elementi strutturali
 
-Ci sono due usi tipici: "redazionale" (documento, articolo, blog: poca interazione, si legge e si naviga) e "applicativo" (la pagina è l'interfaccia di un'applicazione o di un e-commerce: l'utente sceglie, carica, fornisce informazioni). `DIV` è la suddivisione senza semantica, indispensabile per dare un layout diverso da quello di default. `SECTION` divide in sezioni indipendenti, `ARTICLE` marca un articolo presentabile anche da solo, `NAV` un menu, `HEADER` l'intestazione visibile di pagina o sezione (da non confondere con `HEAD`, che è la meta-intestazione), `FOOTER` il piè di pagina (contatti, cookie...).
+Ci sono due usi tipici: "redazionale" (documento, articolo, blog: poca interazione, si legge e si naviga) e "applicativo" (la pagina è l'interfaccia di un'applicazione o di un e-commerce: l'utente sceglie, carica, fornisce informazioni). Gli elementi strutturali sono:
+- `DIV`: la suddivisione senza semantica, indispensabile per dare un layout diverso da quello di default;
+- `SECTION`: divide in sezioni indipendenti;
+- `ARTICLE`: marca un articolo presentabile anche da solo;
+- `NAV`: un menu;
+- `HEADER`: l'intestazione visibile di pagina o sezione (da non confondere con `HEAD`, che è la meta-intestazione);
+- `FOOTER`: il piè di pagina (contatti, cookie...).
 
 ### Form
 
 L'HTML puro permette di inserire moduli con cui l'utente invia dati al web server (ha senso solo se il server ha un'app server-side che li riceve; altrimenti i dati si perdono). Qui si parla solo di form gestiti dal browser: più avanti si vedranno quelli gestiti da JavaScript. Un `FORM` contiene elementi di input. Gli attributi decidono il comportamento: `action` è la URL a cui mandare i dati, `method` è GET o POST. Con GET i dati finiscono come query string nella URL; con POST nel body con `Content-Type: application/x-www-form-urlencoded`. In entrambi i casi la forma è `nome1=valore1&nome2=valore2&...`, dove i nomi vengono dagli input e i valori dall'utente.
 
-La maggior parte degli input usa il tag `INPUT` con attributo `type`, e **tutti** richiedono l'attributo `name` (è il nome del campo nella richiesta). `type="text"` è una casella di testo (`size`, `value`, `placeholder`: il placeholder è un segnaposto che scompare quando si digita e non conta come valore). `type="checkbox"` ha `value` (inviato se spuntata) e `checked`. `type="radio"` è a gruppi: tutti i radio dello stesso gruppo hanno lo stesso `name`, uno solo è selezionabile, `value` è ciò che viene riportato, `checked` indica quello iniziale. `LABEL for="id"` è l'etichetta associata a un input con quell'`id` (essenziale per checkbox e radio, omettibile per le textbox con placeholder chiaro). `SELECT name="..."` è un menu a tendina con elementi `OPTION value="..."`: il `name` sta sul `SELECT`, il `value` sulle `OPTION`. Un form in HTML puro deve avere un pulsante `<input type="submit" value="...">` che provoca l'invio (non fornisce un dato, fa partire l'azione) e può avere un `type="reset"` che riporta gli input allo stato iniziale.
+La maggior parte degli input usa il tag `INPUT` con attributo `type`, e **tutti** richiedono l'attributo `name` (è il nome del campo nella richiesta):
+- `type="text"`: casella di testo (`size`, `value`, `placeholder`: il placeholder è un segnaposto che scompare quando si digita e non conta come valore);
+- `type="checkbox"`: ha `value` (inviato se spuntata) e `checked`;
+- `type="radio"`: è a gruppi; tutti i radio dello stesso gruppo hanno lo stesso `name`, uno solo è selezionabile, `value` è ciò che viene riportato, `checked` indica quello iniziale;
+- `LABEL for="id"`: etichetta associata a un input con quell'`id` (essenziale per checkbox e radio, omettibile per le textbox con placeholder chiaro);
+- `SELECT name="..."`: menu a tendina con elementi `OPTION value="..."`; il `name` sta sul `SELECT`, il `value` sulle `OPTION`.
+
+Un form in HTML puro deve avere un pulsante `<input type="submit" value="...">` che provoca l'invio (non fornisce un dato, fa partire l'azione) e può avere un `type="reset"` che riporta gli input allo stato iniziale.
 
 ## CSS: Cascading Style Sheets
 
@@ -77,7 +105,10 @@ h1 {
 }
 ```
 
-Gli stili si associano all'HTML in tre modi: foglio **esterno** (file separato, collegato nel `head` con `<link rel="stylesheet" href="styles/style.css">`), **interno** (regole dentro un elemento `<style>` nel `head`), **in linea** (attributo `style` su un singolo elemento, es. `<h1 style="color: red; font-size: 15pt;">`).
+Gli stili si associano all'HTML in tre modi:
+- foglio **esterno**: file separato, collegato nel `head` con `<link rel="stylesheet" href="styles/style.css">`;
+- **interno**: regole dentro un elemento `<style>` nel `head`;
+- **in linea**: attributo `style` su un singolo elemento, es. `<h1 style="color: red; font-size: 15pt;">`.
 
 ### Cascata, specificità, ereditarietà
 
@@ -85,7 +116,10 @@ Se a un elemento si applicano regole in conflitto (stessa proprietà, valori div
 
 ### Integrazione: come si calcola la specificità e cosa si eredita
 
-*Da fonti esterne (MDN, W3C CSS Cascade), non dalle slide: le slide rimandano questi dettagli a dopo.* Quando più dichiarazioni colpiscono la stessa proprietà dello stesso elemento, il browser le confronta in quest'ordine. Prima conta l'importanza: una dichiarazione `!important` batte una normale (da usare il meno possibile). A parità di importanza si confronta la **specificità** del selettore, che è un peso a tre numeri **ID–CLASSE–TIPO**: il primo conta gli id, il secondo classi, attributi e pseudoclassi, il terzo tag e pseudo-elementi. I tre numeri si confrontano **da sinistra a destra, non si sommano**: un solo id (1-0-0) batte qualsiasi numero di classi, e `#a` batte `.x .y .z` (0-3-0). Il selettore universale `*` e i combinatori (spazio, `>`, `~`, `+`) valgono zero. Lo stile in linea (attributo `style`) vince su qualunque selettore dei fogli, ed è battuto solo da `!important`. Se anche la specificità è pari, vince la dichiarazione scritta per ultima, che è il criterio della cascata descritto sopra.
+*Da fonti esterne (MDN, W3C CSS Cascade), non dalle slide: le slide rimandano questi dettagli a dopo.* Quando più dichiarazioni colpiscono la stessa proprietà dello stesso elemento, il browser le confronta in quest'ordine:
+1. **importanza**: una dichiarazione `!important` batte una normale (da usare il meno possibile);
+2. **specificità** del selettore, che è un peso a tre numeri **ID–CLASSE–TIPO**: il primo conta gli id, il secondo classi, attributi e pseudoclassi, il terzo tag e pseudo-elementi. I tre numeri si confrontano **da sinistra a destra, non si sommano**: un solo id (1-0-0) batte qualsiasi numero di classi, e `#a` batte `.x .y .z` (0-3-0). Il selettore universale `*` e i combinatori (spazio, `>`, `~`, `+`) valgono zero. Lo stile in linea (attributo `style`) vince su qualunque selettore dei fogli, ed è battuto solo da `!important`;
+3. **ordine**: se anche la specificità è pari, vince la dichiarazione scritta per ultima, che è il criterio della cascata descritto sopra.
 
 Sull'**ereditarietà**: ogni proprietà è definita come ereditata o no. Se un elemento non ha alcun valore dichiarato e la proprietà è ereditata, prende il valore calcolato del genitore; altrimenti prende il valore iniziale. In genere ereditano le proprietà del testo (`color`, `font-*`, `line-height`, `text-align`, `visibility`) e non quelle del box (`margin`, `padding`, `border`, `background`, `display`, `width`); per sapere se una proprietà eredita si guarda la riga "Inherited" nella sua pagina di riferimento MDN (l'elenco qui sopra è indicativo). Le parole chiave `inherit` (forza l'ereditarietà), `initial` (valore iniziale) e `unset` (come `inherit` o `initial` a seconda della proprietà) permettono di scegliere esplicitamente.
 
@@ -93,7 +127,10 @@ Sull'**ereditarietà**: ogni proprietà è definita come ereditata o no. Se un e
 
 Famiglie molto usate: proprietà tipografiche (`font-size`, `font-family`, `font-weight`, `font-style`, `text-decoration`, `line-height`, `color`) e proprietà grafiche del riquadro (box) di un elemento (`width`, `height`, `max-/min-width/height`, `padding`, `margin`, `border`, `border-radius`, `background-color`, `position`, `top`, `left`, `bottom`, `right`). Quanto si può davvero controllare dimensioni e posizione dipende dal display, perché alcune modalità dispongono i riquadri con un algoritmo e ignorano in tutto o in parte le nostre indicazioni.
 
-I **valori** sono di tre tipi: costanti predefinite (come un enumerato: `bold`, `red`, `solid`, `auto`); valori metrici, numero più unità, che possono essere assolute (`px`, `mm`, `in`, `pt`) o relative (`rem` è proporzionale alla dimensione dell'elemento radice `html`, `%` a quella dell'elemento contenitore, `vw` alla larghezza del viewport); colori in RGB o RGBα (`#dfff76`, `rgb(255,0,106)`, `rgba(255,0,106,0.1)`).
+I **valori** sono di tre tipi:
+- costanti predefinite (come un enumerato: `bold`, `red`, `solid`, `auto`);
+- valori metrici, numero più unità, che possono essere assolute (`px`, `mm`, `in`, `pt`) o relative (`rem` è proporzionale alla dimensione dell'elemento radice `html`, `%` a quella dell'elemento contenitore, `vw` alla larghezza del viewport);
+- colori in RGB o RGBα (`#dfff76`, `rgb(255,0,106)`, `rgba(255,0,106,0.1)`).
 
 Alcune proprietà sono **scorciatoie** che ne impostano più di una. `margin: 5px 10px 0 20px;` imposta top, right, bottom, left; con un solo valore vale per tutti e quattro; con due valori il primo è verticale (top e bottom) e il secondo orizzontale (left e right).
 
@@ -101,7 +138,13 @@ Alcune proprietà sono **scorciatoie** che ne impostano più di una. `margin: 5p
 
 Sono la parte più potente di CSS: funzionano come query sul documento HTML. Si dividono in semplici, compositi e complessi.
 
-I **selettori semplici**: per *tag* (`img`), per *classe* (`.articolo`, da `<div class="articolo">`; la classe è una stringa libera che etichetta gli elementi per raggrupparli, ed è il tipo più usato), per *id* (`#utente`; l'id è univoco, e si usa meno proprio perché è difficile garantirlo), per *attributo* (`[type="text"]`, `[href*="example"]` per "contiene"; la forma è `[attr]` per presenza o `[attr OP "val"]`), per *pseudoclasse* (`:hover`, `:first-child`: raggruppamenti definiti dal browser in base allo stato, dinamico o statico), *universale* (`*`).
+I **selettori semplici** sono:
+- per *tag*: `img`;
+- per *classe*: `.articolo`, da `<div class="articolo">`; la classe è una stringa libera che etichetta gli elementi per raggrupparli, ed è il tipo più usato;
+- per *id*: `#utente`; l'id è univoco, e si usa meno proprio perché è difficile garantirlo;
+- per *attributo*: `[type="text"]`, `[href*="example"]` per "contiene"; la forma è `[attr]` per presenza o `[attr OP "val"]`;
+- per *pseudoclasse*: `:hover`, `:first-child`; raggruppamenti definiti dal browser in base allo stato, dinamico o statico;
+- *universale*: `*`.
 
 I **selettori compositi** si ottengono per giustapposizione, senza spazi, di selettori semplici, con significato di **AND**: `div.importante` (DIV di classe importante), `label[name="anno"]`, `.elenco.attivo` (classi `elenco` e `attivo` insieme), `input[type="button"]:hover`. Vincoli: al più un selettore per tag oppure l'universale (che si può omettere), e se c'è deve stare per primo. L'ordine non cambia il significato ma può cambiare la specificità.
 

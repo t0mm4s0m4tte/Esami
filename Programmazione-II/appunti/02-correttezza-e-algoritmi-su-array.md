@@ -6,9 +6,18 @@ Fonte: Drive > "PDF " > `2_Correttezza.pdf` (a.a. 2023-24, esempi dal prof. F. D
 Si parte dall'idea di specifica di una funzione e dai due predicati P_IN / P_OUT (con la notazione con apice per i valori iniziali), si definiscono correttezza parziale, terminazione e correttezza, si descrive il metodo di progettazione per raffinamenti successivi con test suite, e si applica tutto a esempi (minimo, cerca, scambia, scambia_p) e a due algoritmi classici: ricerca binaria e insertion sort.
 
 ## Concetti
-Il filo conduttore del capitolo è che una funzione deve fare ciò che dice la **specifica**, e che questo si ottiene progettando il codice, non provando finché il compilatore e il debugger smettono di protestare ("non è un programmatore chi si fa guidare dal compilatore o dal debugger"). Gli errori possibili sono di diversa gravità: quelli di logica sono i più gravi, quelli di sintassi sono poco gravi perché li segnala il compilatore, e poi ci sono i casi saltati (per esempio la stringa vuota) e le condizioni di uscita sbagliate.
+Il filo conduttore del capitolo è che una funzione deve fare ciò che dice la **specifica**, e che questo si ottiene progettando il codice, non provando finché il compilatore e il debugger smettono di protestare ("non è un programmatore chi si fa guidare dal compilatore o dal debugger"). Gli errori possibili sono di diversa gravità:
+- quelli di **logica** sono i più gravi;
+- quelli di **sintassi** sono poco gravi perché li segnala il compilatore;
+- i **casi saltati** (per esempio la stringa vuota);
+- le **condizioni di uscita** sbagliate.
 
-Per parlare di correttezza in modo preciso servono due predicati. **P_IN(x1..xn)** descrive l'input ed è ciò che deve valere prima dell'esecuzione; **P_OUT(x1..xn, y)** lega input e output ed è ciò che deve valere dopo. Su di essi si definiscono tre nozioni. La **correttezza parziale** dice che, per ogni n-upla di valori dei tipi dei parametri, se P_IN è vera e l'esecuzione termina restituendo y, allora P_OUT(x, y) è vera. La **terminazione** dice che, per ogni input con P_IN vera, l'esecuzione si conclude. Una funzione è **corretta** quando è parzialmente corretta e terminante. Si noti che la correttezza parziale non promette nulla se il programma non finisce: è la terminazione a completare il quadro.
+Per parlare di correttezza in modo preciso servono due predicati. **P_IN(x1..xn)** descrive l'input ed è ciò che deve valere prima dell'esecuzione; **P_OUT(x1..xn, y)** lega input e output ed è ciò che deve valere dopo. Su di essi si definiscono tre nozioni:
+- **correttezza parziale**: per ogni n-upla di valori dei tipi dei parametri, se P_IN è vera e l'esecuzione termina restituendo y, allora P_OUT(x, y) è vera;
+- **terminazione**: per ogni input con P_IN vera, l'esecuzione si conclude;
+- **correttezza**: la funzione è parzialmente corretta e terminante.
+
+Si noti che la correttezza parziale non promette nulla se il programma non finisce: è la terminazione a completare il quadro.
 
 Per dimostrare la terminazione di un ciclo si mostra che a ogni iterazione ci si avvicina alla condizione di uscita, e lo si fa sul **codice effettivo**, non sulle intenzioni: `for(i=0;i<N;)` senza incremento non termina. Per scrivere le specifiche serve inoltre una notazione per riferirsi ai valori di partenza: `a'[j]` indica il valore **iniziale** di `a[j]`, e per i puntatori si scrive `(*py)'`. La stessa funzione può avere specifiche diverse a seconda di che garanzie si chiedono: per la divisione si può porre P_IN "divisore != 0", oppure non dare garanzie e stabilire che se il divisore è 0 si restituisce il dividendo con un messaggio d'errore.
 
@@ -51,7 +60,13 @@ void scambia_p(int *px, int *py) { int t = *px; *px = *py; *py = t; }
 ```
 
 ### Ricerca binaria (array ordinato crescente)
-L'idea è sfruttare l'ordinamento: si confronta l'elemento cercato con quello centrale e si scarta metà dell'array a ogni passo. Lo pseudocodice delle slide usa due indici sn e dx che delimitano arr[sn..dx]; finché la porzione non è vuota si calcola middle (la metà); se el < arr[middle] si prosegue su arr[sn..middle-1], altrimenti se arr[middle] < el su arr[middle+1..dx], altrimenti si restituisce middle; alla fine, se la porzione si svuota, si restituisce -1. Esempio svolto su A B C E G H I M cercando H: middle=3 (E<H) -> sn=4; middle=(4+7)/2=5 -> trovato.
+L'idea è sfruttare l'ordinamento: si confronta l'elemento cercato con quello centrale e si scarta metà dell'array a ogni passo. Lo pseudocodice delle slide usa due indici sn e dx che delimitano arr[sn..dx]; finché la porzione non è vuota:
+1. si calcola middle (la metà);
+2. se el < arr[middle] si prosegue su arr[sn..middle-1];
+3. altrimenti, se arr[middle] < el, su arr[middle+1..dx];
+4. altrimenti si restituisce middle.
+
+Se la porzione si svuota si restituisce -1. Esempio svolto su A B C E G H I M cercando H: middle=3 (E<H) -> sn=4; middle=(4+7)/2=5 -> trovato.
 
 Implementazione (ricostruita dallo pseudocodice, l'esercizio era "implementare tu"):
 ```c

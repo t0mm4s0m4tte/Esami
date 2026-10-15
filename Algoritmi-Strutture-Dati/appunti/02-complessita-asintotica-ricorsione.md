@@ -7,7 +7,12 @@ Si parte da come si misura il costo di un algoritmo (funzione T(n), casi miglior
 
 ## Costo e casi
 
-Per confrontare algoritmi non si misurano secondi ma **operazioni elementari**, espresse come funzione T(n) della dimensione dell'input. Poiché a parità di dimensione input diversi possono costare molto diversamente, si distinguono tre misure: Tcm(n)=min_{|x|=n} T'(x) per il caso migliore, **Tcp(n)=max_{|x|=n} T'(x)** per il caso peggiore (la più usata, perché dà una garanzia) e Tmedio(n)=Σ T'(x)·p_x per il caso medio. Il minimo di un vettore, per esempio, ha T(n)=an+b: lineare.
+Per confrontare algoritmi non si misurano secondi ma **operazioni elementari**, espresse come funzione T(n) della dimensione dell'input. Poiché a parità di dimensione input diversi possono costare molto diversamente, si distinguono tre misure:
+- caso migliore: Tcm(n)=min_{|x|=n} T'(x);
+- caso peggiore: **Tcp(n)=max_{|x|=n} T'(x)** (la più usata, perché dà una garanzia);
+- caso medio: Tmedio(n)=Σ T'(x)·p_x.
+
+Il minimo di un vettore, per esempio, ha T(n)=an+b: lineare.
 
 Ignorare le costanti moltiplicative è una scelta ragionevole, e lo si capisce da qualche conto. Con T=2^n, un hardware 1000 volte più veloce permette di risolvere istanze solo di poco più grandi: 2^D'/1000=2^D implica D'=D+log2(1000)≈D+10 (e solo +2 con un hardware 4 volte più veloce). Un algoritmo da 100n batte uno da 2n^2 per n>50; T1=n^2/100 contro T2=2n+300 si incrociano a n=300 (con n^2/200 a n>=517). Conta l'ordine di crescita, non la macchina.
 
@@ -21,7 +26,13 @@ Le notazioni asintotiche formalizzano proprio questa idea di "ordine di crescita
 
 Quando i limiti esistono sono la via più rapida: se lim f/g = a, allora 0<=a<∞ dà O, 0<a<=∞ dà Ω e 0<a<∞ dà Θ. Le notazioni hanno una struttura ordinata. O e Ω sono **duali**: f∈O(g) ⇔ g∈Ω(f), perché da f<=c·g segue (1/c)·f<=g. **O è un pre-ordine** (riflessiva e transitiva: f<=c·g<=c·d·h), mentre **Θ è una relazione di equivalenza** (riflessiva, simmetrica, transitiva): è proprio per questo che si parla di "classi" di complessità.
 
-Le proprietà operative più usate sono che una costante non conta (c·f=O(f)), che la somma è dominata dal termine maggiore (f+g=O(max{f,g})), che il prodotto si comporta bene (O(f)·O(g)=O(f·g)) e che un polinomio di grado k è in Θ(n^k). Due esempi svolti: 3n^2+7n+8 ∈ O(n^2) con c=4 e n0=8 (basta che 7n+8<=n^2 per n>=8); 4n^2+4n-1 ∈ Θ(n^2) per somma e riflessività. Sul fattoriale si ha 2^n <= n! <= n^n quasi ovunque e soprattutto **log2(n!) ∈ Θ(n log n)**, fatto che tornerà nel limite inferiore dell'ordinamento. L'ordine delle classi più comuni (la **gerarchia**) è:
+Le proprietà operative più usate sono:
+- una costante non conta: c·f=O(f);
+- la somma è dominata dal termine maggiore: f+g=O(max{f,g});
+- il prodotto si comporta bene: O(f)·O(g)=O(f·g);
+- un polinomio di grado k è in Θ(n^k).
+
+Due esempi svolti: 3n^2+7n+8 ∈ O(n^2) con c=4 e n0=8 (basta che 7n+8<=n^2 per n>=8); 4n^2+4n-1 ∈ Θ(n^2) per somma e riflessività. Sul fattoriale si ha 2^n <= n! <= n^n quasi ovunque e soprattutto **log2(n!) ∈ Θ(n log n)**, fatto che tornerà nel limite inferiore dell'ordinamento. L'ordine delle classi più comuni (la **gerarchia**) è:
 
 1 < log n < n^(1/2) < n < n log n < n^2 < n^p < 2^n
 
@@ -29,7 +40,11 @@ Per darne un'idea, con n=64 si ha n^2=4096 ma 2^64≈1.8·10^19.
 
 ## Regole per pseudocodice
 
-Per analizzare un frammento di pseudocodice si compongono i costi con poche regole. In sequenza i costi si sommano, quindi O(f)+O(g)=O(max). In una selezione si paga il test più il ramo più costoso. Un for con m iterazioni costa m·O(f(n)). Un while è il caso difficile, perché serve un limite superiore sul numero di iterazioni, che non è immediato.
+Per analizzare un frammento di pseudocodice si compongono i costi con poche regole:
+- **sequenza**: i costi si sommano, quindi O(f)+O(g)=O(max);
+- **selezione**: si paga il test più il ramo più costoso;
+- **for** con m iterazioni: costa m·O(f(n));
+- **while**: è il caso difficile, perché serve un limite superiore sul numero di iterazioni, che non è immediato.
 
 Due esempi mostrano come procedere. IND-MIN (minimo in B di m elementi) è Θ(m); SELECT-SORT è (n-1)·O(n) = Θ(n^2). Più interessante è **PARTITION(A[i..j],m)**, che ha tre while apparentemente annidati e quindi una stima ingenua di O(n^2). In realtà gli indici i e j si muovono ciascuno in un solo verso (i cresce, j decresce) e il totale dei movimenti è <= n, quindi il costo è **Θ(n)**: la lezione è che conviene contare i movimenti totali anziché moltiplicare i costi dei cicli. Questo si vede chiaramente nella riscrittura con un solo while (se A[i]<=m: i++; altrimenti se A[j]>m: j--; altrimenti scambia e i++, j--), dove ogni iterazione costa O(1) e j-i cala di almeno 1. Un ultimo esempio banale: inizializzare la matrice identità n×n è un doppio ciclo O(n^2) più un ciclo sulla diagonale O(n), in totale O(n^2).
 
@@ -86,7 +101,13 @@ La ricorsione **ad albero** ha più chiamate per livello ed è insidiosa se i so
 
 Ricorsione e iterazione sono comunque **equivalenti**: ogni ricorsione si simula con un'iterazione più una **pila esplicita** (per fact(3): push di 3*?, 2*?, 1*?, poi i pop che completano i prodotti). Questo suggerisce un percorso di ottimizzazione che va dalla ricorsione generica a quella lineare, poi di coda e infine al ciclo. Un caso in cui la ricorsione è decisamente più chiara dell'iterazione sono le **Torri di Hanoi**: si spostano n-1 dischi da sorgente ad ausiliario, poi il disco n, poi n-1 da ausiliario a destinazione, per un totale di **2^n - 1** mosse.
 
-Il **progetto ricorsivo induttivo** segue quattro passi (scomporre, assumere l'IH, combinare, trattare i casi base) e richiede, come per l'iterazione, una dimostrazione di terminazione: gli argomenti devono decrescere in un ordine ben fondato (g(n)=g(n) non termina; Collatz non è dimostrato). Come sintesi: la ricorsione è più leggibile ma rischia stack e ridondanze; l'iterazione ha spazio O(1) e si debugga più facilmente.
+Il **progetto ricorsivo induttivo** segue quattro passi:
+1. scomporre il problema;
+2. assumere l'IH sui sottoproblemi;
+3. combinare i risultati;
+4. trattare i casi base.
+
+Come per l'iterazione, richiede come per l'iterazione, una dimostrazione di terminazione: gli argomenti devono decrescere in un ordine ben fondato (g(n)=g(n) non termina; Collatz non è dimostrato). Come sintesi: la ricorsione è più leggibile ma rischia stack e ridondanze; l'iterazione ha spazio O(1) e si debugga più facilmente.
 
 ## Cose da saper fare all'esame
 

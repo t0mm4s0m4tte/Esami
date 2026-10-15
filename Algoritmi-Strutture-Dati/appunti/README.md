@@ -28,11 +28,21 @@ Il dettaglio per argomento è in fondo a ogni file. Le richieste d'esame qui sot
 
 ### Scritto
 
-Lo scritto ruota attorno a cinque famiglie di richieste. La prima è la **correttezza**: scrivere o trovare l'invariante di un ciclo e dimostrarne inizializzazione, mantenimento e terminazione, usare l'induzione sui ricorsivi e trovare una misura di terminazione (01). La seconda è la **complessità**: dimostrare f∈O/Ω/Θ(g) con c e n0 o con i limiti, analizzare pseudocodice annidato e risolvere T(n)=aT(n/b)+f con albero di ricorsione o sostituzione (Merge sort, fastExp, slowExp, Quick sort nel caso peggiore), controllando se possibile col Master theorem [INT] (02, 03). La terza sono lower bound e ottimalità: Ω(n log n) per l'ordinamento con gli alberi di decisione, Somma17, Gemelli (03).
+Lo scritto ruota attorno a cinque famiglie di richieste:
+- **correttezza**: scrivere o trovare l'invariante di un ciclo e dimostrarne inizializzazione, mantenimento e terminazione, usare l'induzione sui ricorsivi e trovare una misura di terminazione (01);
+- **complessità**: dimostrare f∈O/Ω/Θ(g) con c e n0 o con i limiti, analizzare pseudocodice annidato e risolvere T(n)=aT(n/b)+f con albero di ricorsione o sostituzione (Merge sort, fastExp, slowExp, Quick sort nel caso peggiore), controllando se possibile col Master theorem [INT] (02, 03);
+- **lower bound e ottimalità**: Ω(n log n) per l'ordinamento con gli alberi di decisione, Somma17, Gemelli (03);
+- **algoritmi da scrivere**: ricerca binaria, alla russa, fastExp iterativo, Kadane, Fast-Jack, DP (Fibonacci e LCS con tabella e frecce), liste ricorsive e iterative (reverse, delete, insert ordinato, union), heapify/insert/extract, BST insert/delete/succ, BFS/DFS, topological sort, Kruskal, Prim e Dijkstra (01, 03, 04, 06, 08, 09, 10);
+- **esecuzioni a mano**: tabelle hash (concatenamento, lineare, quadratico, doppio), BST da una sequenza, insert e delete R-N con tutti i casi, heap e heapsort, DFS temporizzata con d/f e classificazione degli archi, Dijkstra e MST con tabelle, LCS (05, 06, 07, 08, 09, 10, 03).
 
-La quarta sono gli **algoritmi da scrivere**: ricerca binaria, alla russa, fastExp iterativo, Kadane, Fast-Jack, DP (Fibonacci e LCS con tabella e frecce), liste ricorsive e iterative (reverse, delete, insert ordinato, union), heapify/insert/extract, BST insert/delete/succ, BFS/DFS, topological sort, Kruskal, Prim e Dijkstra (01, 03, 04, 06, 08, 09, 10). La quinta sono le **esecuzioni a mano**: tabelle hash (concatenamento, lineare, quadratico, doppio), BST da una sequenza, insert e delete R-N con tutti i casi, heap e heapsort, DFS temporizzata con d/f e classificazione degli archi, Dijkstra e MST con tabelle, LCS (05, 06, 07, 08, 09, 10, 03).
-
-Le dimostrazioni ricorrenti da saper rifare sono: halting; Ω(n log n); costo ammortizzato del raddoppio < 3m; h ≤ 2log2(n+1) per gli R-N; correttezza del topological sort (v.f<u.f); teorema del taglio; correttezza di Dijkstra e perché i pesi negativi la rompono.
+Le dimostrazioni ricorrenti da saper rifare sono:
+- halting;
+- Ω(n log n);
+- costo ammortizzato del raddoppio < 3m;
+- h ≤ 2log2(n+1) per gli R-N;
+- correttezza del topological sort (v.f<u.f);
+- teorema del taglio;
+- correttezza di Dijkstra e perché i pesi negativi la rompono.
 
 ### Orale
 

@@ -8,9 +8,22 @@ Il capitolo spiega perché serve uno scheduler (alternanza di burst CPU e I/O), 
 ## Concetti
 Un processo alterna **CPU burst** e **I/O burst**: il multiprogramming funziona perché mentre un processo attende l'I/O la CPU può servirne un altro. Lo **CPU scheduler** sceglie quale processo della *ready queue* eseguire; il **dispatcher** concretizza la scelta (context switch, passaggio a user mode, salto al punto giusto del programma) e il tempo che impiega si chiama **dispatch latency**.
 
-Le decisioni di scheduling possono avvenire in quattro casi: (1) running->waiting, (2) running->ready, (3) waiting->ready, (4) terminazione. Se si decide solo nei casi 1 e 4 lo scheduling è **nonpreemptive** (il processo rilascia la CPU spontaneamente); se si decide in tutti e 4 è **preemptive**, con il rischio di problemi di consistenza sui dati condivisi e nel kernel.
+Le decisioni di scheduling possono avvenire in quattro casi:
+1. running->waiting;
+2. running->ready;
+3. waiting->ready;
+4. terminazione.
 
-Per confrontare gli algoritmi si usano cinque criteri: la **CPU utilization** (da massimizzare), il **throughput** (processi completati per unità di tempo, da massimizzare), il **turnaround** (dalla sottomissione al completamento, da minimizzare), il **waiting** (somma dei tempi passati nella ready queue, da minimizzare) e il **response** (dalla sottomissione alla prima risposta, da minimizzare). Due relazioni tornano utili negli esercizi: `turnaround = completion - arrival` e `waiting = turnaround - burst` (senza I/O).
+Se si decide solo nei casi 1 e 4 lo scheduling è **nonpreemptive** (il processo rilascia la CPU spontaneamente); se si decide in tutti e 4 è **preemptive**, con il rischio di problemi di consistenza sui dati condivisi e nel kernel.
+
+Per confrontare gli algoritmi si usano cinque criteri:
+- **CPU utilization**: da massimizzare;
+- **throughput**: processi completati per unità di tempo, da massimizzare;
+- **turnaround**: dalla sottomissione al completamento, da minimizzare;
+- **waiting**: somma dei tempi passati nella ready queue, da minimizzare;
+- **response**: dalla sottomissione alla prima risposta, da minimizzare.
+
+Due relazioni tornano utili negli esercizi: `turnaround = completion - arrival` e `waiting = turnaround - burst` (senza I/O).
 
 ## Algoritmi
 **FCFS** è la coda FIFO, nonpreemptive. È semplice ma soffre del *convoy effect*: un processo CPU-bound davanti a tanti I/O-bound li fa aspettare tutti, e il waiting medio dipende molto dall'ordine di arrivo. Esempio della fonte: P1=24, P2=3, P3=3 (arrivo 0). Con ordine P1,P2,P3 i waiting sono 0,24,27 e la media è **17 ms**; con ordine P2,P3,P1 sono 0,3,6 e la media è **3 ms**.
@@ -23,7 +36,10 @@ Lo scheduling a **Priority** assegna la CPU al processo più prioritario (un num
 
 La **Multilevel Queue** divide i processi in code permanenti per tipo (ad esempio foreground con RR e background con FCFS; oppure 5 code: sistema, interattivi, editing, batch, studenti). Tra le code si usa una **priorità fissa** (con rischio di starvation) oppure una **time slice** (ad esempio 80% / 20%). La **Multilevel Feedback Queue** permette invece ai processi di muoversi tra le code: i CPU-bound vengono retrocessi, gli I/O-bound restano in alto e la promozione fa da aging. I parametri di progetto sono il numero di code, l'algoritmo di ciascuna, le regole di promozione e retrocessione e la coda iniziale. Esempio della fonte: Q0 RR q=8, Q1 RR q=16, Q2 FCFS; un nuovo processo entra in Q0, se non finisce in 8 passa in Q1, se non finisce in altri 16 passa in Q2.
 
-Come regola di scelta, per i sistemi batch va bene SJF nonpreemptive (o un semplice FCFS); per gli interattivi RR o multilevel con RR in foreground; per il real-time priorità con preemption.
+Come regola di scelta:
+- sistemi **batch**: SJF nonpreemptive (o un semplice FCFS);
+- sistemi **interattivi**: RR o multilevel con RR in foreground;
+- **real-time**: priorità con preemption.
 
 | Algoritmo | Forza | Debolezza |
 |---|---|---|

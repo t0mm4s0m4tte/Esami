@@ -42,9 +42,15 @@ Un caso di studio di invarianti che si sommano è la catena **DynamicStack -> Dy
 Un'ultima distinzione riguarda gli errori. Si usa `if` per gli scenari leciti che cambiano il flusso (come `abs`), mentre `assert` serve per le condizioni che devono *sempre* essere vere, ossia dove la violazione è un errore del chiamante (come `sqrt` con x>=0). Restituire valori "robusti" (es. pop -> -1) è ambiguo, perché non distingue il risultato dall'errore; le **eccezioni** risolvono il problema (file 06). Un esercizio correlato sugli array "ragged": `ok(a)` controlla `a==null`, `a[i]==null` e `a[i].length < r` prima di verificare la simmetria `a[i][j]==a[j][i]`.
 
 ## 3. Tipo apparente/esatto e binding dinamico (Lez. 14-15)
-Il cuore del polimorfismo in Java sta nella distinzione tra due tipi che una variabile oggetto possiede contemporaneamente. Il **tipo apparente** è quello dichiarato (`Bottle b`) e il compilatore controlla solo quello. Il **tipo vero (esatto)** è quello dell'oggetto creato con `new` (`BottleWithCap`) e la JVM lo usa a runtime.
+Il cuore del polimorfismo in Java sta nella distinzione tra due tipi che una variabile oggetto possiede contemporaneamente:
+- il **tipo apparente** è quello dichiarato (`Bottle b`), e il compilatore controlla solo quello;
+- il **tipo vero (esatto)** è quello dell'oggetto creato con `new` (`BottleWithCap`), e la JVM lo usa a runtime.
 
-Le due fasi rispondono a domande diverse. In compilazione il metodo deve esistere nel tipo apparente. In esecuzione la JVM parte dal tipo vero e risale la gerarchia fino alla versione più specifica del metodo: è il **dynamic binding**, base del polimorfismo per inclusione. Una conseguenza rassicurante: se il codice compila, un'implementazione eseguibile esiste.
+Le due fasi rispondono a domande diverse:
+1. **in compilazione** il metodo deve esistere nel tipo apparente;
+2. **in esecuzione** la JVM parte dal tipo vero e risale la gerarchia fino alla versione più specifica del metodo: è il **dynamic binding**, base del polimorfismo per inclusione.
+
+Una conseguenza rassicurante: se il codice compila, un'implementazione eseguibile esiste.
 
 La relazione di **sottotipo `<:`** è riflessiva, antisimmetrica e transitiva (un ordine parziale). Vale la **sostituibilità**: se C <: D, un C è utilizzabile dove serve un D, ma non il viceversa. Anche i primitivi seguono lo schema, con `int <: double` (upcast implicito, downcast esplicito con troncamento).
 
@@ -93,7 +99,12 @@ Un'interfaccia è il caso limite della classe astratta: dichiara solo cosa si sa
 
 L'ereditarietà multipla di interfacce non crea il "diamond problem": se C implementa I e J con lo stesso `m()`, C deve fornirne la propria versione.
 
-L'interfaccia più importante è `Comparable<T>`, con `int compareTo(T y)`: un risultato **negativo** significa che x precede y, **0** che sono equivalenti, **positivo** che x segue y. Una classe la implementa scrivendo `class C implements Comparable<C>` ("stretta a C"). Integer, Double e String la implementano già (ordine numerico/lessicografico). Una volta definita, abilita `Arrays.sort` e `Arrays.binarySearch`, che **richiede un array già ordinato** secondo il criterio di compareTo. Per Bottle, ad esempio, `compareTo` è `return this.level - b.level;`: conta solo il livello, la capacità è ininfluente.
+L'interfaccia più importante è `Comparable<T>`, con `int compareTo(T y)`:
+- un risultato **negativo** significa che x precede y;
+- **0** che sono equivalenti;
+- **positivo** che x segue y.
+
+Una classe la implementa scrivendo `class C implements Comparable<C>` ("stretta a C"). Integer, Double e String la implementano già (ordine numerico/lessicografico). Una volta definita, abilita `Arrays.sort` e `Arrays.binarySearch`, che **richiede un array già ordinato** secondo il criterio di compareTo. Per Bottle, ad esempio, `compareTo` è `return this.level - b.level;`: conta solo il livello, la capacità è ininfluente.
 
 I **generici vincolati** (bounded) usano Comparable per pretendere che il tipo sia ordinabile: `Tree<T extends Comparable<T>>` (si usa `extends` anche per le interfacce). Senza il vincolo non si potrebbe chiamare `compareTo`; con `Tree<NonOrdinabile>` si ha un errore di compilazione, e `Tree<Contact>` richiede `Contact implements Comparable<Contact>` (compareTo su `name`).
 

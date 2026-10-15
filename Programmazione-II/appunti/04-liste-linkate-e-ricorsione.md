@@ -24,7 +24,9 @@ lista crea_nodo(...dati) {
 L'accesso ai nodi si fa concatenando le frecce: `vrb->campo1`, `vrb->next->campo1`, `vrb->next->next->next == NULL`. Se si va oltre la fine, per esempio `vrb->next->next->next->campo1` su una lista di 3 nodi, il nodo non esiste e si ha un segmentation fault. L'errore opposto è dimenticare `next = NULL` alla creazione di un nodo: si ottiene un "nodo fantasma", dove bit casuali vengono interpretati come un indirizzo.
 
 ## Modificare la testa
-Il passaggio di una lista per valore copia il puntatore, quindi `L = L->next` dentro una funzione modifica solo la copia locale e il chiamante non se ne accorge. Questo è il problema di fondo che spiega perché ogni funzione che può cambiare la testa esiste in due versioni: una che restituisce la nuova testa (v1, per valore, e il chiamante deve assegnare il risultato) e una che riceve l'indirizzo della variabile lista (v2, per riferimento, che modifica direttamente `*L`).
+Il passaggio di una lista per valore copia il puntatore, quindi `L = L->next` dentro una funzione modifica solo la copia locale e il chiamante non se ne accorge. Questo è il problema di fondo che spiega perché ogni funzione che può cambiare la testa esiste in due versioni:
+- **v1, per valore**: restituisce la nuova testa, e il chiamante deve assegnare il risultato;
+- **v2, per riferimento**: riceve l'indirizzo della variabile lista e modifica direttamente `*L`.
 
 ### Cancellazione dalla testa
 L'errore classico è scrivere `vrb = vrb->next;` da solo: il nodo vecchio resta nello heap ma non è più raggiungibile da nessuno, ed è un **memory leak** (errore grave). Il modo corretto è conservare il nodo in una variabile temporanea, far avanzare la testa e solo allora fare `free`.
@@ -98,7 +100,13 @@ int conta2(lista L, int S) {               /* richiamo "in testa" */
 ```
 
 ### Inserzione ordinata (4 casi)
-Inserire un nodo in una lista ordinata richiede di distinguere quattro casi: in testa, in coda (L non ha successore), fra L e L->next, oppure si prosegue con la ricorsione. Nella versione per valore, che restituisce la testa:
+Inserire un nodo in una lista ordinata richiede di distinguere quattro casi:
+1. in testa;
+2. in coda (L non ha successore);
+3. fra L e L->next;
+4. altrimenti si prosegue con la ricorsione.
+
+Nella versione per valore, che restituisce la testa:
 ```c
 lista ins_ord(lista L, lista nodo) {
   if (L)

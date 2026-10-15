@@ -35,11 +35,25 @@ Il parallelismo non è un lusso. I tempi morti di I/O (il disco è circa 10⁶ v
 
 **Esempio** (A=1000, B=2000): T1 sposta 50 da A a B; T2 sposta il 10% di A su B. Eseguite in serie, T1T2 dà A=855, B=2145; T2T1 dà A=850, B=2150 (somma 3000 in entrambi i casi). La storia errata r1(A) r2(A) w2(A) r2(B) w1(A) r1(B) w1(B) w2(B) produce A=950, B=2100, quindi **A+B=3050**: è un *lost update*, perché w1(A) ignora w2(A).
 
-Per ragionare in modo preciso si definisce **storia** (schedulazione) la sequenza delle azioni r_i(X), w_i(X); è seriale se T1 viene eseguita per intero e poi T2. Una storia si considera corretta se equivale a una seriale, e l'equivalenza usata è la **view-equivalenza**: S ~ S' seriale se (1) hanno lo stesso input (se r_i(X) legge il valore iniziale in S lo fa anche in S'); (2) hanno le stesse relazioni lettura-da (se r_i(X) legge da w_j(X) in S, vale lo stesso in S'); (3) hanno lo stesso stato finale (l'ultima w(X) è della stessa transazione). **Corretta = serializzabile**.
+Per ragionare in modo preciso si definisce **storia** (schedulazione) la sequenza delle azioni r_i(X), w_i(X); è seriale se T1 viene eseguita per intero e poi T2. Una storia si considera corretta se equivale a una seriale, e l'equivalenza usata è la **view-equivalenza**: S ~ S' seriale se
+1. hanno lo stesso input (se r_i(X) legge il valore iniziale in S lo fa anche in S');
+2. hanno le stesse relazioni lettura-da (se r_i(X) legge da w_j(X) in S, vale lo stesso in S');
+3. hanno lo stesso stato finale (l'ultima w(X) è della stessa transazione).
 
-Per ottenere storie corrette ci sono due filosofie: l'approccio *ottimistico* presuppone che i conflitti siano rari, verifica al commit e fa rollback se c'è conflitto; quello *pessimistico* previene i conflitti con i lock. Nel mercato prevale il pessimistico.
+**Corretta = serializzabile**.
 
-I **lock** sono di due tipi: `LS(X)` shared (per la lettura), `LX(X)` exclusive (per la scrittura) e `UN(X)` per rilasciare. Letture concorrenti sono innocue, tutto il resto no, e la matrice di compatibilità lo dice:
+Per ottenere storie corrette ci sono due filosofie:
+- l'approccio *ottimistico* presuppone che i conflitti siano rari, verifica al commit e fa rollback se c'è conflitto;
+- quello *pessimistico* previene i conflitti con i lock.
+
+Nel mercato prevale il pessimistico.
+
+I **lock** sono di due tipi, più l'operazione di rilascio:
+- `LS(X)` shared, per la lettura;
+- `LX(X)` exclusive, per la scrittura;
+- `UN(X)` per rilasciare.
+
+Letture concorrenti sono innocue, tutto il resto no, e la matrice di compatibilità lo dice:
 
 | Posseduto \ Richiesto | LS | LX |
 |---|---|---|
@@ -48,7 +62,12 @@ I **lock** sono di due tipi: `LS(X)` shared (per la lettura), `LX(X)` exclusive 
 
 Un lock negato mette la transazione in **WAIT**, con coda **FIFO** (fairness, niente starvation). Un **upgrade** LS→LX è possibile solo se la transazione è l'unica con LS su X.
 
-La regola che rende i lock sufficienti a garantire la correttezza è il **2PL (Two-Phase Locking)**: una fase di crescita in cui si acquisiscono solo lock (nessun unlock), un punto di lock e poi una fase di rilascio in cui si fanno solo unlock (nessun nuovo lock). **Il 2PL garantisce la serializzabilità** delle storie generate.
+La regola che rende i lock sufficienti a garantire la correttezza è il **2PL (Two-Phase Locking)**:
+1. una fase di crescita in cui si acquisiscono solo lock (nessun unlock);
+2. un punto di lock;
+3. una fase di rilascio in cui si fanno solo unlock (nessun nuovo lock).
+
+**Il 2PL garantisce la serializzabilità** delle storie generate.
 
 Resta da scegliere la **granularità** dei lock, che è un compromesso tra concorrenza e overhead:
 - tupla: la più comune, massima concorrenza ma lock table grande;
@@ -58,9 +77,22 @@ Resta da scegliere la **granularità** dei lock, che è un compromesso tra conco
 
 ## 4. Ripristino (Lez. 13)
 
-Il gestore del ripristino deve garantire atomicità e durabilità anche in presenza di guasti. I **guasti** considerati sono: guasto hardware dell'unità centrale (si perde la RAM), crash di sistema (interrompe le transazioni attive), errore di programma o locale (rollback della singola transazione), guasto di periferica (*) ed evento catastrofico (*). Il gestore gestisce tutto **tranne (*)**, per cui servono dump e duplicazione.
+Il gestore del ripristino deve garantire atomicità e durabilità anche in presenza di guasti. I **guasti** considerati sono:
+- guasto hardware dell'unità centrale (si perde la RAM);
+- crash di sistema (interrompe le transazioni attive);
+- errore di programma o locale (rollback della singola transazione);
+- guasto di periferica (*);
+- evento catastrofico (*).
 
-Il perno è la **memoria stabile**, un concetto teorico che si approssima con la duplicazione (log copiato in siti distanti, RAID). Il **log** è un file strettamente sequenziale, in sola aggiunta (append), che registra `<Tj,start>`, `<Tj,X,BS(X),AS(X)>` (Before State e After State di ogni modifica), `<Tj,commit>` e `<Tj,abort>`. Il log è esso stesso una storia serializzabile corretta.
+Il gestore gestisce tutto **tranne (*)**, per cui servono dump e duplicazione.
+
+Il perno è la **memoria stabile**, un concetto teorico che si approssima con la duplicazione (log copiato in siti distanti, RAID). Il **log** è un file strettamente sequenziale, in sola aggiunta (append), che registra:
+- `<Tj,start>`;
+- `<Tj,X,BS(X),AS(X)>` (Before State e After State di ogni modifica);
+- `<Tj,commit>`;
+- `<Tj,abort>`.
+
+Il log è esso stesso una storia serializzabile corretta.
 
 Il meccanismo chiave è il **FORCE LOG**, la scrittura forzata delle pagine di log dal buffer alla memoria stabile **al commit/abort**, prima di confermare all'utente. Se una transazione fallisce si esegue UNDO(Ti) + `<Ti,abort>` + FORCE LOG. Al commit si verificano i vincoli, si scrive `<Ti,commit>` e si fa FORCE LOG.
 
@@ -90,7 +122,14 @@ Rispetto all'ultimo checkpoint con OK, le transazioni si trattano così:
 
 Per il **guasto di periferica** il log non basta, perché è andato perso il disco con i dati. Si fa un **Dump** periodico su memoria stabile; dopo il guasto si esegue il **Restore** dell'ultimo dump e poi il REDO delle committate (LC) dal dump al guasto.
 
-Questi meccanismi sono ciò che giustifica i **vantaggi del DBMS**: integrazione (ER/relazionale) · integrità (vincoli) · consistenza (normalizzazione, ACID, ripristino) · affidabilità (log, checkpoint) · indip. logica (ANSI/SPARC, viste) · indip. fisica (metodi d'accesso, indici) · concorrenza (serializzatore, 2PL).
+Questi meccanismi sono ciò che giustifica i **vantaggi del DBMS**:
+- integrazione (ER/relazionale);
+- integrità (vincoli);
+- consistenza (normalizzazione, ACID, ripristino);
+- affidabilità (log, checkpoint);
+- indipendenza logica (ANSI/SPARC, viste);
+- indipendenza fisica (metodi d'accesso, indici);
+- concorrenza (serializzatore, 2PL).
 
 ## Cose da saper fare all'esame
 - Spiegare ACID e **a quale componente** compete ciascuna proprietà.

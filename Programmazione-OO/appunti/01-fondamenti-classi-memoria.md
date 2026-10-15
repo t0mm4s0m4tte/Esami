@@ -13,14 +13,27 @@ La programmazione orientata agli oggetti nasce per governare la complessità. Un
 
 Per rendere possibile questo ragionamento servono due idee gemelle. L'**astrazione** consiste nell'ignorare i dettagli inessenziali e nel descrivere un componente con un **modello contrattuale** (Meyer): "se mi dai questi input, ti garantisco questo servizio". Il client conosce solo l'interfaccia pubblica. L'**incapsulamento** (information hiding) è l'altra faccia: nascondere il *come* il servizio è realizzato, così che l'implementazione si possa cambiare (un database al posto di un file, una lista al posto di un array) senza toccare i client.
 
-Le classi si organizzano secondo due gerarchie ortogonali: **IS-A** (ereditarietà, struttura delle classi) e **PART-OF** (aggregazione, struttura degli oggetti). In pratica si sceglie la gerarchia delle classi come primaria. Il processo di sviluppo segue tre fasi: **OOA** (analisi dei requisiti e del vocabolario del dominio), **OOD** (progetto di classi e moduli), **OOP** (codifica). Una definizione operativa di OOP richiede tre cose: gli oggetti sono gli elementi logici di base, ogni oggetto è istanza di una classe, le classi sono legate dall'ereditarietà.
+Le classi si organizzano secondo due gerarchie ortogonali: **IS-A** (ereditarietà, struttura delle classi) e **PART-OF** (aggregazione, struttura degli oggetti). In pratica si sceglie la gerarchia delle classi come primaria. Il processo di sviluppo segue tre fasi:
+1. **OOA**: analisi dei requisiti e del vocabolario del dominio;
+2. **OOD**: progetto di classi e moduli;
+3. **OOP**: codifica.
+
+Una definizione operativa di OOP richiede tre cose: gli oggetti sono gli elementi logici di base, ogni oggetto è istanza di una classe, le classi sono legate dall'ereditarietà.
 
 Infine un po' di terminologia che conviene tenere distinta: l'**attributo** è il concetto di modello/progettazione, il **campo** è la variabile che lo realizza nel codice, lo **stato** è l'insieme dei valori dei campi a runtime. Un bug, in questa ottica, è una transizione dello stato verso una configurazione invalida, ed è esattamente ciò che invarianti e incapsulamento (sezioni 3 e 5) servono a impedire.
 
 ## 2. Classe, oggetto, memoria (Lez. 02)
-Una **classe** è un blueprint: elenca attributi e metodi, fissi una volta per tutte. Un **oggetto** è invece, concretamente, un gruppo di dati nello heap che viene raggiunto tramite un indirizzo. Per capire cosa succede a runtime bisogna distinguere tre zone di memoria. Lo **heap** contiene gli oggetti. Lo **stack** contiene i frame dei metodi, cioè le variabili locali, che per gli oggetti sono solo *indirizzi* verso lo heap. L'**area delle classi** contiene i metadati delle classi e le variabili `static`.
+Una **classe** è un blueprint: elenca attributi e metodi, fissi una volta per tutte. Un **oggetto** è invece, concretamente, un gruppo di dati nello heap che viene raggiunto tramite un indirizzo. Per capire cosa succede a runtime bisogna distinguere tre zone di memoria:
+- lo **heap** contiene gli oggetti;
+- lo **stack** contiene i frame dei metodi, cioè le variabili locali, che per gli oggetti sono solo *indirizzi* verso lo heap;
+- l'**area delle classi** contiene i metadati delle classi e le variabili `static`.
 
-L'istruzione `C x = new C();` si legge come tre eventi distinti: (1) la dichiarazione crea la variabile x nello stack; (2) `new` alloca l'oggetto nello heap con valori di default; (3) l'indirizzo dell'oggetto viene memorizzato in x. Da qui discende tutto il resto: due variabili possono contenere lo stesso indirizzo (alias), una variabile può non puntare a nulla.
+L'istruzione `C x = new C();` si legge come tre eventi distinti:
+1. la dichiarazione crea la variabile x nello stack;
+2. `new` alloca l'oggetto nello heap con valori di default;
+3. l'indirizzo dell'oggetto viene memorizzato in x.
+
+Da qui discende tutto il resto: due variabili possono contenere lo stesso indirizzo (alias), una variabile può non puntare a nulla.
 
 Quest'ultimo caso è **null**, un indirizzo degenere uguale per tutte le classi. Accedere a un campo o chiamare un metodo su null produce una `NullPointerException`; si previene con un controllo esplicito come `if (auto != null)`.
 
@@ -66,7 +79,13 @@ int add(int q){ assert q >= 0; int added = Math.min(q, capacity - level); level 
 int remove(int q){ assert q >= 0; int rem = Math.min(q, level); level -= rem; return rem; }
 ```
 
-Su Bottle si costruisce l'esercizio **DieHard**, con metodi statici che operano su istanze. `pour(a,b)` travasa quanto possibile ed è scritta come `b.add(a.remove(b.getCapacity()-b.getLevel()))`; equivalentemente `a.remove(b.add(a.getLevel()))`, perché `add` restituisce quanto ha accettato. La soluzione per ottenere 4 galloni con due bottiglie b3 e b5 è: riempi b5; versa b5 in b3 (restano 3/2); svuota b3; versa ancora (2/0); riempi b5; versa in b3, e b5 contiene 4.
+Su Bottle si costruisce l'esercizio **DieHard**, con metodi statici che operano su istanze. `pour(a,b)` travasa quanto possibile ed è scritta come `b.add(a.remove(b.getCapacity()-b.getLevel()))`; equivalentemente `a.remove(b.add(a.getLevel()))`, perché `add` restituisce quanto ha accettato. La soluzione per ottenere 4 galloni con due bottiglie b3 e b5 è:
+1. riempi b5;
+2. versa b5 in b3 (restano 3/2);
+3. svuota b3;
+4. versa ancora (2/0);
+5. riempi b5;
+6. versa in b3: b5 contiene 4.
 
 La classe **Fraction** applica la stessa disciplina. `simplify()` e `MCD` (algoritmo di Euclide, `private static`) sono privati e vengono invocati dal costruttore e dai setter, così la frazione è sempre ridotta ai minimi termini. L'invariante è den > 0: se il denominatore è negativo si moltiplicano numeratore e denominatore per -1, e c'è `assert den != 0`. L'`equals` usa il prodotto incrociato (`a*d == b*c`), mentre add e multiply restituiscono una **nuova** Fraction invece di modificare quella ricevente.
 

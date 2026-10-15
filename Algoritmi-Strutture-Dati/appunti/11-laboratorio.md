@@ -7,13 +7,23 @@ Lab 01 Git/GitLab; Lab 02 Unit testing (TDD, Unity) e Makefile; Lab 03.1 Doxygen
 
 ## Lab 01 - Git
 
-Git organizza il lavoro in tre aree: la working directory, la staging area (dove si porta ciò che si vuole salvare con `git add`) e il repository (dove si registra con `git commit -m "..."`). Un file può essere untracked oppure tracked, e in quest'ultimo caso unmodified, modified o staged. Il ciclo di lavoro è pull, modifica, add, commit, push: si fa sempre `git pull` prima di cominciare, per partire dall'ultima versione remota.
+Git organizza il lavoro in tre aree: la working directory, la staging area (dove si porta ciò che si vuole salvare con `git add`) e il repository (dove si registra con `git commit -m "..."`). Un file può essere untracked oppure tracked, e in quest'ultimo caso unmodified, modified o staged. Il ciclo di lavoro è:
+1. `git pull`, sempre prima di cominciare, per partire dall'ultima versione remota;
+2. modifica;
+3. `git add`;
+4. `git commit`;
+5. `git push`.
 
 I comandi principali sono `git clone <url>`, `git status`, `git add f`, `git commit -m`, `git log`, `git pull` e `git push`. Per i branch: `git branch <n>` crea, `git checkout <n>` passa al branch, `git merge <n>` (da main) fonde il branch. Il file `.gitignore` (per esempio `out/*.a`, `*.txt`) va committato.
 
 ## Lab 02 - Unit testing e Makefile
 
-I test di unità devono essere **automatici, focalizzati e indipendenti**. Si procede bottom-up, testando prima le unità usate dalle altre; non si usano globali non costanti condivise tra test, e per verificare più unità insieme si scrivono integration test. Il **TDD** impone il ciclo Rosso (scrivere un test che fallisce), Verde (scrivere il codice minimo che lo fa passare), Refactor, con la regola che non si scrive codice senza un test che lo richiede.
+I test di unità devono essere **automatici, focalizzati e indipendenti**. Si procede bottom-up, testando prima le unità usate dalle altre; non si usano globali non costanti condivise tra test, e per verificare più unità insieme si scrivono integration test. Il **TDD** impone un ciclo in tre fasi:
+1. **Rosso**: scrivere un test che fallisce;
+2. **Verde**: scrivere il codice minimo che lo fa passare;
+3. **Refactor**.
+
+La regola è che non si scrive codice senza un test che lo richiede.
 
 In C si usa **Unity**: ci sono `setUp()` e `tearDown()`, le funzioni `test_*`, un `main` con `UNITY_BEGIN()`, `RUN_TEST(f)` e `UNITY_END()`, e le macro `TEST_ASSERT_*(atteso, ottenuto)`. Il caso di studio è SortedArray: create, is_empty, size, add (mantiene l'ordine con una funzione di confronto fornita dall'utente), get(i), free; si estende con il ridimensionamento a raddoppio.
 
@@ -23,7 +33,12 @@ Il **Makefile** automatizza la compilazione. Ha variabili (CC, CFLAGS, SRC_DIR, 
 
 Doxygen genera la documentazione dai commenti: si crea la configurazione con `doxygen -g Doxyfile` e la si esegue con `doxygen Doxyfile`. Le impostazioni usate sono INPUT ./src ./include, FILE_PATTERNS *.h *.c, RECURSIVE YES, EXCLUDE ./test, OUTPUT_DIRECTORY ./docs, GENERATE_HTML YES, GENERATE_LATEX NO, EXTRACT_ALL YES, EXTRACT_STATIC NO. I commenti validi sono `/** ... */`, `/*! ... */`, `/**< ... */` (per il membro che precede), `///` e `//!`, con i tag `@brief`, `@param nome` e `@return`; i commenti Doxygen si scrivono solo negli **header (.h)**.
 
-Nel debug i breakpoint permettono di ispezionare lo stato e controllare il flusso. **Step Over** esegue la riga senza entrare nelle funzioni, **Step Into** entra nella funzione chiamata, **Step Out** esce al chiamante; poi ci sono Riprendi, Pausa, Ferma e Riavvia.
+Nel debug i breakpoint permettono di ispezionare lo stato e controllare il flusso. I comandi di avanzamento sono:
+- **Step Over**: esegue la riga senza entrare nelle funzioni;
+- **Step Into**: entra nella funzione chiamata;
+- **Step Out**: esce al chiamante.
+
+Poi ci sono Riprendi, Pausa, Ferma e Riavvia.
 
 ## Lab 03.2 - HybridSort
 
@@ -51,7 +66,12 @@ L'applicazione è `main_ex2 <input_file> <min_length>`, che trova la parola (sol
 
 La coda di priorità è un **max-heap ternario**: ogni nodo ha fino a 3 figli (left, mid, right) con node(i) ≥ figli. Tutte le operazioni devono essere **sub-lineari**, anche `contains` e `remove`; per questo serve una **hash table ausiliaria** che mappa ogni elemento alla sua posizione nell'array, altrimenti trovare un elemento costerebbe O(n). Esempio con inserimenti A2,B3,C5,D1,E2,F3,G4,H5: la radice è C(5) con figli H(5), G(4), B(3).
 
-L'API (priority_queue.h) comprende `create(f1 confronto, f2 hash)`, `push`, `contains`, `top`, `pop`, `remove`, `size` e `free`. L'applicazione è una simulazione di uno scheduler **non preemptive** con priorità, che legge `tasks.csv` (ID, Start, Length, Priority; già ordinato per Start; priorità maggiore = più urgente). Si accodano i task con Start<=t; se l'esecutore è libero si estrae il massimo e t += Length; se è libero e la coda è vuota t+1; si termina quando tutti i task sono processati. Gli eseguibili sono `main_ex3 <in> <out>` e `test_ex3`, nella cartella `ex3`.
+L'API (priority_queue.h) comprende `create(f1 confronto, f2 hash)`, `push`, `contains`, `top`, `pop`, `remove`, `size` e `free`. L'applicazione è una simulazione di uno scheduler **non preemptive** con priorità, che legge `tasks.csv` (ID, Start, Length, Priority; già ordinato per Start; priorità maggiore = più urgente). A ogni istante t la simulazione:
+1. accoda i task con Start<=t;
+2. se l'esecutore è libero estrae il massimo e fa t += Length;
+3. se è libero e la coda è vuota passa a t+1.
+
+Si termina quando tutti i task sono processati. Gli eseguibili sono `main_ex3 <in> <out>` e `test_ex3`, nella cartella `ex3`.
 
 ## Lab 09 - Grafi sparsi (ex4)
 

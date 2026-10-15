@@ -23,7 +23,12 @@ L'**analisi ammortizzata** usata qui è il metodo dell'aggregazione: costo total
 
 La lista è la struttura complementare all'array: niente accesso diretto, ma inserimenti e cancellazioni locali senza spostare altro. Il modello funzionale ha tre primitive, tutte O(1): **cons(x,L)** crea un nuovo nodo in testa, **head(L)** restituisce l'info del primo nodo e **tail(L)** il suo next (head e tail sono definite solo per liste non vuote). Sopra queste primitive si scrivono con naturalezza algoritmi ricorsivi, e il resto del capitolo è un esercizio su quando conviene la forma ricorsiva e quando quella iterativa.
 
-La **lunghezza** ne è il primo esempio e mostra tre stili: LENGTH-REC (`0` se vuota, altrimenti `1+LENGTH-REC(Tail(L))`, con spazio O(n) per lo stack), LENGTH-TAIL-REC(L,n) con accumulatore, e LENGTH-ITER (while not IsEmpty: L<-Tail(L); n++). Il tempo è sempre O(n); le ultime due versioni usano spazio O(1).
+La **lunghezza** ne è il primo esempio e mostra tre stili:
+- LENGTH-REC: `0` se vuota, altrimenti `1+LENGTH-REC(Tail(L))`, con spazio O(n) per lo stack;
+- LENGTH-TAIL-REC(L,n): con accumulatore;
+- LENGTH-ITER: while not IsEmpty: L<-Tail(L); n++.
+
+Il tempo è sempre O(n); le ultime due versioni usano spazio O(1).
 
 Per le modifiche si ragiona sempre in termini di "ricucire" i puntatori. L'**inserimento in posizione i** è ricorsivo: `if i=1 return CONS(x,L) else L.next <- INSERT(x,i-1,Tail(L)); return L`, costo O(i). La **cancellazione dopo un nodo P**, se si dispone del puntatore, è O(1): `temp<-Tail(P); P.next<-Tail(Tail(P))`. DELETEALL(x,L) elimina tutte le occorrenze: se la lista è vuota restituisce nil; se x=Head(L) restituisce DELETEALL(x,Tail(L)); altrimenti `L.next <- DELETEALL(x,Tail(L)); return L`.
 
@@ -50,7 +55,12 @@ DELETE(x,L): if IsEmpty(L) or x<Head(L) return L; elif x=Head(L) return Tail(L);
 
 L'ordinamento permette anche di fondere due liste in tempo lineare. **UNION(L,M)** è non distruttiva (usa CLONE nei casi base): confronta le teste e, se sono uguali, ne inserisce una sola; costo **O(n+m)**.
 
-Un'applicazione più ambiziosa è il **MERGESORT su liste**, dove la lista rende naturale ciò che sull'array richiede memoria extra. Caso base: lista vuota o con un elemento; altrimenti `M<-SPLIT(L); L<-MERGESORT(L); M<-MERGESORT(M); return MERGE(L,M)`. Per lo SPLIT la soluzione migliore usa **puntatori lento/veloce** (il veloce avanza di 2, il lento di 1), che trova la metà in una sola passata O(n); le alternative sono calcolare la lunghezza e poi percorrere metà lista ("una scansione e mezza") o distribuire i nodi in pari e dispari. MERGE si fa **in-place**, ricucendo i next, in O(n). La ricorrenza è **T(n)=2T(n/2)+O(n)** (nel doc stimata come +2n), quindi **O(n log n)** (Master theorem, caso 2 [INT], vedi file 02).
+Un'applicazione più ambiziosa è il **MERGESORT su liste**, dove la lista rende naturale ciò che sull'array richiede memoria extra. Caso base: lista vuota o con un elemento; altrimenti `M<-SPLIT(L); L<-MERGESORT(L); M<-MERGESORT(M); return MERGE(L,M)`. Per lo SPLIT ci sono tre strategie:
+- **puntatori lento/veloce** (il veloce avanza di 2, il lento di 1), che trova la metà in una sola passata O(n): è la soluzione migliore;
+- calcolare la lunghezza e poi percorrere metà lista ("una scansione e mezza");
+- distribuire i nodi in pari e dispari.
+
+MERGE si fa **in-place**, ricucendo i next, in O(n). La ricorrenza è **T(n)=2T(n/2)+O(n)** (nel doc stimata come +2n), quindi **O(n log n)** (Master theorem, caso 2 [INT], vedi file 02).
 
 ## Pile (LIFO) e code (FIFO)
 

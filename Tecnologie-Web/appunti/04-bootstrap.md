@@ -16,9 +16,19 @@ Fonte: Drive › Terzo anno › Tecnologie Web › Slide Deck - Lab › "02 - Bo
 
 Bootstrap è un **framework front-end**: un insieme di fogli di stile CSS e di codice JavaScript pronti all'uso. Nato nel 2011 dentro Twitter (Mark Otto e Jacob Thornton) per uniformare le interfacce interne, oggi è open source (licenza MIT) e tra i framework CSS più usati. Si usa la versione 5.3; dalla versione 5 non dipende più da jQuery (JavaScript "puro"). L'idea in una frase: Bootstrap definisce centinaia di classi CSS già pronte, e noi invece di scrivere le regole CSS a mano scriviamo l'HTML assegnando le classi giuste.
 
-Perché un framework? Costruire il layout a mano con `display: flex` e `display: grid` funziona, ma in ogni progetto bisogna rifare da zero stili "decenti" per bottoni, input, tabelle e menu, un layout che si adatti a smartphone, tablet e computer (**responsive**), la coerenza di colori, spaziature e bordi tra le pagine, e i comportamenti interattivi ricorrenti (menu a tendina, finestre modali, pannelli che si aprono e chiudono). Bootstrap risolve questi problemi una volta per tutte. L'esempio nelle slide: la stessa pagina HTML con le classi Bootstrap già scritte, con o senza la riga `<link>` del foglio di stile, cambia da spoglia a curata, con circa 90 righe di HTML e **zero righe di CSS** nostro; su smartphone le colonne si impilano da sole.
+Perché un framework? Costruire il layout a mano con `display: flex` e `display: grid` funziona, ma in ogni progetto bisogna rifare da zero:
+- stili "decenti" per bottoni, input, tabelle e menu;
+- un layout che si adatti a smartphone, tablet e computer (**responsive**);
+- la coerenza di colori, spaziature e bordi tra le pagine;
+- i comportamenti interattivi ricorrenti (menu a tendina, finestre modali, pannelli che si aprono e chiudono).
 
-Contiene una parte **CSS** (`bootstrap.min.css`: *Reboot*, che uniforma lo stile di base tra i browser; tipografia; layout con container, griglia e breakpoint; *utility*, classi che impostano una singola proprietà; componenti come bottoni, card, navbar, form, tabelle) e una parte **JavaScript** (`bootstrap.bundle.min.js`: fa funzionare modali, dropdown, accordion, carousel, tooltip; il bundle include **Popper**, la libreria che posiziona menu e tooltip). **Bootstrap Icons** è una libreria separata con oltre 2000 icone vettoriali.
+Bootstrap risolve questi problemi una volta per tutte. L'esempio nelle slide: la stessa pagina HTML con le classi Bootstrap già scritte, con o senza la riga `<link>` del foglio di stile, cambia da spoglia a curata, con circa 90 righe di HTML e **zero righe di CSS** nostro; su smartphone le colonne si impilano da sole.
+
+Contiene due parti:
+- **CSS** (`bootstrap.min.css`): *Reboot*, che uniforma lo stile di base tra i browser; tipografia; layout con container, griglia e breakpoint; *utility*, classi che impostano una singola proprietà; componenti come bottoni, card, navbar, form, tabelle;
+- **JavaScript** (`bootstrap.bundle.min.js`): fa funzionare modali, dropdown, accordion, carousel, tooltip; il bundle include **Popper**, la libreria che posiziona menu e tooltip.
+
+**Bootstrap Icons** è una libreria separata con oltre 2000 icone vettoriali.
 
 ## Installazione
 
@@ -43,15 +53,29 @@ Il modo più semplice è la **CDN** (Content Delivery Network: insieme di server
 
 *Integrazione da fonti esterne (non nelle slide):* la documentazione ufficiale di Bootstrap mette nei tag CDN anche `integrity="sha384-..."` e `crossorigin="anonymous"`. L'attributo `integrity` contiene l'hash atteso del file (**Subresource Integrity**): il browser calcola l'hash di ciò che scarica e lo esegue solo se coincide, così una CDN compromessa non può iniettare codice. `crossorigin="anonymous"` serve perché la verifica per risorse di un altro dominio richiede una richiesta in modalità CORS. L'hash cambia a ogni versione, quindi va aggiornato insieme al numero di versione nell'URL (gli esempi qui sopra, semplificati, li omettono). Vedi anche il riquadro su SOP e CORS nel file 01.
 
-Il **meta viewport** è indispensabile per il responsive: senza, il browser di uno smartphone finge di avere uno schermo largo circa 980 px e poi rimpicciolisce la pagina, quindi le regole responsive non scattano e il testo diventa minuscolo. Alternative alla CDN: **file locali** (si scaricano CSS e JS bundle nel progetto, funziona anche offline), **npm** (`npm install bootstrap`, tipico dei progetti con sistema di build, sarà usato con React), **sorgenti Sass** (permettono di ricompilare Bootstrap con propri colori e dimensioni).
+Il **meta viewport** è indispensabile per il responsive: senza, il browser di uno smartphone finge di avere uno schermo largo circa 980 px e poi rimpicciolisce la pagina, quindi le regole responsive non scattano e il testo diventa minuscolo. Alternative alla CDN:
+- **file locali**: si scaricano CSS e JS bundle nel progetto, funziona anche offline;
+- **npm** (`npm install bootstrap`): tipico dei progetti con sistema di build, sarà usato con React;
+- **sorgenti Sass**: permettono di ricompilare Bootstrap con propri colori e dimensioni.
 
 ## Layout: breakpoint, container, griglia
 
 I **breakpoint** sono le dimensioni di schermo di riferimento: extra small (nessun infisso, da 0), `sm` da 576 px, `md` da 768, `lg` da 992, `xl` da 1200, `xxl` da 1400. Molte classi hanno una versione con l'infisso (`col-md-6`, `d-lg-none`, `mt-sm-3`). Il criterio è **mobile first**: una classe con infisso vale da quella larghezza *in su*, una senza infisso vale sempre. Si progetta prima per lo smartphone e poi si aggiungono le varianti per gli schermi più grandi. Sotto il cofano ogni classe con infisso è definita in una media query, per esempio `@media (min-width: 768px) { .col-md-6 { flex: 0 0 auto; width: 50%; } }`.
 
-Il **container** è il contenitore più esterno: centra il contenuto e gli dà margini laterali. `.container` ha larghezza massima fissa che cresce a ogni breakpoint (540, 720, 960, 1140, 1320 px); `.container-fluid` è sempre al 100%; `.container-md` (e simili) è al 100% fino al breakpoint e poi si comporta come `.container`. Mettere sia la navbar sia il `main` in un `.container` fa sì che lo sfondo della navbar occupi tutta la larghezza mentre il suo contenuto resta allineato con quello della pagina.
+Il **container** è il contenitore più esterno: centra il contenuto e gli dà margini laterali:
+- `.container` ha larghezza massima fissa che cresce a ogni breakpoint (540, 720, 960, 1140, 1320 px);
+- `.container-fluid` è sempre al 100%;
+- `.container-md` (e simili) è al 100% fino al breakpoint e poi si comporta come `.container`.
 
-La **griglia a 12 colonne** ha sempre tre livelli, in quest'ordine: `.container` › `.row` › `.col-*`. Ogni riga è divisa in 12 parti (`col-4` = 4/12 = un terzo). Regole pratiche: dentro una `.row` vanno solo colonne; il contenuto va dentro le colonne; se la somma supera 12 le colonne in eccesso vanno a capo; `.col` senza numero divide lo spazio in parti uguali. Colonne responsive: `col-12 col-md-6 col-lg-3` significa una per riga su smartphone, due da `md`, quattro da `lg`; `col-md-4` + `col-md-8` (sidebar + contenuto) sono impilate sotto `md`.
+Mettere sia la navbar sia il `main` in un `.container` fa sì che lo sfondo della navbar occupi tutta la larghezza mentre il suo contenuto resta allineato con quello della pagina.
+
+La **griglia a 12 colonne** ha sempre tre livelli, in quest'ordine: `.container` › `.row` › `.col-*`. Ogni riga è divisa in 12 parti (`col-4` = 4/12 = un terzo). Regole pratiche:
+- dentro una `.row` vanno solo colonne;
+- il contenuto va dentro le colonne;
+- se la somma supera 12 le colonne in eccesso vanno a capo;
+- `.col` senza numero divide lo spazio in parti uguali.
+
+Colonne responsive: `col-12 col-md-6 col-lg-3` significa una per riga su smartphone, due da `md`, quattro da `lg`; `col-md-4` + `col-md-8` (sidebar + contenuto) sono impilate sotto `md`.
 
 Sotto il cofano la griglia è **flexbox**: `.row { display: flex; flex-wrap: wrap; ... }`, `.col { flex: 1 0 0; }`, `.col-4 { flex: 0 0 auto; width: 33.33%; }`. Lo spazio tra colonne (*gutter*) si ottiene con un padding sulle colonne, e un margine negativo sulla riga lo compensa ai bordi. Usare Bootstrap non significa "non usare CSS" ma usare regole scritte da altri; con gli strumenti per sviluppatori (F12) si vede cosa applica ogni classe.
 
@@ -71,7 +95,11 @@ Le **utility** sono classi che impostano (quasi sempre) una sola proprietà CSS 
 
 ## Componenti
 
-Un **componente** è un elemento di interfaccia già disegnato. Per usarlo: (1) scrivere l'HTML con la struttura prevista (quali elementi dentro quali), (2) assegnare le classi previste. Per esempio una card è un `.card` che contiene un `.card-body`, che contiene `.card-title` e `.card-text`. In pratica nessuno ricorda tutte le classi: si cerca il componente nella documentazione (getbootstrap.com/docs/5.3/components/), si copia l'esempio e lo si adatta.
+Un **componente** è un elemento di interfaccia già disegnato. Per usarlo:
+1. scrivere l'HTML con la struttura prevista (quali elementi dentro quali);
+2. assegnare le classi previste.
+
+Per esempio una card è un `.card` che contiene un `.card-body`, che contiene `.card-title` e `.card-text`. In pratica nessuno ricorda tutte le classi: si cerca il componente nella documentazione (getbootstrap.com/docs/5.3/components/), si copia l'esempio e lo si adatta.
 
 - **Bottoni**: `.btn` + variante `btn-{colore}` o `btn-outline-{colore}`; dimensioni `btn-lg`, `btn-sm`; funziona su `<button>`, `<a>`, `<input>`. **Badge** `badge text-bg-warning`. **Alert** `alert alert-success` con `role="alert"`.
 - **Card**: `card` (riquadro con bordo e angoli arrotondati), `card-img-top` (immagine a filo col bordo superiore), `card-body` (padding per il contenuto), `card-footer` (fascia in fondo, ad es. per azioni), `h-100` (tutte le card di una riga della stessa altezza).
@@ -91,13 +119,33 @@ Esempio di **finestra modale**: un bottone con `data-bs-toggle="modal" data-bs-t
 
 **Modalità scura**: dalla 5.3 basta l'attributo `data-bs-theme="dark"`, sull'intera pagina (`<html>`) o su un singolo componente. Funziona perché tutti i colori di Bootstrap sono variabili CSS (`--bs-body-bg`, `--bs-body-color`...) che cambiano valore quando l'attributo è presente.
 
-**Personalizzare**, in tre modi di crescente profondità: (1) un nostro CSS **caricato dopo** Bootstrap (a parità di specificità vince la regola scritta per ultima, per la cascata); (2) **ridefinire le variabili CSS**, globali in `:root { --bs-body-font-family: ...; --bs-border-radius: .75rem; }` o per singolo componente (`.btn-primary { --bs-btn-bg: #7952b3; --bs-btn-border-color: ...; --bs-btn-hover-bg: ... }`); (3) **ricompilare i sorgenti Sass** cambiando variabili Sass (`$primary`, `$border-radius`, `$font-family-sans-serif`) e importando `bootstrap/scss/bootstrap`; è la soluzione più completa (il cambiamento si propaga a bottoni, alert, badge, link...) ma richiede un passo di compilazione.
+**Personalizzare**, in tre modi di crescente profondità:
+1. un nostro CSS **caricato dopo** Bootstrap (a parità di specificità vince la regola scritta per ultima, per la cascata);
+2. **ridefinire le variabili CSS**, globali in `:root { --bs-body-font-family: ...; --bs-border-radius: .75rem; }` o per singolo componente (`.btn-primary { --bs-btn-bg: #7952b3; --bs-btn-border-color: ...; --bs-btn-hover-bg: ... }`);
+3. **ricompilare i sorgenti Sass** cambiando variabili Sass (`$primary`, `$border-radius`, `$font-family-sans-serif`) e importando `bootstrap/scss/bootstrap`; è la soluzione più completa (il cambiamento si propaga a bottoni, alert, badge, link...) ma richiede un passo di compilazione.
 
 ## Accessibilità, vantaggi e svantaggi
 
-Bootstrap **aiuta** ma non rende accessibile una pagina in automatico. Fa: colori di default con contrasto sufficiente, focus da tastiera ben visibile, componenti JS navigabili da tastiera (Esc chiude una modale), esempi della documentazione con attributi `aria-*`, classe `visually-hidden` (testo letto dagli screen reader ma non visibile). Restano a noi: HTML semantico (`nav`, `main`, `button` invece di un `div` cliccabile), `label` associate ai campi, testi alternativi per immagini e icone, controllo del contrasto quando cambiamo i colori, non usare il colore come unica informazione.
+Bootstrap **aiuta** ma non rende accessibile una pagina in automatico.
+- **Fa**: colori di default con contrasto sufficiente, focus da tastiera ben visibile, componenti JS navigabili da tastiera (Esc chiude una modale), esempi della documentazione con attributi `aria-*`, classe `visually-hidden` (testo letto dagli screen reader ma non visibile).
+- **Restano a noi**: HTML semantico (`nav`, `main`, `button` invece di un `div` cliccabile), `label` associate ai campi, testi alternativi per immagini e icone, controllo del contrasto quando cambiamo i colori, non usare il colore come unica informazione.
 
-**Vantaggi**: velocità (interfaccia gradevole in poco tempo), responsive quasi senza sforzo, coerenza di colori/spaziature/componenti, test su tutti i browser moderni, ottima documentazione e comunità ampia, chi lo conosce può lavorare subito su progetti altrui. **Svantaggi**: siti che si somigliano tutti ("aspetto Bootstrap"), HTML pieno di classi e più lungo da leggere, si carica tutto il CSS anche se se ne usa poco, personalizzazioni profonde richiedono Sass, i passaggi di versione (3 → 4 → 5) hanno rinominato molte classi. Saper scrivere CSS a mano resta indispensabile: per personalizzare, per capire cosa fa il framework e per i casi che non prevede.
+**Vantaggi**:
+- velocità (interfaccia gradevole in poco tempo);
+- responsive quasi senza sforzo;
+- coerenza di colori/spaziature/componenti;
+- test su tutti i browser moderni;
+- ottima documentazione e comunità ampia;
+- chi lo conosce può lavorare subito su progetti altrui.
+
+**Svantaggi**:
+- siti che si somigliano tutti ("aspetto Bootstrap");
+- HTML pieno di classi e più lungo da leggere;
+- si carica tutto il CSS anche se se ne usa poco;
+- personalizzazioni profonde richiedono Sass;
+- i passaggi di versione (3 → 4 → 5) hanno rinominato molte classi.
+
+Saper scrivere CSS a mano resta indispensabile: per personalizzare, per capire cosa fa il framework e per i casi che non prevede.
 
 Esempio del laboratorio, "prima e dopo": un negozio con layout a mano in circa 130 righe di CSS (griglia con aree `header`/`main`/`footer`, sempre 4 colonne anche su smartphone) diventa HTML con classi Bootstrap più circa 20 righe di CSS proprio (font del logo e colore dei bottoni), responsive e con menu, carrello e login interattivi. Corrispondenze: pagina `body` `d-flex flex-column vh-100` con `main` `flex-grow-1 overflow-auto`; griglia prodotti `row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4`; prodotto `card`, `card-img-top`, `card-body`, `card-footer`, `badge`; carrello/login `navbar navbar-expand-md` + `btn`; ricerca `input-group` + icona `bi-search`; nuovi: hamburger, dropdown, offcanvas (carrello), modal (login).
 

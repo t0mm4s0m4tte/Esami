@@ -32,9 +32,17 @@ Abbiamo visto (file 10) che gli endomorfismi più semplici sono quelli diagonali
 
 Dimostrazione (da saper esporre). (⇐) In una base ortonormale di autovettori la matrice è diagonale con elementi reali, quindi hermitiana, e si conclude con la Prop 25.6. (⇒) Caso complesso: gli autovalori sono reali perché, se T(v)=λv con v≠0, λ⟨v,v⟩=⟨T(v),v⟩=⟨v,T(v)⟩=conj(λ)⟨v,v⟩ e ⟨v,v⟩>0 dà λ=conj(λ). La base ortonormale si costruisce per induzione sulla dimensione: per n=1 è banale; per n>1 esiste un autovettore v (teorema fondamentale dell'algebra), Span(v) è T-invariante e quindi anche U=Span(v)^⊥ (Prop 25.10); T|_U è autoaggiunto in dimensione n−1, per ipotesi induttiva ha una base ortonormale di autovettori, e aggiungendo v normalizzato si ha la base di V. Una matrice reale simmetrica S ha quindi sempre autovalori reali (L_S su Cⁿ è autoaggiunto). Caso reale: l'argomento è identico una volta che si è provato che gli autovalori sono reali, e questo segue dal caso precedente applicato alla matrice simmetrica (che è anche hermitiana).
 
-**Corollario 26.2 (versione matriciale).** Per A∈M(n,R) sono equivalenti: (1) A è simmetrica; (2) L_A ha una base ortonormale di autovettori; (3) esiste M **ortogonale** con **ᵗMAM = M⁻¹AM = D diagonale**. Qui la comodità: M⁻¹=ᵗM, nessuna inversione.
+**Corollario 26.2 (versione matriciale).** Per A∈M(n,R) sono equivalenti:
+1. A è simmetrica;
+2. L_A ha una base ortonormale di autovettori;
+3. esiste M **ortogonale** con **ᵗMAM = M⁻¹AM = D diagonale**.
 
-Operativamente, per diagonalizzare una simmetrica A: (a) polinomio caratteristico e autovalori (tutti reali); (b) per ogni autovalore una base dell'autospazio, ortogonalizzata con Gram-Schmidt se la dimensione è ≥2 (autospazi di autovalori diversi sono già ortogonali); (c) normalizzare e mettere i vettori in colonna in M.
+Qui la comodità: M⁻¹=ᵗM, nessuna inversione.
+
+Operativamente, per diagonalizzare una simmetrica A:
+1. polinomio caratteristico e autovalori (tutti reali);
+2. per ogni autovalore una base dell'autospazio, ortogonalizzata con Gram-Schmidt se la dimensione è ≥2 (autospazi di autovalori diversi sono già ortogonali);
+3. normalizzare e mettere i vettori in colonna in M.
 
 **Esempio (26.3).** A=[[3,1],[1,1]] simmetrica ha p=λ²−4λ+2, autovalori 2±√2 e autovettori (1, −1±√2), ortogonali fra loro (1+(√2−1)(−√2−1)=0 [INT, i simboli nell'estrazione sono rovinati]). B=[[3,1],[0,1]] non è simmetrica: gli autovettori (1,0) (λ=3) e (−1,2) (λ=1) hanno ⟨v1,v2⟩=−1≠0, e poiché ogni autovettore è multiplo di uno dei due non è possibile ottenere una base ortonormale di autovettori.
 
@@ -83,13 +91,26 @@ Questa sezione non deriva dalle fonti Buzano/Manno che ho letto, ma è un teorem
 
 Perché funziona, intuitivamente: se q è definita positiva, la sua restrizione ai primi k vettori della base è ancora definita positiva e quindi il suo determinante è >0 (prodotto di autovalori positivi). Il viceversa si prova per induzione completando i quadrati.
 
-**Esempi [INT].** (1) A=[[2,1],[1,3]]: Δ_1=2>0, Δ_2=5>0 ⇒ definita positiva (autovalori (5±√5)/2>0). (2) A=[[1,2],[2,1]]: Δ_2=−3<0 ⇒ non definita, di fatto indefinita (autovalori 3,−1). (3) A=[[2,−1,0],[−1,2,−1],[0,−1,2]]: Δ=2,3,4>0 ⇒ definita positiva (autovalori 2, 2±√2). (4) A=[[-2,1],[1,-3]]: Δ_1=−2<0, Δ_2=5>0 ⇒ definita negativa. (5) Con parametro: A_k=[[1,0,1],[0,2,0],[1,0,k]] ha Δ=1,2,2k−2: definita positiva ⇔ k>1; per k=1 è semidefinita positiva (autovalori 0,2,2); per k<1 è indefinita (Δ_1,Δ_2>0 ma det<0).
+**Esempi [INT].**
+1. A=[[2,1],[1,3]]: Δ_1=2>0, Δ_2=5>0 ⇒ definita positiva (autovalori (5±√5)/2>0).
+2. A=[[1,2],[2,1]]: Δ_2=−3<0 ⇒ non definita, di fatto indefinita (autovalori 3,−1).
+3. A=[[2,−1,0],[−1,2,−1],[0,−1,2]]: Δ=2,3,4>0 ⇒ definita positiva (autovalori 2, 2±√2).
+4. A=[[-2,1],[1,-3]]: Δ_1=−2<0, Δ_2=5>0 ⇒ definita negativa.
+5. Con parametro: A_k=[[1,0,1],[0,2,0],[1,0,k]] ha Δ=1,2,2k−2: definita positiva ⇔ k>1; per k=1 è semidefinita positiva (autovalori 0,2,2); per k<1 è indefinita (Δ_1,Δ_2>0 ma det<0).
 
 Per le forme con parametro (tipico dei compiti) si usa Sylvester o l'analisi dei segni di det e traccia: in dimensione 2, A è definita positiva ⇔ det>0 e traccia>0 (equivalente a Δ_1>0 e Δ_2>0).
 
 ## 7. Cenni alle coniche (Manno 33)
 
-Una **conica** è il luogo in R² di un'equazione a x²+b xy+c y²+d x+e y+f=0. La parte quadratica ax²+bxy+cy² è proprio una forma quadratica, di matrice A_33=[[a, b/2],[b/2, c]]. Il metodo per riconoscerla è: (1) cercare il **centro**, cioè il punto (u,v) che risolve il sistema 2au+bv+d=0, bu+2cv+e=0 (le derivate parziali nulle); la conica è centrale se il sistema è compatibile; (2) traslare l'origine nel centro: x=X+u, y=Y+v elimina i termini lineari e dà aX²+bXY+cY²=−F(u,v); (3) ruotare con una P ortogonale (con det P=1, scambiando eventualmente le colonne) che diagonalizza A_33: nelle nuove coordinate l'equazione è **λ1X̃²+λ2Ỹ²=−F(u,v)**. Gli **assi** sono le rette per il centro con direzione gli autospazi di A_33 (ortogonali fra loro per il teorema spettrale) e i **vertici** sono le intersezioni degli assi con la conica. Segni di λ1,λ2 e di −F(u,v) dicono il tipo: ellisse (λ1,λ2 concordi e concorde a −F), iperbole (λ discordi), caso degenere se −F(u,v)=0.
+Una **conica** è il luogo in R² di un'equazione a x²+b xy+c y²+d x+e y+f=0. La parte quadratica ax²+bxy+cy² è proprio una forma quadratica, di matrice A_33=[[a, b/2],[b/2, c]]. Il metodo per riconoscerla è:
+1. cercare il **centro**, cioè il punto (u,v) che risolve il sistema 2au+bv+d=0, bu+2cv+e=0 (le derivate parziali nulle); la conica è centrale se il sistema è compatibile;
+2. traslare l'origine nel centro: x=X+u, y=Y+v elimina i termini lineari e dà aX²+bXY+cY²=−F(u,v);
+3. ruotare con una P ortogonale (con det P=1, scambiando eventualmente le colonne) che diagonalizza A_33: nelle nuove coordinate l'equazione è **λ1X̃²+λ2Ỹ²=−F(u,v)**.
+
+Gli **assi** sono le rette per il centro con direzione gli autospazi di A_33 (ortogonali fra loro per il teorema spettrale) e i **vertici** sono le intersezioni degli assi con la conica. Segni di λ1,λ2 e di −F(u,v) dicono il tipo:
+- **ellisse**: λ1,λ2 concordi e concordi a −F;
+- **iperbole**: λ discordi;
+- **caso degenere**: −F(u,v)=0.
 
 **Esempio [INT].** 3x²+2xy+3y²−8x−8y+4=0: il centro risolve 6u+2v−8=0, 2u+6v−8=0 ⇒ (1,1); F(1,1)=−4; A_33=[[3,1],[1,3]] ha autovalori 2 (autovettore (−1,1)) e 4 (autovettore (1,1)); nelle coordinate ruotate 2X̃²+4Ỹ²=4, cioè X̃²/2+Ỹ²=1: **ellisse** di centro (1,1), assi lungo (1,1) e (−1,1). Verificato.
 

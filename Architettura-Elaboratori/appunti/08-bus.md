@@ -12,7 +12,12 @@ Fonte: Lezione 08 (Bus).
 ## Definizione
 Il **bus** è l'insieme di linee elettriche che collegano i moduli di un elaboratore (CPU, memoria, I/O), e il **protocollo del bus** è l'insieme di regole che governa la comunicazione sulle sue linee. Esistono bus di sistema (che collegano CPU, memoria e I/O) e bus interni al chip.
 
-Le linee del bus si dividono per funzione. Le linee **dati** determinano, con la loro larghezza, quanti bit si trasferiscono per volta, e quindi influenzano le prestazioni. Le linee **indirizzi** individuano sorgente e destinazione. Le linee **controllo** regolano l'accesso e l'uso delle altre linee. Dal lato della CPU, n piedini di indirizzo permettono di indirizzare 2^n locazioni (valori tipici 16, 20, 32, 64), m piedini di dato trasferiscono una parola di m bit in una operazione, e ci sono poi i piedini di controllo (bus control, interrupt, arbitraggio, coprocessore, stato).
+Le linee del bus si dividono per funzione:
+- le linee **dati** determinano, con la loro larghezza, quanti bit si trasferiscono per volta, e quindi influenzano le prestazioni;
+- le linee **indirizzi** individuano sorgente e destinazione;
+- le linee **controllo** regolano l'accesso e l'uso delle altre linee.
+
+Dal lato della CPU, n piedini di indirizzo permettono di indirizzare 2^n locazioni (valori tipici 16, 20, 32, 64), m piedini di dato trasferiscono una parola di m bit in una operazione, e ci sono poi i piedini di controllo (bus control, interrupt, arbitraggio, coprocessore, stato).
 
 ## Dispositivi
 Sul bus i dispositivi hanno ruoli diversi. Quelli **attivi (master)** possono iniziare un trasferimento e si collegano con un *bus driver*; quelli **passivi (slave)** attendono richieste e si collegano con un *bus receiver*. I dispositivi che possono essere entrambi, come la CPU, usano un *bus transceiver*.

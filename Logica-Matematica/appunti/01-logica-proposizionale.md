@@ -19,9 +19,16 @@ Con k lettere servono 2^k righe, e vale una regola di metodo che costa punti se 
 Il connettivo che crea più confusione è l'implicazione. A→B è falsa soltanto quando A=1 e B=0; se l'antecedente è falso l'implicazione è vera per verità vacua, e non è richiesto alcun nesso causale tra A e B. Tra le altre corrispondenze con il linguaggio naturale conviene ricordare che "ma" e "però" si traducono con ∧, che ∨ è inclusivo (il latino *vel*) e che A⊕B (o esclusivo) equivale a ¬(A↔B). Quando i valori di verità vengono trattati come numeri, i connettivi diventano operazioni aritmetiche: v(¬P)=1-v(P); v(P∧Q)=min; v(P∨Q)=max; v(P→Q)=max{1-v(P),v(Q)}; v(P↔Q)=1-|v(P)-v(Q)|.
 
 ## Equivalenze da sapere a memoria
-Due formule sono equivalenti quando hanno la stessa colonna nella tavola di verità; le equivalenze che seguono servono a riscrivere una formula in una forma più comoda, e si usano di continuo sia qui sia nella formalizzazione. Il gruppo centrale riguarda l'implicazione, che si può sempre eliminare: A→B ≡ ¬A∨B ≡ ¬B→¬A (contronominale), da cui ¬(A→B) ≡ A∧¬B. Le leggi di De Morgan, ¬(A∧B) ≡ ¬A∨¬B e ¬(A∨B) ≡ ¬A∧¬B, dicono come la negazione scambia ∧ e ∨ e permettono di scrivere ciascuno dei due in termini dell'altro: A∧B ≡ ¬(¬A∨¬B) e A∨B ≡ ¬(¬A∧¬B). Valgono poi la distributività in entrambe le direzioni, A∨(B∧C) ≡ (A∨B)∧(A∨C) e A∧(B∨C) ≡ (A∧B)∨(A∧C), e le equivalenze A↔B ≡ (A→B)∧(B→A), (A→B)∧(A→C) ≡ A→(B∧C), ¬¬A ≡ A.
+Due formule sono equivalenti quando hanno la stessa colonna nella tavola di verità; le equivalenze che seguono servono a riscrivere una formula in una forma più comoda, e si usano di continuo sia qui sia nella formalizzazione:
+- **implicazione**, che si può sempre eliminare: A→B ≡ ¬A∨B ≡ ¬B→¬A (contronominale), da cui ¬(A→B) ≡ A∧¬B;
+- **De Morgan**: ¬(A∧B) ≡ ¬A∨¬B e ¬(A∨B) ≡ ¬A∧¬B; dicono come la negazione scambia ∧ e ∨ e permettono di scrivere ciascuno dei due in termini dell'altro: A∧B ≡ ¬(¬A∨¬B) e A∨B ≡ ¬(¬A∧¬B);
+- **distributività** in entrambe le direzioni: A∨(B∧C) ≡ (A∨B)∧(A∨C) e A∧(B∨C) ≡ (A∧B)∨(A∧C);
+- **altre**: A↔B ≡ (A→B)∧(B→A), (A→B)∧(A→C) ≡ A→(B∧C), ¬¬A ≡ A.
 
-Queste riscritture hanno una conseguenza profonda, la **completezza funzionale**: bastano pochi connettivi per esprimere tutti gli altri. Gli insiemi {¬,∨}, {¬,∧} e {¬,→} sono completi, e NAND e NOR lo sono addirittura da soli (¬P ≡ P⊼P; P∧Q ≡ (P⊼Q)⊼(P⊼Q)). Al contrario {¬,↔} e {¬,⊕} NON sono completi. Accanto alle equivalenze si usano alcune regole di inferenza: il modus ponens (P→Q, P ⊧ Q), la legge della disgiunzione (P∨Q, ¬P ⊧ Q) e l'ex falso (P∧¬P ⊧ Q, vacuamente vera perché non esiste interpretazione che renda vere le premesse).
+Queste riscritture hanno una conseguenza profonda, la **completezza funzionale**: bastano pochi connettivi per esprimere tutti gli altri. Gli insiemi {¬,∨}, {¬,∧} e {¬,→} sono completi, e NAND e NOR lo sono addirittura da soli (¬P ≡ P⊼P; P∧Q ≡ (P⊼Q)⊼(P⊼Q)). Al contrario {¬,↔} e {¬,⊕} NON sono completi. Accanto alle equivalenze si usano alcune regole di inferenza:
+- **modus ponens**: P→Q, P ⊧ Q;
+- **legge della disgiunzione**: P∨Q, ¬P ⊧ Q;
+- **ex falso**: P∧¬P ⊧ Q, vacuamente vera perché non esiste interpretazione che renda vere le premesse.
 
 ## Sintassi
 Per ragionare sulle formule in modo rigoroso bisogna prima definirle come oggetti puramente sintattici, cioè stringhe costruite da regole. Si parte da un insieme L non vuoto di lettere proposizionali; l'alfabeto comprende le lettere, i connettivi ¬,∧,∨,→,↔ e le parentesi. L'insieme delle formule Prop(L) si costruisce per stadi: Prop0(L)={(A) | A∈L} contiene le formule atomiche, e Prop(n+1)=Prop(n) ∪ {(¬P)} ∪ {(P□Q)} aggiunge una negazione o un connettivo binario applicati a formule già costruite; Prop(L) è l'unione di tutti gli stadi. Questa costruzione a strati è ciò che rende possibili le dimostrazioni per induzione sulle formule.
@@ -33,12 +40,23 @@ Per analizzare una stringa serve trovarne il connettivo principale, cioè l'ulti
 ## Semantica
 La semantica dà significato alle stringhe. Un'interpretazione è una funzione i: L→{0,1} che assegna un valore a ogni lettera; per composizionalità essa si estende in modo unico a una valutazione i* su tutte le formule, calcolando dalle foglie verso la radice dell'albero. Vale il principio di irrilevanza: i*(P) dipende solo dalle lettere che occorrono in P, e quindi per valutare una formula basta fissare il valore delle sole lettere presenti.
 
-Un'interpretazione i è un **modello** di P (i ⊧ P) quando i*(P)=1. Per un insieme Γ di formule, i ⊧ Γ significa che i soddisfa ogni P∈Γ, il che per Γ finito equivale a soddisfare la congiunzione. È importante notare che soddisfacibilità di ogni singolo elemento non basta a quella dell'insieme: Γ={A,¬A} è insoddisfacibile benché ogni suo elemento sia soddisfacibile. In base alla colonna finale della tavola una formula è una tautologia (⊧P) se è tutta di 1, soddisfacibile se contiene almeno un 1, contraddizione se è tutta di 0. Ogni tautologia è soddisfacibile, ma attenzione a non confondere "non contraddizione" con "tautologia".
+Un'interpretazione i è un **modello** di P (i ⊧ P) quando i*(P)=1. Per un insieme Γ di formule, i ⊧ Γ significa che i soddisfa ogni P∈Γ, il che per Γ finito equivale a soddisfare la congiunzione. È importante notare che soddisfacibilità di ogni singolo elemento non basta a quella dell'insieme: Γ={A,¬A} è insoddisfacibile benché ogni suo elemento sia soddisfacibile. In base alla colonna finale della tavola una formula è:
+- una **tautologia** (⊧P) se è tutta di 1;
+- **soddisfacibile** se contiene almeno un 1;
+- una **contraddizione** se è tutta di 0.
+
+Ogni tautologia è soddisfacibile, ma attenzione a non confondere "non contraddizione" con "tautologia".
 
 ## Conseguenza ed equivalenza
 La conseguenza logica formalizza il ragionamento valido. Γ ⊧ Q vuol dire che ogni interpretazione che rende vere tutte le premesse rende vera anche Q; di conseguenza essa è falsa se e solo se esiste un **controesempio**, cioè un'interpretazione con premesse a 1 e conclusione a 0. È questo il modo più rapido di rispondere negativamente: basta esibirne uno.
 
-Conseguenza, validità e soddisfacibilità sono tre facce della stessa nozione, e i ponti tra di esse sono lo strumento standard delle dimostrazioni. P1..Pn ⊧ Q equivale a ⊧ (P1∧…∧Pn)→Q. Una formula P è valida se e solo se ¬P è insoddisfacibile, ed è soddisfacibile se e solo se ¬P non è valida. Soprattutto, Γ ⊧ Q se e solo se Γ∪{¬Q} è insoddisfacibile: è il metodo per assurdo, che consiste nell'ipotizzare le premesse vere e la conclusione falsa e cercare una contraddizione. Infine P ≡ Q equivale a ⊧ P↔Q, a "P⊧Q e Q⊧P" e all'uguaglianza delle colonne; va tenuta distinta la relazione ≡, che sta tra formule, dal connettivo ↔, che è parte di una formula.
+Conseguenza, validità e soddisfacibilità sono tre facce della stessa nozione, e i ponti tra di esse sono lo strumento standard delle dimostrazioni:
+- P1..Pn ⊧ Q equivale a ⊧ (P1∧…∧Pn)→Q;
+- una formula P è valida se e solo se ¬P è insoddisfacibile, ed è soddisfacibile se e solo se ¬P non è valida;
+- soprattutto, Γ ⊧ Q se e solo se Γ∪{¬Q} è insoddisfacibile: è il metodo per assurdo, che consiste nell'ipotizzare le premesse vere e la conclusione falsa e cercare una contraddizione;
+- P ≡ Q equivale a ⊧ P↔Q, a "P⊧Q e Q⊧P" e all'uguaglianza delle colonne.
+
+Va tenuta distinta la relazione ≡, che sta tra formule, dal connettivo ↔, che è parte di una formula.
 
 ## Esempi svolti (dalle fonti)
 1. ((C→A)∧¬B)→(A∨B): 8 righe, vera ovunque tranne A=B=C=0 (antecedente 1, conseguente 0). Soddisfacibile, non tautologia.

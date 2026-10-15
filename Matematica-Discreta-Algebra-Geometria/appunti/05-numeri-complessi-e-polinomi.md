@@ -23,11 +23,21 @@ R è un **campo** (Prop 1.5, nove proprietà): addizione e moltiplicazione sono 
 
 Poiché x²+1=0 non ha soluzioni reali, si ampliano i reali introducendo un numero i con la sola relazione **i² = -1**: i numeri complessi sono z = a+bi con a,b∈R, dove Re z = a e Im z = b. La somma è (a+bi)+(c+di) = (a+c)+(b+d)i e il prodotto (a+bi)(c+di) = (ac-bd)+(ad+bc)i; ad esempio (7+i)(4-i) = 29-3i. C è un **campo** (le stesse nove proprietà di R) ma **non è ordinato**: in un campo ordinato i² dovrebbe essere ≥0, mentre i²=-1.
 
-Due operazioni caratteristiche sono il coniugio e il modulo. Il **coniugato** z̄ = a-bi è la riflessione rispetto all'asse reale, e z è reale ⇔ z = z̄. Il **modulo** è |z| = √(a²+b²) e vale **z·z̄ = |z|²**; da questa identità segue il metodo per invertire: per z≠0, **z⁻¹ = z̄/|z|²** (moltiplicare numeratore e denominatore per il coniugato). Esempi: (2+i)⁻¹ = (2-i)/5; i⁻¹ = -i. Valgono le proprietà (Es. 2.5): |z|=|z̄|; conj(z+w)=z̄+w̄; conj(zw)=z̄w̄; |z+w| ≤ |z|+|w| (triangolare); |zw|=|z||w|; |z⁻¹| = 1/|z|.
+Due operazioni caratteristiche sono il coniugio e il modulo. Il **coniugato** z̄ = a-bi è la riflessione rispetto all'asse reale, e z è reale ⇔ z = z̄. Il **modulo** è |z| = √(a²+b²) e vale **z·z̄ = |z|²**; da questa identità segue il metodo per invertire: per z≠0, **z⁻¹ = z̄/|z|²** (moltiplicare numeratore e denominatore per il coniugato). Esempi: (2+i)⁻¹ = (2-i)/5; i⁻¹ = -i. Valgono le proprietà (Es. 2.5):
+- |z|=|z̄|;
+- conj(z+w)=z̄+w̄;
+- conj(zw)=z̄w̄;
+- |z+w| ≤ |z|+|w| (triangolare);
+- |zw|=|z||w|;
+- |z⁻¹| = 1/|z|.
 
 Geometricamente a+bi corrisponde al punto (a,b) del **piano complesso**: la somma è la regola del parallelogramma, l'asse reale è R e l'asse immaginario è {bi}.
 
-**Insiemi nel piano** (Es. 2.6): A={Re z>Im z} è il semipiano sotto la bisettrice y=x (cioè x>y); C={|z-2|≤2} è il disco chiuso di centro 2 e raggio 2; B={z+z̄=i}: poiché z+z̄ = 2Re z è reale, non può valere i ⇒ insieme vuoto [enunciato da ricontrollare]; infine z-z̄∈R ⇔ Im z = 0 ⇔ z reale.
+**Insiemi nel piano** (Es. 2.6):
+- A={Re z>Im z} è il semipiano sotto la bisettrice y=x (cioè x>y);
+- C={|z-2|≤2} è il disco chiuso di centro 2 e raggio 2;
+- B={z+z̄=i}: poiché z+z̄ = 2Re z è reale, non può valere i ⇒ insieme vuoto [enunciato da ricontrollare];
+- z-z̄∈R ⇔ Im z = 0 ⇔ z reale.
 
 ## 3. Forma polare e radici
 
@@ -49,7 +59,12 @@ Un polinomio è somma di monomi; ne interessano il grado e la forma normale. Si 
 
 La divisione lega radici e fattori. Una **radice** di p è un a con p(a)=0, e la **Prop 4.2 (Ruffini)** afferma che a è radice di p ⇔ (x-a) | p(x). Dimostrazione: p = q(x-a)+r0, e sostituendo x=a si ottiene p(a)=r0. La **molteplicità** di a è il massimo k con (x-a)^k | p; per esempio x³-2x²+x = x(x-1)² ha la radice 0 di molteplicità 1 e la radice 1 di molteplicità 2. Da Ruffini, per induzione sul grado, segue il **Teo 4.6**: un polinomio di grado n≥1 ha al più n radici contate con molteplicità.
 
-Nel grado 2 con Δ=b²-4ac: se Δ>0 ci sono due radici reali, se Δ=0 una radice doppia -b/2a, se Δ<0 nessuna radice reale. Proprio questa mancanza giustifica l'introduzione dei complessi, sancita dal **teorema fondamentale dell'algebra (Teo 4.8)**: un polinomio a coefficienti complessi di grado n ha **esattamente n radici in C** contate con molteplicità (dimostrazione omessa). Esempi: x²+1 = 0 ⇒ ±i; x²+(1-i)x-i: Δ = (1-i)²+4i = 2i, √(2i) = ±(1+i) ⇒ x = i, -1.
+Nel grado 2 con Δ=b²-4ac:
+- se Δ>0 ci sono due radici reali;
+- se Δ=0 una radice doppia -b/2a;
+- se Δ<0 nessuna radice reale.
+
+Proprio questa mancanza giustifica l'introduzione dei complessi, sancita dal **teorema fondamentale dell'algebra (Teo 4.8)**: un polinomio a coefficienti complessi di grado n ha **esattamente n radici in C** contate con molteplicità (dimostrazione omessa). Esempi: x²+1 = 0 ⇒ ±i; x²+(1-i)x-i: Δ = (1-i)²+4i = 2i, √(2i) = ±(1+i) ⇒ x = i, -1.
 
 Quando i coefficienti sono reali le radici complesse vengono a coppie (**Prop 4.11**): se p∈R[x] e z∈C è radice allora anche z̄ lo è. Dimostrazione: coniugando p(z)=0 e usando che i coefficienti sono reali si ottiene p(z̄)=0. Conseguenza: un polinomio reale di grado dispari ha almeno una radice reale.
 

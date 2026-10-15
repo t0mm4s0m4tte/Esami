@@ -16,7 +16,15 @@ Fonte: Drive › Terzo anno › Tecnologie Web › Slide Deck - TWeb › "02 - P
 
 ## Caratteristiche del linguaggio
 
-JavaScript è **interpretato** (serve un motore di esecuzione), **imperativo e strutturato** (istruzioni, blocchi, condizionali e cicli), **debolmente tipato** (i dati vengono convertiti automaticamente da un tipo all'altro quando serve: il numero 35 può diventare la stringa "35", `false` può diventare 0) e **dinamicamente tipato** (il tipo si stabilisce a run time, non va dichiarato per variabili, parametri, valori di ritorno). È **object-oriented basato su prototipi**: gli oggetti non richiedono classi, sono collezioni di coppie proprietà/valore, e un oggetto può fare da prototipo a un altro, che ne eredita le proprietà; le classi esistono comunque come comodità. Supporta anche aspetti di programmazione **funzionale e dichiarativa**, perché le funzioni sono dati: si creano dinamicamente, si mettono in variabili, si passano come parametri, si assegnano a proprietà di oggetti. Il nome ufficiale è **ECMAScript** (ES), la specifica standard in continua evoluzione; "JavaScript" è l'implementazione di Mozilla. L'ultima edizione che ha cambiato il linguaggio in modo sostanziale è ES2015 (ES6). Un programma scritto per una versione recente si può tradurre automaticamente in una precedente: si chiama **transpilazione**, e permette di usare le feature nuove su browser meno aggiornati. Nel corso non si usa nulla oltre ES2020 (ES11).
+JavaScript è:
+- **interpretato**: serve un motore di esecuzione;
+- **imperativo e strutturato**: istruzioni, blocchi, condizionali e cicli;
+- **debolmente tipato**: i dati vengono convertiti automaticamente da un tipo all'altro quando serve (il numero 35 può diventare la stringa "35", `false` può diventare 0);
+- **dinamicamente tipato**: il tipo si stabilisce a run time, non va dichiarato per variabili, parametri, valori di ritorno;
+- **object-oriented basato su prototipi**: gli oggetti non richiedono classi, sono collezioni di coppie proprietà/valore, e un oggetto può fare da prototipo a un altro, che ne eredita le proprietà; le classi esistono comunque come comodità;
+- **funzionale e dichiarativo** in parte, perché le funzioni sono dati: si creano dinamicamente, si mettono in variabili, si passano come parametri, si assegnano a proprietà di oggetti.
+
+Il nome ufficiale è **ECMAScript** (ES), la specifica standard in continua evoluzione; "JavaScript" è l'implementazione di Mozilla. L'ultima edizione che ha cambiato il linguaggio in modo sostanziale è ES2015 (ES6). Un programma scritto per una versione recente si può tradurre automaticamente in una precedente: si chiama **transpilazione**, e permette di usare le feature nuove su browser meno aggiornati. Nel corso non si usa nulla oltre ES2020 (ES11).
 
 ### Linguaggi compilati e interpretati
 
@@ -26,7 +34,10 @@ Un processore capisce solo linguaggio macchina, troppo di basso livello per prog
 
 Il motore realizza un **ambiente di esecuzione** = programma in esecuzione + memoria; è "vivo", con oggetti e variabili che cambiano. Può includere API per interagire con l'ambiente specifico. Nel browser c'è una sandbox per ogni pagina, che si azzera al ricaricamento. Dentro l'ambiente esiste l'oggetto `document`, cioè il **DOM** della pagina, con la **DOM API** per consultarlo e modificarlo, e la **fetch API** per fare richieste HTTP.
 
-Per collegare uno script a una pagina: `<script type="application/javascript" src="path/myscript.js"></script>`. Se è nel `HEAD` viene eseguito subito, prima che la pagina sia caricata, e se interagisce con `document` questo potrebbe essere ancora vuoto. Per rimandare l'esecuzione ci sono tre modi: mettere lo `SCRIPT` in fondo, dopo `</body>` e prima di `</html>`; usare l'attributo **`defer`**; oppure dichiarare `type="module"`, che dice al browser che il file è il punto d'ingresso di un'applicazione su più moduli (è la soluzione più usata).
+Per collegare uno script a una pagina: `<script type="application/javascript" src="path/myscript.js"></script>`. Se è nel `HEAD` viene eseguito subito, prima che la pagina sia caricata, e se interagisce con `document` questo potrebbe essere ancora vuoto. Per rimandare l'esecuzione ci sono tre modi:
+- mettere lo `SCRIPT` in fondo, dopo `</body>` e prima di `</html>`;
+- usare l'attributo **`defer`**;
+- dichiarare `type="module"`, che dice al browser che il file è il punto d'ingresso di un'applicazione su più moduli (è la soluzione più usata).
 
 ## Tipi, variabili, array, oggetti
 
@@ -55,11 +66,19 @@ Il **costruttore** inizializza le proprietà (`this` è l'oggetto in costruzione
 
 ### Operatori e cicli
 
-Gli operatori sono i soliti, con `+` anche per concatenare stringhe. Siccome JavaScript converte i tipi, `12 == "12"` è vero; per questo esistono `===` e `!==`, che richiedono anche lo stesso tipo (`a === b` equivale a `a == b && typeof a == typeof b`). `==` e `!=` sono fonte di bug (per esempio `undefined` viene convertito a `false` o a 0, mascherando errori di calcolo): è buona prassi usare solo `===` e `!==`. `if`, `while`, `do...while` come in C e Java. Il `for` ha tre varianti: `for(init; condition; increment)` classico; `for (const a of iterabile)` itera sugli elementi di un iterabile (array, string sui caratteri, `Set`, `Map`); `for (const key in oggetto)` itera sui nomi delle proprietà (stringhe).
+Gli operatori sono i soliti, con `+` anche per concatenare stringhe. Siccome JavaScript converte i tipi, `12 == "12"` è vero; per questo esistono `===` e `!==`, che richiedono anche lo stesso tipo (`a === b` equivale a `a == b && typeof a == typeof b`). `==` e `!=` sono fonte di bug (per esempio `undefined` viene convertito a `false` o a 0, mascherando errori di calcolo): è buona prassi usare solo `===` e `!==`. `if`, `while`, `do...while` come in C e Java. Il `for` ha tre varianti:
+- `for(init; condition; increment)`: classico;
+- `for (const a of iterabile)`: itera sugli elementi di un iterabile (array, string sui caratteri, `Set`, `Map`);
+- `for (const key in oggetto)`: itera sui nomi delle proprietà (stringhe).
 
 ## Funzioni, scope, closure
 
-Tre modi di dichiarare una funzione: **named** (`function myfun(x, y) {...}`), **anonymous** (`const f = function (x) {...}`), **arrow** (`const f = (x, y) => {...}` oppure con corpo a espressione `(x, y) => valore`). Non si è obbligati a passare tutti i parametri (i mancanti sono `undefined`), e una funzione senza `return` restituisce `undefined`: un errore di invocazione o un `return` dimenticato può manifestarsi in un punto molto diverso del programma. Si possono dichiarare ovunque e sono visibili nello scope in cui nascono. Bisogna distinguere la **funzione come dato** (il nome senza parentesi) dalla sua **invocazione** (nome con parentesi, che è un'espressione con un risultato): una funzione può essere passata come parametro attuale a un'altra, che la chiama col nome del parametro formale, per esempio `applica("c'era una volta", s => s.split(' ').length)`.
+Tre modi di dichiarare una funzione:
+- **named**: `function myfun(x, y) {...}`;
+- **anonymous**: `const f = function (x) {...}`;
+- **arrow**: `const f = (x, y) => {...}` oppure con corpo a espressione `(x, y) => valore`.
+
+Non si è obbligati a passare tutti i parametri (i mancanti sono `undefined`), e una funzione senza `return` restituisce `undefined`: un errore di invocazione o un `return` dimenticato può manifestarsi in un punto molto diverso del programma. Si possono dichiarare ovunque e sono visibili nello scope in cui nascono. Bisogna distinguere la **funzione come dato** (il nome senza parentesi) dalla sua **invocazione** (nome con parentesi, che è un'espressione con un risultato): una funzione può essere passata come parametro attuale a un'altra, che la chiama col nome del parametro formale, per esempio `applica("c'era una volta", s => s.split(' ').length)`.
 
 Uno **scope** (ambito di visibilità) è creato da ogni blocco tra graffe (if/else, while/for, corpo di funzione, anche un blocco arbitrario). Gli scope si annidano, quello più esterno (l'intero script) è lo scope globale. Variabili e funzioni sono visibili nello scope in cui sono definite e nei suoi discendenti.
 
@@ -67,7 +86,13 @@ La **closure** è il meccanismo per cui le variabili di uno scope sopravvivono a
 
 ### Array e programmazione dichiarativa
 
-Siccome le funzioni si possono passare, si può scrivere in stile **dichiarativo**: si dice *cosa* si vuole ottenere, non *come*. Invece di un ciclo `for` con `push`, `const quadrati = numeri.map(x => x * x);`. Altri metodi: `forEach(fun)` (esegue `fun` per ogni elemento, ignorando il ritorno), `find(f)` (primo elemento per cui `f` è true; c'è `findLast`), `findIndex(f)` (la posizione, `-1` se nessuno; c'è `findLastIndex`), `every(f)` (true se `f` è vera per tutti), `some(f)` (true se vera per almeno uno) e `reduce(accumulatore, valoreIniziale)`, che accumula i valori in un unico risultato: l'accumulatore è una funzione `(accumulato, prossimo) => ...`, e `numeri.reduce((somma, v) => somma + v, 0)` calcola la somma.
+Siccome le funzioni si possono passare, si può scrivere in stile **dichiarativo**: si dice *cosa* si vuole ottenere, non *come*. Invece di un ciclo `for` con `push`, `const quadrati = numeri.map(x => x * x);`. Altri metodi:
+- `forEach(fun)`: esegue `fun` per ogni elemento, ignorando il ritorno;
+- `find(f)`: primo elemento per cui `f` è true (c'è `findLast`);
+- `findIndex(f)`: la posizione, `-1` se nessuno (c'è `findLastIndex`);
+- `every(f)`: true se `f` è vera per tutti;
+- `some(f)`: true se vera per almeno uno;
+- `reduce(accumulatore, valoreIniziale)`: accumula i valori in un unico risultato; l'accumulatore è una funzione `(accumulato, prossimo) => ...`, e `numeri.reduce((somma, v) => somma + v, 0)` calcola la somma.
 
 ## Moduli
 
@@ -88,17 +113,32 @@ Il termine **interfaccia** indica il "fronte esterno" di un servizio: la **UI** 
 
 La gerarchia delle interfacce, in breve: `EventTarget` è alla base; `Node` la estende (e `Window` è un `EventTarget`); da `Node` derivano `Document`, `DocumentFragment`, `Element`, `Attr`, `CharacterData` (da cui `Text` e `Comment`); da `Element` deriva `HTMLElement`, che ha le specializzazioni `HTMLDivElement`, `HTMLInputElement`, `HTMLSelectElement`, `HTMLParagraphElement`, `HTMLHeadingElement`, `HTMLFormElement`, `HTMLImageElement`, ...
 
-Le interazioni con il DOM sono di tre tipi: **navigazione/attraversamento** (trovare elementi e leggerne le caratteristiche, per lo più con `Element`), **modifica** (aggiungere, togliere, spostare elementi, cambiare classi e attributi, sempre per lo più con `Element`), **gestione degli eventi** (registrare listener, con `EventTarget`). In "vanilla JavaScript" il ciclo di base di una UI è: (1) trovare nel DOM gli elementi su cui intervenire, (2) registrare su di essi dei listener, (3) quando l'evento si verifica, modificare opportunamente il DOM.
+Le interazioni con il DOM sono di tre tipi:
+- **navigazione/attraversamento**: trovare elementi e leggerne le caratteristiche, per lo più con `Element`;
+- **modifica**: aggiungere, togliere, spostare elementi, cambiare classi e attributi, sempre per lo più con `Element`;
+- **gestione degli eventi**: registrare listener, con `EventTarget`.
+
+In "vanilla JavaScript" il ciclo di base di una UI è:
+1. trovare nel DOM gli elementi su cui intervenire;
+2. registrare su di essi dei listener;
+3. quando l'evento si verifica, modificare opportunamente il DOM.
 
 ### Navigare il DOM
 
-Per tipo, classe, id (metodi di `Element` e `Document`): `getElementById(id)` (un elemento o `null`), `getElementsByTagName(tag)` e `getElementsByClassName(cls)` (`HTMLCollection`). Da `document`: `document.documentElement` (radice), `document.head`, `document.body`. Da un nodo: `node.childNodes` (`NodeList`, tutti i figli anche non elemento), `node.parentElement` (l'elemento genitore, `null` se manca o non è un elemento), `node.parentNode` (il nodo genitore di qualunque tipo); da un elemento: `element.children` (`HTMLCollection` dei soli figli elemento). Per selettore CSS: `querySelector(sel)` (primo corrispondente o `null`), `querySelectorAll(sel)` (`NodeList` **statica**) da `document` o da un elemento (ricerca discendente); `closest(sel)` risale verso la radice e trova il primo antenato (o l'elemento stesso) che corrisponde, o `null`.
+- **Per tipo, classe, id** (metodi di `Element` e `Document`): `getElementById(id)` (un elemento o `null`), `getElementsByTagName(tag)` e `getElementsByClassName(cls)` (`HTMLCollection`).
+- **Da `document`**: `document.documentElement` (radice), `document.head`, `document.body`.
+- **Da un nodo**: `node.childNodes` (`NodeList`, tutti i figli anche non elemento), `node.parentElement` (l'elemento genitore, `null` se manca o non è un elemento), `node.parentNode` (il nodo genitore di qualunque tipo); da un elemento: `element.children` (`HTMLCollection` dei soli figli elemento).
+- **Per selettore CSS**: `querySelector(sel)` (primo corrispondente o `null`), `querySelectorAll(sel)` (`NodeList` **statica**) da `document` o da un elemento (ricerca discendente); `closest(sel)` risale verso la radice e trova il primo antenato (o l'elemento stesso) che corrisponde, o `null`.
 
 `HTMLCollection` e `NodeList` sono collezioni *array-like* ma **non array**: non si possono usare i metodi di `Array`, ma si può ciclare con `for` tradizionale e `for..of`. La differenza cruciale è **live vs statica**: le collezioni ottenute con ricerca per tag/id/classe e con le proprietà di attraversamento sono **live** (si aggiornano se il DOM cambia); quelle di `querySelectorAll` sono **statiche** (per aggiornarle bisogna rifare la query). Con `Array.from(coll)` le si trasferisce in un array, che però è sempre statico.
 
 ### Modificare il DOM
 
-Modifica *bulk*: `element.innerText` e `element.innerHTML` (contenuto come testo o come HTML; assegnarli sostituisce l'intero sottoalbero). Creazione: `document.createElement(tag)` crea l'elemento ma **non** lo aggiunge al DOM. Rimozione: `element.remove()`. L'aggiunta "ortodossa" usa `insertAdjacentElement(where, anElem)`, `insertAdjacentHTML(where, htmlString)`, `insertAdjacentText(where, textString)`. Se `anElem` era già nel DOM viene **spostato** con tutto il sottoalbero. Il parametro `where` è una di queste stringhe, relative all'elemento su cui si chiama il metodo: `beforebegin` (fratello predecessore, prima del tag di apertura), `afterbegin` (primo figlio), `beforeend` (ultimo figlio), `afterend` (fratello successore, dopo il tag di chiusura).
+Modifica *bulk*: `element.innerText` e `element.innerHTML` (contenuto come testo o come HTML; assegnarli sostituisce l'intero sottoalbero). Creazione: `document.createElement(tag)` crea l'elemento ma **non** lo aggiunge al DOM. Rimozione: `element.remove()`. L'aggiunta "ortodossa" usa `insertAdjacentElement(where, anElem)`, `insertAdjacentHTML(where, htmlString)`, `insertAdjacentText(where, textString)`. Se `anElem` era già nel DOM viene **spostato** con tutto il sottoalbero. Il parametro `where` è una di queste stringhe, relative all'elemento su cui si chiama il metodo:
+- `beforebegin`: fratello predecessore, prima del tag di apertura;
+- `afterbegin`: primo figlio;
+- `beforeend`: ultimo figlio;
+- `afterend`: fratello successore, dopo il tag di chiusura.
 
 Classi e attributi: `element.classList.add(c)`, `.remove(c)`, `.toggle(c)`, e un metodo per sapere se la classe c'è; cambiare le classi cambia le regole di stile applicate, quindi è un modo molto efficace di ottenere interattività (far apparire/scomparire elementi, evidenziarli, spostarli). Per gli attributi `getAttribute(nome)` (restituisce una stringa) e `setAttribute(nome, valore)`.
 
@@ -106,7 +146,14 @@ Classi e attributi: `element.classList.add(c)`, `.remove(c)`, `.toggle(c)`, e un
 
 L'ambiente JavaScript interagisce con il mondo esterno tramite **eventi**, messi in una coda e consumati da un **singolo thread** (*asynchronous single-thread event loop*). Gli eventi possono essere **esogeni** (generati spontaneamente da agenti esterni, come l'utente: imprevedibili) o **endogeni** (conseguenza di una richiesta fatta dall'applicazione: si può prevedere con ragionevole certezza che arriveranno). Perché un evento venga gestito, l'ambiente deve conoscere la funzione che risponde: si chiama **listener** per gli esogeni (sta in ascolto e risponde ogni volta) e **callback** per gli endogeni (indicata all'avvio della richiesta, richiamata a completamento). La logica è la stessa: associare a un tipo di evento una funzione. Poiché c'è un solo thread, un'elaborazione lunga **blocca tutta l'applicazione**, perciò le operazioni time-consuming (richieste HTTP, scritture nel DB interno al browser) sono **asincrone**: l'istruzione che le avvia non si blocca ad aspettare il risultato, ma richiede la callback da invocare al termine. Eccezione: i Web Workers, thread paralleli per compiti che non toccano il DOM.
 
-Eventi tipici del DOM: del mouse (`click`, `mouseenter`, `mouseleave`, `mouseout`, `mouseover`, `mousedown`, `mouseup`, `mousemove`; sui touch screen gli eventi touch si possono gestire a parte o assimilare), della tastiera (`focus`, `blur`, `keydown`, `keyup`), dei form (`submit`, `reset`), di `document` (`scroll`) e di `window` (`resize`). Per la maggior parte delle app bastano gli eventi del mouse.
+Eventi tipici del DOM:
+- del mouse: `click`, `mouseenter`, `mouseleave`, `mouseout`, `mouseover`, `mousedown`, `mouseup`, `mousemove` (sui touch screen gli eventi touch si possono gestire a parte o assimilare);
+- della tastiera: `focus`, `blur`, `keydown`, `keyup`;
+- dei form: `submit`, `reset`;
+- di `document`: `scroll`;
+- di `window`: `resize`.
+
+Per la maggior parte delle app bastano gli eventi del mouse.
 
 Si registra un listener con `domObj.addEventListener(nomeEvento, listener)`; `listener` è una funzione che riceve un oggetto evento (con le informazioni dettagliate; le interfacce sono `Event`, `MouseEvent`, `KeyboardEvent`, `FocusEvent`, ...). Si toglie con `removeEventListener(nomeEvento, listener)`.
 
@@ -118,7 +165,10 @@ In realtà l'evento arriva al target *scendendo* l'albero (fase di **capturing**
 
 ## Prototipi, costruttori, classi, `this`
 
-In JavaScript ogni oggetto (tranne `Object.prototype`) ha un **prototipo**, un altro oggetto di cui eredita le proprietà. Gli oggetti primordiali sono la funzione `Object` (invocata implicitamente ogni volta che si crea un oggetto) e l'oggetto `Object.prototype`, prototipo di default di tutti gli oggetti (non è strano che `Object` abbia proprietà: le funzioni sono oggetti). Se si legge una proprietà che l'oggetto non ha, il motore la cerca nel prototipo, poi nel prototipo del prototipo e così via lungo la **prototype chain** fino a `Object.prototype`. Invece in **scrittura** il prototipo è ignorato: se la proprietà non esiste nell'oggetto stesso, viene aggiunta lì; se il prototipo ne aveva una con lo stesso nome si ha **overriding** (la locale nasconde quella ereditata, gli altri eredi continuano a condividere quella del prototipo). Si accede al prototipo con `oggetto.__proto__`; modificare il prototipo cambia tutti gli oggetti che ne ereditano (se cancello `abbaia` dal prototipo `fido`, anche `snoopy` e `cucciolo` la perdono; aggiungere qualcosa a `Object.prototype` la dà a tutti gli oggetti dell'app: "a nostro rischio e pericolo"). Per limitare le modifiche: `Object.preventExtensions(o)` (niente nuove proprietà o cambio di prototipo), `Object.seal(o)` (in più non si possono perdere proprietà), `Object.freeze(o)` (in più i valori non si possono cambiare: sola lettura).
+In JavaScript ogni oggetto (tranne `Object.prototype`) ha un **prototipo**, un altro oggetto di cui eredita le proprietà. Gli oggetti primordiali sono la funzione `Object` (invocata implicitamente ogni volta che si crea un oggetto) e l'oggetto `Object.prototype`, prototipo di default di tutti gli oggetti (non è strano che `Object` abbia proprietà: le funzioni sono oggetti). Se si legge una proprietà che l'oggetto non ha, il motore la cerca nel prototipo, poi nel prototipo del prototipo e così via lungo la **prototype chain** fino a `Object.prototype`. Invece in **scrittura** il prototipo è ignorato: se la proprietà non esiste nell'oggetto stesso, viene aggiunta lì; se il prototipo ne aveva una con lo stesso nome si ha **overriding** (la locale nasconde quella ereditata, gli altri eredi continuano a condividere quella del prototipo). Si accede al prototipo con `oggetto.__proto__`; modificare il prototipo cambia tutti gli oggetti che ne ereditano (se cancello `abbaia` dal prototipo `fido`, anche `snoopy` e `cucciolo` la perdono; aggiungere qualcosa a `Object.prototype` la dà a tutti gli oggetti dell'app: "a nostro rischio e pericolo"). Per limitare le modifiche, in ordine di restrizione crescente:
+- `Object.preventExtensions(o)`: niente nuove proprietà o cambio di prototipo;
+- `Object.seal(o)`: in più non si possono perdere proprietà;
+- `Object.freeze(o)`: in più i valori non si possono cambiare (sola lettura).
 
 Per creare un oggetto da un prototipo: `const snoopy = Object.create(fido);` e poi si assegnano proprietà proprie o in overriding. Per esplorare: `Object.keys(o)` dà le proprietà proprie; `for (key in o)` itera su tutte le chiavi valide, **incluse** quelle della prototype chain ma escluse quelle di sistema (come quelle di `Object.prototype`); `o.hasOwnProperty("x")` dice se `x` è definita nell'oggetto stesso (false se assente o ereditata).
 
@@ -139,7 +189,12 @@ Cane.prototype.abbaia = function() {};
 const fido = new Cane("Fido");
 ```
 
-`new Fun(...)` crea un oggetto prototipo in `Fun.prototype`, crea il nuovo oggetto `x` con prototipo `Fun.prototype` e fa il binding di `this` a `x`. Quindi tutti gli oggetti creati con lo stesso costruttore condividono il prototipo: due oggetti sono della stessa **classe** se creati dallo stesso costruttore, e i metodi si assegnano alla "classe" aggiungendoli al prototipo (le proprietà sono dell'oggetto, con valori propri, non del prototipo). Il costrutto `class` è proprio questo "sotto il cofano": la classe è un costruttore, e i metodi dichiarati dentro vanno al prototipo del costruttore. Con `extends` la catena è: l'istanza → `Beagle.prototype` → `Cane.prototype` → `Object.prototype`.
+`new Fun(...)`:
+1. crea un oggetto prototipo in `Fun.prototype`;
+2. crea il nuovo oggetto `x` con prototipo `Fun.prototype`;
+3. fa il binding di `this` a `x`.
+
+Quindi tutti gli oggetti creati con lo stesso costruttore condividono il prototipo: due oggetti sono della stessa **classe** se creati dallo stesso costruttore, e i metodi si assegnano alla "classe" aggiungendoli al prototipo (le proprietà sono dell'oggetto, con valori propri, non del prototipo). Il costrutto `class` è proprio questo "sotto il cofano": la classe è un costruttore, e i metodi dichiarati dentro vanno al prototipo del costruttore. Con `extends` la catena è: l'istanza → `Beagle.prototype` → `Cane.prototype` → `Object.prototype`.
 
 ## Asincronia oltre le callback: Promise, async/await, fetch
 
@@ -187,7 +242,14 @@ Il compilatore `tsc` è uno script JavaScript contenuto nel package e si lancia 
 } }
 ```
 
-`target` è la versione di JavaScript prodotta in output (si usa `es2020`). `module`: prima di `import`/`export` ES, Node.js aveva un proprio sistema di moduli, "CommonJS"; per il browser e la sintassi ES si indica `es2015` (la versione in cui import/export sono stati introdotti). `esModuleInterop` serve per l'interoperabilità tra i due sistemi (conta solo se si programma per Node con sintassi ES). `forceConsistentCasingInFileNames` segnala import dello stesso modulo con maiuscole/minuscole incoerenti (problema fra sistemi operativi che distinguono o no). `strict` applica più severità nei tipi. `skipLibCheck` salta la verifica dei tipi nelle librerie. `outDir` indica dove mettere i `.js` generati.
+Le opzioni significano:
+- `target`: la versione di JavaScript prodotta in output (si usa `es2020`);
+- `module`: prima di `import`/`export` ES, Node.js aveva un proprio sistema di moduli, "CommonJS"; per il browser e la sintassi ES si indica `es2015` (la versione in cui import/export sono stati introdotti);
+- `esModuleInterop`: interoperabilità tra i due sistemi (conta solo se si programma per Node con sintassi ES);
+- `forceConsistentCasingInFileNames`: segnala import dello stesso modulo con maiuscole/minuscole incoerenti (problema fra sistemi operativi che distinguono o no);
+- `strict`: più severità nei tipi;
+- `skipLibCheck`: salta la verifica dei tipi nelle librerie;
+- `outDir`: dove mettere i `.js` generati.
 
 Organizzazione: i sorgenti TypeScript in una cartella `src`; il compilatore li trova da sé e replica la loro struttura di sottocartelle in `scripts` (`outDir`), con i `.js` al posto dei `.ts`. Le pagine HTML importano gli script da `scripts`: è questa la cartella da pubblicare su un web server. Per collaborare (es. via GitLab) basta `src`, perché `scripts` si rigenera compilando. Compilare: `npx tsc`.
 

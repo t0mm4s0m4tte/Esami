@@ -15,9 +15,16 @@ Quanto segue oltre il §1 è **teoria standard ricostruita (non estratta dalle f
 
 ## 1. Divisibilità (Mori 4.1-4.3)
 
-L'aritmetica degli interi ruota attorno alla relazione di divisibilità: a divide b (a | b) se esiste k∈Z con b = ka. Per esempio -4 | 20 mentre 3 ∤ 10. Alcuni casi limite vanno ricordati: ogni n divide 0 (0 = n·0), 0 divide solo 0, e gli invertibili ±1 dividono tutto e sono gli unici a farlo; in (Z,·) gli invertibili sono infatti solo ±1 (Mori, cap. 2 e 4). In Z l'addizione ha tutti gli elementi invertibili (l'opposto), mentre la moltiplicazione ha come invertibili solo ±1: è questa asimmetria a rendere interessante lo studio dei divisori.
+L'aritmetica degli interi ruota attorno alla relazione di divisibilità: a divide b (a | b) se esiste k∈Z con b = ka. Per esempio -4 | 20 mentre 3 ∤ 10. Alcuni casi limite vanno ricordati:
+- ogni n divide 0 (0 = n·0);
+- 0 divide solo 0;
+- gli invertibili ±1 dividono tutto e sono gli unici a farlo.
 
-La **Prop 4.2** dice come la divisibilità si comporta rispetto alla somma: se s = a+b, (1) un divisore comune di a e b divide s, e (2) un divisore di s e di uno degli addendi divide anche l'altro (perché b = s-a).
+In (Z,·) gli invertibili sono infatti solo ±1 (Mori, cap. 2 e 4). In Z l'addizione ha tutti gli elementi invertibili (l'opposto), mentre la moltiplicazione ha come invertibili solo ±1: è questa asimmetria a rendere interessante lo studio dei divisori.
+
+La **Prop 4.2** dice come la divisibilità si comporta rispetto alla somma: se s = a+b,
+1. un divisore comune di a e b divide s;
+2. un divisore di s e di uno degli addendi divide anche l'altro (perché b = s-a).
 
 Un intero n ∉ {0,±1} è **irriducibile** (Def 4.3) se n=ab implica che uno fra a e b è invertibile (±1). Mori distingue questa nozione dalla definizione di "primo" (n primo se n | ab ⇒ n|a oppure n|b); in Z le due nozioni sono equivalenti. [DA VERIFICARE la definizione esatta usata da Mori per "primo".]
 
@@ -43,7 +50,12 @@ Le operazioni si definiscono sulle classi tramite i rappresentanti, [a]+[b] = [a
 
 ## 5. Z_n*, Eulero, equazioni, CRT [DA VERIFICARE]
 
-Quali classi di Z_n si possono invertire? Una classe [a] è **invertibile ⇔ MCD(a,n)=1**, e l'inverso si trova con Bézout (da ax + ny = 1 segue a⁻¹ ≡ x). L'insieme Z_n* degli invertibili è un gruppo moltiplicativo di ordine **φ(n)**, dove la funzione di Eulero φ(n) conta i k∈[1,n] coprimi con n. Valgono φ(p) = p-1, φ(p^k) = p^k - p^(k-1) e φ(mn)=φ(m)φ(n) se MCD(m,n)=1. Esempi: φ(12)=4 (Z_12* = {1,5,7,11}), φ(36)=12, φ(35)=24, φ(360)=96.
+Quali classi di Z_n si possono invertire? Una classe [a] è **invertibile ⇔ MCD(a,n)=1**, e l'inverso si trova con Bézout (da ax + ny = 1 segue a⁻¹ ≡ x). L'insieme Z_n* degli invertibili è un gruppo moltiplicativo di ordine **φ(n)**, dove la funzione di Eulero φ(n) conta i k∈[1,n] coprimi con n. Valgono:
+- φ(p) = p-1;
+- φ(p^k) = p^k - p^(k-1);
+- φ(mn)=φ(m)φ(n) se MCD(m,n)=1.
+
+Esempi: φ(12)=4 (Z_12* = {1,5,7,11}), φ(36)=12, φ(35)=24, φ(360)=96.
 
 Due teoremi permettono di semplificare le potenze modulari. Il **teorema di Eulero**: se MCD(a,n)=1 allora a^φ(n) ≡ 1 (mod n). Il **piccolo teorema di Fermat** ne è il caso particolare n=p: se p è primo e p∤a, a^(p-1) ≡ 1 (mod p) (e per ogni a, a^p ≡ a). Entrambi discendono dal teorema di Lagrange applicato al gruppo Z_n* (vedi file 04).
 

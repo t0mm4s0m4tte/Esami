@@ -26,13 +26,33 @@ Come scelta pratica, con carico pesante conviene SCAN/C-SCAN; come default gener
 Un dispositivo si collega al sistema tramite una **porta** o un **bus** (PCI/PCIe) e un **controller/host adapter**, che può avere processore e memoria propri. Il controller espone registri: data-in, data-out, status, control. La CPU li raggiunge con **istruzioni I/O dirette** oppure con **memory-mapped I/O**, in cui i registri stanno nello spazio di indirizzamento e si usano normali load/store (tipico per la grafica).
 
 ## Meccanismi di trasferimento
-Ci sono tre modi di far dialogare CPU e dispositivo, e la scelta dipende dalla velocità del dispositivo e dal volume di dati. Con il **polling** (busy waiting) la CPU legge il *busy bit* finché vale 0, scrive comando e dati e imposta *command-ready*; il controller mette busy=1, esegue, poi azzera busy e command-ready. È ragionevole solo per dispositivi molto veloci. Con gli **interrupt** il dispositivo segnala sulla *interrupt-request line* e la CPU salta all'handler tramite il vettore degli interrupt (interrupt chaining, mascherabilità, priorità); il costo è il context switch. Nel vettore Intel Pentium, 0 è la divisione per zero, 14 il page fault e 32-255 sono gli interrupt mascherabili. Per i grandi volumi di dati si usa il **DMA**: il driver scrive un blocco di comandi DMA (sorgente, destinazione, byte) e il controller DMA trasferisce direttamente in RAM (bus mastering, **cycle stealing**), generando **un solo interrupt** a fine trasferimento.
+Ci sono tre modi di far dialogare CPU e dispositivo, e la scelta dipende dalla velocità del dispositivo e dal volume di dati:
+- **polling** (busy waiting): la CPU legge il *busy bit* finché vale 0, scrive comando e dati e imposta *command-ready*; il controller mette busy=1, esegue, poi azzera busy e command-ready. È ragionevole solo per dispositivi molto veloci;
+- **interrupt**: il dispositivo segnala sulla *interrupt-request line* e la CPU salta all'handler tramite il vettore degli interrupt (interrupt chaining, mascherabilità, priorità); il costo è il context switch. Nel vettore Intel Pentium, 0 è la divisione per zero, 14 il page fault e 32-255 sono gli interrupt mascherabili;
+- **DMA**, per i grandi volumi di dati: il driver scrive un blocco di comandi DMA (sorgente, destinazione, byte) e il controller DMA trasferisce direttamente in RAM (bus mastering, **cycle stealing**), generando **un solo interrupt** a fine trasferimento.
 
 ## Interfaccia applicativa
-I dispositivi si classificano per carattere/blocco, sequenziale/random, sincrono/asincrono, dedicato/condivisibile, sola lettura/scrittura. Le categorie principali sono i **block device** (`read/write/seek`), i **character device** (`get/put`) e i **network device** (socket); `ioctl()` è la via di fuga per comandi specifici al driver. Per quanto riguarda il modello di I/O, esso può essere **bloccante**, **non bloccante** (ritorna subito, ad esempio con `select()`) o **asincrono** (la notifica arriva a fine I/O con un segnale o callback; è reso possibile da interrupt e DMA). Il **vectored I/O** (`readv`) permette di usare più buffer in una sola syscall.
+I dispositivi si classificano per carattere/blocco, sequenziale/random, sincrono/asincrono, dedicato/condivisibile, sola lettura/scrittura. Le categorie principali sono:
+- **block device**: `read/write/seek`;
+- **character device**: `get/put`;
+- **network device**: socket.
+
+`ioctl()` è la via di fuga per comandi specifici al driver. Il modello di I/O può essere:
+- **bloccante**;
+- **non bloccante**: ritorna subito, ad esempio con `select()`;
+- **asincrono**: la notifica arriva a fine I/O con un segnale o callback; è reso possibile da interrupt e DMA.
+
+Il **vectored I/O** (`readv`) permette di usare più buffer in una sola syscall.
 
 ## Sottosistema I/O del kernel
-Il kernel offre servizi comuni a tutti i dispositivi. Lo **scheduling** ordina le richieste per dispositivo in una coda (con QoS). Il **buffering** assorbe differenze di velocità e di dimensione e garantisce la *copy semantics* (double buffering, copy-on-write), mentre il **caching** tiene una copia in memoria più veloce per eliminare trasferimenti futuri; la differenza è che il buffering gestisce un singolo trasferimento. Lo **spooling** serve per dispositivi come le stampanti (coda su disco più un demone). La **device reservation** richiede attenzione al deadlock (A riserva lo scanner e chiede la stampante, B il contrario). Il kernel gestisce anche gli errori (retry per quelli transienti), la **protezione I/O** (le istruzioni I/O sono privilegiate, quindi si passa dalle syscall) e il power management (wake lock, power collapse).
+Il kernel offre servizi comuni a tutti i dispositivi:
+- lo **scheduling** ordina le richieste per dispositivo in una coda (con QoS);
+- il **buffering** assorbe differenze di velocità e di dimensione e garantisce la *copy semantics* (double buffering, copy-on-write);
+- il **caching** tiene una copia in memoria più veloce per eliminare trasferimenti futuri; la differenza dal buffering è che quest'ultimo gestisce un singolo trasferimento;
+- lo **spooling** serve per dispositivi come le stampanti (coda su disco più un demone);
+- la **device reservation** richiede attenzione al deadlock (A riserva lo scanner e chiede la stampante, B il contrario).
+
+Il kernel gestisce anche gli errori (retry per quelli transienti), la **protezione I/O** (le istruzioni I/O sono privilegiate, quindi si passa dalle syscall) e il power management (wake lock, power collapse).
 
 Il **ciclo di vita di una richiesta** (ad esempio una `read`) segue questi passi:
 1. la syscall entra nel kernel;

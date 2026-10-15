@@ -6,7 +6,11 @@ Fonte: Drive > Programmazione II > "PDF " > `0_Introduzione.pdf`, `1_Organizzazi
 Il file parte dalle regole del gioco (come funziona l'esame), poi spiega perché conviene scrivere software riusabile, come si spezza un programma C in più file `.c` / `.h`, che cosa fa il compilatore quando lo trasforma in un eseguibile e come si organizza un progetto su disco con il comando `gcc` corrispondente.
 
 ## Modalità d'esame (dal corso a.a. 2024-25 - [DA VERIFICARE] per a.a. 2026-27)
-L'esame si compone di due parti indipendenti. La parte di **laboratorio** vale da 0 a 3, viene corretta subito davanti al candidato ed è superata con almeno 1; il risultato resta valido per i 5 appelli consecutivi successivi (compreso quello della prova). Per accedervi bisogna aver consegnato su Moodle tutti gli esercizi di laboratorio, con i test automatici superati e l'approvazione del docente di lab. La parte di **teoria** vale da 0 a 30, si supera con almeno 17 e ci si può accedere solo dopo aver superato il lab. Il voto finale è la somma di teoria (>= 17) e lab (>= 1); se arriva a 31 o più diventa 30 e lode.
+L'esame si compone di due parti indipendenti:
+- **laboratorio**: vale da 0 a 3, viene corretta subito davanti al candidato ed è superata con almeno 1; il risultato resta valido per i 5 appelli consecutivi successivi (compreso quello della prova). Per accedervi bisogna aver consegnato su Moodle tutti gli esercizi di laboratorio, con i test automatici superati e l'approvazione del docente di lab;
+- **teoria**: vale da 0 a 30, si supera con almeno 17 e ci si può accedere solo dopo aver superato il lab.
+
+Il voto finale è la somma di teoria (>= 17) e lab (>= 1); se arriva a 31 o più diventa 30 e lode.
 
 Il docente consiglia di preparare l'esame "come se ci fosse un orale", cioè ripetendo ad alta voce, e di esercitarsi **prima su carta, poi al computer**. Le date note sono esonero 2027-02-08 e scritto 2027-02-09 (dato dall'utente). Il doc "Argomenti dei Corsi" elenca solo 16 date di lezione (21/02 ... 16/05) senza titoli, quindi il mapping date -> argomenti non è deducibile e questi appunti sono organizzati per slide. I macro-argomenti dichiarati dalla docente sono:
 
@@ -24,7 +28,12 @@ Va chiarita una confusione frequente: il **copia-incolla è duplicazione, non ri
 ## Codice su più file
 Un programma C è fatto da uno o più file `.c`, ma **uno solo** di essi contiene il `main`; gli altri raccolgono definizioni di funzioni, tipi e macro. Per ogni `.c` senza main si scrive un `.h` che contiene ciò che si "esporta" verso l'esterno: i **prototipi** (nome della funzione, tipo dei parametri senza nome, tipo di ritorno o void), i tipi e le costanti `#define`. L'intuizione è questa: le funzioni sono strumenti, i file sono cassette degli attrezzi (raggruppate con criteri di **coerenza** tematica e di **ortogonalità**), i programmi sono gli equipaggiamenti che si compongono prendendo le cassette giuste. Una "cassetta" è codice a tutti gli effetti ma non ha il main.
 
-Il perché del file `.h` si capisce guardando che cosa succede se lo si omette. Il compilatore non "va a cercare" le definizioni in altri file: senza prototipo emette il warning *implicit declaration*, e poi il linker segnala l'errore *undefined reference* perché non trova la funzione. Se invece si compilano insieme due file che hanno entrambi un `main` si ottiene *multiple definition of main*. Il prototipo è quindi il "contratto" che permette di compilare un file senza vedere l'implementazione. Ne deriva anche la **modularità**: se cambio il corpo di una funzione ma non il suo prototipo, i file che la usano vanno solo **ricompilati**, non modificati.
+Il perché del file `.h` si capisce guardando che cosa succede se lo si omette. Il compilatore non "va a cercare" le definizioni in altri file, e gli errori tipici sono:
+- *implicit declaration*: warning del compilatore quando manca il prototipo;
+- *undefined reference*: errore del linker, che non trova la funzione;
+- *multiple definition of main*: si compilano insieme due file che hanno entrambi un `main`.
+
+Il prototipo è quindi il "contratto" che permette di compilare un file senza vedere l'implementazione. Ne deriva anche la **modularità**: se cambio il corpo di una funzione ma non il suo prototipo, i file che la usano vanno solo **ricompilati**, non modificati.
 
 ```c
 /* vettori.h */

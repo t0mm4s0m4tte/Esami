@@ -9,10 +9,21 @@ Prima l'albero di copertura minimo: definizioni, arco sicuro, taglio e teorema d
 
 Dato un grafo pesato non orientato G=(V,E) con w:E→R, un **albero di copertura** è un insieme di archi T⊆E connesso, aciclico, che copre V; un **MST** è un albero di copertura di peso w(T)=Σw minimo, e non è necessariamente unico. Il problema si presta a una soluzione **greedy**, cioè basata su una scelta localmente ottima più una sottostruttura ottima: si costruisce un insieme A ⊆ MST aggiungendo un arco alla volta, purché sia un **arco sicuro**. Un arco (u,v) è sicuro per A se esiste un MST T con A∪{(u,v)}⊆T, cioè se aggiungerlo non preclude di arrivare a un MST.
 
-Il problema è come riconoscere un arco sicuro, e la risposta è il concetto di taglio. Un **taglio** è una partizione (S,V\S) dei vertici; un arco lo **attraversa** se ha un estremo per parte; il taglio **rispetta A** se nessun arco di A lo attraversa; un **arco leggero** è un arco di peso minimo tra quelli che attraversano il taglio. Il **teorema del taglio** afferma che, dato un taglio che rispetta A, ogni arco leggero che lo attraversa è sicuro per A. Tutti e due gli algoritmi seguenti sono solo modi diversi di scegliere tagli che rispettano A.
+Il problema è come riconoscere un arco sicuro, e la risposta è il concetto di taglio:
+- un **taglio** è una partizione (S,V\S) dei vertici;
+- un arco lo **attraversa** se ha un estremo per parte;
+- il taglio **rispetta A** se nessun arco di A lo attraversa;
+- un **arco leggero** è un arco di peso minimo tra quelli che attraversano il taglio.
+
+Il **teorema del taglio** afferma che, dato un taglio che rispetta A, ogni arco leggero che lo attraversa è sicuro per A. Tutti e due gli algoritmi seguenti sono solo modi diversi di scegliere tagli che rispettano A.
 
 ### Kruskal (basato sugli archi)
-Kruskal ha una visione globale: parte da una foresta in cui ogni vertice è un albero, scorre gli archi in ordine di peso non decrescente e, se un arco collega due alberi distinti, lo aggiunge (unione dei due alberi), altrimenti lo scarta perché chiuderebbe un ciclo. Per sapere rapidamente se due vertici sono nello stesso albero si usa la struttura **Union-Find**, con le operazioni MakeSet(U), Find(x,P) (restituisce il rappresentante) e Union(x,y,P), ottimizzata con l'**unione per altezza/rango** e la **compressione dei cammini**.
+Kruskal ha una visione globale:
+1. parte da una foresta in cui ogni vertice è un albero;
+2. scorre gli archi in ordine di peso non decrescente;
+3. se un arco collega due alberi distinti lo aggiunge (unione dei due alberi), altrimenti lo scarta perché chiuderebbe un ciclo.
+
+Per sapere rapidamente se due vertici sono nello stesso albero si usa la struttura **Union-Find**, con le operazioni MakeSet(U), Find(x,P) (restituisce il rappresentante) e Union(x,y,P), ottimizzata con l'**unione per altezza/rango** e la **compressione dei cammini**.
 
 La correttezza discende dal teorema del taglio: l'arco (u,w) tra le componenti U e W è leggero per il taglio (U,V\U), che rispetta A, ed è quindi sicuro. Il costo è un ordinamento O(m log m), più MakeSet O(n), più Find/Union ammortizzati O(m log n), in totale **O(m log n)** (poiché m ≥ n-1, log m = O(log n)).
 
@@ -59,12 +70,23 @@ La **dimostrazione del teorema del taglio** è questa. Sia T un MST con A⊆T e 
 Per quanto riguarda il greedy in generale, servono una scelta greedy (un criterio di appetibilità tale che ogni soluzione ottima si possa modificare in un'altra ottima che lo rispetta) e una sottostruttura ottima. L'esempio didattico è il resto. Per 72 centesimi con monete da 50, 10, 1 il greedy dà 50+10+10+1+1 ed è ottimo. Introducendo una moneta da 11c, per 15 centesimi il greedy dà 11+1+1+1+1 (5 monete) mentre esiste una soluzione migliore con altri tagli [DA VERIFICARE: elenco esatto dei tagli nella slide]: il greedy non è sempre ottimo.
 
 ### Kruskal e Union-Find
-Lo pseudocodice di **MST-Kruskal** usa A (lista degli archi scelti), L (archi ordinati per peso) e P (partizione, cioè Union-Find): `while L≠nil: (u,w)=Head(L); if Find(u,P)≠Find(w,P) then A:=A∪{(u,w)}; Union(u,w,P)`; L:=Tail(L). L'**invariante** ha quattro punti: (1) ∃T MST con A⊆T; (2) gli archi di A collegano vertici nella stessa parte; (3) ogni parte U∈P con A[U] è un albero di G_A; (4) gli archi scartati non sono in T\A. Se U=W l'arco chiuderebbe un ciclo, quindi non è in T; se U≠W attraversa il taglio (U,V\U), che rispetta A, ed è leggero, quindi è sicuro.
+Lo pseudocodice di **MST-Kruskal** usa A (lista degli archi scelti), L (archi ordinati per peso) e P (partizione, cioè Union-Find): `while L≠nil: (u,w)=Head(L); if Find(u,P)≠Find(w,P) then A:=A∪{(u,w)}; Union(u,w,P)`; L:=Tail(L). L'**invariante** ha quattro punti:
+1. ∃T MST con A⊆T;
+2. gli archi di A collegano vertici nella stessa parte;
+3. ogni parte U∈P con A[U] è un albero di G_A;
+4. gli archi scartati non sono in T\A.
+
+Se U=W l'arco chiuderebbe un ciclo, quindi non è in T; se U≠W attraversa il taglio (U,V\U), che rispetta A, ed è leggero, quindi è sicuro.
 
 L'ADT **Union-Find** ha MakeSet(U) (partizione discreta), Union(x,y,P) e Find(x,P), che restituisce il rappresentante r(X). Si realizza con una **foresta di alberi pozzo** (vettore dei padri) la cui radice è il rappresentante; u e w stanno nella stessa parte se e solo se Find(u)=Find(w). Con l'**unione per rango** (l'albero più basso diventa figlio dell'altro) e la **compressione del cammino** (Find appiattisce il cammino percorso) si ha MakeSet O(n) e Find/Union **O(m log n) ammortizzato su m operazioni** (rif. Cormen §21.3).
 
 ### Prim
-Per **MST-Prim** l'invariante è: (1) ∃T MST con A⊆T; (2) V[A] sono i vertici neri o grigi, cioè V\{v∈Q | v.key=∞}; (3) se v∈Q e v.key<∞ allora v.key=w(u,v) per qualche u∈V[A]\Q, per cui l'arco minimo tra V[A]\Q e la frontiera è leggero per A. I colori hanno questo significato: bianchi (key=∞), grigi (frontiera, key<∞), neri (già nell'albero). I costi sono MakePriorityQueue (BuildHeap) O(n log n) secondo le slide (ma in realtà O(n)), Extract-Min O(log n), Decrease-Key O(log n) (per risalita), quindi O(m log n); poiché G è connesso, n=O(m).
+Per **MST-Prim** l'invariante è:
+1. ∃T MST con A⊆T;
+2. V[A] sono i vertici neri o grigi, cioè V\{v∈Q | v.key=∞};
+3. se v∈Q e v.key<∞ allora v.key=w(u,v) per qualche u∈V[A]\Q, per cui l'arco minimo tra V[A]\Q e la frontiera è leggero per A.
+
+I colori hanno questo significato: bianchi (key=∞), grigi (frontiera, key<∞), neri (già nell'albero). I costi sono MakePriorityQueue (BuildHeap) O(n log n) secondo le slide (ma in realtà O(n)), Extract-Min O(log n), Decrease-Key O(log n) (per risalita), quindi O(m log n); poiché G è connesso, n=O(m).
 
 ### Altri algoritmi per i cammini minimi
 **Bellman-Ford** (1957) gestisce i pesi negativi e costa **O(|V|·|E|)**; **Pape-D'Esopo** (1974) è superpolinomiale nel caso peggiore ma quasi lineare su grafi planari o stradali con |E|=O(|V|). La dimostrazione del lemma dei sottocammini procede per assurdo: δ(u,z)=w(pqr)=w(p)+w(q)+w(r) > w(p)+w(q')+w(r) se q' fosse migliore di q. La condizione di Bellman è δ(s,v) ≤ δ(s,u)+w(u,v), e va ricordato che **v.d è sempre una stima in eccesso: v.d ≥ δ(s,v)**.

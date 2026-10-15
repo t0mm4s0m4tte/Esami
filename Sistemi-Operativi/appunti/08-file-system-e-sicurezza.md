@@ -27,12 +27,30 @@ Un **extent** è un blocco contiguo di dischi; un file è una sequenza di extent
 Il **UFS** (inode) combina i vantaggi usando puntatori **diretti** (per i file piccoli), **indiretto singolo**, **doppio** e **triplo**: ottimizza i file piccoli e consente file enormi. In pratica contigua/extent si sceglie per le alte prestazioni (video editing, DB), collegata/FAT per sistemi semplici e indicizzata/UFS per uso generale. [INT, esercizio tipo] Il file più grande raggiungibile con un inode è `n_dirette*B + (B/p)*B + (B/p)^2*B + (B/p)^3*B`, con B = dimensione del blocco e p = dimensione del puntatore (parametri non nelle fonti). Per gli ordini di grandezza: HDD ~250 IOPS (630 M istr. per I/O), SSD ~60.000 IOPS (2,65 M istr.).
 
 ## Sicurezza (Cap 16)
-La sicurezza assoluta è irraggiungibile, quindi si ragiona in termini di gestione del rischio. Una **threat** è una potenziale violazione, un **attack** un tentativo concreto, un **cracker** chi lo conduce. È più facile difendersi da errori accidentali che da attacchi mirati. Le **violazioni** si classificano in riservatezza (lettura non autorizzata), integrità (modifica), disponibilità (distruzione), furto di servizi e **DoS**. Tra i **metodi** ci sono masquerading, replay attack, man-in-the-middle, session hijacking e privilege escalation. La difesa va costruita su **4 livelli**: fisico, SO, applicazione, rete; a cui si aggiunge il fattore umano (phishing, social engineering).
+La sicurezza assoluta è irraggiungibile, quindi si ragiona in termini di gestione del rischio. Una **threat** è una potenziale violazione, un **attack** un tentativo concreto, un **cracker** chi lo conduce. È più facile difendersi da errori accidentali che da attacchi mirati. Le **violazioni** si classificano in:
+- riservatezza (lettura non autorizzata);
+- integrità (modifica);
+- disponibilità (distruzione);
+- furto di servizi;
+- **DoS**.
+
+Tra i **metodi** ci sono masquerading, replay attack, man-in-the-middle, session hijacking e privilege escalation. La difesa va costruita su **4 livelli**: fisico, SO, applicazione, rete; a cui si aggiunge il fattore umano (phishing, social engineering).
 
 ### Minacce ai programmi
-Il **trojan horse** è codice apparentemente benigno che abusa dei privilegi (da qui spyware e covert channel); la **trap door** è un accesso nascosto, ad esempio inserito in un compilatore; lo **spyware** raccoglie informazioni; il **ransomware** cifra i dati e chiede un riscatto. Obiettivo comune è un **RAT**. Il **principio del minimo privilegio** (Saltzer, 1974) è la difesa concettuale.
+Le minacce principali sono:
+- il **trojan horse**, codice apparentemente benigno che abusa dei privilegi (da qui spyware e covert channel);
+- la **trap door**, un accesso nascosto, ad esempio inserito in un compilatore;
+- lo **spyware**, che raccoglie informazioni;
+- il **ransomware**, che cifra i dati e chiede un riscatto.
 
-La **code injection / buffer overflow** nasce da codice come `strcpy(buffer, argv[1])` con `buffer[256]` e nessun controllo sulla lunghezza: l'input sovrascrive lo stack e l'**indirizzo di ritorno**. Gli esiti possibili sono tre: nessun effetto visibile; logica sovvertita o crash (DoS); esecuzione di **shellcode** con i privilegi dell'applicazione. La tecnica del **NOP sled** ("trampoline") serve ad aumentare la tolleranza sull'indirizzo di salto.
+Obiettivo comune è un **RAT**. Il **principio del minimo privilegio** (Saltzer, 1974) è la difesa concettuale.
+
+La **code injection / buffer overflow** nasce da codice come `strcpy(buffer, argv[1])` con `buffer[256]` e nessun controllo sulla lunghezza: l'input sovrascrive lo stack e l'**indirizzo di ritorno**. Gli esiti possibili sono tre:
+- nessun effetto visibile;
+- logica sovvertita o crash (DoS);
+- esecuzione di **shellcode** con i privilegi dell'applicazione.
+
+La tecnica del **NOP sled** ("trampoline") serve ad aumentare la tolleranza sull'indirizzo di salto.
 
 I **virus** richiedono un ospite e si classificano in: file/parasitic, boot/memory, macro, source code, polymorphic, encrypted, stealth, tunneling, multipartite, armored.
 
@@ -44,14 +62,24 @@ La crittografia **simmetrica** usa la stessa chiave: DES (insicuro), 3DES, AES (
 
 **Esempio della fonte (verificato)**: p=7, q=13, N=91, (p-1)(q-1)=72, ke=5, kd=29 (5*29=145=2*72+1). Si cifra m=69: `69^5 mod 91 = 62`; si decifra: `62^29 mod 91 = 69`.
 
-Le **funzioni hash** (MD5, SHA-1; resistenza alle collisioni) producono un digest. Un **MAC** è H(msg + chiave segreta) e dà integrità e autenticità. La **firma digitale** è l'hash cifrato con la chiave **privata**, verificabile con quella pubblica, e fornisce anche **non ripudio**. I **certificati digitali** firmati da una **CA** legano un'identità a una chiave pubblica e difendono dal man-in-the-middle (il browser contiene le chiavi pubbliche delle CA).
+Gli altri strumenti crittografici sono:
+- le **funzioni hash** (MD5, SHA-1; resistenza alle collisioni), che producono un digest;
+- il **MAC**, H(msg + chiave segreta), che dà integrità e autenticità;
+- la **firma digitale**, l'hash cifrato con la chiave **privata**, verificabile con quella pubblica, che fornisce anche **non ripudio**;
+- i **certificati digitali** firmati da una **CA**, che legano un'identità a una chiave pubblica e difendono dal man-in-the-middle (il browser contiene le chiavi pubbliche delle CA).
 
 ### Difese
 L'**autenticazione** si basa su password (hash + **salt** contro le rainbow table), one-time password, biometria e **MFA** (qualcosa che sai / hai / sei). La **defense in depth** combina security policy, vulnerability assessment e **IDS**: signature-based (solo attacchi noti) oppure anomaly-based (anche zero-day, ma con falsi positivi). I **firewall** possono essere network, personal, application proxy, system-call, e una **DMZ** separa la rete interna da Internet.
 
 Checklist: educare gli utenti, sicurezza fisica, minimizzare servizi e porte, patch, antivirus, password robuste, log/audit, IDS+firewall, cifrare lo storage, security policy.
 
-In **Windows** ogni utente, gruppo e computer ha un **SID**; un **Security Access Token** (SID utente + gruppi + privilegi) è ereditato dai processi; ogni oggetto ha un **Security Descriptor** con una **DACL**; la **Mandatory Integrity Control** introduce livelli di integrità (Basso/Medio/Alto) per cui un processo scrive su un oggetto solo se la sua integrità è >=. Le criticità sono i default storicamente deboli e l'ampia superficie di attacco.
+In **Windows**:
+- ogni utente, gruppo e computer ha un **SID**;
+- un **Security Access Token** (SID utente + gruppi + privilegi) è ereditato dai processi;
+- ogni oggetto ha un **Security Descriptor** con una **DACL**;
+- la **Mandatory Integrity Control** introduce livelli di integrità (Basso/Medio/Alto) per cui un processo scrive su un oggetto solo se la sua integrità è >=.
+
+Le criticità sono i default storicamente deboli e l'ampia superficie di attacco.
 
 ## Cose da saper fare all'esame
 - Decodificare permessi `rwxr-x--x` <-> ottale; usare `chmod` simbolico/assoluto.

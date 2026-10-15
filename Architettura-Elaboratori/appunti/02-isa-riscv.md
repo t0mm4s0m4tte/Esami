@@ -14,9 +14,21 @@ Fonte: Lezione 02 (ISA parte 2), Lab 1-2-4 (slide). Dove segnalato "[libro]" il 
 ## RISC-V in breve
 RISC-V nasce a Berkeley nel 2010 (Waterman, Lee, Asanovic). Non è un'azienda né una CPU: è una ISA, cioè una specifica, ed è uno standard aperto e privo di licenze. Questo è ciò che lo distingue dalle ISA proprietarie e lo rende adatto a un corso come questo.
 
-La ISA è modulare e si articola in estensioni: RV32I è la base a 32 bit, RV64I la base a 64 bit, RV64M aggiunge moltiplicazione e divisione, RV64F la virgola mobile, mentre RV32E/RV64E riducono i registri a 16. Dopo la Lezione 2 si fa riferimento esclusivamente a RV32I.
+La ISA è modulare e si articola in estensioni:
+- RV32I: base a 32 bit;
+- RV64I: base a 64 bit;
+- RV64M: aggiunge moltiplicazione e divisione;
+- RV64F: virgola mobile;
+- RV32E/RV64E: riducono i registri a 16.
 
-RISC significa Reduced Instruction Set Computer, e la filosofia si riassume in tre principi: (1) la semplicità favorisce la regolarità; (2) minori sono le dimensioni, maggiore è la velocità; (3) un buon progetto richiede buoni compromessi. Vedremo questi principi applicarsi più volte: le istruzioni hanno sempre tre operandi, tutte sono lunghe 32 bit, i formati sono pochi e simili.
+Dopo la Lezione 2 si fa riferimento esclusivamente a RV32I.
+
+RISC significa Reduced Instruction Set Computer, e la filosofia si riassume in tre principi:
+1. la semplicità favorisce la regolarità;
+2. minori sono le dimensioni, maggiore è la velocità;
+3. un buon progetto richiede buoni compromessi.
+
+Vedremo questi principi applicarsi più volte: le istruzioni hanno sempre tre operandi, tutte sono lunghe 32 bit, i formati sono pochi e simili.
 
 ## Registri e memoria
 Il modello di programmazione di RV32I comprende 32 registri interi `x0..x31` (a 32 bit in RV32I, a 64 in RV64I), 32 registri in virgola mobile `f0..f31`, un PC, 4096 CSR (control status registers) e una memoria con indirizzi a byte (fino a 2^32-1 in RV32I). Una parola (word) è di 32 bit, una doppia parola (doubleword) di 64.
@@ -77,7 +89,11 @@ addi x7,x9,0  ; slli x7,x7,2 ; add x7,x7,x19 ; sw x6,0(x7)   # v[i] = x6
 
 // v[i+d] = v[j+2]   : stesso schema con  addi x6,x21,2  e  add x7,x9,x5
 ```
-Con indice costante lo scostamento si calcola a mano (v[3] sta a offset 12). Con indice variabile vale uno schema generale: calcola l'indice, moltiplicalo per la dimensione con `slli rd,rd,2` (x4), somma la base con `add rd,rd,base`, poi accedi con `lw/sw 0(rd)`.
+Con indice costante lo scostamento si calcola a mano (v[3] sta a offset 12). Con indice variabile vale uno schema generale:
+1. calcola l'indice;
+2. moltiplicalo per la dimensione con `slli rd,rd,2` (x4);
+3. somma la base con `add rd,rd,base`;
+4. accedi con `lw/sw 0(rd)`.
 
 ## Operazioni logiche e shift
 Gli shift logici sono `sll/slli` (a sinistra) e `srl/srli` (a destra, riempiendo con 0); lo shift aritmetico a destra `sra/srai` replica invece il segno. Non esiste uno shift aritmetico a sinistra, perché sarebbe identico a `sll`. Gli shift hanno un significato aritmetico utile: uno shift a sinistra di k posizioni moltiplica per 2^k, e `srai` di k divide per 2^k gli interi con segno (con arrotondamento verso -inf).

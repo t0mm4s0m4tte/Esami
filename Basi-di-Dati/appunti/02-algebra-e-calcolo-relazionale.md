@@ -41,7 +41,12 @@ Un'espressione è **corretta** solo se il predicato di σ usa attributi presenti
 
 Non tutte le negazioni sono uguali. Quella **inessenziale** si risolve con un semplice confronto di disuguaglianza: i pazienti non residenti a TO sono σ_{Residenza≠'TO'}. Quella **essenziale** riguarda invece l'appartenenza a una relazione (i medici che *non* sono primari): non esiste un attributo da confrontare e serve la **differenza**. Dietro c'è la Closed World Assumption: ciò che non è in base di dati è falso.
 
-Per la negazione essenziale esiste un metodo in tre fasi, **U − P**: si calcola l'universo U (per esempio π_MATR(MEDICI)), poi P, cioè chi soddisfa la condizione *positiva*, e il risultato è R = U − P. L'unico accorgimento è che **gli schemi di U e P devono coincidere** (stessa proiezione), altrimenti la differenza non è definita. Gli stessi ingredienti servono per "mai curati da X", che è U − (curati da X).
+Per la negazione essenziale esiste un metodo in tre fasi, **U − P**:
+1. si calcola l'universo U (per esempio π_MATR(MEDICI));
+2. si calcola P, cioè chi soddisfa la condizione *positiva*;
+3. il risultato è R = U − P.
+
+L'unico accorgimento è che **gli schemi di U e P devono coincidere** (stessa proiezione), altrimenti la differenza non è definita. Gli stessi ingredienti servono per "mai curati da X", che è U − (curati da X).
 
 Dalla stessa idea nascono altri due schemi ricorrenti. "Un solo ricovero" è "almeno 1" meno "almeno 2": π_PAZ(RICOVERI) − π_{R1.PAZ}(self-join con Inizio diverso). Sui dati: B444. Il **massimo**, per cui non c'è un operatore MAX, si ottiene togliendo tutti gli elementi che hanno qualcuno di più grande: r − π_{N1}(σ_{N1<N2}(ρ_{N1}(r) × ρ_{N2}(r))). Per esempio con {3,5,2} le coppie con N1<N2 danno {2,3} e quindi il massimo è {5}.
 
@@ -68,15 +73,26 @@ Quando in una tupla c'è un NULL, un confronto non è né vero né falso: è **U
 | F | F | F | F | | F | T | F | U | | F | T |
 | U | U | F | U | | U | T | U | U | | U | U |
 
-La regola pratica è che una tupla è selezionata **solo se il predicato è True**: Unknown viene scartato come False. Ne seguono due conseguenze da ricordare. Primo, `A = NULL` non funziona mai, bisogna usare IS [NOT] NULL. Secondo, viene meno il terzo escluso: `Status=10 OR Status<>10` NON restituisce le righe con Status NULL, perché per esse entrambi i disgiunti sono Unknown.
+La regola pratica è che una tupla è selezionata **solo se il predicato è True**: Unknown viene scartato come False. Ne seguono due conseguenze da ricordare:
+- `A = NULL` non funziona mai, bisogna usare IS [NOT] NULL;
+- viene meno il terzo escluso: `Status=10 OR Status<>10` NON restituisce le righe con Status NULL, perché per esse entrambi i disgiunti sono Unknown.
 
 ## 5. Outer join
 
-Il join interno elimina le *dangling tuples*, cioè le tuple che non trovano corrispondenza nell'altra relazione. Quando serve conservarle si usa l'outer join: il **Left** (⟕) conserva tutta la sinistra, il **Right** (⟖) tutta la destra, il **Full** (⟗) entrambe, riempiendo con NULL i campi mancanti. Esempio CLIENTI-AGENZIE: Longo (TO) resta nel risultato anche senza agenzia.
+Il join interno elimina le *dangling tuples*, cioè le tuple che non trovano corrispondenza nell'altra relazione. Quando serve conservarle si usa l'outer join, che riempie con NULL i campi mancanti:
+- il **Left** (⟕) conserva tutta la sinistra;
+- il **Right** (⟖) tutta la destra;
+- il **Full** (⟗) entrambe.
+
+Esempio CLIENTI-AGENZIE: Longo (TO) resta nel risultato anche senza agenzia.
 
 ## 6. Proprietà (base dell'ottimizzazione logica)
 
-Le equivalenze fra espressioni algebriche sono il materiale con cui l'ottimizzatore riscrive una query in una forma più economica (file 07). Join e prodotto sono commutativi e associativi. Le selezioni si possono applicare a cascata, σ_{p∧q}(r) ≡ σ_p(σ_q(r)), e si possono distribuire sulla differenza: σ_p(r−s) ≡ σ_p(r) − σ_p(s). Una selezione si "spinge" dentro un join, σ_p(r ⋈_Θ s) ≡ σ_p(r) ⋈_Θ s, **solo se** gli attributi di p appartengono a r. Le proiezioni si distribuiscono sull'unione, π_X(r ∪ s) ≡ π_X(r) ∪ π_X(s), ma **NON sulla differenza**.
+Le equivalenze fra espressioni algebriche sono il materiale con cui l'ottimizzatore riscrive una query in una forma più economica (file 07):
+- join e prodotto sono commutativi e associativi;
+- le selezioni si possono applicare a cascata, σ_{p∧q}(r) ≡ σ_p(σ_q(r)), e si possono distribuire sulla differenza: σ_p(r−s) ≡ σ_p(r) − σ_p(s);
+- una selezione si "spinge" dentro un join, σ_p(r ⋈_Θ s) ≡ σ_p(r) ⋈_Θ s, **solo se** gli attributi di p appartengono a r;
+- le proiezioni si distribuiscono sull'unione, π_X(r ∪ s) ≡ π_X(r) ∪ π_X(s), ma **NON sulla differenza**.
 
 Controesempio per la differenza: R={(a,b1)}, S={(a,b2)}. Allora π_A(R−S)={a} (la tupla di R non è in S), mentre π_A(R)−π_A(S)=∅ (dopo la proiezione i due a coincidono).
 
@@ -84,7 +100,12 @@ Controesempio per la differenza: R={(a,b1)}, S={(a,b2)}. Allora π_A(R−S)={a} 
 
 Il calcolo relazionale è il linguaggio **dichiarativo** corrispondente all'algebra: dice *cosa* si vuole, non *come* ottenerlo, ed è fondato sulla logica del primo ordine. L'ottimizzazione è lasciata al DBMS. Si studia il calcolo sulle tuple (e non quello sui domini) perché ha ispirato SQL e non richiede la nozione di "safe formulas".
 
-La forma è **{ T | L | F }**: la Target list T (`x.*`, `x.A`, `x.(A,B)`, alias `Eti: x.A`), la Range list L (`x(REL)`) e la Formula F, costruita con atomi (`x.A Θ c`, `x.A Θ y.B`), connettivi (∧ ∨ ¬ →) e quantificatori (∃x(R)(F), ∀x(R)(F)). Le variabili di T sono libere, quelle dei quantificatori vincolate. Il connettivo → serve soprattutto a restringere l'universo nei ∀, grazie a α → β ≡ ¬α ∨ β.
+La forma è **{ T | L | F }**:
+- **T**, Target list: `x.*`, `x.A`, `x.(A,B)`, alias `Eti: x.A`;
+- **L**, Range list: `x(REL)`;
+- **F**, Formula: costruita con atomi (`x.A Θ c`, `x.A Θ y.B`), connettivi (∧ ∨ ¬ →) e quantificatori (∃x(R)(F), ∀x(R)(F)).
+
+Le variabili di T sono libere, quelle dei quantificatori vincolate. Il connettivo → serve soprattutto a restringere l'universo nei ∀, grazie a α → β ≡ ¬α ∨ β.
 
 La corrispondenza con SQL è diretta: T = SELECT, L = FROM, F = WHERE, con i join espressi come uguaglianze in WHERE. L'UNION resta fuori dal blocco base, ed è un limite del TRC.
 

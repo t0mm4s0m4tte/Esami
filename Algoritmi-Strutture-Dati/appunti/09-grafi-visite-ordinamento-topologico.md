@@ -37,7 +37,12 @@ DFS(G,u): u.color<-grigio; time++; u.d<-time
    u.color<-nero; time++; u.f<-time
 ```
 
-Gli intervalli [u.d,u.f] hanno una struttura "a parentesi" ben formata, e questo è il contenuto del **teorema delle parentesi**: per ogni coppia u,v vale esattamente una di tre possibilità. O gli intervalli [u.d,u.f] e [v.d,v.f] sono **disgiunti** (nessuno dei due è discendente dell'altro); oppure [u.d,u.f] ⊂ [v.d,v.f] (u discendente di v); oppure [v.d,v.f] ⊂ [u.d,u.f] (v discendente di u). Non esistono sovrapposizioni parziali, perché una visita termina sempre prima di tornare al chiamante.
+Gli intervalli [u.d,u.f] hanno una struttura "a parentesi" ben formata, e questo è il contenuto del **teorema delle parentesi**: per ogni coppia u,v vale esattamente una di tre possibilità:
+- gli intervalli [u.d,u.f] e [v.d,v.f] sono **disgiunti** (nessuno dei due è discendente dell'altro);
+- [u.d,u.f] ⊂ [v.d,v.f] (u discendente di v);
+- [v.d,v.f] ⊂ [u.d,u.f] (v discendente di u).
+
+Non esistono sovrapposizioni parziali, perché una visita termina sempre prima di tornare al chiamante.
 
 Gli archi (u,v) si classificano in base al colore di v nel momento in cui l'arco viene esaminato:
 - **albero** (v bianco): u.d < v.d < v.f < u.f
@@ -66,7 +71,11 @@ Le slide formalizzano meglio alcuni punti. Un'**ordinamento topologico** v1..vn 
 
 Con questi strumenti si dimostra il **lemma di aciclicità**: G (orientato o no) è aciclico se e solo se una DF non genera archi all'indietro. L'implicazione (⇐) si prova per assurdo: se C è un ciclo e (u,v)∈C è l'arco con v.d minimo, per il cammino bianco si ha v.d < u.d < u.f < v.f, cioè (u,v) è all'indietro.
 
-La dimostrazione dell'ordinamento topologico si può rifare con i **4 casi dei tempi** per un arco (u,v): (1) v.d<v.f<u.d<u.f va bene; (2) u.d<u.f<v.d<v.f è impossibile, perché u sarebbe nero con v ancora bianco (v sarebbe stato visitato da u); (3) u.d<v.d<v.f<u.f va bene; (4) v.d<u.d<u.f<v.f è un arco all'indietro, cioè un ciclo, impossibile in un DAG.
+La dimostrazione dell'ordinamento topologico si può rifare con i **4 casi dei tempi** per un arco (u,v):
+1. v.d<v.f<u.d<u.f: va bene;
+2. u.d<u.f<v.d<v.f: impossibile, perché u sarebbe nero con v ancora bianco (v sarebbe stato visitato da u);
+3. u.d<v.d<v.f<u.f: va bene;
+4. v.d<u.d<u.f<v.f: è un arco all'indietro, cioè un ciclo, impossibile in un DAG.
 
 ### Componenti fortemente connesse
 Una **componente fortemente connessa (cfc)** è un insieme C ⊆ V massimale tale che u ⤳ v e v ⤳ u per ogni u,v∈C. Si indicano con D(u) i discendenti (raggiungibili da u) e con A(u) gli antecedenti; la cfc di u è C(u)=D(u)∩A(u). Una DFS su G dà D(u); per A(u) si usa il **grafo trasposto G^T** (E^T = {(v,u) | (u,v)∈E}), in cui gli archi sono invertiti. L'algoritmo naive esegue DFS(G,u) e DFS(G^T,u) per ogni u, con costo O(|V|·(|V|+|E|)).

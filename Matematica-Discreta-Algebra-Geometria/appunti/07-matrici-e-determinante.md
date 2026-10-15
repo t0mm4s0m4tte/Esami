@@ -32,7 +32,12 @@ Per le matrici **triangolari** (e quindi diagonali) il determinante è il prodot
 
 Per il calcolo concreto si usa lo **sviluppo di Laplace** (Teo 9.6) lungo la riga i: det A = Σ_j (-1)^{i+j} a_ij det C_ij, dove C_ij è la sottomatrice (n-1)×(n-1) ottenuta eliminando la riga i e la colonna j; i segni seguono una scacchiera (+ - + / - + - / ...). Lo stesso vale per le colonne, e conviene sempre scegliere la riga o colonna con più zeri.
 
-Lo strumento più efficiente, però, è capire come il determinante reagisce alle mosse di Gauss (9.10-9.12, 10.1). Moltiplicare una riga per c moltiplica il determinante per c, da cui **det(cA)=cⁿdet A** e det(-A)=(-1)ⁿdet A; **scambiare due righe cambia il segno**; **sommare a una riga un multiplo di un'altra non cambia nulla**. Una riga (o colonna) nulla, o due righe uguali, forzano det=0, e più in generale **det A = 0 ⇔ una riga (colonna) è combinazione lineare delle altre** (Prop 10.3), che è il legame con l'indipendenza lineare del file 06. Altro risultato chiave è il **teorema di Binet**, det(AB)=det A · det B (senza dimostrazione), da cui segue il Cor 10.5: det(A⁻¹)=1/det A.
+Lo strumento più efficiente, però, è capire come il determinante reagisce alle mosse di Gauss (9.10-9.12, 10.1):
+- moltiplicare una riga per c moltiplica il determinante per c, da cui **det(cA)=cⁿdet A** e det(-A)=(-1)ⁿdet A;
+- **scambiare due righe cambia il segno**;
+- **sommare a una riga un multiplo di un'altra non cambia nulla**.
+
+Una riga (o colonna) nulla, o due righe uguali, forzano det=0, e più in generale **det A = 0 ⇔ una riga (colonna) è combinazione lineare delle altre** (Prop 10.3), che è il legame con l'indipendenza lineare del file 06. Altro risultato chiave è il **teorema di Binet**, det(AB)=det A · det B (senza dimostrazione), da cui segue il Cor 10.5: det(A⁻¹)=1/det A.
 
 Il **metodo pratico** è dunque ridurre a scalini con Gauss tenendo il conto di come cambia il determinante (scambio ⇒ ×(-1), moltiplicazione di una riga per c ⇒ ×c) e infine moltiplicare i pivot.
 

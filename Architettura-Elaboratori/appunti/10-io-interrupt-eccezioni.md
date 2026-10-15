@@ -14,11 +14,26 @@ Il problema di fondo è la differenza di velocità: le periferiche sono lentissi
 
 ### I/O programmato (polling)
 È la soluzione più ingenua: la CPU esegue un ciclo in cui controlla ripetutamente il bit READY del registro di stato, finché il dispositivo non è pronto. Il difetto è il **busy waiting**: la CPU resta occupata a fare domande a vuoto invece di lavorare.
-Per la lettura da tastiera, quando viene premuto un tasto il controller mette a 1 il bit di stato e inserisce l'ASCII nel buffer. La CPU intanto legge lo stato in un ciclo; quando lo trova a 1 legge il buffer, elabora il carattere e azzera il bit. Per la scrittura su display la logica è speculare: la CPU attende Ready=1 e scrive il carattere nel display buffer; il controller azzera Ready, visualizza il carattere e infine rimette Ready=1.
+Per la lettura da tastiera:
+1. quando viene premuto un tasto il controller mette a 1 il bit di stato e inserisce l'ASCII nel buffer;
+2. la CPU intanto legge lo stato in un ciclo;
+3. quando lo trova a 1 legge il buffer, elabora il carattere e azzera il bit.
+
+Per la scrittura su display la logica è speculare: la CPU attende Ready=1 e scrive il carattere nel display buffer; il controller azzera Ready, visualizza il carattere e infine rimette Ready=1.
 
 ### Interrupt
 Per evitare l'attesa attiva si capovolge l'iniziativa: è il dispositivo, a lavoro finito, a segnalare alla CPU con un **interrupt**, che la CPU può abilitare o disabilitare tramite un bit. Gli interrupt viaggiano quindi **dai dispositivi alla CPU**, sono **asincroni** rispetto al programma (possono arrivare in qualunque istante) e devono essere gestiti in modo **trasparente**: dopo la gestione lo stato del programma interrotto deve essere identico a quello di prima, come se nulla fosse successo.
-La gestione si divide tra hardware e software. Dal lato **hardware**, il controller attiva la linea di interrupt del bus; quando la CPU è pronta risponde con un ack; il controller allora invia sulle linee dati il **vettore di interrupt**. La CPU lo salva, impila il PC e i registri di stato, usa il vettore come indice per trovare il PC del gestore e modifica di conseguenza il PC (a volte disabilitando altre interruzioni). Dal lato **software**, il gestore salva tutti i registri, legge il buffer del dispositivo, gestisce eventuali errori e aggiorna le variabili: nell'esempio di stampa di una riga carattere per carattere si aggiornano ptr e count e, se restano caratteri, se ne copia un altro nel buffer. Quindi invia l'ack di fine, ripristina i registri ed esegue l'istruzione di ritorno (RETI nel modello generico, **SRET** in RISC-V).
+La gestione si divide tra hardware e software. Dal lato **hardware**:
+1. il controller attiva la linea di interrupt del bus;
+2. quando la CPU è pronta risponde con un ack;
+3. il controller invia sulle linee dati il **vettore di interrupt**;
+4. la CPU lo salva, impila il PC e i registri di stato, usa il vettore come indice per trovare il PC del gestore e modifica di conseguenza il PC (a volte disabilitando altre interruzioni).
+
+Dal lato **software**, il gestore:
+1. salva tutti i registri;
+2. legge il buffer del dispositivo, gestisce eventuali errori e aggiorna le variabili (nell'esempio di stampa di una riga carattere per carattere si aggiornano ptr e count e, se restano caratteri, se ne copia un altro nel buffer);
+3. invia l'ack di fine;
+4. ripristina i registri ed esegue l'istruzione di ritorno (RETI nel modello generico, **SRET** in RISC-V).
 Quando più dispositivi possono interrompere, o il gestore disabilita le interruzioni mentre lavora, oppure si usano le **priorità**, che crescono con la criticità del dispositivo; gli interrupt possono essere mascherabili o non mascherabili. Se la CPU non supporta le priorità, un chip dedicato può gestirle al posto suo.
 
 ### Trap (eccezioni sincrone)
@@ -36,8 +51,14 @@ I tipi di eccezione sono quattro:
 - **Environment call** (`ecall`): sincrona, richiede un servizio di sistema (stampare, uscire); il codice del servizio è in a7, per cui `addi x17,x0,10; ecall` equivale a exit;
 - **Environment break** (`ebreak`): serve per il debug.
 
-Per **arrivare al gestore** ci sono due strategie. Con il *salto diretto* PC <- base, dove la base è nel registro **STVEC** con i 2 bit bassi MODE = 00, e il gestore legge SCAUSE per capire la causa. Con il *vettore di interruzione* PC <- MEM[base + causa*4] (STVEC.MODE = 01), così la causa seleziona direttamente il gestore giusto.
-Anche il **salvataggio dello stato** si può fare in tre modi: sullo stack (Vax, 68k, x86: l'intero set di registri), in registri ausiliari "shadow" (ARM) oppure in registri speciali (RISC-V, MIPS: si salva solo ciò che serve, anche zero registri).
+Per **arrivare al gestore** ci sono due strategie:
+- *salto diretto*: PC <- base, dove la base è nel registro **STVEC** con i 2 bit bassi MODE = 00, e il gestore legge SCAUSE per capire la causa;
+- *vettore di interruzione*: PC <- MEM[base + causa*4] (STVEC.MODE = 01), così la causa seleziona direttamente il gestore giusto.
+
+Anche il **salvataggio dello stato** si può fare in tre modi:
+- sullo stack (Vax, 68k, x86: l'intero set di registri);
+- in registri ausiliari "shadow" (ARM);
+- in registri speciali (RISC-V, MIPS: si salva solo ciò che serve, anche zero registri).
 
 Le informazioni di controllo stanno nei **CSR** (control status registers), elencati qui con il loro indirizzo:
 - STATUS (0x100), SIE (0x104), STVEC (0x105), SSCRATCH (0x140);

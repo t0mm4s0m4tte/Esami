@@ -18,7 +18,12 @@ Appello: 2027-02-08. Scopo: ripasso denso, condensato da "Logica Matematica - Ap
 ## Dubbi aperti (riassunto globale)
 [DA VERIFICARE] Il documento "Argomenti dei Corsi - II Anno" **non contiene** il programma di Logica Matematica (solo SO, ASD, Probabilità): programma ufficiale e struttura dell'esame vanno confermati sulla pagina del corso o sui vecchi appelli.
 
-[DA VERIFICARE] Le fonti contengono alcuni errori: nel Formulario "un'unica interpretazione" va letto come almeno una; negli Insiemi la legge di De Morgan (A∩B)^C è scritta con ∩; nel tuo doc Esercizi, es. 2 (g), il controesempio -7/6 è razionale; nell'Induzione ci sono refusi nelle somme; il simbolo ¬ è reso come ≠.
+[DA VERIFICARE] Le fonti contengono alcuni errori:
+- nel Formulario "un'unica interpretazione" va letto come almeno una;
+- negli Insiemi la legge di De Morgan (A∩B)^C è scritta con ∩;
+- nel tuo doc Esercizi, es. 2 (g), il controesempio -7/6 è razionale;
+- nell'Induzione ci sono refusi nelle somme;
+- il simbolo ¬ è reso come ≠.
 
 [DA VERIFICARE] Il doc "Appunti" è troncato nella dimostrazione di CSB (sezione 7 Reticoli). Le sottocartelle PDF/Slide Decks (slide 1.1-7.2) non sono state lette direttamente: gli appunti sono una condensazione del doc Appunti, che a sua volta riassume le slide.
 

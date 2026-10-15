@@ -12,7 +12,12 @@ Fonte: Lezione 00 (Introduzione al corso), Lezione 01 (ISA parte 1) - slide Drag
 - Prestazioni
 
 ## Corso ed esame (dalla Lezione 00)
-Il corso vale 6 CFU, ripartiti in Teoria (4 CFU, 32 ore) e Laboratorio (2 CFU, 20 ore). Si segue il Corso B (cognomi E-O) con il docente Idilio Drago, ma il programma è identico per A, B e C. Gli obiettivi sono tre: capire l'organizzazione dell'hardware attraverso una gerarchia di macchine virtuali, conoscere le funzioni hardware che i sistemi operativi sfruttano, e capire come si passa da un linguaggio ad alto livello al linguaggio macchina. Si danno per noti la rappresentazione dei numeri (complemento a due, decimali), Programmazione I e l'algebra di Boole.
+Il corso vale 6 CFU, ripartiti in Teoria (4 CFU, 32 ore) e Laboratorio (2 CFU, 20 ore). Si segue il Corso B (cognomi E-O) con il docente Idilio Drago, ma il programma è identico per A, B e C. Gli obiettivi sono tre:
+- capire l'organizzazione dell'hardware attraverso una gerarchia di macchine virtuali;
+- conoscere le funzioni hardware che i sistemi operativi sfruttano;
+- capire come si passa da un linguaggio ad alto livello al linguaggio macchina.
+
+Si danno per noti la rappresentazione dei numeri (complemento a due, decimali), Programmazione I e l'algebra di Boole.
 
 La domanda che guida l'intero corso è semplice da enunciare e meno da risolvere: come fa un computer costruito con transistor che implementano AND, OR e NOT a "capire" un programma in C? Che cosa c'è in mezzo? Tutto il resto delle dispense è, in sostanza, la risposta a questa domanda, risalendo dal livello delle porte logiche fino al linguaggio ad alto livello.
 

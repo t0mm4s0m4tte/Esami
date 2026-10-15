@@ -14,13 +14,26 @@
 
 Un'applicazione lineare è una funzione fra spazi vettoriali che rispetta la struttura, cioè somma e prodotto per scalare. Formalmente f: V→W (con V, W sullo stesso campo K) è **lineare** se (i) f(v+w)=f(v)+f(w) e (ii) f(λv)=λf(v). Ne seguono subito f(0)=0 (quindi se T(0)≠0 la mappa non è lineare) e f(Σλ_iv_i)=Σλ_if(v_i): una lineare è completamente determinata dai valori che assume su una base, ed è questo che permette di descriverla con una matrice.
 
-Fra gli **esempi di lineari** ci sono T(a,b)=(2a+b, a+3b) (che è L_A con A=[[2,1],[1,3]]), l'applicazione nulla, l'identità, la mappa **L_A: Kⁿ→Kᵐ, x↦Ax** per A di taglia m×n, la traccia Tr: M(n,K)→K, la derivata D: R_n[x]→R_{n-1}[x] e la valutazione p↦(p(2),p(-2)). Non sono lineari T(a,b)=(a+2, b-1) (perché T(0)≠0) e T(a,b)=(a², a+b): con v=(2,1), w=(2,0) si ha T(v+w)=(16,5) ≠ T(v)+T(w)=(8,5). Il test rapido: se le componenti sono **polinomi omogenei di grado 1** nelle variabili la mappa è lineare; termini noti, quadrati o prodotti la rendono non lineare.
+Fra gli **esempi di lineari** ci sono:
+- T(a,b)=(2a+b, a+3b), che è L_A con A=[[2,1],[1,3]];
+- l'applicazione nulla e l'identità;
+- la mappa **L_A: Kⁿ→Kᵐ, x↦Ax** per A di taglia m×n;
+- la traccia Tr: M(n,K)→K;
+- la derivata D: R_n[x]→R_{n-1}[x];
+- la valutazione p↦(p(2),p(-2)).
+
+Non sono lineari T(a,b)=(a+2, b-1) (perché T(0)≠0) e T(a,b)=(a², a+b): con v=(2,1), w=(2,0) si ha T(v+w)=(16,5) ≠ T(v)+T(w)=(8,5). Il test rapido: se le componenti sono **polinomi omogenei di grado 1** nelle variabili la mappa è lineare; termini noti, quadrati o prodotti la rendono non lineare.
 
 ## 2. Nucleo e immagine
 
 Due sottoinsiemi misurano quanto una lineare perde e quanto raggiunge: il **nucleo Ker f** = {v∈V | f(v)=0} ⊆ V e l'**immagine Im f** = {f(v)} ⊆ W. Entrambi sono sottospazi (Prop 14.11). Il loro legame con iniettività e suriettività è diretto: **f è iniettiva ⇔ Ker f={0}**, e f è suriettiva ⇔ Im f=W (Prop 14.12); per il primo punto basta osservare che f(v)=f(v') equivale a v-v'∈Ker. Inoltre, se v1..vn generano V allora f(v1)..f(vn) generano Im f. Per L_A questo si traduce in **Im L_A = Span(colonne di A)**, quindi dim Im L_A = rk A, e in **Ker L_A = {x | Ax=0} = S₀**, lo spazio delle soluzioni del sistema omogeneo (file 08).
 
-Il risultato centrale è il **teorema della dimensione** (14.13): se dim V = n è finita, allora **dim Ker f + dim Im f = n**. Intuitivamente, ciò che il nucleo "schiaccia" e ciò che l'immagine "conserva" si spartiscono le n dimensioni di partenza. Applicato a L_A dà dim S₀ = n - rk A, cioè proprio il contenuto di Rouché-Capelli. Il Cor 14.14 ne trae le conseguenze: dim Im f ≤ dim V; f è iniettiva ⇔ dim Im f = dim V; f è suriettiva ⇔ dim Im f = dim W. Perciò se dim V > dim W la mappa non è mai iniettiva (per esempio f: R⁸→R⁴ ha dim Ker ≥ 4, e f: R⁶→R³ ha dim Ker ≥ 3 e non è isomorfismo), se dim V < dim W non è mai suriettiva, e se dim V = dim W le tre condizioni iniettiva, suriettiva, isomorfismo sono equivalenti.
+Il risultato centrale è il **teorema della dimensione** (14.13): se dim V = n è finita, allora **dim Ker f + dim Im f = n**. Intuitivamente, ciò che il nucleo "schiaccia" e ciò che l'immagine "conserva" si spartiscono le n dimensioni di partenza. Applicato a L_A dà dim S₀ = n - rk A, cioè proprio il contenuto di Rouché-Capelli. Il Cor 14.14 ne trae le conseguenze:
+- dim Im f ≤ dim V;
+- f è iniettiva ⇔ dim Im f = dim V;
+- f è suriettiva ⇔ dim Im f = dim W.
+
+Perciò se dim V > dim W la mappa non è mai iniettiva (per esempio f: R⁸→R⁴ ha dim Ker ≥ 4, e f: R⁶→R³ ha dim Ker ≥ 3 e non è isomorfismo), se dim V < dim W non è mai suriettiva, e se dim V = dim W le tre condizioni iniettiva, suriettiva, isomorfismo sono equivalenti.
 
 La procedura di calcolo, da usare sempre, è la seguente.
 1. Scrivere la matrice A di f rispetto a basi (di solito canoniche): la colonna j è l'immagine del j-esimo vettore di base.

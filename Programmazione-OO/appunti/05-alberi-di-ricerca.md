@@ -12,7 +12,10 @@ Un albero binario di ricerca (BST) è, come la lista, una struttura definita ind
 
 La scelta progettuale di questo modello è rappresentare l'albero con una `abstract class Tree` e due sottoclassi: `Leaf`, che è l'albero vuoto e non contiene dati, e `Branch`, con i campi `elem`, `left`, `right`. Usare **Leaf al posto di null** elimina i null-check: grazie al dynamic binding (file 04) ogni chiamata trova sempre un oggetto che sa rispondere, e il caso base della ricorsione si scrive nella Leaf. Per questo motivo le Leaf possono anche essere **una sola istanza condivisa** nello heap, con più riferimenti che puntano ad essa (ad esempio 5).
 
-L'interfaccia comprende `empty()`, `max()`, `contains(x)`, `insert(x)` che restituisce un Tree, `remove(x)` che restituisce un Tree, e `toString()`, il quale a sua volta chiama `protected abstract toStringAux(...)` per prefissi e indentazione.
+L'interfaccia comprende:
+- `empty()`, `max()`, `contains(x)`;
+- `insert(x)` e `remove(x)`, che restituiscono un Tree;
+- `toString()`, il quale a sua volta chiama `protected abstract toStringAux(...)` per prefissi e indentazione.
 
 ## 2. Algoritmi
 Le operazioni seguono tutte la struttura del BST. La ricerca `contains` usa il risultato di `compareTo` (in forma ternaria): 0 significa trovato, un valore negativo porta a sinistra, uno positivo a destra; la Leaf risponde false. Per `max()`, in un Branch con `right` Leaf il massimo è `elem`, altrimenti si delega a `right.max()`; nella Leaf non c'è un valore da restituire e si lancia un'eccezione (file 06: `MaxSuAlberoVuoto`, e il `throw` rende superfluo il `return`).

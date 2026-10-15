@@ -20,7 +20,11 @@ La soluzione software classica per due processi è quella di **Peterson**, che r
 do { flag[i]=true; turn=j; while(flag[j] && turn==j); /*CS*/ flag[i]=false; /*RS*/ } while(true);
 ```
 
-Disabilitare gli interrupt funziona solo su uniprocessore ed è inefficiente. Le soluzioni pratiche si appoggiano a istruzioni **atomiche** dell'hardware: `test_and_set(target)` ritorna il valore vecchio e imposta TRUE; `compare_and_swap(value, expected, new)` ritorna il valore vecchio e scrive new solo se il valore è uguale a expected. `[INT]` I lock corrispondenti sono `while(test_and_set(&lock)); /*CS*/ lock=false;` e `while(compare_and_swap(&lock,0,1)!=0); /*CS*/ lock=0;`. Garantiscono la mutua esclusione ma **non l'attesa limitata**, quindi la starvation resta possibile. Sulla stessa idea si basa il **mutex lock** con `acquire()/release()` atomiche; la sua implementazione base fa **busy waiting** ed è detta **spinlock**.
+Disabilitare gli interrupt funziona solo su uniprocessore ed è inefficiente. Le soluzioni pratiche si appoggiano a istruzioni **atomiche** dell'hardware:
+- `test_and_set(target)` ritorna il valore vecchio e imposta TRUE;
+- `compare_and_swap(value, expected, new)` ritorna il valore vecchio e scrive new solo se il valore è uguale a expected.
+
+`[INT]` I lock corrispondenti sono `while(test_and_set(&lock)); /*CS*/ lock=false;` e `while(compare_and_swap(&lock,0,1)!=0); /*CS*/ lock=0;`. Garantiscono la mutua esclusione ma **non l'attesa limitata**, quindi la starvation resta possibile. Sulla stessa idea si basa il **mutex lock** con `acquire()/release()` atomiche; la sua implementazione base fa **busy waiting** ed è detta **spinlock**.
 
 ## Semafori
 Un semaforo è un intero S con due operazioni atomiche: `wait(S)` (P: `while(S<=0); S--`) e `signal(S)` (V: `S++`). Il **counting** ha dominio libero e rappresenta n istanze di una risorsa, il **binario** vale 0/1 e si comporta come un mutex. Un uso tipico è imporre un ordine: se S1 in P1 deve precedere S2 in P2, si usa un semaforo `synch=0`; P1 esegue `S1; signal(synch)`, P2 esegue `wait(synch); S2`.
@@ -30,7 +34,11 @@ Per evitare il busy waiting, un semaforo può avere una coda di attesa: quando `
 Il **monitor** è un tipo di dato astratto che offre mutua esclusione implicita (un solo processo attivo alla volta) ed è più sicuro dei semafori perché la disciplina è imposta dal costrutto. All'interno si usano le **condition variable**: `x.wait()` sospende il chiamante e rilascia il monitor, `x.signal()` risveglia un processo in attesa (nessun effetto se non c'è nessuno). Le semantiche possibili sono *signal and wait* (chi segnala si sospende) e *signal and continue* (chi segnala prosegue). Esempio della fonte: un `ResourceAllocator` con variabile busy e `x.wait(priority)`.
 
 ## Problemi
-La sincronizzazione mal fatta produce quattro tipi di guai. Nel **deadlock** (P0: wait(S), wait(Q); P1: wait(Q), wait(S)) si crea un'attesa circolare. La **starvation** può nascere per esempio da una coda del semaforo gestita LIFO. La **priority inversion** si verifica quando un processo a bassa priorità tiene un lock, uno a media priorità lo prelaziona e quello ad alta priorità resta bloccato; la soluzione è la **priority inheritance**, in cui il possessore del lock eredita la priorità massima tra i processi in attesa. Infine ci sono gli **usi scorretti dei semafori**: invertire `signal(mutex)...wait(mutex)` o dimenticare il `wait` viola la mutua esclusione, dimenticare il `signal` provoca deadlock.
+La sincronizzazione mal fatta produce quattro tipi di guai:
+- **deadlock** (P0: wait(S), wait(Q); P1: wait(Q), wait(S)): si crea un'attesa circolare;
+- **starvation**: può nascere per esempio da una coda del semaforo gestita LIFO;
+- **priority inversion**: un processo a bassa priorità tiene un lock, uno a media priorità lo prelaziona e quello ad alta priorità resta bloccato; la soluzione è la **priority inheritance**, in cui il possessore del lock eredita la priorità massima tra i processi in attesa;
+- **usi scorretti dei semafori**: invertire `signal(mutex)...wait(mutex)` o dimenticare il `wait` viola la mutua esclusione, dimenticare il `signal` provoca deadlock.
 
 ## Problemi classici (soluzioni)
 Il **bounded buffer** usa tre semafori: `mutex=1`, `full=0`, `empty=n`. Il produttore esegue `wait(empty); wait(mutex); inserisci; signal(mutex); signal(full)`; il consumatore `wait(full); wait(mutex); preleva; signal(mutex); signal(empty)`. [INT] L'ordine standard dei wait è prima empty/full e poi mutex: invertirlo provoca deadlock.

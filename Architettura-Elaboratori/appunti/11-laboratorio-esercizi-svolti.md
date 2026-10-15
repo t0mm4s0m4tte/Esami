@@ -5,7 +5,12 @@ Fonte: slide Lab 1-6, 8, 9, 10 (cartella "Slide Deck - Laboratorio"). **Lab 7 (R
 ## RARS (Lab 1)
 RARS è il simulatore RISC-V (RV32 e RV64) su cui si fa tutto il laboratorio: permette di scrivere, eseguire e ispezionare programmi assembly senza una macchina reale. Conviene usare il fork di Drago `github.com/idrago/rars` ("vi aiuterà per l'esame"), che richiede la JVM 8. Offre breakpoint, esecuzione a passi e statistiche (Tools > Instruction Counter / Statistics: numero di istruzioni per tipo, accessi a memoria), utili per contare le istruzioni eseguite.
 
-L'interfaccia è divisa in finestre: l'Editor; il Segmento Testo, che mostra indirizzi, codifica macchina e sorgente, distinguendo le pseudo-istruzioni dalle istruzioni "basic"; il Segmento Dati, che parte da 0x10010000; i Registri, con nome ABI e x0..x31; e la finestra di I/O.
+L'interfaccia è divisa in finestre:
+- l'**Editor**;
+- il **Segmento Testo**, che mostra indirizzi, codifica macchina e sorgente, distinguendo le pseudo-istruzioni dalle istruzioni "basic";
+- il **Segmento Dati**, che parte da 0x10010000;
+- i **Registri**, con nome ABI e x0..x31;
+- la finestra di **I/O**.
 
 Un programma ha sempre la stessa struttura: una sezione `.data` per i dati, una `.text` per il codice e un'etichetta `_start` che fa da punto d'ingresso (il "main"), come in questo scheletro:
 ```
@@ -224,7 +229,15 @@ mcm: addi sp,sp,-4 ; sw ra,0(sp)
 `ra` va salvato perché `jal mcd` lo sovrascrive. La slide usa `s1` senza salvarlo: per la convenzione il chiamato dovrebbe preservarlo (salvarlo sullo stack) oppure usare un temporaneo `t*` non toccato da mcd (mcd usa solo a0,a1) [mia osservazione]. Senza spilling su memoria è possibile solo parcheggiando `ra` in un registro libero (`mv t1,ra ... mv ra,t1`).
 
 ## Lab 8 - circuiti combinatori (CircuitVerse)
-Es. 1 half_adder; Es. 2 full_adder (con half adder); Es. 3 ALU_1bit_v0 (AND/OR/SUM, Operation 2 bit); Es. 4 ALU_1bit_v1 (Ainvert, Binvert, Less); Es. 5 ALU_1bit_v2 (bit più significativo: Set, Overflow); Es. 6 ALU_4bit (AND, OR, add, subtract, slt, NOR + Zero + Overflow, controllo 4 bit: 0000, 0001, 0010, 0110, 0111, 1100); Es. 7 "sanity check" con casi numerici (estrarre 2 bit bassi di 1101, 5+3, 5+(-3), -5-3, A=B, NOR) e verifica di slt con overflow. Consegna: file Verilog su Moodle, nomi moduli vincolati (vedi file 05).
+1. half_adder;
+2. full_adder (con half adder);
+3. ALU_1bit_v0 (AND/OR/SUM, Operation 2 bit);
+4. ALU_1bit_v1 (Ainvert, Binvert, Less);
+5. ALU_1bit_v2 (bit più significativo: Set, Overflow);
+6. ALU_4bit (AND, OR, add, subtract, slt, NOR + Zero + Overflow, controllo 4 bit: 0000, 0001, 0010, 0110, 0111, 1100);
+7. "sanity check" con casi numerici (estrarre 2 bit bassi di 1101, 5+3, 5+(-3), -5-3, A=B, NOR) e verifica di slt con overflow.
+
+Consegna: file Verilog su Moodle, nomi moduli vincolati (vedi file 05).
 
 ## Lab 9 - circuiti sequenziali
 SR latch NOR -> D latch -> flip-flop D (fronte salita) -> con reset -> fronte discesa -> registro 8 bit -> register file 8 registri (dettagli file 06).

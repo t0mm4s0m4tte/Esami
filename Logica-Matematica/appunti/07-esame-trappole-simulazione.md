@@ -22,7 +22,17 @@ Le trappole seguenti sono quelle in cui gli esercizi di questo corso fanno cader
 14. Validità FOL: dimostrazione per ogni struttura; soddisfacibilità: un esempio.
 
 ## Tavola V/F veloce (da Formulario)
-Le affermazioni su funzioni e cardinalità vengono spesso proposte in forma V/F, e la maggior parte si decide ricordando che nel finito valgono i principi dei cassetti mentre nell'infinito cadono. Sono vere: se f è iniettiva e B è finito allora A è finito; se f è suriettiva e A è finito allora B è finito; se |A|=|B| sono finiti e f è iniettiva allora è suriettiva; il prodotto di numerabili è numerabile; se A è infinito e |B|≤|A| allora |A×B|=|A|; se A è infinito e B finito allora A∖B è infinito. Sono invece false: "f iniettiva ⇒ ogni controimmagine ha **esattamente** 1 elemento" e "f iniettiva e B infinito ⇒ A infinito".
+Le affermazioni su funzioni e cardinalità vengono spesso proposte in forma V/F, e la maggior parte si decide ricordando che nel finito valgono i principi dei cassetti mentre nell'infinito cadono. Sono vere:
+- se f è iniettiva e B è finito allora A è finito;
+- se f è suriettiva e A è finito allora B è finito;
+- se |A|=|B| sono finiti e f è iniettiva allora è suriettiva;
+- il prodotto di numerabili è numerabile;
+- se A è infinito e |B|≤|A| allora |A×B|=|A|;
+- se A è infinito e B finito allora A∖B è infinito.
+
+Sono invece false:
+- "f iniettiva ⇒ ogni controimmagine ha **esattamente** 1 elemento";
+- "f iniettiva e B infinito ⇒ A infinito".
 
 ## Mini-simulazione (tempo ~90 min, svolta dopo aver provato da solo)
 La simulazione ricalca la struttura dell'esame: un primo esercizio a risposta multipla, uno di formalizzazione, uno di semantica e uno di dimostrazione. Va svolta prima da soli e poi confrontata con le soluzioni.

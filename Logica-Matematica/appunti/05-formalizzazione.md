@@ -12,7 +12,11 @@ Prima di scrivere una formula bisogna decidere in che mondo si sta parlando, e p
 4. Se manca una costante (per esempio 2) costruiscila: 2 = 1+1 (**de-sugaring**).
 
 ## Regole d'oro
-Quasi tutti gli errori di formalizzazione vengono dall'abbinare male quantificatore e connettivo. La coppia canonica è questa: "Ogni P è Q" si traduce con **∀x(P(x)→Q(x))**, mentre "Esiste un P che è Q" con **∃x(P(x)∧Q(x))**. Le combinazioni ∀∧ e ∃→ sono quasi sempre errori: ∀x(P∧Q) afferma che tutto è P, ∃x(P→Q) è banalmente vera appena c'è un elemento che non è P. Le negazioni seguono dalle equivalenze del file 04: "Nessun P è Q" è ∀x(P→¬Q) ≡ ¬∃x(P∧Q); "Non tutti i P sono Q" è ∃x(P∧¬Q), e va distinta da "tutti i P sono non-Q" (un "non tutti sono onesti" non vuol dire "tutti disonesti").
+Quasi tutti gli errori di formalizzazione vengono dall'abbinare male quantificatore e connettivo. La coppia canonica è questa:
+- "Ogni P è Q" si traduce con **∀x(P(x)→Q(x))**;
+- "Esiste un P che è Q" con **∃x(P(x)∧Q(x))**.
+
+Le combinazioni ∀∧ e ∃→ sono quasi sempre errori: ∀x(P∧Q) afferma che tutto è P, ∃x(P→Q) è banalmente vera appena c'è un elemento che non è P. Le negazioni seguono dalle equivalenze del file 04: "Nessun P è Q" è ∀x(P→¬Q) ≡ ¬∃x(P∧Q); "Non tutti i P sono Q" è ∃x(P∧¬Q), e va distinta da "tutti i P sono non-Q" (un "non tutti sono onesti" non vuol dire "tutti disonesti").
 
 L'ordine dei quantificatori cambia il significato: in ∀x∃y la y può dipendere da x, in ∃y∀x no. Questo permette di esprimere sfumature come "arbitrariamente grandi", ∀x∃y(x<y∧P(y)), contro "sufficientemente grandi", ∃x∀y(x<y→P(y)). Una equivalenza utile per spostare i quantificatori è ∀x∀y∀z(G(y,x)∧G(z,y)→A(x,z)) ≡ ∀x∀y(∃z(G(z,x)∧G(y,z))→A(x,y)). Sul piano della notazione, quella infissa si associa a destra (t1+t2+t3 = t1+(t2+t3)), e i predicati unari di restrizione vanno aggiunti solo se l'universo è più grande del dominio dell'enunciato.
 
@@ -36,10 +40,19 @@ Le proprietà aritmetiche si esprimono con pochi schemi che conviene ricordare a
 Per una proprietà come "x è primo" si lascia **x libera**: è una proprietà di x, non un enunciato.
 
 ## Conteggio e identità (si usa "=")
-Per dire quanti elementi hanno una proprietà serve l'uguaglianza, perché solo con essa si possono dichiarare distinti due elementi. "Almeno due P" si scrive ∃x∃y(x≠y∧P(x)∧P(y)); per "almeno tre" si aggiunge un terzo elemento distinto dagli altri due: ∃x∃y∃z(x≠y∧x≠z∧y≠z∧P(x)∧P(y)∧P(z)). "Al più" è la negazione di "almeno uno in più": al più 2 Q è ¬∃x∃y∃z(distinti ∧ Q(x)∧Q(y)∧Q(z)), e al più 1 è ∀x∀y(P(x)∧P(y)→x=y). Combinando i due si ottiene "esattamente": **esiste un unico P** è ∃x(P(x)∧∀y(P(y)→y=x)), ed "esattamente 2" è "almeno 2" e "al più 2". Con lo stesso strumento si esprimono proprietà delle funzioni: f iniettiva è ∀x∀y(f(x)=f(y)→x=y), f suriettiva è ∀y∃x(f(x)=y), e l'elemento neutro o lo zero si scrivono come sopra.
+Per dire quanti elementi hanno una proprietà serve l'uguaglianza, perché solo con essa si possono dichiarare distinti due elementi:
+- **almeno due P**: ∃x∃y(x≠y∧P(x)∧P(y));
+- **almeno tre P**: si aggiunge un terzo elemento distinto dagli altri due, ∃x∃y∃z(x≠y∧x≠z∧y≠z∧P(x)∧P(y)∧P(z));
+- **al più** è la negazione di "almeno uno in più": al più 2 Q è ¬∃x∃y∃z(distinti ∧ Q(x)∧Q(y)∧Q(z)), e al più 1 è ∀x∀y(P(x)∧P(y)→x=y);
+- **esattamente** combina i due: **esiste un unico P** è ∃x(P(x)∧∀y(P(y)→y=x)), ed "esattamente 2" è "almeno 2" e "al più 2".
+
+Con lo stesso strumento si esprimono proprietà delle funzioni: f iniettiva è ∀x∀y(f(x)=f(y)→x=y), f suriettiva è ∀y∃x(f(x)=y), e l'elemento neutro o lo zero si scrivono come sopra.
 
 ## Parentele (B(x,y)= x genitore di y, D(x)= x maschio)
-Le parentele si costruiscono componendo la sola relazione di genitorialità. Due persone y e z sono fratelli/sorelle se hanno un genitore comune e sono diversi: ∃x(B(x,y)∧B(x,z)∧y≠z). Il nonno x di y è il genitore di un genitore: ∃w(B(x,w)∧B(w,y)). Lo zio y di z è fratello di un genitore di z, ed è maschio: ∃w∃x(B(w,z)∧B(x,w)∧B(x,y)∧w≠y) ∧ D(y); per la zia si usa ¬D(y).
+Le parentele si costruiscono componendo la sola relazione di genitorialità:
+- **fratelli/sorelle** y e z: hanno un genitore comune e sono diversi, ∃x(B(x,y)∧B(x,z)∧y≠z);
+- **nonno** x di y: è il genitore di un genitore, ∃w(B(x,w)∧B(w,y));
+- **zio** y di z: è fratello di un genitore di z, ed è maschio, ∃w∃x(B(w,z)∧B(x,w)∧B(x,y)∧w≠y) ∧ D(y); per la zia si usa ¬D(y).
 
 ## Esercizi dalle fonti
 Gli esercizi delle fonti si dividono in tre famiglie. Quelli aritmetici sfruttano i pattern della tabella: "primo tra due quadrati consecutivi" (con ·,<,1,+,P) è ∀x(1<x → ∃z(P(z)∧x·x<z<(x+1)·(x+1))); "primi p, p+k arbitrariamente grandi" è ∀x∀y∃z(y<z∧P(z)∧P(z+x)∧¬∃w(z<w<z+x∧P(w))); "il più piccolo primo è pari" è ∀x(P(x)∧∀y(P(y)∧y≠x→x<y)→∃z(x=z+z)); infine "ogni naturale ≠0 è somma di due naturali distinti" in ℕ è ∀x(x≠0→∃y∃z(y≠z∧y+z=x)), mentre in ℝ servono i predicati N(·) su x, y, z.
@@ -49,7 +62,12 @@ Quelli in linguaggio naturale mettono alla prova la scelta di costanti e funzion
 L'ultima famiglia è geometrica: "per due punti distinti passa una e una sola retta" combina esistenza e unicità in ∀x∀y(P(x)∧P(y)∧x≠y→∃z(R(z)∧Q(x,z)∧Q(y,z)∧∀w(R(w)∧Q(x,w)∧Q(y,w)→z=w))).
 
 ## Formule da diagrammi (Sintesi §10)
-Un diagramma di Hasse o un grafo si traduce in logica descrivendo la posizione dei nodi con la sola relazione disponibile. Le proprietà elementari sono: x è massimo se ∀y(y≤x), minimo se ∀y(x≤y); "ha due predecessori distinti" si scrive ∃y∃z(y≠z∧R(y,x)∧R(z,x)); una catena stretta di lunghezza 2 sotto x è ∃y∃z(y≤x∧z≤y∧x≠y∧y≠z). La strategia è costruire a strati: prima le formule semplici per i nodi vicini a minimo e massimo, poi quelle più complesse in funzione della distanza da essi. Per isolare un nodo si contano gli archi entranti e uscenti e si sfrutta la proprietà che lo rende unico.
+Un diagramma di Hasse o un grafo si traduce in logica descrivendo la posizione dei nodi con la sola relazione disponibile. Le proprietà elementari sono:
+- x è massimo: ∀y(y≤x); minimo: ∀y(x≤y);
+- "ha due predecessori distinti": ∃y∃z(y≠z∧R(y,x)∧R(z,x));
+- una catena stretta di lunghezza 2 sotto x: ∃y∃z(y≤x∧z≤y∧x≠y∧y≠z).
+
+La strategia è costruire a strati: prima le formule semplici per i nodi vicini a minimo e massimo, poi quelle più complesse in funzione della distanza da essi. Per isolare un nodo si contano gli archi entranti e uscenti e si sfrutta la proprietà che lo rende unico.
 
 ## Esercizi tipo (ET)
 - **ET1** "Ogni numero pari maggiore di 2 è somma di due primi" (L={+,·,<,1,P}): ∀x((∃y x=y+y)∧(1+1)<x → ∃u∃v(P(u)∧P(v)∧x=u+v)).

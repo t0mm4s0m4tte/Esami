@@ -12,7 +12,14 @@
 
 ## 1. DDL
 
-Il DDL è la parte di SQL che traduce lo schema logico in oggetti del DBMS. Si parte dai **tipi**: `char(n)` a lunghezza fissa e `varchar(n)`; `numeric(p,s)` esatto, `decimal(p,s)` con precisione *minima*, `float/real`; `date, time, timestamp, interval` (NON è ammesso `interval year to minute`, perché mesi e giorni hanno durata variabile); `boolean, bigint`; `blob/clob` (in PostgreSQL `bytea`/`text`). Sopra i tipi si possono definire **domini**, che centralizzano vincoli e default così da modificarli in un punto solo:
+Il DDL è la parte di SQL che traduce lo schema logico in oggetti del DBMS. Si parte dai **tipi**:
+- stringhe: `char(n)` a lunghezza fissa e `varchar(n)`;
+- numerici: `numeric(p,s)` esatto, `decimal(p,s)` con precisione *minima*, `float/real`;
+- temporali: `date, time, timestamp, interval` (NON è ammesso `interval year to minute`, perché mesi e giorni hanno durata variabile);
+- `boolean, bigint`;
+- `blob/clob` (in PostgreSQL `bytea`/`text`).
+
+Sopra i tipi si possono definire **domini**, che centralizzano vincoli e default così da modificarli in un punto solo:
 
 ```sql
 CREATE DOMAIN Temperatura AS decimal(3,1) DEFAULT NULL CHECK (value >= 35.0 AND value <= 42.0);
@@ -20,7 +27,14 @@ ALTER DOMAIN Temperatura SET DEFAULT 37.0;
 ```
 Il tipo o dominio va dichiarato **prima** dell'uso.
 
-I vincoli **intra-relazionali** sono `NOT NULL`, `UNIQUE` (dichiara una superchiave e ammette NULL), `PRIMARY KEY` (unico + NOT NULL, spesso anche criterio di organizzazione fisica), `CHECK` e `DEFAULT`. Una sottigliezza ricorrente riguarda UNIQUE: `Nome UNIQUE, Cognome UNIQUE` (vieta due "Mario" o due "Rossi") è ben diverso da `UNIQUE(Nome,Cognome)`, che vieta solo la coppia identica.
+I vincoli **intra-relazionali** sono:
+- `NOT NULL`;
+- `UNIQUE`: dichiara una superchiave e ammette NULL;
+- `PRIMARY KEY`: unico + NOT NULL, spesso anche criterio di organizzazione fisica;
+- `CHECK`;
+- `DEFAULT`.
+
+Una sottigliezza ricorrente riguarda UNIQUE: `Nome UNIQUE, Cognome UNIQUE` (vieta due "Mario" o due "Rossi") è ben diverso da `UNIQUE(Nome,Cognome)`, che vieta solo la coppia identica.
 
 L'**integrità referenziale** coinvolge due tabelle, chiamate Master (la referenziata) e Slave (quella che porta la FK). Il comportamento è asimmetrico: una modifica *illegale* sullo Slave (una FK che non punta a nulla) viene rifiutata, mentre per una modifica sul Master si può dichiarare la reazione desiderata.
 
@@ -51,7 +65,10 @@ Per modificare o eliminare oggetti esistenti: `ALTER TABLE Ricoveri ADD COLUMN R
 
 ## 2. DML
 
-Il DML modifica il contenuto delle tabelle. `INSERT INTO T(attr,...) VALUES (...)` inserisce una riga: omettere la lista degli attributi è sconsigliato perché il codice si rompe se la tabella cambia. `DELETE FROM T WHERE ...` cancella le righe che soddisfano la condizione; senza WHERE cancella **tutto**. `UPDATE T SET ... WHERE ...` modifica le righe selezionate.
+Il DML modifica il contenuto delle tabelle:
+- `INSERT INTO T(attr,...) VALUES (...)` inserisce una riga: omettere la lista degli attributi è sconsigliato perché il codice si rompe se la tabella cambia;
+- `DELETE FROM T WHERE ...` cancella le righe che soddisfano la condizione; senza WHERE cancella **tutto**;
+- `UPDATE T SET ... WHERE ...` modifica le righe selezionate.
 
 ## 3. Query base
 
@@ -86,7 +103,13 @@ Le funzioni aggregate riducono un insieme di righe a un valore. Hanno comportame
 | SUM, AVG | ignorano NULL (AVG(QTY) su SP = 258,33) |
 | MAX, MIN | anche su stringhe |
 
-Il punto concettuale è l'ordine in cui il DBMS opera: prima WHERE (restrizione sulle righe), poi GROUP BY (partizione in gruppi), quindi il calcolo di SELECT e aggregati, infine HAVING (filtro sui gruppi). Da qui discende che **non si usano aggregati nel WHERE**, che agisce sulle righe prima dell'aggregazione, e che non si mescolano attributi "sciolti" e aggregati senza GROUP BY. Il criterio per scegliere tra WHERE e HAVING è dunque: condizione sulla riga -> WHERE, condizione sul gruppo -> HAVING.
+Il punto concettuale è l'ordine in cui il DBMS opera:
+1. WHERE: restrizione sulle righe;
+2. GROUP BY: partizione in gruppi;
+3. calcolo di SELECT e aggregati;
+4. HAVING: filtro sui gruppi.
+
+Da qui discende che **non si usano aggregati nel WHERE**, che agisce sulle righe prima dell'aggregazione, e che non si mescolano attributi "sciolti" e aggregati senza GROUP BY. Il criterio per scegliere tra WHERE e HAVING è dunque: condizione sulla riga -> WHERE, condizione sul gruppo -> HAVING.
 
 Sul GROUP BY, lo standard SQL-92 richiede che ogni attributo nel SELECT sia aggregato o presente nel GROUP BY (Oracle è rigoroso); SQL-99 e PostgreSQL ammettono anche attributi funzionalmente dipendenti dal raggruppamento (GROUP BY P.PNum, SELECT P.PName).
 ```sql
@@ -104,7 +127,13 @@ Per confrontare un valore con un insieme servono i **quantificatori**: `ANY` sig
 SELECT DISTINCT SNum FROM S WHERE SNum NOT IN (SELECT SNum FROM SP WHERE PNum IN (SELECT PNum FROM P WHERE Color='Blue'));
 ```
 
-**EXISTS / NOT EXISTS** sono veri se la subquery ha almeno una riga / è vuota, e sono lo strumento naturale per esistenza e negazione. La valutazione procede così: si prende una riga esterna, si sostituiscono i suoi valori nella subquery, la si esegue e se produce almeno una riga EXISTS è TRUE, poi si itera sulla riga successiva. Per esempio `... WHERE NOT EXISTS (SELECT * FROM SP WHERE SNum=S.SNum AND PNum='P4')` è equivalente a `SNum NOT IN (SELECT SNum FROM SP WHERE PNum='P4')`.
+**EXISTS / NOT EXISTS** sono veri se la subquery ha almeno una riga / è vuota, e sono lo strumento naturale per esistenza e negazione. La valutazione procede così:
+1. si prende una riga esterna;
+2. si sostituiscono i suoi valori nella subquery;
+3. la si esegue: se produce almeno una riga, EXISTS è TRUE;
+4. si itera sulla riga successiva.
+
+Per esempio `... WHERE NOT EXISTS (SELECT * FROM SP WHERE SNum=S.SNum AND PNum='P4')` è equivalente a `SNum NOT IN (SELECT SNum FROM SP WHERE PNum='P4')`.
 
 Sulla **visibilità**: le variabili esterne sono visibili nelle subquery annidate (top-down), mentre non c'è alcuna visibilità tra subquery sorelle (si ottiene l'errore "identificatore non definito"). Come regola di scelta: join per combinare dati, insiemistici per classificare, nidificate per esistenza e negazione.
 
@@ -115,7 +144,10 @@ PostgreSQL discende da INGRES -> POSTGRES (Berkeley, Stonebraker, 1985) -> Postg
 Per la concorrenza usa **MVCC**: ogni transazione ha un XID e lavora su uno *snapshot*, per cui i lettori non bloccano gli scrittori e viceversa; le modifiche creano nuove versioni delle righe e **VACUUM** recupera quelle obsolete. Così garantisce ACID (file 06). I **trigger** sono procedure automatiche su INSERT/UPDATE/DELETE: spostano i controlli dall'applicazione al database, e valgono quindi per ogni client. **EXPLAIN** mostra il piano di esecuzione (per esempio un Hash Inner Join); PostgreSQL è anche multi-model, perché gestisce JSON con ACID. Per il laboratorio si usa pgAdmin 4, con accesso al server del dipartimento via tunnel SSH.
 
 ## Query tipo (schema S-P-SP; risultati calcolati sui dati delle note)
-S: S1 Smith 20 London · S2 Jones 10 Paris · S3 Blake 30 Paris · S4 Clark 20 London · S5 Adams 30 Athens. P: P1 Nut Red 12 London · P2 Bolt Green 17 Paris · P3 Screw Blue 17 Rome · P4 Screw Red 14 London · P5 Cam Blue 12 Paris · P6 Cog Red 19 London. SP: S1 fornisce P1-P6 (300,200,400,200,100,100); S2: P1 300, P2 400; S3: P2 200; S4: P2 200, P4 300, P5 400.
+- **S**: S1 Smith 20 London · S2 Jones 10 Paris · S3 Blake 30 Paris · S4 Clark 20 London · S5 Adams 30 Athens.
+- **P**: P1 Nut Red 12 London · P2 Bolt Green 17 Paris · P3 Screw Blue 17 Rome · P4 Screw Red 14 London · P5 Cam Blue 12 Paris · P6 Cog Red 19 London.
+- **SP**: S1 fornisce P1-P6 (300,200,400,200,100,100); S2: P1 300, P2 400; S3: P2 200; S4: P2 200, P4 300, P5 400.
+
 1. Quantità totale per fornitore: `SELECT SNum, SUM(QTY) FROM SP GROUP BY SNum` -> S1 1300, S2 700, S3 200, S4 900.
 2. Fornitori che forniscono **tutte** le parti (doppia negazione, schema tipico [DA VERIFICARE sulle slide]):
    `SELECT SNum FROM S WHERE NOT EXISTS (SELECT * FROM P WHERE NOT EXISTS (SELECT * FROM SP WHERE SP.SNum=S.SNum AND SP.PNum=P.PNum))` -> S1.

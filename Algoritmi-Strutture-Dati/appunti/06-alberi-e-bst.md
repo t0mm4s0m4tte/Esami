@@ -9,7 +9,12 @@ Si parte dalle definizioni e dalla terminologia degli alberi, con le varianti e 
 
 Un **albero** è un grafo connesso e aciclico; un insieme di alberi disgiunti è una **foresta**. Il doc ne dà anche una definizione induttiva, Tree(A), ma la definizione completa non è riportata [DA VERIFICARE]. La terminologia è quella familiare: la radice è l'unico nodo senza padre, le foglie non hanno archi uscenti, gli altri sono nodi interni, e si parla di padre, figlio, fratello, discendente e avo. Un **ramo** è un cammino dalla radice a una foglia, il **livello** di un nodo è la sua distanza dalla radice (la radice sta a livello 0) e l'**altezza** dell'albero è il livello massimo, cioè la lunghezza del ramo più lungo. L'altezza è la grandezza che conta di più in tutto ciò che segue, perché il costo delle operazioni sui BST ne dipende direttamente.
 
-Esistono diverse varianti. L'albero **sorgente** ha archi uscenti solo dalla radice, il **pozzo** il contrario; l'albero **k-ario** ha grado k (il massimo numero di figli); l'albero **ordinato** attribuisce significato all'ordine dei figli. L'albero **binario posizionale** si definisce induttivamente: ∅∈BT(A), e se a∈A e l,r∈BT(A) allora ConsTree(a,l,r)∈BT(A).
+Esistono diverse varianti:
+- l'albero **sorgente** ha archi uscenti solo dalla radice, il **pozzo** il contrario;
+- l'albero **k-ario** ha grado k (il massimo numero di figli);
+- l'albero **ordinato** attribuisce significato all'ordine dei figli.
+
+L'albero **binario posizionale** si definisce induttivamente: ∅∈BT(A), e se a∈A e l,r∈BT(A) allora ConsTree(a,l,r)∈BT(A).
 
 Per la memoria, il caso binario si rappresenta con nodi a puntatori (key, left, right) in cui nil è l'albero vuoto. Per gli alberi k-ari si usa la rappresentazione **child-sibling**: ogni nodo punta al suo primo figlio (child) e al fratello successivo (sibling), cosicché un albero k-ario diventa di fatto un albero binario con un solo tipo di nodo. La stampa indentata ne mostra l'uso:
 
@@ -35,7 +40,9 @@ Un **albero binario di ricerca** è un albero binario in cui, per ogni nodo a, l
 
 La **ricerca** (ricorsiva o iterativa) confronta la chiave con il nodo corrente e scende a sinistra o a destra finché trova la chiave o arriva a nil. Il **minimo** si trova scendendo sempre a sinistra (`while T.left != nil`) e il massimo scendendo a destra, per la stessa proprietà.
 
-Il **successore** di N, cioè la più piccola chiave maggiore di N.key, si ragiona per casi. Se N ha un sottoalbero destro, il successore è il minimo di quel sottoalbero (Tree-Min(N.right)): le chiavi più grandi di N stanno lì, e la più piccola è il minimo. Se invece non lo ha, bisogna risalire con i parent fino al primo "avo sinistro", cioè al primo avo A tale che N stia nel sottoalbero A.left: quell'avo è il primo nodo maggiore di N.
+Il **successore** di N, cioè la più piccola chiave maggiore di N.key, si ragiona per casi:
+- se N ha un sottoalbero destro, il successore è il minimo di quel sottoalbero (Tree-Min(N.right)): le chiavi più grandi di N stanno lì, e la più piccola è il minimo;
+- se invece non lo ha, bisogna risalire con i parent fino al primo "avo sinistro", cioè al primo avo A tale che N stia nel sottoalbero A.left: quell'avo è il primo nodo maggiore di N.
 
 L'**inserimento** aggiunge sempre una nuova **foglia**, nel punto in cui la ricerca della chiave sarebbe terminata con nil. La versione iterativa (It-Tree-Insert) scende tenendo traccia del padre P e infine collega N come figlio sinistro o destro di P. La versione ricorsiva standard, Rec-Tree-Insert, ha un difetto da ricordare: **non imposta N.parent**, e per questo serve la variante Rec-Tree-Insert-Aux.
 

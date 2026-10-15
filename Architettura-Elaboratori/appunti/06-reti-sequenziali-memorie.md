@@ -13,7 +13,12 @@ Fonte: Lezione 05 (Reti Sequenziali), Lab 9 (circuiti sequenziali).
 I circuiti combinatori non ricordano nulla, ma un calcolatore deve conservare dati. In un circuito sequenziale la funzione calcolata dipende anche da uno **stato interno**, memorizzato in elementi di memoria, e quindi dalla storia degli ingressi. L'elemento più semplice è un latch a 1 bit, specificato così: ingressi `i` e `β` (store), uscita `o`. Se β=1 il nuovo stato è s' = i (store); se β=0 è s' = s (hold). In sintesi, con β=0 l'uscita mantiene lo stato e con β=1 prende i.
 
 ## Latch SR (porte NOR)
-Il latch SR si costruisce con due porte NOR collegate in retroazione. Ha ingressi S (set) e R (reset), uscite Q e Q̄ e due stati stabili, ed è così che "ricorda" un bit. Con S=R=0 mantiene lo stato (**hold**); con S=1, R=0 va a **stato 1** (Q=1); con S=0, R=1 va a **stato 0** (Q=0). Memorizza dunque l'ultimo tra S e R che è stato asserito.
+Il latch SR si costruisce con due porte NOR collegate in retroazione. Ha ingressi S (set) e R (reset), uscite Q e Q̄ e due stati stabili, ed è così che "ricorda" un bit:
+- con S=R=0 mantiene lo stato (**hold**);
+- con S=1, R=0 va a **stato 1** (Q=1);
+- con S=0, R=1 va a **stato 0** (Q=0).
+
+Memorizza dunque l'ultimo tra S e R che è stato asserito.
 
 La combinazione **S=R=1 è vietata**: Q e Q̄ vanno entrambi a 0, e rilasciando insieme i due ingressi lo stato risultante è imprevedibile (oscillazione, anche nei transitori). Poiché in pratica S e R provengono da circuiti combinatori che hanno transitori, non si può garantire che non passino per quella combinazione, e per questo serve il **clock**.
 
@@ -30,9 +35,20 @@ Emergono così due metodologie: **a livello** (latch) e **sul fronte** (flip-flo
 ## Flip-flop D
 Il latch è azionato dal livello, il **flip-flop dal fronte**. Una realizzazione didattica usa un D-latch con clock = CLK AND (NOT ritardato CLK): ne risulta un impulso brevissimo subito dopo il fronte di salita, perché l'invertitore introduce un piccolo ritardo. La lunghezza dell'impulso di clock non importa.
 
-Combinando livello e fronte si ottengono quattro varianti: latch D a livello 1, latch D a livello 0, flip-flop D su fronte di salita, flip-flop D su fronte di discesa.
+Combinando livello e fronte si ottengono quattro varianti:
+- latch D a livello 1;
+- latch D a livello 0;
+- flip-flop D su fronte di salita;
+- flip-flop D su fronte di discesa.
 
-Nel Lab 9 si realizzano in sequenza: SR latch con NOR (es. 1), D latch (2), flip-flop D su fronte di salita (3), flip-flop D con **reset** asincrono (4: memorizza 0 indipendentemente da clock e D), fronte di discesa (5), registro a 8 bit (6), register file a 8 registri (7).
+Nel Lab 9 si realizzano in sequenza:
+1. SR latch con NOR;
+2. D latch;
+3. flip-flop D su fronte di salita;
+4. flip-flop D con **reset** asincrono (memorizza 0 indipendentemente da clock e D);
+5. flip-flop D su fronte di discesa;
+6. registro a 8 bit;
+7. register file a 8 registri.
 
 ## Buffer tri-state
 Il buffer tri-state si comporta come un filo quando Control=1, mentre con Control=0 disconnette ingresso e uscita (alta impedenza). Serve per collegare più sorgenti allo stesso bus senza conflitti.
@@ -47,7 +63,15 @@ La scrittura avviene sul fronte attivo del clock, perciò si può leggere e scri
 ## Memorie
 Una memoria ha n linee di indirizzo, che selezionano una tra 2^n righe, e b linee di dato, che formano b colonne, più un Write enable. L'esempio della slide è una memoria 4x2 (2 bit di dato, 2 bit di indirizzo, 1 write enable). Le memorie grandi sono matrici 2^n x b con selezione di riga e colonna (es. SRAM 4M x 8 = 8 array di 4K x 1024, con decoder e mux per scegliere il bit nella riga).
 
-Le **RAM** si dividono in SRAM (costruite con flip-flop D; velocissime, usate per le cache) e DRAM (transistor più condensatore; vanno **rinfrescate**, sono più capaci e più lente). Esistono varianti come FPM, EDO, SDRAM (sincrona) e DDR (legge su entrambi i fronti). Le **ROM** comprendono PROM, EPROM (cancellabile con UV), EEPROM (cancellabile elettricamente, più lenta) e Flash (EEPROM cancellabile a blocchi).
+Le **RAM** si dividono in:
+- **SRAM**: costruite con flip-flop D; velocissime, usate per le cache;
+- **DRAM**: transistor più condensatore; vanno **rinfrescate**, sono più capaci e più lente.
+
+Esistono varianti come FPM, EDO, SDRAM (sincrona) e DDR (legge su entrambi i fronti). Le **ROM** comprendono:
+- PROM;
+- EPROM (cancellabile con UV);
+- EEPROM (cancellabile elettricamente, più lenta);
+- Flash (EEPROM cancellabile a blocchi).
 
 ## Cose da saper fare all'esame
 - Spiegare il funzionamento del latch SR (stati, transizioni, ingresso vietato) e disegnarne l'automa/diagramma temporale.

@@ -31,7 +31,10 @@ Il vantaggio è enorme: il determinante di una diagonale è il prodotto degli el
 
 Per trovare gli autovalori non occorre indovinarli: sono le radici di un polinomio. Il **polinomio caratteristico** è **p_A(λ)=det(A-λI_n)** (talvolta si usa det(λI-A), che differisce per (-1)ⁿ), di grado n in λ, e **gli autovalori di T sono le radici di p_A** (Prop 17.13). Il ragionamento è una catena di equivalenze: λ è autovalore ⇔ esiste x≠0 con (A-λI)x=0 ⇔ A-λI non è invertibile ⇔ det(A-λI)=0.
 
-Il polinomio caratteristico è un **invariante per similitudine**: se A~B allora p_A=p_B (si scrive A-λI = M⁻¹(B-λI)M e si usa Binet), perciò p_T è ben definito per un endomorfismo, indipendentemente dalla base. Si usano poi, come controlli, alcuni fatti noti ma non presenti in queste lezioni [DA VERIFICARE]: il coefficiente di λⁿ⁻¹ è ±traccia e il termine noto è det A, quindi la somma degli autovalori è tr A, il prodotto è det A, e A è invertibile ⇔ 0 non è autovalore.
+Il polinomio caratteristico è un **invariante per similitudine**: se A~B allora p_A=p_B (si scrive A-λI = M⁻¹(B-λI)M e si usa Binet), perciò p_T è ben definito per un endomorfismo, indipendentemente dalla base. Si usano poi, come controlli, alcuni fatti noti ma non presenti in queste lezioni [DA VERIFICARE]: il coefficiente di λⁿ⁻¹ è ±traccia e il termine noto è det A, quindi:
+- la somma degli autovalori è tr A;
+- il prodotto è det A;
+- A è invertibile ⇔ 0 non è autovalore.
 
 **Esempio** (17.14): A=[[3,-4],[0,2]]: p_A=(3-λ)(2-λ) ⇒ autovalori 3, 2.
 
@@ -41,7 +44,11 @@ L'**autospazio** relativo a λ è V_λ = {v | T(v)=λv} = ker(T-λ·id) = ker(A-
 
 La **Prop 18.1** afferma che autovettori di autovalori **distinti** sono linearmente indipendenti (si procede per induzione su k: si applica T e si sottrae λ_k volte la combinazione). Ne discende il **Cor 18.2**: se p_T ha **n radici distinte in K**, allora T è diagonalizzabile; è una condizione sufficiente ma non necessaria. Più in generale gli autospazi sono in **somma diretta** V_λ1 ⊕ ... ⊕ V_λk (Prop 18.5; per due sottospazi, somma diretta significa V1∩V2={0}), e il **Cor 18.6** dice che T è diagonalizzabile ⇔ V = V_λ1 ⊕...⊕ V_λk, perché unendo le basi degli autospazi si ottiene una base di autovettori.
 
-Per quantificare bisogna distinguere due molteplicità. La **molteplicità algebrica** m_a(λ) è la molteplicità di λ come radice di p_T; la **molteplicità geometrica** è m_g(λ)=dim V_λ = n - rk(A-λI). Il **Teo 18.9** garantisce che **1 ≤ m_g(λ) ≤ m_a(λ)**; in particolare se m_a=1 allora m_g=1.
+Per quantificare bisogna distinguere due molteplicità:
+- la **molteplicità algebrica** m_a(λ) è la molteplicità di λ come radice di p_T;
+- la **molteplicità geometrica** è m_g(λ)=dim V_λ = n - rk(A-λI).
+
+Il **Teo 18.9** garantisce che **1 ≤ m_g(λ) ≤ m_a(λ)**; in particolare se m_a=1 allora m_g=1.
 
 ## 5. Teorema di diagonalizzabilità
 

@@ -29,7 +29,14 @@ Un insieme B è **sottoinsieme** di A (B ⊆ A) se ogni elemento di B sta in A; 
 
 ## 2. Numeri naturali e induzione
 
-I naturali sono caratterizzati dagli assiomi di Peano: (1) 0∈N; (2) ogni n ha un successore s(n); (3) s è iniettiva; (4) 0 ≠ s(n) per ogni n; (5) se U⊆N contiene 0 ed è chiuso per successore allora U = N. L'ultimo assioma è il **principio di induzione**, ed è il motivo per cui si può dimostrare una proprietà di tutti i naturali verificandola solo su un punto di partenza e sul passaggio da n a n+1: la "scala" parte dal primo gradino e ogni gradino sorregge il successivo.
+I naturali sono caratterizzati dagli assiomi di Peano:
+1. 0∈N;
+2. ogni n ha un successore s(n);
+3. s è iniettiva;
+4. 0 ≠ s(n) per ogni n;
+5. se U⊆N contiene 0 ed è chiuso per successore allora U = N.
+
+L'ultimo assioma è il **principio di induzione**, ed è il motivo per cui si può dimostrare una proprietà di tutti i naturali verificandola solo su un punto di partenza e sul passaggio da n a n+1: la "scala" parte dal primo gradino e ogni gradino sorregge il successivo.
 
 **Teorema (induzione)**: se P(0) è vera e ∀n (P(n) ⇒ P(n+1)), allora P(n) è vera per ogni n. Spesso si parte da n=1 o da un n0 diverso: si dimostra il passo base e poi il passo induttivo, in cui si assume vera P(n) (ipotesi induttiva) per dedurne P(n+1).
 
@@ -39,7 +46,12 @@ Base n=1: 1 = 1·2·3/6 ✓. Passo: Σ_{k=1}^{n+1} k² = n(n+1)(2n+1)/6 + (n+1)�
 **Esempio svolto 2** - |A| = n ⇒ |P(A)| = 2ⁿ.
 Base n=0: P(∅)={∅} ha 1 = 2⁰ elemento. Passo: sia A={a1..a_{n+1}}. I sottoinsiemi che NON contengono a_{n+1} sono i sottoinsiemi di B={a1..an}, quindi 2ⁿ per ipotesi induttiva; quelli che lo contengono sono in corrispondenza biunivoca con i primi (si aggiunge o si toglie a_{n+1}) e danno altri 2ⁿ. Totale 2·2ⁿ = 2ⁿ⁺¹.
 
-Altre formule da saper dimostrare per induzione (Es. 1.19 Mori): 1+2+...+n = n(n+1)/2; 1+3+...+(2n-1) = n²; 1³+...+n³ = n²(n+1)²/4; n² > 2n+1 per n≥3; 2ⁿ > n² per n≥5 (nelle ultime due la base è rispettivamente n=3 e n=5, non n=0).
+Altre formule da saper dimostrare per induzione (Es. 1.19 Mori):
+- 1+2+...+n = n(n+1)/2;
+- 1+3+...+(2n-1) = n²;
+- 1³+...+n³ = n²(n+1)²/4;
+- n² > 2n+1 per n≥3 (base n=3, non n=0);
+- 2ⁿ > n² per n≥5 (base n=5).
 
 ## 3. Operazioni tra insiemi
 
@@ -83,7 +95,13 @@ Si dice che f e g sono **inverse** se g∘f=id_A e f∘g=id_B. L'inversa esiste 
 
 Un'operazione binaria su un insieme A non vuoto è una funzione *: A×A→A. Le proprietà da controllare sono l'associatività (a*b)*c=a*(b*c), la commutatività e l'esistenza di un elemento neutro e (a*e=e*a=a), che se esiste è **unico**: e=e*e'=e'. Esempi: + e · su N,Z,Q,R (neutri 0 e 1); la sottrazione non è un'operazione su N e inoltre non è commutativa né associativa e non ha neutro; ∩ e ∪ su P(X) (neutri X e ∅); la composizione ∘ su F_X = {f:X→X} (associativa, non commutativa, neutro id_X).
 
-Un elemento a è **invertibile** (rispetto al neutro e) se esiste b con a*b=b*a=e. Se * è associativa l'inverso è **unico** (b=b·e=b(ab')=(ba)b'=b'), e si scrive a⁻¹. Casi concreti: in (Z,·) gli invertibili sono ±1; in (N,+) solo 0; in (F_X,∘) le funzioni biettive; in (P(X),∩) solo X e in (P(X),∪) solo ∅. L'insieme U degli invertibili è chiuso per *, con (a*b)⁻¹ = b⁻¹*a⁻¹.
+Un elemento a è **invertibile** (rispetto al neutro e) se esiste b con a*b=b*a=e. Se * è associativa l'inverso è **unico** (b=b·e=b(ab')=(ba)b'=b'), e si scrive a⁻¹. Casi concreti:
+- in (Z,·) gli invertibili sono ±1;
+- in (N,+) solo 0;
+- in (F_X,∘) le funzioni biettive;
+- in (P(X),∩) solo X e in (P(X),∪) solo ∅.
+
+L'insieme U degli invertibili è chiuso per *, con (a*b)⁻¹ = b⁻¹*a⁻¹.
 
 Le **potenze** a^n si definiscono per ricorsione e soddisfano a^(m+n)=a^m a^n (se a è invertibile la legge vale per ogni m,n∈Z). Infine un sottoinsieme S è **chiuso** per * se s1*s2∈S per ogni s1,s2∈S (i pari sono chiusi per +, i dispari no).
 

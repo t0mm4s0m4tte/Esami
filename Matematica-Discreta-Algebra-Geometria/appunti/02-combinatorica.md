@@ -42,13 +42,22 @@ Applicata alle funzioni, la regola dà **|F_{A,B}| = nᵐ** se |A|=m e |B|=n, pe
 
 Quanti modi ci sono di mettere in fila degli oggetti? Un **ordinamento** di A (|A|=n) è una biezione I_n→A, e il loro numero è **n!** (n·(n-1)·...·1, con 0!=1). Se la lista ha elementi ripetuti, gli ordinamenti che differiscono solo per lo scambio di simboli uguali vanno identificati: il numero di **anagrammi** di una lista di lunghezza n in cui il simbolo i compare r_i volte è **n!/(r1!·r2!·...·rk!)**. MATEMATICA: 10!/(3!·2!·2!) = 151.200 (M×2, A×3, T×2). ORO: 3!/2! = 3.
 
-Se si scelgono k elementi di A (|A|=n) tenendo conto dell'ordine, i casi sono due. La **disposizione con ripetizione** di ordine k è una k-pla di A^k, ovvero una funzione I_k→A, e ce ne sono **nᵏ**. La **disposizione semplice** (senza ripetizioni, cioè una funzione iniettiva I_k→A) si conta con **D_{n,k} = n(n-1)...(n-k+1) = n!/(n-k)!**; vale 0 se k>n e coincide con gli ordinamenti se k=n. Esempi: podio con 12 atleti = D_{12,3} = 12·11·10 = 1320 (Mori riporta "101.320" per refuso di estrazione: il valore corretto è 1320); password di 8 simboli distinti su 36 = 36·35·...·29.
+Se si scelgono k elementi di A (|A|=n) tenendo conto dell'ordine, i casi sono due:
+- la **disposizione con ripetizione** di ordine k è una k-pla di A^k, ovvero una funzione I_k→A, e ce ne sono **nᵏ**;
+- la **disposizione semplice** (senza ripetizioni, cioè una funzione iniettiva I_k→A) si conta con **D_{n,k} = n(n-1)...(n-k+1) = n!/(n-k)!**; vale 0 se k>n e coincide con gli ordinamenti se k=n.
+
+Esempi: podio con 12 atleti = D_{12,3} = 12·11·10 = 1320 (Mori riporta "101.320" per refuso di estrazione: il valore corretto è 1320); password di 8 simboli distinti su 36 = 36·35·...·29.
 
 ## 5. Combinazioni e coefficienti binomiali
 
 Quando l'ordine non conta si parla di **combinazioni**: una combinazione semplice di ordine k è un sottoinsieme C⊆A con |C|=k. Ogni sottoinsieme proviene da k! disposizioni (i suoi riordinamenti), quindi **C_{n,k} = D_{n,k}/k! = n(n-1)...(n-k+1)/k!**. Questo numero si scrive con il **coefficiente binomiale** C(n,k) = n!/(k!(n-k)!) per 0≤k≤n, e C(n,k) = C_{n,k}.
 
-I coefficienti binomiali hanno proprietà che si dimostrano con argomenti di conteggio, più che con calcoli. La prima è banale, C(n,0)=C(n,n)=1. La **simmetria** C(n,k)=C(n,n-k) nasce dal fatto che passare al complementare, S↦C_A(S), è una biezione fra sottoinsiemi di cardinalità k e n-k; è utile per semplificare i calcoli, ad esempio C(100,96)=C(100,4)=3.921.225. La **formula di Stiefel** C(n,k) = C(n-1,k) + C(n-1,k-1) si dimostra fissando a∈A: i sottoinsiemi di k elementi o contengono a (C(n-1,k-1) modi) oppure non lo contengono (C(n-1,k) modi). Essa genera il **triangolo di Pascal-Tartaglia** (riga n: 1, n, ..., n, 1).
+I coefficienti binomiali hanno proprietà che si dimostrano con argomenti di conteggio, più che con calcoli:
+- **casi banali**: C(n,0)=C(n,n)=1;
+- **simmetria** C(n,k)=C(n,n-k): nasce dal fatto che passare al complementare, S↦C_A(S), è una biezione fra sottoinsiemi di cardinalità k e n-k; è utile per semplificare i calcoli, ad esempio C(100,96)=C(100,4)=3.921.225;
+- **formula di Stiefel** C(n,k) = C(n-1,k) + C(n-1,k-1): si dimostra fissando a∈A, perché i sottoinsiemi di k elementi o contengono a (C(n-1,k-1) modi) oppure non lo contengono (C(n-1,k) modi).
+
+Stiefel genera il **triangolo di Pascal-Tartaglia** (riga n: 1, n, ..., n, 1).
 
 Il **binomio di Newton** (x+y)ⁿ = Σ_{k=0}^n C(n,k) x^{n-k} y^k spiega il nome "coefficiente binomiale": nell'espansione del prodotto di n fattori, il termine in yᵏ si ottiene scegliendo la y in k dei n fattori, e questo si può fare in C(n,k) modi. Lo si può dimostrare anche per induzione usando Stiefel. Ponendo x=y=1 si ottiene **Σ_{k=0}^n C(n,k) = 2ⁿ**, che è anche il conteggio |P(A)| = Σ_k |P_k(A)| con P_k = sottoinsiemi di cardinalità k. Es. 3.19: per n dispari Σ_{k pari}C(n,k) = Σ_{k dispari}C(n,k) = 2ⁿ⁻¹; per x=1, y=-1 Newton dà 0 se n≥1, quindi Σ pari = Σ dispari anche per n pari.
 

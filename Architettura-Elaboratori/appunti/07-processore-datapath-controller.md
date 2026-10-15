@@ -12,7 +12,16 @@ Fonte: Lezione 06 (DataPath), Lezione 07 (Controller), Lab 10 (RISC-TO). Process
 ## Obiettivo e componenti
 Questo capitolo mette insieme i blocchi dei capitoli precedenti (register file, ALU, memorie) per costruire un vero processore. Per semplicità si considera un sottoinsieme di istruzioni, sufficiente a mostrare tutte le idee: le istruzioni di tipo R (`add, sub, and, or`), `lw`, `sw` e `beq`. Il processore è a ciclo singolo: ogni istruzione si esegue interamente in un ciclo di clock.
 
-I componenti sono: il **PC**, la **memoria istruzioni** (read-only; è separata dalla memoria dati), il **sommatore PC+4**, il **register file** (2 letture, 1 scrittura), la **ALU**, la **memoria dati** (con segnali MemRead/MemWrite), l'**unità di generazione della costante / estensione del segno**, i **multiplexer** e il **sommatore per il target del branch**.
+I componenti sono:
+- il **PC**;
+- la **memoria istruzioni** (read-only; è separata dalla memoria dati);
+- il **sommatore PC+4**;
+- il **register file** (2 letture, 1 scrittura);
+- la **ALU**;
+- la **memoria dati** (con segnali MemRead/MemWrite);
+- l'**unità di generazione della costante / estensione del segno**;
+- i **multiplexer**;
+- il **sommatore per il target del branch**.
 
 La metodologia di temporizzazione è **edge-triggered** (sensibile ai fronti): tutti gli elementi di stato (PC, registri, memorie) cambiano sul fronte di salita del clock, e poiché la scrittura avviene solo sul fronte è possibile leggere e scrivere un elemento di stato nello stesso ciclo. Il ciclo di clock deve essere abbastanza lungo da far arrivare ingressi stabili prima del fronte. Gli elementi di stato sono dunque PC, register file e memoria dati (scrittura sul fronte); sono invece combinatori ALU, mux, sommatori e controllo.
 

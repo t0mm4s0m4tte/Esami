@@ -6,14 +6,28 @@
 Il capitolo definisce il deadlock a partire dal modello di sistema, elenca le 4 condizioni necessarie e il grafo di allocazione, poi passa in rassegna le strategie di gestione: prevenzione, evitamento (stato sicuro, algoritmo del Banchiere), rilevamento, ripristino, oppure ignorare il problema.
 
 ## Concetti
-Il **modello** di sistema prevede tipi di risorsa R1..Rm, ciascuno con Wi istanze; un processo usa una risorsa in tre passi: request, use, release. Un deadlock si verifica quando un insieme di processi attende all'infinito risorse tenute da altri dello stesso insieme. Condizione necessaria è che valgano **simultaneamente** quattro condizioni: (1) mutua esclusione, (2) hold and wait, (3) no preemption, (4) attesa circolare.
+Il **modello** di sistema prevede tipi di risorsa R1..Rm, ciascuno con Wi istanze; un processo usa una risorsa in tre passi: request, use, release. Un deadlock si verifica quando un insieme di processi attende all'infinito risorse tenute da altri dello stesso insieme. Condizione necessaria è che valgano **simultaneamente** quattro condizioni:
+1. mutua esclusione;
+2. hold and wait;
+3. no preemption;
+4. attesa circolare.
 
-Per visualizzare la situazione si usa il **grafo di allocazione delle risorse**, con vertici P e R, un arco di richiesta Pi->Rj e un arco di assegnazione Rj->Pi. Se non ci sono cicli non c'è deadlock; se c'è un ciclo e ogni tipo ha una sola istanza c'è **deadlock**; se c'è un ciclo ma con più istanze il ciclo è **necessario ma non sufficiente**.
+Per visualizzare la situazione si usa il **grafo di allocazione delle risorse**, con vertici P e R, un arco di richiesta Pi->Rj e un arco di assegnazione Rj->Pi:
+- se non ci sono cicli non c'è deadlock;
+- se c'è un ciclo e ogni tipo ha una sola istanza c'è **deadlock**;
+- se c'è un ciclo ma con più istanze il ciclo è **necessario ma non sufficiente**.
 
-Davanti al problema le strade sono tre: prevenire o evitare il deadlock, lasciarlo accadere e poi rilevarlo e ripristinare, oppure **ignorarlo**, come fanno UNIX e la maggior parte dei SO commerciali, dove i deadlock sono rari e la responsabilità passa agli sviluppatori.
+Davanti al problema le strade sono tre:
+- prevenire o evitare il deadlock;
+- lasciarlo accadere e poi rilevarlo e ripristinare;
+- **ignorarlo**, come fanno UNIX e la maggior parte dei SO commerciali, dove i deadlock sono rari e la responsabilità passa agli sviluppatori.
 
 ## Prevenzione (negare una condizione)
-Prevenire significa fare in modo che almeno una delle quattro condizioni non possa mai verificarsi. La mutua esclusione non è negabile per le risorse non condivisibili. Per hold and wait si può chiedere tutto all'inizio oppure chiedere solo quando non si possiede nulla, al prezzo di bassa utilizzazione e rischio di starvation. Per no preemption, se una richiesta non è soddisfatta il processo rilascia tutto e ricomincia. Per l'attesa circolare si impone un ordine totale sui tipi di risorsa e le richieste si fanno in ordine crescente.
+Prevenire significa fare in modo che almeno una delle quattro condizioni non possa mai verificarsi:
+- **mutua esclusione**: non è negabile per le risorse non condivisibili;
+- **hold and wait**: si può chiedere tutto all'inizio oppure chiedere solo quando non si possiede nulla, al prezzo di bassa utilizzazione e rischio di starvation;
+- **no preemption**: se una richiesta non è soddisfatta il processo rilascia tutto e ricomincia;
+- **attesa circolare**: si impone un ordine totale sui tipi di risorsa e le richieste si fanno in ordine crescente.
 
 ## Evitamento
 L'evitamento è meno restrittivo ma richiede che ogni processo dichiari a priori il **massimo** fabbisogno. Uno **stato sicuro** è uno stato in cui esiste una sequenza `<P1..Pn>` tale che il fabbisogno di ogni Pi sia soddisfatto dalle risorse disponibili più quelle dei Pj precedenti. Stato sicuro implica nessun deadlock; stato non sicuro significa che un deadlock è possibile (non certo). Con **istanze singole** basta il grafo con *arco di pretesa* (claim edge tratteggiato): si concede una richiesta solo se la conversione in arco di assegnazione **non crea ciclo**.

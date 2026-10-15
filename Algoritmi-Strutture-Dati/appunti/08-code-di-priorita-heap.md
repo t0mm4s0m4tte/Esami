@@ -7,7 +7,11 @@ Si definiscono heap max e min, la loro rappresentazione su array e la posizione 
 
 ## Heap
 
-Una coda di priorità è una struttura che deve fornire velocemente l'elemento di priorità massima; l'ADT prevede EmptyQueue, Insert, ExtractMaximum e Maximum, con elementi che sono coppie ⟨elemento, priorità⟩ e chiave uguale alla priorità. L'heap ne è l'implementazione efficiente: un albero binario con due proprietà. La proprietà **strutturale** richiede che l'albero sia completo tranne al più l'ultimo livello, riempito da sinistra, e di qui discende l'altezza logaritmica. La proprietà **di ordinamento** richiede, in un Max-Heap, che `key(nodo) >= key(figli)` (Min-Heap con <=), per cui il massimo sta sempre nella radice. Nota che l'ordine richiesto è molto più debole di quello dei BST: serve solo il confronto padre-figlio, non una relazione tra fratelli, ed è proprio questa debolezza a rendere le operazioni semplici.
+Una coda di priorità è una struttura che deve fornire velocemente l'elemento di priorità massima; l'ADT prevede EmptyQueue, Insert, ExtractMaximum e Maximum, con elementi che sono coppie ⟨elemento, priorità⟩ e chiave uguale alla priorità. L'heap ne è l'implementazione efficiente: un albero binario con due proprietà:
+- **strutturale**: l'albero è completo tranne al più l'ultimo livello, riempito da sinistra, e di qui discende l'altezza logaritmica;
+- **di ordinamento**: in un Max-Heap `key(nodo) >= key(figli)` (Min-Heap con <=), per cui il massimo sta sempre nella radice.
+
+Nota che l'ordine richiesto è molto più debole di quello dei BST: serve solo il confronto padre-figlio, non una relazione tra fratelli, ed è proprio questa debolezza a rendere le operazioni semplici.
 
 Poiché l'albero è completo, non servono puntatori: lo si memorizza in un **array H[1..n]**. La radice è H[1], il figlio sinistro di i è in 2i, il destro in 2i+1 e **Parent(i)=⌊i/2⌋**. Per comodità Left(i) vale 2i se 2i<=HeapSize e altrimenti i, e Right(i) vale 2i+1 se <=HeapSize altrimenti i. Le **foglie** sono H[⌊n/2⌋+1 .. n], e per questo BuildHeap parte da ⌊n/2⌋. Dimostrazione: se n>1, H[i] è una foglia se e solo se i<=n e n<2i, cioè i > ⌊n/2⌋ (n<2i implica ⌊n/2⌋ < i).
 
