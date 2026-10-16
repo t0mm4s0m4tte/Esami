@@ -84,7 +84,7 @@ Con una base fissata ogni vettore ha un indirizzo preciso: dati v1..vn base, ogn
 - Stabilire indipendenza/dipendenza di vettori (anche con parametro), trovare una relazione di dipendenza.
 - Estrarre una base da un insieme di generatori; completare a una base; trovare le coordinate in una base data.
 - Dimostrare Prop 5.5, Prop 6.7 (Span è sottospazio), Prop 7.6, unicità delle coordinate; esercizi 5.7 (K_k[x] sì, grado esattamente k no), 7.13 (basi di M(m,n)).
-- (Dai compiti) Con U=⟨(1,0,1),(1,1,1)⟩, V=⟨(0,1,2),(0,1,1)⟩: dim U=dim V=2 e dim(U+V)=rk delle quattro colonne = 3 ⇒ dim(U∩V)=2+2-3=1 (Grassmann: dim(U+W)=dim U+dim W-dim(U∩W), **formula usata nei compiti ma non presente nelle Lezioni 1-26 estratte** (è comunque un teorema standard, e il risultato dim=1 è verificato)).
+- (Dai compiti) Con U=⟨(1,0,1),(1,1,1)⟩, V=⟨(0,1,2),(0,1,1)⟩: dim U=dim V=2 e dim(U+V)=rk delle quattro colonne = 3 ⇒ dim(U∩V)=2+2-3=1 (Grassmann: dim(U+W)=dim U+dim W-dim(U∩W), **formula usata nei compiti, assente dalle Lezioni Buzano 1-26 ma presente con dimostrazione nelle slide Manno** (fonte: Slide MANNO, Lezione18_Alg.pdf, "Formula di Grassmann"; calcolo verificato: dim=1)).
 
 ## Dubbi
 - Es. 7.15 (v1,v2,v3 dipendenti, v1,v2,v4 indipendenti) ha segni persi: non ho riportato valori numerici.

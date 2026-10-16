@@ -86,4 +86,4 @@ w1=(1,1,0). w2=v2-(⟨v2,w1⟩/⟨w1,w1⟩)w1=(0,1,1)-(1/2)(1,1,0)=(-1/2,1/2,1).
 
 ## Dubbi
 - La classificazione delle forme quadratiche (definita/semidefinita/indefinita) tramite autovalori o minori: nelle lezioni Buzano non c'è un criterio esplicito (solo definizione); è nel materiale Manno (Cartesio sugli autovalori): file 14 [DA VERIFICARE se in programma].
-- Per la dimensione dim W + dim W^⊥ = dim V non c'è dimostrazione nelle lezioni estratte: è citata solo la decomposizione V=U⊕U^⊥ per U=Span(w).
+- Per la dimensione dim W + dim W^⊥ = dim V non c'è dimostrazione nelle lezioni Buzano estratte (l'enunciato per sottospazi di R^n è in Slide MANNO, Lezione24_Alg.pdf, lasciato per esercizio): è citata solo la decomposizione V=U⊕U^⊥ per U=Span(w).

@@ -2,26 +2,26 @@
 
 **Fonti e AVVERTENZA**
 Nelle fonti leggibili compaiono solo: la definizione di **gruppo** e di **campo** (Buzano-Radeschi, Lezione 5), il simbolo S_n e il segno di una permutazione usato nella definizione del determinante (Lezione 9: "sgn(σ) = (-1)^k se σ è prodotto di k trasposizioni"), il concetto di operazione/neutro/inverso/potenze (Mori cap. 2).
-I capitoli 5 (Permutazioni), 6 (Gruppi) di Mori **non erano leggibili** (estrazione troncata a metà cap. 4; Facchini è una scansione vuota). Tutto il resto è **teoria standard ricostruita (matematicamente ricontrollata, ma da confrontare con le notazioni di Mori cap. 5-6)**. Gli esempi sono calcolati e controllati con software.
+I capitoli 5 (Permutazioni), 6 (Gruppi) di Mori **non erano leggibili** (estrazione troncata a metà cap. 4; Facchini è una scansione vuota). Tutto il resto è **teoria standard ricostruita [ASSUNZIONE: da verificare su Mori cap. 5-6]**: ho verificato su Drive che Mori si interrompe all'inizio del cap. 4 (l'indice conferma che i cap. 5 Permutazioni e 6 Gruppi esistono, ma il testo non è leggibile) e che Facchini è una scansione senza testo, quindi è conoscenza propria (livello 4). Dalle fonti leggibili provengono solo le definizioni di gruppo e campo (Buzano, Def 5.2-5.3) e il segno come (-1)^k con k trasposizioni (Buzano, Def 9.1). Gli esempi sono ricalcolati con software (calcolo verificato, ma ciò non verifica la teoria).
 
 ## Mappa
 
 1. Gruppo: definizione ed esempi (da Buzano + Mori cap. 2)
-2. Permutazioni: notazione a due righe, cicli, prodotto, inversa
-3. Scambi/trasposizioni, segno, parità
-4. Ordine (periodo) di una permutazione
-5. Sottogruppi, Lagrange, ordine di un elemento
-6. Omomorfismi, nucleo e immagine
-7. Gruppi ciclici
+2. Permutazioni: notazione a due righe, cicli, prodotto, inversa [ASSUNZIONE: da verificare]
+3. Scambi/trasposizioni, segno, parità [ASSUNZIONE: da verificare]
+4. Ordine (periodo) di una permutazione [ASSUNZIONE: da verificare]
+5. Sottogruppi, Lagrange, ordine di un elemento [ASSUNZIONE: da verificare]
+6. Omomorfismi, nucleo e immagine [ASSUNZIONE: da verificare]
+7. Gruppi ciclici [ASSUNZIONE: da verificare]
 ---
 
 - [1. Gruppo](#1-gruppo)
-- [2. Permutazioni](#2-permutazioni)
-- [3. Scambi (trasposizioni) e segno](#3-scambi-trasposizioni-e-segno)
-- [4. Periodo (ordine)](#4-periodo-ordine)
-- [5. Sottogruppi, Lagrange](#5-sottogruppi-lagrange)
-- [6. Omomorfismi](#6-omomorfismi)
-- [7. Gruppi ciclici](#7-gruppi-ciclici)
+- [2. Permutazioni [ASSUNZIONE: da verificare]](#2-permutazioni-assunzione-da-verificare)
+- [3. Scambi (trasposizioni) e segno [ASSUNZIONE: da verificare]](#3-scambi-trasposizioni-e-segno-assunzione-da-verificare)
+- [4. Periodo (ordine) [ASSUNZIONE: da verificare]](#4-periodo-ordine-assunzione-da-verificare)
+- [5. Sottogruppi, Lagrange [ASSUNZIONE: da verificare]](#5-sottogruppi-lagrange-assunzione-da-verificare)
+- [6. Omomorfismi [ASSUNZIONE: da verificare]](#6-omomorfismi-assunzione-da-verificare)
+- [7. Gruppi ciclici [ASSUNZIONE: da verificare]](#7-gruppi-ciclici-assunzione-da-verificare)
 - [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
 - [Dubbi](#dubbi)
 
@@ -38,7 +38,7 @@ Dalle sole proprietà della definizione seguono che neutro e inversi sono unici 
 
 Un **campo** (Buzano, Def 5.3) è un insieme (A,+,·) in cui (A,+) è un gruppo abeliano di neutro 0, (A\{0},·) è un gruppo abeliano di neutro 1, e vale la distributività. Sono campi Q, R, C, Z_p (p primo); Z non lo è.
 
-## 2. Permutazioni
+## 2. Permutazioni [ASSUNZIONE: da verificare]
 
 Le permutazioni sono il caso concreto più importante di gruppo non commutativo. **S_n** è l'insieme delle biezioni σ: {1,...,n}→{1,...,n}; ha |S_n| = n! elementi (è il numero degli ordinamenti del file 02) e con la composizione è un gruppo con neutro id, **non abeliano per n ≥ 3**. Una permutazione si scrive con la notazione a due righe (i sopra, σ(i) sotto) oppure "a una riga" [σ(1) ... σ(n)], usata da Buzano per il determinante.
 
@@ -46,7 +46,7 @@ Il modo più efficiente di capire una permutazione è scomporla in cicli. Un **c
 
 **Esempio svolto**: σ = [3 5 1 6 2 4] in S_6 (1→3, 2→5, 3→1, 4→6, 5→2, 6→4). Cicli: 1→3→1; 2→5→2; 4→6→4 ⇒ **σ = (1 3)(2 5)(4 6)**, prodotto di 3 trasposizioni disgiunte; σ² = id.
 
-## 3. Scambi (trasposizioni) e segno
+## 3. Scambi (trasposizioni) e segno [ASSUNZIONE: da verificare]
 
 Il mattone più piccolo è la **trasposizione** (a b), che scambia due elementi. Ogni permutazione è prodotto di trasposizioni: un k-ciclo si scrive (a1 a2)(a2 a3)...(a_{k-1} a_k) con convenzione fissata, quindi con **k-1 trasposizioni**. Il numero di trasposizioni non è unico, ma la sua parità sì: il **segno** sgn(σ) = (-1)^m, dove m è il numero di trasposizioni in una qualsiasi decomposizione, non dipende dalla decomposizione scelta. Le permutazioni pari hanno segno +1, le dispari -1. Un k-ciclo ha segno (-1)^(k-1); inoltre sgn(στ) = sgn(σ)sgn(τ), e le permutazioni pari formano il sottogruppo alterno A_n di ordine n!/2.
 
@@ -54,11 +54,11 @@ Il segno è il ponte con l'Algebra Lineare, perché compare nella definizione de
 
 Esempi: σ = (1 3)(2 5)(4 6) ha 3 trasposizioni ⇒ sgn = -1. (0 1 2)(3 4) (in S_5 con elementi 0..4): 3-ciclo (pari, 2 trasposizioni) × trasposizione (1) ⇒ 3 trasposizioni ⇒ sgn = -1.
 
-## 4. Periodo (ordine)
+## 4. Periodo (ordine) [ASSUNZIONE: da verificare]
 
 L'ordine di σ, cioè il minimo m≥1 con σ^m = id, è il **mcm delle lunghezze dei cicli disgiunti**: ogni ciclo torna all'identità dopo un numero di passi pari alla sua lunghezza, e tutti insieme dopo il minimo comune multiplo. Esempio: (0 1 2)(3 4) ha ordine mcm(3,2) = 6; (1 3)(2 5)(4 6) ha ordine 2. In S_n l'ordine massimo si ottiene scegliendo cicli di lunghezze con mcm massimo (es. S_5: max = 6).
 
-## 5. Sottogruppi, Lagrange
+## 5. Sottogruppi, Lagrange [ASSUNZIONE: da verificare]
 
 Un **sottogruppo** H ≤ G è un sottoinsieme non vuoto chiuso per prodotto e inverso (equivalentemente: contiene e ed è chiuso per * e per inverso; oppure a*b⁻¹∈H per ogni a,b∈H). L'**ordine** |G| è il numero di elementi, e l'**ordine di un elemento** ord(a) è il minimo n≥1 con aⁿ=e, pari all'ordine del sottogruppo ciclico ⟨a⟩ = {aⁿ} generato da a.
 
@@ -68,11 +68,11 @@ Il risultato centrale è il **teorema di Lagrange**: se G è finito e H ≤ G al
 - i gruppi di ordine primo sono ciclici;
 - applicandolo a G=Z_n*, con |G|=φ(n), si ottiene **Eulero** a^φ(n)≡1, e con n=p si ottiene **Fermat**. Questo è il legame con il file 03.
 
-## 6. Omomorfismi
+## 6. Omomorfismi [ASSUNZIONE: da verificare]
 
 Un'applicazione f: G→G' è un **omomorfismo** se rispetta l'operazione, f(ab) = f(a)f(b); ne seguono f(e)=e' e f(a⁻¹)=f(a)⁻¹. Il **nucleo** Ker f = {g | f(g)=e'} è un sottogruppo di G e l'**immagine** Im f un sottogruppo di G'; f è iniettivo ⇔ Ker f = {e}. Un **isomorfismo** è un omomorfismo biettivo. Esempi: sgn: S_n→{±1} (nucleo A_n); Z→Z_n, k↦[k] (nucleo nZ); exp: (R,+)→(R>0,·). Il parallelo con l'Algebra Lineare è diretto: Ker e Im di un'applicazione lineare sono quelli di un omomorfismo dei gruppi additivi.
 
-## 7. Gruppi ciclici
+## 7. Gruppi ciclici [ASSUNZIONE: da verificare]
 
 Un gruppo G è **ciclico** se G = ⟨g⟩ per un opportuno g. Lo sono (Z,+) e (Z_n,+); in Z_n gli elementi [a] con MCD(a,n)=1 sono generatori, e sono φ(n). Valgono tre proprietà:
 - ogni sottogruppo di un gruppo ciclico è ciclico;

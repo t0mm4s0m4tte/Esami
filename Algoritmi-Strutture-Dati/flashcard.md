@@ -224,7 +224,7 @@ D: Costi di insert/search/delete in array non ordinato e ordinato.
 R: Non ordinato: O(1), O(N), O(N). Ordinato: insert O(N) (scambi all'indietro), search O(log N) (binaria), delete O(N) (trova in log N, compatta in N).
 
 D: Array ridimensionabile: costo ammortizzato con incremento +1 vs raddoppio?
-R: +1: copia a ogni insert su array pieno, O(m) ammortizzato per insert. Raddoppio: i-esima insert costa i se i-1 è potenza di 2, altrimenti 1; totale di m insert < 3m => O(1) ammortizzato.
+R: +1: copia a ogni insert su array pieno, O(m) ammortizzato per insert. Raddoppio: i-esima insert costa i se i-1 è potenza di 2, altrimenti 1; totale di m insert < 3m => O(1) ammortizzato (fonte: slide 08, aggregazione, Σ ≤ m + 2m = 3m).
 
 D: Perché contrarre l'array a 1/4 e non a 1/2?
 R: Contraendo (dimezzando) a 1/4 di riempimento si evita che una sequenza di insert/delete a cavallo della soglia causi copie continue.
@@ -298,7 +298,7 @@ D: Ispezioni attese in indirizzamento aperto (hashing uniforme)?
 R: Senza successo <= 1/(1-α) (α=0.5 -> 2; α=0.9 -> 10). Con successo <= (1/α)·ln(1/(1-α)) (α=0.5 -> <1.387; α=0.9 -> <2.559). Esplode per α->1; non superare α=0.8.
 
 D: Vero/Falso: "in indirizzamento aperto basta svuotare la cella per cancellare." Motiva.
-R: Falso: si interrompono le sequenze di ispezione di altre chiavi. Soluzione standard: marcatore "deleted" (la cella resta occupata per la ricerca, ma libera per l'inserimento).
+R: Falso: si interrompono le sequenze di ispezione di altre chiavi. Soluzione: marcatore "deleted" (la ricerca prosegue oltre la cella; prima o poi serve ricostruire la tabella) (fonte: Wikipedia, "Open addressing"). [ASSUNZIONE: da verificare: il riuso della cella "deleted" in inserimento non è confermato da fonti]
 
 D: Concatenamento vs indirizzamento aperto: medio, peggiore, criticità.
 R: Concatenamento Θ(1+α), peggiore Θ(n), criticità puntatori/cache. Aperto O(1/(1-α)), peggiore O(n), degrada per α->1 e delete complessa. Concatenamento: α circa costante (~1).
@@ -348,7 +348,7 @@ D: Tree-Inorder con Append vs Tree-Inorder(T,L): costi?
 R: Append(L,Cons(key,R)) costa O(|L|): sul degenere sinistro 1+2+..+(n-1) = O(n^2). Costruendo all'indietro (prima destro, poi radice in testa, poi sinistro) è O(n).
 
 D: Perché il pre-order serve a serializzare un BST?
-R: Reinserendo in un albero vuoto gli elementi in pre-ordine si ottiene un albero isomorfo all'originale. Non vale per post-order (la radice verrebbe inserita per ultima).
+R: Reinserendo in un albero vuoto gli elementi in pre-ordine si ottiene un albero isomorfo all'originale. (fonte: slide 13, proprietà sulla visita in preordine). [ASSUNZIONE: da verificare: che per il post-order non valga, perché la radice verrebbe inserita per ultima, è un mio ragionamento; le slide non trattano il post-order]
 
 ## 07 - Alberi rosso-neri
 
@@ -380,7 +380,7 @@ D: Cancellazione R-N, caso 3 (u e v neri): i 4 sottocasi (fratello s di v, v fig
 R: 3.1 s rosso: p rosso, s nero, ruota su p, poi 3.2/3.3/3.4. 3.2 s nero con figli neri: s rosso, deficit sale a p. 3.3 s nero, figlio interno rosso e esterno nero: s rosso, figlio nero, Right-Rotate(s) -> 3.4. 3.4 s nero, figlio esterno rosso: s prende colore di p, p e figlio neri, Left-Rotate(p); fine.
 
 D: Numero massimo di rotazioni per insert/delete R-N?
-R: Insert: al più 2 rotazioni. Delete: al più 3 rotazioni (CLRS). Le ricolorazioni invece possono essere O(log n).
+R: Insert: al più 2 rotazioni. Delete: al più 3 rotazioni (fonte: Wikipedia, "Red-black tree"; non nelle slide 14). [ASSUNZIONE: da verificare: che le ricolorazioni possano invece essere O(log n)]
 
 D: BST vs R-N?
 R: BST: altezza fino a n-1, operazioni O(n) nel degenere. R-N: altezza <= 2 log2(n+1), operazioni O(log n) garantite, al prezzo di colori e fix-up.
@@ -400,7 +400,7 @@ D: ExtractMaximum e Heapify: algoritmo e costo.
 R: Salva H[1], H[1]:=H[HeapSize], HeapSize--, Heapify(H,1). Heapify(i) (pre: sottoalberi dei figli sono heap) scambia H[i] col figlio maggiore e ripete. O(log n).
 
 D: BuildHeap: algoritmo, perché da ⌊n/2⌋ e costo.
-R: for i=⌊n/2⌋ downto 1: Heapify(i). Le foglie sono già heap; si procede dal basso così i sottoalberi sono heap. Limite grezzo O(n log n); analisi raffinata O(n): al più ⌈n/2^(h+1)⌉ nodi di altezza h, ciascuno costa O(h), e Σ h/2^h converge, quindi T=O(n).
+R: for i=⌊n/2⌋ downto 1: Heapify(i). Le foglie sono già heap; si procede dal basso così i sottoalberi sono heap. Limite grezzo O(n log n); analisi raffinata O(n) (fonte: slide 15 per l'enunciato; Wikipedia, "Binary heap" per l'idea): circa n/2^h nodi di altezza h, ciascuno costa O(h), e Σ h/2^h converge, quindi T=O(n).
 
 D: Heapsort: algoritmo, invariante, costo.
 R: BuildHeap; for i=n downto 2: scambia V[1] con V[i], HeapSize--, Heapify(V,1). Inv: V[1..i] heap, V[i+1..n] ordinato e >= . O(n)+log2(n!) = O(n log n) nel caso peggiore, ottimo per confronti.
@@ -473,7 +473,7 @@ D: Invariante di Kruskal (4 punti).
 R: 1) ∃ MST T con A⊆T; 2) gli archi di A collegano vertici nella stessa parte; 3) ogni parte U con A[U] è un albero di G_A; 4) gli archi scartati non sono in T\A.
 
 D: Union-Find: ADT e implementazione.
-R: MakeSet(U), Find(x,P) (rappresentante), Union(x,y,P). Foresta di alberi pozzo (vettore dei padri), radice = rappresentante. Unione per rango (albero più basso figlio dell'altro) + compressione del cammino.
+R: MakeSet(U), Find(x,P) (rappresentante), Union(x,y,P). Foresta di alberi pozzo (vettore dei padri), radice = rappresentante. Unione per rango (albero più basso figlio dell'altro) + compressione del cammino (fonte: slide 18).
 
 D: Prim: idea, struttura dati, costo.
 R: Cresce un solo albero da un vertice arbitrario, aggiungendo l'arco più leggero tra albero e resto. Min-coda con v.key = peso del più leggero arco verso l'albero (∞ se nessuno); Extract-Min e Decrease-Key. n Extract-Min O(n log n) + al più m Decrease-Key O(m log n) = O(m log n).
@@ -485,7 +485,7 @@ D: Kruskal vs Prim.
 R: Entrambi O(m log n) e giustificati dal teorema del taglio. Kruskal: visione globale sugli archi (ordina tutto + Union-Find). Prim: visione locale sui vertici (frontiera con coda di priorità).
 
 D: Quando il greedy non è ottimo? Esempio del resto.
-R: Servono scelta greedy valida e sottostruttura ottima. Monete 50,10,1: 72 = 50+10+10+1+1 ottimo. Con moneta da 11: per 20 il greedy dà 11+9×1 (10 monete), mentre 10+10 ne usa 2: non ottimo. (Per 15 il greedy 11+1+1+1+1 è invece ottimo: l'esempio del 15 non è un controesempio.)
+R: Servono scelta greedy valida e sottostruttura ottima. Monete 50,10,1: 72 = 50+10+10+1+1 ottimo. Con moneta da 11: la slide 18 usa 15 (greedy 11+4×1, 5 monete) ma quello è ottimo (10+5×1 ne usa 6), quindi non è un controesempio. Per 20 il greedy dà 11+9×1 (10 monete), mentre 10+10 ne usa 2: non ottimo. [ASSUNZIONE: da verificare: il 20 è un mio controesempio, non della slide]
 
 D: Problema dei cammini minimi da sorgente singola: dati e output.
 R: G orientato, w:E->R, sorgente s; output albero dei cammini minimi G_π radicato in s, con v.d (stima) e v.π. δ(u,v) = minimo peso dei cammini, ∞ se irraggiungibile. Ben definito senza cicli negativi; v.d >= δ(s,v) sempre.
@@ -506,7 +506,7 @@ D: Controesempio di Dijkstra con pesi negativi.
 R: s->u (3), s->v (5), v->u (-4): u estratto con 3 e dichiarato definitivo; ma via v si arriva a 5-4=1. Risultato 3 anziché 1. Serve Bellman-Ford.
 
 D: Costi di Dijkstra e di Bellman-Ford.
-R: Dijkstra con heap binario: |V| Extract-Min + al più |E| Decrease-Key = O(E log V) per grafo connesso. Bellman-Ford (pesi negativi, senza cicli negativi): O(|V||E|). Con array non ordinato Dijkstra costa O(V^2) (|V| Extract-Min lineari + O(1) per Decrease-Key), meglio dello heap su grafi densi. Pape-D'Esopo: superpolinomiale nel peggiore, quasi lineare su grafi stradali.
+R: Dijkstra con heap binario: |V| Extract-Min + al più |E| Decrease-Key = O(E log V) per grafo connesso. Bellman-Ford (pesi negativi, senza cicli negativi): O(|V||E|). Con array non ordinato Dijkstra costa O(V^2) (|V| Extract-Min lineari + O(1) per Decrease-Key), meglio dello heap su grafi densi (fonte: Wikipedia, "Dijkstra's algorithm"; la slide 19 dà solo O(E log V)). Pape-D'Esopo: superpolinomiale nel peggiore, quasi lineare su grafi stradali.
 
 ## 11 - Laboratorio
 

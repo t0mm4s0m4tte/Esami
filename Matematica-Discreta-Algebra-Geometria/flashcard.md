@@ -1,6 +1,6 @@
 # Flashcard - Matematica Discreta e Algebra e Geometria
 
-Formato: D = domanda, R = risposta. Una carta per blocco. Tag nelle risposte: [DA VERIFICARE] = punto non confermato dalle fonti o dal programma; [INT] = ricavato da me con i metodi del corso, non scritto nelle lezioni. Basate sugli appunti 01-15 (calcoli ricontrollati con sympy).
+Formato: D = domanda, R = risposta. Una carta per blocco. Tag nelle risposte: [DA VERIFICARE] = punto non confermato dalle fonti o dal programma; [ASSUNZIONE: da verificare] = affermazione senza fonte (dispense, libro, web) letta e confermata, da controllare; [INT] = ricavato da me con i metodi del corso, non scritto nelle lezioni. Basate sugli appunti 01-15 (calcoli ricontrollati con sympy).
 
 ## 01 - Insiemi, funzioni, induzione
 
@@ -79,7 +79,7 @@ D: Quanti n in [1,660] sono divisibili per 5, 6 o 11?
 R: 132+110+60 - 22 (D30) - 12 (D55) - 10 (D66) + 2 (D330) = 260. (I divisibili per a e b sono i divisibili per mcm(a,b).)
 
 D: 129 biglietti venduti; spettatori dei film 109, 76, 55; film 1∩2 = 52, 2∩3 = 44, 1∩3 = 28. Quanti hanno visto tutti e tre?
-R: Inclusione-esclusione al contrario: 129 = 109+76+55-52-44-28+x = 116+x, quindi x = 13 (ricalcolato; gli appunti 02 sono stati corretti).
+R: Inclusione-esclusione al contrario: 129 = 109+76+55-52-44-28+x = 116+x, quindi x = 13 (calcolo verificato; Mori, cap. 3, Esercizi es. 1, riporta invece 23: incoerenza nel testo di Mori, fonte: Mori; gli appunti 02 riportano 13).
 
 D: Metodo delle scelte successive: quando si moltiplica e quando si somma?
 R: Se la situazione richiede k scelte successive con n_i possibilità ciascuna, gli esiti sono n1·...·nk (Prop 3.16). Se i casi sono alternativi (si escludono a vicenda) si sommano. Es. PIN a 4 cifre: 10^4.
@@ -115,13 +115,13 @@ D: Tabella: ordine/ripetizioni -> formula.
 R: Ordine sì, tutti gli n: n!. Ordine sì, k su n, no rip.: n!/(n-k)!. Ordine sì, rip.: n^k. Ordine no, no rip.: C(n,k). Ordine no, rip.: C(n+k-1,k). Anagrammi con ripetizioni: n!/(r1!···rk!).
 
 D: 5 ballerini su 9 e 3 ballerine su 11: quante squadre?
-R: C(9,5)·C(11,3) = 126·165 = 20790. (Il PDF di Mori estratto riporta 13860 = 84·165: refuso.)
+R: C(9,5)·C(11,3) = 126·165 = 20790 (calcolo verificato). (Mori, cap. 3 es. 1, scrive C(9,5)=C(9,4)=84 e 13860 = 84·165, ma C(9,5)=126 e 84 = C(9,3): errore nel testo, fonte: Mori.)
 
 D: Sei amici in fila: quanti modi se Bruno e Daniele devono stare vicini?
 R: Si tratta la coppia come un blocco: 5! ordinamenti dei blocchi per 2 ordini interni = 240.
 
 ## 03 - Interi e aritmetica modulare
-Nota: tutta la teoria oltre il §1 è ricostruita come teoria standard dagli appunti (ricontrollata; da confrontare con le notazioni di Mori cap. 4/7); gli esempi numerici sono verificati.
+Nota: tutta la teoria oltre il §1 è ricostruita come teoria standard dagli appunti [ASSUNZIONE: da verificare su Mori cap. 4/7] (Mori è leggibile solo fino alla Def 4.3, Facchini è una scansione senza testo); gli esempi numerici sono calcolo verificato.
 
 D: Definizione di divisibilità e casi limite (0, ±1). Invertibili in (Z,·).
 R: a | b se esiste k in Z con b = ka. Ogni n divide 0; 0 divide solo 0; ±1 dividono tutto e sono gli unici invertibili di (Z,·).
@@ -132,29 +132,29 @@ R: Un divisore comune di a e b divide s; un divisore di s e di uno degli addendi
 D: Definizione di irriducibile e relazione con "primo".
 R: n ∉ {0,±1} è irriducibile se n = ab implica a o b invertibile (±1). Primo: n | ab => n | a o n | b. In Z le due nozioni sono equivalenti. [DA VERIFICARE la definizione di "primo" usata da Mori]
 
-D: Enuncia la divisione euclidea e la relazione fra MCD e mcm.
+D: Enuncia la divisione euclidea e la relazione fra MCD e mcm. [ASSUNZIONE: da verificare]
 R: Per a in Z e b > 0 esistono unici q, r con a = bq+r e 0 <= r < b. MCD(a,b)·mcm(a,b) = |ab|.
 
 D: Calcola MCD(252,198) con Euclide e scrivi Bézout.
-R: 252 = 1·198+54; 198 = 3·54+36; 54 = 1·36+18; 36 = 2·18. MCD = 18 = 4·252 - 5·198. (il legame col determinante è in Buzano Lez. 9)
+R: 252 = 1·198+54; 198 = 3·54+36; 54 = 1·36+18; 36 = 2·18. MCD = 18 = 4·252 - 5·198 (calcolo verificato). [ASSUNZIONE: da verificare]
 
 D: Enuncia l'identità di Bézout e il criterio di coprimalità. Qual è il lemma "a | bc"?
-R: Esistono x,y in Z con ax+by = MCD(a,b). a,b coprimi <=> esistono x,y con ax+by = 1. Se a | bc e MCD(a,b) = 1 allora a | c; se p primo e p | ab allora p | a o p | b.
+R: Esistono x,y in Z con ax+by = MCD(a,b). a,b coprimi <=> esistono x,y con ax+by = 1. Se a | bc e MCD(a,b) = 1 allora a | c; se p primo e p | ab allora p | a o p | b. [ASSUNZIONE: da verificare]
 
 D: Cos'è la congruenza mod n e perché le operazioni su Z_n sono ben definite?
-R: a ≡ b (mod n) <=> n | a-b (stesso resto). Se a ≡ a' e b ≡ b' allora a+b ≡ a'+b' e ab ≡ a'b', quindi [a]+[b] = [a+b] e [a][b] = [ab] non dipendono dai rappresentanti.
+R: a ≡ b (mod n) <=> n | a-b (stesso resto). Se a ≡ a' e b ≡ b' allora a+b ≡ a'+b' e ab ≡ a'b', quindi [a]+[b] = [a+b] e [a][b] = [ab] non dipendono dai rappresentanti. [ASSUNZIONE: da verificare]
 
 D: Quando Z_n è un campo? Esempio di zero divisori.
-R: Z_n è campo <=> n primo. Per n composto manca la legge di annullamento: in Z_6, 2·3 = 0.
+R: Z_n è campo <=> n primo. Per n composto manca la legge di annullamento: in Z_6, 2·3 = 0. [ASSUNZIONE: da verificare]
 
 D: Quando [a] è invertibile in Z_n? Calcola 7^{-1} mod 26.
-R: [a] invertibile <=> MCD(a,n) = 1; l'inverso si trova con Bézout (ax+ny = 1 => a^{-1} = x). 7·15 = 105 = 4·26+1, quindi 7^{-1} ≡ 15 (mod 26).
+R: [a] invertibile <=> MCD(a,n) = 1; l'inverso si trova con Bézout (ax+ny = 1 => a^{-1} = x). 7·15 = 105 = 4·26+1, quindi 7^{-1} ≡ 15 (mod 26). (calcolo verificato) [ASSUNZIONE: da verificare]
 
 D: Definisci φ(n) e calcola φ(12), φ(36), φ(360).
-R: φ(n) = numero dei k in [1,n] coprimi con n = |Z_n*|. φ(p) = p-1, φ(p^k) = p^k - p^{k-1}, moltiplicativa su coprimi. φ(12)=4, φ(36)=12, φ(360)=96.
+R: φ(n) = numero dei k in [1,n] coprimi con n = |Z_n*|. φ(p) = p-1, φ(p^k) = p^k - p^{k-1}, moltiplicativa su coprimi. φ(12)=4, φ(36)=12, φ(360)=96. (calcolo verificato) [ASSUNZIONE: da verificare]
 
 D: Enuncia Eulero e Fermat con le ipotesi.
-R: Eulero: se MCD(a,n) = 1 allora a^{φ(n)} ≡ 1 (mod n). Fermat: se p è primo e p ∤ a, a^{p-1} ≡ 1 (mod p) (e a^p ≡ a per ogni a). Entrambi seguono da Lagrange su Z_n*.
+R: Eulero: se MCD(a,n) = 1 allora a^{φ(n)} ≡ 1 (mod n). Fermat: se p è primo e p ∤ a, a^{p-1} ≡ 1 (mod p) (e a^p ≡ a per ogni a). Entrambi seguono da Lagrange su Z_n*. (fonte parziale: Mori, Introduzione: il teorema di Eulero è dimostrato con una proprietà dei gruppi del cap. 6, cioè Lagrange; enunciato esatto non leggibile) [ASSUNZIONE: da verificare]
 
 D: Calcola 3^100 mod 7.
 R: 3^6 ≡ 1 (Fermat), 100 = 96+4, quindi 3^100 ≡ 3^4 = 81 ≡ 4 (mod 7).
@@ -163,19 +163,19 @@ D: Calcola 2^1000 mod 13 e 7^222 mod 10.
 R: 2^12 ≡ 1 mod 13, 1000 = 12·83+4, quindi 2^4 = 16 ≡ 3. Per 7^222 mod 10: φ(10) = 4, 222 = 4·55+2, quindi 7² = 49 ≡ 9.
 
 D: Quando ax ≡ b (mod n) ha soluzioni e quante? Risolvi 14x ≡ 21 (mod 35).
-R: Ha soluzioni <=> d = MCD(a,n) divide b, e ne ha d modulo n. Qui d=7 | 21: 2x ≡ 3 (mod 5) => x ≡ 4 (mod 5) => x in {4,9,14,19,24,29,34}.
+R: Ha soluzioni <=> d = MCD(a,n) divide b, e ne ha d modulo n. Qui d=7 | 21: 2x ≡ 3 (mod 5) => x ≡ 4 (mod 5) => x in {4,9,14,19,24,29,34}. (calcolo verificato) [ASSUNZIONE: da verificare]
 
 D: Risolvi 4x ≡ 6 (mod 26) e 6x ≡ 4 (mod 9).
-R: Prima: d=2 | 6, 2x ≡ 3 (mod 13) => x ≡ 8 (mod 13) => x in {8, 21}. Seconda: d = 3 non divide 4, nessuna soluzione.
+R: Prima: d=2 | 6, 2x ≡ 3 (mod 13) => x ≡ 8 (mod 13) => x in {8, 21}. Seconda: d = 3 non divide 4, nessuna soluzione. (calcolo verificato) [ASSUNZIONE: da verificare]
 
 D: Enuncia il teorema cinese dei resti e risolvi x≡2 (3), x≡3 (5), x≡2 (7).
-R: Se m1..mk sono a due a due coprimi, il sistema x ≡ a_i (mod m_i) ha soluzione unica mod m1···mk. Qui x ≡ 23 (mod 105).
+R: Se m1..mk sono a due a due coprimi, il sistema x ≡ a_i (mod m_i) ha soluzione unica mod m1···mk. Qui x ≡ 23 (mod 105). (calcolo verificato) [ASSUNZIONE: da verificare]
 
 D: Z_7* è ciclico? Perché?
-R: Sì: le potenze di 3 mod 7 sono 3,2,6,4,5,1, quindi 3 ha ordine 6 = φ(7) e Z_7* = ⟨3⟩.
+R: Sì: le potenze di 3 mod 7 sono 3,2,6,4,5,1, quindi 3 ha ordine 6 = φ(7) e Z_7* = ⟨3⟩. (calcolo verificato) [ASSUNZIONE: da verificare]
 
 ## 04 - Permutazioni e gruppi
-Nota: oltre la definizione di gruppo/campo (Buzano) il materiale è teoria standard ricostruita (ricontrollata; da confrontare con Mori cap. 5-6).
+Nota: oltre la definizione di gruppo/campo (Buzano) il materiale è teoria standard ricostruita [ASSUNZIONE: da verificare su Mori cap. 5-6] (testo non leggibile su Drive).
 
 D: Definizione di gruppo e di gruppo abeliano. Esempi di non-gruppi.
 R: (G,*) con associatività, neutro e, inverso per ogni elemento; abeliano se vale anche a*b = b*a. Non sono gruppi (N,+) (manca l'opposto) e (Z\{0},·) (2 non ha inverso).
@@ -184,31 +184,31 @@ D: Definizione di campo. Z è un campo? E Z_p?
 R: (A,+,·) con (A,+) gruppo abeliano di neutro 0, (A\{0},·) gruppo abeliano di neutro 1 e distributività. Z non è un campo; Q, R, C e Z_p (p primo) sì.
 
 D: Quanti elementi ha S_n? È abeliano?
-R: n! elementi (biezioni di {1..n}); è un gruppo con la composizione, non abeliano per n >= 3.
+R: n! elementi (biezioni di {1..n}); è un gruppo con la composizione, non abeliano per n >= 3. [ASSUNZIONE: da verificare]
 
 D: Scrivi σ = [3 5 1 6 2 4] in cicli, trova il segno e l'ordine.
-R: 1->3->1, 2->5->2, 4->6->4, quindi σ = (1 3)(2 5)(4 6), 3 trasposizioni: segno -1; ordine 2 (σ² = id).
+R: 1->3->1, 2->5->2, 4->6->4, quindi σ = (1 3)(2 5)(4 6), 3 trasposizioni: segno -1; ordine 2 (σ² = id). (calcolo verificato) [ASSUNZIONE: da verificare]
 
 D: Ordine e segno di (0 1 2)(3 4) in S_5.
-R: Ordine = mcm(3,2) = 6. Un k-ciclo ha segno (-1)^{k-1}: 3-ciclo +1, trasposizione -1, totale segno -1.
+R: Ordine = mcm(3,2) = 6. Un k-ciclo ha segno (-1)^{k-1}: 3-ciclo +1, trasposizione -1, totale segno -1. (calcolo verificato) [ASSUNZIONE: da verificare]
 
 D: Perché il segno è ben definito? Segno di un k-ciclo e ordine di A_n.
-R: La decomposizione in trasposizioni non è unica, ma la parità del numero sì, quindi sgn(σ) = (-1)^m; sgn(στ) = sgn(σ)sgn(τ). Un k-ciclo ha segno (-1)^{k-1}. A_n (permutazioni pari) ha ordine n!/2. Il segno compare nella definizione del determinante. (il legame col determinante è in Buzano Lez. 9)
+R: La decomposizione in trasposizioni non è unica, ma la parità del numero sì, quindi sgn(σ) = (-1)^m; sgn(στ) = sgn(σ)sgn(τ). Un k-ciclo ha segno (-1)^{k-1}. A_n (permutazioni pari) ha ordine n!/2. Il segno compare nella definizione del determinante (fonte per questo legame e per sgn=(-1)^k: Buzano, Lezioni_08-10.pdf, Def 9.1); il resto della scheda [ASSUNZIONE: da verificare]
 
 D: Calcola il prodotto (1 2)(1 3) in S_3 con la convenzione "si applica prima il fattore di destra". [INT]
 R: 1->3->3, 3->1->2, 2->2->1: risulta (1 3 2). Con la convenzione opposta si otterrebbe (1 2 3): la convenzione del docente va verificata. [DA VERIFICARE]
 
 D: Teorema di Lagrange: enunciato, ipotesi e conseguenze.
-R: Se G è finito e H ≤ G allora |H| divide |G| (G è unione disgiunta di classi laterali aH tutte di cardinalità |H|). Conseguenze: ord(a) | |G|; a^{|G|} = e; i gruppi di ordine primo sono ciclici; con G = Z_n* si ottengono Eulero e Fermat.
+R: Se G è finito e H ≤ G allora |H| divide |G| (G è unione disgiunta di classi laterali aH tutte di cardinalità |H|). Conseguenze: ord(a) | |G|; a^{|G|} = e; i gruppi di ordine primo sono ciclici; con G = Z_n* si ottengono Eulero e Fermat. [ASSUNZIONE: da verificare]
 
 D: Criterio per un sottogruppo e definizione di ordine di un elemento.
-R: H ≤ G se H ≠ ∅ e a*b^{-1} ∈ H per ogni a,b in H (o: chiuso per prodotto e inverso). ord(a) = minimo n >= 1 con a^n = e = |⟨a⟩|.
+R: H ≤ G se H ≠ ∅ e a*b^{-1} ∈ H per ogni a,b in H (o: chiuso per prodotto e inverso). ord(a) = minimo n >= 1 con a^n = e = |⟨a⟩|. [ASSUNZIONE: da verificare]
 
 D: Omomorfismo di gruppi: definizione e criterio di iniettività.
-R: f(ab) = f(a)f(b); ne seguono f(e) = e' e f(a^{-1}) = f(a)^{-1}. Ker f = {g | f(g) = e'} è sottogruppo e f è iniettivo <=> Ker f = {e}. Esempio: sgn: S_n -> {±1} con nucleo A_n.
+R: f(ab) = f(a)f(b); ne seguono f(e) = e' e f(a^{-1}) = f(a)^{-1}. Ker f = {g | f(g) = e'} è sottogruppo e f è iniettivo <=> Ker f = {e}. Esempio: sgn: S_n -> {±1} con nucleo A_n. [ASSUNZIONE: da verificare]
 
 D: V/F: "Z_n* è sempre ciclico".
-R: Falso: lo è per n primo (Z_7* = ⟨3⟩) ma Z_8* non lo è. Invece (Z_n,+) è sempre ciclico, generato da [1], con φ(n) generatori.
+R: Falso: lo è per n primo (Z_7* = ⟨3⟩) ma Z_8* non lo è. Invece (Z_n,+) è sempre ciclico, generato da [1], con φ(n) generatori. (calcolo verificato) [ASSUNZIONE: da verificare]
 
 ## 05 - Numeri complessi e polinomi
 
@@ -295,7 +295,7 @@ R: Se Σλ_iv_i = Σμ_iv_i la differenza dà una combinazione nulla Σ(λ_i-μ_
 D: Coordinate di v = (2,3,3) nella base B = {(1,0,2),(1,1,2),(1,2,1)}.
 R: Si risolve λ1(1,0,2)+λ2(1,1,2)+λ3(1,2,1) = (2,3,3): λ3 = 1, λ2 = 1, λ1 = 0. [v]_B = (0,1,1) (verifica: (1,1,2)+(1,2,1) = (2,3,3)).
 
-D: U = ⟨(1,0,1),(1,1,1)⟩, V = ⟨(0,1,2),(0,1,1)⟩: dim(U∩V)?
+D: U = ⟨(1,0,1),(1,1,1)⟩, V = ⟨(0,1,2),(0,1,1)⟩: dim(U∩V)? (formula di Grassmann: fonte: Slide MANNO, Lezione18_Alg.pdf)
 R: dim U = dim V = 2, dim(U+V) = rango delle quattro colonne = 3. Grassmann: dim(U∩V) = 2+2-3 = 1. La formula dim(U+W) = dim U + dim W - dim(U∩W) è usata nei compiti ma non è nelle lezioni estratte.
 
 ## 07 - Matrici e determinante
@@ -313,7 +313,7 @@ D: Dimostra o enuncia tr(AB) = tr(BA). Esempio con taglie diverse.
 R: tr(AB) = Σ_iΣ_j A_ij B_ji è simmetrica nei due fattori; vale anche con AB e BA di taglie diverse. Es. A 3×2 = [[1,2],[3,4],[5,6]], B 2×3 = [[1,2,3],[4,5,6]]: tr(AB) = 9+26+51 = 86 = 22+64 = tr(BA).
 
 D: Definizione di rango. Qual è il legame col rango della trasposta? E rk(A·ᵗA)?
-R: rk A = dim Span(colonne) = numero di pivot; rk(ᵗA) = rk(A) (Prop 8.6). Per A reale vale rk(A·ᵗA) = rk(A) (usato nei quiz; vero perché ‖ᵗAx‖² = ᵗx·A·ᵗA·x, quindi Ker(A·ᵗA) = Ker(ᵗA)).
+R: rk A = dim Span(colonne) = numero di pivot; rk(ᵗA) = rk(A) (Prop 8.6). Per A reale vale rk(A·ᵗA) = rk(A) (usato nei quiz) [ASSUNZIONE: da verificare] (nessuna fonte trovata su Drive; ragionamento proprio: ‖ᵗAx‖² = ᵗx·A·ᵗA·x, quindi Ker(A·ᵗA) = Ker(ᵗA)).
 
 D: Definizione del determinante e determinanti di triangolari.
 R: det A = Σ_{σ∈S_n} sgn(σ) a_{1σ(1)}···a_{nσ(n)}: n! addendi, uno per riga e colonna. Per le triangolari (e diagonali) è il prodotto degli elementi diagonali; det I = 1; det ᵗA = det A.
@@ -404,7 +404,7 @@ D: Definisci Ker e Im; sono sottospazi? Criterio di iniettività.
 R: Ker f = {v | f(v)=0} ⊆ V, Im f = f(V) ⊆ W, entrambi sottospazi. f iniettiva <=> Ker f = {0} (f(v) = f(v') <=> v-v' ∈ Ker); f suriettiva <=> Im f = W.
 
 D: Enuncia il teorema della dimensione e le conseguenze per f: R^8 -> R^4.
-R: Se dim V = n finita, dim Ker f + dim Im f = n. Per f: R^8->R^4: dim Im <= 4, quindi dim Ker >= 4: mai iniettiva. In generale dim V > dim W => non iniettiva; dim V < dim W => non suriettiva; dim V = dim W => iniettiva <=> suriettiva <=> isomorfismo. (Dimostrazione non nelle lezioni estratte.)
+R: Se dim V = n finita, dim Ker f + dim Im f = n. Per f: R^8->R^4: dim Im <= 4, quindi dim Ker >= 4: mai iniettiva. In generale dim V > dim W => non iniettiva; dim V < dim W => non suriettiva; dim V = dim W => iniettiva <=> suriettiva <=> isomorfismo. (fonte: Buzano, Lezioni_14-16.pdf, Teor. 14.13, Cor. 14.14, Prop. 15.3-15.4; dimostrazione anche in Slide MANNO, Lezione22_Alg.pdf.)
 
 D: Come si trovano Ker e Im di L_A?
 R: Ker = soluzioni di Ax = 0 (una base ha un vettore per parametro libero). Im = Span(colonne di A): una base è data dalle colonne di A (originale!) corrispondenti ai pivot. Controllo: dim Ker + dim Im = n.
@@ -466,7 +466,7 @@ D: Il polinomio caratteristico dipende dalla base? Perché?
 R: No: è invariante per similitudine. Se A = M^{-1}BM, A-λI = M^{-1}(B-λI)M e per Binet i determinanti coincidono.
 
 D: Relazioni tra p_A, traccia e determinante.
-R: Il termine noto di p_A è det A e il coefficiente di λ^{n-1} è ±tr A: somma degli autovalori = tr A, prodotto = det A, A invertibile <=> 0 non è autovalore. Fatti standard, non presenti nelle lezioni Buzano.
+R: Il termine noto di p_A è det A e il coefficiente di λ^{n-1} è ±tr A: somma degli autovalori = tr A, prodotto = det A, A invertibile <=> 0 non è autovalore. Prodotto = det A: fonte Slide MANNO, Lezione29_Complementi_Alg.pdf; A invertibile <=> 0 non è autovalore: fonte Buzano Prop 17.13 e 10.8; somma degli autovalori = tr A: [ASSUNZIONE: da verificare] (nessuna fonte trovata).
 
 D: Prop 18.1 e Cor 18.2: enunciati. V/F: p_T con radici non distinte implica non diagonalizzabile.
 R: Autovettori di autovalori distinti sono indipendenti; se p_T ha n radici distinte in K, T è diagonalizzabile (condizione sufficiente, non necessaria). Falso: ad esempio I ha autovalore 1 con m_a = n ed è diagonale.
@@ -531,7 +531,7 @@ D: Proietta (1,-1,1) sul piano x+y+z=0.
 R: Si toglie la componente lungo n=(1,1,1): v - (⟨v,n⟩/‖n‖²)n = (1,-1,1) - (1/3)(1,1,1) = (2/3,-4/3,2/3).
 
 D: Complemento ortogonale: definizione e proprietà (prodotto definito positivo).
-R: W^⊥ = {v | ⟨v,w⟩ = 0 per ogni w ∈ W}, sottospazio. Con prodotto definito positivo V = W ⊕ W^⊥, quindi dim W + dim W^⊥ = dim V (dimostrazione non nelle lezioni estratte per dim W qualunque; il fatto è standard).
+R: W^⊥ = {v | ⟨v,w⟩ = 0 per ogni w ∈ W}, sottospazio. Con prodotto definito positivo V = W ⊕ W^⊥, quindi dim W + dim W^⊥ = dim V (fonte: Slide MANNO, Lezione24_Alg.pdf, enunciato per sottospazi di R^n con prodotto euclideo, lasciato per esercizio; per prodotto definito positivo generico [ASSUNZIONE: da verificare]).
 
 D: Coordinate in una base ortogonale {v_i}.
 R: v = Σ (⟨v,v_i⟩/⟨v_i,v_i⟩) v_i: le coordinate sono i coefficienti di Fourier, ottenuti con un prodotto scalare ciascuna.
