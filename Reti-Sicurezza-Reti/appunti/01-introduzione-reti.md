@@ -32,7 +32,7 @@ Un **protocollo** definisce il formato e l'ordine dei messaggi scambiati fra ent
 </td>
 <td valign="top" align="center">
 
-<img src="img/01-internet-struttura-generale.png" width="320" alt="Visione d'insieme di Internet: reti mobili, domestiche, aziendali, ISP, content provider e data center"><br><sub>Figura: Internet come insieme di reti interconnesse da router (slide 1-3).</sub>
+<img src="img/01-internet-struttura-generale.png" width="420" alt="Visione d'insieme di Internet: reti mobili, domestiche, aziendali, ISP, content provider e data center"><br><sub>Figura: Internet come insieme di reti interconnesse da router (slide 1-3).</sub>
 
 </td>
 </tr>
@@ -44,15 +44,17 @@ Il **network edge** comprende gli host (client e server, i server spesso in data
 
 Nell'accesso **via cavo** (HFC, *hybrid fiber coax*) dati e TV viaggiano su frequenze diverse sulla stessa rete di distribuzione condivisa, grazie al **FDM** (*frequency division multiplexing*): ogni canale occupa una banda di frequenza diversa. Le abitazioni condividono l'accesso fino al *cable headend*, dove un CMTS (cable modem termination system) le collega all'ISP. La banda è **asimmetrica**: da 40 Mbps a 1,2 Gbps in downstream e 30-100 Mbps in upstream.
 
-![Accesso via cavo: abitazioni collegate al cable headend e canali in frequenza (video, dati, controllo)](img/01-accesso-cable.png)
-
-*Figura: accesso via cavo, con FDM su canali di frequenza diversi (slide 1-14).*
+<p align="center">
+<img src="img/01-accesso-cable.png" width="480" alt="Accesso via cavo: abitazioni collegate al cable headend e canali in frequenza (video, dati, controllo)"><br>
+<sub><i>Figura: accesso via cavo, con FDM su canali di frequenza diversi (slide 1-14).</i></sub>
+</p>
 
 Nel **DSL**, invece, si riusa la linea telefonica verso la centrale (dove c'è il DSLAM): voce e dati sono su frequenze diverse, ma la linea è *dedicata* e non condivisa, con 24-52 Mbps in downstream e 3,5-16 Mbps in upstream.
 
-![Accesso DSL: modem e splitter in casa, DSLAM nella centrale, rete telefonica e ISP](img/01-accesso-dsl.png)
-
-*Figura: accesso DSL (slide 1-16).*
+<p align="center">
+<img src="img/01-accesso-dsl.png" width="520" alt="Accesso DSL: modem e splitter in casa, DSLAM nella centrale, rete telefonica e ISP"><br>
+<sub><i>Figura: accesso DSL (slide 1-16).</i></sub>
+</p>
 
 Nella rete di casa modem, router, firewall, NAT e access point WiFi sono spesso un unico apparato; il cablato Ethernet arriva a 1 Gbps e il WiFi a 54-450 Mbps. Nelle reti aziendali si trovano Ethernet a 100 Mbps, 1 Gbps o 10 Gbps insieme a WiFi, con switch e router. Nei data center link da decine a centinaia di Gbps collegano centinaia o migliaia di server fra loro e a Internet. L'accesso wireless condiviso passa da una base station (*access point*): le WLAN (802.11b/g/n, 11, 54 o 450 Mbps) coprono circa 30 m, le reti cellulari 4G/5G coprono decine di km con decine di Mbps.
 
@@ -66,6 +68,8 @@ I **mezzi fisici** si dividono in guidati (il segnale si propaga in un mezzo sol
 | Cavo coassiale | due conduttori di rame concentrici, bidirezionale, *broadband* (più canali di frequenza), centinaia di Mbps per canale |
 | Fibra ottica | impulsi di luce, ciascuno un bit; punto-punto ad alta velocità (decine-centinaia di Gbps); basso tasso di errore (ripetitori molto distanziati) e immunità al rumore elettromagnetico |
 
+<div align="center">
+
 <table>
 <tr>
 <td align="center"><img src="img/01-mezzo-doppino.jpg" alt="Cavo Ethernet con connettore RJ45" height="190"><br><sub>Doppino intrecciato (UTP) con connettore RJ45</sub></td>
@@ -74,7 +78,9 @@ I **mezzi fisici** si dividono in guidati (il segnale si propaga in un mezzo sol
 </tr>
 </table>
 
-*Figura: i tre mezzi guidati. Foto da Wikimedia Commons (crediti in [`img/CREDITI.md`](img/CREDITI.md)).*
+<sub><i>Figura: i tre mezzi guidati. Foto da Wikimedia Commons (crediti in <a href="img/CREDITI.md"><code>img/CREDITI.md</code></a>).</i></sub>
+
+</div>
 
 Le trasmissioni **radio** non hanno un filo fisico: il segnale è in bande dello spettro elettromagnetico, in broadcast e half-duplex, e soffre di riflessioni, ostacoli e interferenze. I tipi sono WLAN (decine-centinaia di Mbps su decine di metri), cellulare (decine di Mbps su circa 10 km con 4G), Bluetooth (sostituisce i cavi, brevi distanze e velocità limitate), microonde terrestri (punto-punto, canali da 45 Mbps) e satellite (fino a meno di 100 Mbps in downlink con Starlink; circa 270 ms di ritardo end-to-end per i geostazionari).
 
@@ -89,7 +95,7 @@ Il **network core** è una maglia di router interconnessi. Con il **packet switc
 </td>
 <td valign="top" align="center">
 
-<img src="img/01-forwarding-routing.png" width="320" alt="Un pacchetto con indirizzo 0111 entra in un router; la forwarding table associa i valori dell'header ai link di uscita, riempita dall'algoritmo di routing"><br><sub>Figura: la forwarding table locale (header value → output link) è riempita dall'algoritmo di routing (slide 1-27).</sub>
+<img src="img/01-forwarding-routing.png" width="430" alt="Un pacchetto con indirizzo 0111 entra in un router; la forwarding table associa i valori dell'header ai link di uscita, riempita dall'algoritmo di routing"><br><sub>Figura: la forwarding table locale (header value → output link) è riempita dall'algoritmo di routing (slide 1-27).</sub>
 
 </td>
 </tr>
@@ -97,15 +103,17 @@ Il **network core** è una maglia di router interconnessi. Con il **packet switc
 
 Il router lavora in modalità **store-and-forward**: l'intero pacchetto deve essere arrivato prima che possa iniziare la trasmissione sul link successivo. *Esempio svolto dalle slide*: con L = 10 kbit e R = 100 Mbps, il ritardo di trasmissione a un salto è 10 000 / 100 000 000 s = 0,1 ms. `[INT]` Con N link in serie (N-1 router) dello stesso rate e un solo pacchetto, il ritardo end-to-end di sola trasmissione è `N·L/R`.
 
-![Sorgente, router e destinazione collegati da link a R bps; i pacchetti 1, 2, 3 da L bit vengono trasmessi uno dopo l'altro](img/01-store-and-forward.png)
-
-*Figura: store-and-forward, il router riceve l'intero pacchetto prima di ritrasmetterlo (slide 1-30).*
+<p align="center">
+<img src="img/01-store-and-forward.png" width="640" alt="Sorgente, router e destinazione collegati da link a R bps; i pacchetti 1, 2, 3 da L bit vengono trasmessi uno dopo l'altro"><br>
+<sub><i>Figura: store-and-forward, il router riceve l'intero pacchetto prima di ritrasmetterlo (slide 1-30).</i></sub>
+</p>
 
 Quando il tasso di arrivo dei bit su un link supera la sua velocità per un certo periodo, i pacchetti si **accodano** nel buffer del link d'uscita; se il buffer (di capacità finita) si riempie, i pacchetti in arrivo vengono **scartati** (*packet loss*).
 
-![Due host inviano a un router con link in uscita a 1,5 Mb/s mentre i link di ingresso sono a 100 Mb/s: i pacchetti si accodano](img/01-accodamento.png)
-
-*Figura: accodamento, con link d'ingresso a 100 Mb/s e link d'uscita a 1,5 Mb/s (slide 1-31).*
+<p align="center">
+<img src="img/01-accodamento.png" width="640" alt="Due host inviano a un router con link in uscita a 1,5 Mb/s mentre i link di ingresso sono a 100 Mb/s: i pacchetti si accodano"><br>
+<sub><i>Figura: accodamento, con link d'ingresso a 100 Mb/s e link d'uscita a 1,5 Mb/s (slide 1-31).</i></sub>
+</p>
 
 <table>
 <tr>
@@ -118,7 +126,7 @@ I circuiti si ottengono dividendo il link con **FDM** (bande di frequenza strett
 </td>
 <td valign="top" align="center">
 
-<img src="img/01-circuit-switching.png" width="300" alt="Quattro router collegati in anello; una chiamata occupa un circuito dedicato su ogni link del percorso"><br><sub>Figura: la chiamata ottiene il 2° circuito del link in alto e il 1° del link a destra (slide 1-33).</sub>
+<img src="img/01-circuit-switching.png" width="390" alt="Quattro router collegati in anello; una chiamata occupa un circuito dedicato su ogni link del percorso"><br><sub>Figura: la chiamata ottiene il 2° circuito del link in alto e il 1° del link a destra (slide 1-33).</sub>
 
 </td>
 </tr>
@@ -133,7 +141,7 @@ Il confronto tra le due tecniche è quantitativo. Link da 1 Gbps, ogni utente tr
 </td>
 <td valign="top" align="center">
 
-<img src="img/01-fdm-tdm.png" width="300" alt="FDM: quattro utenti in bande di frequenza separate per tutto il tempo. TDM: quattro utenti a turno in slot temporali periodici"><br><sub>Figura: FDM (sopra) e TDM (sotto) con 4 utenti (slide 1-34).</sub>
+<img src="img/01-fdm-tdm.png" width="410" alt="FDM: quattro utenti in bande di frequenza separate per tutto il tempo. TDM: quattro utenti a turno in slot temporali periodici"><br><sub>Figura: FDM (sopra) e TDM (sotto) con 4 utenti (slide 1-34).</sub>
 
 </td>
 </tr>
@@ -151,9 +159,10 @@ Gli host si collegano a Internet tramite *access ISP*, che a loro volta devono e
 
 Al centro sta un piccolo numero di grandi reti ben connesse: gli ISP **tier-1** commerciali con copertura nazionale e internazionale (Level 3, Sprint, AT&T, NTT) e le reti dei content provider.
 
-![Struttura a livelli di Internet: ISP tier-1 e Google al centro, IXP, ISP regionali e access ISP in basso](img/01-internet-tier-ixp.png)
-
-*Figura: struttura attuale di Internet (slide 1-45).*
+<p align="center">
+<img src="img/01-internet-tier-ixp.png" width="680" alt="Struttura a livelli di Internet: ISP tier-1 e Google al centro, IXP, ISP regionali e access ISP in basso"><br>
+<sub><i>Figura: struttura attuale di Internet (slide 1-45).</i></sub>
+</p>
 
 ## Ritardo, perdita e throughput
 
@@ -161,9 +170,10 @@ Un pacchetto subisce ritardo a ogni nodo, e il **ritardo nodale** è la somma di
 
 `d_nodal = d_proc + d_queue + d_trans + d_prop`
 
-![Due host A e B inviano a un router: sono indicati elaborazione (nodal processing), accodamento (queueing), trasmissione e propagazione sul link verso il router successivo](img/01-ritardo-nodale.png)
-
-*Figura: le quattro componenti del ritardo nodale (slide 1-48).*
+<p align="center">
+<img src="img/01-ritardo-nodale.png" width="600" alt="Due host A e B inviano a un router: sono indicati elaborazione (nodal processing), accodamento (queueing), trasmissione e propagazione sul link verso il router successivo"><br>
+<sub><i>Figura: le quattro componenti del ritardo nodale (slide 1-48).</i></sub>
+</p>
 
 | Componente | Significato | Formula/ordine di grandezza |
 |---|---|---|
@@ -174,9 +184,10 @@ Un pacchetto subisce ritardo a ogni nodo, e il **ritardo nodale** è la somma di
 
 La differenza concettuale più importante è tra `d_trans` e `d_prop`: la trasmissione dipende dalla lunghezza del pacchetto e dalla velocità del link, la propagazione dalla lunghezza fisica del link e dalla velocità del segnale.
 
-![Carovana di dieci auto davanti a un casello; altri due caselli distanti 100 km l'uno dall'altro](img/01-carovana.png)
-
-*Figura: l'analogia della carovana (slide 1-50).*
+<p align="center">
+<img src="img/01-carovana.png" width="680" alt="Carovana di dieci auto davanti a un casello; altri due caselli distanti 100 km l'uno dall'altro"><br>
+<sub><i>Figura: l'analogia della carovana (slide 1-50).</i></sub>
+</p>
 
 *Analogia della carovana (esempio svolto dalle slide).* Un'auto è un bit, una carovana di 10 auto è un pacchetto, un casello è un link. Il casello serve un'auto in 12 s, quindi spingere la carovana sull'autostrada costa 12 · 10 = 120 s; le auto "propagano" a 100 km/h su 100 km, quindi l'ultima auto impiega 1 ora a raggiungere il secondo casello. La carovana è tutta in fila davanti al secondo casello dopo **62 minuti**. Se le auto viaggiano a 1000 km/h e il casello impiega 1 minuto per auto, la prima auto arriva al secondo casello dopo 7 minuti, quando tre auto sono ancora al primo: i primi bit possono arrivare al nodo successivo prima che il pacchetto sia stato trasmesso per intero (a differenza di quanto avviene con store-and-forward, dove il router non inizia a ritrasmettere fino all'arrivo dell'ultimo bit).
 
@@ -191,7 +202,7 @@ La **perdita** avviene quando un pacchetto trova pieno il buffer che precede il 
 </td>
 <td valign="top" align="center">
 
-<img src="img/01-ritardo-di-coda.png" width="280" alt="Ritardo medio di accodamento in funzione dell'intensità di traffico La/R: quasi nullo vicino a 0 e tende a infinito vicino a 1"><br><sub>Figura: il ritardo di coda cresce in modo esplosivo quando La/R si avvicina a 1 (slide 1-52).</sub>
+<img src="img/01-ritardo-di-coda.png" width="370" alt="Ritardo medio di accodamento in funzione dell'intensità di traffico La/R: quasi nullo vicino a 0 e tende a infinito vicino a 1"><br><sub>Figura: il ritardo di coda cresce in modo esplosivo quando La/R si avvicina a 1 (slide 1-52).</sub>
 
 </td>
 </tr>
@@ -208,7 +219,7 @@ Il **throughput** è la velocità (bit/unità di tempo) a cui i bit vengono tras
 </td>
 <td valign="top" align="center">
 
-<img src="img/01-throughput-backbone.png" width="230" alt="Tre server con link a velocità Rs e tre client con link a velocità Rc condividono un link di backbone a velocità R"><br><sub>Figura: dieci connessioni (qui ne sono disegnate tre) condividono equamente il link di backbone R (slide 1-58).</sub>
+<img src="img/01-throughput-backbone.png" width="280" alt="Tre server con link a velocità Rs e tre client con link a velocità Rc condividono un link di backbone a velocità R"><br><sub>Figura: dieci connessioni (qui ne sono disegnate tre) condividono equamente il link di backbone R (slide 1-58).</sub>
 
 </td>
 </tr>
@@ -234,7 +245,7 @@ Le linee di difesa sono: **autenticazione** (provare di essere chi si dichiara; 
 </td>
 <td valign="top" align="center">
 
-<img src="img/01-attacco-dos.png" width="260" alt="Molti host compromessi (con il simbolo del diavoletto) inviano pacchetti verso un unico server bersaglio"><br><sub>Figura: attacco DoS distribuito con una botnet (slide 1-63).</sub>
+<img src="img/01-attacco-dos.png" width="350" alt="Molti host compromessi (con il simbolo del diavoletto) inviano pacchetti verso un unico server bersaglio"><br><sub>Figura: attacco DoS distribuito con una botnet (slide 1-63).</sub>
 
 </td>
 </tr>
@@ -254,9 +265,10 @@ Lo stack Internet ha cinque livelli:
 
 Nell'**incapsulamento** ogni livello, alla sorgente, prende l'unità del livello superiore e vi aggiunge un proprio header per implementare il suo servizio: il messaggio applicativo `M` diventa un **segmento** `[Ht | M]` al livello trasporto, un **datagramma** `[Hn | Ht | M]` al livello rete e un **frame** `[Hl | Hn | Ht | M]` al livello link (l'analogia delle matrioske). In una visione end-to-end gli host implementano tutti e cinque i livelli, un **router** solo i livelli fino a quello di rete e uno **switch** solo fino al livello link; alla destinazione gli header vengono tolti livello per livello.
 
-![Messaggio, segmento, datagramma e frame alla sorgente; lo switch gestisce i livelli link e fisico, il router fino al livello di rete; alla destinazione gli header vengono rimossi](img/01-incapsulamento.png)
-
-*Figura: incapsulamento end-to-end (slide 1-76).*
+<p align="center">
+<img src="img/01-incapsulamento.png" width="520" alt="Messaggio, segmento, datagramma e frame alla sorgente; lo switch gestisce i livelli link e fisico, il router fino al livello di rete; alla destinazione gli header vengono rimossi"><br>
+<sub><i>Figura: incapsulamento end-to-end (slide 1-76).</i></sub>
+</p>
 
 ## Storia di Internet
 

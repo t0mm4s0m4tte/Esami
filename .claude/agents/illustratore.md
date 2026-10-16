@@ -45,18 +45,25 @@ La posizione dipende dal rapporto larghezza/altezza `w/h` dell'immagine ritaglia
   </td>
   <td valign="top" align="center">
 
-  <img src="img/NN-nome.png" width="320" alt="descrizione"><br><sub>Figura: cosa mostra (slide N-M).</sub>
+  <img src="img/NN-nome.png" width="400" alt="descrizione"><br><sub>Figura: cosa mostra (slide N-M).</sub>
 
   </td>
   </tr>
   </table>
   ```
 
-  Le righe vuote subito dopo `<td ...>` e prima di `</td>` sono obbligatorie, altrimenti il Markdown nella cella non viene interpretato; niente rientri di 4 spazi. Larghezza dell'immagine 230-340 px (più stretta se è alta). Metti nella cella di sinistra il paragrafo (o i paragrafi) che spiegano la figura, in quantità tale che il testo sia lungo circa quanto l'immagine alta (a larghezza 300 px una figura quasi quadrata occupa circa 14 righe di testo affiancato): se il testo è molto più corto, aggiungi il paragrafo vicino più pertinente o riduci la larghezza della figura. Lascia una riga vuota prima e dopo `</table>`, non mettere la tabella dentro un elenco e non spezzare un elenco con la tabella (se la figura riguarda l'ultima voce di un elenco numerato, la voce può stare nella cella, che parte dal suo numero).
-- **Evidentemente rettangolare (`w/h` > 1,35): sotto il testo a tutta larghezza**, con la sintassi Markdown standard, subito dopo il paragrafo che la spiega, seguita da una riga di didascalia in corsivo con la fonte:
-  `![descrizione](img/NN-nome.png)` e poi `*Figura: cosa mostra (slide N-M).*`
-  Lo schema molto allungato (`w/h` > 3) resta comunque a tutta larghezza.
-- **Gruppo di foto simili da confrontare** (per esempio tre cavi): una tabella HTML di una sola riga, con le immagini della stessa altezza (`height="190"`) e una `<sub>` di didascalia sotto ciascuna. Il gruppo conta come una sola immagine rettangolare, quindi va sotto il testo.
+  Le righe vuote subito dopo `<td ...>` e prima di `</td>` sono obbligatorie, altrimenti il Markdown nella cella non viene interpretato; niente rientri di 4 spazi. Larghezza dell'immagine 350-430 px (le più alte e strette 290-350), abbastanza grande da leggere le etichette senza aprire l'immagine a schermo intero. Con questa larghezza una figura quasi quadrata occupa circa 18-22 righe di testo affiancato. Metti nella cella di sinistra il paragrafo (o i paragrafi) che spiegano la figura, in quantità tale che il testo sia lungo circa quanto l'immagine alta (con le larghezze sopra, circa 18-22 righe): se il testo è molto più corto, aggiungi il paragrafo vicino più pertinente o riduci la larghezza della figura. Lascia una riga vuota prima e dopo `</table>`, non mettere la tabella dentro un elenco e non spezzare un elenco con la tabella (se la figura riguarda l'ultima voce di un elenco numerato, la voce può stare nella cella, che parte dal suo numero).
+- **Evidentemente rettangolare (`w/h` > 1,35): sotto il testo, centrata e più piccola della colonna**, subito dopo il paragrafo che la spiega. Non usare la sintassi `![](...)`, che la porta a tutta larghezza e non la centra: usa un blocco HTML centrato con didascalia in corsivo e la fonte, senza Markdown dentro (niente backtick né asterischi):
+
+  ```html
+  <p align="center">
+  <img src="img/NN-nome.png" width="600" alt="descrizione"><br>
+  <sub><i>Figura: cosa mostra (slide N-M).</i></sub>
+  </p>
+  ```
+
+  Larghezza in base al rapporto: `w/h` 1,35-1,6 circa 480-520 px; 1,6-2,5 circa 520-600 px; oltre 2,5 (schemi molto allungati) 600-680 px, mai oltre. Riga vuota prima e dopo il blocco.
+- **Gruppo di foto simili da confrontare** (per esempio tre cavi): una tabella HTML di una sola riga, con le immagini della stessa altezza (`height="190"`) e una `<sub>` di didascalia sotto ciascuna. Il gruppo conta come una sola immagine rettangolare, quindi va sotto il testo e centrato: tabella dentro `<div align="center">` (con una riga vuota dopo il tag di apertura e prima di quello di chiusura) e didascalia in `<sub><i>` sotto la tabella.
 - Non spezzare un elenco numerato o puntato con un'immagine nel mezzo: mettila prima o dopo l'elenco.
 - Una figura per concetto, nel punto in cui il testo lo spiega. Non riempire il file: di norma 1-2 figure ogni 400-600 parole di appunti.
 
