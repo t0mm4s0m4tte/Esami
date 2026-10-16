@@ -134,4 +134,4 @@ Gli **assi** sono le rette per il centro con direzione gli autospazi di A_33 (or
 - **Criterio di Sylvester**: nessuna fonte fra quelle consultate lo cita; da confermare se il docente lo usa o si limita ad autovalori / Cartesio. [DA VERIFICARE]
 - **Coniche**: nelle slide Manno compaiono dopo le forme quadratiche; non sono in Buzano. Verificare se sono in programma (README: programma non confermato).
 - L'OCR delle slide Manno (Lezione32_Alg, Lezione33_Alg) è molto rumoroso: gli esempi riportati sono stati ricontrollati calcolando; la dimostrazione dettagliata sugli assi della conica (Lezione33, pag. 12) non è stata ricostruita.
-- Esempio 26.3: i simboli degli autovettori sono rovinati nell'estrazione; la matrice A=[[3,1],[1,1]] è ricostruita dagli autovalori 2±√2 [DA VERIFICARE].
+- Esempio 26.3: i simboli degli autovettori sono rovinati nell'estrazione; la matrice A=[[3,1],[1,1]] è ricostruita dagli autovalori 2±√2 (traccia 4, det 2: coerente).

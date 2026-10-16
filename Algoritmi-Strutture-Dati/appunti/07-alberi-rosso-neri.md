@@ -71,8 +71,8 @@ La cancellazione è la parte più laboriosa. Si usa la cancellazione BST standar
 - Dimostrare h ≤ 2 log2(n+1) (i due lemmi).
 
 **Orale**
-- Perché si inserisce rosso; perché la rotazione preserva il BST; numero massimo di rotazioni (il doc non lo dichiara [DA VERIFICARE]); complessità O(log n).
+- Perché si inserisce rosso; perché la rotazione preserva il BST; numero massimo di rotazioni (inserimento: al più 2; cancellazione: al più 3); complessità O(log n).
 
 ## Dubbi
-- Numero massimo di rotazioni per insert/delete non quantificato nel doc.
+- Numero massimo di rotazioni: insert ≤ 2, delete ≤ 3 (CLRS); integrazione non presente nel doc.
 - Cancellazione: gestione esatta di v = NIL (sentinella) non esplicitata nel doc.

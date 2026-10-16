@@ -2,22 +2,22 @@
 
 **Fonti e AVVERTENZA IMPORTANTE**
 Mori, *Lezioni di Matematica Discreta*, cap. 4 e cap. 7: dal PDF su Drive l'estrazione del testo si interrompe all'inizio del cap. 4 (definizione di divisibilità e di elemento irriducibile). Il resto del cap. 4 (divisione euclidea, teorema fondamentale dell'aritmetica) e tutto il cap. 7 (classi resto, gruppo moltiplicativo, congruenze, applicazioni) NON erano leggibili nelle fonti; il libro di Facchini è una scansione non leggibile (testo vuoto).
-Quanto segue oltre il §1 è **teoria standard ricostruita (non estratta dalle fonti)**: contrassegnata [DA VERIFICARE su Mori cap. 4/7 prima dell'esame]. Gli esempi numerici sono stati calcolati e controllati con software.
+Quanto segue oltre il §1 è **teoria standard ricostruita (non estratta dalle fonti)**: ricontrollata sul piano matematico, ma da confrontare con le notazioni di Mori cap. 4/7. Gli esempi numerici sono stati calcolati e controllati con software.
 
 ## Mappa degli argomenti
 
 1. Divisibilità, invertibili, irriducibili/primi (da Mori)
-2. Divisione euclidea, MCD, algoritmo di Euclide, identità di Bézout [DA VERIFICARE]
-3. Teorema fondamentale dell'aritmetica [DA VERIFICARE]
-4. Congruenze, classi resto Z_n, operazioni ben definite [DA VERIFICARE]
-5. Z_n*, funzione di Eulero, Eulero-Fermat, equazioni congruenziali, CRT [DA VERIFICARE]
+2. Divisione euclidea, MCD, algoritmo di Euclide, identità di Bézout
+3. Teorema fondamentale dell'aritmetica
+4. Congruenze, classi resto Z_n, operazioni ben definite
+5. Z_n*, funzione di Eulero, Eulero-Fermat, equazioni congruenziali, CRT
 ---
 
 - [1. Divisibilità (Mori 4.1-4.3)](#1-divisibilità-mori-41-43)
-- [2. Divisione euclidea, MCD, Euclide, Bézout [DA VERIFICARE]](#2-divisione-euclidea-mcd-euclide-bézout-da-verificare)
-- [3. Teorema fondamentale dell'aritmetica [DA VERIFICARE]](#3-teorema-fondamentale-dellaritmetica-da-verificare)
-- [4. Congruenze e classi resto [DA VERIFICARE]](#4-congruenze-e-classi-resto-da-verificare)
-- [5. Z_n*, Eulero, equazioni, CRT [DA VERIFICARE]](#5-z_n-eulero-equazioni-crt-da-verificare)
+- [2. Divisione euclidea, MCD, Euclide, Bézout](#2-divisione-euclidea-mcd-euclide-bézout)
+- [3. Teorema fondamentale dell'aritmetica](#3-teorema-fondamentale-dellaritmetica)
+- [4. Congruenze e classi resto](#4-congruenze-e-classi-resto)
+- [5. Z_n*, Eulero, equazioni, CRT](#5-z_n-eulero-equazioni-crt)
 - [Cose da saper fare all'esame](#cose-da-saper-fare-allesame)
 - [Dubbi](#dubbi)
 
@@ -36,7 +36,7 @@ La **Prop 4.2** dice come la divisibilità si comporta rispetto alla somma: se s
 
 Un intero n ∉ {0,±1} è **irriducibile** (Def 4.3) se n=ab implica che uno fra a e b è invertibile (±1). Mori distingue questa nozione dalla definizione di "primo" (n primo se n | ab ⇒ n|a oppure n|b); in Z le due nozioni sono equivalenti. [DA VERIFICARE la definizione esatta usata da Mori per "primo".]
 
-## 2. Divisione euclidea, MCD, Euclide, Bézout [DA VERIFICARE]
+## 2. Divisione euclidea, MCD, Euclide, Bézout
 
 Lo strumento fondamentale è la **divisione euclidea**: per ogni a∈Z e b>0 esistono unici q,r con a = bq + r e 0 ≤ r < b. Dal resto discende il **MCD(a,b)**, il massimo divisore comune positivo; vale mcm(a,b)·MCD(a,b) = |ab|, e a,b sono **coprimi** se MCD=1. L'**algoritmo di Euclide** sfrutta l'identità MCD(a,b) = MCD(b, a mod b): si divide ripetutamente, e l'ultimo resto non nullo è il MCD.
 
@@ -46,17 +46,17 @@ Risalendo i passaggi dell'algoritmo (algoritmo esteso) si ottiene l'**identità 
 Risalendo: 18 = 54 - 36 = 54 - (198 - 3·54) = 4·54 - 198 = 4(252-198) - 198 = **4·252 - 5·198**. (x=4, y=-5, verificato numericamente.)
 **Esempio**: MCD(87,25)=1 con 1 = -2·87 + 7·25 ⇒ 25⁻¹ ≡ 7 (mod 87).
 
-## 3. Teorema fondamentale dell'aritmetica [DA VERIFICARE]
+## 3. Teorema fondamentale dell'aritmetica
 
 Ogni n ≥ 2 si scrive in modo unico (a meno dell'ordine) come prodotto di primi: n = p1^e1 ... pk^ek. Per esempio 360 = 2³·3²·5. La fattorizzazione dà un modo alternativo di calcolare MCD (prodotto dei primi comuni col minimo esponente) e mcm (col massimo esponente), e permette di calcolare la funzione φ di Eulero.
 
-## 4. Congruenze e classi resto [DA VERIFICARE]
+## 4. Congruenze e classi resto
 
 Due interi sono **congruenti modulo n** (a ≡ b mod n) se n | (a-b), il che equivale a dire che hanno lo stesso resto nella divisione per n. La congruenza è una relazione di equivalenza: le classi [a]_n formano una partizione di Z in n blocchi [0],...,[n-1], e l'insieme quoziente si chiama **Z_n** (= Z/nZ), con |Z_n| = n. È l'esempio concreto dell'idea di quoziente del file 01.
 
 Le operazioni si definiscono sulle classi tramite i rappresentanti, [a]+[b] = [a+b] e [a]·[b] = [ab], e vanno quindi controllate **ben definite**: se a≡a' e b≡b' allora a+b≡a'+b' e ab≡a'b'. Questo è esattamente il "problema della buona definizione" di Mori (Nota 2.3). Con queste operazioni (Z_n,+) è un gruppo abeliano ciclico di ordine n (generato da [1]) e (Z_n,+,·) è un anello commutativo; è un **campo ⇔ n primo**. Un esempio che compare anche in Algebra Lineare (Buzano, Es. 5.9) è {0,1} con 1+1=0, cioè il campo Z_2. Se n è composto cade la legge di annullamento del prodotto: in Z_6, ad esempio, 2·3 = 0 (zero divisori).
 
-## 5. Z_n*, Eulero, equazioni, CRT [DA VERIFICARE]
+## 5. Z_n*, Eulero, equazioni, CRT
 
 Quali classi di Z_n si possono invertire? Una classe [a] è **invertibile ⇔ MCD(a,n)=1**, e l'inverso si trova con Bézout (da ax + ny = 1 segue a⁻¹ ≡ x). L'insieme Z_n* degli invertibili è un gruppo moltiplicativo di ordine **φ(n)**, dove la funzione di Eulero φ(n) conta i k∈[1,n] coprimi con n. Valgono:
 - φ(p) = p-1;

@@ -31,7 +31,7 @@ L'**Insert(x)** incrementa HeapSize, mette x nell'ultima posizione (la struttura
 
 L'**ExtractMaximum** prende H[1], sposta H[HeapSize] in H[1] (di nuovo per mantenere la struttura completa), decrementa HeapSize e chiama **Heapify(H,1)**, che fa scendere la nuova radice. Costo **O(log n)**. La **Heapify(H,i)** assume che i sottoalberi dei due figli siano già heap; confronta H[i] coi figli, lo scambia con il maggiore e ripete sul sottoalbero modificato. Segue un percorso radice-foglia, quindi **O(log n)**.
 
-La **BuildHeap** trasforma un array qualsiasi in heap chiamando Heapify per i da ⌊n/2⌋ a 1: le foglie sono già heap banali e si procede dal basso verso l'alto, in modo che quando si chiama Heapify(i) i due sottoalberi siano già heap. Il limite grezzo è O(n log n) (n/2 chiamate da O(log n)), ma un'analisi più raffinata dà **O(n)**; il doc enuncia questo risultato senza dimostrarlo [DA VERIFICARE].
+La **BuildHeap** trasforma un array qualsiasi in heap chiamando Heapify per i da ⌊n/2⌋ a 1: le foglie sono già heap banali e si procede dal basso verso l'alto, in modo che quando si chiama Heapify(i) i due sottoalberi siano già heap. Il limite grezzo è O(n log n) (n/2 chiamate da O(log n)), ma un'analisi più raffinata dà **O(n)**; il doc enuncia questo risultato senza dimostrarlo. Dimostrazione: in un heap di n nodi ci sono al più ⌈n/2^(h+1)⌉ nodi di altezza h e Heapify su uno di essi costa O(h), quindi il costo totale è O(n·Σ h/2^h) = O(n), perché la serie converge a 2.
 
 ## Heapsort
 
@@ -62,7 +62,7 @@ Esempio dalle slide: dato l'heap [16 9 14 7 4 8 10 3 2 1], l'inserimento di 15 l
 - Scrivere Heapify, Insert, ExtractMax; calcolare indici figli/padre.
 
 **Orale**
-- Perché le foglie sono da ⌊n/2⌋+1; perché BuildHeap è O(n) (il doc enuncia ma non dimostra [DA VERIFICARE]); Heapsort vs Quicksort/Mergesort; confronto con coda di priorità su lista ordinata.
+- Perché le foglie sono da ⌊n/2⌋+1; perché BuildHeap è O(n) (somma Σ h·n/2^(h+1)); Heapsort vs Quicksort/Mergesort; confronto con coda di priorità su lista ordinata.
 
 ## Dubbi
 - Dimostrazione dell'O(n) di BuildHeap e codice di Heapify/Insert non riportati nel doc (solo descrizione).

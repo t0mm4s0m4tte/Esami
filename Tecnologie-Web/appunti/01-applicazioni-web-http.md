@@ -145,5 +145,5 @@ Un'**origine** è la combinazione di protocollo, host e porta (il percorso non c
 
 ## Dubbi
 
-- `[DA VERIFICARE]` La slide dice che "spesso back-end è sinonimo di client-side e front-end di server-side". Logicamente dovrebbe essere il contrario (front-end ≈ client, back-end ≈ server): quasi certamente è un refuso del docente, da confermare.
+- La slide dice che "spesso back-end è sinonimo di client-side e front-end di server-side": è un refuso. Nell'uso standard è il contrario: front-end ≈ client-side (ciò che gira nel browser) e back-end ≈ server-side.
 - Il confronto thread-per-richiesta contro event loop di Node.js è solo accennato nelle slide ("lo vedremo meglio in seguito"): ho aggiunto la sezione "Integrazione" qui sopra da fonti esterne, da riconfrontare con ciò che dirà il docente.

@@ -268,7 +268,7 @@ Organizzazione: i sorgenti TypeScript in una cartella `src`; il compilatore li t
 
 ## Dubbi
 
-- `[DA VERIFICARE]` Nella slide sui cicli `for` c'è scritto `for(const elem in iterabile)` per gli iterabili, ma il ciclo sugli elementi è `for...of` (l'esempio infatti usa `of`): refuso della slide. `in` itera sulle chiavi.
+- Nella slide sui cicli `for` c'è scritto `for(const elem in iterabile)` per gli iterabili, ma il ciclo sugli elementi è `for...of` (l'esempio infatti usa `of`): refuso della slide. `for...in` itera sulle chiavi (proprietà enumerabili), non sui valori.
 - `classList.has(...)` nelle slide è un errore: il metodo si chiama `classList.contains(...)` (confermato dagli esempi MDN; `has` esiste su `Set` e `Map`, da cui probabilmente la confusione). Allo stesso modo "settAttribute" è un refuso di `setAttribute`.
 - Il valore di `this` in una arrow function usata come proprietà di un oggetto, lasciato come domanda aperta nelle slide, è confermato da MDN: una arrow non ha un `this` proprio, ma prende quello dello scope in cui è scritta, e un object literal non crea uno scope, quindi non è l'oggetto. Vedi la nota in "`this` e binding".
 - Le slide non trattano ancora Promise, `async/await` e `fetch`: la sezione "Asincronia oltre le callback" qui sopra è un'integrazione da fonti esterne, non materiale del corso.

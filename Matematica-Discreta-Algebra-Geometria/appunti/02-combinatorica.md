@@ -38,7 +38,7 @@ Nelle applicazioni aritmetiche i numeri ≤ N divisibili per k sono ⌊N/k⌋, e
 
 ## 3. Metodo delle scelte successive
 
-Il principio base del conteggio è la **Prop 3.16**: |A1×...×Ak| = n1·n2·...·nk. Tradotto in regola pratica: una situazione che si ottiene con k scelte successive, con n_i possibilità alla scelta i, ha n1·...·nk esiti, anche se gli insiemi di scelta dipendono dalle scelte precedenti, purché ne dipenda solo l'insieme e non il NUMERO di possibilità. Se invece le alternative sono **in alternativa** (casi che si escludono a vicenda) si **sommano**, non si moltiplicano. Esempio dei gelati con 1, 2, 3 o 4 gusti su 14: C(n,1)+C(n,2)+C(n,3)+C(n,4); Mori calcola con n=14 (14+91+364+1001 = 1470) ma il testo dice 16 tipi e riporta 1460: dati incoerenti nel PDF [DA VERIFICARE]; la regola somma-per-casi resta valida.
+Il principio base del conteggio è la **Prop 3.16**: |A1×...×Ak| = n1·n2·...·nk. Tradotto in regola pratica: una situazione che si ottiene con k scelte successive, con n_i possibilità alla scelta i, ha n1·...·nk esiti, anche se gli insiemi di scelta dipendono dalle scelte precedenti, purché ne dipenda solo l'insieme e non il NUMERO di possibilità. Se invece le alternative sono **in alternativa** (casi che si escludono a vicenda) si **sommano**, non si moltiplicano. Esempio dei gelati con 1, 2, 3 o 4 gusti su 14: C(n,1)+C(n,2)+C(n,3)+C(n,4); Mori calcola con n=14 (14+91+364+1001 = 1470) ma il testo dice 16 tipi e riporta 1460: dati incoerenti nel PDF (il calcolo con n=14 è corretto, ricontrollato); la regola somma-per-casi resta valida.
 
 Applicata alle funzioni, la regola dà **|F_{A,B}| = nᵐ** se |A|=m e |B|=n, perché per ogni elemento di A si sceglie l'immagine fra n possibilità. Esempi: PIN a 4 cifre = 10⁴; targhe con 3 lettere e 4 cifre = 26³·10⁴ = 17.576.000; menù 8·10·12·6 = 5760.
 
@@ -65,7 +65,7 @@ Stiefel genera il **triangolo di Pascal-Tartaglia** (riga n: 1, n, ..., n, 1).
 
 Il **binomio di Newton** (x+y)ⁿ = Σ_{k=0}^n C(n,k) x^{n-k} y^k spiega il nome "coefficiente binomiale": nell'espansione del prodotto di n fattori, il termine in yᵏ si ottiene scegliendo la y in k dei n fattori, e questo si può fare in C(n,k) modi. Lo si può dimostrare anche per induzione usando Stiefel. Ponendo x=y=1 si ottiene **Σ_{k=0}^n C(n,k) = 2ⁿ**, che è anche il conteggio |P(A)| = Σ_k |P_k(A)| con P_k = sottoinsiemi di cardinalità k. Es. 3.19: per n dispari Σ_{k pari}C(n,k) = Σ_{k dispari}C(n,k) = 2ⁿ⁻¹; per x=1, y=-1 Newton dà 0 se n≥1, quindi Σ pari = Σ dispari anche per n pari.
 
-Nei problemi misti le scelte indipendenti si moltiplicano. Es. (Mori) scegliere 5 ballerini su 9 e 3 ballerine su 11: C(9,5)·C(11,3) = 126·165 = 20790 [DA VERIFICARE: il PDF estratto riporta 13860 = 84·165, probabile refuso del testo o dell'estrazione]. Formazione calcio: 3·126·35·6 = 79.380.
+Nei problemi misti le scelte indipendenti si moltiplicano. Es. (Mori) scegliere 5 ballerini su 9 e 3 ballerine su 11: C(9,5)·C(11,3) = 126·165 = 20790 (ricalcolato; il PDF estratto riporta 13860 = 84·165, che corrisponde a C(9,4)·C(11,3) ed è quindi un refuso). Formazione calcio: 3·126·35·6 = 79.380.
 
 ## 6. Combinazioni con ripetizione
 
