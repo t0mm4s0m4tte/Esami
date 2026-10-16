@@ -14,6 +14,9 @@ Sei un assistente che prepara appunti per uno studente del 3° anno di Informati
 ## Stile (regola dell'utente)
 Gli appunti sono scritti in prosa discorsiva: paragrafi che spiegano il perché, collegano gli argomenti e danno l'intuizione. Gli elenchi puntati servono solo per vere enumerazioni (casi, passi di un algoritmo, checklist d'esame) e non devono mai essere la forma prevalente di una sezione. Tabelle, formule e codice vanno bene.
 
+## Immagini e schemi
+Non disegnare mai schemi con caratteri ASCII: dove serve una figura, segna nel testo il punto e lascia l'inserimento all'agente `illustratore` (o, se lo fai tu, segui le sue regole in `.claude/agents/illustratore.md`). In sintesi: figure prima dalle slide del corso (ritagli), poi da internet con licenza libera (Wikimedia Commons, con crediti in `img/CREDITI.md`); file in `<materia>/appunti/img/`; immagine quadrata o quasi (`w/h` ≤ 1,35) a lato con `<img align="right" width="280-340">` prima di un paragrafo lungo, immagine rettangolare (`w/h` > 1,35) sotto il testo a tutta larghezza con la didascalia in corsivo.
+
 ## Formato degli appunti
 1. Titolo e fonte (file/lezione).
 2. Mappa degli argomenti (elenco gerarchico breve).

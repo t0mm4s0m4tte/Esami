@@ -21,9 +21,7 @@ Il capitolo parte da cosa sia Internet e da cosa sia un protocollo, poi percorre
 
 **Definizione.** Internet è una "rete di reti": un insieme di ISP interconnessi che permette a miliardi di dispositivi (gli *host* o *end system*, che fanno girare le applicazioni ai bordi della rete) di scambiarsi pacchetti attraverso *packet switch* (router e switch) collegati da link di vari mezzi (fibra, rame, radio, satellite), ciascuno con una velocità di trasmissione detta *bandwidth*.
 
-![Visione d'insieme di Internet: reti mobili, domestiche, aziendali, ISP, content provider e data center](img/01-internet-struttura-generale.png)
-
-*Figura: Internet come insieme di reti interconnesse da router (slide 1-3).*
+<img align="right" width="340" src="img/01-internet-struttura-generale.png" alt="Visione d'insieme di Internet: reti mobili, domestiche, aziendali, ISP, content provider e data center" title="Internet come insieme di reti interconnesse da router (slide 1-3).">
 
 **Intuizione.** Si può descrivere Internet in due modi complementari: dall'interno, come un insieme di componenti hardware e software (hosts, router, link), e dall'esterno, come un'infrastruttura che offre servizi alle applicazioni distribuite (Web, streaming, posta, giochi, social). In questa seconda vista Internet espone un'interfaccia di programmazione, dei "ganci" a cui le applicazioni si attaccano per usare il trasporto, in modo analogo a come il servizio postale offre diverse opzioni di consegna.
 
@@ -73,9 +71,7 @@ Le trasmissioni **radio** non hanno un filo fisico: il segnale è in bande dello
 
 Il **network core** è una maglia di router interconnessi. Con il **packet switching** gli host spezzano i messaggi applicativi in pacchetti e la rete li inoltra di router in router lungo il percorso dalla sorgente alla destinazione. Per questo ogni router ha due funzioni distinte: il **forwarding** (detto anche *switching*) è un'azione *locale*, che sposta un pacchetto dal link d'ingresso al link d'uscita appropriato guardando l'indirizzo di destinazione nell'header e consultando la *forwarding table*; il **routing** è un'azione *globale* che determina i percorsi sorgente-destinazione, calcolati dagli algoritmi di routing, e riempie le forwarding table.
 
-![Un pacchetto con indirizzo 0111 entra in un router; la forwarding table associa i valori dell'header ai link di uscita, riempita dall'algoritmo di routing](img/01-forwarding-routing.png)
-
-*Figura: la forwarding table locale (header value → output link) è riempita dall'algoritmo di routing (slide 1-27).*
+<img align="right" width="340" src="img/01-forwarding-routing.png" alt="Un pacchetto con indirizzo 0111 entra in un router; la forwarding table associa i valori dell'header ai link di uscita, riempita dall'algoritmo di routing" title="la forwarding table locale (header value → output link) è riempita dall'algoritmo di routing (slide 1-27).">
 
 Il router lavora in modalità **store-and-forward**: l'intero pacchetto deve essere arrivato prima che possa iniziare la trasmissione sul link successivo. *Esempio svolto dalle slide*: con L = 10 kbit e R = 100 Mbps, il ritardo di trasmissione a un salto è 10 000 / 100 000 000 s = 0,1 ms. `[INT]` Con N link in serie (N-1 router) dello stesso rate e un solo pacchetto, il ritardo end-to-end di sola trasmissione è `N·L/R`.
 
@@ -91,15 +87,11 @@ Quando il tasso di arrivo dei bit su un link supera la sua velocità per un cert
 
 L'alternativa è il **circuit switching**: le risorse end-to-end vengono riservate alla "chiamata" fra sorgente e destinazione. Ogni link ha un certo numero di circuiti e la chiamata ne ottiene uno per link. Le risorse sono dedicate, quindi le prestazioni sono garantite come in un circuito, ma un circuito inutilizzato resta sprecato; è il modello della telefonia tradizionale.
 
-![Quattro router collegati in anello; una chiamata occupa un circuito dedicato su ogni link del percorso](img/01-circuit-switching.png)
-
-*Figura: la chiamata ottiene il 2° circuito del link in alto e il 1° del link a destra (slide 1-33).*
+<img align="right" width="320" src="img/01-circuit-switching.png" alt="Quattro router collegati in anello; una chiamata occupa un circuito dedicato su ogni link del percorso" title="la chiamata ottiene il 2° circuito del link in alto e il 1° del link a destra (slide 1-33).">
 
 I circuiti si ottengono dividendo il link con **FDM** (bande di frequenza strette assegnate a ogni chiamata, che trasmette al massimo rate di quella banda) oppure con **TDM** (il tempo è diviso in slot, ogni chiamata ha uno o più slot periodici e trasmette al massimo rate di una banda larga ma solo nei suoi slot).
 
-![FDM: quattro utenti in bande di frequenza separate per tutto il tempo. TDM: quattro utenti a turno in slot temporali periodici](img/01-fdm-tdm.png)
-
-*Figura: FDM (sopra) e TDM (sotto) con 4 utenti (slide 1-34).*
+<img align="right" width="340" src="img/01-fdm-tdm.png" alt="FDM: quattro utenti in bande di frequenza separate per tutto il tempo. TDM: quattro utenti a turno in slot temporali periodici" title="FDM (sopra) e TDM (sotto) con 4 utenti (slide 1-34).">
 
 Il confronto tra le due tecniche è quantitativo. Link da 1 Gbps, ogni utente trasmette a 100 Mbps quando è attivo ed è attivo il 10% del tempo. Con il circuit switching si riservano 100 Mbps per utente, quindi gli utenti serviti sono **10**. Con il packet switching, con **35 utenti** la probabilità che più di 10 siano attivi contemporaneamente è inferiore a **0,0004**: si servono più utenti con rischio di congestione trascurabile. Il packet switching è quindi ottimo per dati a raffica (*bursty*), perché condivide le risorse ed è più semplice (nessun setup di chiamata). Il suo costo è la possibile congestione, con ritardo e perdita da overflow dei buffer, che richiede protocolli per il trasferimento affidabile e il controllo di congestione. Le slide lasciano aperta la domanda su come ottenere un comportamento "circuit-like" con il packet switching (risposta: "è complicato", seguiranno varie tecniche).
 
@@ -146,19 +138,15 @@ La differenza concettuale più importante è tra `d_trans` e `d_prop`: la trasmi
 
 **Ritardo di accodamento.** Sia `a` il tasso medio di arrivo dei pacchetti (pacchetti/s), `L` la lunghezza in bit, `R` la velocità del link: l'**intensità di traffico** è `La/R`. Se `La/R` è vicino a 0 il ritardo medio di coda è piccolo, se tende a 1 diventa grande, se `La/R > 1` arriva più lavoro di quello che si riesce a servire e il ritardo medio diventa infinito.
 
-![Ritardo medio di accodamento in funzione dell'intensità di traffico La/R: quasi nullo vicino a 0 e tende a infinito vicino a 1](img/01-ritardo-di-coda.png)
-
-*Figura: il ritardo di coda cresce in modo esplosivo quando `La/R` si avvicina a 1 (slide 1-52).*
+<img align="right" width="320" src="img/01-ritardo-di-coda.png" alt="Ritardo medio di accodamento in funzione dell'intensità di traffico La/R: quasi nullo vicino a 0 e tende a infinito vicino a 1" title="il ritardo di coda cresce in modo esplosivo quando `La/R` si avvicina a 1 (slide 1-52).">
 
 **Traceroute** misura ritardo e percorso verso una destinazione. Per ogni router `i` sul cammino invia tre pacchetti con TTL `i`; il router `i` scarta il pacchetto e rimanda un messaggio al mittente, che misura il tempo fra invio e risposta. Un asterisco `*` indica nessuna risposta (probe perso o router che non risponde).
 
 La **perdita** avviene quando un pacchetto trova pieno il buffer che precede il link; il pacchetto può essere ritrasmesso dal nodo precedente, dall'end system sorgente o non essere ritrasmesso affatto.
 
+<img align="right" width="280" src="img/01-throughput-backbone.png" alt="Tre server con link a velocità Rs e tre client con link a velocità Rc condividono un link di backbone a velocità R" title="dieci connessioni (qui ne sono disegnate tre) condividono equamente il link di backbone R (slide 1-58).">
+
 Il **throughput** è la velocità (bit/unità di tempo) a cui i bit vengono trasferiti dal mittente al destinatario, istantaneo se misurato in un dato momento e medio se su un periodo lungo. Se un server con rate `Rs` è collegato a un client con rate `Rc` il throughput medio end-to-end è `min(Rs, Rc)`, e il link che ne fissa il valore è detto **bottleneck link**. In uno scenario con 10 connessioni che condividono equamente un link di backbone da `R` bps, il throughput per connessione è `min(Rc, Rs, R/10)`, anche se in pratica il collo di bottiglia è spesso `Rc` o `Rs`.
-
-![Tre server con link a velocità Rs e tre client con link a velocità Rc condividono un link di backbone a velocità R](img/01-throughput-backbone.png)
-
-*Figura: dieci connessioni (qui ne sono disegnate tre) condividono equamente il link di backbone R (slide 1-58).*
 
 ## Sicurezza di rete
 
@@ -170,9 +158,7 @@ Tre attacchi sono presentati nel capitolo:
 2. **IP spoofing**: iniezione di pacchetti con indirizzo sorgente falso.
 3. **Denial of Service (DoS)**: l'attaccante rende una risorsa (server, banda) indisponibile al traffico legittimo sommergendola di traffico fasullo. Le fasi sono: scegliere il bersaglio, violare host sparsi nella rete (botnet) e inviare pacchetti al bersaglio da quegli host.
 
-![Molti host compromessi (con il simbolo del diavoletto) inviano pacchetti verso un unico server bersaglio](img/01-attacco-dos.png)
-
-*Figura: attacco DoS distribuito con una botnet (slide 1-63).*
+<img align="right" width="300" src="img/01-attacco-dos.png" alt="Molti host compromessi (con il simbolo del diavoletto) inviano pacchetti verso un unico server bersaglio" title="attacco DoS distribuito con una botnet (slide 1-63).">
 
 Le linee di difesa sono: **autenticazione** (provare di essere chi si dichiara; le reti cellulari hanno una identità hardware con la SIM, la rete Internet tradizionale no), **confidenzialità** (cifratura), **controlli di integrità** (firme digitali, per prevenire o rilevare manomissioni), **restrizioni di accesso** (VPN con password) e **firewall**, cioè middlebox nel nucleo e nell'accesso che filtrano di default i pacchetti in ingresso limitando mittenti, destinatari e applicazioni. Va aggiunta la capacità di rilevare e reagire ad attacchi DoS.
 
