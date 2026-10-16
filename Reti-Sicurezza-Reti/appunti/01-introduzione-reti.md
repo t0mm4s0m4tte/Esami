@@ -32,7 +32,7 @@ Un **protocollo** definisce il formato e l'ordine dei messaggi scambiati fra ent
 </td>
 <td valign="top" align="center">
 
-<img src="img/01-internet-struttura-generale.png" width="420" alt="Visione d'insieme di Internet: reti mobili, domestiche, aziendali, ISP, content provider e data center"><br><sub>Figura: Internet come insieme di reti interconnesse da router (slide 1-3).</sub>
+<img src="img/01-internet-struttura-generale.png" width="500" alt="Visione d'insieme di Internet: reti mobili, domestiche, aziendali, ISP, content provider e data center"><br><sub>Figura: Internet come insieme di reti interconnesse da router (slide 1-3).</sub>
 
 </td>
 </tr>
@@ -92,16 +92,16 @@ Le trasmissioni **radio** non hanno un filo fisico: il segnale è in bande dello
 
 Il **network core** è una maglia di router interconnessi. Con il **packet switching** gli host spezzano i messaggi applicativi in pacchetti e la rete li inoltra di router in router lungo il percorso dalla sorgente alla destinazione. Per questo ogni router ha due funzioni distinte: il **forwarding** (detto anche *switching*) è un'azione *locale*, che sposta un pacchetto dal link d'ingresso al link d'uscita appropriato guardando l'indirizzo di destinazione nell'header e consultando la *forwarding table*; il **routing** è un'azione *globale* che determina i percorsi sorgente-destinazione, calcolati dagli algoritmi di routing, e riempie le forwarding table.
 
+Il router lavora in modalità **store-and-forward**: l'intero pacchetto deve essere arrivato prima che possa iniziare la trasmissione sul link successivo. *Esempio svolto dalle slide*: con L = 10 kbit e R = 100 Mbps, il ritardo di trasmissione a un salto è 10 000 / 100 000 000 s = 0,1 ms. `[INT]` Con N link in serie (N-1 router) dello stesso rate e un solo pacchetto, il ritardo end-to-end di sola trasmissione è `N·L/R`.
+
 </td>
 <td valign="top" align="center">
 
-<img src="img/01-forwarding-routing.png" width="430" alt="Un pacchetto con indirizzo 0111 entra in un router; la forwarding table associa i valori dell'header ai link di uscita, riempita dall'algoritmo di routing"><br><sub>Figura: la forwarding table locale (header value → output link) è riempita dall'algoritmo di routing (slide 1-27).</sub>
+<img src="img/01-forwarding-routing.png" width="500" alt="Un pacchetto con indirizzo 0111 entra in un router; la forwarding table associa i valori dell'header ai link di uscita, riempita dall'algoritmo di routing"><br><sub>Figura: la forwarding table locale (header value → output link) è riempita dall'algoritmo di routing (slide 1-27).</sub>
 
 </td>
 </tr>
 </table>
-
-Il router lavora in modalità **store-and-forward**: l'intero pacchetto deve essere arrivato prima che possa iniziare la trasmissione sul link successivo. *Esempio svolto dalle slide*: con L = 10 kbit e R = 100 Mbps, il ritardo di trasmissione a un salto è 10 000 / 100 000 000 s = 0,1 ms. `[INT]` Con N link in serie (N-1 router) dello stesso rate e un solo pacchetto, il ritardo end-to-end di sola trasmissione è `N·L/R`.
 
 <p align="center">
 <img src="img/01-store-and-forward.png" width="640" alt="Sorgente, router e destinazione collegati da link a R bps; i pacchetti 1, 2, 3 da L bit vengono trasmessi uno dopo l'altro"><br>
@@ -123,25 +123,14 @@ L'alternativa è il **circuit switching**: le risorse end-to-end vengono riserva
 
 I circuiti si ottengono dividendo il link con **FDM** (bande di frequenza strette assegnate a ogni chiamata, che trasmette al massimo rate di quella banda) oppure con **TDM** (il tempo è diviso in slot, ogni chiamata ha uno o più slot periodici e trasmette al massimo rate di una banda larga ma solo nei suoi slot).
 
-</td>
-<td valign="top" align="center">
-
-<img src="img/01-circuit-switching.png" width="390" alt="Quattro router collegati in anello; una chiamata occupa un circuito dedicato su ogni link del percorso"><br><sub>Figura: la chiamata ottiene il 2° circuito del link in alto e il 1° del link a destra (slide 1-33).</sub>
-
-</td>
-</tr>
-</table>
-
-<table>
-<tr>
-<td valign="top">
-
 Il confronto tra le due tecniche è quantitativo. Link da 1 Gbps, ogni utente trasmette a 100 Mbps quando è attivo ed è attivo il 10% del tempo. Con il circuit switching si riservano 100 Mbps per utente, quindi gli utenti serviti sono **10**. Con il packet switching, con **35 utenti** la probabilità che più di 10 siano attivi contemporaneamente è inferiore a **0,0004**: si servono più utenti con rischio di congestione trascurabile. Il packet switching è quindi ottimo per dati a raffica (*bursty*), perché condivide le risorse ed è più semplice (nessun setup di chiamata). Il suo costo è la possibile congestione, con ritardo e perdita da overflow dei buffer, che richiede protocolli per il trasferimento affidabile e il controllo di congestione. Le slide lasciano aperta la domanda su come ottenere un comportamento "circuit-like" con il packet switching (risposta: "è complicato", seguiranno varie tecniche).
 
 </td>
 <td valign="top" align="center">
 
-<img src="img/01-fdm-tdm.png" width="410" alt="FDM: quattro utenti in bande di frequenza separate per tutto il tempo. TDM: quattro utenti a turno in slot temporali periodici"><br><sub>Figura: FDM (sopra) e TDM (sotto) con 4 utenti (slide 1-34).</sub>
+<img src="img/01-circuit-switching.png" width="420" alt="Quattro router collegati in anello; una chiamata occupa un circuito dedicato su ogni link del percorso"><br><sub>Figura: la chiamata ottiene il 2° circuito del link in alto e il 1° del link a destra (slide 1-33).</sub>
+
+<img src="img/01-fdm-tdm.png" width="420" alt="FDM: quattro utenti in bande di frequenza separate per tutto il tempo. TDM: quattro utenti a turno in slot temporali periodici"><br><sub>Figura: FDM (sopra) e TDM (sotto) con 4 utenti (slide 1-34).</sub>
 
 </td>
 </tr>
@@ -199,27 +188,16 @@ La differenza concettuale più importante è tra `d_trans` e `d_prop`: la trasmi
 
 La **perdita** avviene quando un pacchetto trova pieno il buffer che precede il link; il pacchetto può essere ritrasmesso dal nodo precedente, dall'end system sorgente o non essere ritrasmesso affatto.
 
-</td>
-<td valign="top" align="center">
-
-<img src="img/01-ritardo-di-coda.png" width="370" alt="Ritardo medio di accodamento in funzione dell'intensità di traffico La/R: quasi nullo vicino a 0 e tende a infinito vicino a 1"><br><sub>Figura: il ritardo di coda cresce in modo esplosivo quando La/R si avvicina a 1 (slide 1-52).</sub>
-
-</td>
-</tr>
-</table>
-
 **Traceroute** misura ritardo e percorso verso una destinazione. Per ogni router `i` sul cammino invia tre pacchetti con TTL `i`; il router `i` scarta il pacchetto e rimanda un messaggio al mittente, che misura il tempo fra invio e risposta. Un asterisco `*` indica nessuna risposta (probe perso o router che non risponde).
-
-<table>
-<tr>
-<td valign="top">
 
 Il **throughput** è la velocità (bit/unità di tempo) a cui i bit vengono trasferiti dal mittente al destinatario, istantaneo se misurato in un dato momento e medio se su un periodo lungo. Se un server con rate `Rs` è collegato a un client con rate `Rc` il throughput medio end-to-end è `min(Rs, Rc)`, e il link che ne fissa il valore è detto **bottleneck link**. In uno scenario con 10 connessioni che condividono equamente un link di backbone da `R` bps, il throughput per connessione è `min(Rc, Rs, R/10)`, anche se in pratica il collo di bottiglia è spesso `Rc` o `Rs`.
 
 </td>
 <td valign="top" align="center">
 
-<img src="img/01-throughput-backbone.png" width="280" alt="Tre server con link a velocità Rs e tre client con link a velocità Rc condividono un link di backbone a velocità R"><br><sub>Figura: dieci connessioni (qui ne sono disegnate tre) condividono equamente il link di backbone R (slide 1-58).</sub>
+<img src="img/01-ritardo-di-coda.png" width="400" alt="Ritardo medio di accodamento in funzione dell'intensità di traffico La/R: quasi nullo vicino a 0 e tende a infinito vicino a 1"><br><sub>Figura: il ritardo di coda cresce in modo esplosivo quando La/R si avvicina a 1 (slide 1-52).</sub>
+
+<img src="img/01-throughput-backbone.png" width="320" alt="Tre server con link a velocità Rs e tre client con link a velocità Rc condividono un link di backbone a velocità R"><br><sub>Figura: dieci connessioni (qui ne sono disegnate tre) condividono equamente il link di backbone R (slide 1-58).</sub>
 
 </td>
 </tr>
@@ -245,7 +223,7 @@ Le linee di difesa sono: **autenticazione** (provare di essere chi si dichiara; 
 </td>
 <td valign="top" align="center">
 
-<img src="img/01-attacco-dos.png" width="350" alt="Molti host compromessi (con il simbolo del diavoletto) inviano pacchetti verso un unico server bersaglio"><br><sub>Figura: attacco DoS distribuito con una botnet (slide 1-63).</sub>
+<img src="img/01-attacco-dos.png" width="420" alt="Molti host compromessi (con il simbolo del diavoletto) inviano pacchetti verso un unico server bersaglio"><br><sub>Figura: attacco DoS distribuito con una botnet (slide 1-63).</sub>
 
 </td>
 </tr>
