@@ -1,4 +1,4 @@
-# Piano di studio (aggiornato 2026-10-13, da piano carriera ufficiale)
+# Piano di studio (aggiornato 2026-10-16, da piano carriera ufficiale)
 
 Obiettivo dichiarato: laurea a novembre 2027. Lavoro in corso fino al 2026-11-30; dopo, da decidere.
 Ore: 15 h/sett totali (lezioni incluse, 10 h di lezione) fino al 2026-11-30; da dicembre da definire.
@@ -64,6 +64,16 @@ Legenda: DECISO = dato di fatto o già concordato; DA DECIDERE = proposta in att
 ### Materiale pronto
 Appunti in prosa in `<Materia>/appunti/` per tutte e 8 le materie. Flashcard già pronte per PPOO, SO e Mat. Discreta (`flashcard.md`); in arrivo per ASD, Architettura, Basi di Dati, Logica, Programmazione II. Le cartelle materia esistono già (DECISO).
 
+### Appunti del terzo anno (aggiornato 2026-10-16)
+Per le materie in corso gli appunti coprono tutte le slide oggi su Drive e crescono con le lezioni. Non fanno parte del carico della sessione gennaio-febbraio.
+
+| Materia | Appunti in `appunti/` | Parole (circa) | Coperto | Manca |
+|---|---|---|---|---|
+| Reti e Sicurezza delle Reti (9 CFU) | `01-introduzione-reti`, `02-livello-applicazione` (Reti); `03-principi-di-sicurezza` (Sicurezza) | 9.900 | Reti: cap. 1 e cap. 2 fino a client-server vs P2P. Sicurezza: lezione 01 | Reti: P2P, video streaming e CDN, socket programming (UDP e TCP), poi trasporto in avanti. Sicurezza: crittografia, autenticazione, controllo degli accessi e il resto del programma. Libri in Drive/Libri non ancora usati |
+| Tecnologie Web (6 CFU) | `01` a `04` (HTTP, HTML/CSS, JavaScript/DOM/TypeScript, Bootstrap) | 13.800 | tutti e 4 i deck su Drive | lezioni e laboratori successivi |
+
+Appunti Reti e Sicurezza: file creati e pubblicati il 2026-10-16 (commit `1e7a75c` e `1a40aa1`). Hanno `[DA VERIFICARE]` da sciogliere sui PDF (slide hardware e attack tree di Sicurezza, risposta alla domanda su traceroute). Flashcard non ancora fatte per Reti, Sicurezza e TWeb.
+
 ### Ordine di preparazione e carico stimato
 Le parole degli appunti sono solo un indicatore di quanto c'è da studiare (non di difficoltà). Le ore usano la regola del piano (~10-12 h/CFU) corretta al ribasso perché gli appunti sono già scritti: sono ipotesi da verificare dopo le prime due settimane di studio reale.
 
@@ -127,4 +137,4 @@ Le flashcard servono per il ripasso a intervalli: 20-30 min al giorno sulla mate
 - DA DECIDERE: quale appello per Mat. Discreta e SO, risoluzione degli altri 2 conflitti, quali esami rimandare, ore reali da dicembre (30 vs 15), giorno libero, quando fissare l'orale ASD.
 
 ## Reti e TWeb in calendario (caricati il 2026-10-14, calendario "Appunti")
-Su richiesta, ore aggiunte oltre ad ASD, senza toglierne a ASD: 28 sessioni dal 15/10 al 30/11, rispettando pasti, 30 min di spostamento e niente dopo cena. Reti: ven 8:45-10:15 e lun 14:00-16:00. TWeb: gio 8:45-10:15 e sab 14:00-16:00 (sab 7/11 fino alle 15:30 per il concerto). Totale circa +6,5 h/sett, quindi ~22 h/sett con le lezioni (oltre le 15 h dichiarate: da verificare se reggono). Argomenti basati sulle slide già su Drive (Reti cap. 1-2, Sicurezza 01, TWeb 01-02, Lab 01-02); le sessioni dal 21-23/11 sono "[Da aggiornare]" quando escono slide nuove. Da dicembre Reti e TWeb NON sono in calendario. Tutte le sessioni "Studio - ..." (ASD, Discreta, Reti, TWeb) hanno ora gli argomenti nella descrizione.
+Su richiesta, ore aggiunte oltre ad ASD, senza toglierne a ASD: 28 sessioni dal 15/10 al 30/11, rispettando pasti, 30 min di spostamento e niente dopo cena. Reti: ven 8:45-10:15 e lun 14:00-16:00. TWeb: gio 8:45-10:15 e sab 14:00-16:00 (sab 7/11 fino alle 15:30 per il concerto). Totale circa +6,5 h/sett, quindi ~22 h/sett con le lezioni (oltre le 15 h dichiarate: da verificare se reggono). Argomenti basati sulle slide già su Drive (Reti cap. 1-2, Sicurezza 01, TWeb 01-02, Lab 01-02), di cui esistono già gli appunti in `Reti-Sicurezza-Reti/appunti/` e `Tecnologie-Web/appunti/` (le sessioni possono quindi partire dal ripasso degli appunti); le sessioni dal 21-23/11 sono "[Da aggiornare]" quando escono slide nuove. Da dicembre Reti e TWeb NON sono in calendario. Tutte le sessioni "Studio - ..." (ASD, Discreta, Reti, TWeb) hanno ora gli argomenti nella descrizione.
