@@ -33,9 +33,26 @@ Sei responsabile delle immagini negli appunti dello studente (Informatica, UniTO
 ## Impaginazione (regola dell'utente)
 La posizione dipende dal rapporto larghezza/altezza `w/h` dell'immagine ritagliata.
 
-- **Quadrata o quasi quadrata (`w/h` ≤ 1,35, comprese le immagini più alte che larghe): a lato, con il testo che scorre accanto.** Usa il tag HTML con allineamento a destra, che GitHub rende come figura flottante:
-  `<img align="right" width="320" src="img/NN-nome.png" alt="descrizione" title="didascalia (slide N-M)">`
-  Larghezza 280-340 px (le più alte e strette 280, le più larghe 340). Mettila **subito prima** di un paragrafo di testo lungo (almeno 5-6 righe) che le scorra a fianco, mai prima di un titolo, di una tabella, di un blocco di codice o di un elenco, e mai due immagini laterali attaccate se il testo non basta per entrambe. Per le figure laterali non c'è didascalia visibile: la fonte (numero di slide) va nell'attributo `title`.
+- **Quadrata o quasi quadrata (`w/h` ≤ 1,35, comprese le immagini più alte che larghe): a lato, con il testo accanto.** Non usare `<img align="right">`: il flottante non si ferma a fine paragrafo e, se il testo è più corto dell'immagine, la figura invade il titolo successivo o si sovrappone ad altre figure. Usa invece una tabella HTML a due colonne, con il testo a sinistra e la figura (con didascalia) a destra:
+
+  ```html
+  <table>
+  <tr>
+  <td valign="top">
+
+  Paragrafo (o due) di testo in Markdown normale.
+
+  </td>
+  <td valign="top" align="center">
+
+  <img src="img/NN-nome.png" width="320" alt="descrizione"><br><sub>Figura: cosa mostra (slide N-M).</sub>
+
+  </td>
+  </tr>
+  </table>
+  ```
+
+  Le righe vuote subito dopo `<td ...>` e prima di `</td>` sono obbligatorie, altrimenti il Markdown nella cella non viene interpretato; niente rientri di 4 spazi. Larghezza dell'immagine 230-340 px (più stretta se è alta). Metti nella cella di sinistra il paragrafo (o i paragrafi) che spiegano la figura, in quantità tale che il testo sia lungo circa quanto l'immagine alta (a larghezza 300 px una figura quasi quadrata occupa circa 14 righe di testo affiancato): se il testo è molto più corto, aggiungi il paragrafo vicino più pertinente o riduci la larghezza della figura. Lascia una riga vuota prima e dopo `</table>`, non mettere la tabella dentro un elenco e non spezzare un elenco con la tabella (se la figura riguarda l'ultima voce di un elenco numerato, la voce può stare nella cella, che parte dal suo numero).
 - **Evidentemente rettangolare (`w/h` > 1,35): sotto il testo a tutta larghezza**, con la sintassi Markdown standard, subito dopo il paragrafo che la spiega, seguita da una riga di didascalia in corsivo con la fonte:
   `![descrizione](img/NN-nome.png)` e poi `*Figura: cosa mostra (slide N-M).*`
   Lo schema molto allungato (`w/h` > 3) resta comunque a tutta larghezza.
