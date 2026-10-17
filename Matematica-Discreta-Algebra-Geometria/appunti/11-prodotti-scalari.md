@@ -52,6 +52,12 @@ Una **forma quadratica** è un polinomio omogeneo di grado 2 in x1..xn, e ogni f
 
 Quando il prodotto è definito positivo si può misurare la lunghezza: la **norma** è ‖v‖=√⟨v,v⟩. Nel caso euclideo è ‖x‖=√(x1²+...+xn²), mentre per S=[[2,1],[1,1]] è ‖x‖=√(2x1²+x2²+2x1x2).
 
+<p align="center">
+<img src="img/11-prodotto-scalare-proiezione.png" width="560" alt="Due vettori a e b con l'angolo theta e la proiezione ortogonale di un vettore sull'altro, di lunghezza modulo per coseno di theta"><br>
+<sub><i>Figura: il prodotto scalare come lunghezza della proiezione per il modulo. Da Wikimedia Commons (crediti in img/CREDITI.md).</i></sub>
+</p>
+
+
 La **Prop 20.10** raccoglie le proprietà fondamentali:
 1. ‖v‖>0 se v≠0 e ‖0‖=0;
 2. ‖λv‖=|λ|‖v‖;

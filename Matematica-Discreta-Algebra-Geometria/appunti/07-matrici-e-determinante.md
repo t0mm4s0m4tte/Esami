@@ -28,9 +28,24 @@ La **traccia** tr A = Σ A_ii è la somma degli elementi diagonali; è lineare e
 
 ## 2. Determinante
 
+
+<table>
+<tr>
+<td valign="top">
+
 Il determinante associa a una matrice quadrata un numero che dice, in sostanza, se le sue colonne sono indipendenti (e, geometricamente, di quanto viene scalato il volume). La definizione (9.1) è combinatoria: det A = Σ_{σ∈S_n} sgn(σ) a_{1σ(1)} ... a_{nσ(n)}, una somma su tutte le n! permutazioni in cui da ogni riga e ogni colonna si prende esattamente un elemento, con segno sgn(σ)=(-1)^{#trasposizioni}. Per n=1 si ha det(a)=a; per n=2 il ben noto **ad-bc**; per n=3 si ottiene la regola di Sarrus: a11a22a33 - a11a23a32 - a13a22a31 - a12a21a33 + a12a23a31 + a13a21a32.
 
 Per le matrici **triangolari** (e quindi diagonali) il determinante è il prodotto degli elementi sulla diagonale (Prop 9.3): l'unica permutazione che non passa per uno zero è l'identità. In particolare det I_n=1. Vale inoltre det ᵗA = det A (Prop 9.5), perciò ogni proprietà enunciata per le righe vale anche per le colonne.
+
+</td>
+<td valign="top" align="center">
+
+<img src="img/07-determinante-area.png" width="340" alt="Parallelogramma di vertici (0,0), (a,b), (c,d), (a+c,b+d) con area ad meno bc"><br><sub>Figura: il determinante 2×2 come area con segno del parallelogramma. Da Wikimedia Commons (crediti in <code>img/CREDITI.md</code>).</sub>
+
+</td>
+</tr>
+</table>
+
 
 Per il calcolo concreto si usa lo **sviluppo di Laplace** (Teo 9.6) lungo la riga i: det A = Σ_j (-1)^{i+j} a_ij det C_ij, dove C_ij è la sottomatrice (n-1)×(n-1) ottenuta eliminando la riga i e la colonna j; i segni seguono una scacchiera (+ - + / - + - / ...). Lo stesso vale per le colonne, e conviene sempre scegliere la riga o colonna con più zeri.
 

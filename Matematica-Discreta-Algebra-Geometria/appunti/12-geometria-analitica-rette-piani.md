@@ -30,11 +30,26 @@ In R³ (Teo 22.13, senza dimostrazione) ogni isometria è una rotazione attorno 
 
 ## 2. Prodotto vettoriale in R³
 
+
+<table>
+<tr>
+<td valign="top">
+
 Per capire perché serve, pensate a come trovare un vettore ortogonale a due vettori dati: si può risolvere un sistema, ma il prodotto vettoriale dà la risposta in forma chiusa. Per v=(v1,v2,v3) e w=(w1,w2,w3) si pone
 
 **v×w = (v2w3−v3w2, v3w1−v1w3, v1w2−v2w1)**
 
 (Def 22.14). Per ricordarlo si usa il determinante formale con la prima colonna v, la seconda w e la terza e1,e2,e3: v×w = det[[v1,w1,e1],[v2,w2,e2],[v3,w3,e3]] (regola mnemonica, non è davvero una matrice) = det[[v2,w2],[v3,w3]]e1 − det[[v1,w1],[v3,w3]]e2 + det[[v1,w1],[v2,w2]]e3. Le tre componenti sono i minori 2×2 della matrice [v|w] (a meno del segno alterno sulla seconda).
+
+</td>
+<td valign="top" align="center">
+
+<img src="img/12-prodotto-vettoriale.png" width="380" alt="I vettori a e b, il parallelogramma da loro generato e il vettore a×b perpendicolare al piano, con modulo uguale all'area"><br><sub>Figura: a×b è ortogonale ad a e b e ha per modulo l'area del parallelogramma. Da Wikimedia Commons (crediti in <code>img/CREDITI.md</code>).</sub>
+
+</td>
+</tr>
+</table>
+
 
 Le proprietà da sapere, con la dimostrazione che il docente può chiedere:
 - **v×w è ortogonale sia a v che a w** (Prop 22.15). Basta calcolare ⟨v×w,v⟩ = sviluppo di Laplace sull'ultima colonna del determinante con due colonne uguali (v,w,v) = 0; analogamente per w.

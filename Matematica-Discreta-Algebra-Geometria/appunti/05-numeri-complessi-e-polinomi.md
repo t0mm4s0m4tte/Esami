@@ -44,9 +44,24 @@ Geometricamente a+bi corrisponde al punto (a,b) del **piano complesso**: la somm
 
 ## 3. Forma polare e radici
 
+
+<table>
+<tr>
+<td valign="top">
+
 Le coordinate polari (r,θ) (con x=r cosθ, y=r sinθ, r=√(x²+y²)) danno una scrittura molto più comoda per moltiplicare: z = r(cosθ + i sinθ) = **r e^{iθ}**, dove e^{iθ} := cosθ + i sinθ è un simbolo che obbedisce alle proprietà dell'esponenziale, e^{i(θ+φ)} = e^{iθ}e^{iφ}, per le formule di addizione di seno e coseno. Qui r=|z| è il modulo e θ=arg z l'argomento, definito a meno di 2kπ: due numeri in forma polare sono uguali ⇔ stesso r e θ1 = θ0 + 2kπ.
 
 La moltiplicazione diventa trasparente: **z1z2 = r1r2 e^{i(θ1+θ2)}**, cioè i moduli si moltiplicano e gli argomenti si sommano. Di conseguenza z⁻¹ = r⁻¹ e^{-iθ} e il coniugio corrisponde a θ↦-θ. I numeri e^{iθ} formano la circonferenza unitaria; si ritrova l'**identità di Eulero** e^{iπ} = -1, e^{2πi}=1.
+
+</td>
+<td valign="top" align="center">
+
+<img src="img/05-modulo-argomento.png" width="420" alt="Un numero complesso come vettore nel piano, con il modulo r e l'argomento phi"><br><sub>Figura: modulo r e argomento φ. Da Wikimedia Commons (crediti in <code>img/CREDITI.md</code>).</sub>
+
+</td>
+</tr>
+</table>
+
 
 La stessa idea risolve le equazioni z^n = z0. Se z0 = r0 e^{iθ0} ≠ 0, l'equazione ha **esattamente n soluzioni**, z_k = ⁿ√r0 · e^{i(θ0/n + 2kπ/n)} con k=0,...,n-1: stesso modulo e argomenti a passo 2π/n, quindi i vertici di un n-gono regolare di raggio ⁿ√r0 centrato nell'origine. Il caso z0=1 dà le **radici dell'unità**, z = e^{2kπi/n}.
 

@@ -18,6 +18,12 @@
 
 Un endomorfismo T: V→V può comportarsi in modo complicato, ma in certe direzioni agisce in modo semplicissimo: si limita ad allungare o accorciare il vettore. Un **autovettore** è un v≠0 con **T(v)=λv**, e lo scalare λ∈K è il corrispondente **autovalore**. Il vettore v non può essere nullo, mentre λ può essere 0. Se v è autovettore con autovalore λ, lo è anche ogni multiplo μv (μ≠0), con lo stesso λ: dunque a ogni autovalore corrisponde tutta una retta Span(v) privata dell'origine.
 
+<p align="center">
+<img src="img/10-autovettore-monalisa.jpg" width="560" alt="La Gioconda prima e dopo una trasformazione di taglio: il vettore blu orizzontale non cambia direzione, quello rosso verticale sì"><br>
+<sub><i>Figura: una trasformazione lineare lascia fisso l'autovettore blu e inclina quello rosso. Da Wikimedia Commons (crediti in img/CREDITI.md).</i></sub>
+</p>
+
+
 Rispetto a una base B, con A=[T]_B^B e x=[v]_B, la condizione T(v)=λv diventa Ax=λx, quindi si può studiare direttamente la matrice A (T = L_A).
 
 Esempi: per A=[[3,-4],[0,2]] si ha Ae1=3e1 (autovalore 3) e A(4,1)=(8,2)=2(4,1) (autovalore 2), mentre e2 non è autovettore (Ae2=(-4,2)) [segno ricostruito]. La rotazione Rot_θ di angolo θ≠0,π non ha alcun autovettore reale, perché ruota ogni vettore; per θ=0,π è ±id e tutti i vettori sono autovettori.

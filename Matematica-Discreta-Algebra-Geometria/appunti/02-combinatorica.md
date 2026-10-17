@@ -44,11 +44,26 @@ Applicata alle funzioni, la regola dà **|F_{A,B}| = nᵐ** se |A|=m e |B|=n, pe
 
 ## 4. Ordinamenti, anagrammi, disposizioni
 
+
+<table>
+<tr>
+<td valign="top">
+
 Quanti modi ci sono di mettere in fila degli oggetti? Un **ordinamento** di A (|A|=n) è una biezione I_n→A, e il loro numero è **n!** (n·(n-1)·...·1, con 0!=1). Se la lista ha elementi ripetuti, gli ordinamenti che differiscono solo per lo scambio di simboli uguali vanno identificati: il numero di **anagrammi** di una lista di lunghezza n in cui il simbolo i compare r_i volte è **n!/(r1!·r2!·...·rk!)**. MATEMATICA: 10!/(3!·2!·2!) = 151.200 (M×2, A×3, T×2). ORO: 3!/2! = 3.
 
 Se si scelgono k elementi di A (|A|=n) tenendo conto dell'ordine, i casi sono due:
 - la **disposizione con ripetizione** di ordine k è una k-pla di A^k, ovvero una funzione I_k→A, e ce ne sono **nᵏ**;
 - la **disposizione semplice** (senza ripetizioni, cioè una funzione iniettiva I_k→A) si conta con **D_{n,k} = n(n-1)...(n-k+1) = n!/(n-k)!**; vale 0 se k>n e coincide con gli ordinamenti se k=n.
+
+</td>
+<td valign="top" align="center">
+
+<img src="img/02-permutazioni-albero.png" width="340" alt="Albero dei sei ordinamenti di tre elementi A, B, C: tre scelte per il primo posto, due per il secondo, una per il terzo"><br><sub>Figura: i 3! = 6 ordinamenti di A, B, C. Da Wikimedia Commons (crediti in <code>img/CREDITI.md</code>).</sub>
+
+</td>
+</tr>
+</table>
+
 
 Esempi: podio con 12 atleti = D_{12,3} = 12·11·10 = 1320 (Mori riporta "101.320" per refuso di estrazione: il valore corretto è 1320); password di 8 simboli distinti su 36 = 36·35·...·29.
 
