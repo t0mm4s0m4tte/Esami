@@ -110,6 +110,10 @@ Le **potenze** a^n si definiscono per ricorsione e soddisfano a^(m+n)=a^m a^n (s
 
 ---
 
+## Esercizi svolti collegati
+
+Le prime domande del quiz di Matematica Discreta sono su appartenenza e inclusione fra insiemi, prodotto cartesiano e funzione inversa di una funzione affine; i problemi usano anche cardinalità di unioni, intersezioni e controimmagini. Vedi [16-esami-md-2024-2025.md](16-esami-md-2024-2025.md#quiz-le-domande-che-tornano) e la sezione sulle cardinalità in [16-esami-md-2024-2025.md](16-esami-md-2024-2025.md#combinatoria). Per l'induzione non ci sono problemi negli appelli 2024-25 letti.
+
 ## Cose da saper fare all'esame
 - Dimostrare per induzione una formula di somma / una disuguaglianza / |P(A)|=2ⁿ (base + passo, scrivendo chiaramente l'ipotesi induttiva).
 - Dimostrare uguaglianze fra insiemi con la doppia inclusione; applicare De Morgan e distributività.

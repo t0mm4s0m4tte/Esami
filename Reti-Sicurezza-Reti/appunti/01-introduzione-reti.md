@@ -256,6 +256,10 @@ Fra il **1972 e il 1980** si lavora sull'internetworking e nascono reti nuove e 
 
 Fra il **1980 e il 1990** si ha la proliferazione di reti e protocolli: TCP/IP (1983), SMTP (1982), DNS (1983, traduzione nome-indirizzo IP), FTP (1985), controllo di congestione TCP (1988), nuove reti nazionali (CSnet, BITnet, NSFnet, Minitel), con circa 100 000 host collegati in una confederazione di reti.
 
+## Esercizi svolti collegati
+
+La formula del ritardo di coda con intensità di traffico β = a·L/R, e il suo uso nel tempo di risposta con cache, hanno un esercizio numerico in [08-esercizi-cap2.md](08-esercizi-cap2.md#esercizio-4-effetto-di-una-cache-web).
+
 ## Cose da saper fare all'esame
 
 Per gli esercizi ci si aspetta di saper:

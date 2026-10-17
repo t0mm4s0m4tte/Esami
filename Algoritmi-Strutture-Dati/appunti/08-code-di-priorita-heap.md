@@ -92,6 +92,10 @@ BuildHeap(V): for i:=⌊length(V)/2⌋ downto 1: Heapify(V,i)
 ```
 Esempio dalle slide: dato l'heap [16 9 14 7 4 8 10 3 2 1], l'inserimento di 15 lo fa risalire fino a sotto la radice 16 (scambi con 4... e 9); nell'estrazione, la radice è sostituita dall'ultimo elemento e scende scegliendo sempre il figlio massimo.
 
+## Esercizi svolti collegati
+
+L'estrazione del minimo con stato dello heap dopo ogni scambio è svolta passo passo nel [§9 Alberi e ordinamento](12-esercizi-svolti.md#9-alberi-e-ordinamento), insieme alla definizione di heap minimo come albero semicompleto a sinistra (figli di H[i] in H[2i] e H[2i+1]).
+
 ## Cose da saper fare all'esame
 **Scritto**
 - Costruire un heap da una sequenza (per inserimenti e con BuildHeap) e disegnare array+albero; eseguire estrazioni; simulare Heapsort passo passo.

@@ -100,6 +100,10 @@ Le fonti danno le formule per intersezioni e distanze; il quadro delle posizioni
 
 ---
 
+## Esercizi svolti collegati
+
+Retta come intersezione di due piani, incidenza con un terzo piano e retta perpendicolare a un piano sono svolte (Esempio 3) in [17-esami-ag-2024-2025.md](17-esami-ag-2024-2025.md); le intersezioni retta-retta e retta-piano sono nel quiz.
+
 ## Cose da saper fare all'esame
 - Riconoscere se una matrice è ortogonale (ᵗAA=I), scrivere rotazioni e riflessioni di R², dire che le isometrie di R² sono rotazioni e riflessioni (det=±1).
 - Calcolare v×w, usarlo per un vettore ortogonale a due vettori, per l'area di parallelogrammi e triangoli (metà dell'area), per l'equazione del piano per tre punti.

@@ -79,6 +79,10 @@ Le equazioni lineari in Z_n seguono dal criterio di invertibilità. L'**equazion
 
 ---
 
+## Esercizi svolti collegati
+
+Inversi con Euclide esteso, resti di grosse potenze con Eulero, congruenze lineari con gcd, divisori dello zero e CRT sono nel Problema 1 di quasi ogni appello di Discreta; esempi con numeri e soluzioni in [16-esami-md-2024-2025.md](16-esami-md-2024-2025.md) (sezione "Aritmetica modulare, Z_n, Z_n^*, congruenze") e le domande del quiz sul resto e sulle congruenze con una sola soluzione.
+
 ## Cose da saper fare all'esame
 - Calcolare MCD con Euclide e trovare coefficienti di Bézout; verificare la coprimalità.
 - Risolvere congruenze lineari e sistemi (CRT), determinare l'inverso modulo n e decidere se esiste.

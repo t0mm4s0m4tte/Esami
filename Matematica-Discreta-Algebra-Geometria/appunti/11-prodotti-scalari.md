@@ -83,6 +83,10 @@ w1=(1,1,0). w2=v2-(⟨v2,w1⟩/⟨w1,w1⟩)w1=(0,1,1)-(1/2)(1,1,0)=(-1/2,1/2,1).
 
 ---
 
+## Esercizi svolti collegati
+
+Gram-Schmidt con un prodotto g_S, proiezione ortogonale e angolo rispetto a g_S sono nel Problema 12 e nel quiz; Esempio 4 in [17-esami-ag-2024-2025.md](17-esami-ag-2024-2025.md) e Esempio 1 per la base ortonormale di un autospazio.
+
 ## Cose da saper fare all'esame
 - Verificare gli assiomi di prodotto scalare (bilinearità, simmetria), decidere degenere / definito positivo (da ⟨v,v⟩, da matrice: pivot positivi, autovalori > 0).
 - Scrivere la matrice di un prodotto scalare in una base e cambiarla (ᵗMSM); scrivere la forma quadratica da S e viceversa.

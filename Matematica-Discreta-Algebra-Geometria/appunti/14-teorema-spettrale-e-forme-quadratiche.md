@@ -120,6 +120,10 @@ Gli **assi** sono le rette per il centro con direzione gli autospazi di A_33 (or
 
 ---
 
+## Esercizi svolti collegati
+
+Il riconoscimento di un prodotto hermitiano dalla matrice (diagonale reale, a_ij = conj(a_ji)) e la domanda su quale operatore è autoaggiunto sono nel quiz: [17-esami-ag-2024-2025.md](17-esami-ag-2024-2025.md#quiz-le-domande-che-tornano). Il teorema spettrale compare nella base ortonormale di un autospazio (Esempio 1).
+
 ## Cose da saper fare all'esame
 - Riconoscere matrici hermitiane e simmetriche; stabilire se un endomorfismo è autoaggiunto (base ortonormale!).
 - Enunciare e dimostrare il teorema spettrale (anche solo lo schema per induzione con U^⊥ invariante) e il Cor 26.2.

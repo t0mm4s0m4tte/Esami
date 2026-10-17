@@ -114,6 +114,10 @@ La scelta della formula dipende da due domande, se l'ordine conta e se sono amme
 9. (Es. 3.14) Anagrammi: ALGORITMO (O×2) 9!/2! = 181.440; INFORMATICA (I×2, A×2) 11!/(2!·2!) = 9.979.200; TORINO (O×2) 6!/2! = 360; DISPOSIZIONI (I×4, S×2, O×2) 12!/(4!·2!·2!) = 4.989.600; COROLLARIO (O×3, R×2, L×2) 10!/(3!·2!·2!) = 151.200.
 10. (Es. 3.18) C(n,k) = C(n-2,k)+2C(n-2,k-1)+C(n-2,k-2): applicare due volte Stiefel.
 
+## Esercizi svolti collegati
+
+La combinatoria è quasi sempre il Problema 2 dell'esame di Discreta: stringhe con vincoli, sequenze su alfabeto unione, combinazioni con ripetizione (kit di asciugamani), sottoinsiemi con intersezione non vuota. Esempi svolti con la teoria usata in [16-esami-md-2024-2025.md](16-esami-md-2024-2025.md#combinatoria).
+
 ## Cose da saper fare all'esame
 - Riconoscere il tipo di problema (tabella decisionale) e calcolare; distinguere "e" (prodotto) da "oppure" (somma di casi esclusivi).
 - Usare inclusione-esclusione per contare numeri divisibili / insiemi con attributi; ricavare un'intersezione incognita.

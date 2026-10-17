@@ -321,6 +321,10 @@ Nel modello **client-server** il server deve inviare in sequenza `N` copie, e in
 
 Cresce **linearmente** con `N`. Le slide disponibili finiscono qui: il caso P2P, il video streaming con le CDN e il socket programming mancano ancora.
 
+## Esercizi svolti collegati
+
+Le soluzioni degli esercizi del cap. 2 sono in [08-esercizi-cap2.md](08-esercizi-cap2.md): lettura di un GET HTTP (nome del server, versione, connessione persistente), tempo di risposta con DNS e connessioni HTTP persistenti/non persistenti, effetto di una cache Web sul ritardo medio e tempo di distribuzione di un file. Gli argomenti che mancavano a questo file (P2P, streaming, CDN e socket programming) sono ora in [04-p2p-streaming-cdn.md](04-p2p-streaming-cdn.md) e [05-socket-programming.md](05-socket-programming.md).
+
 ## Cose da saper fare all'esame
 
 Per gli esercizi:

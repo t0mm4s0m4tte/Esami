@@ -152,6 +152,10 @@ Tree-Inorder(T,L): if T=nil return L else L:=Tree-Inorder(T.right,L); return Tre
 ```
 Per cancellare un nodo con due figli esistono due metodi, **fusione** e **copia**: le slide li mostrano entrambi, ma il pseudocodice usa la copia.
 
+## Esercizi svolti collegati
+
+Gli esercizi corrispondenti sono nel [§8 Alberi](12-esercizi-svolti.md#8-alberi): FatherChildSum, SommaRamo e NumNodiProfondi su alberi child/sibling, albero completo con BFS e con DFS (restituendo coppia booleano-altezza), PrintInt (inordine limitata a [a,b]), AntenatoComune e IsBinSearch (tripla booleano, minimo, massimo) per i BST.
+
 ## Cose da saper fare all'esame
 **Scritto**
 - Disegnare il BST ottenuto da una sequenza di inserimenti; calcolarne l'altezza; cancellare un nodo (3 casi); scrivere le visite (pre/in/post, BFS).

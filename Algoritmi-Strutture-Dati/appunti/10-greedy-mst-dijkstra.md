@@ -178,6 +178,10 @@ I colori hanno questo significato: bianchi (key=∞), grigi (frontiera, key<∞)
 
 In **Dijkstra** la coda Q è uno heap minimo con v.key = v.d. Esempio delle slide (s con archi 10 e 5, pesi 2,3,1,9,4,6,2,7): i d finali dopo le estrazioni sono s=0, 5, 7, 8, 9 (ordine di estrazione), con aggiornamenti 10->8, 14->13, 9. [DA VERIFICARE: topologia del grafo non ricostruibile dal testo della slide.]
 
+## Esercizi svolti collegati
+
+Due esecuzioni a mano di Dijkstra (con stato della coda e cammini minimi) e la dimostrazione di esistenza dell'MST in un grafo connesso pesato sono nel [§10 Grafi](12-esercizi-svolti.md#10-grafi); lì si spiega a parole anche il ruolo della coda di priorità (nodi con cammino minimo ancora ignoto, priorità = stima).
+
 ## Cose da saper fare all'esame
 **Scritto**
 - Eseguire Kruskal (ordine archi, Union-Find) e Prim (da un vertice dato) e Dijkstra su un grafo dato con tabella di d, π, ordine di estrazione.

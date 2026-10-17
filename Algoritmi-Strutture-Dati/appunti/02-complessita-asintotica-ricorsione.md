@@ -150,6 +150,10 @@ Il **progetto ricorsivo induttivo** segue quattro passi:
 
 Come per l'iterazione, richiede come per l'iterazione, una dimostrazione di terminazione: gli argomenti devono decrescere in un ordine ben fondato (g(n)=g(n) non termina; Collatz non è dimostrato). Come sintesi: la ricorsione è più leggibile ma rischia stack e ridondanze; l'iterazione ha spazio O(1) e si debugga più facilmente.
 
+## Esercizi svolti collegati
+
+Le definizioni di O, Ω, Θ, o e le loro regole si applicano negli esercizi del [§2 Crescita asintotica](12-esercizi-svolti.md#2-crescita-asintotica) (appartenenze con costanti c e n0, uso del limite e di de l'Hôpital, controesempi). Il metodo di srotolamento e il Master theorem sono usati nel [§4 Relazioni di ricorrenza](12-esercizi-svolti.md#4-relazioni-di-ricorrenza) (compreso il cambio di variabile per T(√n) e T(n/2+17)) e nel [§5 Analisi di algoritmi](12-esercizi-svolti.md#5-analisi-di-algoritmi), dove si ricavano le ricorrenze di Bump, Homer, Marge, Tim, Kim e Pow leggendo il codice. Lì c'è anche l'esempio da ricordare di una ricorrenza a cui il Master theorem non si applica (permutazioni, T(n,k)=k·T(n,k−1)).
+
 ## Cose da saper fare all'esame
 
 **Scritto**

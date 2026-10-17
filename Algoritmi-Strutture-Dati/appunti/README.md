@@ -2,7 +2,7 @@
 
 Scritto: 2027-01-27. Orale: da definire. Docenti slide: de'Liguoro, Horvath.
 
-Le fonti sono su Drive, nella cartella "Algoritmi e Strutture Dati": il doc "Algoritmi e Strutture Dati - Appunti" (letto per intero, ~420k caratteri), le slide di teoria (PDF 18, 15, 17, 14, 13, 11, 19 consultate per integrare codice e dimostrazioni) e il programma "Argomenti dei Corsi - II Anno". I PDF "Teoria/Laboratorio - Appunti" sono l'export PDF dello stesso doc e non sono stati riletti. Le altre slide (00-10, 12, 16) e il Cormen non sono state rilette [DA VERIFICARE per esercizi non presenti nel doc]. Gli "Esercizi svolti" (11.2, 13.2) e la cartella `laboratorio-algoritmi-2025-2026` (ex1-ex4, .git) non sono stati aperti.
+Le fonti sono su Drive, nella cartella "Algoritmi e Strutture Dati": il doc "Algoritmi e Strutture Dati - Appunti" (letto per intero, ~420k caratteri), le slide di teoria (PDF 18, 15, 17, 14, 13, 11, 19 consultate per integrare codice e dimostrazioni) e il programma "Argomenti dei Corsi - II Anno". I PDF "Teoria/Laboratorio - Appunti" sono l'export PDF dello stesso doc e non sono stati riletti. Le altre slide (00-10, 12, 16) e il Cormen non sono state rilette [DA VERIFICARE per esercizi non presenti nel doc]. L'eserciziario ufficiale del Moodle è stato letto e riassunto in [12-esercizi-svolti.md](12-esercizi-svolti.md) (tracce d'esame datate non ce ne sono su Moodle: i quiz non sono stati scaricati). Gli "Esercizi svolti" (11.2, 13.2) di Drive e la cartella `laboratorio-algoritmi-2025-2026` (ex1-ex4, .git) non sono stati aperti.
 
 ## Indice
 
@@ -21,6 +21,7 @@ Gli appunti seguono l'ordine del corso: prima i fondamenti (correttezza, comples
 | [09-grafi-visite-ordinamento-topologico.md](09-grafi-visite-ordinamento-topologico.md) | Grafi, BFS/DFS, DFS temporizzata, classificazione archi, ordinamento topologico, cfc (Kosaraju) |
 | [10-greedy-mst-dijkstra.md](10-greedy-mst-dijkstra.md) | Teorema del taglio, Kruskal+Union-Find, Prim, cammini minimi, Dijkstra e correttezza |
 | [11-laboratorio.md](11-laboratorio.md) | Git, TDD/Unity/Makefile, Doxygen/debug, HybridSort, hash table, heap ternario, grafi sparsi |
+| [12-esercizi-svolti.md](12-esercizi-svolti.md) | Eserciziario ufficiale (Moodle) risolto: invarianti, asintotica, ricorrenze, analisi, liste, hash, alberi, grafi |
 
 ## Cose da saper fare all'esame (sintesi globale)
 

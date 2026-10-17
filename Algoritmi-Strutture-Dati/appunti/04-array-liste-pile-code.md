@@ -157,6 +157,10 @@ La **coda** ha Enqueue(e,Q) in fondo (rear), Dequeue(Q) dalla testa (front) e Em
 
 Come regola di scelta, l'array vale se la dimensione massima è nota e la memoria stretta; la lista se la dimensione è imprevedibile.
 
+## Esercizi svolti collegati
+
+Gli esercizi su liste (Multiples, Rank, Reverse, Palindrome, OddEven, operazioni su insiemi come liste ordinate, Foo/Goo) sono nel [§6 Liste](12-esercizi-svolti.md#6-liste) e usano esattamente Head, Tail e Cons visti qui: Reverse è l'idea della lista usata come pila, le operazioni insiemistiche sono varianti del merge di liste ordinate.
+
 ## Cose da saper fare all'esame
 
 **Scritto**

@@ -90,6 +90,10 @@ Un'applicazione sono i codici correttori (Reed-Solomon): si inviano i coefficien
 
 ---
 
+## Esercizi svolti collegati
+
+Potenze e radici n-esime di numeri complessi e radici di polinomi di grado 4 sono la prima domanda del quiz di Algebra Lineare in quasi ogni appello; vedi [17-esami-ag-2024-2025.md](17-esami-ag-2024-2025.md#quiz-le-domande-che-tornano).
+
 ## Cose da saper fare all'esame
 - Operazioni, coniugio, modulo, inverso in C; parte reale e immaginaria di espressioni razionali in z (moltiplicare per il coniugato del denominatore).
 - Passare da forma cartesiana a polare e viceversa; calcolare potenze (formula di De Moivre r^n e^{inθ}) e **tutte** le radici n-esime, disegnarle.

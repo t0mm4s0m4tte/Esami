@@ -94,6 +94,10 @@ La cancellazione è la parte più laboriosa. Si usa la cancellazione BST standar
   - **3.3, s nero, figlio "interno" (sx) rosso e figlio destro nero**: s diventa rosso, il figlio sinistro nl diventa nero, si fa **Right-Rotate(s)** e ci si riconduce al 3.4. Nelle slide è il "caso interno": s nero con un figlio rosso.
   - **3.4, s nero, figlio "esterno" (dx) rosso nr**: s prende il colore di p, p e nr diventano neri, si fa **Left-Rotate(p)**; fine, il deficit è risolto. Nelle slide è il caso esterno: s nero con un figlio nero e uno rosso.
 
+## Esercizi svolti collegati
+
+L'altezza logaritmica degli alberi rosso-neri compare come argomento negli esercizi: l'AntenatoComune di due chiavi costa O(log n) proprio perché h ≤ 2 log₂(n+1) ([§8 Alberi](12-esercizi-svolti.md#8-alberi)).
+
 ## Cose da saper fare all'esame
 **Scritto**
 - Inserire una sequenza di chiavi in un R-N mostrando colori, rotazioni e casi del fix-up; idem per una cancellazione.

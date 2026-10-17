@@ -78,6 +78,10 @@ Per n≥3 la formula dei cofattori è lenta e il metodo di Gauss-Jordan su (A | 
 
 ---
 
+## Esercizi svolti collegati
+
+Determinante (anche di potenze), rango con Gauss, traccia di prodotti e identità fra matrici sono due o tre domande di ogni quiz: [17-esami-ag-2024-2025.md](17-esami-ag-2024-2025.md#quiz-le-domande-che-tornano).
+
 ## Cose da saper fare all'esame
 - Prodotti, trasposte, tracce; verificare t(AB)=ᵗBᵗA (Es. 8.15), tr(AB)=tr(BA); stabilire taglia e possibilità di un prodotto.
 - Calcolare determinanti 2×2, 3×3 (Sarrus/Laplace), 4×4 (Gauss + Laplace), anche con parametro (es. determinante di Vandermonde-like: det[[1,1,1],[1,x,x²],[1,x²,x⁴]] = x(x-1)³(x+1)).

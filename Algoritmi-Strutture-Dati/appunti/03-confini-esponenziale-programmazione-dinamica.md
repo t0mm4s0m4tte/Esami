@@ -136,6 +136,10 @@ LCS-BOTTOM-UP(X,Y): m=|X|, n=|Y|; c[i,0]=0, c[0,j]=0
 
 Il costo è **Θ(mn)** in tempo. [DA VERIFICARE: la procedura di stampa PRINT-LCS e l'ottimizzazione di spazio non sono nel doc.] Anche Kadane (vedi 01) è un esempio di DP lineare.
 
+## Esercizi svolti collegati
+
+Il lower bound Ω(n log n) per l'ordinamento con confronti viene riutilizzato nel [§9 Alberi e ordinamento](12-esercizi-svolti.md#9-alberi-e-ordinamento) per dimostrare per assurdo che anche costruire un BST costa Ω(n log n) (si costruisce il BST e lo si visita in ordine), e per disegnare l'albero di decisione a 4 elementi. Jack e Fast-Jack hanno il loro gemello negli esercizi `Jack`/`MaxOddSeq` del [§5 Analisi di algoritmi](12-esercizi-svolti.md#5-analisi-di-algoritmi), e l'esponenziale veloce è svolto con l'invariante x^n = y^k·z nel [§1 Correttezza e invarianti](12-esercizi-svolti.md#1-correttezza-e-invarianti).
+
 ## Cose da saper fare all'esame
 
 **Scritto**

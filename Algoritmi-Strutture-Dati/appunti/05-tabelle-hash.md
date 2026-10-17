@@ -86,6 +86,10 @@ Per l'indirizzamento aperto servono alcune precisazioni formali. La sequenza h(k
 
 Come raccomandazioni pratiche, nel concatenamento si tiene α circa costante (per esempio ~1), mentre nell'indirizzamento aperto non conviene superare **α=0.8**.
 
+## Esercizi svolti collegati
+
+Gli esercizi sono nel [§7 Tabelle hash](12-esercizi-svolti.md#7-tabelle-hash): inserimento con indirizzamento aperto lineare e quadratico (con h(k,i) = (k mod m + 2i + i²) mod m) e il caso in cui la sequenza di ispezione non copre tutta la tabella, per cui un inserimento fallisce con la tabella quasi vuota.
+
 ## Cose da saper fare all'esame
 
 **Scritto**

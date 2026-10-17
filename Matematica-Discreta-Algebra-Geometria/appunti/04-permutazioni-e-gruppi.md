@@ -83,6 +83,10 @@ Invece (Z_n*,·) non sempre è ciclico: lo è per n primo (es. Z_7* = ⟨3⟩ pe
 
 ---
 
+## Esercizi svolti collegati
+
+Tipo, periodo e parità di una permutazione, equazioni in S_n, ciclicità di prodotti di gruppi, gruppi definiti da un'operazione sulle coppie e omomorfismi con nucleo e controimmagini sono svolti in [16-esami-md-2024-2025.md](16-esami-md-2024-2025.md#gruppi-ciclicità-omomorfismi) e [16-esami-md-2024-2025.md](16-esami-md-2024-2025.md#permutazioni).
+
 ## Cose da saper fare all'esame
 - Verificare gli assiomi di gruppo per un insieme con operazione (è anche il tipo "Es. 2.16": associatività, neutro, inversi), trovare l'inverso, stabilire se abeliano.
 - Scrivere una permutazione in cicli disgiunti, calcolare prodotti, inversa, potenze, segno e ordine.

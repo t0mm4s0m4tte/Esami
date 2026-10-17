@@ -170,6 +170,10 @@ L'algoritmo **Strongly-Connected-Components(G)** (di Kosaraju) fa invece tutto i
 
 La correttezza si appoggia su alcuni lemmi. Lemma 1: se C e C' sono cfc distinte, con u,v∈C e u',v'∈C', e u ⤳ u', allora non può essere v' ⤳ v. Posto C.d = min{u.d} e C.f = max{u.f}, il **Lemma 2** dice che se (u,v)∈E con u∈C e v∈C' in cfc distinte allora C.f > C'.f; il corollario è che (u,v)∈E^T implica C.f ≤ C'.f (< se distinte). Il teorema della "visita giusta" conclude: nell'ordine decrescente di f, la cfc con f massimo C ha, per ogni arco (u,v)∈E^T uscente da C, C.f ≤ C(v).f, da cui C = C(v); l'albero in G^T radicato nel vertice di f massimo è allora A_G(u)=C, e si procede per induzione sul numero di alberi.
 
+## Esercizi svolti collegati
+
+BFS con albero e coda dopo ogni inserimento, il test di bipartizione con BFS colorata e il test di aciclicità con DFS (un arco all'indietro è un ciclo) sono svolti nel [§10 Grafi](12-esercizi-svolti.md#10-grafi); è l'applicazione diretta della classificazione degli archi vista qui.
+
 ## Cose da saper fare all'esame
 **Scritto**
 - Dato un grafo, scrivere matrice e liste; eseguire BFS (distanze, albero) e DFS temporizzata (d/f, classificazione archi) con ordine dei vicini dato; produrre un ordinamento topologico.

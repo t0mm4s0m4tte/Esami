@@ -79,6 +79,10 @@ Con una base fissata ogni vettore ha un indirizzo preciso: dati v1..vn base, ogn
 
 ---
 
+## Esercizi svolti collegati
+
+Sottospazi, dimensione di insiemi di polinomi con vincolo, generatori/indipendenza e coordinate in una base di polinomi tornano nel quiz di Algebra Lineare: [17-esami-ag-2024-2025.md](17-esami-ag-2024-2025.md#quiz-le-domande-che-tornano).
+
 ## Cose da saper fare all'esame
 - Verificare se un sottoinsieme (definito da equazioni, da condizioni su matrici/polinomi) è sottospazio: controllare 0, somma, scalare. Trovare base e dimensione.
 - Stabilire indipendenza/dipendenza di vettori (anche con parametro), trovare una relazione di dipendenza.

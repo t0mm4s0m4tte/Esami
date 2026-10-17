@@ -141,6 +141,10 @@ La **ricerca lineare** (LinSearch) non fa alcuna ipotesi sull'ordine: scorre con
 
 La **ricerca binaria** (BinSearch) richiede invece A ordinato non decrescente e in cambio scarta metà dell'intervallo a ogni passo. Il suo invariante è **x ∉ A[0..i-1] ∧ x ∉ A[j+1..n-1]**, con m=⌊(i+j)/2⌋: se A[m]<x si pone i=m+1, se A[m]>x si pone j=m-1; si esce con i>j, il che significa che l'intervallo candidato è vuoto e dunque x è assente (-1). Costo O(log n). L'ordinamento ha però un prezzo, e la ricerca binaria conviene solo se questo viene ammortizzato su molte ricerche.
 
+## Esercizi svolti collegati
+
+Le tecniche di questo file hanno il loro banco di prova nel [§1 Correttezza e invarianti](12-esercizi-svolti.md#1-correttezza-e-invarianti): l'invariante `y = x² ∧ x ≤ z` di Square mostra come si dimostrano inizializzazione, mantenimento e uscita; la ricerca lineare e quella dicotomica (ricorsive per induzione completa, iterative per invariante) sono la versione d'esame della sezione sulla ricerca; il Bubble-Sort richiede due invarianti annidati (cicli interno ed esterno) ed è l'esercizio che va saputo fare da zero; Horner serve per esercitarsi sugli invarianti con sommatorie. I costi di Insertion e Selection (confronti e spostamenti, casi migliore e peggiore) sono tabulati nel [§3 Ordinamento quadratico](12-esercizi-svolti.md#3-ordinamento-quadratico).
+
 ## Cose da saper fare all'esame
 
 **Scritto**

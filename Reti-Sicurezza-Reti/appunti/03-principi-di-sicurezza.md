@@ -164,6 +164,10 @@ Le sfide correnti sono: la **sicurezza del cloud** (rischi dell'infrastruttura c
 3. **Elemento umano**: le persone sono spesso l'anello più debole ma anche la risorsa più forte dei sistemi di sicurezza.
 4. **Continuità**: le misure di sicurezza devono adattarsi di continuo alle nuove minacce e tecnologie.
 
+## Esercizi svolti collegati
+
+Gli strumenti che realizzano i controlli qui elencati sono nei file successivi: crittografia, hash, MAC e firma in [06-fondamenti-crittografici.md](06-fondamenti-crittografici.md), e autenticazione di utenti (password, token, biometria, challenge-response, MFA) in [07-autenticazione-utenti.md](07-autenticazione-utenti.md). Non ci sono esercizi svolti sulla sicurezza nel Moodle di Reti.
+
 ## Cose da saper fare all'esame
 
 Per la teoria bisogna saper:

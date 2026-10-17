@@ -86,6 +86,10 @@ Un'applicazione pratica sono i **codici correttori (Reed-Solomon, QR code)**: si
 
 ---
 
+## Esercizi svolti collegati
+
+Il numero di soluzioni dalla matrice completa (Rouché-Capelli) è una domanda fissa del quiz, e il Problema 11 usa i sistemi con parametro: [17-esami-ag-2024-2025.md](17-esami-ag-2024-2025.md#quiz-le-domande-che-tornano) e l'esempio 1 (sistema A·x=b con infinite soluzioni).
+
 ## Cose da saper fare all'esame
 - Risolvere un sistema con Gauss/Gauss-Jordan e scrivere le soluzioni in forma parametrica x_p + t1v1+...; verificare sostituendo.
 - Discutere un sistema al variare di un parametro con Rouché-Capelli (numero di soluzioni e dimensione).

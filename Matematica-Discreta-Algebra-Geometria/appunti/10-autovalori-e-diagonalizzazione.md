@@ -90,6 +90,10 @@ Conclusione: **A_k diagonalizzabile su R ⇔ k<5.**
 
 ---
 
+## Esercizi svolti collegati
+
+La matrice con parametro k (autovalori, molteplicità algebrica e geometrica, per quali k è diagonalizzabile, P e D) è il Problema 11 della maggior parte degli appelli; esempi 1 e 2 e la tipologia in [17-esami-ag-2024-2025.md](17-esami-ag-2024-2025.md). Esercizi di compiti 2022 in [15-esercizi-endomorfismi.md](15-esercizi-endomorfismi.md).
+
 ## Cose da saper fare all'esame
 - Calcolare p_A, autovalori (con le molteplicità), autospazi con basi, decidere la diagonalizzabilità su R (e su C), trovare M e D (verificando AM=MD), calcolare Aᵏ.
 - Discutere la diagonalizzabilità al variare di un parametro (casi critici: autovalori che coincidono ⇒ calcolare m_g).

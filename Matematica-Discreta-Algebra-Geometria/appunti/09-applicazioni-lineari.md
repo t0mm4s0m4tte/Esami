@@ -78,6 +78,10 @@ Un endomorfismo è una lineare f: V→V; con una sola base B si scrive A=[f]_B^B
 
 ---
 
+## Esercizi svolti collegati
+
+Nucleo e immagine di endomorfismi di R_2[x], composizione, rango, cambi di base e teorema della dimensione sono nel quiz; un endomorfismo da formula (matrice, inversa, autovalori) è svolto come Esempio 2 in [17-esami-ag-2024-2025.md](17-esami-ag-2024-2025.md).
+
 ## Cose da saper fare all'esame
 - Stabilire se una mappa è lineare; scrivere la matrice (basi canoniche o no); trovare base di Ker e di Im; verificare il teorema della dimensione; dire se è iniettiva/suriettiva/isomorfismo.
 - Scrivere [f]_B^C con basi qualsiasi (calcolare le coordinate delle immagini con sistemi lineari); calcolare f(v) tramite [f(v)]_C=[f]·[v]_B.

@@ -54,6 +54,10 @@ Il numeratore misura quanto P0 non soddisfa l'equazione, il denominatore normali
 
 ---
 
+## Esercizi svolti collegati
+
+Angolo retta-piano, distanza tra rette sghembe e distanza piano-punto con numeri veri in Esempio 3 e Esempio 4 di [17-esami-ag-2024-2025.md](17-esami-ag-2024-2025.md).
+
 ## Cose da saper fare all'esame
 - Calcolare angoli retta-retta, retta-piano (via la normale, sinθ) e piano-piano (angolo fra normali), scegliendo l'angolo acuto.
 - Calcolare distanze punto-retta (prodotto vettoriale), punto-piano (formula), rette parallele e sghembe (determinante / prodotto vettoriale).
