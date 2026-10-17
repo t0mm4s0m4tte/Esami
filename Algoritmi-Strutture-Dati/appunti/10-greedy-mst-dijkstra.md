@@ -16,6 +16,18 @@ Prima l'albero di copertura minimo: definizioni, arco sicuro, taglio e teorema d
 
 Dato un grafo pesato non orientato G=(V,E) con w:E→R, un **albero di copertura** è un insieme di archi T⊆E connesso, aciclico, che copre V; un **MST** è un albero di copertura di peso w(T)=Σw minimo, e non è necessariamente unico. Il problema si presta a una soluzione **greedy**, cioè basata su una scelta localmente ottima più una sottostruttura ottima: si costruisce un insieme A ⊆ MST aggiungendo un arco alla volta, purché sia un **arco sicuro**. Un arco (u,v) è sicuro per A se esiste un MST T con A∪{(u,v)}⊆T, cioè se aggiungerlo non preclude di arrivare a un MST.
 
+<p align="center">
+<img src="img/10-grafo-pesato.png" width="460" alt="Grafo non orientato pesato con pesi sugli archi da 2 a 12"><br>
+<sub><i>Figura: un grafo pesato (slide 4).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/10-alberi-copertura.png" width="560" alt="Due alberi di copertura T e T' dello stesso grafo pesato, entrambi di peso 32"><br>
+<sub><i>Figura: due alberi di copertura diversi con lo stesso peso (slide 7).</i></sub>
+</p>
+
+
 Il problema è come riconoscere un arco sicuro, e la risposta è il concetto di taglio:
 - un **taglio** è una partizione (S,V\S) dei vertici;
 - un arco lo **attraversa** se ha un estremo per parte;
@@ -23,6 +35,12 @@ Il problema è come riconoscere un arco sicuro, e la risposta è il concetto di 
 - un **arco leggero** è un arco di peso minimo tra quelli che attraversano il taglio.
 
 Il **teorema del taglio** afferma che, dato un taglio che rispetta A, ogni arco leggero che lo attraversa è sicuro per A. Tutti e due gli algoritmi seguenti sono solo modi diversi di scegliere tagli che rispettano A.
+
+<p align="center">
+<img src="img/10-teorema-taglio.png" width="560" alt="Un taglio che rispetta A e l'arco leggero (u,v) che lo attraversa, tratteggiato in rosso"><br>
+<sub><i>Figura: il teorema del taglio (slide 11).</i></sub>
+</p>
+
 
 ### Kruskal (basato sugli archi)
 Kruskal ha una visione globale:
@@ -34,10 +52,22 @@ Per sapere rapidamente se due vertici sono nello stesso albero si usa la struttu
 
 La correttezza discende dal teorema del taglio: l'arco (u,w) tra le componenti U e W è leggero per il taglio (U,V\U), che rispetta A, ed è quindi sicuro. Il costo è un ordinamento O(m log m), più MakeSet O(n), più Find/Union ammortizzati O(m log n), in totale **O(m log n)** (poiché m ≥ n-1, log m = O(log n)).
 
+<p align="center">
+<img src="img/10-kruskal-risultato.png" width="560" alt="Albero di copertura minima calcolato da Kruskal sul grafo di esempio, con gli archi scelti in verde"><br>
+<sub><i>Figura: il risultato di Kruskal sul grafo di esempio (slide 33).</i></sub>
+</p>
+
+
 ### Prim (basato sui vertici)
 Prim ha invece una visione locale: cresce un solo albero a partire da un vertice arbitrario e a ogni passo aggiunge l'arco più leggero tra l'albero e il resto del grafo. Si usa una coda di **min-priorità** (heap) in cui v.key è il peso del più leggero arco che collega v all'albero (∞ se non ce ne sono), con le operazioni **Extract-Min** e **Decrease-Key**. La correttezza è la stessa: Extract-Min seleziona l'arco leggero del taglio (A, V\A), che rispetta A, quindi sicuro.
 
 Con un heap min il costo è: BuildHeap O(n log n) nel doc (in realtà O(n), vedi 08), n Extract-Min per O(n log n) e al più m Decrease-Key per O(m log n), cioè **O(m log n)**. In sintesi la complessità è la stessa di Kruskal; cambia l'approccio: Kruskal ordina tutti gli archi e usa Union-Find, Prim lavora sulla frontiera con una coda di priorità.
+
+<p align="center">
+<img src="img/10-prim-risultato.png" width="560" alt="Albero di copertura minima calcolato da Prim sul grafo di esempio, con i vertici neri e gli archi scelti in verde"><br>
+<sub><i>Figura: il risultato di Prim sul grafo di esempio (slide 57).</i></sub>
+</p>
+
 
 ## Cammini minimi (sorgente singola)
 
@@ -45,9 +75,21 @@ Il problema è dato da G=(V,E) orientato, w:E→R e una sorgente s, e l'output �
 
 Due fatti sono alla base di tutto. Il **lemma dei sottocammini** dice che i sottocammini di un cammino minimo sono a loro volta minimi (per assurdo: se ne esistesse uno migliore lo si sostituirebbe). La **disuguaglianza triangolare** dice che δ(u,v) ≤ δ(u,z)+δ(z,v). L'operazione base è il rilassamento:
 
+<p align="center">
+<img src="img/10-bellman.png" width="500" alt="Cammino minimo da s a v e disuguaglianza triangolare: delta(s,v) minore o uguale di delta(s,u) più w(u,v)"><br>
+<sub><i>Figura: disuguaglianza triangolare (slide 9).</i></sub>
+</p>
+
+
 `Relax(u,v,w): if v.d > u.d + w(u,v) then v.d <- u.d + w(u,v); v.π <- u`
 
 Il **lemma di convergenza** assicura che se s→u→v è un cammino minimo e u.d=δ(s,u), dopo Relax(u,v,w) vale v.d=δ(s,v).
+
+<p align="center">
+<img src="img/10-rilassamento.png" width="380" alt="Rilassamento dell'arco (u,v) di peso 2: la stima v.d scende da 9 a 7"><br>
+<sub><i>Figura: rilassamento di un arco (slide 10).</i></sub>
+</p>
+
 
 ### Dijkstra
 L'idea di Dijkstra è quella di estrarre sempre, tra i vertici non ancora definitivi, quello con stima d più piccola, dichiararlo definitivo e rilassare i suoi archi uscenti. La coda di priorità contiene i vertici ancora da sistemare.
@@ -63,7 +105,25 @@ Dijkstra(G,w,s)
 
 Esempio del doc (5 vertici): le estrazioni avvengono con d = 0, 5, 7, 8, 9, con aggiornamenti 10->8, ∞->14->13, ∞->7, 8+1=9. [DA VERIFICARE: il grafo non è riportato nel testo, solo la traccia.]
 
+<div align="center">
+
+<table>
+<tr>
+<td align="center"><img src="img/10-dijkstra-inizio.png" height="210" alt="Dijkstra sul grafo di esempio all'inizio: la sorgente s ha distanza 0, gli altri vertici hanno stima infinita"><br><sub>Dijkstra: stato iniziale (slide 14).</sub></td>
+<td align="center"><img src="img/10-dijkstra-fine.png" height="210" alt="Dijkstra sul grafo di esempio alla fine: tutti i vertici sono neri e gli archi dell'albero dei cammini minimi sono verdi"><br><sub>Dijkstra: stato finale (slide 19).</sub></td>
+</tr>
+</table>
+
+</div>
+
+
 **Correttezza.** L'invariante è che per ogni v∈S vale v.d=δ(s,v). Per assurdo, sia u il primo vertice inserito in S con u.d>δ(s,u). Sul cammino minimo p da s a u esiste un arco (x,y) con x∈S e y∉S (y è il primo vertice fuori da S). Per la minimalità di u, x.d=δ(s,x); rilassando (x,y), per convergenza y.d=δ(s,y). Poiché i pesi sono ≥ 0, δ(s,y) ≤ δ(s,u) < u.d. Quindi y.d < u.d, ma Extract-Min avrebbe scelto y prima di u: contraddizione.
+
+<p align="center">
+<img src="img/10-correttezza.png" width="520" alt="Insieme S dei vertici definitivi, con s e x dentro e il primo vertice u con distanza errata fuori, usato nella dimostrazione per assurdo"><br>
+<sub><i>Figura: la dimostrazione di correttezza di Dijkstra (slide 21).</i></sub>
+</p>
+
 
 **Pesi negativi.** Il controesempio è s→u (3), s→v (5), v→u (-4): u viene estratto con 3 e dichiarato definitivo, poi v permetterebbe di arrivare a u con 5-4=1, ma u è già in S, quindi il risultato (3 invece di 1) è sbagliato. Con pesi negativi (e senza cicli negativi) serve **Bellman-Ford**.
 
@@ -86,6 +146,24 @@ Lo pseudocodice di **MST-Kruskal** usa A (lista degli archi scelti), L (archi or
 Se U=W l'arco chiuderebbe un ciclo, quindi non è in T; se U≠W attraversa il taglio (U,V\U), che rispetta A, ed è leggero, quindi è sicuro.
 
 L'ADT **Union-Find** ha MakeSet(U) (partizione discreta), Union(x,y,P) e Find(x,P), che restituisce il rappresentante r(X). Si realizza con una **foresta di alberi pozzo** (vettore dei padri) la cui radice è il rappresentante; u e w stanno nella stessa parte se e solo se Find(u)=Find(w). Con l'**unione per rango** (l'albero più basso diventa figlio dell'altro) e la **compressione del cammino** (Find appiattisce il cammino percorso) si ha MakeSet O(n) e Find/Union **O(m log n) ammortizzato su m operazioni** (rif. Cormen §21.3).
+
+<p align="center">
+<img src="img/10-union-find.png" width="540" alt="Foresta di alberi che rappresenta gli insiemi Union-Find, con radice x che punta a se stessa, e la tabella dei vettori con i puntatori ai padri"><br>
+<sub><i>Figura: Union-Find con una foresta di alberi (slide 36).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/10-unione-per-rango.png" width="520" alt="Unione per rango: l'albero di altezza minore con radice h diventa figlio della radice x dell'albero più alto"><br>
+<sub><i>Figura: unione per rango (slide 38).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/10-compressione-cammino.png" width="560" alt="Compressione del cammino: dopo una Find tutti i nodi del cammino puntano direttamente alla radice d"><br>
+<sub><i>Figura: compressione del cammino (slide 39).</i></sub>
+</p>
+
 
 ### Prim
 Per **MST-Prim** l'invariante è:

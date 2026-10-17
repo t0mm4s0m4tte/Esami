@@ -115,6 +115,18 @@ Anche gli ordinamenti elementari si leggono come due diverse scelte di invariant
 
 La differenza di invariante si traduce in un diverso comportamento al variare dell'input. Selection sort deve sempre cercare il minimo nell'intero suffisso e quindi fa un numero di confronti che non dipende dai dati; Insertion sort invece si ferma appena trova la posizione giusta, e quindi sull'input già ordinato (ogni t_i=1) fa solo O(n) confronti, mentre sull'input inverso (t_i=i) arriva a O(n^2). Sul numero di scambi la situazione è opposta: Selection ne fa sempre esattamente n-1, Insertion da 0 a O(n^2).
 
+<p align="center">
+<img src="img/01-selection-invariante.png" width="560" alt="Vettore A[1..n] con la parte sinistra ordinata fino a i e il minimo A[k] da scambiare con A[i]"><br>
+<sub><i>Figura: invariante del Selection Sort (slide 23).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/01-insertion-invariante.png" width="560" alt="Vettore A[1..n] con la parte sinistra ordinata fino a i e l'elemento in posizione i+1 da inserire"><br>
+<sub><i>Figura: invariante dell'Insertion Sort (slide 12).</i></sub>
+</p>
+
+
 | | Insertion | Selection |
 |---|---|---|
 | Confronti migliore | O(n) (già ordinato, t_i=1) | O(n^2) |

@@ -19,6 +19,24 @@ Si parte dalle definizioni (grafi orientati e non) e dalle rappresentazioni (mat
 
 Un grafo serve a modellare relazioni tra oggetti: reti stradali, trasporti, reti di computer, social network (e storicamente i ponti di Königsberg di Eulero e il problema dei 4 colori). Un **grafo orientato** è G=(V,E) con E ⊆ V×V, cioè coppie ordinate, e sono ammessi i **cappi** (u,u). In un grafo **non orientato** E ⊆ {{u,v} | u≠v}: non ci sono cappi e {u,v}={v,u}. Un arco è incidente su u e v; in un orientato v è **adiacente** a u se (u,v)∈E, relazione non simmetrica. L'esempio del doc ha V={1..6} e E={(1,2),(2,2),(2,4),(2,5),(4,1),(4,5),(5,4),(6,3)}, con Adj[2]=[2,4,5] e Adj[4]=[1,5].
 
+<p align="center">
+<img src="img/09-ponti-koenigsberg.png" width="520" alt="I ponti di Koenigsberg e il grafo con quattro vertici e sette archi che li rappresenta"><br>
+<sub><i>Figura: il problema dei ponti di Koenigsberg (slide 3).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/09-grafo-orientato.png" width="560" alt="Grafo orientato con sei vertici, archi con direzione e un cappio sul vertice 2, con la definizione di V ed E"><br>
+<sub><i>Figura: grafo orientato (slide 11).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/09-grafo-non-orientato.png" width="560" alt="Grafo non orientato con sei vertici e i suoi archi, senza cappi, con la definizione di V ed E"><br>
+<sub><i>Figura: grafo non orientato (slide 12).</i></sub>
+</p>
+
+
 ## Rappresentazioni
 
 La scelta della rappresentazione dipende da quanti archi ha il grafo rispetto al massimo possibile e da quali operazioni servono di più: la matrice dà accesso immediato a un singolo arco ma spreca spazio sui grafi sparsi, le liste sono compatte e rendono naturale scorrere i vicini.
@@ -31,15 +49,45 @@ La scelta della rappresentazione dipende da quanti archi ha il grafo rispetto al
 
 Nel caso non orientato la matrice è **simmetrica** con diagonale a 0.
 
+<p align="center">
+<img src="img/09-matrice-adiacenza.png" width="560" alt="Grafo orientato con sei vertici e la sua matrice di adiacenza 6 per 6"><br>
+<sub><i>Figura: matrice di adiacenza (slide 14).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/09-liste-adiacenza.png" width="560" alt="Grafo orientato con sei vertici e le sue liste di adiacenza"><br>
+<sub><i>Figura: liste di adiacenza (slide 15).</i></sub>
+</p>
+
+
 ## BFS e DFS
 
 Le due visite esplorano un grafo a partire da una sorgente, ma con strategie opposte. La **BFS** usa una coda FIFO e visita per livelli, a distanza crescente dalla sorgente s. Definita **δ(u,v)** come il numero minimo di archi tra u e v, la BFS trova esattamente i cammini minimi in numero di archi (grafo non pesato). I vertici hanno tre colori: bianco (non scoperto), grigio (scoperto ma non finito), nero (visitato). I layer L0, L1,... sono disgiunti e coincidono con i livelli dell'albero BFS, che contiene i vertici raggiungibili da s. Costo **O(|V|+|E|)**, perché ogni vertice e ogni arco sono considerati un numero costante di volte.
 
 La **DFS** usa una pila (implicita nella ricorsione, oppure esplicita): va più a fondo possibile e poi torna indietro con il backtracking. Non produce distanze minime, ma la sua struttura temporale la rende adatta a rilevare cicli e a studiare la connettività.
 
+<div align="center">
+
+<table>
+<tr>
+<td align="center"><img src="img/09-bfs-finale.png" height="270" alt="Visita in ampiezza di un grafo con vertici colorati di nero, coda vuota e albero BFS con radice A"><br><sub>BFS: coda e albero di visita (slide 42).</sub></td>
+<td align="center"><img src="img/09-dfs-finale.png" height="270" alt="Visita in profondità di un grafo con vertici neri, pila e albero DFS lungo il cammino A, B, C, D, F"><br><sub>DFS: pila e albero di visita (slide 57).</sub></td>
+</tr>
+</table>
+
+</div>
+
+
 ## DFS temporizzata
 
 La DFS temporizzata registra, per ogni vertice u, il momento in cui viene scoperto (**u.d**, quando diventa grigio) e il momento in cui ha finito di esplorare i suoi discendenti (**u.f**, quando diventa nero), oltre al predecessore π e a un contatore globale `time`. Il driver DFS-Graph inizializza ogni vertice (colore bianco, π=nil, time=0) e lancia la DFS su ogni vertice ancora bianco, ottenendo una **foresta DFS**.
+
+<p align="center">
+<img src="img/09-dfs-temporizzata.png" width="560" alt="Visita DFS di un grafo con sei vertici, con tempi di scoperta e di fine per ogni vertice e albero di visita a destra"><br>
+<sub><i>Figura: DFS temporizzata, tempi di scoperta e di fine (slide 9).</i></sub>
+</p>
+
 
 ```
 DFS(G,u): u.color<-grigio; time++; u.d<-time
@@ -60,9 +108,21 @@ Gli archi (u,v) si classificano in base al colore di v nel momento in cui l'arco
 - **in avanti** (v nero, discendente di u): u.d < v.d < v.f < u.f
 - **trasversale** (v nero, altrove): v.d < v.f < u.d < u.f
 
+<p align="center">
+<img src="img/09-classificazione-archi.png" width="560" alt="Grafo con tempi di scoperta e fine, archi d'albero in verde, all'indietro in rosso, in avanti in blu e trasversali in nero"><br>
+<sub><i>Figura: classificazione degli archi (slide 15).</i></sub>
+</p>
+
+
 ## Ordinamento topologico
 
 Un ordinamento topologico è una linearizzazione dei vertici di un grafo orientato in cui ogni arco (u,v) ha u prima di v; l'esempio classico è l'ordine in cui vestirsi (le calze prima delle scarpe, ecc.). Esiste **se e solo se il grafo è un DAG**, cioè aciclico: un ciclo imporrebbe che ciascun suo vertice preceda gli altri. L'intuizione dell'algoritmo è semplice: in una DFS un vertice diventa nero solo dopo che tutti i suoi successori sono finiti, quindi basta inserire ogni vertice in testa a una lista nel momento in cui termina.
+
+<p align="center">
+<img src="img/09-grafo-dipendenze.png" width="520" alt="Grafo orientato delle dipendenze fra capi di abbigliamento: mutande, pantaloni, scarpe, calze, camicia, cravatta, cintura, giacca, orologio"><br>
+<sub><i>Figura: il grafo delle dipendenze per vestirsi (slide 3).</i></sub>
+</p>
+
 
 ```
 Topological-Sort(G): L<-lista vuota; colori bianchi, π=nil, time=0
@@ -72,6 +132,12 @@ DFS-Visit-Topological(G,u,L): come DFS, ma a fine visita (u nero, u.f assegnato)
 ```
 
 Il costo è **Θ(|V|+|E|)**, una sola DFS.
+
+<p align="center">
+<img src="img/09-ordinamento-topologico.png" width="560" alt="Lo stesso grafo con i tempi di scoperta e fine di ogni vertice e, sotto, i vertici in ordine di tempo di fine decrescente"><br>
+<sub><i>Figura: l'ordinamento topologico con i tempi di fine (slide 19).</i></sub>
+</p>
+
 
 **Correttezza (teorema: su un DAG produce un ordinamento topologico).** Basta mostrare che per ogni arco (u,v) vale **v.f < u.f**, perché allora u viene messo in testa dopo v e quindi sta prima. Se l'arco è d'albero, in avanti o trasversale, le condizioni temporali danno direttamente v.f < u.f. Se fosse all'indietro si avrebbe u.f < v.f, ma **un arco all'indietro implica un ciclo, impossibile in un DAG**. Dunque la tesi vale.
 
@@ -89,6 +155,12 @@ La dimostrazione dell'ordinamento topologico si può rifare con i **4 casi dei t
 
 ### Componenti fortemente connesse
 Una **componente fortemente connessa (cfc)** è un insieme C ⊆ V massimale tale che u ⤳ v e v ⤳ u per ogni u,v∈C. Si indicano con D(u) i discendenti (raggiungibili da u) e con A(u) gli antecedenti; la cfc di u è C(u)=D(u)∩A(u). Una DFS su G dà D(u); per A(u) si usa il **grafo trasposto G^T** (E^T = {(v,u) | (u,v)∈E}), in cui gli archi sono invertiti. L'algoritmo naive esegue DFS(G,u) e DFS(G^T,u) per ogni u, con costo O(|V|·(|V|+|E|)).
+
+<p align="center">
+<img src="img/09-componenti-fortemente-connesse.png" width="540" alt="Grafo orientato con otto vertici raggruppati in quattro componenti fortemente connesse, con la definizione di cfc"><br>
+<sub><i>Figura: componenti fortemente connesse (slide 23).</i></sub>
+</p>
+
 
 L'algoritmo **Strongly-Connected-Components(G)** (di Kosaraju) fa invece tutto in **Θ(|V|+|E|)**:
 1. DFS-Graph(G), calcolando i tempi f.

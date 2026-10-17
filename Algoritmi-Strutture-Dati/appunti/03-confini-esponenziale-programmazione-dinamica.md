@@ -17,6 +17,18 @@ Il file parte dai confini superiori e inferiori di un problema (con Gemelli, Som
 
 Per un problema si può dire qualcosa sia sul costo di un algoritmo che lo risolve, sia su ciò che *nessun* algoritmo può fare meglio. Il **confine superiore** è il costo (nel caso peggiore) di un qualunque algoritmo che risolve il problema; il **confine inferiore** vale invece per *ogni* algoritmo. La distanza tra i due è il **gap**, e un algoritmo è **asintoticamente ottimo** quando T_A(n)=O(f(n)) e il problema è Ω(f(n)).
 
+<p align="center">
+<img src="img/03-albero-decisione.png" width="540" alt="Albero di decisione per ordinare tre elementi a, b, c con confronti nei nodi interni e le sei permutazioni nelle foglie"><br>
+<sub><i>Figura: albero di decisione dell'ordinamento di 3 elementi (slide 32).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/03-gap.png" width="520" alt="Grafico del tempo di esecuzione con il gap algoritmico fra l'algoritmo più veloce noto e i confini inferiori teorico e banale"><br>
+<sub><i>Figura: il gap algoritmico (slide 15).</i></sub>
+</p>
+
+
 I limiti inferiori più semplici da ottenere sono quelli "banali": si deve almeno leggere tutti i dati (Ω(n)), oppure bisogna contare eventi necessari (trovare il massimo di n elementi richiede almeno n-1 confronti). Con questi strumenti si possono già studiare due problemi tipo.
 
 Nel problema dei **Gemelli** (esistono duplicati in A[1..n]?) l'approccio diretto TWINS confronta tutte le coppie in n^2 passi; la variante TWINS' evita le ripetizioni e fa n(n-1)/2 confronti, ma resta O(n^2) perché le costanti non contano; con TWINS'' si ordina prima (O(n log n)) e poi si cercano duplicati fra elementi adiacenti (O(n)), ottenendo **O(n log n)** contro un lower bound banale Ω(n).
@@ -68,6 +80,24 @@ alg1(x,n): y:=x; k:=n; z:=1
 ## Programmazione dinamica (DP)
 
 Lo slowExp ha insegnato che dividere un problema non basta se i sottoproblemi si ripetono. Il **divide et impera** è efficiente quando i sottoproblemi sono **indipendenti**; la **programmazione dinamica** serve quando sono **sovrapposti** (altrimenti la ricorsione è esponenziale), e richiede due ingredienti: **sottostruttura ottimale** (una soluzione ottima si compone di soluzioni ottime dei sottoproblemi) e **sottoproblemi ripetuti**. Il metodo si sviluppa in quattro fasi:
+
+<p align="center">
+<img src="img/03-lcs-tabella.png" width="440" alt="Tabella di LCS fra le sequenze G, A, C e A, G, C, A, T con le frecce che indicano la provenienza di ogni valore"><br>
+<sub><i>Figura: tabella della massima sottosequenza comune (slide 28).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/03-albero-fib-memo.png" width="420" alt="Albero di ricorsione di Fib(5) con i nodi già calcolati in rosso che la memoization non ricalcola"><br>
+<sub><i>Figura: memoization, i nodi rossi non si ricalcolano (slide 13).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/03-conigli.png" width="520" alt="Problema dei conigli di Fibonacci: coppie per generazione con f_n = f_{n-1} + f_{n-2}"><br>
+<sub><i>Figura: i conigli di Fibonacci (slide 6).</i></sub>
+</p>
+
 1. caratterizzare la struttura della soluzione ottima;
 2. definire ricorsivamente il valore della soluzione;
 3. eliminare le ripetizioni con la **memoization** (top-down, si ricordano i risultati già calcolati);

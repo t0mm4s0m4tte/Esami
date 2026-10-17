@@ -21,9 +21,21 @@ Un dizionario è un insieme dinamico con le sole operazioni Insert, Search e Del
 
 Un esempio mostra quanto sia grave: con 20.000 studenti e matricola a 6 cifre (|U|=10^6) lo spreco è del 0.4% se ogni studente occupa 100 KB, ma sale al 28% con 1 KB per studente e al 95.6% con 1 KB e soli 200 studenti. L'hashing nasce da qui: tenere O(1) senza pagare |U|.
 
+<p align="center">
+<img src="img/05-indirizzamento-diretto.png" width="560" alt="Universo U delle chiavi con le chiavi presenti, e una tavola a indirizzamento diretto T i cui puntatori portano ai dati"><br>
+<sub><i>Figura: tavola a indirizzamento diretto (slide 6).</i></sub>
+</p>
+
+
 ## Hashing
 
 Si introduce una funzione **h: U -> {0,...,m-1}** con m << |U|, che assegna a ogni chiave una cella (valore hash). Perdendo la corrispondenza uno-a-uno tra chiave e posizione, due chiavi diverse possono finire nella stessa cella: sono le **collisioni** (k1≠k2, h(k1)=h(k2)), inevitabili per il principio dei cassetti. Solo con un insieme di chiavi statico e noto si può avere un hash perfetto. Per questo una buona h deve ripartire le chiavi in modo uniforme: con U={00..99} e m=10, k mod 10 mette 10 chiavi in ogni cella, mentre (somma delle cifre) mod 10 è sbilanciata (la cella 0 contiene solo 00, la cella 9 ne contiene 10). Formalmente l'**uniformità semplice** richiede |h^-1(i)| = |h^-1(j)| per ogni i,j, cioè ogni cella ugualmente probabile.
+
+<p align="center">
+<img src="img/05-funzione-hash.png" width="560" alt="Universo U con le chiavi presenti e una funzione h(k) = k mod 5 che le assegna alle celle di una tavola hash T"><br>
+<sub><i>Figura: tavola hash con h(k) = k mod 5 (slide 13).</i></sub>
+</p>
+
 
 Due metodi standard per costruire h:
 - **Divisione**: h(k)=k mod m. Va evitato m=2^p, perché userebbe solo i p bit bassi della chiave; la buona euristica è scegliere m **primo** e non vicino a una potenza di 2.
@@ -32,6 +44,12 @@ Due metodi standard per costruire h:
 ## Concatenamento (liste di trabocco)
 
 La prima strategia per gestire le collisioni è tenere in ogni cella una lista: T[i] punta alla lista degli elementi con hash i. Insert in testa è **O(1)**; Search scorre la lista della cella; Delete cerca e rimuove (con liste doppie la rimozione è O(1)). L'indicatore chiave è il **fattore di carico α = n/m**, la lunghezza media di una lista.
+
+<p align="center">
+<img src="img/05-concatenamento.png" width="560" alt="Tavola hash con concatenamento: ogni cella di T punta a una lista di trabocco che contiene le chiavi in collisione"><br>
+<sub><i>Figura: concatenamento con liste di trabocco (slide 21).</i></sub>
+</p>
+
 
 Nel caso peggiore tutte le chiavi finiscono nella stessa lista e le operazioni costano **Θ(n)**. Nel caso medio, sotto l'ipotesi di uniformità semplice, una ricerca senza successo costa **Θ(1+α)** e una con successo circa 1 + α/2 - α/(2n), ancora Θ(1+α). Se si dimensiona la tabella proporzionalmente al numero di elementi (m ∝ n), allora α=Θ(1) e tutto è **O(1) atteso**.
 

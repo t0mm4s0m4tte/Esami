@@ -63,6 +63,12 @@ Due esempi mostrano come procedere. IND-MIN (minimo in B di m elementi) è Θ(m)
 
 Finora si è parlato di costo di un algoritmo; si può parlare anche di complessità di un *problema*. Il limite **inferiore** del problema (Ω) vale per ogni algoritmo nel caso peggiore, mentre il limite **superiore** (O) è il costo del miglior algoritmo noto. Un algoritmo è **ottimo** quando il suo O coincide con l'Ω del problema.
 
+<p align="center">
+<img src="img/02-somma17.png" width="560" alt="Il vettore A di cinque interi e il vettore caratteristico C con indici da 0 a 17, usati nella soluzione lineare di Somma17"><br>
+<sub><i>Figura: il vettore caratteristico di Somma17 (slide 21).</i></sub>
+</p>
+
+
 L'esempio del doc è "somma 17": trovare due elementi di un vettore la cui somma sia 17. L'algoritmo ingenuo prova le coppie ed è O(n^2); ma ogni elemento va visto almeno una volta, quindi il problema è Ω(n). Si può raggiungere quel limite con un vettore di presenza c[0..17] (c[x]=1 se x è presente e x<=17) riempito in una passata, per poi controllare c[i]&&c[17-i] per i=0..8, che è O(1): in totale **O(n), ottimo**.
 
 ## Divide et impera
@@ -105,6 +111,30 @@ Il teorema **non** copre tutto, e questi limiti sono domande da orale. Non si ap
 ## Ricorsione
 
 La ricorsione si presenta in tre forme, in ordine crescente di efficienza.
+
+<p align="center">
+<img src="img/02-tartaglia.png" width="520" alt="Triangolo di Tartaglia con il coefficiente binomiale calcolato per ricorsione ad albero"><br>
+<sub><i>Figura: coefficiente binomiale e triangolo di Tartaglia (slide 25).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/02-hanoi.png" width="500" alt="Le torri di Hanoi: sposta la torre dei dischi da A a B usando C, in tre passi"><br>
+<sub><i>Figura: le torri di Hanoi (slide 45).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/02-albero-fib.png" width="520" alt="Albero di ricorsione di Fib(5) con i suoi sottoproblemi ripetuti"><br>
+<sub><i>Figura: albero di ricorsione di Fibonacci (slide 21).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/02-pila-fattoriale.png" width="460" alt="Calcolo di fact(3) con la pila domande/risposte: fact(3), fact(2), fact(1), fact(0) impilati"><br>
+<sub><i>Figura: valutazione di fact con la pila (slide 29).</i></sub>
+</p>
+
 
 La ricorsione **lineare** ha una sola chiamata ricorsiva: fact(n)=n·fact(n-1), con caso base n=0. Si ha una fase di espansione (le chiamate si accumulano nello stack) seguita da una di contrazione (i prodotti vengono calcolati al ritorno); tempo e spazio sono O(n), con rischio di stack overflow. La ricorsione **di coda** fa sì che la chiamata ricorsiva sia l'ultima operazione e che lo stato viaggi negli accumulatori, quindi non c'è nulla da fare al ritorno: `fact_tail_helper(prod,counter,n)`: if counter==n return prod; else helper(prod*(counter+1), counter+1, n). Lo spazio scende a O(1) e la funzione è equivalente al ciclo `while(counter!=n){prod*=counter+1; counter++;}` con invariante prod=counter!.
 

@@ -19,9 +19,21 @@ Una coda di priorità è una struttura che deve fornire velocemente l'elemento d
 - **strutturale**: l'albero è completo tranne al più l'ultimo livello, riempito da sinistra, e di qui discende l'altezza logaritmica;
 - **di ordinamento**: in un Max-Heap `key(nodo) >= key(figli)` (Min-Heap con <=), per cui il massimo sta sempre nella radice.
 
+<p align="center">
+<img src="img/08-heap-definizione.png" width="560" alt="Definizione di heap massimo con un esempio di albero binario completo con chiavi 16, 9, 14, 7, 4, 8, 10, 3, 2, 1"><br>
+<sub><i>Figura: definizione di heap e un esempio (slide 3).</i></sub>
+</p>
+
+
 Nota che l'ordine richiesto è molto più debole di quello dei BST: serve solo il confronto padre-figlio, non una relazione tra fratelli, ed è proprio questa debolezza a rendere le operazioni semplici.
 
 Poiché l'albero è completo, non servono puntatori: lo si memorizza in un **array H[1..n]**. La radice è H[1], il figlio sinistro di i è in 2i, il destro in 2i+1 e **Parent(i)=⌊i/2⌋**. Per comodità Left(i) vale 2i se 2i<=HeapSize e altrimenti i, e Right(i) vale 2i+1 se <=HeapSize altrimenti i. Le **foglie** sono H[⌊n/2⌋+1 .. n], e per questo BuildHeap parte da ⌊n/2⌋. Dimostrazione: se n>1, H[i] è una foglia se e solo se i<=n e n<2i, cioè i > ⌊n/2⌋ (n<2i implica ⌊n/2⌋ < i).
+
+<p align="center">
+<img src="img/08-heap-array.png" width="500" alt="Heap con chiavi 16, 9, 14, 7, 4, 8, 10, 3, 2, 1 e il corrispondente array H con gli indici da 1 a 10"><br>
+<sub><i>Figura: heap rappresentato come array (slide 6).</i></sub>
+</p>
+
 
 ## Operazioni
 
@@ -29,13 +41,37 @@ Le operazioni sfruttano tutte lo stesso schema: si rompe localmente una propriet
 
 L'**Insert(x)** incrementa HeapSize, mette x nell'ultima posizione (la struttura resta completa) e poi lo **fa risalire**, scambiandolo col padre finché la sua chiave è <= quella del padre o si arriva alla radice. Costo **O(log n)**. Il **Maximum** è H[1] e costa **O(1)**.
 
+<p align="center">
+<img src="img/08-heap-inserimento.png" width="560" alt="Inserimento in un heap: la nuova chiave 15 è inserita come foglia e sale scambiandosi con i padri minori"><br>
+<sub><i>Figura: Insert, il nuovo elemento risale lungo il ramo (slide 12).</i></sub>
+</p>
+
+
 L'**ExtractMaximum** prende H[1], sposta H[HeapSize] in H[1] (di nuovo per mantenere la struttura completa), decrementa HeapSize e chiama **Heapify(H,1)**, che fa scendere la nuova radice. Costo **O(log n)**. La **Heapify(H,i)** assume che i sottoalberi dei due figli siano già heap; confronta H[i] coi figli, lo scambia con il maggiore e ripete sul sottoalbero modificato. Segue un percorso radice-foglia, quindi **O(log n)**.
 
+<p align="center">
+<img src="img/08-heap-estrazione.png" width="560" alt="Estrazione del massimo da un heap: l'ultimo elemento 4 è messo in radice e deve scendere scambiandosi con il figlio maggiore"><br>
+<sub><i>Figura: ExtractMaximum, l'elemento in radice scende (slide 18).</i></sub>
+</p>
+
+
 La **BuildHeap** trasforma un array qualsiasi in heap chiamando Heapify per i da ⌊n/2⌋ a 1: le foglie sono già heap banali e si procede dal basso verso l'alto, in modo che quando si chiama Heapify(i) i due sottoalberi siano già heap. Il limite grezzo è O(n log n) (n/2 chiamate da O(log n)), ma un'analisi più raffinata dà **O(n)**; il doc enuncia questo risultato senza dimostrarlo. La slide 15 (livello 1) conferma che la stima grossolana O(n log n) "si può raffinare sino a mostrare che BuildHeap è lineare", ma non riporta la dimostrazione. Idea della dimostrazione: il numero di nodi di altezza h è al più circa n/2^h e Heapify su uno di essi costa O(h), quindi il costo totale è O(n·Σ h/2^h) = O(n), perché la serie converge (fonte: Wikipedia, "Binary heap", https://en.wikipedia.org/wiki/Binary_heap; il valore 2 della somma è un calcolo mio).
+
+<p align="center">
+<img src="img/08-buildheap.png" width="560" alt="BuildHeap su un array V: la metà destra dell'array contiene le foglie, si chiama Heapify per gli indici da n/2 a 1"><br>
+<sub><i>Figura: BuildHeap (slide 29).</i></sub>
+</p>
+
 
 ## Heapsort
 
 L'idea di Heapsort è quella del SelectSort, con la differenza che il massimo si estrae in O(log n) invece che in O(n). Si costruisce un heap e poi si sposta ripetutamente la radice, cioè il massimo, in fondo alla parte non ancora ordinata.
+
+<p align="center">
+<img src="img/08-heapsort.png" width="560" alt="Heapsort: il vettore V diviso in una parte a sinistra che forma un heap e una parte a destra ordinata"><br>
+<sub><i>Figura: invariante di Heapsort (slide 26).</i></sub>
+</p>
+
 
 ```
 HeapSort(V): BuildHeap(V)

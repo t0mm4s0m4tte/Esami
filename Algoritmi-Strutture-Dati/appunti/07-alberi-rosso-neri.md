@@ -23,6 +23,12 @@ Il problema dei BST (vedi 06) è che l'altezza può degenerare fino a n-1 e con 
 
 Da qui si definisce l'**altezza nera** bh(x), il numero di nodi neri su un cammino da x a una foglia, **escluso x**.
 
+<p align="center">
+<img src="img/07-albero-rosso-nero.png" width="560" alt="Albero rosso-nero con radice 13 e nodi rossi e neri, con le foglie NIL sentinella nere"><br>
+<sub><i>Figura: un albero rosso-nero con le foglie NIL (slide 5).</i></sub>
+</p>
+
+
 ## Altezza
 
 L'intuizione è che la regola 3 impone che l'albero sia "pieno" quanto a nodi neri, mentre la regola 2 impedisce che i nodi rossi facciano allungare un cammino più del doppio degli altri. La proposizione è che un albero R-N con n nodi interni ha altezza massima **2·log2(n+1)**, e di conseguenza search, insert e delete costano **O(log n)** nel caso peggiore.
@@ -44,6 +50,12 @@ Il codice dalle slide della Left-Rotate(T,x) procede così:
 3. y.parent:=x.parent, e si aggiorna T / x.parent.left / x.parent.right a y;
 4. y.left:=x; x.parent:=y.
 
+<p align="center">
+<img src="img/07-rotazioni.png" width="560" alt="Left-Rotate su x e Right-Rotate su y: i sottoalberi alfa, beta e gamma cambiano genitore ma l'ordine delle chiavi resta"><br>
+<sub><i>Figura: rotazione a sinistra e a destra (slide 16).</i></sub>
+</p>
+
+
 ## Inserimento
 
 L'inserimento parte come in un BST, aggiungendo il nuovo nodo x come foglia, e lo colora di **rosso**. La scelta è motivata: un nodo rosso non altera le altezze nere, quindi si può violare al massimo la regola del rosso (se il padre p è rosso), che è la violazione più semplice da riparare. Se x è la radice basta colorarla di nero. Quando il padre p è rosso si guarda lo **zio u** e si distinguono tre casi (descritti per p figlio sinistro; i casi con p figlio destro sono speculari, e il doc descrive solo la versione "sinistra").
@@ -51,6 +63,24 @@ L'inserimento parte come in un BST, aggiungendo il nuovo nodo x come foglia, e l
 1. **Caso 1, zio rosso**: p e u diventano neri, il nonno g diventa rosso e il problema sale a g, dove si ripete; se la radice diventa rossa, la si colora di nero.
 2. **Caso 2, zio nero, x figlio sinistro**: p diventa nero, g rosso e si fa **Right-Rotate(g)**; fine.
 3. **Caso 3, zio nero, x figlio destro**: **Left-Rotate(p)**, con x che diventa genitore di p, e ci si riconduce al caso 2.
+
+<p align="center">
+<img src="img/07-inserimento-caso1.png" width="520" alt="Inserimento caso 1: zio rosso, p e u diventano neri e il nonno g rosso"><br>
+<sub><i>Figura: inserimento, caso 1 (slide 22).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/07-inserimento-caso2.png" width="520" alt="Inserimento caso 2: zio nero e x figlio sinistro, con una Right-Rotate su g e ricolorazione"><br>
+<sub><i>Figura: inserimento, caso 2 (slide 23).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/07-inserimento-caso3.png" width="520" alt="Inserimento caso 3: zio nero e x figlio destro, con una Left-Rotate su p seguita da una Right-Rotate su g"><br>
+<sub><i>Figura: inserimento, caso 3 (slide 25).</i></sub>
+</p>
+
 
 ## Cancellazione
 

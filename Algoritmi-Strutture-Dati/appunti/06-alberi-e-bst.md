@@ -17,10 +17,28 @@ Si parte dalle definizioni e dalla terminologia degli alberi, con le varianti e 
 
 Un **albero** è un grafo connesso e aciclico; un insieme di alberi disgiunti è una **foresta**. Il doc ne dà anche una definizione induttiva, Tree(A), ma la definizione completa non è riportata [DA VERIFICARE]. La terminologia è quella familiare: la radice è l'unico nodo senza padre, le foglie non hanno archi uscenti, gli altri sono nodi interni, e si parla di padre, figlio, fratello, discendente e avo. Un **ramo** è un cammino dalla radice a una foglia, il **livello** di un nodo è la sua distanza dalla radice (la radice sta a livello 0) e l'**altezza** dell'albero è il livello massimo, cioè la lunghezza del ramo più lungo. L'altezza è la grandezza che conta di più in tutto ciò che segue, perché il costo delle operazioni sui BST ne dipende direttamente.
 
+<p align="center">
+<img src="img/06-radice-foglie.png" width="560" alt="Albero con radice a, nodi interni b e c e foglie d, e, f, scritto anche in notazione insiemistica"><br>
+<sub><i>Figura: radice, nodi interni e foglie (slide 10).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/06-parentele.png" width="560" alt="Albero con i nodi a, b, c, d, e, f e le relazioni di padre, figlio, fratello, discendente e avo"><br>
+<sub><i>Figura: parentele fra i nodi (slide 12).</i></sub>
+</p>
+
+
 Esistono diverse varianti:
 - l'albero **sorgente** ha archi uscenti solo dalla radice, il **pozzo** il contrario;
 - l'albero **k-ario** ha grado k (il massimo numero di figli);
 - l'albero **ordinato** attribuisce significato all'ordine dei figli.
+
+<p align="center">
+<img src="img/06-livelli.png" width="560" alt="Albero con i nodi disposti sui livelli 0, 1 e 2, a distanza crescente dalla radice"><br>
+<sub><i>Figura: livelli e altezza di un albero (slide 14).</i></sub>
+</p>
+
 
 L'albero **binario posizionale** si definisce induttivamente: ∅∈BT(A), e se a∈A e l,r∈BT(A) allora ConsTree(a,l,r)∈BT(A).
 
@@ -42,9 +60,27 @@ TREE-BFS(T):           Q<-coda vuota; Enqueue(Q,T); while Q non vuota { T'<-Dequ
 
 Un dettaglio utile nella DFS con pila: poiché l'ultimo inserito è il primo estratto, per esplorare i figli da sinistra a destra bisogna inserirli in ordine inverso. Nell'esempio del doc la DFS visita r,a,c,d,b, mentre la BFS (con i figli accodati da destra a sinistra) visita r,b,a,d,c.
 
+<p align="center">
+<img src="img/06-dfs-pila.png" width="560" alt="Visita in profondità di un albero con radice r: stati successivi della pila mentre i nodi vengono inseriti ed estratti"><br>
+<sub><i>Figura: DFS con una pila (slide 35).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/06-bfs-coda.png" width="560" alt="Visita in ampiezza di un albero con radice r: stati successivi della coda mentre i nodi vengono inseriti ed estratti"><br>
+<sub><i>Figura: BFS con una coda (slide 37).</i></sub>
+</p>
+
+
 ## BST
 
 Un **albero binario di ricerca** è un albero binario in cui, per ogni nodo a, le chiavi del sottoalbero sinistro sono minori di a.key, quelle del destro maggiori, e i due sottoalberi sono a loro volta BST. Ogni nodo ha key, left, right e anche **parent**. L'idea è che la proprietà d'ordine permette di scartare metà dell'albero a ogni confronto, esattamente come nella ricerca binaria: tutte le operazioni costano quindi **O(h)**, con h l'altezza, e il loro valore pratico dipende interamente da quanto l'albero è bilanciato (da qui la motivazione per gli alberi rosso-neri, vedi 07).
+
+<p align="center">
+<img src="img/06-bst-esempio.png" width="460" alt="Albero binario di ricerca con radice 12, figli 7 e 15, e nodi 3, 10, 9, 18, 16"><br>
+<sub><i>Figura: un albero binario di ricerca (slide 4).</i></sub>
+</p>
+
 
 La **ricerca** (ricorsiva o iterativa) confronta la chiave con il nodo corrente e scende a sinistra o a destra finché trova la chiave o arriva a nil. Il **minimo** si trova scendendo sempre a sinistra (`while T.left != nil`) e il massimo scendendo a destra, per la stessa proprietà.
 
@@ -52,7 +88,19 @@ Il **successore** di N, cioè la più piccola chiave maggiore di N.key, si ragio
 - se N ha un sottoalbero destro, il successore è il minimo di quel sottoalbero (Tree-Min(N.right)): le chiavi più grandi di N stanno lì, e la più piccola è il minimo;
 - se invece non lo ha, bisogna risalire con i parent fino al primo "avo sinistro", cioè al primo avo A tale che N stia nel sottoalbero A.left: quell'avo è il primo nodo maggiore di N.
 
+<p align="center">
+<img src="img/06-successore.png" width="560" alt="Albero binario di ricerca in cui il nodo N, con radice 12, ha un discendente destro e il suo successore è il nodo 14"><br>
+<sub><i>Figura: il successore di N (slide 14).</i></sub>
+</p>
+
+
 L'**inserimento** aggiunge sempre una nuova **foglia**, nel punto in cui la ricerca della chiave sarebbe terminata con nil. La versione iterativa (It-Tree-Insert) scende tenendo traccia del padre P e infine collega N come figlio sinistro o destro di P. La versione ricorsiva standard, Rec-Tree-Insert, ha un difetto da ricordare: **non imposta N.parent**, e per questo serve la variante Rec-Tree-Insert-Aux.
+
+<p align="center">
+<img src="img/06-inserimento-esempio.png" width="560" alt="Inserimento della chiave 6 in un albero binario di ricerca: il nodo 6 diventa una nuova foglia"><br>
+<sub><i>Figura: l'inserimento aggiunge sempre una foglia (slide 21).</i></sub>
+</p>
+
 
 La **cancellazione** di Z procede per tre casi.
 1. Z è una foglia: si pone a nil il puntatore nel padre.
@@ -61,8 +109,26 @@ La **cancellazione** di Z procede per tre casi.
 
 Nel terzo caso il trucco funziona perché il successore è il minimo del sottoalbero destro, quindi **non ha figlio sinistro** e la sua cancellazione ricade necessariamente nei casi 1 o 2: la ricorsione si ferma dopo un solo passo.
 
+<div align="center">
+
+<table>
+<tr>
+<td align="center"><img src="img/06-cancellazione-fusione.png" height="200" alt="Cancellazione di un nodo con due discendenti per fusione: i sottoalberi sono ricomposti sotto il nodo eliminato"><br><sub>Cancellazione per fusione (slide 32).</sub></td>
+<td align="center"><img src="img/06-cancellazione-copia.png" height="200" alt="Cancellazione di un nodo con due discendenti per copia: il successore sostituisce il nodo eliminato"><br><sub>Cancellazione per copia (slide 33).</sub></td>
+</tr>
+</table>
+
+</div>
+
+
 ### Impatto dell'ordine di inserimento
 La forma dell'albero dipende dall'ordine in cui arrivano le chiavi, e questo cambia drasticamente il costo. Inserendo 5,3,1,2,8,9,10 si ottiene un albero abbastanza bilanciato di altezza 3; inserendo le stesse chiavi già ordinate (1,2,3,5,8,9,10) si ottiene un **albero degenere**, in pratica una lista di altezza n-1 = 6, e le operazioni costano O(n). Il caso migliore è l'albero completo, che ha altezza minima.
+
+<p align="center">
+<img src="img/06-bilanciamento.png" width="560" alt="Tre alberi di ricerca con le stesse chiavi ma altezza 3, 6 e 2, a seconda dell'ordine di inserimento"><br>
+<sub><i>Figura: bilanciamento, la stessa lista di chiavi dà alberi di altezza diversa (slide 29).</i></sub>
+</p>
+
 
 ### Visite in-order e pre-order
 La visita **in-order** (sinistro, radice, destro) di un BST produce le chiavi in ordine crescente: lo si dimostra per induzione, perché la lista L del sottoalbero sinistro è ordinata con chiavi minori di a e la lista R del destro è ordinata con chiavi maggiori. Una realizzazione ingenua costruisce la lista come Append(L, Cons(key,R)), ma Append costa O(|L|) e sul degenere sinistro si ottiene 1+2+...+(n-1), cioè **O(n^2)**. La versione Tree-Inorder(T,L) costruisce invece la lista all'indietro (prima il destro, poi la radice in testa, poi il sinistro) ed è **O(n)**.
