@@ -36,6 +36,12 @@ Un processore capisce solo linguaggio macchina, troppo di basso livello per prog
 
 Il motore realizza un **ambiente di esecuzione** = programma in esecuzione + memoria; è "vivo", con oggetti e variabili che cambiano. Può includere API per interagire con l'ambiente specifico. Nel browser c'è una sandbox per ogni pagina, che si azzera al ricaricamento. Dentro l'ambiente esiste l'oggetto `document`, cioè il **DOM** della pagina, con la **DOM API** per consultarlo e modificarlo, e la **fetch API** per fare richieste HTTP.
 
+<p align="center">
+<img src="img/03-browser-vista-dom-js.png" width="560" alt="Browser tab con la vista, il DOM e l'ambiente JavaScript collegati da frecce tratteggiate; HTML e CSS alimentano vista e DOM"><br>
+<sub><i>Figura: vista, DOM e ambiente JavaScript nel browser (slide 33).</i></sub>
+</p>
+
+
 Per collegare uno script a una pagina: `<script type="application/javascript" src="path/myscript.js"></script>`. Se è nel `HEAD` viene eseguito subito, prima che la pagina sia caricata, e se interagisce con `document` questo potrebbe essere ancora vuoto. Per rimandare l'esecuzione ci sono tre modi:
 - mettere lo `SCRIPT` in fondo, dopo `</body>` e prima di `</html>`;
 - usare l'attributo **`defer`**;
@@ -109,11 +115,23 @@ In JavaScript il codice può essere diviso in più file in modo arbitrario, senz
 
 Il browser usa HTML e CSS per inizializzare il **DOM**, una struttura dati ad albero che rappresenta il documento; nell'ambiente è l'oggetto `document`. I nodi sono: la radice, nodi intermedi (elementi HTML) e foglie (elementi, testo, commenti). Il DOM vive finché la pagina non viene chiusa o ricaricata.
 
+<p align="center">
+<img src="img/03-albero-dom.png" width="560" alt="Albero DOM di una pagina: la radice HTML ha head e body, con header, section, footer e i loro elementi figli"><br>
+<sub><i>Figura: il DOM è un albero di nodi (slide 36).</i></sub>
+</p>
+
+
 ### DOM API e interfacce
 
 Il termine **interfaccia** indica il "fronte esterno" di un servizio: la **UI** è il fronte verso gli utenti, l'**API** il fronte verso altri software/programmatori, l'**object interface** di un oggetto (proprietà e firme dei metodi) è il modo in cui l'oggetto si può usare nel codice, a prescindere da come è implementato, e può essere implementata da classi diverse. Un'interfaccia può essere pubblicata *a posteriori* (faccio il servizio e poi pubblico l'API) o *a priori* come contratto/specifica, implementabile da fornitori diversi (come un mockup per una UI). La **DOM API** è del secondo tipo: una specifica del W3C, che i browser (i fornitori) devono rispettare. È fatta di oggetti da fornire (il DOM, gli elementi) e delle loro object interface. Non contiene componenti imperative, quindi non definisce classi: ogni browser è libero di implementare gli oggetti come vuole. JavaScript non ha le object interface come costrutto del linguaggio (servirebbero solo al controllo statico dei tipi): dire che i nodi `DIV` "implementano `HTMLDivElement`" significa che hanno proprietà e metodi elencati nella specifica.
 
 La gerarchia delle interfacce, in breve: `EventTarget` è alla base; `Node` la estende (e `Window` è un `EventTarget`); da `Node` derivano `Document`, `DocumentFragment`, `Element`, `Attr`, `CharacterData` (da cui `Text` e `Comment`); da `Element` deriva `HTMLElement`, che ha le specializzazioni `HTMLDivElement`, `HTMLInputElement`, `HTMLSelectElement`, `HTMLParagraphElement`, `HTMLHeadingElement`, `HTMLFormElement`, `HTMLImageElement`, ...
+
+<p align="center">
+<img src="img/03-dom-api-interfacce.png" width="560" alt="Gerarchia delle interfacce della DOM API: EventTarget, Window, Node, Document, Element, HTMLElement e le sue sottointerfacce"><br>
+<sub><i>Figura: gerarchia delle interfacce della DOM API (slide 37).</i></sub>
+</p>
+
 
 Le interazioni con il DOM sono di tre tipi:
 - **navigazione/attraversamento**: trovare elementi e leggerne le caratteristiche, per lo più con `Element`;
@@ -148,6 +166,12 @@ Classi e attributi: `element.classList.add(c)`, `.remove(c)`, `.toggle(c)`, e un
 
 L'ambiente JavaScript interagisce con il mondo esterno tramite **eventi**, messi in una coda e consumati da un **singolo thread** (*asynchronous single-thread event loop*). Gli eventi possono essere **esogeni** (generati spontaneamente da agenti esterni, come l'utente: imprevedibili) o **endogeni** (conseguenza di una richiesta fatta dall'applicazione: si può prevedere con ragionevole certezza che arriveranno). Perché un evento venga gestito, l'ambiente deve conoscere la funzione che risponde: si chiama **listener** per gli esogeni (sta in ascolto e risponde ogni volta) e **callback** per gli endogeni (indicata all'avvio della richiesta, richiamata a completamento). La logica è la stessa: associare a un tipo di evento una funzione. Poiché c'è un solo thread, un'elaborazione lunga **blocca tutta l'applicazione**, perciò le operazioni time-consuming (richieste HTTP, scritture nel DB interno al browser) sono **asincrone**: l'istruzione che le avvia non si blocca ad aspettare il risultato, ma richiede la callback da invocare al termine. Eccezione: i Web Workers, thread paralleli per compiti che non toccano il DOM.
 
+<p align="center">
+<img src="img/03-event-loop.png" width="560" alt="Event loop: la coda degli eventi alimenta l'ambiente di esecuzione, che elabora un evento alla volta; eventi esogeni ed endogeni"><br>
+<sub><i>Figura: coda degli eventi ed event loop a singolo thread (slide 49).</i></sub>
+</p>
+
+
 Eventi tipici del DOM:
 - del mouse: `click`, `mouseenter`, `mouseleave`, `mouseout`, `mouseover`, `mousedown`, `mouseup`, `mousemove` (sui touch screen gli eventi touch si possono gestire a parte o assimilare);
 - della tastiera: `focus`, `blur`, `keydown`, `keyup`;
@@ -163,7 +187,19 @@ Si registra un listener con `domObj.addEventListener(nomeEvento, listener)`; `li
 
 Un evento nasce su un elemento preciso (il **target**) e **risale** l'albero fino alla radice (**bubbling**): il listener di ogni antenato viene invocato. Perché? Se non ci fosse il bubbling un click sul footer verrebbe visto solo cliccando sul suo sfondo vuoto; invece "click sul footer" in genere significa "click sul footer incluso ciò che contiene". Dentro un listener, `evento.target` è l'elemento sorgente, `evento.currentTarget` quello che sta emettendo (a cui è attaccato il listener). `evento.stopPropagation()` blocca la propagazione.
 
+<p align="center">
+<img src="img/03-bubbling.png" width="560" alt="Albero DOM con il percorso di bubbling, dal target IMG fino a HTML, segnato da frecce blu"><br>
+<sub><i>Figura: bubbling, l'evento risale l'albero (slide 53).</i></sub>
+</p>
+
+
 In realtà l'evento arriva al target *scendendo* l'albero (fase di **capturing**, che precede il bubbling), ma di default durante la discesa i listener non vengono chiamati. Si può chiedere di invocarli in discesa con `addEventListener(nome, listener, {capture: true})`. Bloccando la propagazione in fase di capturing l'evento non arriva al target e il bubbling non parte: serve per gestione totalmente personalizzata di certi eventi. Alcuni eventi hanno **effetti di default** (click su `A` → navigazione, tasto destro → menu contestuale, TAB → prossimo input) e `evento.preventDefault()` li impedisce; per bloccarli in un'intera area conviene farlo in fase di capturing.
+
+<p align="center">
+<img src="img/03-capturing.png" width="560" alt="Albero DOM con il percorso di capturing in rosso, da HTML fino al target IMG, e il bubbling in blu"><br>
+<sub><i>Figura: capturing, l'evento scende fino al target (slide 54).</i></sub>
+</p>
+
 
 ## Prototipi, costruttori, classi, `this`
 
@@ -171,6 +207,12 @@ In JavaScript ogni oggetto (tranne `Object.prototype`) ha un **prototipo**, un a
 - `Object.preventExtensions(o)`: niente nuove proprietà o cambio di prototipo;
 - `Object.seal(o)`: in più non si possono perdere proprietà;
 - `Object.freeze(o)`: in più i valori non si possono cambiare (sola lettura).
+
+<p align="center">
+<img src="img/03-prototipi.png" width="560" alt="Oggetti collegati dalla catena dei prototipi: dagli oggetti Snoopy, Barattolo e Norberta ai prototipi Fido e Object.prototype"><br>
+<sub><i>Figura: catena dei prototipi (slide 57).</i></sub>
+</p>
+
 
 Per creare un oggetto da un prototipo: `const snoopy = Object.create(fido);` e poi si assegnano proprietà proprie o in overriding. Per esplorare: `Object.keys(o)` dà le proprietà proprie; `for (key in o)` itera su tutte le chiavi valide, **incluse** quelle della prototype chain ma escluse quelle di sistema (come quelle di `Object.prototype`); `o.hasOwnProperty("x")` dice se `x` è definita nell'oggetto stesso (false se assente o ereditata).
 
@@ -219,6 +261,12 @@ async function carica(url) {
 ## TypeScript
 
 TypeScript aggiunge a JavaScript un **sistema di tipi**: si dichiara il tipo atteso di variabili, parametri e valori di ritorno. Si **compila** in JavaScript: i costrutti aggiuntivi sono solo dichiarativi e scompaiono dopo la compilazione, senza effetto sull'esecuzione (a differenza di JS o C, dove il tipo influenza lo slot di memoria). Implementa l'**inferenza dei tipi**: in compilazione deduce il tipo di funzioni ed espressioni e verifica la coerenza con i tipi promessi e con gli usi. Dà il meglio in un IDE, dove l'inferenza lavora mentre si scrive. Si "può" dichiarare il tipo perché si può scrivere `any` ("qualsiasi cosa"), ma facendolo si perde buona parte dei vantaggi: da evitare, salvo il raro caso di interazione con codice JS senza dichiarazioni. Le dichiarazioni servono a verificare a compile time la consistenza di espressioni e assegnamenti, a far esprimere le intenzioni del programmatore, a controllare che proprietà e metodi di un oggetto esistano davvero e a introdurre nelle classi i modificatori di accesso (`public`, `private`, ...) assenti in JS.
+
+<p align="center">
+<img src="img/03-typescript-tsc.png" width="460" alt="Il compilatore tsc nell'ambiente di sviluppo, con TypeScript, pacchetti di terze parti e npm, produce codice JavaScript"><br>
+<sub><i>Figura: tsc traduce TypeScript in JavaScript (slide 70).</i></sub>
+</p>
+
 
 ### Dipendenze e npm
 

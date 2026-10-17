@@ -26,6 +26,18 @@ Perché un framework? Costruire il layout a mano con `display: flex` e `display:
 
 Bootstrap risolve questi problemi una volta per tutte. L'esempio nelle slide: la stessa pagina HTML con le classi Bootstrap già scritte, con o senza la riga `<link>` del foglio di stile, cambia da spoglia a curata, con circa 90 righe di HTML e **zero righe di CSS** nostro; su smartphone le colonne si impilano da sole.
 
+<p align="center">
+<img src="img/04-con-senza-bootstrap.png" width="640" alt="Due pagine con lo stesso HTML: a sinistra senza Bootstrap, a destra con Bootstrap, con tabella e modulo ben formattati"><br>
+<sub><i>Figura: stesso HTML senza e con Bootstrap (slide 5).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/04-pagina-esempio.png" width="600" alt="Pagina di una libreria online su desktop, con navbar, testo di presentazione, ricerca e tre riquadri, e la stessa pagina su smartphone con le colonne impilate"><br>
+<sub><i>Figura: la stessa pagina su desktop e su smartphone, circa 90 righe di HTML e nessuna riga di CSS (slide 6).</i></sub>
+</p>
+
+
 Contiene due parti:
 - **CSS** (`bootstrap.min.css`): *Reboot*, che uniforma lo stile di base tra i browser; tipografia; layout con container, griglia e breakpoint; *utility*, classi che impostano una singola proprietà; componenti come bottoni, card, navbar, form, tabelle;
 - **JavaScript** (`bootstrap.bundle.min.js`): fa funzionare modali, dropdown, accordion, carousel, tooltip; il bundle include **Popper**, la libreria che posiziona menu e tooltip.
@@ -79,6 +91,12 @@ La **griglia a 12 colonne** ha sempre tre livelli, in quest'ordine: `.container`
 
 Colonne responsive: `col-12 col-md-6 col-lg-3` significa una per riga su smartphone, due da `md`, quattro da `lg`; `col-md-4` + `col-md-8` (sidebar + contenuto) sono impilate sotto `md`.
 
+<p align="center">
+<img src="img/04-colonne-responsive.png" width="580" alt="Griglia con classi col-12 col-md-6 col-lg-3: su una finestra larga 420 px le colonne sono impilate, su una larga 1200 px stanno affiancate"><br>
+<sub><i>Figura: colonne responsive a 420 px e 1200 px (slide 15).</i></sub>
+</p>
+
+
 Sotto il cofano la griglia è **flexbox**: `.row { display: flex; flex-wrap: wrap; ... }`, `.col { flex: 1 0 0; }`, `.col-4 { flex: 0 0 auto; width: 33.33%; }`. Lo spazio tra colonne (*gutter*) si ottiene con un padding sulle colonne, e un margine negativo sulla riga lo compensa ai bordi. Usare Bootstrap non significa "non usare CSS" ma usare regole scritte da altri; con gli strumenti per sviluppatori (F12) si vede cosa applica ogni classe.
 
 Altri strumenti: `row-cols-{n}` sulla riga (n colonne per riga, anche responsive, es. `row-cols-md-3`), `g-{0..5}`, `gx-*`, `gy-*` (spazio tra colonne), `offset-md-3` (sposta di 3/12 a destra), `order-*` (cambia l'ordine), `col-auto` (largo quanto il contenuto), e sulla riga `align-items-center`, `justify-content-between`.
@@ -88,6 +106,12 @@ Altri strumenti: `row-cols-{n}` sulla riga (n colonne per riga, anche responsive
 ## Classi di utilità
 
 Le **utility** sono classi che impostano (quasi sempre) una sola proprietà CSS e si combinano direttamente nell'HTML: è lo stesso approccio, portato all'estremo, di Tailwind CSS.
+
+<p align="center">
+<img src="img/04-classi-utility.png" width="600" alt="Esempi di classi utility: padding p-0 e p-5, bordi, ombre, angoli arrotondati, colori di testo e sfondo, d-flex con justify-content"><br>
+<sub><i>Figura: esempi di classi di utilità (slide 20).</i></sub>
+</p>
+
 
 **Spaziature** (margin e padding), formato `{proprietà}{lato}-{breakpoint}-{misura}`: proprietà `m` (margin) o `p` (padding); lato `t` top, `b` bottom, `s` start (sinistra), `e` end (destra), `x` orizzontale, `y` verticale, nessuno = tutti i lati; misura da 0 a 5 oppure `auto`. Le misure corrispondono a 0, .25rem, .5rem, 1rem, 1.5rem, 3rem. Esempi: `mb-3` (margine sotto 1rem), `p-3 p-lg-5` (padding 1rem, 3rem da `lg`), `mx-auto` (centra un blocco orizzontalmente), `gap-2` su un `d-flex`. Misure sempre uguali in tutta la pagina danno coerenza visiva senza doverci pensare.
 
@@ -113,13 +137,31 @@ Per esempio una card è un `.card` che contiene un `.card-body`, che contiene `.
 
 Modali, collapse e accordion, dropdown, carousel, offcanvas, toast, tooltip richiedono JavaScript, ma **non lo si scrive**: basta includere `bootstrap.bundle.min.js`, che cerca nella pagina gli elementi con attributi `data-bs-*` e collega da solo gli eventi. `data-bs-toggle="modal"` (o `collapse`, `dropdown`...) dice quale componente attivare al click, `data-bs-target="#id"` su quale elemento, `data-bs-dismiss="modal"` chiude il componente che lo contiene. Gli attributi `data-*` sono attributi personalizzati ammessi da HTML: il browser li ignora, il codice JS li può leggere. In alternativa da JavaScript: `const finestra = new bootstrap.Modal('#conferma'); finestra.show();`.
 
+<p align="center">
+<img src="img/04-accordion-dropdown.png" width="480" alt="Un accordion con domande frequenti, un menu dropdown di ordinamento e un toast di notifica"><br>
+<sub><i>Figura: accordion, dropdown e toast (slide 34).</i></sub>
+</p>
+
+
 Esempio di **finestra modale**: un bottone con `data-bs-toggle="modal" data-bs-target="#conferma"` e un `div.modal.fade#conferma` che contiene `modal-dialog` › `modal-content` › `modal-header` (titolo `modal-title` + `btn-close` con `data-bs-dismiss="modal"` e `aria-label`), `modal-body`, `modal-footer` (bottoni Annulla/Conferma). La finestra è già nella pagina ma nascosta; il bottone la mostra, `btn-close` e "Annulla" la chiudono; `fade` dà l'animazione; il backdrop scuro è aggiunto in automatico. Altri: **Accordion** (pannelli aperti uno alla volta, per FAQ o filtri), **Dropdown** (menu a tendina posizionato da Popper), **Toast** (notifica temporanea).
+
+<p align="center">
+<img src="img/04-modale.png" width="600" alt="Una finestra modale con titolo Confermi l'acquisto?, pulsanti Annulla e Conferma e sfondo scurito"><br>
+<sub><i>Figura: la finestra modale dell'esempio (slide 33).</i></sub>
+</p>
+
 
 ## Icone, dark mode, personalizzazione
 
 **Bootstrap Icons** (icons.getbootstrap.com): si include un foglio di stile e ogni icona è un `<i class="bi bi-cart-plus"></i>`. Le icone sono caratteri di un font, quindi si colorano e ridimensionano come il testo (`text-danger`, `fs-3`). Accessibilità: un'icona da sola non dice nulla a uno screen reader; se è l'unico contenuto di un bottone serve un testo alternativo, ad esempio `aria-label="Aggiungi al carrello"`.
 
 **Modalità scura**: dalla 5.3 basta l'attributo `data-bs-theme="dark"`, sull'intera pagina (`<html>`) o su un singolo componente. Funziona perché tutti i colori di Bootstrap sono variabili CSS (`--bs-body-bg`, `--bs-body-color`...) che cambiano valore quando l'attributo è presente.
+
+<p align="center">
+<img src="img/04-modalita-scura.png" width="600" alt="La stessa pagina in modalità chiara e in modalità scura, ottenuta con l'attributo data-bs-theme"><br>
+<sub><i>Figura: modalità chiara e scura (slide 37).</i></sub>
+</p>
+
 
 **Personalizzare**, in tre modi di crescente profondità:
 1. un nostro CSS **caricato dopo** Bootstrap (a parità di specificità vince la regola scritta per ultima, per la cascata);
@@ -150,6 +192,12 @@ Bootstrap **aiuta** ma non rende accessibile una pagina in automatico.
 Saper scrivere CSS a mano resta indispensabile: per personalizzare, per capire cosa fa il framework e per i casi che non prevede.
 
 Esempio del laboratorio, "prima e dopo": un negozio con layout a mano in circa 130 righe di CSS (griglia con aree `header`/`main`/`footer`, sempre 4 colonne anche su smartphone) diventa HTML con classi Bootstrap più circa 20 righe di CSS proprio (font del logo e colore dei bottoni), responsive e con menu, carrello e login interattivi. Corrispondenze: pagina `body` `d-flex flex-column vh-100` con `main` `flex-grow-1 overflow-auto`; griglia prodotti `row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4`; prodotto `card`, `card-img-top`, `card-body`, `card-footer`, `badge`; carrello/login `navbar navbar-expand-md` + `btn`; ricerca `input-group` + icona `bi-search`; nuovi: hamburger, dropdown, offcanvas (carrello), modal (login).
+
+<p align="center">
+<img src="img/04-esercizio-prima-dopo.png" width="600" alt="Lo stesso negozio online realizzato con CSS grid scritto a mano (a sinistra) e con classi Bootstrap (a destra)"><br>
+<sub><i>Figura: lo stesso esercizio con CSS scritto a mano e con Bootstrap (slide 42).</i></sub>
+</p>
+
 
 ## Cose da saper fare all'esame
 

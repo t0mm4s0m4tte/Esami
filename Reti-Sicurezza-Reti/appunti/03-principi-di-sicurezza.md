@@ -35,12 +35,27 @@ La base di ogni strategia e politica di sicurezza è la triade **CIA**, che si r
 | **Integrity** | i dati restano accurati, completi e non alterati in memoria e in transito, sia da corruzioni accidentali sia da modifiche malevole; include l'affidabilità del sistema e l'assenza di modifiche non autorizzate al software | meccanismi di rilevamento: checksum, firme digitali, sistemi di controllo di versione | dati modificati senza autorizzazione |
 | **Availability** | gli utenti autorizzati possono accedere a sistemi e dati quando servono | infrastruttura robusta, ridondanza, piani di disaster recovery, protezione dai DoS; si misura con percentuali di uptime e **SLA** (service level agreement) | attacchi denial-of-service, downtime dei sistemi |
 
+
+<table>
+<tr>
+<td valign="top">
+
 Alla triade le slide aggiungono quattro **obiettivi estesi**:
 
 1. **Authenticity**: verificare l'identità di utenti, sistemi e sorgenti di dati, per prevenire l'impersonificazione;
 2. **Accountability**: mantenere log dettagliati e audit trail per tracciare le azioni degli utenti e gli eventi del sistema;
 3. **Non-repudiation**: impedire che le parti neghino di aver partecipato a una transazione o comunicazione;
 4. **Authorization**: controllare che cosa un utente autenticato può accedere e modificare.
+
+</td>
+<td valign="top" align="center">
+
+<img src="img/03-obiettivi-estesi.png" width="300" alt="Pentagono con al centro data and services e ai lati i cinque obiettivi: confidentiality, integrity, authenticity, availability, accountability"><br><sub>Figura: obiettivi di sicurezza attorno a dati e servizi (slide 10).</sub>
+
+</td>
+</tr>
+</table>
+
 
 ## Terminologia e avversari
 
@@ -95,6 +110,12 @@ Il primo gruppo contiene i requisiti organizzativi: **access control** (limitare
 
 Il secondo gruppo contiene i controlli essenziali: **identification and authentication** (verificare l'identità di utenti, processi e dispositivi prima di concedere l'accesso), **risk assessment** (analizzare periodicamente le minacce a operazioni e asset), **configuration management** (stabilire e mantenere configurazioni di base sicure per tutti i sistemi) e **incident response** (sviluppare la capacità di preparazione, rilevamento, analisi, contenimento e recupero).
 
+<p align="center">
+<img src="img/03-ambito-sicurezza.png" width="560" alt="Due sistemi informatici collegati in rete, con le guardie che controllano l'accesso dei processi utente e i dati da proteggere in file e in transito"><br>
+<sub><i>Figura: ambito della computer security, cioè accesso ai dati, accesso al sistema, sicurezza dei dati e della rete (slide 15).</i></sub>
+</p>
+
+
 ## Difesa in profondità e matrice del rischio
 
 La strategia di **defense in depth** si basa su quattro idee: più livelli di sicurezza sovrapposti, che creano meccanismi di protezione ridondanti; la **riduzione della superficie di attacco** (*attack surface*), cioè dei possibili punti di ingresso; nessun **single point of failure**, in modo che la compromissione di un controllo non porti al fallimento totale; e una gestione equilibrata del rischio che combina misure **preventive, detective e correttive**.
@@ -108,9 +129,27 @@ La **matrice del rischio** incrocia due dimensioni, l'ampiezza della superficie 
 
 Le organizzazioni devono valutare la propria posizione e investire in contromisure di conseguenza.
 
+<p align="center">
+<img src="img/03-matrice-rischio.png" width="560" alt="Matrice del rischio con probabilità da A (rara) a E (frequente) sull'asse orizzontale e impatto da 1 a 5 sull'asse verticale, celle verdi, gialle e rosse"><br>
+<sub><i>Figura: matrice probabilità-impatto, con legenda delle scale (slide 29).</i></sub>
+</p>
+
+
 ## Attack tree
 
 L'**attack tree** è uno strumento di analisi per modellare sistematicamente le minacce: serve a identificare le vulnerabilità, pianificare le contromisure e progettare l'architettura di sicurezza. L'esempio del libro riportato nelle slide è il sistema di autenticazione di una banca, in cui ogni passo dell'attacco ha la sua contromisura. `[DA VERIFICARE]` La figura dell'albero non è leggibile nell'estrazione del PDF: guardare l'esempio sul libro (cap. 1) o sulle slide.
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center"><img src="img/03-attack-tree.png" height="330" alt="Albero d'attacco generico: la radice Bypass Authentication si divide in tre rami (rubare il cookie, scoprire username e password, modificare le credenziali) fino alle foglie"><br><sub>Attack tree generico (slide 30).</sub></td>
+<td align="center"><img src="img/03-attack-tree-banca.png" height="330" alt="Attack tree dell'esempio del libro: compromissione dell'account bancario, con i rami per le credenziali dell'utente e le contromisure associate a ogni passo"><br><sub>Esempio del libro: account bancario (slide 31).</sub></td>
+</tr>
+</table>
+
+</div>
+
 
 ## Sfide attuali
 

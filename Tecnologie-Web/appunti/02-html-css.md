@@ -18,11 +18,29 @@ Il lato client di una web app è fatto di una o più pagine HTML, ognuna con uno
 
 Quando il browser riceve HTML + CSS + JS, con HTML e CSS inizializza la **vista** (la finestra che l'utente vede) e il **DOM** (Document Object Model), la struttura dati in memoria che rappresenta la pagina. L'HTML definisce la struttura logica e la semantica (quante sezioni, quali sono menu e quali articoli, ruolo del testo, media, elementi di input, link). I CSS definiscono l'aspetto (font, colori, dimensioni, collocazione). Il DOM nasce da questi due ma durante la sua vita può essere modificato, e muore alla chiusura o ricarica della pagina.
 
+<p align="center">
+<img src="img/02-browser-vista-dom-js.png" width="560" alt="Browser tab con la vista, il DOM e l'ambiente JavaScript collegati da frecce tratteggiate; HTML e CSS alimentano vista e DOM"><br>
+<sub><i>Figura: vista, DOM e ambiente JavaScript nella scheda del browser (slide 2).</i></sub>
+</p>
+
+
 ## HTML: un linguaggio di annotazione
 
 HTML descrive struttura e aspetto di un documento multimediale e ipertestuale usando testo semplice (UTF-8) e le URL dei file degli altri media. Non è un linguaggio di programmazione perché non istruisce algoritmicamente un agente di calcolo: è di *markup*, parte da un testo e lo suddivide in elementi che lo strutturano logicamente. Ogni elemento ha un **tipo**, un **contenuto** (testo e/o altri elementi; alcuni tipi non hanno contenuto) e **attributi** opzionali che dipendono dal tipo. La specifica formale dice quali tipi esistono, che significato hanno, che contenuto ci si aspetta e quali attributi ammettono. Il documento è un albero di elementi e il browser lo usa per organizzare la visualizzazione; il "significato inteso" dei tipi conta, anche se con i CSS l'aspetto si può cambiare completamente.
 
 La sintassi di un elemento è `<XYZ> contenuto </XYZ>`: tag di apertura con il nome del tipo tra parentesi angolari, contenuto, tag di chiusura uguale all'apertura ma con `/` prima del nome. Gli **attributi** stanno dentro il tag di apertura: `<XYZ attrib=val>`. Gli attributi non previsti dalla specifica vengono ignorati dal browser, ma funzioni JavaScript associate all'elemento possono sfruttare attributi custom, che per convenzione hanno nome della forma `data-*`.
+
+<p align="center">
+<img src="img/02-sintassi-elemento.png" width="560" alt="Formula di un elemento HTML con tag di apertura, contenuto e tag di chiusura, ciascuno spiegato"><br>
+<sub><i>Figura: sintassi di un elemento HTML (slide 10).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/02-attributi-elemento.png" width="640" alt="Formula di un elemento con attributo, <XYZ attrib=val> contenuto </XYZ>, con la spiegazione di nome dell'attributo e di valore"><br>
+<sub><i>Figura: gli attributi di un elemento (slide 11).</i></sub>
+</p>
+
 
 La struttura di un documento è fissa:
 
@@ -35,6 +53,12 @@ La struttura di un documento è fissa:
 ```
 
 Il `DOCTYPE` è un preambolo che dichiara la versione della specifica (esiste per retrocompatibilità e di fatto è sempre uguale). Il `head` contiene meta-informazioni sul documento usate dal browser ma non visualizzate; il `body` è il contenuto visualizzato.
+
+<p align="center">
+<img src="img/02-struttura-documento.png" width="560" alt="Scheletro di un documento HTML con DOCTYPE, html, head e body, e la spiegazione di preambolo, intestazione e corpo"><br>
+<sub><i>Figura: struttura di un documento HTML (slide 12).</i></sub>
+</p>
+
 
 ### Tipi di elementi e contenuto
 
@@ -105,6 +129,12 @@ h1 {
 }
 ```
 
+<p align="center">
+<img src="img/02-regole-di-stile.png" width="560" alt="Regola CSS per h1 con selettore, blocco delle dichiarazioni e dichiarazione proprietà: valore"><br>
+<sub><i>Figura: anatomia di una regola di stile (slide 25).</i></sub>
+</p>
+
+
 Gli stili si associano all'HTML in tre modi:
 - foglio **esterno**: file separato, collegato nel `head` con `<link rel="stylesheet" href="styles/style.css">`;
 - **interno**: regole dentro un elemento `<style>` nel `head`;
@@ -113,6 +143,12 @@ Gli stili si associano all'HTML in tre modi:
 ### Cascata, specificità, ereditarietà
 
 Se a un elemento si applicano regole in conflitto (stessa proprietà, valori diversi) decidono due criteri. La **specificità** misura quanto precisamente il selettore individua l'elemento (le slide rimandano il calcolo preciso a dopo: vedi l'integrazione qui sotto): vince la regola più specifica, e in assoluto le dichiarazioni più specifiche sono quelle *in linea*. A parità di specificità vale la **cascata**: conta l'ordine in cui il browser riceve le regole, vince l'ultima; quindi contano l'ordine dei fogli esterni, gli interni sono considerati dopo gli esterni e le dichiarazioni in linea per ultime. C'è poi l'**ereditarietà**: alcune proprietà sono ereditate di default dal genitore, o il loro valore è calcolato da quello del genitore. Non influenza l'algoritmo di scelta ma influenza il risultato ed è la prima cosa da ricordare quando un CSS "non si comporta come vorremmo".
+
+<p align="center">
+<img src="img/02-cascata-specificita.png" width="640" alt="Tre riquadri che riassumono cascata, specificità ed ereditarietà delle regole CSS"><br>
+<sub><i>Figura: cascata, specificità, ereditarietà (slide 28).</i></sub>
+</p>
+
 
 ### Integrazione: come si calcola la specificità e cosa si eredita
 
@@ -146,7 +182,19 @@ I **selettori semplici** sono:
 - per *pseudoclasse*: `:hover`, `:first-child`; raggruppamenti definiti dal browser in base allo stato, dinamico o statico;
 - *universale*: `*`.
 
+<p align="center">
+<img src="img/02-selettori-semplici.png" width="560" alt="Sei esempi di selettori semplici: per tag, classe, id, attributo, pseudoclasse e universale"><br>
+<sub><i>Figura: i selettori semplici (slide 33).</i></sub>
+</p>
+
+
 I **selettori compositi** si ottengono per giustapposizione, senza spazi, di selettori semplici, con significato di **AND**: `div.importante` (DIV di classe importante), `label[name="anno"]`, `.elenco.attivo` (classi `elenco` e `attivo` insieme), `input[type="button"]:hover`. Vincoli: al più un selettore per tag oppure l'universale (che si può omettere), e se c'è deve stare per primo. L'ordine non cambia il significato ma può cambiare la specificità.
+
+<p align="center">
+<img src="img/02-selettori-compositi.png" width="560" alt="Esempi di selettori compositi ottenuti per giustapposizione, con la descrizione degli elementi selezionati"><br>
+<sub><i>Figura: selettori compositi (slide 34).</i></sub>
+</p>
+
 
 I **selettori complessi** hanno la forma `S comb A` e selezionano gli elementi `A` che sono nella relazione `comb` con un elemento che rispetta `S`. I combinatori sono quattro:
 
@@ -163,9 +211,27 @@ Infine si può applicare una regola a una **lista di selettori** separati da vir
 
 Il layout è la disposizione degli elementi sulla pagina e lo decide il browser in base a due fattori. Primo, la **struttura dell'HTML**: gli elementi sono "scatole cinesi", ognuno posizionato (anche graficamente) dentro il riquadro del genitore; è anche un albero, fondamentale poi per manipolarlo da codice. (Tramite CSS si può derogare, ma il corso non lo tratta.) Secondo, il **display** di ogni elemento, che ha due componenti: *display-inside* (come l'elemento dispone i propri contenuti) e *display-outside* (come l'elemento preferirebbe essere disposto nel proprio contenitore). Ogni tipo di elemento ha dei default, modificabili. La proprietà `display` li esprime insieme (prima outside, poi inside: `display: inline flow;`) oppure uno solo (`display: block;` imposta l'outside; `display: flex;` imposta l'inside e lascia l'outside di default, che per un `P` è `block`).
 
+<p align="center">
+<img src="img/02-layout-articoli.png" width="560" alt="Due articoli, ciascuno con titolo, immagine, testo e riquadro con informazioni su articolo e autore, inseriti in una pagina"><br>
+<sub><i>Figura: disposizione degli elementi di una pagina di articoli (slide 43).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/02-layout-struttura-html.png" width="560" alt="Elementi body, article, h1, img, div, p annidati come scatole cinesi, con la nota sul posizionamento dentro il genitore"><br>
+<sub><i>Figura: il layout dipende dalla struttura dell'HTML, a scatole cinesi (slide 45).</i></sub>
+</p>
+
+
 ### `flow` (default)
 
 Dispone gli elementi come in un articolo di rivista o un documento di testo, ed è il display-inside di default di quasi tutto, quindi raramente va scritto. Qui conta il display-outside dei contenuti. Un elemento `block` occupa tutto il contenitore in larghezza e in altezza quanto serve (come un paragrafo). Un elemento `inline` è come una sequenza di testo che scorre su più righe da sinistra a destra, e due inline consecutivi proseguono l'uno dove finisce l'altro. Si può portare un elemento fuori dal flusso, costringendo le righe a girarci attorno, con `float: left` o `float: right`. Il valore `flow-root` ha senso su un elemento inline: si dispone inline nel contenitore ma si comporta come un unico grosso carattere (come un'immagine nel mezzo di un paragrafo non fluttuante).
+
+<p align="center">
+<img src="img/02-display-flow.png" width="560" alt="Contenitore con elementi a blocco e in linea disposti con display flow, accanto alla spiegazione del display-outside"><br>
+<sub><i>Figura: display-inside flow, blocchi e linee (slide 49).</i></sub>
+</p>
+
 
 ### `flex`
 
@@ -178,9 +244,33 @@ Dispone i contenuti come sequenza di riquadri in riga o in colonna, adattandone 
 - `flex-grow` (sui figli, valore ≥ 0, default 0): se e in che proporzione l'elemento è disposto ad allargarsi per occupare lo spazio disponibile.
 - `flex-shrink` (sui figli, valore ≥ 0): se e in che proporzione è disposto a restringersi per non eccedere lo spazio.
 
+<p align="center">
+<img src="img/02-flex-direction.png" width="560" alt="I quattro valori di flex-direction: row, row-reverse, column, column-reverse, con tre riquadri numerati"><br>
+<sub><i>Figura: flex-direction (slide 54).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/02-flex-align-items.png" width="560" alt="Valori di align-items in un contenitore flex: flex-start, flex-end, center, stretch e baseline"><br>
+<sub><i>Figura: align-items nel display flex (slide 57).</i></sub>
+</p>
+
+
 ### `grid`
 
 Definisce una griglia incrociando righe e colonne; ogni elemento occupa una o più celle contigue. Si imposta con `display: grid;` e, come flex, ignora il display-outside dei figli. La griglia si configura con `grid-template-rows` e `grid-template-columns`, che elencano altezze delle righe e larghezze delle colonne, per esempio `grid-template-rows: 50px 1fr 2fr; grid-template-columns: repeat(4, 1fr) 10vw;`, dove `fr` (frazione) esprime dimensioni proporzionali. Spetta a ciascun elemento figlio dichiarare quali celle occupa con `grid-row-start`, `grid-row-end`, `grid-column-start`, `grid-column-end`, anche con `span` (es. `grid-row-start: 2; grid-row-end: span 3;`). Altre proprietà permettono l'allineamento reciproco e dentro l'area (guida: css-tricks.com, Complete Guide to Grid).
+
+<p align="center">
+<img src="img/02-grid-linee.png" width="560" alt="Griglia con linee numerate da 1 a 4 sulle colonne e da 1 a 6 sulle righe, con grid-template-rows e grid-template-columns"><br>
+<sub><i>Figura: linee e celle della griglia (slide 61).</i></sub>
+</p>
+
+
+<p align="center">
+<img src="img/02-grid-articoli.png" width="560" alt="Sei articoli in una griglia a tre colonne e due righe, ciascuno con titolo, immagine e informazioni"><br>
+<sub><i>Figura: sei articoli disposti con display grid (slide 60).</i></sub>
+</p>
+
 
 ### `none`
 

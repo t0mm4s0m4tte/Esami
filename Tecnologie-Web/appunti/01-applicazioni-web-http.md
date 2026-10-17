@@ -20,6 +20,12 @@ Fonte: Drive › Terzo anno › Tecnologie Web › Slide Deck - TWeb › "01 –
 
 Il World Wide Web è un servizio di Internet di tipo client/server, costruito sopra il protocollo applicativo HTTP, pensato per pubblicare e condividere contenuti digitali. Il client (tipicamente un browser) manda una richiesta HTTP, il Web Server risponde. All'origine il Web serviva a condividere documenti e media, quindi la richiesta serviva soprattutto a dire *quale* risorsa si vuole e la risposta a *contenerla*, con le meta-informazioni che permettono al client di mostrarla bene.
 
+<p align="center">
+<img src="img/01-client-server-web.png" width="680" alt="Web client (per esempio un browser) e web server che si scambiano una richiesta HTTP e una risposta HTTP"><br>
+<sub><i>Figura: il Web come servizio client/server basato su HTTP (slide 2).</i></sub>
+</p>
+
+
 Le richieste sono di due famiglie. Con una **GET** si chiede una risorsa, quindi serve poterla individuare in modo univoco. Con una **POST** si inviano dati al server perché li elabori o li conservi: la destinazione è ancora una "risorsa", ma di tipo particolare, cioè uno script o un'applicazione capace di eseguire un calcolo sui dati ricevuti.
 
 Per individuare le risorse si usa la **URL**, una stringa con formato preciso: `protocol://hostname[:port]/path[?querystring][#fragment]`, per esempio `http://www.organizzazione.it:80/utenti/profilo?name=picardi#phone`. I componenti sono:
@@ -35,6 +41,12 @@ HTTP lavora sopra TCP e IP, che identificano gli host con indirizzi numerici. Pe
 ## HTML e ipertesto
 
 Prima del Web, in ambito scientifico si scambiavano risorse via Internet in modo macchinoso: bisognava conoscere l'host, collegarsi e scorrere le cartelle, ognuna organizzata a modo suo, e ripetere tutto per ogni riferimento a un altro documento. Il Web nasce alla fine degli anni '80 con due idee: le URL, che danno a ogni risorsa un indirizzo uniforme indipendente da dove sta, e i documenti **ipertestuali e multimediali**. Un ipertesto è un testo "multidimensionale", senza un'unica sequenza di lettura obbligata, in cui ci sono rimandi ad altre parti o ad altri testi.
+
+<p align="center">
+<img src="img/01-ipertesto.png" width="540" alt="Rete di documenti HTML collegati fra loro e a immagini, video, audio e PDF tramite link"><br>
+<sub><i>Figura: le pagine HTML formano una rete di documenti collegati (slide 9).</i></sub>
+</p>
+
 
 **HTML** (HyperText Markup Language) è un linguaggio di *markup*, cioè di annotazione, non di programmazione: non dice a un agente di calcolo come elaborare dati. Un documento HTML è plain text con delle etichette (tag) che dicono al browser come strutturare la pagina ("questo è un titolo", "questo è un paragrafo"), più i link ad altre pagine e ai media usati per mostrarla. Si affianca a **CSS**, che dice invece quale aspetto grafico avere. I link tra pagine sono ciò che rende le risorse "navigabili" e dà al Web il suo nome di ragnatela.
 
@@ -53,11 +65,23 @@ La sequenza è questa:
 4. il server guarda il path e decide se la risorsa esiste e se è statica o dinamica. Se statica, la incapsula così com'è; se dinamica, esegue il programma e incapsula l'output (anche quando lo scopo non è produrre un output, per esempio salvare un dato in un DB, l'esito dell'esecuzione va comunque comunicato). Se non esiste, risponde comunque con un codice di errore: il famoso *404 Not Found*;
 5. il browser "spacchetta" la risposta, riconosce il tipo di dato e lo mostra (HTML, immagini, audio, video, PDF), oppure propone il download se non sa gestirlo.
 
+<p align="center">
+<img src="img/01-transazione-http.png" width="560" alt="Sequenza di una transazione HTTP: il client chiede l'IP al DNS server, manda la richiesta al web server, che restituisce la risorsa statica o il risultato del calcolo"><br>
+<sub><i>Figura: anatomia di una transazione HTTP (slide 14).</i></sub>
+</p>
+
+
 ## Pagine passive, interattive e programmi lato client
 
 Una pagina HTML è **passiva** se si può solo leggere e al massimo navigare tramite link. È **interattiva** quando il browser "fa qualcosa" (oltre a navigare) in risposta alle azioni dell'utente, e questo "fare qualcosa" è esecuzione di codice. Una buona interattività deve anche modificare l'aspetto della pagina per far capire che qualcosa è successo. Se l'effetto è solo sulla visualizzazione l'interattività è *semplice*; se è una vera elaborazione che può generare richieste a un server si parla di **applicazione client-side**.
 
 Ogni browser contiene un motore di esecuzione JavaScript. Quando arriva una pagina con uno script, il browser lo esegue: l'effetto principale è popolare l'ambiente di esecuzione con funzioni da eseguire in risposta a eventi (click, movimenti del mouse, compilazione di campi, scroll). L'ambiente offre a queste funzioni una rappresentazione a oggetti della pagina (il DOM) che esse possono modificare, cambiando così ciò che l'utente vede. Può anche mantenere variabili di stato: in questo modo la pagina diventa la user interface di un'applicazione. Il codice client-side può fare richieste HTTP, con una particolarità: la risposta non è gestita dal browser ma ricevuta dal codice che ha fatto la richiesta, che la elabora e aggiorna la pagina. Il browser esegue solo JavaScript, quindi ciò che è scritto in altri linguaggi va tradotto in JS.
+
+<p align="center">
+<img src="img/01-ruolo-browser.png" width="560" alt="Il browser riceve la pagina HTML, richiede le risorse necessarie, esegue gli script JavaScript e reagisce agli eventi utente e di rete"><br>
+<sub><i>Figura: il ruolo del browser (slide 19).</i></sub>
+</p>
+
 
 ### Il ciclo del browser
 
@@ -74,13 +98,37 @@ Le richieste HTTP sono **non bloccanti**: partono e restituiscono subito il cont
 
 Ogni messaggio ha una **start line**, gli **header** (coppie `nome: valore`), una riga vuota e un **body** (detto anche payload). Start line e header sono le meta-informazioni.
 
+<p align="center">
+<img src="img/01-richiesta-risposta.png" width="560" alt="Messaggio di richiesta e messaggio di risposta HTTP affiancati, con start line, header, riga vuota e body"><br>
+<sub><i>Figura: struttura di richiesta e risposta HTTP (slide 22; da Ackermann, Full Stack Web Development, 2023).</i></sub>
+</p>
+
+
 Nella **richiesta** la start line contiene il metodo HTTP (GET: il server deve fornire informazioni; POST: il server deve elaborare i dati ricevuti), la destinazione (URL completa o solo path assoluto, perché l'host è quello che sta ricevendo) e la versione del protocollo. Molti header sono impostati dal browser; quelli più spesso impostati dal programmatore sono `Accept` (tipi accettati in risposta), `Content-Type` (tipo del body) e `User-Agent` (che client è). I tipi si esprimono in formato **MIME**, nato per gli allegati email, nella forma `tipo/sottotipo`: `text/html`, `text/plain`, `text/css`, `text/javascript`, `image/png`, `image/jpeg`, `application/json`, `application/pdf`, `application/xml`, `video/mp4`. Le GET non hanno body, perché servono a ottenere dati. Le POST hanno un body, tipicamente `application/x-www-form-urlencoded` (i dati di un form inviato dal browser) oppure `application/json` (dati elaborati da un'app client-side).
 
+<p align="center">
+<img src="img/01-request-line.png" width="560" alt="Richiesta HTTP POST con la start line scomposta in metodo, destinazione e versione"><br>
+<sub><i>Figura: la start line di una richiesta HTTP (slide 24).</i></sub>
+</p>
+
+
 Nella **risposta** la start line contiene versione, **status code** e status text. Lo status code è diviso in categorie dalla prima cifra: 2XX successo, 4XX errore del client, 5XX errore del server (esempio: 404, "Not found"). Header comuni: `Content-Type`, `Content-Length` (lunghezza del body in byte), `Server`, `Date`. Il body c'è sempre ed è tipicamente `text/html` (la pagina da mostrare), `application/json` (dati per un'app client-side) oppure fogli di stile, script, immagini e altri file.
+
+<p align="center">
+<img src="img/01-response-line.png" width="560" alt="Risposta HTTP 201 Created con la status line scomposta in versione, status code e status text"><br>
+<sub><i>Figura: la status line di una risposta HTTP (slide 28).</i></sub>
+</p>
+
 
 ## L'applicazione web completa: client-side + server-side ("full stack")
 
 Il Web Server è sempre online (salvo manutenzione). Pubblica in modo statico la pagina HTML a cui sono collegati gli script client-side e, in parallelo, tiene in esecuzione l'app server-side, "avviata" dal web server all'accensione così come le app desktop sono avviate dal sistema operativo. L'app server-side risponde a un insieme di URL, ciascuna corrispondente a una funzionalità: quell'insieme è la sua **API**.
+
+<p align="center">
+<img src="img/01-full-stack.png" width="560" alt="Applicazione web completa: il browser esegue l'app client-side, il web server esegue l'app server-side che accede a un database, collegate da richieste e risposte HTTP"><br>
+<sub><i>Figura: applicazione client-side + server-side (slide 33).</i></sub>
+</p>
+
 
 Il browser richiede la pagina HTML, scarica media e script, renderizza e avvia l'ambiente JavaScript: questo è l'avvio dell'app client-side. La memoria dell'ambiente non si resetta finché la pagina resta aperta, e ogni pagina ha un ambiente indipendente.
 
@@ -95,6 +143,12 @@ La risposta torna al browser, che la traduce in un evento di rete per l'app clie
 L'**architettura a strati** è un pattern in cui la logica applicativa è divisa in livelli, ciascuno dei quali offre servizi al livello superiore usando quelli del livello inferiore. Il concetto centrale è l'**interfaccia** tra due strati, che definisce formalmente le richieste accettabili (input) e le risposte attese (output). Ne derivano due vantaggi: ogni strato può essere modificato, corretto e rilasciato separatamente se l'interfaccia verso l'alto non cambia; e sullo stesso strato possono convivere moduli alternativi che implementano la stessa interfaccia, intercambiabili senza toccare lo strato superiore.
 
 La suddivisione più comune: il **back-end** è il livello più basso e gestisce la **persistenza dei dati** (nelle app desktop è uno strato sottile che carica/salva file; nelle web app dialoga con un database server, traduce tra la rappresentazione dei dati nell'app e quella del DB, per esempio i record di una tabella relazionale, e può occuparsi di verifiche, transazioni e rollback). Il **front-end** è il livello più alto e interagisce con l'utente: contiene la User Interface (che è a tutti gli effetti l'interfaccia verso lo "strato superiore", che qui è una persona) e i moduli che elaborano le informazioni per renderle fruibili. Possono esserci **strati intermedi** per elaborazioni che non appartengono né all'uno né all'altro e che si vogliono rendere indipendenti da entrambi.
+
+<p align="center">
+<img src="img/01-front-back-end.png" width="520" alt="Tre strati dell'applicazione: il front-end che interagisce con l'utente in alto, il back-end che gestisce la persistenza dei dati in basso, strati intermedi in mezzo"><br>
+<sub><i>Figura: front-end e back-end (slide 38).</i></sub>
+</p>
+
 
 Nelle web app il front-end è necessariamente lato client (solo lì c'è la UI); il back-end è tipicamente, ma non per forza, lato server; gli strati intermedi possono stare da una parte o dall'altra. Elaborare lato client non sovraccarica il server, ma è possibile solo se i dati che servono sono già sul client (e può non esserlo per riservatezza o perché sono troppi da trasferire); elaborare lato server dà accesso a tutto il database ma, se l'elaborazione è costosa, crea problemi di scalabilità. Spesso si usa "back-end" come sinonimo di server-side e "front-end" di client-side, ma attenzione: i primi due termini descrivono l'organizzazione *logica*, gli altri due quella *implementativa*. (La slide originale scrive i sinonimi al contrario; vedi Dubbi.)
 
