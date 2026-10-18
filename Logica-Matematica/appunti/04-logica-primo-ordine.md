@@ -72,6 +72,10 @@ Molte proprietà note si lasciano scrivere come insiemi di enunciati. Un'**equiv
 - **ET5** L={R}, ∀x R(x,x) è soddisfacibile (⟨ℕ,≤⟩) e non valida (⟨ℕ,<⟩).
 - **ET6** Valuta in ⟨ℕ,<⟩ con 2/x,3/y: ∃z(x<z∧z<y): servirebbe n con 2<n<3 -> falsa; con 2/x,4/y -> vera (n=3).
 
+## Esercizi svolti collegati
+
+Per la sintassi e le variabili libere/vincolate vedi [file 08 §9](08-esercizi-ed-esami-svolti.md#9-sintassi); per la semantica ([§10](08-esercizi-ed-esami-svolti.md#10-semantica-del-primo-ordine)) ci sono la valutazione di termini e formule con un'assegnazione, gli insiemi di verità in strutture aritmetiche e in ⟨N, |⟩, la verità degli enunciati nelle strutture finite o numeriche, la soddisfacibilità e validità di enunciati con funzioni iniettive, la conseguenza logica con controesempio costruito (per esempio ∃x(P→Q) non implica ∃xP→∃xQ). Agli esami la semantica compare come [quesiti sulle variabili libere e sull'insieme di verità](08-esercizi-ed-esami-svolti.md#1-esercizio-1-quesiti-a-risposta-multipla) e nell'[Esercizio 2](08-esercizi-ed-esami-svolti.md#2-esercizio-2-ordini-reticoli-strutture-e-conseguenza-logica), dove si dimostra o si confuta una conseguenza logica e si calcolano gli insiemi di verità φ, ψ e π in ⟨N, |⟩ (il calcolo di π(A) del 23 settembre ha un errore nella soluzione ufficiale, segnalato nel file). Le notazioni delle quattro versioni cambiano solo nei nomi.
+
 ## Cose da saper fare all'esame
 - Dire se una stringa è termine/formula; ht, lh, albero; sottoformule; costante principale; ripristinare parentesi dalle priorità.
 - Elencare FV e classificare ogni occorrenza di variabile; riconoscere enunciati.

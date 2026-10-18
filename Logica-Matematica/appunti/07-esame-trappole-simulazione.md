@@ -34,6 +34,10 @@ Sono invece false:
 - "f iniettiva ⇒ ogni controimmagine ha **esattamente** 1 elemento";
 - "f iniettiva e B infinito ⇒ A infinito".
 
+## Esercizi svolti collegati
+
+Le regole d'esame di questo file sono ora verificate su tracce vere: il [file 08 §0](08-esercizi-ed-esami-svolti.md#0-comè-fatto-lesame) conferma che l'esame ha 32 punti (14 + 9 + 9), che la sufficienza è 18 con almeno 10 nel primo esercizio e che i secondi due esercizi sono un esercizio aperto su ordini/semantica/conseguenza logica e una formalizzazione, e dà le soluzioni dei quattro appelli del 2026 (sedici versioni). Le trappole 5 (assegnazioni e ∃z), 6 (relazione non costruisce termini), 8 (iniettiva/suriettiva nel finito) e 11 (distributività) compaiono proprio nei quesiti a risposta multipla dei temi; nella stessa fonte ci sono due punti dove la chiave ufficiale e la verifica divergono (relazione "coprima" e π(A) in ⟨N, |⟩), riportati nella tabella degli errori. La mini-simulazione qui sotto resta quella scritta da me: per allenarsi su tracce ufficiali usare il file 08.
+
 ## Mini-simulazione (tempo ~90 min, svolta dopo aver provato da solo)
 La simulazione ricalca la struttura dell'esame: un primo esercizio a risposta multipla, uno di formalizzazione, uno di semantica e uno di dimostrazione. Va svolta prima da soli e poi confrontata con le soluzioni.
 

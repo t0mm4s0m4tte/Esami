@@ -147,6 +147,10 @@ void ins_ord2(lista *L, lista nodo) {
 - dimenticare `NULL` nel `next` dell'ultimo elemento inserito in coda;
 - assegnare `NULL` al `next` di un nodo da inserire **fra due nodi**.
 
+## Esercizi svolti collegati
+
+L'esercizio di laboratorio sulle liste è `list-rec.h`, svolto nel [file 09 §5](09-esercizi-ed-esami-svolti.md#5-liste-ricorsive-list-rec): `fromTo_rec`, `reverse_rec` (in loco) e `reverse_ite_const` (copia) sono del docente, mentre `occurrences_rec`, `included_rec` (sottosequenza) e `zipSum_rec` sono state scritte e provate qui. Il confronto fra rovesciare sul posto e rovesciare una copia, e il fatto che dopo `reverse_rec` la vecchia testa diventa l'ultimo nodo, sono i punti su cui l'esame può chiedere un disegno dello heap. Il `ricettario.c` ([§9](09-esercizi-ed-esami-svolti.md#9-gli-esempi-delle-lezioni)) applica la rimozione ricorsiva sul puntatore al puntatore, e il [canile (§8)](09-esercizi-ed-esami-svolti.md#8-il-canile) fa lo stesso con inserzione ordinata ed eliminazione.
+
 ## Cose da saper fare all'esame
 - Scrivere (sia per valore sia per riferimento, sia iterativo sia ricorsivo): inserzione/cancellazione in testa/coda/posizione generica, ricerca, conteggio, somma, stampa/inversa, rimozione di tutti gli elementi con una proprietà, dealloc totale.
 - Simulare a mano stack/heap con i box (L, ML, tmp) per capire cosa viene modificato.

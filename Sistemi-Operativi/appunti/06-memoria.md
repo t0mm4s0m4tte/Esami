@@ -74,6 +74,10 @@ Le tracce di verifica sono le seguenti. **Traccia FIFO verificata** [INT] (frame
 
 L'**allocazione dei frame** può essere *globale* (la vittima è scelta tra tutti i processi: più throughput, è la scelta comune) o *locale* (solo tra i propri frame: prestazioni più stabili ma sottoutilizzo). Se un processo ha troppo pochi frame si va in **thrashing**: troppi page fault, CPU quasi inattiva e sistema che pagina in continuazione. Il **working set model** vi pone rimedio: il working set è l'insieme delle pagine referenziate nella *working-set window* e va tenuto interamente in RAM; se la somma dei working set supera la memoria, si sospendono dei processi.
 
+## Esercizi svolti collegati
+
+L'esercizio 3 della prova scritta dimostrativa del 25/12/2024 ([file 11 §1](11-esercizi-ed-esami-svolti.md#esercizio-3---memoria-7-punti)) usa due argomenti di questo file. Il primo è la **traduzione di un indirizzo virtuale** con paginazione (spazio virtuale 2³² byte, fisico 2²² byte, pagine da 4096 byte: 20 bit di numero di pagina, 12 di offset, 10 di numero di frame; la page table ha 2²⁰ voci), con la distinzione richiesta fra operazioni **hardware** (MMU, TLB, accesso alla page table) e **software** (gestione del page fault: scelta della vittima, lettura dalla memoria di massa, aggiornamento delle tabelle, ripartenza dell'istruzione). Il secondo è l'**algoritmo LRU** con un esempio su 3 frame: sulla stringa 7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1 produce 12 page fault. Le altre competenze del file (segmentazione, first/best/worst-fit, EAT con TLB, swapping, thrashing) non hanno esercizi nel Moodle.
+
 ## Cose da saper fare all'esame
 - Tradurre un indirizzo logico in fisico: base/limit, segmentazione (`<s,d>` con controlli), paging (p,d con page table data).
 - Calcolare frammentazione interna, numero pagine, dimensione page table (2^bit_pagine x byte per voce), EAT con TLB.

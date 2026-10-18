@@ -71,6 +71,10 @@ Per uscire da un deadlock si può usare la **terminazione** di tutti i processi 
 | Evitamento | più flessibile | serve max a priori, overhead a ogni richiesta |
 | Rilevamento+ripristino | massima utilizzazione | overhead rilevamento, costo del ripristino |
 
+## Esercizi svolti collegati
+
+Nella prova scritta dimostrativa del 25/12/2024 ([file 11 §1, esercizio 2](11-esercizi-ed-esami-svolti.md#esercizio-2---sincronizzazione-e-deadlock-8-punti)) il deadlock compare in due richieste: elencare le **quattro condizioni necessarie** (mutua esclusione, possesso e attesa, assenza di prelazione, attesa circolare, tutte da verificare contemporaneamente) e scrivere un programma di due thread che ci cade. La risposta classica (due mutex in ordine opposto) mostra che l'attesa circolare dipende dall'ordine di acquisizione, per cui imporre un ordine globale la previene. L'algoritmo del Banchiere, i grafi di allocazione, il rilevamento e il ripristino non hanno esercizi nel Moodle (gli esempi numerici sono quelli del [file 10](10-esercizi-tipo-esame.md)).
+
 ## Cose da saper fare all'esame
 - Elencare le 4 condizioni e dire quale nega ciascuna tecnica di prevenzione.
 - Disegnare/leggere un grafo di allocazione e stabilire se c'è deadlock (attenzione a istanze multiple).

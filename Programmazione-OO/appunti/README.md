@@ -13,11 +13,12 @@ Gli appunti seguono il filo del corso: si parte dai concetti OOP e dalla gestion
 5. [05 - Alberi binari di ricerca](05-alberi-di-ricerca.md) (Lez. 17-19, 23)
 6. [06 - Eccezioni e design pattern](06-eccezioni-design-pattern.md) (Lez. 21-22)
 7. [07 - Esercizi tipo scritto e domande orale](07-esercizi-tipo-scritto-orale.md) (Lez. 23)
+8. [08 - Esercizi ed esami svolti](08-esercizi-ed-esami-svolti.md) (esercizi d'esame 23-24 con uscite eseguite, 3 quiz di laboratorio con soluzioni, esame di laboratorio "Banca")
 
 ## Priorità di ripasso
 Conviene partire da binding dinamico, cast e tipi (04, 07A), che sono il punto più insidioso, poi invarianti e classi con stato (01), quindi liste e alberi ricorsivi (03, 05), per finire con eccezioni (06) e pattern (06).
 
 ## Lacune segnalate
-- Non ci sono esami passati né slide di Lab oltre Lab 1: gli esercizi tipo derivano da Lez. 23.
+- Dal Moodle (POO-B, POO-LAB) sono stati integrati gli esercizi d'esame 23-24, tre quiz di laboratorio e l'esame di laboratorio "Banca" (file 08); non risultano esami con data e appello, quindi non è possibile dire quali esercizi siano usciti davvero. Restano non leggibili le 11 "Note iPad" (scrittura a mano) e i codici di lezione in zip, non riletti riga per riga. I quiz Moodle non sono scaricati.
 - Alcuni codici (push/pop DynamicStack, insert/remove Tree, reverse Cons/Nil) sono descritti ma non riportati nel doc: ricostruiti e marcati.
 - Punti [DA VERIFICARE] in fondo a ogni file.

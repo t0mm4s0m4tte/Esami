@@ -68,6 +68,10 @@ La differenza tra finito e infinito è il tranello ricorrente. Tra insiemi finit
 5. (ET) R su ℤ: xRy ⇔ 3 | x-y. Rifl (0), sim (x-y→y-x), trans (somma): equivalenza; 3 classi [0],[1],[2]; ℤ/R ha 3 elementi.
 6. (ET) R={(1,1),(1,2),(2,2)} su {1,2}: rifl, antisim, trans -> ordine; non simmetrica.
 
+## Esercizi svolti collegati
+
+Gli esercizi su insiemi, relazioni e funzioni sono in [file 08 §6](08-esercizi-ed-esami-svolti.md#6-insiemi-relazioni-funzioni): le sette equazioni fra insiemi con prove o controesempi, la relazione di divisibilità come ordine con minimo 1 e massimo 0, le proprietà che si conservano per unione, intersezione, composizione, inversa e complemento di relazioni transitive o simmetriche (verificate su tutte le relazioni di tre elementi), e le funzioni con la classificazione iniettiva/suriettiva/biettiva (compresa la biezione N² → N). All'esame le stesse competenze tornano nel [primo esercizio](08-esercizi-ed-esami-svolti.md#1-esercizio-1-quesiti-a-risposta-multipla) come proprietà di relazioni come "essere nati in giorni differenti" e "n e m hanno un divisore primo comune", dove l'unica risposta corretta è quasi sempre "simmetrica"; il file segnala anche i due casi dove la chiave ufficiale dell'8 settembre è discutibile (la relazione "coprima" non è irriflessiva perché 1 R 1).
+
 ## Cose da saper fare all'esame
 - Disegnare Hasse di Div(n), P(A) con ⊆, di una relazione data; trovare minimo/massimo/minimali.
 - Decidere rifl/sim/antisim/trans con giustificazione (o controesempio); riconoscere equivalenza/ordine; trovare classi e quoziente.

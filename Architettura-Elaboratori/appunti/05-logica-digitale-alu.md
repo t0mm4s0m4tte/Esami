@@ -78,6 +78,10 @@ Il metodo dello slt basato sul bit di segno della differenza **sbaglia quando la
 4. Dato (A,B) a 4 bit stabilire risultato e flag. Es. slide Lab 1: 0x80000000 + 0xD0000000 = 0x50000000 con overflow (neg+neg=pos); 0x80000000 - 0xD0000000 = 0xB0000000 senza overflow.
 5. Ricavare la tabella di verità e la FND di una funzione (es. maggioranza).
 
+## Esercizi svolti collegati
+
+Il progetto CircuitVerse del Moodle ([file 13 §4](13-esercizi-ed-esami-svolti.md#4-il-progetto-circuitverse-dei-lab-8-10)) contiene con i nomi del Lab 8 i circuiti `half_adder`, `full_adder`, `ALU_1bit_v0`, `ALU_1bit_v1`, `ALU_1bit_v2` e `ALU_4bit`. L'elenco è stato letto ma i collegamenti interni non sono stati verificati; non ci sono esercizi con testo e soluzione oltre a quelli del [file 11](11-laboratorio-esercizi-svolti.md).
+
 ## Cose da saper fare all'esame
 - Disegnare/scrivere decoder, mux, half/full adder, ALU a 1 bit con tutti i segnali di controllo.
 - Spiegare come si ottiene sottrazione, NOR, slt, beq (Zero) nella ALU.

@@ -54,6 +54,10 @@ Dai reticoli se ne costruiscono altri, e si vuole sapere quando il risultato è 
 - **ET6** ⟨ℚ∩[0,1],≤⟩ è reticolo (totale) ma non completo: X={q|q²<1/2} non ha sup in ℚ.
 - **ET7** f:ℕ→ℕ, f(n)=n+1 è monotona senza punto fisso: ⟨ℕ,≤⟩ non è reticolo completo (manca il sup di ℕ) -> Tarski non applicabile; su [0,1] ogni f monotona ha punto fisso.
 
+## Esercizi svolti collegati
+
+Gli esercizi su ordini e reticoli sono quelli dell'[Esercizio 2 d'esame](08-esercizi-ed-esami-svolti.md#2-esercizio-2-ordini-reticoli-strutture-e-conseguenza-logica) (22/06: sei elementi su due livelli, maggioranti o minoranti, "non è un reticolo perché il minimo dei maggioranti non esiste", insieme di verità della catena x<y<z), dei quesiti su Down(P), somme e prodotti di ordini e algebre di Boole nel [primo esercizio](08-esercizi-ed-esami-svolti.md#1-esercizio-1-quesiti-a-risposta-multipla), e delle slide 7.1 ([§12](08-esercizi-ed-esami-svolti.md#12-reticoli-slide-71)): Hasse di insiemi di divisori, sup e inf nell'ordine {1..7}, il reticolo mancato {1,2,4,5,6,12,20,30,60} e la dualità delle formule. Nessun esercizio nel materiale Moodle riguarda il teorema di Tarski-Knaster o la costruzione di Cantor-Schröder-Bernstein, che qui restano teoria da studiare sulle slide 7.2 e 2.4.
+
 ## Cose da saper fare all'esame
 - Dato un Hasse/poset: trovare minimo, massimo, minimali/massimali, maggioranti/minoranti, sup/inf; stabilire se è reticolo (cerca coppie senza sup/inf) e se è distributivo (cerca M3/N5).
 - Disegnare Hasse di Div(n), P(A), catene, prodotti.

@@ -71,6 +71,10 @@ else        { fp = fopen("dati.txt","r"); if (fp) { fscanf(fp,"nome: %s id: %d\n
                                                      printf("Ho letto:%s %d\n", datiS, datiN); fclose(fp); } }
 ```
 
+## Esercizi svolti collegati
+
+L'applicazione dei file è il `main` del **canile** ([file 09 §8](09-esercizi-ed-esami-svolti.md#8-il-canile)): all'avvio legge i cani da `cani.txt` con `fscanf` e `feof`, durante la giornata aggiorna le liste, e alla fine riscrive il file con `fopen(..., "w")`. Il ciclo `while (!feof(...))` del docente è fragile (si ferma male se il file manca o è vuoto): la forma robusta è controllare che `fscanf` restituisca il numero atteso di elementi, come nella mia versione. `test_sprintf.c` ([§9](09-esercizi-ed-esami-svolti.md#9-gli-esempi-delle-lezioni)) è un esempio di `sprintf` verso una stringa.
+
 ## Cose da saper fare all'esame
 - Scrivere il "guscio": fopen -> controllo NULL -> uso -> fclose -> ramo errore.
 - Esercizio svolto in aula (a coppie): leggere da un file cifre 0-9 scritte come numeri e scrivere un secondo file con le cifre in parole (zero, uno, ... nove): array di stringhe indicizzato dalla cifra.

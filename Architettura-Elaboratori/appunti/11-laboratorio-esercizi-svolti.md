@@ -1,6 +1,6 @@
 # 11 - Laboratorio: RARS, esercizi tipo con soluzioni
 
-Fonte: slide Lab 1-6, 8, 9, 10 (cartella "Slide Deck - Laboratorio"). **Lab 7 (Ricorsione) non è nel Drive.** Le soluzioni marcate "(slide)" sono quelle delle slide; le altre sono **mie** (scritte per queste note, non testate in RARS: [DA VERIFICARE eseguendole]).
+Fonte: slide Lab 1-6, 8, 9, 10 (cartella "Slide Deck - Laboratorio"). **Lab 7 (Ricorsione) non è nel Drive.** Le soluzioni marcate "(slide)" sono quelle delle slide; le altre sono **mie** (scritte per queste note). Le soluzioni dei Lab 1-6 sono poi state **eseguite in RARS** con valori di prova (risultati e conteggi di istruzioni nel [file 13 §2](13-esercizi-ed-esami-svolti.md#2-le-soluzioni-dei-lab-1-6-eseguite-in-rars)): tutte corrette, dopo la correzione delle etichette `s1`/`s2` del Lab 3 Es. 2 (erano nomi di registri) e della doppia etichetta su una riga del `mcd`. Il Lab 7 (ricorsione) è documentato nel file 13 §3.
 
 ## RARS (Lab 1)
 RARS è il simulatore RISC-V (RV32 e RV64) su cui si fa tutto il laboratorio: permette di scrivere, eseguire e ispezionare programmi assembly senza una macchina reale. Conviene usare il fork di Drago `github.com/idrago/rars` ("vi aiuterà per l'esame"), che richiede la JVM 8. Offre breakpoint, esecuzione a passi e statistiche (Tools > Instruction Counter / Statistics: numero di istruzioni per tipo, accessi a memoria), utili per contare le istruzioni eseguite.
@@ -90,9 +90,9 @@ Gli esercizi di questo laboratorio traducono costrutti if/else e cicli in salti 
 
 **Es. 1** (frammenti if/else): vedi file 03. **Es. 2 - max di t0,t1,t2 in t3:**
 ```
-mv t3,t0 ; bge t3,t1,s1 ; mv t3,t1
-s1: bge t3,t2,s2 ; mv t3,t2
-s2:
+mv t3,t0 ; bge t3,t1,L1 ; mv t3,t1
+L1: bge t3,t2,L2 ; mv t3,t2
+L2:
 ```
 **Es. 3 - Fibonacci iterativo** (slide; N in t0, R in t1, A=t2, B=t3):
 ```
@@ -214,12 +214,13 @@ Lo chiamante: `la a0,str ; jal strlen`. Esempi nel lab: `strcmp("first","second"
 Il laboratorio mostra la differenza tra procedura foglia, che non chiama altre procedure e non ha bisogno di salvare nulla, e procedura che ne chiama un'altra, che deve preservare `ra` sullo stack.
 **MCD (Euclide, solo sottrazioni):**
 ```
-mcd: mcd_while: beq a0,a1,mcd_end
+mcd:
+mcd_while: beq a0,a1,mcd_end
                 bge a1,a0,mcd_else ; sub a0,a0,a1 ; j mcd_while
      mcd_else:  sub a1,a1,a0 ; j mcd_while
      mcd_end:   ret
 ```
-Ottimizzata: non usa sp/fp né registri s -> niente salvataggi (procedura foglia). Domande: istruzioni necessarie = 7 (beq, bge, sub, j, sub, j, ret); eseguite per a=24, b=30 [conteggio da fare in RARS].
+Ottimizzata: non usa sp/fp né registri s -> niente salvataggi (procedura foglia). Domande: istruzioni necessarie = 7 (beq, bge, sub, j, sub, j, ret); eseguite per a=24, b=30: **18** (misurate in RARS; per a=12, b=9 sono 14, e `mcm(12,9)` ne esegue 22).
 **MCM(a,b) = a*b / MCD(a,b)** (slide): 
 ```
 mcm: addi sp,sp,-4 ; sw ra,0(sp)

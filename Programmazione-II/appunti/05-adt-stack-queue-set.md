@@ -189,6 +189,10 @@ P_IN: num >= 0 e i restanti argomenti sono num. P_OUT: nuovo è un set con cardi
 ### Set efficiente con lista ordinata
 Se i dati sono ordinabili si può tenere il set come lista ordinata. Il vantaggio è che per sapere se un elemento è presente non serve scorrere tutta la lista, con meno tempo nella ricerca; lo svantaggio è che la lista va mantenuta ordinata, quindi niente inserzione in testa e più tempo nell'inserzione. La scelta conviene quando nell'ambito applicativo sono frequenti i doppioni, e va valutata caso per caso.
 
+## Esercizi svolti collegati
+
+L'esercizio sugli ADT è il **canile** ([file 09 §8](09-esercizi-ed-esami-svolti.md#8-il-canile)): un multiset di cani e un set di razze realizzati con liste, con inserzione, rimozione e stampa ordinata, completato e provato con le parti che il docente non scrive (`togli_cane`, `init_*`, `print_msc`). Il progetto sul **set ordinato di interi** ([§7](09-esercizi-ed-esami-svolti.md#7-il-progetto-sul-set-ordinato)) ha solo uno scheletro nel Moodle: la sua lista ordinata con `first`, `last` e `size` e le operazioni insiemistiche per scansione parallela sono il seguito naturale della sezione "Set efficiente con lista ordinata". Le slide di laboratorio sul tipo opaco ([§6](09-esercizi-ed-esami-svolti.md#6-tipo-opaco-modulo-accoppiamento-i-numeri-complessi)) mostrano perché un ADT deve nascondere la rappresentazione: con lo stesso header si possono collegare due implementazioni diverse senza ricompilare il cliente.
+
 ## Cose da saper fare all'esame
 - Definire l'interfaccia di un ADT e implementarlo in 2 modi (array e lista), con `init/empty/full/push/pop/peek` o `enqueue/dequeue/...`.
 - Implementare queue circolare con `%` e spiegare perché serve `num`.

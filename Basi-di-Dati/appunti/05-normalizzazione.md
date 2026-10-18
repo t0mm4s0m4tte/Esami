@@ -163,6 +163,10 @@ Nella pratica si può anche tornare indietro. La **de-normalizzazione** reintrod
 Entità E1 (id {Id-11,Id-12}, attr A1), E2 (Id-2, A2), E3 (Id-3, A3); r1 con E1 (1,1) verso E2 e attributo Ar1; r2 N:M E3-E1 con Ar2.
 DF: {Id-11,Id-12}→Id-2,Ar1 · {Id-11,Id-12}→A1 · Id-2→A2 · Id-3→A3 · {Id-3,Id-11,Id-12}→Ar2. Logico: E1 include Id-2 come FK; **Rr2(Id-3,Id-11,Id-12,Ar2)** tabella separata (chiave = unione degli identificatori).
 
+## Esercizi svolti collegati
+
+Oltre agli esercizi del foglio nel §8, ogni appello ha un esercizio di normalizzazione, svolti in [file 09 §4](09-esercizi-ed-esami-svolti.md#4-normalizzazione) con le chiavi, la copertura minimale e la scomposizione ricalcolate. Usano la chiusura e la ricerca delle chiavi del §3 (nei temi 2025-06-09, 2026-09-03 e nella simulazione tutti gli antecedenti sono chiavi, quindi la relazione è già in BCNF), il test di 3NF e la sintesi del §6 (2025-07-09 e 2025-12-17, Fornitori 2026-06-11, CuccioliPucciosi 2026-07-09, PRESENZA_MOSTRA 2026-09-14), la BCNF del §5, la condizione di join senza perdita del §4 (2026-06-11 e 2026-09-03) e l'equivalenza di due insiemi di dipendenze (2025-09-10). Il tema 2026-01-23 chiede il percorso inverso, da una scomposizione a un insieme F possibile. La preservazione delle dipendenze compare solo come proprietà della sintesi; Armstrong e le dimostrazioni degli assiomi non hanno esercizi nel materiale Moodle.
+
 ## Cose da saper fare all'esame
 - **Calcolare X⁺**, verificare una DF, trovare **tutte le chiavi** (partire dagli attributi mai a destra).
 - Calcolare la **copertura minimale** nell'ordine giusto (RHS singoli -> estranei -> ridondanti).

@@ -52,6 +52,10 @@ La versione generica è `Tree<T extends Comparable<T>>`, con `Leaf` e `Branch` c
 
 L'esercizio 4, `detach(x)`, elimina ogni sottoalbero con radice == x. Il confronto deve essere null-safe: `x == null ? elem == null : x.equals(elem)`, perché non si può mai chiamare `x.equals` con x null. Come ottimizzazione, se non c'è nulla da staccare si restituisce `this`, e la Leaf restituisce se stessa: è la condivisione delle istanze, nello spirito del pattern Flyweight.
 
+## Esercizi svolti collegati
+
+Gli esercizi 3 e 4 della lezione 23-24 sono sugli alberi e sono svolti nel [file 08 §1](08-esercizi-ed-esami-svolti.md#1-gli-esercizi-desame-della-lezione-23-24). L'esercizio 3 (`insert` con `CHECK POINT 2` nei rami) conta quattro stampe per gli inserimenti 3, 1, 4, 2 e verifica che al termine esista **una sola `Leaf`** con cinque riferimenti, legata al §1 di questo file. L'esercizio 4 (`detach(x)` su `Tree<T>`) usa la struttura generica del §5: `detach` sostituisce con una `Leaf` l'**intero sottoalbero** il cui elemento coincide con x, con il controllo `x != null` prima di `x.equals(elem)` per gestire gli elementi `null`. Le visite e la rimozione con due figli non hanno esercizi con testo nel Moodle.
+
 ## Cose da saper fare all'esame
 - Scrivere Tree/Leaf/Branch con insert, contains, max, remove (caso due figli).
 - Dare le quattro visite di un albero disegnato; calcolare `leavesAt(k)`.

@@ -75,6 +75,10 @@ Il **ciclo di vita di una richiesta** (ad esempio una `read`) segue questi passi
 
 Sul fronte delle prestazioni, i costi sono CPU, context switch, copia dei dati e traffico di rete. Le ottimizzazioni consistono nel ridurre context switch, copie e interrupt, nell'usare il DMA e hardware più intelligente e nel bilanciare CPU, memoria, bus e I/O. Inoltre le funzionalità migrano verso il basso (ad esempio il checksum: app -> kernel TCP/IP -> offload sulla NIC). [INT, ordini di grandezza dal Cap 14 della fonte] HDD ~250 IOPS (CPU: ~630 milioni di istruzioni per I/O); SSD ~60.000 IOPS (~2,65 milioni).
 
+## Esercizi svolti collegati
+
+Il disk scheduling, DMA/polling/interrupt e il sottosistema I/O del kernel non hanno esercizi nel materiale Moodle: la prova scritta dimostrativa del 25/12/2024 ([file 11](11-esercizi-ed-esami-svolti.md#1-prova-scritta-dimostrativa-del-25-dicembre-2024)) non li tocca. Gli esempi numerici (coda 98, 183, 37, …, testina 53) restano quelli del [file 10](10-esercizi-tipo-esame.md). Il lato I/O compare solo indirettamente nel laboratorio, dove la differenza fra `fprintf` bufferizzato e `write` non bufferizzato è il punto delle slide sul buffering.
+
 ## Cose da saper fare all'esame
 - **Disegnare il percorso della testina e calcolare il movimento totale** per FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK dati coda e posizione/direzione iniziale.
 - Confrontare polling / interrupt / DMA e dire quando usare cosa.

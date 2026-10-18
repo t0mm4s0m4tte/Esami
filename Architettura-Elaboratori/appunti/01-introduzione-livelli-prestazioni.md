@@ -81,6 +81,10 @@ Il ritmo di un processore è scandito dal **clock**, un segnale a frequenza cost
 
 Dal punto di vista storico, a partire dal 2002 la potenza assorbita, il parallelismo implicito limitato e la latenza della memoria hanno rallentato la crescita dei monoprocessori (circa il 3,5% l'anno); da qui l'approccio multicore.
 
+## Esercizi svolti collegati
+
+Le slide introduttive del Moodle descrivono la **struttura della prova** (due esoneri e un orale: un test a risposta multipla E1 da 0 a 8, gli esercizi di laboratorio E2 da 0 a 10 con almeno un punto per esercizio, e un orale O da 0 a 14); è riassunta, con i dubbi dovuti all'estrazione da un diagramma, nel [file 13 §1](13-esercizi-ed-esami-svolti.md#1-come-è-fatto-lesame), insieme alla mappa delle sezioni del libro da leggere. Non ci sono esami passati nel Moodle.
+
 ## Cose da saper fare all'esame
 - Descrivere i livelli di macchina virtuale e il ruolo di compilatore/assemblatore/SO.
 - Spiegare il ciclo fetch-decode-execute e il ruolo di PC e IR.

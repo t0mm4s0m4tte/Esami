@@ -23,6 +23,7 @@ Convenzione: `[INT]` = integrazione standard o calcolo mio, **non** presente nel
 | [08-file-system-e-sicurezza.md](08-file-system-e-sicurezza.md) | Cap 13-14-16: permessi Unix/ACL, allocazione file (contigua/FAT/indicizzata/inode), sicurezza e crittografia |
 | [09-laboratorio-unix.md](09-laboratorio-unix.md) | Lab 01-11: shell, C/gcc/make, fork/exec/wait, file, gdb, segnali, pipe/FIFO, code di messaggi, semafori, shm, bash |
 | [10-esercizi-tipo-esame.md](10-esercizi-tipo-esame.md) | Procedure ed esercizi svolti, domande teoriche ricorrenti |
+| [11-esercizi-ed-esami-svolti.md](11-esercizi-ed-esami-svolti.md) | Prova dimostrativa 25/12/2024, esercitazioni pipe/FIFO e code di messaggi (soluzioni del docente commentate), progetto 2025/26, POSIX vs System V |
 
 ## Cose da saper fare all'esame (riepilogo globale)
 1. **Scheduling**: Gantt + waiting/turnaround medi (FCFS, SJF, SRTF, Priority, RR).
@@ -48,3 +49,6 @@ Le fonti contengono qualche imprecisione:
 - "XDL" nel Cap 3 è in realtà XDR;
 - per `lseek` su pipe l'errno su Linux è `ESPIPE` (non `EPIPE`);
 - nel Cap 11 per C-SCAN e C-LOOK la fonte non dà il movimento totale, che è stato calcolato in `07` (382 e 322).
+
+## Materiale Moodle (esami ed esercizi)
+Il file [11](11-esercizi-ed-esami-svolti.md) integra il Moodle (`_moodle-raw/Sistemi-Operativi`). **Temi d'esame datati: ne esiste uno solo**, la "Prova Scritta 25 Dicembre 2024" di SO-B, dichiarata "a scopi puramente dimostrativi" (tre esercizi: processi 8 punti, sincronizzazione 8, memoria 7; senza soluzioni, svolta qui da me); le richieste d'esame dedotte per gli altri argomenti (scheduling, disco, file system) restano quindi `[DA VERIFICARE]` finché non c'è una traccia vera. Il Moodle del laboratorio T4 ha le esercitazioni su pipe/FIFO e code di messaggi con le soluzioni in C del docente (commentate nel file, con due difetti trovati: la corsa critica fra `write` e `sigsuspend` e l'`unlink` mancante), la traccia del progetto 2025/26 ("Servizio Mensa", voto minimo 18/30, peso 1/3) e le slide del turno T4 sul progetto, sul confronto POSIX contro System V e su gdb. La lacuna "stati del processo, PCB, context switch" del Cap. 3, indicata sopra, è colmata dalle slide `Cap_03` (il PCB è chiesto nella prova dimostrativa). Il codice C non è stato compilato né eseguito. Le sedici dispense di teoria e il testo sulla concorrenza (`20250301_Calcolo_ParDistr.pdf`) non contengono esercizi e non sono stati riletti riga per riga. I quiz Moodle non sono stati scaricati.

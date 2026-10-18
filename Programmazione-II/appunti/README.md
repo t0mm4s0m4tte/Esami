@@ -16,6 +16,7 @@ Gli appunti sono scritti in prosa discorsiva, come una dispensa: ogni sezione sp
 | [06-alberi-binari.md](06-alberi-binari.md) | 8 (pt1-3) | terminologia, BST, add/add_ord, rimozione, DFS pre/in/post, BFS |
 | [07-puntatori-a-funzione-e-nodi-generici.md](07-puntatori-a-funzione-e-nodi-generici.md) | 9, 8 pt3 | puntatori a funzione, array di handler, nodi void* generici |
 | [08-lettura-scrittura-file.md](08-lettura-scrittura-file.md) | 11 | fopen/fscanf/fprintf/feof/fclose |
+| [09-esercizi-ed-esami-svolti.md](09-esercizi-ed-esami-svolti.md) | Moodle Prog2-B e Prog2-LAB | debug e gdb, laboratorio sugli alberi (con gli errori di `removeTree`), `list-rec`, tipo opaco, set ordinato, canile completato, esempi di lezione |
 
 ## Ordine di studio consigliato
 Si consiglia di procedere da 01 a 08 nell'ordine. Le liste (04) sono il cuore del corso: stack, queue, set e alberi riusano gli stessi pattern di puntatori e ricorsione, quindi conviene padroneggiarle prima di passare agli ADT (05) e agli alberi (06); i puntatori a funzione (07) estendono poi l'idea di riuso agli stessi alberi, e i file (08) chiudono il quadro.
@@ -36,4 +37,4 @@ Il materiale è composto solo da **slide** (testo estratto da PDF, a volte framm
 Alcune cose sono invece sistematicamente assenti o inaffidabili:
 - Argomenti **annunciati ma assenti** nelle slide: bubble/selection sort, insertion sort `insertion()` completo, cancellazione/inserzione in coda e in posizione generica (lasciate come esercizio), liste circolari/doppiamente linkate (solo nominate), rimozione di un nodo singolo da BST, fine della simulazione BFS.
 - Le slide contengono diversi refusi nel codice (segnalati nei file con [DA VERIFICARE]): queue circolare (init/succ), dequeue su lista (num, tail), DFS con stack (condizioni incrociate), typedef struct mancanti, `pop` con use-after-free potenziale.
-- Parte di **laboratorio** (esercizi Moodle, prerequisito d'esame) non coperta: serve materiale dei docenti di lab.
+- Parte di **laboratorio**: dal Moodle (Prog2-B e Prog2-LAB) sono stati integrati nel file 09 il codice dei laboratori su alberi e liste, i quattro programmi di debug con gdb, le slide sul tipo opaco, il canile e gli esempi di lezione, con soluzioni e correzioni verificate con gcc. **Non ci sono esami passati con data e appello** (né simulazioni): il file 09 raccoglie esercizi plausibili ma non si può dire quali siano usciti davvero. Restano fuori i quiz Moodle (non scaricati), i testi e i test dei dieci progetti di laboratorio (c'è solo lo scheletro del progetto 5, senza header) e le 12 trascrizioni di lezione, scorse solo per le informazioni sull'esame e non lette per intero.

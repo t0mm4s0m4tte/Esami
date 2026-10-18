@@ -61,6 +61,10 @@ In informatica l'induzione si presenta come **invariante di ciclo**: per `while(
 - **ET5** Ogni sottoinsieme infinito S di ℕ è numerabile: elenco in ordine crescente s0=min S, s_{k+1}=min(S∖{s0..sk}) (principio del minimo) -> biezione k↦s_k.
 - **ET6** Dim. |ℤ|=|ℕ|: f(n)=n/2 se n pari, -(n+1)/2 se dispari (biezione).
 
+## Esercizi svolti collegati
+
+La cardinalità è esercitata in [file 08 §7](08-esercizi-ed-esami-svolti.md#7-cardinalità): Rⁿ ≈ R, il fatto che N^N ha la cardinalità del continuo (iniezione nei grafici più Cantor-Schröder-Bernstein), l'insieme delle funzioni iniettive o biettive, le sequenze finite binarie, le sequenze senza ripetizioni, l'insieme dei programmi, i numeri diadici e i termini chiusi del linguaggio {f, a}. Nell'[Esercizio 1 d'esame](08-esercizi-ed-esami-svolti.md#1-esercizio-1-quesiti-a-risposta-multipla) ricorrono i sottoinsiemi di NN "più che numerabili" e le stringhe X*. L'induzione ha un'intera sezione, [§8](08-esercizi-ed-esami-svolti.md#8-induzione-e-ricorsione), con ogni sommatoria, divisibilità, disuguaglianza e definizione ricorsiva del libretto e dei vecchi esami, l'induzione forte (francobolli, parentesi di un prodotto) e l'errore nella "dimostrazione" che tutti i naturali coincidono (il passo da 1 a 2 non regge).
+
 ## Cose da saper fare all'esame
 - Classificare un insieme (finito / numerabile / continuo) e **motivare** (biezione o iniezione+CSB; diagonale; sequenze finite vs infinite).
 - Dimostrazioni per induzione (sommatorie, divisibilità, disuguaglianze con base k), scrivendo base / ipotesi / passo / tesi.

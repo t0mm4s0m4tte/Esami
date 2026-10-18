@@ -79,6 +79,10 @@ Esistono varianti come FPM, EDO, SDRAM (sincrona) e DDR (legge su entrambi i fro
 - EEPROM (cancellabile elettricamente, più lenta);
 - Flash (EEPROM cancellabile a blocchi).
 
+## Esercizi svolti collegati
+
+Il progetto CircuitVerse del Moodle ([file 13 §4](13-esercizi-ed-esami-svolti.md#4-il-progetto-circuitverse-dei-lab-8-10)) contiene i circuiti del Lab 9, cioè `latch_SR`, `latch_D`, `flipflop_D_rising`, `flipflop_D_falling`, `8bit-register` e `8x8_register_file`. Il contenuto interno non è stato verificato; gli esercizi con testo sono nel [file 11](11-laboratorio-esercizi-svolti.md).
+
 ## Cose da saper fare all'esame
 - Spiegare il funzionamento del latch SR (stati, transizioni, ingresso vietato) e disegnarne l'automa/diagramma temporale.
 - Differenza latch/flip-flop; D latch vs D flip-flop; perché il fronte risolve la trasparenza.

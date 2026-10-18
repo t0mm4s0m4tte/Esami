@@ -39,6 +39,10 @@ Per predire le stampe: `fork(); fork(); printf("x");` produce 4 processi e quind
 ### 10. Permessi
 `rwxr-x--x` = 751; `chmod 640 f` = `rw-r-----`.
 
+## Esercizi svolti collegati
+
+Il Moodle ha poi fornito un testo reale, la prova scritta dimostrativa del 25/12/2024 (processi 8 punti, sincronizzazione 8, memoria 7), svolta nel [file 11 §1](11-esercizi-ed-esami-svolti.md#1-prova-scritta-dimostrativa-del-25-dicembre-2024): PCB e conteggio dei processi di una `fork` in un ciclo (punto 9 qui sopra: otto processi, 24 righe se lo stdout è bufferizzato a blocchi), requisiti della sezione critica e condizioni del deadlock con due thread in deadlock (punto 8), traduzione di un indirizzo virtuale con paginazione e LRU (punti 4 e 5). Per il laboratorio ci sono le esercitazioni su pipe/FIFO e code di messaggi ([file 11 §2-3](11-esercizi-ed-esami-svolti.md#2-esercitazione-pipe-e-fifo)) e il progetto 2025/26. Resta senza testo ufficiale tutto ciò che qui è marcato `[INT]`: scheduling, Banchiere, disk scheduling, permessi.
+
 ## Domande teoriche ricorrenti (da saper rispondere in 3-5 righe)
 - Differenza interrupt/trap; cos'è e a cosa serve il dual mode.
 - Processo vs thread; shared memory vs message passing; many-to-one vs one-to-one.

@@ -87,6 +87,10 @@ Riepilogo:
 | State | comportamentale | comportamento per stato | orologio |
 | Iterator | comportamentale | attraversamento | collezioni |
 
+## Esercizi svolti collegati
+
+Eccezioni e design pattern non compaiono negli esercizi d'esame né nei quiz del Moodle: le sole risorse sono i codici di lezione (`21-Eccezioni`, `22-PATTERN` con Singleton, Composite e State) che non hanno un testo di esercizio e non sono stati riletti riga per riga (vedi [file 08, Cosa resta da integrare](08-esercizi-ed-esami-svolti.md#cosa-resta-da-integrare)). L'esame di laboratorio d'esempio ([§3](08-esercizi-ed-esami-svolti.md#3-esame-di-laboratorio-la-banca)) lascia scegliere come gestire l'errore di `withdraw` ("verificare la disponibilità e gestire eventualmente l'errore"): la soluzione svolta usa il valore di ritorno booleano, ma si potrebbe usare un'eccezione, che è il collegamento naturale con questo file.
+
 ## Cose da saper fare all'esame
 - Classificare checked/unchecked, ordinare i catch, scrivere custom exception con stato e static factory.
 - Dire cosa stampa un try/catch/finally con più catch.

@@ -82,6 +82,10 @@ Va tenuta distinta la relazione ≡, che sta tra formule, dal connettivo ↔, ch
 - **ET4** (A→B) ≡ (¬B→¬A) e (A→B) NON ≡ (B→A): controesempio A=0,B=1 (1 vs 0).
 - **ET5** {A∨B, ¬A∨C} ⊧ B∨C (risoluzione): se B=0 e C=0 allora A=1 (1ª) e ¬A=1 cioè A=0 (2ª): impossibile. Vale.
 
+## Esercizi svolti collegati
+
+Le tavole di verità, la classificazione tautologia/soddisfacibile/contraddizione e le conseguenze logiche sono esercitate in [file 08 §5](08-esercizi-ed-esami-svolti.md#5-logica-proposizionale-eserciziari): le leggi logiche (De Morgan, Peirce, Dummett, importazione), i ventidue esercizi "conseguenza o equivalenza" dei vecchi esami con il verdetto di ogni voce e il problema delle pizze (A, B, C) risolto come sistema di vincoli. Nei temi del 2026 la logica proposizionale compare nell'[Esercizio 1](08-esercizi-ed-esami-svolti.md#1-esercizio-1-quesiti-a-risposta-multipla) come quesiti V/F sulla soddisfacibilità di disgiunzioni e congiunzioni e sulla relazione ⊨ come preordine (23/09). La sintassi (ht, lh, parentesi) è nel [§9](08-esercizi-ed-esami-svolti.md#9-sintassi), con la convenzione che un atomo si scrive (A).
+
 ## Cose da saper fare all'esame
 - Costruire la tavola completa (2^k righe, colonne intermedie) e classificare: tautologia / soddisfacibile / contraddizione.
 - Decidere P1..Pn ⊧ Q con **una tavola unica** o per assurdo (cerca controesempio); decidere P ≡ Q.

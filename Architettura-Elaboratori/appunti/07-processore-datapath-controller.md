@@ -99,6 +99,10 @@ RISC-TO è un processore RISC-V **semplificato a 8 bit**, "inesistente", da comp
 
 Il lavoro da svolgere riguarda l'**unità di controllo centrale** (sottocircuiti `r-type`, `load`, ..., `control_unit`, a partire dal codop) e il **register file** (Lab 9). Il segnale `reset`=1 azzera PC, registri e memoria dati (non il programma). Il programma di prova carica tre byte, somma i primi due, confronta il risultato con il terzo e salva il risultato o il doppio del primo. La consegna è un file Verilog su Moodle; il progetto **può essere argomento dell'esame orale**.
 
+## Esercizi svolti collegati
+
+Il progetto CircuitVerse del Moodle ([file 13 §4](13-esercizi-ed-esami-svolti.md#4-il-progetto-circuitverse-dei-lab-8-10)) contiene i circuiti del processore RISC-TO del Lab 10: `instruction_memory`, `r-type`, `load`, `store`, `branch`, `control_unit`, `ALU_8bit`, `ALU_control`, `imm_gen` e `RISC-TO`. È stato solo elencato: non so se contenga la soluzione dell'unità di controllo o lo scheletro da completare. Per l'esame orale resta valido quanto riportato nel [file 12](12-cose-da-saper-fare-e-dubbi.md).
+
 ## Cose da saper fare all'esame
 - Disegnare il datapath completo con i multiplexer e indicare i valori dei segnali di controllo per R, lw, sw, beq.
 - Seguire l'esecuzione di una data istruzione indicando quali blocchi e linee sono attivi (e quali segnali valgono 1/0/X).

@@ -87,6 +87,10 @@ Prova/
 
 Compilando dalla cartella `Prova` si scrive `gcc src/file1.c src/main.c -o bin/a.out`, e in `main.c` si include l'header con un percorso relativo: `#include "../include/file1.h"` (si sale al genitore e si scende in include). Se invece il progetto sta in una sola cartella bastano `gcc file1.c main.c -o a.out` e `#include "file1.h"`. Dietro a questi percorsi c'è la distinzione fra pathname **assoluti** (dalla radice, unici per ogni nodo) e **relativi** (dal punto corrente, dove `..` indica il genitore, per esempio `../C/F`).
 
+## Esercizi svolti collegati
+
+Il Moodle non contiene esami passati, ma il [file 09](09-esercizi-ed-esami-svolti.md) raccoglie ciò che c'è. Per questo file sono rilevanti tre sezioni: le informazioni sulla prova di teoria ricavate dalla prima lezione ([§1](09-esercizi-ed-esami-svolti.md#1-cosa-dicono-le-lezioni-sullesame): tre esercizi di programmazione, uno di base, uno sulle liste e uno sugli alberi); le slide di laboratorio sul **tipo opaco**, il modulo e il concetto di accoppiamento e coesione, che completano il discorso su `.c` e `.h` ([§6](09-esercizi-ed-esami-svolti.md#6-tipo-opaco-modulo-accoppiamento-i-numeri-complessi)); e le slide su gdb con i quattro programmi di debug, per capire a cosa serve compilare con `-g` ([§2](09-esercizi-ed-esami-svolti.md#2-debug-quattro-programmi-con-un-bug-e-gdb)). L'unico esercizio con testo che chiede di dividere il programma in più file è quello del canile ([§8](09-esercizi-ed-esami-svolti.md#8-il-canile)).
+
 ## Cose da saper fare all'esame
 - Dato un problema (stringhe + array), **distribuire** funzioni in file `.c`/`.h`: scrivere solo i prototipi, elencare i file e dire cosa va dove (esercizio svolto in aula: stringhe: stampa, duplica, i-mo carattere; array: stampa, inizializza, assegna i-mo elemento; + main).
 - Scrivere la riga di compilazione con più sorgenti.

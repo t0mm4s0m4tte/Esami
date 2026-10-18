@@ -69,6 +69,10 @@ Ogni sistema adatta i meccanismi generali alle proprie esigenze.
 
 Pthreads offre mutex lock e condition variable (R/W lock e spinlock non sono portabili). Tra le alternative più moderne ci sono la transactional memory (una transazione atomica con abort/retry), OpenMP (`#pragma omp critical`) e i linguaggi funzionali come Erlang e Scala, dove le variabili immutabili eliminano le data race.
 
+## Esercizi svolti collegati
+
+La prova scritta dimostrativa del 25/12/2024 ([file 11 §1, esercizio 2](11-esercizi-ed-esami-svolti.md#esercizio-2---sincronizzazione-e-deadlock-8-punti)) chiede di descrivere i **requisiti della sezione critica** (mutua esclusione, progresso, attesa limitata, quelli di [Sezione critica](04-sincronizzazione.md#sezione-critica)) e di scrivere lo pseudo-codice completo di due thread che vanno in deadlock (due mutex acquisiti in ordine opposto, con l'interleaving che porta all'attesa circolare). Un caso reale di sincronizzazione fra molti processi è la corsa critica fra `write` e `sigsuspend` nella soluzione di riferimento dell'esercizio 6 su pipe e segnali ([file 11 §2](11-esercizi-ed-esami-svolti.md#2-esercitazione-pipe-e-fifo)): il rimedio è bloccare i segnali prima di scrivere. I semafori nel progetto di laboratorio 2025/26 ([file 11 §4](11-esercizi-ed-esami-svolti.md#4-progetto-di-laboratorio-202526-servizio-mensa)) servono a modellare postazioni, tavoli e code. I problemi classici (bounded buffer, readers-writers) non hanno esercizi propri nel Moodle.
+
 ## Cose da saper fare all'esame
 - Mostrare l'interleaving che produce una race condition (tabella passo/registri/counter).
 - Elencare e verificare i 3 requisiti della CS per una soluzione data (Peterson).

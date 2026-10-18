@@ -166,6 +166,10 @@ Per la concorrenza usa **MVCC**: ogni transazione ha un XID e lavora su uno *sna
 3. Fornitori di Londra che non forniscono P4: `... City='London' AND NOT EXISTS (...)` -> nessuno (S1, S4 forniscono P4).
 4. Fornitori con status sopra la media: `Status > (SELECT AVG(Status) FROM S)` -> S3, S5.
 
+## Esercizi svolti collegati
+
+La parte SQL dello scritto (30% del voto) ha tre domande per appello e sono tutte nel [file 09 §3](09-esercizi-ed-esami-svolti.md#3-sql). Le domande a bassa complessità mettono alla prova i **join** del §4 e i NULL ([3.1](09-esercizi-ed-esami-svolti.md#31-domande-a-bassa-complessità-join-filtro-ordinamento)); quelle a media complessità la distinzione WHERE/HAVING e `COUNT(DISTINCT)` del §5 ([3.2](09-esercizi-ed-esami-svolti.md#32-domande-a-media-complessità-group-by-e-having)); quelle ad alta complessità le **nidificate**, `NOT EXISTS` per la quantificazione universale e le CTE per i massimi, del §6 ([3.3](09-esercizi-ed-esami-svolti.md#33-domande-ad-alta-complessità-massimi-tutti-with)). Il foglio con i dati di S-P-SP del §7 e delle "query tipo" è svolto con i risultati in [3.4](09-esercizi-ed-esami-svolti.md#34-foglio-di-esercizi-sullo-schema-fornitori-parti-s-p-sp), i dieci esercizi riepilogativi in [3.5](09-esercizi-ed-esami-svolti.md#35-esercizi-riepilogativi-1-10-soluzioni-del-docente-con-correzioni) e quelli su NerdFlix in [3.6](09-esercizi-ed-esami-svolti.md#36-esercizi-nerdflix-foglio-7). Il §1 (DDL, vincoli, `ON DELETE CASCADE`) è esercitato solo dal primo foglio di laboratorio (creare S, P, SP e osservare i vincoli); i trigger, le viste e MVCC non hanno esercizi nel materiale Moodle.
+
 ## Cose da saper fare all'esame
 - Scrivere un `CREATE TABLE` completo con PK, FK (reazioni), CHECK, DEFAULT, e capire l'ordine di creazione/ALTER per dipendenze circolari.
 - Dire cosa succede (CASCADE/SET NULL/NO ACTION) a una modifica sul Master.

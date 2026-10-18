@@ -13,9 +13,13 @@ Appello: **2027-02-01**. Appunti condensati dal doc Drive "Basi di Dati - Appunt
 | [06-transazioni-concorrenza-ripristino.md](06-transazioni-concorrenza-ripristino.md) | ACID, storie, lock/2PL, log, UNDO/REDO, checkpoint | T07, T11-T13 |
 | [07-ottimizzazione-e-struttura-fisica.md](07-ottimizzazione-e-struttura-fisica.md) | Ottimizzazione logica/fisica, selettività, pagine, B+ | T05, T11 |
 | [08-checklist-esame-ed-esercizi-tipo.md](08-checklist-esame-ed-esercizi-tipo.md) | Checklist, 12 esercizi tipo, formulario, dubbi aggregati | tutte |
+| [09-esercizi-ed-esami-svolti.md](09-esercizi-ed-esami-svolti.md) | Temi 2025-26 (9 appelli), simulazione, tema 2023, fogli di algebra/calcolo/SQL/normalizzazione/E-R, progetto di laboratorio | Moodle |
 
 ## Ordine di ripasso consigliato
 Si parte da 01 e 02, che fissano modello relazionale e algebra, poi si passa a 03 perché SQL è sempre in esame. Segue 05: la normalizzazione è fatta di esercizi meccanici e ha un'alta resa. Si chiude con 04, 06, 07 e infine 08, che riassume tutto in checklist e formulario. In sintesi: 01 → 02 → 03 → 05 → 04 → 06 → 07 → 08.
 
 ## Note sulle fonti
 La fonte primaria è il doc "Basi di Dati - Appunti" (id 19dfwWGpXtrzWSpLGfzO-hx24z0WlOoYR3H522FJPnLU), generato a partire dalle slide. Le slide originali stanno in "Slide Decks - Teoria/Lab" e ne sono stati letti solo gli estratti iniziali di alcune (Lez. 10-14, per cross-check). Il doc "Argomenti dei Corsi - II Anno" non include Basi di Dati, quindi il programma ufficiale non è verificato. Gli esempi di query e algoritmi sono ricalcolati sui dati delle note quando indicato come "calcolati".
+
+## Materiale Moodle (esami ed esercizi)
+Il file [09](09-esercizi-ed-esami-svolti.md) integra i file scaricati dal Moodle (`_moodle-raw/Basi-di-Dati/generale`). Qui i **temi d'esame datati ci sono**: nove appelli dal 09/06/2025 al 14/09/2026 con soluzione del docente, la simulazione 2024-25 con soluzioni e il tema SQL del 15/06/2023; quindi la forma dello scritto (3 domande SQL con punteggi 26/28/30/33, domande di algebra e calcolo da 14 punti, normalizzazione, 2PL o ottimizzazione) è verificata su tracce vere. Il file raccoglie anche gli errori trovati nelle soluzioni ufficiali. Restano da riguardare sul PDF: le espressioni algebriche e di calcolo (i simboli sono andati persi nell'estrazione), i diagrammi E-R degli esercizi di progettazione (soluzioni a immagine) e due PDF senza testo (`Esercizio_9.pdf`, `soluzione_esercizio_2.pdf`). I quiz Moodle non sono stati scaricati. Le slide di teoria Moodle non sono state riverificate riga per riga rispetto a questi appunti.

@@ -68,6 +68,10 @@ public Animal getFirst(){ return new Animal(first.getName(), first.getAge(), fir
 
 Lo stesso principio vale in ingresso: il costruttore di AnimalPair usa `new` per i campi, così non restano null e soprattutto non sono alias dei parametri passati dal chiamante. La regola generale è non restituire (né ricevere senza copiare) riferimenti diretti a campi mutabili, preferendo la copia profonda (clone).
 
+## Esercizi svolti collegati
+
+Costruttori, `equals` e `toString` sono messi alla prova dall'[esame di laboratorio sulla banca](08-esercizi-ed-esami-svolti.md#3-esame-di-laboratorio-la-banca): due costruttori (con `this(name, 0)` per riusare il primo), `id` preso da un contatore statico, `equals(Object)` con `instanceof` e `toString` specifico; il codice allegato dal docente (`BankAccountProfit`, `BankAccountMinors`) mostra inoltre le `toString` a catena con `super.toString()` e la chiamata a `super(...)` nei costruttori delle sottoclassi. Il quiz "Binding dinamico e cast" ([§2 file 08](08-esercizi-ed-esami-svolti.md#2-quiz-di-laboratorio-gerarchie-cast-binding-dinamico)) contiene anche tre domande sui costruttori (ordine di esecuzione `AB`, errore se manca `super()` senza argomenti, ordine `ACB` con `this(5)`). Il security leak, UML e l'AddressBook non hanno esercizi nel Moodle.
+
 ## Cose da saper fare all'esame
 - Dire se un codice compila dopo l'aggiunta di un costruttore (sparizione del default).
 - Differenza `==` / `equals` / override vs overload di equals (vedi 04).

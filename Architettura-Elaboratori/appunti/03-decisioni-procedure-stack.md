@@ -105,6 +105,10 @@ L'idea è che i casi base non toccano lo stack, mentre il caso generale salva `r
 ## Stringhe (Lab 5)
 Le stringhe sono sequenze di caratteri ASCII, un byte per carattere; in C la stringa termina con il byte 0 ('\0'). Per leggere un carattere si usa `lbu` (senza estensione del segno) e per scriverlo `sb`. Nel segmento `.data` si dichiarano con la direttiva `.string "testo"` (o `.asciz`). Gli esercizi del lab (vedi file 11) sono charAt, strlen, digit ('0'-'9' = 48-57), strcmp, strchridx e hash (djb2: `hash = hash*33 + c`, con 5381 iniziale).
 
+## Esercizi svolti collegati
+
+Le soluzioni dei Lab 3-6 sono state eseguite in RARS ([file 13 §2](13-esercizi-ed-esami-svolti.md#2-le-soluzioni-dei-lab-1-6-eseguite-in-rars)): contano 52 istruzioni eseguite per Fibonacci con N = 8, 53 per la somma dei quadrati con N = 10, 162 per contauno (sempre, perché il ciclo gira 32 volte) e 352 per i cicli annidati con a = 10 e b = 5; `mcd(24,30)` ne esegue 18 e `mcm(12,9)` 22. La verifica ha trovato un errore nel Lab 3 Es. 2 (le etichette `s1`, `s2` sono nomi di registri) e ha confermato che la `mcm` della slide **sovrascrive `s1`** violando la convenzione sui registri salvati dal chiamato. Il Lab 7 sulla ricorsione, che nel Drive mancava, è documentato con il fattoriale (233 istruzioni per n = 5, 24 in più per ogni livello), il triangolo con procedure foglia e non foglia (356 contro 337 istruzioni) e il test dei primi ([§3](13-esercizi-ed-esami-svolti.md#3-il-lab-7-ricorsione-gli-esempi-del-docente)); il `fib` ricorsivo di questo file è verificato (`fib(10)` = 55).
+
 ## Cose da saper fare all'esame
 - Tradurre if/else, while, for, do-while, cicli annidati in RISC-V; contare le istruzioni eseguite (static vs dynamic count).
 - Scrivere procedure (foglia e non foglia) rispettando le convenzioni; disegnare lo stack durante una chiamata annidata/ricorsiva.

@@ -88,6 +88,10 @@ La strategia è costruire a strati: prima le formule semplici per i nodi vicini 
 - **ET4** "Nessuno studente che ha studiato è bocciato": ∀x(St(x)∧S(x)→¬B(x)). Trappola: "chi studia passa" (S→P) non equivale a "chi non studia non passa" (¬S→¬P); la contronominale è ¬P→¬S.
 - **ET5** In ⟨ℕ,|⟩: "x è primo" in linguaggio {|,1}: x≠1 ∧ ∀y(y|x→y=1∨y=x) (se 1 è costante).
 
+## Esercizi svolti collegati
+
+La formalizzazione vale 9 punti su 32 ed è esercitata a fondo: i quattro appelli del 2026 ([§3 file 08](08-esercizi-ed-esami-svolti.md#3-esercizio-3-formalizzazione)) chiedono ogni volta formalizzazioni di parentele (zia, nonno, "una zia i cui nonni hanno tutti la barba"), di prerequisiti d'esame (condizione necessaria con ∀x(P→…)) e di "conosce/parente" con le sue tre frasi quantificate, e il fac-simile 2022 la formalizzazione di "dispari", "uguale a 1", "primo" e "ogni dispari sufficientemente grande è somma di tre primi". Il [§11](08-esercizi-ed-esami-svolti.md#11-formalizzazione-eserciziari) raccoglie le soluzioni del docente (slide 6.4: primo fra n² e (n+1)², primi consecutivi, nipoti e nonni, ladri onesti, "almeno tre/al più due") e le mie per i quasi cento esercizi dei due eserciziari (quadrati, cubi, divisibilità, congruenze, sup, figli unici, cugini). Il lavoro sulle abbreviazioni (Pari, Pr, ι per "1") è il modo per tenersi nel linguaggio ristretto richiesto dal testo.
+
 ## Cose da saper fare all'esame
 - Memoria dei pattern: pari, dispari, zero, uno, primo (3 versioni), sup, inverso; parentele (fratello, nonno, zio).
 - Tradurre frasi con "ogni / esiste / nessuno / almeno n / al più n / esattamente uno" scegliendo linguaggio e universo; sapere quando serve il predicato di restrizione.

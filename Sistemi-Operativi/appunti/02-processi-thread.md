@@ -73,6 +73,10 @@ Il multithreading complica alcune operazioni classiche, che conviene ricordare p
 ### Windows e Linux
 In Windows i thread sono one-to-one e descritti da tre strutture: ETHREAD (kernel; puntatore al processo e al KTHREAD), KTHREAD (kernel; informazioni di scheduling e stack kernel) e TEB (user; id del thread, stack user, TLS). In Linux processi e thread sono entrambi *task* e vengono creati con `clone()`, i cui flag di condivisione sono `CLONE_VM`, `CLONE_FILES`, `CLONE_SIGHAND` e `CLONE_FS`: più flag si passano, più il nuovo task assomiglia a un thread.
 
+## Esercizi svolti collegati
+
+Due esercizi usano questo file. Nella prova scritta dimostrativa del 25/12/2024 ([file 11 §1](11-esercizi-ed-esami-svolti.md#1-prova-scritta-dimostrativa-del-25-dicembre-2024)) l'esercizio 1 chiede che cosa sia un **PCB**, quali informazioni contenga e quale ruolo abbia nella schedulazione (argomento che le note indicavano come lacuna delle fonti, colmato dalle slide del Cap. 3), e quanti processi crea un `for` con `fork()` senza controllo del valore restituito: otto, e 24 righe stampate se lo standard output è bufferizzato a blocchi contro 7 se è su un terminale. Le esercitazioni di laboratorio sulla comunicazione fra processi, con soluzioni di riferimento commentate, sono in [file 11 §2](11-esercizi-ed-esami-svolti.md#2-esercitazione-pipe-e-fifo) (pipe fra padre e figlio e fra fratelli, FIFO, gestione di molti figli con segnali) e [§3](11-esercizi-ed-esami-svolti.md#3-esercitazione-code-di-messaggi): mostrano nel concreto la differenza fra flusso di byte (pipe) e messaggi tipizzati (code). I thread, il modello di Amdahl e i modelli many-to-one/one-to-one non hanno esercizi nel Moodle.
+
 ## Cose da saper fare all'esame
 - Confrontare shared memory e message passing; descrivere blocking/non-blocking e capacità del buffer.
 - Scrivere la logica del buffer circolare e dire quando è pieno/vuoto.

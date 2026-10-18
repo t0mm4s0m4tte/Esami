@@ -166,6 +166,10 @@ Uno script bash inizia con lo shebang `#!/bin/bash`, richiede `chmod +x` e usa `
 
 Le strutture di controllo sono `while [ $i -lt 3 ]; do ... done`, `if [ ... ]; then ... else ... fi` (gli spazi dentro `[ ]` sono obbligatori), `for f in \`ls *.c\`; do ... done`, l'operatore `&&` e `read var` per l'input. Gli operatori di confronto numerico sono `-eq -ne -gt -lt -ge -le` e i test sui file `-f -s -r -w -x -d -h`; conviene sempre citare `"$1"`. Quanto allo scope, le variabili sono locali alla shell e `export` le rende ereditabili dalle sotto-shell; in `.bashrc` si mettono alias e variabili, ad esempio `export PATH=.:mybin:$PATH`.
 
+## Esercizi svolti collegati
+
+Le esercitazioni ufficiali del laboratorio T4 sono in [file 11 §2](11-esercizi-ed-esami-svolti.md#2-esercitazione-pipe-e-fifo) (Lab pipe e FIFO: sei esercizi dalla pipe padre-figlio alla gestione di molti figli con `SIGINT`/`SIGUSR1`) e [§3](11-esercizi-ed-esami-svolti.md#3-esercitazione-code-di-messaggi) (Lab code di messaggi: dall'esplorazione di `msqid_ds` alla stessa gara tra figli risolta con una sola coda e indirizzamento per `mtype`), con le soluzioni di riferimento spiegate e i difetti trovati (nella numerazione del Moodle sono i Lab 06 e 07; qui sono Lab 07 e 08). Il [§4](11-esercizi-ed-esami-svolti.md#4-progetto-di-laboratorio-202526-servizio-mensa) riassume il progetto 2025/26 e i consigli del turno T4, il [§5](11-esercizi-ed-esami-svolti.md#5-approfondimenti-del-turno-t4-posix-contro-system-v-gdb) il confronto POSIX contro System V (per il progetto si usa System V) e i comandi di gdb. Semafori, memoria condivisa, segnali e bash non hanno invece esercitazioni con testo nel Moodle (solo codice d'esempio).
+
 ## Cose da saper fare all'esame
 - Scrivere un programma con **fork + exec + wait** (switch su `fork`, `WIFEXITED/WEXITSTATUS`), spiegando zombie/orfani.
 - Prevedere l'output di codice con `fork()` (quante stampe, ordine indeterminato, variabili separate; buffering stdout al `fork`).

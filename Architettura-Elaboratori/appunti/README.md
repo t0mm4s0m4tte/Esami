@@ -21,9 +21,13 @@ Convenzioni: `[DA VERIFICARE]` = dato ambiguo, perso nell'estrazione o non prese
 | [10-io-interrupt-eccezioni.md](10-io-interrupt-eccezioni.md) | Polling, interrupt, trap, DMA, eccezioni RISC-V | Lez. 10 |
 | [11-laboratorio-esercizi-svolti.md](11-laboratorio-esercizi-svolti.md) | RARS e tutti gli esercizi di lab con soluzioni | Lab 1-6, 8-10 |
 | [12-cose-da-saper-fare-e-dubbi.md](12-cose-da-saper-fare-e-dubbi.md) | Checklist esame, esercizi tipo, lacune, dubbi per il tutor | tutto |
+| [13-esercizi-ed-esami-svolti.md](13-esercizi-ed-esami-svolti.md) | Struttura dell'esame (Moodle), soluzioni dei Lab 1-6 eseguite in RARS con conteggi di istruzioni, esempi di ricorsione (Lab 7), progetto CircuitVerse | Moodle: slide intro, Lab, `code_examples`, `rars.jar`, `.cv` |
 
 ## Percorso di studio consigliato
 02 -> 03 -> 11 (ISA e programmazione assembly) -> 05 -> 06 -> 07 (hardware) -> 09 -> 08 -> 10 -> 04 -> 01 -> 12.
+
+## Materiale Moodle (file 13)
+Dal Moodle del corso B sono stati integrati la struttura dell'esame (E1 test a risposta multipla, E2 esercizi di laboratorio, orale), le soluzioni dei Lab 1-6 **eseguite davvero in RARS** (con le correzioni trovate), il Lab 7 sulla ricorsione (fattoriale, triangolo, primi) e l'elenco dei circuiti CircuitVerse dei Lab 8-10. **Non ci sono esami passati con data e appello né simulazioni**, quindi non si può dire cosa sia uscito davvero. Restano fuori i quiz Moodle (non scaricati), le slide di teoria del Moodle non rilette (già integrate dal Drive) e il contenuto interno del progetto CircuitVerse; lo schema dell'esame va controllato sul PDF.
 
 ## Programma ufficiale (dal doc "Argomenti dei Corsi - I Anno")
 Teoria:

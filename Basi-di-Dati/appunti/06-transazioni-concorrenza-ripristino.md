@@ -139,6 +139,10 @@ Questi meccanismi sono ciò che giustifica i **vantaggi del DBMS**:
 - indipendenza fisica (metodi d'accesso, indici);
 - concorrenza (serializzatore, 2PL).
 
+## Esercizi svolti collegati
+
+Gli esercizi sulle transazioni sono di due tipi e stanno in [file 09 §5](09-esercizi-ed-esami-svolti.md#5-transazioni-2pl-e-view-equivalenza). Il primo è "la storia S è compatibile con il 2PL?" (2025-07-09, 2026-07-09, simulazione), che usa la matrice di compatibilità e il punto di lock del §3: la lezione è che i lock si possono acquisire in anticipo, ma non rilasciare prima di averli tutti. Il secondo è "S è view-equivalente alle seriali S1, S2, S3?" (2026-01-23), che applica le tre condizioni di view-equivalenza elencate nel §3. Il ripristino (§4: log, LA/LC, UNDO/REDO, checkpoint) e le proprietà ACID (§2) non hanno invece esercizi né nei temi 2025-26 né nei fogli Moodle: se all'esame compaiono, il materiale su cui esercitarsi è solo quello delle slide.
+
 ## Cose da saper fare all'esame
 - Spiegare ACID e **a quale componente** compete ciascuna proprietà.
 - Dato un interleaving, dire se è **serializzabile** (view-equivalenza con T1T2/T2T1) e calcolare i valori finali (es. A+B).

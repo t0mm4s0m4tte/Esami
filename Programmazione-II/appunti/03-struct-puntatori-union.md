@@ -95,6 +95,10 @@ strcpy(n1.n.NI.nome, "Rosa"); strcpy(n1.n.NI.cognome, "Rossi");
 
 Un esempio da esame-tipo sull'accesso ai campi annidati: data `union u1 { struct s1 { int i; float f; } svar; double d; } uvar;`, l'istruzione `uvar.svar.i=1` è corretta, `uvar.d.i=1` no (d è un double) e `uvar.f=0.5` nemmeno (serve `uvar.svar.f`).
 
+## Esercizi svolti collegati
+
+Gli esempi di lezione su struct e puntatori sono eseguiti e commentati nel [file 09 §9](09-esercizi-ed-esami-svolti.md#9-gli-esempi-delle-lezioni): `struc.c` (passare `sdinamica` invece di `*sdinamica` è un errore di tipo), `cursorep.c` (il puntatore come cursore su un array), `biblioteca.c` (un array di struct con un campo `titolo[10]` che trabocca) e soprattutto `union.c`, la trappola in cui scrivere il membro `NU` sovrascrive `NI` e la stampa dà "Rose" invece di "Rosa". La differenza fra array di array e array di puntatori, e il motivo per cui un `int[10][10]` non si passa a una funzione che vuole `int **`, sono nel [§3](09-esercizi-ed-esami-svolti.md#3-matrici-di-puntatori-pari_dispari) con `pari_dispari`.
+
 ## Cose da saper fare all'esame
 - Definire un tipo struct con typedef, array statico/dinamico, inizializzare, stampare (esercizio: tipo `canzone`, `#define MAX`, malloc di MAX elementi, ciclo di input, stampa, free).
 - Dire se un'espressione di assegnazione è corretta per tipi (quiz).

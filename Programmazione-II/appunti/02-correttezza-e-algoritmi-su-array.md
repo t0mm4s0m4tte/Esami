@@ -105,6 +105,10 @@ void insertion(int arr[], int i) {
 ```
 [DA VERIFICARE] la forma esatta di `insertion` usata dalla docente; bubble sort e selection sort sono solo nominati ("insertion, bubble, selection") ma non svolti nelle slide disponibili: per l'esame ripasso dal libro di Programmazione 1.
 
+## Esercizi svolti collegati
+
+I quattro programmi `debug1.c`...`debug4.c` del laboratorio sono quattro casi di programma che **non rispetta la specifica**, e permettono di esercitarsi sul ragionamento di questo file: `debug3` (somma di `i * 2` invece di `i`, attesa 15 e ottenuta 30) e `debug4` (conta i dispari invece dei pari) violano la postcondizione; `debug2` (`i <= size`) viola l'invariante sui limiti dell'indice; `debug1` dereferenzia un puntatore nullo, cioè non rispetta la precondizione. Per ciascuno il [file 09 §2](09-esercizi-ed-esami-svolti.md#2-debug-quattro-programmi-con-un-bug-e-gdb) riporta il sintomo osservato, la diagnosi con gdb e la correzione. Ricerca binaria e insertion sort non hanno esercizi nel Moodle.
+
 ## Cose da saper fare all'esame
 - Scrivere **P_IN e P_OUT** di una funzione data (la docente lo dice esplicitamente: "in alcuni esercizi d'esame vi chiederemo di scrivere P_IN e P_OUT").
 - Dimostrare la **terminazione** di un ciclo/ricorsione indicando cosa decresce / si avvicina all'uscita.

@@ -69,6 +69,10 @@ Processi (arrivo, burst): P1(0,7) P2(2,4) P3(4,1) P4(5,4).
 | RR q=3 | P1 0-3, P2 3-6, P1 6-9, P3 9-10, P4 10-13, P2 13-14, P1 14-15, P4 15-16 | 8,8,5,7 | 7.00 |
 (RR: convenzione = i nuovi arrivi entrano in coda *prima* del processo appena preempted.) Waiting = completion - arrival - burst.
 
+## Esercizi svolti collegati
+
+Lo scheduling della CPU non ha esercizi nel materiale Moodle: la prova scritta dimostrativa del 25/12/2024 ([file 11](11-esercizi-ed-esami-svolti.md#1-prova-scritta-dimostrativa-del-25-dicembre-2024)) non lo tocca, e gli esercizi numerici disponibili restano quelli costruiti nel [file 10](10-esercizi-tipo-esame.md) e l'esempio svolto di questo file. Poiché la prova dichiara che "tutti i temi affrontati nel corso sono possibili", questo argomento va comunque allenato.
+
 ## Cose da saper fare all'esame
 - Disegnare il diagramma di Gantt e calcolare waiting/turnaround/response medi per FCFS, SJF, SRTF, Priority, RR (con arrivi diversi e q dato).
 - Spiegare convoy effect, starvation/aging, effetto di q in RR.

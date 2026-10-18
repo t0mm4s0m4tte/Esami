@@ -105,6 +105,10 @@ Il confronto tra array di C e di Java riassume buona parte della differenza di f
 | init | garbage | default (0, false, null) |
 | dim. cambiabile | no | no (ma fissata a runtime con `new int[n]`) |
 
+## Esercizi svolti collegati
+
+L'**esame di laboratorio** d'esempio ("Banca", [file 08 §3](08-esercizi-ed-esami-svolti.md#3-esame-di-laboratorio-la-banca)) applica questo file: una classe con variabile statica `counter`, attributi privati (incapsulamento), costruttori che incrementano il contatore, metodi di dominio, `getNumAccounts()` statico e una sottoclasse con limite di prelievo, svolta e provata. Il confronto fra array in C e in Java (§6 qui) è il PDF `confronto array C Java`, già integrato. Gli esercizi 3 e 6 della lezione 23-24 ([§1 file 08](08-esercizi-ed-esami-svolti.md#1-gli-esercizi-desame-della-lezione-23-24)) chiedono di ragionare su stack e heap, in particolare sul fatto che tutte le foglie di un albero sono un'unica `Leaf` condivisa (5 riferimenti nell'esercizio 3). Gli invarianti e `assert` del §5 non hanno esercizi propri nel Moodle.
+
 ## Cose da saper fare all'esame
 - Disegnare stack/heap/area classi per `C x = new C(); y = x;` e dire cosa succede con alias, null, GC.
 - Dire cosa stampa `toString` mancante / `==` vs `equals` (vedi 02).

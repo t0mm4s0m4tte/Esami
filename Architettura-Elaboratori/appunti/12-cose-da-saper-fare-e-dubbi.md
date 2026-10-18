@@ -1,6 +1,6 @@
 # 12 - Cose da saper fare all'esame (riepilogo) e dubbi
 
-Appello: 2027-02-01. Esame: scritto + (probabile) orale; il Lab 10 dice che il progetto RISC-TO "potrà essere argomento dell'esame orale". [DA VERIFICARE struttura, durata, tabelle ammesse, peso del lab: non nelle slide]
+Appello: 2027-02-01. Esame: secondo le slide introduttive del Moodle, tre parti (E1 test a risposta multipla 0-8, E2 esercizi di laboratorio 0-10, orale 0-14; dettagli e dubbi nel [file 13 §1](13-esercizi-ed-esami-svolti.md#1-come-è-fatto-lesame)); il Lab 10 dice che il progetto RISC-TO "potrà essere argomento dell'esame orale". [DA VERIFICARE sul PDF condizioni di passaggio, durata, tabelle ammesse]
 
 ## Checklist per blocco
 Il corso è una salita graduale dall'alto verso il basso e poi di nuovo verso l'alto: si parte dai livelli e dall'ISA, si scende alla logica digitale e al processore, e si risale con memoria, bus e I/O. La checklist segue questo ordine, un blocco per file di appunti, e per ognuno elenca ciò che bisogna saper fare senza guardare le slide.

@@ -83,6 +83,10 @@ Il `compareTo` di ListExt è lessicografico, come il confronto tra parole, e si 
 
 Poiché le liste sono mutabili, l'esito può cambiare: due liste uguali (`compareTo==0`) smettono di esserlo dopo, ad esempio, `b.set(7,100)`.
 
+## Esercizi svolti collegati
+
+Due esercizi d'esame sulle liste concatenate sono svolti, con il codice originale e le uscite eseguite, nel [file 08 §1](08-esercizi-ed-esami-svolti.md#1-gli-esercizi-desame-della-lezione-23-24): `inComune(p, q)` su `Node<T>` generico (esercizio 1: ricorsione parallela sulle due liste e confronto con `equals`) e `reverse` in-place su `Cons`/`Nil` (esercizio 6: tre record di attivazione al `CHECK POINT 2`, ricorsione di coda). Il file `NodeUtilExtra.java` ([§4](08-esercizi-ed-esami-svolti.md#4-esperimenti-cosa-stampa)) confronta le versioni iterativa, ricorsiva di coda e non di coda di `max` e `ordered` su una lista. ArrayExt, DynamicStack e Iterator non hanno esercizi con testo nel Moodle (solo gli appunti a mano di lezione, non leggibili).
+
 ## Cose da saper fare all'esame
 - Scrivere iterativo e ricorsivo: length, sum, max, member, equals, sorted, toString su Node.
 - Implementare add/remove di ArrayExt (direzione dei cicli!) e dire perché length>0.

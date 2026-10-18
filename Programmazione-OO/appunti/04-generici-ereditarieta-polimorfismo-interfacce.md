@@ -128,6 +128,10 @@ Gli esperimenti di ProvaOver sulla classe Animal lo mostrano in pratica (la tabe
 - `d.equals(e)` usa l'override ma `instanceof` fallisce, quindi false;
 - con ricevente di tipo apparente Object si invoca la versione di Object indipendentemente dal cast dell'argomento.
 
+## Esercizi svolti collegati
+
+Questo è il file con più esercizi. Nel [file 08 §1](08-esercizi-ed-esami-svolti.md#1-gli-esercizi-desame-della-lezione-23-24) gli esercizi 2 (classi astratte A/B/C: errore su `new B()`, `C.m1`/`B.m1` con `super`, `cannot find symbol` per `m2` sul tipo apparente A) e 5 (interfacce I/J e classi C/D: `D.m2 D.m1` e `D.m2 D.m1 D.m1`, errore su `obj4.m1(obj4)`) applicano tipo apparente, tipo esatto, upcast e cast, con le uscite eseguite. Il [§2](08-esercizi-ed-esami-svolti.md#2-quiz-di-laboratorio-gerarchie-cast-binding-dinamico) riporta i tre quiz con soluzioni: ricostruire la gerarchia da codice che compila o lancia `ClassCastException` (20 domande), upcast e downcast (18) e binding dinamico (13: campi e metodi statici non sono polimorfici, `A B` e `B A` come uscite tipiche, ordine dei costruttori). `TestSuper.java` ([§4](08-esercizi-ed-esami-svolti.md#4-esperimenti-cosa-stampa)) mostra che `super` è statico mentre `this` è dinamico. L'override contro l'overload di `equals` (§6 qui) è esercitato dal codice della banca ([§3](08-esercizi-ed-esami-svolti.md#3-esame-di-laboratorio-la-banca)). Comparable e i generici vincolati non hanno esercizi nel Moodle.
+
 ## Cose da saper fare all'esame
 - Dato un frammento con gerarchia A/B/C (+ interfacce I/J): dire se compila, cosa stampa, dove ClassCastException; distinguere tipo apparente/esatto (vedi file 07).
 - Scrivere classe generica + metodo statico generico; spiegare raw type/erasure/autoboxing.

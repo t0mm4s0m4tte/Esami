@@ -129,6 +129,10 @@ La corrispondenza con SQL è diretta: T = SELECT, L = FROM, F = WHERE, con i joi
 
 **Limiti**: il TRC non esprime l'unione in un'unica espressione, e né TRC né algebra esprimono la **ricorsione/chiusura transitiva**. Nonni e bisnonni si ottengono con un numero fisso di join, ma "antenati" no, perché il numero di passi non è noto in anticipo. Il rimedio è nelle CTE ricorsive di SQL moderno.
 
+## Esercizi svolti collegati
+
+Ogni appello dal 2025 ha una domanda di algebra e una di calcolo su tuple con range, e sono raccolte nel file esercizi. La **negazione** (§2 qui) serve per "stand che non vendono prodotti senza glutine", "case editrici con Strega solo prima del 1980" e "utenti con una sola squadra" ([§1 Algebra](09-esercizi-ed-esami-svolti.md#1-algebra-relazionale)); il **quoziente** (§3) per "strade a senso unico con tutti i tipi di edificio", "partecipanti che hanno prenotato tutte le lezioni di Calcio Binario" e "mostre con didascalia in tutte le lingue"; il confronto fra due copie della stessa relazione per "il prezzo più basso" e "il premio più alto". Il **calcolo su tuple** (§7) è esercitato con le formule ∃/¬∃ e ∀ con implicazione di [§2 Calcolo](09-esercizi-ed-esami-svolti.md#2-calcolo-relazionale-su-tuple): "solo analisi nella norma", "ordini con solo prodotti vegani", "case editrici con tutti i premi nazionali". La logica a tre valori (§4) e gli outer join (§5) non compaiono nelle domande di teoria, ma il loro uso pratico si vede negli esercizi SQL ([3.1](09-esercizi-ed-esami-svolti.md#31-domande-a-bassa-complessità-join-filtro-ordinamento), foglio S-P-SP [§3.4](09-esercizi-ed-esami-svolti.md#34-foglio-di-esercizi-sullo-schema-fornitori-parti-s-p-sp)). Le equivalenze del §6 sono applicate nell'ottimizzazione logica ([§6](09-esercizi-ed-esami-svolti.md#6-ottimizzazione-logica-e-conteggio-delle-tuple-mosse)).
+
 ## Cose da saper fare all'esame
 - Tradurre una richiesta in algebra: riconoscere negazione essenziale -> U−P; "almeno due" -> self-join; "tutti" -> ÷ / doppia negazione; "massimo" -> r − (esiste uno maggiore).
 - Scrivere lo stesso quesito in TRC e poi in SQL.

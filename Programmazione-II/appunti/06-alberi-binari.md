@@ -129,6 +129,10 @@ while (!empty(q)) {
 ```
 L'ordine sull'albero d'esempio è A B C D E F G H (per livelli). [DA VERIFICARE] il PDF si interrompe prima della fine della simulazione: l'ordine finale è dedotto dall'algoritmo.
 
+## Esercizi svolti collegati
+
+Il laboratorio sugli alberi ([file 09 §4](09-esercizi-ed-esami-svolti.md#4-il-laboratorio-sugli-alberi-binari-di-ricerca)) usa `tree.c` con `insertTree`, `removeTree`, `depthTree` e le funzioni nuove `sizeTree`, `sumTree`, `ncontainsTree` (ricerca limitata a n livelli), `balancedTree`, `filterleTree` e `getTree` (i-esimo elemento in ordine crescente); nel file 09 sono calcolate su un albero di esempio. Il punto più utile per l'esame è la **rimozione**: nel codice del docente eliminare una foglia manda in crash il programma, e eliminare un nodo con due figli può duplicare un valore perché il risultato di `removeTree(t->left, ...)` non è riassegnato; la versione corretta è nello stesso paragrafo. `voidtree.c` ([§9](09-esercizi-ed-esami-svolti.md#9-gli-esempi-delle-lezioni)) è l'esempio di albero con nodi generici.
+
 ## Cose da saper fare all'esame
 - Dato un albero, dare pre/in/post-order e BFS; profondità, grado, frontiera, distanza fra nodi.
 - Scrivere `crea_nodo`, `add` con path, `add_ord`, `rimuovi_tutto`, stampa nelle tre visite, `conta_nodi`, **somma dei valori** nelle tre versioni pre/in/post (esercizio suggerito), altezza, ricerca in BST.

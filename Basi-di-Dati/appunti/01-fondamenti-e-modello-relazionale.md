@@ -77,6 +77,10 @@ Da notare la dipendenza circolare MEDICI-REPARTI (un medico appartiene a un repa
 ## Storia (1 riga)
 Anni '60 file system, gerarchico (IBM), reticolare (CODASYL) -> 1970 Codd, relazionale -> '80-'90 SQL-89/99, OO, distribuiti, OLAP -> oggi Big Data, NoSQL/NewSQL/GraphDB, coesistenza di tecnologie.
 
+## Esercizi svolti collegati
+
+Questo file non ha esercizi propri: gli appelli e i fogli del Moodle non contengono domande di puro modello relazionale (chiavi, vincoli, ANSI/SPARC), che servono come base per tutto il resto. Lo si vede però al lavoro nel [§0 Com'è fatta la prova](09-esercizi-ed-esami-svolti.md#0-comè-fatta-la-prova) (struttura dello scritto) e negli schemi con chiavi esterne composte dei temi SQL, per esempio [3.1](09-esercizi-ed-esami-svolti.md#31-domande-a-bassa-complessità-join-filtro-ordinamento), dove ogni join deve riprodurre l'intera chiave. La definizione di NULL e il suo effetto sui confronti sono invece messe alla prova negli esercizi con `IS NULL` dei temi 2025-12-17 e 2026-01-23.
+
 ## Cose da saper fare all'esame
 - Distinguere schema/istanza, grado/cardinalità, superchiave/candidata/primaria e **trovare le chiavi** di una tabella data.
 - Scrivere il vincolo di integrità referenziale a parole e formalmente; dire se un'istanza lo viola.

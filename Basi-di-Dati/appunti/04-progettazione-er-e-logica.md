@@ -123,6 +123,10 @@ FK: Dipartimento.Sede -> Sede, Dipartimento.Direttore -> Impiegato, Impiegato(No
 
 IMPIEGATI(MATR, Cognome, Nome, Età, Stipendio) · ORGANIGRAMMA(Capo, Impiegato), entrambi FK su IMPIEGATI.MATR: è una relazione ricorsiva Capo-Impiegato, navigabile con self-join. Gerarchia: 574 -> {203 -> {405 -> 461, 501}, 530}. Dati: 203 Neri 50 anni 40; 574 Bisi 60/60; 461 Bargio 30/61; 530 Belli 40/38; 405 Mizzi 55/60; 501 Monti 25/35.
 
+## Esercizi svolti collegati
+
+Gli esercizi di progettazione non compaiono nello scritto ma nel **progetto di laboratorio** e nei fogli `Esercizio_1..9`, riassunti nel [file 09 §7](09-esercizi-ed-esami-svolti.md#7-progettazione-e-r-e-progetto-di-laboratorio). L'analisi dei requisiti (§2) è esercitata dal caso biblioteca (separare libro ed esemplare, riscrivere il testo), la scelta fra ternaria e binarie e la reificazione (§4) dall'esercizio 3, le gerarchie e i tipi di generalizzazione (§3) dagli esercizi 2 e 5, la traduzione in relazionale (§5) dagli esercizi 8 e 9, di cui il materiale estratto non permette però di ricostruire i diagrammi. Il progetto 2025/26 ("Parcheggi") applica l'intero ciclo del §1 e porta con sé la checklist ufficiale degli errori da evitare.
+
 ## Cose da saper fare all'esame
 - Da un testo: ripulire con glossario, individuare entità/relazioni/attributi/cardinalità/identificatori, disegnare lo schema E-R con gerarchie e documentarlo (dizionario + regole).
 - Riconoscere quando reificare (relazione con attributi propri, storicizzazione, instance-of).

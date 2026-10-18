@@ -91,6 +91,10 @@ int conf(void *x, void *y) { return strcmp((char*)x, (char*)y); }
 ```
 Il main (e il codice dell'albero) è **riusato** senza modifiche; si compila con l'una o l'altra implementazione (`gcc main.c funzioni.c`). `funzioni.h` è l'interfaccia e i nomi `crea/stampa/conf` sono l'unico collegamento: per questo vanno rispettati come standard.
 
+## Esercizi svolti collegati
+
+Per i puntatori a funzione non ci sono esercizi nel Moodle. Per i nodi generici c'è solo l'esempio `voidtree.c` ([file 09 §9](09-esercizi-ed-esami-svolti.md#9-gli-esempi-delle-lezioni)): nodi con `void *dato` e un carattere `tipo` che dice come interpretarlo, stampati con uno `switch`. È proprio il caso in cui un puntatore a funzione per tipo di dato eviterebbe lo `switch`, come nelle implementazioni di questo file. Nell'esempio `crea_nodo` non ha il `return`, quindi funziona solo per caso.
+
 ## Cose da saper fare all'esame
 - Dichiarare una variabile/array di puntatori a funzione con la sintassi giusta e invocare via `(*p)(args)`.
 - Riconoscere cosa fa un dato frammento (es. quale handler viene eseguito per un input).

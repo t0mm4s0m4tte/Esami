@@ -75,6 +75,10 @@ Anche il modo di collegare le librerie cambia il momento del binding. Nel **link
 ## Layout di memoria (da Lab 1, RARS)
 Gli indirizzi seguono una convenzione software: il testo sta in basso (RARS: 0x00400000), i dati statici più sopra (0x10010000) e lo stack in alto, crescendo verso il basso (compact: 0x7FFFEFFC per sp).
 
+## Esercizi svolti collegati
+
+Gli archivi `code_examples` del Moodle mostrano un programma assembly completo con punto di ingresso `_start`, sezioni `.text`/`.rodata`/`.data`, chiamate di sistema `write` e `exit` e una libreria di supporto, pensato per l'assemblatore GNU e per essere eseguito con QEMU. Il [file 13 §3](13-esercizi-ed-esami-svolti.md#3-il-lab-7-ricorsione-gli-esempi-del-docente) elenca le differenze di sintassi con RARS (`.equ` contro `.eqv`, `.section`, etichette numeriche, `#include`) che conviene conoscere quando si parla di direttive e di assemblatori diversi.
+
 ## Cose da saper fare all'esame
 - Spiegare perché servono due passi e costruire la symbol table di un breve programma (con ILC a +4).
 - Elencare i compiti di assemblatore, linker, loader e cosa contiene un file oggetto.

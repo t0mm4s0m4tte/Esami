@@ -144,6 +144,10 @@ Per codificare a mano un'istruzione si procede così:
 
 Per decodificare una word si legge prima il codop (bit 6:0), che determina il formato, e poi si estraggono i campi: rs1 = bit 19:15, rs2 = 24:20, rd = 11:7, funz3 = 14:12, funz7 = 31:25.
 
+## Esercizi svolti collegati
+
+Gli esercizi dei Lab 1 e 2 (somma e overflow, shift, maschere, byte con e senza segno, estrazione di campi di bit, media in memoria) sono stati eseguiti in RARS con valori di prova: i risultati, come `0x50000000` con overflow per la somma di 0x80000000 e 0xD0000000, `-288` contro `480` per `lb` contro `lbu` su 130, 150, 200, o `0xFFFFFF3F` per lo spostamento di campi di bit, sono nella tabella del [file 13 §2](13-esercizi-ed-esami-svolti.md#2-le-soluzioni-dei-lab-1-6-eseguite-in-rars); le soluzioni sono nel [file 11](11-laboratorio-esercizi-svolti.md).
+
 ## Cose da saper fare all'esame
 - Tradurre espressioni C (anche con array e indici variabili) in assembly RISC-V.
 - Codificare un'istruzione in binario/esadecimale e decodificare una word a 32 bit.

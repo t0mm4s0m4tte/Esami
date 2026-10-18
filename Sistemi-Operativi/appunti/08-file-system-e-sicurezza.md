@@ -88,6 +88,10 @@ In **Windows**:
 
 Le criticità sono i default storicamente deboli e l'ampia superficie di attacco.
 
+## Esercizi svolti collegati
+
+Permessi, allocazione dei file e sicurezza non hanno esercizi nel materiale Moodle (la sola prova scritta disponibile, quella dimostrativa del 25/12/2024, vedi [file 11](11-esercizi-ed-esami-svolti.md#1-prova-scritta-dimostrativa-del-25-dicembre-2024), non li tocca). Le procedure restano quelle del [file 10](10-esercizi-tipo-esame.md). Nelle esercitazioni di laboratorio i permessi compaiono solo come modalità di creazione delle risorse (`0600` per le code di messaggi, `S_IRUSR | S_IWUSR` per le FIFO).
+
 ## Cose da saper fare all'esame
 - Decodificare permessi `rwxr-x--x` <-> ottale; usare `chmod` simbolico/assoluto.
 - Confrontare i 3 metodi di allocazione (prestazioni, frammentazione, overhead) e descrivere FAT e inode UFS (diretti/indiretti).

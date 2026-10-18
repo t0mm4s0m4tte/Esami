@@ -89,6 +89,10 @@ Alcuni esempi di sistemi reali: iOS è organizzato in Core OS, Core Services, Me
 ## Boot e debugging
 All'avvio il firmware (ROM/EEPROM) lancia il bootstrap loader, che carica il kernel in RAM; GRUB può permettere di scegliere kernel e opzioni. **SYSGEN** è la configurazione/compilazione del kernel per l'hardware specifico. Per il debugging si usano log file, **core dump** (crash di un'applicazione), **crash dump** (crash del kernel), profiling/tracing e DTrace (probe a basso impatto); c'è anche la legge di Kernighan sul debugging. Quanto alla produzione dei programmi, il sorgente diventa oggetto col compilatore, eseguibile col linker e viene portato in memoria dal loader. Le applicazioni sono portabili grazie a un linguaggio interpretato (Python), a una macchina virtuale (Java) oppure a API standard con compilazione per ciascuna piattaforma.
 
+## Esercizi svolti collegati
+
+Il materiale Moodle non contiene esercizi su interrupt, dual mode, system call e strutture del SO: la prova scritta dimostrativa del 25/12/2024 ([file 11](11-esercizi-ed-esami-svolti.md#1-prova-scritta-dimostrativa-del-25-dicembre-2024)) parte invece da processi, sincronizzazione e memoria. Questi argomenti restano quindi senza esercizio ufficiale e vanno preparati con le domande teoriche ricorrenti del [file 10](10-esercizi-tipo-esame.md); la stessa prova avverte che "tutti i temi affrontati nel corso sono possibili".
+
 ## Cose da saper fare all'esame
 - Distinguere interrupt/trap/syscall e descrivere il ciclo di gestione di un interrupt.
 - Spiegare dual mode e perché serve (protezione); perché I/O è privilegiato.

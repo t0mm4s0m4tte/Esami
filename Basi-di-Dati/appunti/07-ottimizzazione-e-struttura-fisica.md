@@ -109,6 +109,10 @@ Per le selezioni congiuntive σ_{p1∧p2∧…} ci sono due strategie:
 
 Il **join** è l'operatore più oneroso, e non va mai simulato con cicli nidificati nell'applicazione: il DBMS sceglie tra **Nested Loop, Merge Join** (input ordinati) e **Hash Join** in base a buffer e statistiche. `EXPLAIN` mostra il piano scelto.
 
+## Esercizi svolti collegati
+
+Sei esercizi (cinque appelli più la simulazione) applicano il §2 e il §3 e sono tutti nel [file 09 §6](09-esercizi-ed-esami-svolti.md#6-ottimizzazione-logica-e-conteggio-delle-tuple-mosse), con la tabella dei costi prima e dopo l'ottimizzazione. Usano la spinta delle selezioni verso le foglie (passi 1-2), la selettività di uguaglianze, intervalli, negazioni e OR (la tabella di f_p) e la regola "join lungo chiave esterna = cardinalità del lato FK". Il tema 2025-09-10 aggiunge la selettività di un intervallo `Quantità ≥ 6`, che nella tabella del §3 è scritta solo per `A ≤ v`: con la stessa logica vale (MAX − c)/(MAX − MIN). L'organizzazione fisica, i B+ e l'ottimizzatore fisico (§4-§6) compaiono nello scritto solo come domande teoriche (B-tree contro B+-tree, 2026-06-11, vedi [§8](09-esercizi-ed-esami-svolti.md#8-domande-teoriche-a-risposta-aperta)) e non hanno esercizi numerici.
+
 ## Cose da saper fare all'esame
 - Applicare i 7 passi a un albero di parsificazione e disegnare l'albero ottimizzato.
 - Calcolare **f_p** di predicati composti, stimare la cardinalità di selezioni e join, confrontare due piani (ordine di grandezza della massa di tuple).
