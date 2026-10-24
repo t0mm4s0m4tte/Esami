@@ -17,9 +17,9 @@ Il file introduce il dizionario (Insert, Search, Delete) e la sua realizzazione 
 
 ## Dizionario e indirizzamento diretto
 
-Un dizionario è un insieme dinamico con le sole operazioni Insert, Search e Delete. Con array o liste queste costano O(n). L'**indirizzamento diretto** le porta a O(1) con un'idea semplicissima: una tabella T con una cella per *ogni* chiave possibile dell'universo U, così che Insert sia T[x.key]=x, Search sia T[k] e Delete sia T[x.key]=nil. Il difetto è lo spazio, proporzionale a |U| anziché al numero di chiavi effettivamente presenti.
+Un dizionario è un insieme dinamico con le sole operazioni Insert, Search e Delete. Con array o liste queste costano $O(n)$. L'**indirizzamento diretto** le porta a $O(1)$ con un'idea semplicissima: una tabella T con una cella per *ogni* chiave possibile dell'universo U, così che Insert sia T[x.key]=x, Search sia T[k] e Delete sia T[x.key]=nil. Il difetto è lo spazio, proporzionale a $\lvert U\rvert$ anziché al numero di chiavi effettivamente presenti.
 
-Un esempio mostra quanto sia grave: con 20.000 studenti e matricola a 6 cifre (|U|=10^6) lo spreco è del 0.4% se ogni studente occupa 100 KB, ma sale al 28% con 1 KB per studente e al 95.6% con 1 KB e soli 200 studenti. L'hashing nasce da qui: tenere O(1) senza pagare |U|.
+Un esempio mostra quanto sia grave: con 20.000 studenti e matricola a 6 cifre ($\lvert U\rvert=10^6$) lo spreco è del 0.4% se ogni studente occupa 100 KB, ma sale al 28% con 1 KB per studente e al 95.6% con 1 KB e soli 200 studenti. L'hashing nasce da qui: tenere $O(1)$ senza pagare $\lvert U\rvert$.
 
 <p align="center">
 <img src="img/05-indirizzamento-diretto.png" width="560" alt="Universo U delle chiavi con le chiavi presenti, e una tavola a indirizzamento diretto T i cui puntatori portano ai dati"><br>
@@ -29,7 +29,7 @@ Un esempio mostra quanto sia grave: con 20.000 studenti e matricola a 6 cifre (|
 
 ## Hashing
 
-Si introduce una funzione **h: U -> {0,...,m-1}** con m << |U|, che assegna a ogni chiave una cella (valore hash). Perdendo la corrispondenza uno-a-uno tra chiave e posizione, due chiavi diverse possono finire nella stessa cella: sono le **collisioni** (k1≠k2, h(k1)=h(k2)), inevitabili per il principio dei cassetti. Solo con un insieme di chiavi statico e noto si può avere un hash perfetto. Per questo una buona h deve ripartire le chiavi in modo uniforme: con U={00..99} e m=10, k mod 10 mette 10 chiavi in ogni cella, mentre (somma delle cifre) mod 10 è sbilanciata (la cella 0 contiene solo 00, la cella 9 ne contiene 10). Formalmente l'**uniformità semplice** richiede |h^-1(i)| = |h^-1(j)| per ogni i,j, cioè ogni cella ugualmente probabile.
+Si introduce una funzione $\boldsymbol{h: U \to \lbrace 0,\dots,m-1\rbrace}$ con $m \ll \lvert U\rvert$, che assegna a ogni chiave una cella (valore hash). Perdendo la corrispondenza uno-a-uno tra chiave e posizione, due chiavi diverse possono finire nella stessa cella: sono le **collisioni** ($k_1\ne k_2$, $h(k_1)=h(k_2)$), inevitabili per il principio dei cassetti. Solo con un insieme di chiavi statico e noto si può avere un hash perfetto. Per questo una buona h deve ripartire le chiavi in modo uniforme: con $U=\lbrace 00..99\rbrace$ e $m=10$, $k \bmod 10$ mette 10 chiavi in ogni cella, mentre (somma delle cifre) mod 10 è sbilanciata (la cella 0 contiene solo 00, la cella 9 ne contiene 10). Formalmente l'**uniformità semplice** richiede $\lvert h^{-1}(i)\rvert = \lvert h^{-1}(j)\rvert$ per ogni $i,j$, cioè ogni cella ugualmente probabile.
 
 <p align="center">
 <img src="img/05-funzione-hash.png" width="560" alt="Universo U con le chiavi presenti e una funzione h(k) = k mod 5 che le assegna alle celle di una tavola hash T"><br>
@@ -38,12 +38,12 @@ Si introduce una funzione **h: U -> {0,...,m-1}** con m << |U|, che assegna a og
 
 
 Due metodi standard per costruire h:
-- **Divisione**: h(k)=k mod m. Va evitato m=2^p, perché userebbe solo i p bit bassi della chiave; la buona euristica è scegliere m **primo** e non vicino a una potenza di 2.
-- **Moltiplicazione**: h(k)=⌊m·(kA mod 1)⌋ con 0<A<1, consigliato A=(√5-1)/2; qui la scelta di m non è critica.
+- **Divisione**: $h(k)=k \bmod m$. Va evitato $m=2^p$, perché userebbe solo i $p$ bit bassi della chiave; la buona euristica è scegliere m **primo** e non vicino a una potenza di 2.
+- **Moltiplicazione**: $h(k)=\lfloor m\cdot(kA \bmod 1)\rfloor$ con $0<A<1$, consigliato $A=(\sqrt{5}-1)/2$; qui la scelta di $m$ non è critica.
 
 ## Concatenamento (liste di trabocco)
 
-La prima strategia per gestire le collisioni è tenere in ogni cella una lista: T[i] punta alla lista degli elementi con hash i. Insert in testa è **O(1)**; Search scorre la lista della cella; Delete cerca e rimuove (con liste doppie la rimozione è O(1)). L'indicatore chiave è il **fattore di carico α = n/m**, la lunghezza media di una lista.
+La prima strategia per gestire le collisioni è tenere in ogni cella una lista: T[i] punta alla lista degli elementi con hash i. Insert in testa è **$O(1)$**; Search scorre la lista della cella; Delete cerca e rimuove (con liste doppie la rimozione è $O(1)$). L'indicatore chiave è il **fattore di carico $\alpha = n/m$**, la lunghezza media di una lista.
 
 <p align="center">
 <img src="img/05-concatenamento.png" width="560" alt="Tavola hash con concatenamento: ogni cella di T punta a una lista di trabocco che contiene le chiavi in collisione"><br>
@@ -51,51 +51,55 @@ La prima strategia per gestire le collisioni è tenere in ogni cella una lista: 
 </p>
 
 
-Nel caso peggiore tutte le chiavi finiscono nella stessa lista e le operazioni costano **Θ(n)**. Nel caso medio, sotto l'ipotesi di uniformità semplice, una ricerca senza successo costa **Θ(1+α)** e una con successo circa 1 + α/2 - α/(2n), ancora Θ(1+α). Se si dimensiona la tabella proporzionalmente al numero di elementi (m ∝ n), allora α=Θ(1) e tutto è **O(1) atteso**.
+Nel caso peggiore tutte le chiavi finiscono nella stessa lista e le operazioni costano **$\Theta(n)$**. Nel caso medio, sotto l'ipotesi di uniformità semplice, una ricerca senza successo costa $\boldsymbol{\Theta(1+\alpha)}$ e una con successo circa $1 + \frac{\alpha}{2} - \frac{\alpha}{2n}$, ancora $\Theta(1+\alpha)$. Se si dimensiona la tabella proporzionalmente al numero di elementi ($m \propto n$), allora $\alpha=\Theta(1)$ e tutto è **$O(1)$ atteso**.
 
 ## Indirizzamento aperto
 
-La seconda strategia non usa puntatori: gli elementi stanno dentro T, e se la cella è occupata se ne prova un'altra secondo una **sequenza di ispezione h(k,i)**, i=0..m-1. Necessariamente α ≤ 1. HASHINSERT prova h(k,0), h(k,1),... finché trova una cella nil; HASHSEARCH percorre la stessa sequenza e conclude che la chiave è assente quando incontra una cella vuota. La qualità del metodo dipende da come si genera la sequenza:
-- **Lineare**, h(k,i)=(h'(k)+i) mod m: semplice, ma soffre di **addensamento primario** (lunghe sequenze contigue di celle occupate che si autoalimentano).
-- **Quadratica**, h(k,i)=(h'(k)+c1·i+c2·i^2) mod m: riduce il primario ma resta l'**addensamento secondario**, perché chiavi con lo stesso hash iniziale seguono la stessa sequenza.
-- **Doppio hashing**, h(k,i)=(h1(k)+i·h2(k)) mod m: elimina entrambi i problemi.
+La seconda strategia non usa puntatori: gli elementi stanno dentro T, e se la cella è occupata se ne prova un'altra secondo una **sequenza di ispezione $h(k,i)$**, $i=0..m-1$. Necessariamente $\alpha \le 1$. HASHINSERT prova $h(k,0), h(k,1),\dots$ finché trova una cella nil; HASHSEARCH percorre la stessa sequenza e conclude che la chiave è assente quando incontra una cella vuota. La qualità del metodo dipende da come si genera la sequenza:
+- **Lineare**, $h(k,i)=(h'(k)+i) \bmod m$: semplice, ma soffre di **addensamento primario** (lunghe sequenze contigue di celle occupate che si autoalimentano).
+- **Quadratica**, $h(k,i)=(h'(k)+c_1 i+c_2 i^2) \bmod m$: riduce il primario ma resta l'**addensamento secondario**, perché chiavi con lo stesso hash iniziale seguono la stessa sequenza.
+- **Doppio hashing**, $h(k,i)=(h_1(k)+i\cdot h_2(k)) \bmod m$: elimina entrambi i problemi.
 
-Nell'ipotesi di hashing uniforme, le ispezioni attese sono **≤ 1/(1-α)** per una ricerca senza successo (α=0.5 -> 2; α=0.9 -> 10) e **≤ (1/α)·ln(1/(1-α))** per una con successo (α=0.5 -> <1.387; α=0.9 -> <2.559). Il costo esplode quando α si avvicina a 1. La cancellazione è delicata: se si svuota semplicemente una cella si interrompono le sequenze di ispezione delle altre chiavi. Una soluzione è marcare la cella come "deleted" invece di svuotarla, così la ricerca prosegue oltre il marcatore; il prezzo è che le celle marcate restano occupate e prima o poi serve ricostruire la tabella (fonte: Wikipedia, "Open addressing", https://en.wikipedia.org/wiki/Open_addressing; livello 3, la slide 11 letta su Drive non copre la cancellazione nella parte accessibile). [ASSUNZIONE: da verificare: che l'inserimento possa riusare le celle "deleted", come si fa di solito, non è confermato da nessuna fonte consultata]
+Nell'ipotesi di hashing uniforme, le ispezioni attese sono $\boldsymbol{\le \frac{1}{1-\alpha}}$ per una ricerca senza successo ($\alpha=0.5 \to 2$; $\alpha=0.9 \to 10$) e $\boldsymbol{\le \frac{1}{\alpha}\ln\frac{1}{1-\alpha}}$ per una con successo ($\alpha=0.5 \to <1.387$; $\alpha=0.9 \to <2.559$). Il costo esplode quando $\alpha$ si avvicina a 1. La cancellazione è delicata: se si svuota semplicemente una cella si interrompono le sequenze di ispezione delle altre chiavi. Una soluzione è marcare la cella come "deleted" invece di svuotarla, così la ricerca prosegue oltre il marcatore; il prezzo è che le celle marcate restano occupate e prima o poi serve ricostruire la tabella (fonte: Wikipedia, "Open addressing", https://en.wikipedia.org/wiki/Open_addressing; livello 3, la slide 11 letta su Drive non copre la cancellazione nella parte accessibile). [ASSUNZIONE: da verificare: che l'inserimento possa riusare le celle "deleted", come si fa di solito, non è confermato da nessuna fonte consultata]
 
 ## Analisi del concatenamento (slide 11)
 
-Il caso peggiore si realizza, per esempio, con m=200 e h(k)=k mod 200 se le chiavi 000123, 100323, 123723, 343123, 333123... cadono tutte nella stessa cella: Θ(n).
+Il caso peggiore si realizza, per esempio, con m=200 e h(k)=k mod 200 se le chiavi 000123, 100323, 123723, 343123, 333123... cadono tutte nella stessa cella: $\Theta(n)$.
 
-Per la **ricerca senza successo** si paga Θ(1) per calcolare h e poi si percorre una lista di lunghezza media n̄ = (n0+...+n_{m-1})/m = n/m = α, in totale Θ(1+α).
+Per la **ricerca senza successo** si paga $\Theta(1)$ per calcolare h e poi si percorre una lista di lunghezza media $\bar{n} = (n_0+\dots+n_{m-1})/m = n/m = \alpha$, in totale $\Theta(1+\alpha)$.
 
-Per la **ricerca con successo** si ragiona sull'elemento x_i, supponendo inserimento in testa: si esaminano x_i e gli elementi inseriti *dopo* di lui nella stessa lista. Dopo x_i ne arrivano n-i, ciascuno dei quali finisce nella stessa lista con probabilità 1/m, cioè (n-i)/m in media. Mediando su i:
+Per la **ricerca con successo** si ragiona sull'elemento $x_i$, supponendo inserimento in testa: si esaminano $x_i$ e gli elementi inseriti *dopo* di lui nella stessa lista. Dopo $x_i$ ne arrivano $n-i$, ciascuno dei quali finisce nella stessa lista con probabilità $1/m$, cioè $(n-i)/m$ in media. Mediando su i:
 
-(1/n) Σ_{i=1}^n [1 + (n-i)/m] = 1 + (n-1)/(2m) = **1 + α/2 - α/(2n)**, quindi Θ(1+α).
+$$
+\frac{1}{n}\sum_{i=1}^{n}\left[1+\frac{n-i}{m}\right] = 1+\frac{n-1}{2m} = \boldsymbol{1+\frac{\alpha}{2}-\frac{\alpha}{2n}}
+$$
 
-Se m=Θ(n) allora α=Θ(1) e tutte le operazioni sono Θ(1) (con liste doppie). Le chiavi non intere, come le stringhe, si trattano con i codici ASCII e operazioni aritmetiche ('o'=111, 'c'=99, 'a'=97).
+quindi $\Theta(1+\alpha)$.
 
-Per l'indirizzamento aperto servono alcune precisazioni formali. La sequenza h(k,0..m-1) deve essere una **permutazione** di {0..m-1}, così da visitare tutte le celle; Insert ritorna l'indice j (nil/overflow se la tabella è piena); nell'ispezione quadratica la scelta di c1 e c2 deve garantire la permutazione. L'**hashing uniforme** assume che le m! sequenze di ispezione siano equiprobabili, e con questa ipotesi il costo medio di un inserimento è circa quello di una ricerca senza successo. Gli esercizi "11.2 Esercizi svolti" citati nel programma **non sono presenti** come file in cartella [DA VERIFICARE].
+Se $m=\Theta(n)$ allora $\alpha=\Theta(1)$ e tutte le operazioni sono $\Theta(1)$ (con liste doppie). Le chiavi non intere, come le stringhe, si trattano con i codici ASCII e operazioni aritmetiche ('o'=111, 'c'=99, 'a'=97).
+
+Per l'indirizzamento aperto servono alcune precisazioni formali. La sequenza $h(k,0..m-1)$ deve essere una **permutazione** di $\lbrace 0..m-1\rbrace$, così da visitare tutte le celle; Insert ritorna l'indice j (nil/overflow se la tabella è piena); nell'ispezione quadratica la scelta di $c_1$ e $c_2$ deve garantire la permutazione. L'**hashing uniforme** assume che le $m!$ sequenze di ispezione siano equiprobabili, e con questa ipotesi il costo medio di un inserimento è circa quello di una ricerca senza successo. Gli esercizi "11.2 Esercizi svolti" citati nel programma **non sono presenti** come file in cartella [DA VERIFICARE].
 
 ## Confronto
 
 | | Diretto | Concatenamento | Indirizzamento aperto |
 |---|---|---|---|
-| Medio | O(1) | Θ(1+α) | O(1/(1-α)) |
-| Peggiore | O(1) | Θ(n) | O(n) |
-| Criticità | spazio ∝ \|U\| | puntatori, cache | degrada per α->1, delete complessa |
+| Medio | $O(1)$ | $\Theta(1+\alpha)$ | $O(1/(1-\alpha))$ |
+| Peggiore | $O(1)$ | $\Theta(n)$ | $O(n)$ |
+| Criticità | spazio $\propto \lvert U\rvert$ | puntatori, cache | degrada per $\alpha \to 1$, delete complessa |
 
-Come raccomandazioni pratiche, nel concatenamento si tiene α circa costante (per esempio ~1), mentre nell'indirizzamento aperto non conviene superare **α=0.8**.
+Come raccomandazioni pratiche, nel concatenamento si tiene α circa costante (per esempio ~1), mentre nell'indirizzamento aperto non conviene superare $\boldsymbol{\alpha=0.8}$.
 
 ## Esercizi svolti collegati
 
-Gli esercizi sono nel [§7 Tabelle hash](12-esercizi-svolti.md#7-tabelle-hash): inserimento con indirizzamento aperto lineare e quadratico (con h(k,i) = (k mod m + 2i + i²) mod m) e il caso in cui la sequenza di ispezione non copre tutta la tabella, per cui un inserimento fallisce con la tabella quasi vuota.
+Gli esercizi sono nel [§7 Tabelle hash](12-esercizi-svolti.md#7-tabelle-hash): inserimento con indirizzamento aperto lineare e quadratico (con $h(k,i) = (k \bmod m + 2i + i^2) \bmod m$) e il caso in cui la sequenza di ispezione non copre tutta la tabella, per cui un inserimento fallisce con la tabella quasi vuota.
 
 ## Cose da saper fare all'esame
 
 **Scritto**
 - Inserire una sequenza di chiavi in una tabella (concatenamento e/o aperto lineare/quadratico/doppio) con h data e disegnare lo stato finale.
-- Scegliere m e h e giustificare (primo, no 2^p); calcolare α.
-- Calcolare ispezioni attese per α dato.
+- Scegliere m e h e giustificare (primo, no $2^p$); calcolare $\alpha$.
+- Calcolare ispezioni attese per $\alpha$ dato.
 
 **Orale**
 - Perché hashing invece di indirizzamento diretto; ipotesi di uniformità semplice; differenza addensamento primario/secondario; costo caso medio/peggiore.

@@ -16,7 +16,7 @@ Si definiscono le proprietà e l'altezza nera, si dimostra il bound logaritmico 
 
 ## Definizione
 
-Il problema dei BST (vedi 06) è che l'altezza può degenerare fino a n-1 e con essa il costo delle operazioni. Un albero rosso-nero è un BST aumentato con un colore per nodo, con regole che costringono l'albero a restare approssimativamente bilanciato senza richiedere un bilanciamento perfetto: si accetta un po' di sbilanciamento in cambio di una manutenzione economica. Le proprietà sono tre.
+Il problema dei BST (vedi 06) è che l'altezza può degenerare fino a $n-1$ e con essa il costo delle operazioni. Un albero rosso-nero è un BST aumentato con un colore per nodo, con regole che costringono l'albero a restare approssimativamente bilanciato senza richiedere un bilanciamento perfetto: si accetta un po' di sbilanciamento in cambio di una manutenzione economica. Le proprietà sono tre.
 1. **Nero**: la radice e tutte le foglie (sentinelle NIL) sono nere.
 2. **Rosso**: un nodo rosso ha entrambi i figli neri, quindi non possono esserci due rossi consecutivi.
 3. **Cammino**: per ogni nodo x, tutti i cammini semplici da x alle foglie discendenti hanno lo stesso numero di nodi neri.
@@ -31,18 +31,18 @@ Da qui si definisce l'**altezza nera** bh(x), il numero di nodi neri su un cammi
 
 ## Altezza
 
-L'intuizione è che la regola 3 impone che l'albero sia "pieno" quanto a nodi neri, mentre la regola 2 impedisce che i nodi rossi facciano allungare un cammino più del doppio degli altri. La proposizione è che un albero R-N con n nodi interni ha altezza massima **2·log2(n+1)**, e di conseguenza search, insert e delete costano **O(log n)** nel caso peggiore.
+L'intuizione è che la regola 3 impone che l'albero sia "pieno" quanto a nodi neri, mentre la regola 2 impedisce che i nodi rossi facciano allungare un cammino più del doppio degli altri. La proposizione è che un albero R-N con $n$ nodi interni ha altezza massima $\boldsymbol{2\log_2(n+1)}$, e di conseguenza search, insert e delete costano **$O(\log n)$** nel caso peggiore.
 
-La dimostrazione ha due passi. Primo (lemma a): il sottoalbero di radice x contiene almeno **2^bh(x) - 1** nodi interni. Secondo (lemma b): per la regola del rosso almeno metà dei nodi su un cammino è nera, quindi **h ≤ 2·bh(T)**. Dal primo passo, n ≥ 2^bh - 1 implica bh ≤ log2(n+1), e dal secondo h ≤ 2 log2(n+1).
+La dimostrazione ha due passi. Primo (lemma a): il sottoalbero di radice x contiene almeno $\boldsymbol{2^{bh(x)} - 1}$ nodi interni. Secondo (lemma b): per la regola del rosso almeno metà dei nodi su un cammino è nera, quindi $\boldsymbol{h \le 2\cdot bh(T)}$. Dal primo passo, $n \ge 2^{bh} - 1$ implica $bh \le \log_2(n+1)$, e dal secondo $h \le 2\log_2(n+1)$.
 
 ### Dimostrazione dei due lemmi (slide 14)
-Il lemma a si prova per induzione sull'altezza k di T_x. Nel caso base k=0, x è una foglia con bh=0 e 2^0 - 1 = 0. Nel passo, x è un nodo interno con figli y1 e y2; vale **bh(y_i) ≥ bh(x) - 1**, con uguaglianza a bh(x)-1 se y_i è nero e a bh(x) se è rosso. I nodi interni di T_x sono allora almeno (2^{bh(y1)} - 1) + (2^{bh(y2)} - 1) + 1 ≥ 2·(2^{bh(x)-1} - 1) + 1 = 2^{bh(x)} - 1.
+Il lemma a si prova per induzione sull'altezza $k$ di $T_x$. Nel caso base $k=0$, $x$ è una foglia con $bh=0$ e $2^0 - 1 = 0$. Nel passo, x è un nodo interno con figli $y_1$ e $y_2$; vale $\boldsymbol{bh(y_i) \ge bh(x) - 1}$, con uguaglianza a $bh(x)-1$ se $y_i$ è nero e a $bh(x)$ se è rosso. I nodi interni di $T_x$ sono allora almeno $(2^{bh(y_1)} - 1) + (2^{bh(y_2)} - 1) + 1 \ge 2\cdot(2^{bh(x)-1} - 1) + 1 = 2^{bh(x)} - 1$.
 
-Il lemma b dice che per la regola del rosso bh(T) ≥ h/2. Allora n ≥ 2^{h/2} - 1, cioè n+1 ≥ 2^{h/2}, e quindi h ≤ 2 log2(n+1). In sintesi bh(T) ≤ h ≤ 2 bh(T).
+Il lemma b dice che per la regola del rosso $bh(T) \ge h/2$. Allora $n \ge 2^{h/2} - 1$, cioè $n+1 \ge 2^{h/2}$, e quindi $h \le 2\log_2(n+1)$. In sintesi $bh(T) \le h \le 2\, bh(T)$.
 
 ## Rotazioni
 
-Le rotazioni sono lo strumento con cui si ripara l'albero senza distruggere l'ordine dei BST: costano O(1), preservano la proprietà BST e l'ordine in-order, e cambiano solo i colori e la forma locale. La **Left-Rotate(T,x)**, applicabile se x ha un figlio destro y non nullo, fa diventare y radice del sottoalbero e x suo figlio sinistro, mentre il vecchio figlio sinistro di y (β) diventa figlio destro di x. La **Right-Rotate(T,y)** è speculare: x, figlio sinistro di y, diventa radice, y diventa figlio destro di x, e il vecchio figlio destro di x diventa figlio sinistro di y.
+Le rotazioni sono lo strumento con cui si ripara l'albero senza distruggere l'ordine dei BST: costano $O(1)$, preservano la proprietà BST e l'ordine in-order, e cambiano solo i colori e la forma locale. La **Left-Rotate(T,x)**, applicabile se x ha un figlio destro y non nullo, fa diventare y radice del sottoalbero e x suo figlio sinistro, mentre il vecchio figlio sinistro di y (β) diventa figlio destro di x. La **Right-Rotate(T,y)** è speculare: x, figlio sinistro di y, diventa radice, y diventa figlio destro di x, e il vecchio figlio destro di x diventa figlio sinistro di y.
 
 Il codice dalle slide della Left-Rotate(T,x) procede così:
 1. y:=x.right;
@@ -96,17 +96,17 @@ La cancellazione è la parte più laboriosa. Si usa la cancellazione BST standar
 
 ## Esercizi svolti collegati
 
-L'altezza logaritmica degli alberi rosso-neri compare come argomento negli esercizi: l'AntenatoComune di due chiavi costa O(log n) proprio perché h ≤ 2 log₂(n+1) ([§8 Alberi](12-esercizi-svolti.md#8-alberi)).
+L'altezza logaritmica degli alberi rosso-neri compare come argomento negli esercizi: l'AntenatoComune di due chiavi costa $O(\log n)$ proprio perché $h \le 2\log_2(n+1)$ ([§8 Alberi](12-esercizi-svolti.md#8-alberi)).
 
 ## Cose da saper fare all'esame
 **Scritto**
 - Inserire una sequenza di chiavi in un R-N mostrando colori, rotazioni e casi del fix-up; idem per una cancellazione.
 - Verificare se un albero dato è R-N valido (calcolare bh).
-- Dimostrare h ≤ 2 log2(n+1) (i due lemmi).
+- Dimostrare $h \le 2\log_2(n+1)$ (i due lemmi).
 
 **Orale**
-- Perché si inserisce rosso; perché la rotazione preserva il BST; numero massimo di rotazioni (inserimento: al più 2; cancellazione: al più 3; fonte: Wikipedia, "Red-black tree", https://en.wikipedia.org/wiki/Red%E2%80%93black_tree; la slide 14 non lo dichiara e il CLRS su Drive non è leggibile oltre i primi capitoli); complessità O(log n).
+- Perché si inserisce rosso; perché la rotazione preserva il BST; numero massimo di rotazioni (inserimento: al più 2; cancellazione: al più 3; fonte: Wikipedia, "Red-black tree", https://en.wikipedia.org/wiki/Red%E2%80%93black_tree; la slide 14 non lo dichiara e il CLRS su Drive non è leggibile oltre i primi capitoli); complessità $O(\log n)$.
 
 ## Dubbi
-- Numero massimo di rotazioni: insert ≤ 2, delete ≤ 3 (fonte: Wikipedia); non presente nel doc né nelle slide 14. Da confrontare col CLRS cap. 13 (non accessibile da Drive).
+- Numero massimo di rotazioni: insert $\le 2$, delete $\le 3$ (fonte: Wikipedia); non presente nel doc né nelle slide 14. Da confrontare col CLRS cap. 13 (non accessibile da Drive).
 - Cancellazione: gestione esatta di v = NIL (sentinella) non esplicitata nel doc.

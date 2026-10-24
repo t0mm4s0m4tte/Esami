@@ -31,7 +31,7 @@ Un **albero** è un grafo connesso e aciclico; un insieme di alberi disgiunti è
 
 Esistono diverse varianti:
 - l'albero **sorgente** ha archi uscenti solo dalla radice, il **pozzo** il contrario;
-- l'albero **k-ario** ha grado k (il massimo numero di figli);
+- l'albero **k-ario** ha grado $k$ (il massimo numero di figli);
 - l'albero **ordinato** attribuisce significato all'ordine dei figli.
 
 <p align="center">
@@ -40,7 +40,7 @@ Esistono diverse varianti:
 </p>
 
 
-L'albero **binario posizionale** si definisce induttivamente: ∅∈BT(A), e se a∈A e l,r∈BT(A) allora ConsTree(a,l,r)∈BT(A).
+L'albero **binario posizionale** si definisce induttivamente: $\emptyset\in BT(A)$, e se $a\in A$ e $l,r\in BT(A)$ allora $\text{ConsTree}(a,l,r)\in BT(A)$.
 
 Per la memoria, il caso binario si rappresenta con nodi a puntatori (key, left, right) in cui nil è l'albero vuoto. Per gli alberi k-ari si usa la rappresentazione **child-sibling**: ogni nodo punta al suo primo figlio (child) e al fratello successivo (sibling), cosicché un albero k-ario diventa di fatto un albero binario con un solo tipo di nodo. La stampa indentata ne mostra l'uso:
 
@@ -50,7 +50,7 @@ printTree(t,d): if t!=NULL { stampa d tab + t->key; for (cl=t->child; cl!=NULL; 
 
 ## Visite
 
-Visitare un albero significa toccare ogni nodo una volta sola, e la domanda è con quale disciplina scegliere il prossimo nodo da visitare. La visita ricorsiva usa implicitamente lo stack delle chiamate e dà la visita in profondità (DFS); rendere esplicita la pila dà la DFS iterativa; sostituire la pila con una coda trasforma la stessa routine in visita in ampiezza (BFS). L'intuizione è proprio questa: l'unica differenza tra DFS iterativa e BFS è la struttura dati, **pila contro coda**, perché la pila riprende sempre l'ultimo nodo scoperto (si scende a fondo) mentre la coda serve prima i nodi scoperti per primi (si procede per livelli). Il costo è O(n) in entrambi i casi: ogni nodo viene inserito ed estratto una volta, per 2n operazioni in tutto.
+Visitare un albero significa toccare ogni nodo una volta sola, e la domanda è con quale disciplina scegliere il prossimo nodo da visitare. La visita ricorsiva usa implicitamente lo stack delle chiamate e dà la visita in profondità (DFS); rendere esplicita la pila dà la DFS iterativa; sostituire la pila con una coda trasforma la stessa routine in visita in ampiezza (BFS). L'intuizione è proprio questa: l'unica differenza tra DFS iterativa e BFS è la struttura dati, **pila contro coda**, perché la pila riprende sempre l'ultimo nodo scoperto (si scende a fondo) mentre la coda serve prima i nodi scoperti per primi (si procede per livelli). Il costo è $O(n)$ in entrambi i casi: ogni nodo viene inserito ed estratto una volta, per $2n$ operazioni in tutto.
 
 ```
 TREE-DFS(T):           visita T.key; C<-T.child; while C!=nil { TREE-DFS(C); C<-C.sibling }
@@ -74,7 +74,7 @@ Un dettaglio utile nella DFS con pila: poiché l'ultimo inserito è il primo est
 
 ## BST
 
-Un **albero binario di ricerca** è un albero binario in cui, per ogni nodo a, le chiavi del sottoalbero sinistro sono minori di a.key, quelle del destro maggiori, e i due sottoalberi sono a loro volta BST. Ogni nodo ha key, left, right e anche **parent**. L'idea è che la proprietà d'ordine permette di scartare metà dell'albero a ogni confronto, esattamente come nella ricerca binaria: tutte le operazioni costano quindi **O(h)**, con h l'altezza, e il loro valore pratico dipende interamente da quanto l'albero è bilanciato (da qui la motivazione per gli alberi rosso-neri, vedi 07).
+Un **albero binario di ricerca** è un albero binario in cui, per ogni nodo a, le chiavi del sottoalbero sinistro sono minori di a.key, quelle del destro maggiori, e i due sottoalberi sono a loro volta BST. Ogni nodo ha key, left, right e anche **parent**. L'idea è che la proprietà d'ordine permette di scartare metà dell'albero a ogni confronto, esattamente come nella ricerca binaria: tutte le operazioni costano quindi **$O(h)$**, con $h$ l'altezza, e il loro valore pratico dipende interamente da quanto l'albero è bilanciato (da qui la motivazione per gli alberi rosso-neri, vedi 07).
 
 <p align="center">
 <img src="img/06-bst-esempio.png" width="460" alt="Albero binario di ricerca con radice 12, figli 7 e 15, e nodi 3, 10, 9, 18, 16"><br>
@@ -122,7 +122,7 @@ Nel terzo caso il trucco funziona perché il successore è il minimo del sottoal
 
 
 ### Impatto dell'ordine di inserimento
-La forma dell'albero dipende dall'ordine in cui arrivano le chiavi, e questo cambia drasticamente il costo. Inserendo 5,3,1,2,8,9,10 si ottiene un albero abbastanza bilanciato di altezza 3; inserendo le stesse chiavi già ordinate (1,2,3,5,8,9,10) si ottiene un **albero degenere**, in pratica una lista di altezza n-1 = 6, e le operazioni costano O(n). Il caso migliore è l'albero completo, che ha altezza minima.
+La forma dell'albero dipende dall'ordine in cui arrivano le chiavi, e questo cambia drasticamente il costo. Inserendo 5,3,1,2,8,9,10 si ottiene un albero abbastanza bilanciato di altezza 3; inserendo le stesse chiavi già ordinate (1,2,3,5,8,9,10) si ottiene un **albero degenere**, in pratica una lista di altezza $n-1 = 6$, e le operazioni costano $O(n)$. Il caso migliore è l'albero completo, che ha altezza minima.
 
 <p align="center">
 <img src="img/06-bilanciamento.png" width="560" alt="Tre alberi di ricerca con le stesse chiavi ma altezza 3, 6 e 2, a seconda dell'ordine di inserimento"><br>
@@ -131,7 +131,7 @@ La forma dell'albero dipende dall'ordine in cui arrivano le chiavi, e questo cam
 
 
 ### Visite in-order e pre-order
-La visita **in-order** (sinistro, radice, destro) di un BST produce le chiavi in ordine crescente: lo si dimostra per induzione, perché la lista L del sottoalbero sinistro è ordinata con chiavi minori di a e la lista R del destro è ordinata con chiavi maggiori. Una realizzazione ingenua costruisce la lista come Append(L, Cons(key,R)), ma Append costa O(|L|) e sul degenere sinistro si ottiene 1+2+...+(n-1), cioè **O(n^2)**. La versione Tree-Inorder(T,L) costruisce invece la lista all'indietro (prima il destro, poi la radice in testa, poi il sinistro) ed è **O(n)**.
+La visita **in-order** (sinistro, radice, destro) di un BST produce le chiavi in ordine crescente: lo si dimostra per induzione, perché la lista L del sottoalbero sinistro è ordinata con chiavi minori di a e la lista R del destro è ordinata con chiavi maggiori. Una realizzazione ingenua costruisce la lista come Append(L, Cons(key,R)), ma Append costa $O(\vert L\vert )$ e sul degenere sinistro si ottiene $1+2+\dots+(n-1)$, cioè **$O(n^2)$**. La versione Tree-Inorder(T,L) costruisce invece la lista all'indietro (prima il destro, poi la radice in testa, poi il sinistro) ed è **$O(n)$**.
 
 La visita **pre-order** ha una proprietà diversa: reinserendo in un albero vuoto gli elementi della lista in pre-ordine si ottiene un albero **isomorfo** all'originale. È la ragione per cui il pre-order serve a serializzare un BST su file e a ricostruirlo fedelmente.
 
@@ -163,7 +163,7 @@ Gli esercizi corrispondenti sono nel [§8 Alberi](12-esercizi-svolti.md#8-alberi
 - Scrivere DFS con pila e BFS con coda.
 
 **Orale**
-- Perché il successore di un nodo con due figli non ha figlio sinistro; complessità O(h) e caso degenere; perché in-order dà l'ordinamento; perché pre-order serializza.
+- Perché il successore di un nodo con due figli non ha figlio sinistro; complessità $O(h)$ e caso degenere; perché in-order dà l'ordinamento; perché pre-order serializza.
 
 ## Dubbi
 - Post-order non è descritto nel doc (solo in-order e pre-order).

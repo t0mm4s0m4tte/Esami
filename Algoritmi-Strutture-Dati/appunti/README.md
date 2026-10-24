@@ -12,7 +12,7 @@ Gli appunti seguono l'ordine del corso: prima i fondamenti (correttezza, comples
 |---|---|
 | [01-fondamenti-correttezza-iterazione.md](01-fondamenti-correttezza-iterazione.md) | Algoritmo, Euclide, Kadane, halting, specifica pre/post, induzione, invarianti, terminazione, invariant-first, Selection/Insertion, ricerca lineare/binaria |
 | [02-complessita-asintotica-ricorsione.md](02-complessita-asintotica-ricorsione.md) | O/Ω/Θ/o, regole, PARTITION, divide et impera, Merge/Quick sort, Master theorem [INT], ricorsione (lineare/coda/albero), Hanoi |
-| [03-confini-esponenziale-programmazione-dinamica.md](03-confini-esponenziale-programmazione-dinamica.md) | Lower bound (alberi di decisione, Ω(n log n)), Counting sort, Jack/Fast-Jack, fastExp, DP (Fibonacci, LCS) |
+| [03-confini-esponenziale-programmazione-dinamica.md](03-confini-esponenziale-programmazione-dinamica.md) | Lower bound (alberi di decisione, $\Omega(n \log n)$), Counting sort, Jack/Fast-Jack, fastExp, DP (Fibonacci, LCS) |
 | [04-array-liste-pile-code.md](04-array-liste-pile-code.md) | Array statici/dinamici, analisi ammortizzata, liste (reverse, union, mergesort), pile e code |
 | [05-tabelle-hash.md](05-tabelle-hash.md) | Indirizzamento diretto, funzioni hash, concatenamento e indirizzamento aperto, analisi |
 | [06-alberi-e-bst.md](06-alberi-e-bst.md) | Alberi, DFS/BFS su alberi, BST (search, succ, insert, delete, inorder, preorder) |
@@ -31,16 +31,16 @@ Il dettaglio per argomento è in fondo a ogni file. Le richieste d'esame qui sot
 
 Lo scritto ruota attorno a cinque famiglie di richieste:
 - **correttezza**: scrivere o trovare l'invariante di un ciclo e dimostrarne inizializzazione, mantenimento e terminazione, usare l'induzione sui ricorsivi e trovare una misura di terminazione (01);
-- **complessità**: dimostrare f∈O/Ω/Θ(g) con c e n0 o con i limiti, analizzare pseudocodice annidato e risolvere T(n)=aT(n/b)+f con albero di ricorsione o sostituzione (Merge sort, fastExp, slowExp, Quick sort nel caso peggiore), controllando se possibile col Master theorem [INT] (02, 03);
-- **lower bound e ottimalità**: Ω(n log n) per l'ordinamento con gli alberi di decisione, Somma17, Gemelli (03);
+- **complessità**: dimostrare $f\in O/\Omega/\Theta(g)$ con $c$ e $n_0$ o con i limiti, analizzare pseudocodice annidato e risolvere $T(n)=aT(n/b)+f$ con albero di ricorsione o sostituzione (Merge sort, fastExp, slowExp, Quick sort nel caso peggiore), controllando se possibile col Master theorem [INT] (02, 03);
+- **lower bound e ottimalità**: $\Omega(n \log n)$ per l'ordinamento con gli alberi di decisione, Somma17, Gemelli (03);
 - **algoritmi da scrivere**: ricerca binaria, alla russa, fastExp iterativo, Kadane, Fast-Jack, DP (Fibonacci e LCS con tabella e frecce), liste ricorsive e iterative (reverse, delete, insert ordinato, union), heapify/insert/extract, BST insert/delete/succ, BFS/DFS, topological sort, Kruskal, Prim e Dijkstra (01, 03, 04, 06, 08, 09, 10);
 - **esecuzioni a mano**: tabelle hash (concatenamento, lineare, quadratico, doppio), BST da una sequenza, insert e delete R-N con tutti i casi, heap e heapsort, DFS temporizzata con d/f e classificazione degli archi, Dijkstra e MST con tabelle, LCS (05, 06, 07, 08, 09, 10, 03).
 
 Le dimostrazioni ricorrenti da saper rifare sono:
 - halting;
-- Ω(n log n);
+- $\Omega(n \log n)$;
 - costo ammortizzato del raddoppio < 3m;
-- h ≤ 2log2(n+1) per gli R-N;
+- $h \le 2\log_2(n+1)$ per gli R-N;
 - correttezza del topological sort (v.f<u.f);
 - teorema del taglio;
 - correttezza di Dijkstra e perché i pesi negativi la rompono.
@@ -61,4 +61,4 @@ Sono possibili anche domande sul lab (specifiche ex2-ex4, complessità richieste
 
 ## Dubbi aperti da passare al tutor
 
-Alcuni punti sono presenti nel doc solo come enunciati, senza dimostrazione completa: BuildHeap O(n), costo ammortizzato < 3m, bound medio del Quicksort, Stirling per log(n!). Il Master theorem non è presente nel materiale letto: la sezione in 02 è un'integrazione [INT], da verificare se serve per l'esame. Non sono trattati il post-order, la cancellazione in indirizzamento aperto (marcatura) e il numero massimo di rotazioni R-N. Union-Find con rango e compressione è solo descritto, e Kruskal e Prim compaiono solo come invarianti, senza pseudocodice completo nel doc. Gli esercizi svolti 11.2 / 13.2 / 05.3 / 02.3 menzionati nel programma non sono stati verificati.
+Alcuni punti sono presenti nel doc solo come enunciati, senza dimostrazione completa: BuildHeap $O(n)$, costo ammortizzato < 3m, bound medio del Quicksort, Stirling per log(n!). Il Master theorem non è presente nel materiale letto: la sezione in 02 è un'integrazione [INT], da verificare se serve per l'esame. Non sono trattati il post-order, la cancellazione in indirizzamento aperto (marcatura) e il numero massimo di rotazioni R-N. Union-Find con rango e compressione è solo descritto, e Kruskal e Prim compaiono solo come invarianti, senza pseudocodice completo nel doc. Gli esercizi svolti 11.2 / 13.2 / 05.3 / 02.3 menzionati nel programma non sono stati verificati.

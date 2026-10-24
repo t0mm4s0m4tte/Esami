@@ -53,9 +53,9 @@ Poi ci sono Riprendi, Pausa, Ferma e Riavvia.
 
 ## Lab 03.2 - HybridSort
 
-L'idea di HybridSort è combinare due ordinamenti sfruttando il punto debole di ciascuno. Il **QuickSort** è veloce in media (O(n log n)) ma ha overhead ricorsivo e rischia O(n^2) con un pivot sfortunato; il **SelectionSort** è sempre O(n^2) ma ha overhead minimo e quindi conviene su array piccoli. Così, se la partizione ha dimensione n >= k si usa QuickSort, se n < k SelectionSort. La soglia **k va determinata sperimentalmente**, perché dipende da CPU, cache, compilatore e dati: se è troppo bassa il beneficio è nullo, se è troppo alta si tende a O(n^2).
+L'idea di HybridSort è combinare due ordinamenti sfruttando il punto debole di ciascuno. Il **QuickSort** è veloce in media ($O(n \log n)$) ma ha overhead ricorsivo e rischia $O(n^2)$ con un pivot sfortunato; il **SelectionSort** è sempre $O(n^2)$ ma ha overhead minimo e quindi conviene su array piccoli. Così, se la partizione ha dimensione $n \ge k$ si usa QuickSort, se $n < k$ SelectionSort. La soglia **k va determinata sperimentalmente**, perché dipende da CPU, cache, compilatore e dati: se è troppo bassa il beneficio è nullo, se è troppo alta si tende a $O(n^2)$.
 
-Il QuickSort usa la PARTITION di Lomuto: `x=A[r]; i=p-1; for j=p..r-1 if A[j]<=x {i++; swap A[i],A[j]}; swap A[i+1],A[r]; return i+1`. QUICKSORT(A,p,r) è: if p<r: q=PARTITION; QUICKSORT(A,p,q-1); QUICKSORT(A,q+1,r). Costo medio O(n log n), peggiore O(n^2). Le ottimizzazioni possibili sono il pivot casuale o la mediana di tre e il partizionamento a tre vie (per i duplicati).
+Il QuickSort usa la PARTITION di Lomuto: `x=A[r]; i=p-1; for j=p..r-1 if A[j]<=x {i++; swap A[i],A[j]}; swap A[i+1],A[r]; return i+1`. QUICKSORT(A,p,r) è: if p<r: q=PARTITION; QUICKSORT(A,p,q-1); QUICKSORT(A,q+1,r). Costo medio $O(n \log n)$, peggiore $O(n^2)$. Le ottimizzazioni possibili sono il pivot casuale o la mediana di tre e il partizionamento a tre vie (per i duplicati).
 
 La firma richiesta è `void hybridsort(void *base, size_t nitems, size_t size, size_t k, int (*compar)(const void*, const void*))`. Il caso d'uso è il file `records.bin`, con **20 milioni di record da 36 byte** (id u64 ai byte 0-7, field1 float ai byte 8-11, field2 i64 ai byte 12-19, field3 stringa di 16 caratteri ai byte 20-35), da ordinare con `sort_records(infile, outfile, field, k)`. I test devono coprire le funzioni ausiliarie, tutti i tipi (void*), array vuoti e piccoli, vari valori di k e i casi limite (ordinati, inversi, duplicati).
 
@@ -71,14 +71,14 @@ Si implementa una tavola hash generica (void*) con **concatenamento**. L'API (ha
 - `keyset` (array allocato, ordine arbitrario, il chiamante lo dealloca)
 - `free` (non libera chiavi né valori)
 
-L'applicazione è `main_ex2 <input_file> <min_length>`, che trova la parola (solo alfabetica, case-insensitive) più frequente in `iliade.txt` con lunghezza minima data. L'uso di un LLM è obbligatorio da documentare, e **put/get/remove devono essere O(1) in media**, altrimenti la consegna è invalida. La consegna richiede la cartella `ex2`, con `make all` che produce `ex2/bin/main_ex2` e `test_ex2` (test senza parametri, exit code 0 = OK); Unity è incluso; non vanno committati iliade.txt, zip e binari.
+L'applicazione è `main_ex2 <input_file> <min_length>`, che trova la parola (solo alfabetica, case-insensitive) più frequente in `iliade.txt` con lunghezza minima data. L'uso di un LLM è obbligatorio da documentare, e **put/get/remove devono essere $O(1)$ in media**, altrimenti la consegna è invalida. La consegna richiede la cartella `ex2`, con `make all` che produce `ex2/bin/main_ex2` e `test_ex2` (test senza parametri, exit code 0 = OK); Unity è incluso; non vanno committati iliade.txt, zip e binari.
 
 ## Lab 07 - Priority queue con heap ternario (ex3)
 
-La coda di priorità è un **max-heap ternario**: ogni nodo ha fino a 3 figli (left, mid, right) con node(i) ≥ figli. Tutte le operazioni devono essere **sub-lineari**, anche `contains` e `remove`; per questo serve una **hash table ausiliaria** che mappa ogni elemento alla sua posizione nell'array, altrimenti trovare un elemento costerebbe O(n). Esempio con inserimenti A2,B3,C5,D1,E2,F3,G4,H5: la radice è C(5) con figli H(5), G(4), B(3).
+La coda di priorità è un **max-heap ternario**: ogni nodo ha fino a 3 figli (left, mid, right) con $\text{node}(i) \ge$ figli. Tutte le operazioni devono essere **sub-lineari**, anche `contains` e `remove`; per questo serve una **hash table ausiliaria** che mappa ogni elemento alla sua posizione nell'array, altrimenti trovare un elemento costerebbe $O(n)$. Esempio con inserimenti A2,B3,C5,D1,E2,F3,G4,H5: la radice è C(5) con figli H(5), G(4), B(3).
 
 L'API (priority_queue.h) comprende `create(f1 confronto, f2 hash)`, `push`, `contains`, `top`, `pop`, `remove`, `size` e `free`. L'applicazione è una simulazione di uno scheduler **non preemptive** con priorità, che legge `tasks.csv` (ID, Start, Length, Priority; già ordinato per Start; priorità maggiore = più urgente). A ogni istante t la simulazione:
-1. accoda i task con Start<=t;
+1. accoda i task con $\text{Start}\le t$;
 2. se l'esecutore è libero estrae il massimo e fa t += Length;
 3. se è libero e la coda è vuota passa a t+1.
 
@@ -86,20 +86,20 @@ Si termina quando tutti i task sono processati. Gli eseguibili sono `main_ex3 <i
 
 ## Lab 09 - Grafi sparsi (ex4)
 
-I grafi sparsi si rappresentano con **liste di adiacenza indicizzate da una tavola hash** (riuso di ex2), con spazio O(|V|+|E|). `struct graph` contiene la hash, i flag labelled e directed; `struct edge` contiene source, dest e label. L'API in graph.h ha complessità richieste precise:
+I grafi sparsi si rappresentano con **liste di adiacenza indicizzate da una tavola hash** (riuso di ex2), con spazio $O(\vert V\vert +\vert E\vert )$. `struct graph` contiene la hash, i flag labelled e directed; `struct edge` contiene source, dest e label. L'API in graph.h ha complessità richieste precise:
 - create/free
-- `is_directed`, `is_labelled`, `num_nodes`: O(1)
-- `num_edges`: O(n)
-- `add_node`, `contains_node`: O(1)
-- `remove_node`, `get_nodes`: O(n)
-- `add_edge`, `contains_edge`, `remove_edge`, `get_label`: O(1)
-- `get_edges`: O(n)
-- `num_neighbours`, `get_neighbours`: O(1), assumendo un grafo molto sparso con grado circa costante
+- `is_directed`, `is_labelled`, `num_nodes`: $O(1)$
+- `num_edges`: $O(n)$
+- `add_node`, `contains_node`: $O(1)$
+- `remove_node`, `get_nodes`: $O(n)$
+- `add_edge`, `contains_edge`, `remove_edge`, `get_label`: $O(1)$
+- `get_edges`: $O(n)$
+- `num_neighbours`, `get_neighbours`: $O(1)$, assumendo un grafo molto sparso con grado circa costante
 
 La funzione `void** breadth_first_visit(Graph gr, void* start, compare, hash)` restituisce un array di nodi in ordine BFS, o NULL se start è assente. L'applicazione è `main_ex4 <input_file> <city> <output_file>` su `italian_dist_graph.csv` (place1, place2, distanza in metri; archi non diretti), nella cartella `ex4` con target `test_ex4`.
 
 ## Cose da saper fare all'esame
-- Scritto/orale: improbabile chiedere sintassi Git, ma possibili domande su TDD, unit test, Makefile, uso di void*/puntatori a funzione, complessità richieste per le API (hash O(1) medio, heap O(log n)), perché HybridSort usa soglia k, perché serve una hash ausiliaria per remove/contains nell'heap. [DA VERIFICARE se l'orale include il lab.]
+- Scritto/orale: improbabile chiedere sintassi Git, ma possibili domande su TDD, unit test, Makefile, uso di void*/puntatori a funzione, complessità richieste per le API (hash $O(1)$ medio, heap $O(\log n)$), perché HybridSort usa soglia k, perché serve una hash ausiliaria per remove/contains nell'heap. [DA VERIFICARE se l'orale include il lab.]
 
 ## Dubbi
 - Il testo completo degli esercizi è su GitLab (il doc dichiara le slide "parziali"); non verificabile qui.
