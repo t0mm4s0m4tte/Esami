@@ -23,7 +23,7 @@ Le CPU sono molto più veloci delle memorie, e nessuna tecnologia è insieme vel
 - **località spaziale**: è probabile accedere a locazioni vicine (array, istruzioni sequenziali); giustifica i **blocchi** (linee) di k byte.
 
 ## Cache: concetti
-La memoria principale, di 2^n byte, si può vedere come M = 2^n/k blocchi di k byte, mentre la cache ha C linee di k byte con C << M. Quando la CPU chiede una parola può accadere un **hit**, se la parola è già in cache e va subito alla CPU (si parla di hit rate e tempo di hit), oppure un **miss**, se il blocco va caricato dalla memoria in cache e poi inviato alla CPU (miss rate e **penalità di miss**).
+La memoria principale, di $2^n$ byte, si può vedere come M = $2^n$/k blocchi di k byte, mentre la cache ha C linee di k byte con C << M. Quando la CPU chiede una parola può accadere un **hit**, se la parola è già in cache e va subito alla CPU (si parla di hit rate e tempo di hit), oppure un **miss**, se il blocco va caricato dalla memoria in cache e poi inviato alla CPU (miss rate e **penalità di miss**).
 
 Nel progettare una cache si affrontano diversi problemi:
 - la dimensione totale (più grande significa più prestazioni e più costo);
@@ -52,7 +52,7 @@ indice = blocco mod 8: 22->6, 26->2, 16->0, 3->3, 18->2.
 Hit rate 3/8. (Le slide usano una cache di 8 blocchi con i 3 bit meno significativi come indice e un elenco di nove richieste: [DA VERIFICARE i valori].)
 
 ### Dimensionamento (formule standard)
-I bit totali di una cache a mappatura diretta sono 2^n linee x (dimensione dato + dimensione tag + 1 bit validità). Con indirizzo a 32 bit, 2^n linee e blocco da 2^m byte, il tag è lungo 32 - n - m.
+I bit totali di una cache a mappatura diretta sono $2^n$ linee x (dimensione dato + dimensione tag + 1 bit validità). Con indirizzo a 32 bit, $2^n$ linee e blocco da $2^m$ byte, il tag è lungo 32 - n - m.
 
 ## Completamente associativa
 All'estremo opposto, un blocco può stare in **qualsiasi** linea. Non ci sono conflitti, ma la ricerca avviene su tutte le linee in parallelo con un comparatore per linea, il che è costoso: la soluzione è adatta solo a poche linee.

@@ -37,8 +37,8 @@ R: Meno istruzioni, meno cicli per istruzione (CPI), periodo di clock più breve
 D: Un periodo di clock di 250 ps a che frequenza corrisponde?
 R: 1/250 ps = 4 GHz.
 
-D: Un programma ha 10^9 istruzioni, CPI medio 1,5, clock 2 GHz. Tempo di CPU?
-R: 10^9 x 1,5 / (2x10^9) = 0,75 s. [formula dal libro]
+D: Un programma ha $10^9$ istruzioni, CPI medio 1,5, clock 2 GHz. Tempo di CPU?
+R: $10^9$ x 1,5 / (2x10^9) = 0,75 s. [formula dal libro]
 
 D: Calcolo di speedup: macchina A esegue in 12 s, macchina B in 8 s. Di quanto B è più veloce?
 R: Speedup = 12/8 = 1,5 (B è 1,5 volte più veloce). [libro; la slide non lo tratta esplicitamente]
@@ -67,7 +67,7 @@ D: I tre principi di progetto RISC?
 R: La semplicità favorisce la regolarità; minori sono le dimensioni, maggiore è la velocità; un buon progetto richiede buoni compromessi.
 
 D: Quanti registri interi ha RV32I e quanto sono larghi? E il PC?
-R: 32 registri x0..x31 a 32 bit; un PC; memoria indirizzata a byte (fino a 2^32-1).
+R: 32 registri x0..x31 a 32 bit; un PC; memoria indirizzata a byte (fino a $2^{32}$-1).
 
 D: Che cosa vale x0 e cosa permette?
 R: Sempre 0 (non scrivibile). Permette: negare `sub x19,x0,x19`, copiare `add x19,x0,x18` (mv).
@@ -121,7 +121,7 @@ D: Differenza tra srl, sra e sll? Esiste shift aritmetico a sinistra?
 R: srl riempie con 0, sra replica il segno, sll sposta a sinistra. Non esiste sla perché identico a sll.
 
 D: Cosa fanno slli di k e srai di k aritmeticamente?
-R: slli k = moltiplica per 2^k; srai k = divide per 2^k con segno, arrotondando verso -inf.
+R: slli k = moltiplica per $2^k$; srai k = divide per $2^k$ con segno, arrotondando verso -inf.
 
 D: Come si fa NOT in RISC-V?
 R: Pseudoistruzione `not` = `xori rd,rs,-1`.
@@ -313,10 +313,10 @@ D: Che cos'è un don't care?
 R: Ingresso che non influenza l'uscita (X); si sfrutta per semplificare (es. controllo ALU).
 
 D: Decoder: ingressi/uscite?
-R: n ingressi, 2^n uscite, esattamente una asserita per combinazione. Usi: abilitare componenti, scegliere un banco, scrivere un solo registro del register file.
+R: n ingressi, $2^n$ uscite, esattamente una asserita per combinazione. Usi: abilitare componenti, scegliere un banco, scrivere un solo registro del register file.
 
 D: Multiplexer: struttura e formula del mux 2:1?
-R: 2^n ingressi dati, n controlli, 1 uscita. C = (~S & A) | (S & B) = S ? B : A. Un mux a 32 bit = 32 mux da 1 bit con stesso controllo.
+R: $2^n$ ingressi dati, n controlli, 1 uscita. C = (~S & A) | (S & B) = S ? B : A. Un mux a 32 bit = 32 mux da 1 bit con stesso controllo.
 
 D: Half adder: formule? Perché non basta?
 R: Sum = a XOR b, Carry = a AND b. Manca il riporto in ingresso.
@@ -393,7 +393,7 @@ D: Si può leggere e scrivere lo stesso registro nello stesso ciclo (add x1,x1,x
 R: Sì: scrittura sul fronte, la lettura vede il vecchio valore; il nuovo è visibile al ciclo dopo.
 
 D: Dimensioni di una memoria con n linee di indirizzo e b linee dati?
-R: 2^n righe x b colonne = 2^n x b bit, più Write enable. Es. 4x2: 2 bit indirizzo, 2 bit dato.
+R: $2^n$ righe x b colonne = $2^n$ x b bit, più Write enable. Es. 4x2: 2 bit indirizzo, 2 bit dato.
 
 D: SRAM vs DRAM?
 R: SRAM: flip-flop D, velocissima, usata per cache. DRAM: transistor + condensatore, va rinfrescata, più capace e lenta.
@@ -475,7 +475,7 @@ D: Che cos'è un bus e il protocollo del bus?
 R: Insieme di linee che collegano i moduli (CPU, memoria, I/O); il protocollo è l'insieme di regole di comunicazione sulle linee.
 
 D: Funzione delle linee dati, indirizzi, controllo?
-R: Dati: larghezza = bit per trasferimento (prestazioni). Indirizzi: sorgente/destinazione (2^n locazioni). Controllo: regolano accesso e uso delle altre linee.
+R: Dati: larghezza = bit per trasferimento (prestazioni). Indirizzi: sorgente/destinazione ($2^n$ locazioni). Controllo: regolano accesso e uso delle altre linee.
 
 D: Dispositivi master vs slave e interfacce?
 R: Master (attivi) iniziano il trasferimento, bus driver. Slave (passivi) aspettano, bus receiver. Entrambi (CPU): bus transceiver.
@@ -508,7 +508,7 @@ D: Perché si è passati a bus seriali e punto-punto?
 R: I paralleli (ISA, PCI) soffrono crosstalk, skew, costi e distanze brevi. I seriali (PCIe, USB 3, SATA) vanno a velocità molto maggiori con meno interferenze; i sistemi moderni usano controller dedicati.
 
 D: Quanta memoria indirizza una CPU con n linee di indirizzo?
-R: 2^n locazioni (es. 32 linee -> 2^32 celle).
+R: $2^n$ locazioni (es. 32 linee -> $2^{32}$ celle).
 
 D: Banda di un bus sincrono: formula?
 R: Banda = frequenza x larghezza dati / cicli per trasferimento (formula generica, non nelle slide; DA VERIFICARE).
@@ -528,13 +528,13 @@ D: Formula della mappatura diretta?
 R: linea = (indirizzo del blocco) mod (numero di linee in cache).
 
 D: Scomposizione di un indirizzo in cache a mappatura diretta?
-R: [tag | indice | offset]: offset = log2(byte/blocco); indice = log2(n. linee); tag = resto. Con indirizzo a 32 bit, 2^n linee, blocco 2^m byte: tag = 32 - n - m.
+R: [tag | indice | offset]: offset = log2(byte/blocco); indice = log2(n. linee); tag = resto. Con indirizzo a 32 bit, $2^n$ linee, blocco $2^m$ byte: tag = 32 - n - m.
 
 D: A cosa servono tag e bit di validità?
 R: Il tag dice quale blocco è nella linea (più blocchi condividono la stessa); il bit di validità dice se la linea contiene dati validi.
 
 D: Bit totali di una cache a mappatura diretta?
-R: 2^n linee x (bit dato + bit tag + 1 bit validità).
+R: $2^n$ linee x (bit dato + bit tag + 1 bit validità).
 
 D: Cache diretta, 16 KiB, blocchi da 4 parole (16 B), indirizzo a 32 bit: n. linee, tag, bit totali?
 R: 1024 linee (n=10), offset 4 bit, tag 32-10-4 = 18 bit; totale 1024 x (128+18+1) = 150528 bit (~18,4 KiB). [applicazione delle formule standard]

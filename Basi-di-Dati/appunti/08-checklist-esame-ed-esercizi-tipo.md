@@ -14,10 +14,10 @@ Questo file raccoglie in un colpo d'occhio tutto ciò che serve per il ripasso f
 | SQL query | join/outer, GROUP BY/HAVING, IN/ANY/ALL/EXISTS, NULL | 03 |
 | ER | requisiti → E-R completo, gerarchie, reificazione, documentazione | 04 |
 | Logico | ristrutturazione (ridondanze con pesi S=2L, ISA), traduzione E-R→relazionale | 04 |
-| Normalizzazione | X⁺, chiavi, copertura minimale, BCNF, 3NF (sintesi), lossless, preservazione DF | 05 |
+| Normalizzazione | $X^{+}$, chiavi, copertura minimale, BCNF, 3NF (sintesi), lossless, preservazione DF | 05 |
 | Transazioni | ACID↔componenti, serializzabilità, 2PL, matrice lock | 06 |
 | Recovery | log, LA/LC, UNDO/REDO, checkpoint, dump/restore | 06 |
-| Ottimizzazione/fisico | 7 passi, f_p, stima join, RID, costi accesso, B+ , euristiche indici | 07 |
+| Ottimizzazione/fisico | 7 passi, $f_p$, stima join, RID, costi accesso, B+ , euristiche indici | 07 |
 
 ## Esercizi tipo (con soluzione sintetica)
 Gli esercizi che seguono coprono i pattern ricorrenti, dall'algebra alla normalizzazione fino a storie e log, e ciascuno riporta solo lo schema risolutivo essenziale; vanno letti insieme ai file indicati nella checklist, che ne spiegano il procedimento.
@@ -44,7 +44,7 @@ Le formule sono quelle da avere a memoria il giorno dell'esame, divise per argom
 - **Lossless**: (A1∩A2→A1) ∨ (A1∩A2→A2)
 - **BCNF**: ogni X→Y non banale ha X superchiave · **3NF**: o X superchiave o Y primi
 - **Copertura minimale**: RHS singolo → togli estranei → togli ridondanti
-- **Accesso seriale**: (N+1)/2 successo, N insuccesso · B+: m=100, h=3 → 10⁶ chiavi
+- **Accesso seriale**: (N+1)/2 successo, N insuccesso · B+: m=100, h=3 → $10^{6}$ chiavi
 - **Lock**: LS-LS compatibili, tutto il resto no · **2PL**: prima solo lock, poi solo unlock
 - **Recovery**: REDO(LC) in avanti, UNDO(LA) all'indietro, abort ignorati
 

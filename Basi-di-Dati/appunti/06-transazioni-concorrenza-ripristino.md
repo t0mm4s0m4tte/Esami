@@ -39,13 +39,13 @@ L'architettura comprende il Gestore delle transazioni (ciclo di vita, smista i D
 
 ## 3. Concorrenza
 
-Il parallelismo non è un lusso. I tempi morti di I/O (il disco è circa 10⁶ volte più lento della RAM) renderebbero insostenibile un'esecuzione seriale, quindi il DBMS mescola le operazioni di più transazioni (**interleaving**) per massimizzare il throughput. Il prezzo è che un interleaving scorretto può produrre stati sbagliati.
+Il parallelismo non è un lusso. I tempi morti di I/O (il disco è circa $10^{6}$ volte più lento della RAM) renderebbero insostenibile un'esecuzione seriale, quindi il DBMS mescola le operazioni di più transazioni (**interleaving**) per massimizzare il throughput. Il prezzo è che un interleaving scorretto può produrre stati sbagliati.
 
 **Esempio** (A=1000, B=2000): T1 sposta 50 da A a B; T2 sposta il 10% di A su B. Eseguite in serie, T1T2 dà A=855, B=2145; T2T1 dà A=850, B=2150 (somma 3000 in entrambi i casi). La storia errata r1(A) r2(A) w2(A) r2(B) w1(A) r1(B) w1(B) w2(B) produce A=950, B=2100, quindi **A+B=3050**: è un *lost update*, perché w1(A) ignora w2(A).
 
-Per ragionare in modo preciso si definisce **storia** (schedulazione) la sequenza delle azioni r_i(X), w_i(X); è seriale se T1 viene eseguita per intero e poi T2. Una storia si considera corretta se equivale a una seriale, e l'equivalenza usata è la **view-equivalenza**: S ~ S' seriale se
-1. hanno lo stesso input (se r_i(X) legge il valore iniziale in S lo fa anche in S');
-2. hanno le stesse relazioni lettura-da (se r_i(X) legge da w_j(X) in S, vale lo stesso in S');
+Per ragionare in modo preciso si definisce **storia** (schedulazione) la sequenza delle azioni $r_i$(X), $w_i$(X); è seriale se T1 viene eseguita per intero e poi T2. Una storia si considera corretta se equivale a una seriale, e l'equivalenza usata è la **view-equivalenza**: S ~ S' seriale se
+1. hanno lo stesso input (se $r_i$(X) legge il valore iniziale in S lo fa anche in S');
+2. hanno le stesse relazioni lettura-da (se $r_i$(X) legge da $w_j$(X) in S, vale lo stesso in S');
 3. hanno lo stesso stato finale (l'ultima w(X) è della stessa transazione).
 
 **Corretta = serializzabile**.

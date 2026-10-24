@@ -3,7 +3,7 @@ Fonte: doc Appunti (Lez. 04, 07, 08 [UML], 09 [leak]).
 
 ## Mappa
 
-Il file parte dai costruttori (quello di default, l'overloading, la signature) e passa alla differenza tra identità ed equivalenza, cioè tra alias e copia. Su queste basi costruisce l'esempio degli aggregati di oggetti, Contact/AddressBook, con la sua invariante e la rimozione in O(1). Segue una sintesi dello UML per classi e relazioni, e infine il security leak, che mostra come l'aliasing possa rompere l'incapsulamento e come la copia difensiva lo ripari.
+Il file parte dai costruttori (quello di default, l'overloading, la signature) e passa alla differenza tra identità ed equivalenza, cioè tra alias e copia. Su queste basi costruisce l'esempio degli aggregati di oggetti, Contact/AddressBook, con la sua invariante e la rimozione in $O(1)$. Segue una sintesi dello UML per classi e relazioni, e infine il security leak, che mostra come l'aliasing possa rompere l'incapsulamento e come la copia difensiva lo ripari.
 
 - [1. Costruttori (Lez. 04)](#1-costruttori-lez-04)
 - [2. Identità vs equivalenza](#2-identità-vs-equivalenza)
@@ -47,7 +47,7 @@ Le operazioni ruotano attorno a un metodo privato `findIndex(String n)`, che sco
 - `changeEmail` restituisce false se il contatto è assente;
 - `findEmail` restituisce `""` nello stesso caso.
 
-La **rimozione in O(1)** sfrutta il fatto che l'ordine non conta: si trova l'indice i, si decrementa `numContacts` e si copia l'ultimo elemento nella posizione liberata, `contacts[i] = contacts[numContacts]`. Con [c0,c1,c2] e rimozione di c0 si ottiene [c2,c1,c2] con numContacts=2: c0 non ha più riferimenti (finisce al GC), mentre l'alias di c2 in fondo è invisibile perché fuori dall'intervallo valido. È una "rimozione logica" che non preserva l'ordine.
+La **rimozione in $O(1)$** sfrutta il fatto che l'ordine non conta: si trova l'indice i, si decrementa `numContacts` e si copia l'ultimo elemento nella posizione liberata, `contacts[i] = contacts[numContacts]`. Con [c0,c1,c2] e rimozione di c0 si ottiene [c2,c1,c2] con numContacts=2: c0 non ha più riferimenti (finisce al GC), mentre l'alias di c2 in fondo è invisibile perché fuori dall'intervallo valido. È una "rimozione logica" che non preserva l'ordine.
 
 ## 4. UML class diagram (Lez. 08)
 Lo UML descrive le classi e le loro relazioni. Una classe è un riquadro con nome, attributi (`nome: tipo`) e metodi (`m(par): ret`); la visibilità si indica con `+` public, `-` private, `#` protected, e i membri **static** sono sottolineati. Le relazioni distinguono diversi gradi di legame, dal più debole al più forte:

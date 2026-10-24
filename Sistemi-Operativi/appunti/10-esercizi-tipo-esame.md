@@ -18,7 +18,7 @@ Stato della fonte (Available 3,3,2). P1 richiede (1,0,2) [INT]: `(1,0,2) <= Need
 Stringa fonte `7,0,1,2,0,3,0,4,2,3,0,3,0,3,2,1,2,0,1,7,0,1`, 3 frame: FIFO 15, LRU 12, OPT 9 (tracce in `06-memoria.md`). Esercizio: rifare con 4 frame (FIFO e LRU) e verificare. Belady (classico, [INT]): stringa `1,2,3,4,1,2,5,1,2,3,4,5` -> FIFO 3 frame = 9 fault, 4 frame = 10 fault.
 
 ### 5. Paging
-Con indirizzo logico a 32 bit e pagina di 4 KB l'offset è di 12 bit e `p` di 20 bit; la page table ha 2^20 voci x 4 B = 4 MB. Un processo di 72.766 B con pagina di 2.048 B occupa 36 pagine e lascia 962 B di frammentazione interna. L'EAT con hit 80% e RAM 100 ns è 120 ns.
+Con indirizzo logico a 32 bit e pagina di 4 KB l'offset è di 12 bit e `p` di 20 bit; la page table ha $2^{20}$ voci x 4 B = 4 MB. Un processo di 72.766 B con pagina di 2.048 B occupa 36 pagine e lascia 962 B di frammentazione interna. L'EAT con hit 80% e RAM 100 ns è 120 ns.
 
 ### 6. Disk scheduling
 Coda `98,183,37,122,14,124,65,67`, testina 53: FCFS 640, SSTF 236, SCAN 236, C-SCAN 382, C-LOOK 322 (dettagli in `07-memoria-di-massa-io.md`).

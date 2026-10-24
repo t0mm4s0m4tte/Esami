@@ -6,7 +6,7 @@
 
 1. Perché normalizzare: anomalie
 2. Dipendenze funzionali (DF), assiomi di Armstrong, teoremi derivati
-3. Chiusura X⁺, ricerca delle chiavi, attributi estranei
+3. Chiusura $X^{+}$, ricerca delle chiavi, attributi estranei
 4. Scomposizione: lossless join, preservazione delle DF (restrizione)
 5. BCNF + algoritmo
 6. 3NF, attributi primi, copertura minimale, algoritmo di sintesi
@@ -52,20 +52,20 @@ Da essi derivano altre regole comode:
 
 (Le dimostrazioni passano da riflessività, transitività e unione, vedi slide.)
 
-Due insiemi di DF sono **equivalenti** se F⁺=G⁺, cioè F ⊦ G e G ⊦ F. Un **attributo estraneo** è un attributo la cui rimozione da una DF non cambia la chiusura. Esempio: F={ABCD→E, B→C}: C è estraneo in ABCD→E perché ABD→B→C, quindi ABD→ABCD→E; ne segue {ABD→E, B→C} ≡ F.
+Due insiemi di DF sono **equivalenti** se $F^{+}$=$G^{+}$, cioè F ⊦ G e G ⊦ F. Un **attributo estraneo** è un attributo la cui rimozione da una DF non cambia la chiusura. Esempio: F={ABCD→E, B→C}: C è estraneo in ABCD→E perché ABD→B→C, quindi ABD→ABCD→E; ne segue {ABD→E, B→C} ≡ F.
 
 ## 3. Chiusura X⁺ e chiavi
 
-Per decidere se una DF segue da F senza calcolare tutta F⁺ (che è esponenziale) si usa la **chiusura** X⁺ di un insieme di attributi, cioè l'insieme di tutti gli attributi determinati da X. L'algoritmo è polinomiale:
+Per decidere se una DF segue da F senza calcolare tutta $F^{+}$ (che è esponenziale) si usa la **chiusura** $X^{+}$ di un insieme di attributi, cioè l'insieme di tutti gli attributi determinati da X. L'algoritmo è polinomiale:
 1. parti con C:=X;
 2. finché esiste una Y→Z in F con Y⊆C, poni C:=C∪Z (variante delle slide: si toglie la DF usata da F');
-3. alla fine X⁺=C.
+3. alla fine $X^{+}$=C.
 
-Il test di **membership** è allora: X→Y ∈ F⁺ ⇔ Y ⊆ X⁺.
+Il test di **membership** è allora: X→Y ∈ $F^{+}$ ⇔ Y ⊆ $X^{+}$.
 
-La chiusura risolve anche la ricerca delle chiavi: K è superchiave ⇔ K⁺ = A (tutti gli attributi). La chiave candidata è una superchiave minimale, e si trova provando i sottoinsiemi. Un'utile scorciatoia è che gli attributi che **non compaiono mai a destra** di alcuna DF stanno in ogni chiave.
+La chiusura risolve anche la ricerca delle chiavi: K è superchiave ⇔ $K^{+}$ = A (tutti gli attributi). La chiave candidata è una superchiave minimale, e si trova provando i sottoinsiemi. Un'utile scorciatoia è che gli attributi che **non compaiono mai a destra** di alcuna DF stanno in ogni chiave.
 
-Esempio: K={MATR,Co,NS}: MATR→NS,IS,CF,DN; IS→CAP; MATR,Co→Vo,DE,CP; CP→NP,Q; Q→TU ⇒ K⁺=A, ma anche {MATR,Co}⁺=A ⇒ K è superchiave non minimale e **{MATR,Co} è chiave**. (Con CP→Co sono chiavi anche {MATR,CP}, {CF,Co}, {CF,CP}.)
+Esempio: K={MATR,Co,NS}: MATR→NS,IS,CF,DN; IS→CAP; MATR,Co→Vo,DE,CP; CP→NP,Q; Q→TU ⇒ $K^{+}$=A, ma anche {MATR,Co}^{+}=A ⇒ K è superchiave non minimale e **{MATR,Co} è chiave**. (Con CP→Co sono chiavi anche {MATR,CP}, {CF,Co}, {CF,CP}.)
 
 ## 4. Scomposizione
 
@@ -73,7 +73,7 @@ La cura delle anomalie è scomporre la relazione in più relazioni, ma una scomp
 
 Il primo è il **lossless join** (r = r1⋈r2), garantito da una condizione semplice: (A1∩A2 → A1) ∨ (A1∩A2 → A2), cioè l'intersezione degli attributi delle due parti è superchiave di almeno una delle due.
 
-Il secondo è la **preservazione delle DF** (località): le DF originarie devono poter essere verificate sulle singole relazioni, senza join. Si formalizza con la restrizione Fi = {X→Y ∈ F⁺ : XY ⊆ Ri} (il calcolo è esponenziale perché serve F⁺). La scomposizione è conservativa se (F1∪F2)⁺=F⁺. Se una DF si perde, per verificarla serve un join, ed è costoso.
+Il secondo è la **preservazione delle DF** (località): le DF originarie devono poter essere verificate sulle singole relazioni, senza join. Si formalizza con la restrizione Fi = {X→Y ∈ $F^{+}$ : XY ⊆ Ri} (il calcolo è esponenziale perché serve $F^{+}$). La scomposizione è conservativa se (F1∪F2)^{+}=$F^{+}$. Se una DF si perde, per verificarla serve un join, ed è costoso.
 
 ## 5. BCNF
 
@@ -125,7 +125,7 @@ Invertire gli ultimi due passi è un errore, come mostra il controesempio: F={AB
 4. Se nessuna relazione contiene una chiave dell'originale, aggiungi una relazione con gli attributi di una chiave.
 5. **Fusione** (stessa chiave X → R(X,A1,A2..)), **eliminazione** (Rj⊆Ri).
 
-Tempo polinomiale; il risultato è lossless e preserva le DF. Esempio CC: senza R_key(Titolare,NConto) si perderebbe il legame col titolare, ed è proprio il motivo del passo 4.
+Tempo polinomiale; il risultato è lossless e preserva le DF. Esempio CC: senza $R_{key}$(Titolare,NConto) si perderebbe il legame col titolare, ed è proprio il motivo del passo 4.
 
 ## 7. ER e normalizzazione; pratica
 
@@ -143,12 +143,12 @@ Nella pratica si può anche tornare indietro. La **de-normalizzazione** reintrod
 ## 8. Esercizi svolti
 
 ### 8.1 R(A,B,C,D,E,F,G), F={AB→EF, B→G, A→CDG, C→B, E→F}
-- **Chiave**: A non compare mai a destra ⇒ in ogni chiave. A⁺: A→CDG ⇒ {A,C,D,G}; C→B ⇒ +B; AB→EF ⇒ +E,F ⇒ tutti. **A unica chiave**.
+- **Chiave**: A non compare mai a destra ⇒ in ogni chiave. $A^{+}$: A→CDG ⇒ {A,C,D,G}; C→B ⇒ +B; AB→EF ⇒ +E,F ⇒ tutti. **A unica chiave**.
 - **Copertura minimale**: decomposizione {AB→E, AB→F, B→G, A→C, A→D, A→G, C→B, E→F}. B estraneo in AB→E e AB→F (A→C→B) ⇒ A→E, A→F. Ridondanti: A→F (A→E→F), A→G (A→C→B→G). **Fmin = {A→C, A→D, A→E, B→G, C→B, E→F}**.
 - **3NF?** No: B→G con B non superchiave e G non primo (idem C→B, E→F). Sintesi: **R1(A,C,D,E), R2(C,B), R3(B,G), R4(E,F)**; R1 contiene la chiave A.
 
 ### 8.2 PARTITA(SC,SO,DP,PSC,PSO,A,C,S), F={A→C; SC,SO→C; SC→S; SC,SO,DP→PSC,PSO; SC,DP→SO; C,DP→A}
-- **Chiave**: SC e DP mai a destra. {SC,DP}⁺: →SO; →S (SC→S); →C (SC,SO→C); →A (C,DP→A); →PSC,PSO ⇒ tutti. **Chiave {SC,DP}**.
+- **Chiave**: SC e DP mai a destra. {SC,DP}^{+}: →SO; →S (SC→S); →C (SC,SO→C); →A (C,DP→A); →PSC,PSO ⇒ tutti. **Chiave {SC,DP}**.
 - Non 3NF: dipendenza parziale SC→S (S non primo) e transitiva A→C.
 - Copertura: SO estraneo in SC,SO,DP→PSC,PSO (SC,DP→SO) ⇒ SC,DP→PSC,PSO.
 - Scomposizione (note): **RPartita(SC,DP,SO,PSC,PSO)** (chiave SC,DP) · **RStadio(SC,S)** · **RArbitro(A,C)** · **RDesignazione(C,DP,A)** (chiave C,DP: una categoria ha un arbitro per data).
@@ -168,7 +168,7 @@ DF: {Id-11,Id-12}→Id-2,Ar1 · {Id-11,Id-12}→A1 · Id-2→A2 · Id-3→A3 · 
 Oltre agli esercizi del foglio nel §8, ogni appello ha un esercizio di normalizzazione, svolti in [file 09 §4](09-esercizi-ed-esami-svolti.md#4-normalizzazione) con le chiavi, la copertura minimale e la scomposizione ricalcolate. Usano la chiusura e la ricerca delle chiavi del §3 (nei temi 2025-06-09, 2026-09-03 e nella simulazione tutti gli antecedenti sono chiavi, quindi la relazione è già in BCNF), il test di 3NF e la sintesi del §6 (2025-07-09 e 2025-12-17, Fornitori 2026-06-11, CuccioliPucciosi 2026-07-09, PRESENZA_MOSTRA 2026-09-14), la BCNF del §5, la condizione di join senza perdita del §4 (2026-06-11 e 2026-09-03) e l'equivalenza di due insiemi di dipendenze (2025-09-10). Il tema 2026-01-23 chiede il percorso inverso, da una scomposizione a un insieme F possibile. La preservazione delle dipendenze compare solo come proprietà della sintesi; Armstrong e le dimostrazioni degli assiomi non hanno esercizi nel materiale Moodle.
 
 ## Cose da saper fare all'esame
-- **Calcolare X⁺**, verificare una DF, trovare **tutte le chiavi** (partire dagli attributi mai a destra).
+- **Calcolare $X^{+}*$*, verificare una DF, trovare **tutte le chiavi** (partire dagli attributi mai a destra).
 - Calcolare la **copertura minimale** nell'ordine giusto (RHS singoli -> estranei -> ridondanti).
 - Dire se una relazione è in BCNF / 3NF e **perché** (indicare la DF violante e se il conseguente è primo).
 - Scomporre in BCNF (R1(A−Y), R2(XY), ricorsivo) e in 3NF (sintesi + eventuale relazione con la chiave).

@@ -140,7 +140,7 @@ Il confronto tra le due tecniche è quantitativo. Link da 1 Gbps, ogni utente tr
 
 Gli host si collegano a Internet tramite *access ISP*, che a loro volta devono essere interconnessi, perché due host qualsiasi devono poter scambiarsi pacchetti. La struttura attuale si spiega con una costruzione per passi, guidata da economia e politiche nazionali:
 
-1. collegare ogni access ISP a tutti gli altri non scala, perché richiede O(N²) connessioni;
+1. collegare ogni access ISP a tutti gli altri non scala, perché richiede $O(N^{2})$ connessioni;
 2. si può allora collegare ciascun access ISP a un unico ISP globale di transito, con un accordo economico cliente-fornitore;
 3. se l'ISP globale è un buon affare nascono concorrenti (ISP A, B, C), che devono interconnettersi tra loro tramite **IXP** (*Internet exchange point*) e **peering link**;
 4. nascono **ISP regionali** che raccolgono le reti di accesso e le collegano agli ISP superiori;
@@ -169,7 +169,7 @@ Un pacchetto subisce ritardo a ogni nodo, e il **ritardo nodale** è la somma di
 | `d_proc` | elaborazione: controllo errori sui bit, scelta del link d'uscita | tipicamente < microsecondi |
 | `d_queue` | attesa nel buffer d'uscita | dipende dalla congestione |
 | `d_trans` | spingere tutti i bit sul link | `L/R` (L bit, R bps) |
-| `d_prop` | propagazione nel mezzo | `d/s` (d = lunghezza del link, s ≈ 2·10⁸ m/s) |
+| `d_prop` | propagazione nel mezzo | `d/s` (d = lunghezza del link, s ≈ 2·$10^{8}$ m/s) |
 
 La differenza concettuale più importante è tra `d_trans` e `d_prop`: la trasmissione dipende dalla lunghezza del pacchetto e dalla velocità del link, la propagazione dalla lunghezza fisica del link e dalla velocità del segnale.
 

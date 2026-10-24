@@ -57,7 +57,7 @@ L'informazione mancante o ignota si rappresenta con **NULL**, che appartiene a o
 Non tutte le istanze costruibili sono accettabili: i vincoli dicono quali lo sono. I vincoli **locali** (intra-relazionali) riguardano una sola relazione: il dominio (l'atomicità dei valori è la 1NF), il NOT NULL, le restrizioni e i confronti (per esempio Inizio < Fine, età < 120).
 
 La nozione centrale è quella di chiave:
-- una **superchiave** sk ⊆ A è un insieme di attributi che identifica univocamente le tuple: t_i[sk]=t_j[sk] => t_i=t_j;
+- una **superchiave** sk ⊆ A è un insieme di attributi che identifica univocamente le tuple: $t_i$[sk]=$t_j$[sk] => $t_i$=$t_j$;
 - una **chiave candidata** è una superchiave *minimale*, cioè a cui non si può togliere alcun attributo senza perdere la proprietà;
 - la **chiave primaria** è la candidata scelta dal progettista, e tutti i suoi attributi sono NOT NULL.
 

@@ -9,7 +9,7 @@ Gli appunti sono scritti in prosa discorsiva, come una dispensa: ogni sezione sp
 | File | Slide di origine | Contenuto |
 |---|---|---|
 | [01-organizzazione-software-compilazione.md](01-organizzazione-software-compilazione.md) | 0, 1 | Modalità d'esame, riuso, .c/.h, #include, fasi gcc, cartelle e pathname |
-| [02-correttezza-e-algoritmi-su-array.md](02-correttezza-e-algoritmi-su-array.md) | 2 | P_IN/P_OUT, correttezza parziale, terminazione, ricerca binaria, insertion sort |
+| [02-correttezza-e-algoritmi-su-array.md](02-correttezza-e-algoritmi-su-array.md) | 2 | $P_{IN}$/$P_{OUT}$, correttezza parziale, terminazione, ricerca binaria, insertion sort |
 | [03-struct-puntatori-union.md](03-struct-puntatori-union.md) | 3, 10 | struct, padding, malloc di struct, passaggio parametri, union, tagged union |
 | [04-liste-linkate-e-ricorsione.md](04-liste-linkate-e-ricorsione.md) | 4 (x2), 5, 6 | liste, testa per valore/riferimento, ricorsione testa/coda, liste ordinate |
 | [05-adt-stack-queue-set.md](05-adt-stack-queue-set.md) | 7 (pt1-3) | ADT, stack, queue (array circolare + lista), set/multiset, variadiche |

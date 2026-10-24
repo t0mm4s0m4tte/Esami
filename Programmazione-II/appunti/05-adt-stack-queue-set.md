@@ -114,7 +114,7 @@ Il contatore `num` serve a distinguere la coda piena da quella vuota, perché co
 [DA VERIFICARE] coerenza di `init`: con `tail=0` iniziale e `enqueue` che incrementa **prima** di scrivere, la prima cella scritta è la 1 e head=0 punterebbe a una cella vuota. Per essere coerente con "tail = ultimo pieno" `init` dovrebbe porre `tail = MAX-1` (oppure `enqueue` scrive in `tail` e poi incrementa). Le slide mostrano anche `succ(Q->tail, MAX)` con due argomenti mentre `succ` ne ha uno: refuso. Usa la versione coerente all'esame.
 
 ### Lista con head e tail
-Con una lista si tengono due puntatori: `head` per togliere e `tail` per aggiungere in O(1), senza dover scorrere la lista. La coda è vuota quando `head` è NULL e non è mai piena. Nell'enqueue l'**ordine** è importante: prima si aggancia il nuovo nodo dopo la vecchia tail e solo dopo si sposta `tail`; l'ordine invertito (`Q->tail = nuovo; Q->tail->next = nuovo;`) è un errore.
+Con una lista si tengono due puntatori: `head` per togliere e `tail` per aggiungere in $O(1)$, senza dover scorrere la lista. La coda è vuota quando `head` è NULL e non è mai piena. Nell'enqueue l'**ordine** è importante: prima si aggancia il nuovo nodo dopo la vecchia tail e solo dopo si sposta `tail`; l'ordine invertito (`Q->tail = nuovo; Q->tail->next = nuovo;`) è un errore.
 ```c
 typedef struct { lista head; lista tail; int num; } queue;
 void init(queue *Q) { Q->head = NULL; Q->tail = NULL; Q->num = 0; }
@@ -146,7 +146,7 @@ Un set è una raccolta **senza ordinamento**: non esistono un primo e un ultimo 
 - `void aggiungi(set *S, el)`;
 - `void togli(set *S, el)` (prima occorrenza), `void togli_tutti(set *S, el)`.
 
-L'implementazione più naturale è una lista: l'insieme è illimitato e `aggiungi` è l'inserzione in testa. Se si vogliono `cardinality` e `vuoto` in O(1) si aggiungono dei metadati. Con un array l'insieme sarebbe limitato e andrebbe ricordato il numero di elementi.
+L'implementazione più naturale è una lista: l'insieme è illimitato e `aggiungi` è l'inserzione in testa. Se si vogliono `cardinality` e `vuoto` in $O(1)$ si aggiungono dei metadati. Con un array l'insieme sarebbe limitato e andrebbe ricordato il numero di elementi.
 ```c
 typedef lista set;                       /* illimitato, aggiungi = inserzione in testa */
 void init(set *S) { *S = NULL; }
@@ -184,7 +184,7 @@ set *costruisci(int num, ...) {
   return nuovo;                               /* NULL se num==0 */
 }
 ```
-P_IN: num >= 0 e i restanti argomenti sono num. P_OUT: nuovo è un set con cardinalità num coi soli valori passati; NULL se num == 0. (Le slide usano `mset` e `set` mischiati: refuso.)
+$P_{IN}$: num >= 0 e i restanti argomenti sono num. $P_{OUT}$: nuovo è un set con cardinalità num coi soli valori passati; NULL se num == 0. (Le slide usano `mset` e `set` mischiati: refuso.)
 
 ### Set efficiente con lista ordinata
 Se i dati sono ordinabili si può tenere il set come lista ordinata. Il vantaggio è che per sapere se un elemento è presente non serve scorrere tutta la lista, con meno tempo nella ricerca; lo svantaggio è che la lista va mantenuta ordinata, quindi niente inserzione in testa e più tempo nell'inserzione. La scelta conviene quando nell'ambito applicativo sono frequenti i doppioni, e va valutata caso per caso.

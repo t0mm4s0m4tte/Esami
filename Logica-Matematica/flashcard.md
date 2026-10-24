@@ -16,7 +16,7 @@ D: Valutazione aritmetica dei connettivi (v in {0,1})?
 R: v(¬P)=1-v(P); ∧=min; ∨=max; v(P→Q)=max{1-v(P),v(Q)}; v(P↔Q)=1-|v(P)-v(Q)|.
 
 D: Quante righe ha la tavola con k lettere? Regola di metodo per le conseguenze?
-R: 2^k righe. Una SOLA tavola con le colonne di premesse e conclusione (mai tavole separate).
+R: $2^k$ righe. Una SOLA tavola con le colonne di premesse e conclusione (mai tavole separate).
 
 D: Equivalenze dell'implicazione?
 R: A→B ≡ ¬A∨B ≡ ¬B→¬A (contronominale); ¬(A→B) ≡ A∧¬B.
@@ -108,25 +108,25 @@ D: Appartenenza vs inclusione? ∅ e inclusione?
 R: 1∈ℕ ma pari ⊆ ℕ. ∅⊆A per ogni A (verità vacua).
 
 D: Corrispondenza connettivi-operazioni insiemistiche?
-R: ∩ ↔ ∧; ∪ ↔ ∨; A∖B = x∈A∧x∉B; A△B=(A∪B)∖(A∩B); A^C=U∖A.
+R: ∩ ↔ ∧; ∪ ↔ ∨; A∖B = x∈A∧x∉B; A△B=(A∪B)∖(A∩B); $A^C$=U∖A.
 
 D: Unione e intersezione di famiglia (Ai)i∈I?
 R: ∪ = {x | ∃i x∈Ai}; ∩ = {x | ∀i x∈Ai}.
 
 D: De Morgan per insiemi?
-R: (A∪B)^C = A^C∩B^C; (A∩B)^C = A^C∪B^C. (La fonte scrive ∩ nel secondo: refuso.) [DA VERIFICARE]
+R: (A∪B)^C = $A^C$∩$B^C$; (A∩B)^C = $A^C$∪$B^C$. (La fonte scrive ∩ nel secondo: refuso.) [DA VERIFICARE]
 
 D: Come si confuta un'identità insiemistica con la tavola di verità?
 R: La riga con esito F indica il tipo di punto x controesempio. Es. A∩(B∪C) ≠ A∪(B∩C): A={1}, B=C=∅ -> sx=∅, dx={1}. [INT]
 
 D: |P(A)| se |A|=n? P({1}) e P(P({1}))?
-R: 2^n. Con A={1}: P(A)={∅,A}; P(P(A))={∅,{∅},{A},{∅,A}}.
+R: $2^n$. Con A={1}: P(A)={∅,A}; P(P(A))={∅,{∅},{A},{∅,A}}.
 
-D: Prodotto A×B e A^n?
-R: A×B = coppie ordinate ((0,1)≠(1,0)); A^n = n-uple.
+D: Prodotto A×B e $A^n$?
+R: A×B = coppie ordinate ((0,1)≠(1,0)); $A^n$ = n-uple.
 
 D: Definizione di relazione n-aria e di dom, rng, inversa?
-R: Sottoinsieme di A0×..×A(n-1). dom(R)={a|∃b aRb}; rng(R)={b|∃a aRb}; R⁻¹={(b,a)|(a,b)∈R}.
+R: Sottoinsieme di A0×..×A(n-1). dom(R)={a|∃b aRb}; rng(R)={b|∃a aRb}; $R^{-1}$={(b,a)|(a,b)∈R}.
 
 D: Definisci riflessiva, simmetrica, antisimmetrica, transitiva, irriflessiva.
 R: ∀x xRx; xRy→yRx; xRy∧yRx→x=y; xRy∧yRz→xRz; ∀x¬xRx.
@@ -170,23 +170,23 @@ R: Totalità (∀a∃b) e univocità (un solo b per ogni a).
 D: Dominio, codominio, immagine: differenza?
 R: Dominio A, codominio B, immagine rng(f)={f(a)} ⊆ B. La suriettività dipende dal codominio dichiarato.
 
-D: f[C] e f⁻¹[D]?
-R: f[C] immagine di C⊆A; f⁻¹[D]={a|f(a)∈D} è sempre un insieme (anche vuoto). f⁻¹(b) è ambigua: evitarla.
+D: f[C] e $f^{-1}$[D]?
+R: f[C] immagine di C⊆A; $f^{-1}$[D]={a|f(a)∈D} è sempre un insieme (anche vuoto). $f^{-1}$(b) è ambigua: evitarla.
 
-D: (g∘f)(x) con f=x², g=2x+3?
-R: 2x²+3; (g∘f)(2)=11.
+D: (g∘f)(x) con f=$x^{2}$, g=2x+3?
+R: 2x^{2}+3; (g∘f)(2)=11.
 
 D: Perché la sottrazione non è operazione su ℕ? E ⟨ℕ,−⟩ è struttura?
 R: 3-5∉ℕ: non è chiusa/totale. Non è L-struttura. Su ℤ invece sì.
 
 D: Definisci iniettiva, suriettiva, biettiva.
-R: Inj: f(a1)=f(a2)⇒a1=a2 (al più una freccia in arrivo); surj: ∀b∃a f(a)=b; bij: entrambe, esiste l'inversa f⁻¹.
+R: Inj: f(a1)=f(a2)⇒a1=a2 (al più una freccia in arrivo); surj: ∀b∃a f(a)=b; bij: entrambe, esiste l'inversa $f^{-1}$.
 
 D: Test grafico di iniettività e suriettività?
 R: Retta orizzontale taglia il grafico in al più un punto = inj; in almeno un punto = surj.
 
 D: Iniettiva e suriettiva coincidono?
-R: Solo tra insiemi finiti di pari cardinalità (cassetti). Nell'infinito no: n↦n+1 in ℕ è inj non surj; + : ℕ²→ℕ è surj non inj.
+R: Solo tra insiemi finiti di pari cardinalità (cassetti). Nell'infinito no: n↦n+1 in ℕ è inj non surj; + : ℕ^{2}→ℕ è surj non inj.
 
 D: f(x)=3x+4 ℝ→ℝ?
 R: Biettiva. 
@@ -207,7 +207,7 @@ D: Vero o falso: f iniettiva ⇒ ogni controimmagine ha esattamente un elemento?
 R: Falso (può essere vuota). Falso anche: f iniettiva e B infinito ⇒ A infinito.
 
 D: Equivalenza indotta da f: X→Y?
-R: x1 R_f x2 ⇔ f(x1)=f(x2); proiezione canonica X→X/R_f. Per x² le classi sono {r,-r}; per la congruenza mod n z1≡z2 mod n.
+R: x1 $R_f$ x2 ⇔ f(x1)=f(x2); proiezione canonica X→X/$R_f$. Per $x^{2}$ le classi sono {r,-r}; per la congruenza mod n z1≡z2 mod n.
 
 ## 03 - Cardinalità e induzione
 
@@ -218,7 +218,7 @@ D: Enuncia Cantor-Schröder-Bernstein.
 R: Se |X|≤|Y| e |Y|≤|X| allora |X|=|Y|. Utile perché due iniezioni sono più facili di una biezione (es. [0,1] e (0,1)).
 
 D: Idea della prova di CSB?
-R: Date f:X→Y, g:Y→X, F(A)=g[Y∖f[X∖A]] è monotona su P(X) (reticolo completo); per Tarski-Knaster ha un punto fisso A; biezione = f su A, g⁻¹ fuori da A. [la prova completa nelle fonti è troncata] [DA VERIFICARE]
+R: Date f:X→Y, g:Y→X, F(A)=g[Y∖f[X∖A]] è monotona su P(X) (reticolo completo); per Tarski-Knaster ha un punto fisso A; biezione = f su A, $g^{-1}$ fuori da A. [la prova completa nelle fonti è troncata] [DA VERIFICARE]
 
 D: Definizione di insieme finito e caratterizzazione dell'infinito?
 R: Finito = equipotente a {0..n-1}. Infinito = non finito: ha una biezione con un suo sottoinsieme proprio e contiene una copia di ℕ.
@@ -232,11 +232,11 @@ R: f(n)=n/2 se n pari, -(n+1)/2 se dispari. [INT]
 D: Perché ℚ è numerabile (via CSB)?
 R: ℚ≾ℤ×ℕ* con p/q↦(p,q) in forma ridotta (iniettiva) e ℕ⊆ℚ; poi CSB. [INT]
 
-D: Cardinalità di ℝ, P(ℕ), {0,1}^ℕ, ℕ^ℕ, [a,b], ℝ²?
+D: Cardinalità di ℝ, P(ℕ), {0,1}^ℕ, ℕ^ℕ, [a,b], ℝ^{2}?
 R: Tutti il continuo = |P(ℕ)|, più che numerabili.
 
 D: Sequenze finite vs infinite su un alfabeto?
-R: Finite (A*, ℕ^{<ℕ}, programmi Java) numerabili, codifica f(<m0..mk>)=p0^{m0+1}·..·pk^{mk+1}. Infinite A^ℕ con |A|≥2: continuo.
+R: Finite (A*, ℕ^{<ℕ}, programmi Java) numerabili, codifica f(<m0..mk>)=$p0^{m0+1}$·..·pk^{mk+1}. Infinite $A^\mathbb{N} $ con |A|≥2: continuo.
 
 D: Quali operazioni preservano la numerabilità e quali regole su A infinito?
 R: Prodotto, unione e intersezione di numerabili sono numerabili. A infinito, |B|≤|A| ⇒ |A×B|=|A|; A infinito, B finito ⇒ |A∖B|=|A| (A∖B infinito).
@@ -248,13 +248,13 @@ D: Teorema di Cantor e sua prova?
 R: |X|<|P(X)|. Se g:X→P(X) fosse suriettiva, Y={x|x∉g(x)}=g(x̄) darebbe x̄∈Y⇔x̄∉Y: assurdo.
 
 D: Perché |ℝ|=|P(ℕ)|?
-R: ℝ≾P(ℚ) via r↦{q∈ℚ|q<r} (iniettiva per densità di ℚ); P(ℕ)≾ℝ; poi CSB. ℝ²≃ℝ intrecciando i decimali (0,499..=0,500.. risolto con CSB).
+R: ℝ≾P(ℚ) via r↦{q∈ℚ|q<r} (iniettiva per densità di ℚ); P(ℕ)≾ℝ; poi CSB. ℝ^{2}≃ℝ intrecciando i decimali (0,499..=0,500.. risolto con CSB).
 
 D: Funzioni ℕ→{0,1}: cardinalità e diagonale?
-R: Continuo (≃P(ℕ) via funzione caratteristica). Dato un elenco f0,f1,.., g(n)=1-f_n(n) differisce da ogni f_n. [INT]
+R: Continuo (≃P(ℕ) via funzione caratteristica). Dato un elenco f0,f1,.., g(n)=1-$f_n$(n) differisce da ogni $f_n$. [INT]
 
 D: Ogni sottoinsieme infinito S⊆ℕ è numerabile: perché?
-R: s0=min S, s_{k+1}=min(S∖{s0..sk}) (principio del minimo): k↦s_k è biezione. [INT]
+R: s0=min S, $s_{k+1}$=min(S∖{s0..sk}) (principio del minimo): k↦$s_k$ è biezione. [INT]
 
 D: Schema dell'induzione semplice.
 R: Base P(0) + passo ∀n(P(n)→P(n+1)) (P(n) ipotesi induttiva, P(n+1) tesi) ⇒ ∀n P(n). Base può partire da k, passo per n≥k.
@@ -271,17 +271,17 @@ R: Per insiemi definiti ricorsivamente (Prop(L), Term, Fml): proprietà vera sug
 D: Invariante di ciclo; correttezza parziale vs totale?
 R: Per while(b) S: proprietà vera prima del ciclo e preservata da S. Parziale = se termina, output corretto; totale = termina ed è corretto. Divisione per sottrazioni: X=q·D+r.
 
-D: Σ_{i=0}^n i e Σ_{i=0}^n (2i+1)?
-R: n(n+1)/2 (passo: n(n+1)/2+(n+1)=(n+1)(n+2)/2) e (n+1)² (passo: (n+1)²+2(n+1)+1=(n+2)²).
+D: $\sum _{i=0}^n$ i e $\sum _{i=0}^n$ (2i+1)?
+R: n(n+1)/2 (passo: n(n+1)/2+(n+1)=(n+1)(n+2)/2) e (n+1)^{2} (passo: (n+1)^{2}+2(n+1)+1=(n+2)^{2}).
 
-D: Induzione: 3 | n³-n.
-R: (n+1)³-(n+1) = (n³-n)+3(n²+n) = 3k+3(n²+n), divisibile per 3.
+D: Induzione: 3 | $n^{3}$-n.
+R: (n+1)^{3}-(n+1) = ($n^{3}$-n)+3($n^{2}$+n) = 3k+3($n^{2}$+n), divisibile per 3.
 
-D: 2n+1<2^n: per quali n vale e come si prova?
-R: Falsa per n=0,1,2; vera ∀n≥3. Base P(3): 7<8. Passo: 2(n+1)+1=(2n+1)+2<2^n+2≤2^n+2^n=2^{n+1} (2^n≥2). Trappola: la base parte da 3.
+D: 2n+1<$2^n$: per quali n vale e come si prova?
+R: Falsa per n=0,1,2; vera ∀n≥3. Base P(3): 7<8. Passo: 2(n+1)+1=(2n+1)+2<$2^n$+2≤$2^n$+$2^n$=$2^{n+1}$ ($2^n$≥2). Trappola: la base parte da 3.
 
-D: 16^n termina in 6 (n≥1): passo?
-R: 16^{n+1}=16^n·16, ultima cifra 6·6=36 -> 6. [INT]
+D: $16^n$ termina in 6 (n≥1): passo?
+R: $16^{n+1}$=$16^n$·16, ultima cifra 6·6=36 -> 6. [INT]
 
 D: Ogni n≥2 è prodotto di primi: schema di prova?
 R: Induzione forte / minimo controesempio: n composto, n=m·l con m,l<n, ciascuno prodotto di primi -> contraddizione.
@@ -289,8 +289,8 @@ R: Induzione forte / minimo controesempio: n composto, n=m·l con m,l<n, ciascun
 D: Dove fallisce la "dimostrazione" induttiva sulle n rette per un punto?
 R: Nel passo da n=2 a n=3: le due sotto-famiglie non condividono due rette. Il passo non regge per i primi n.
 
-D: Ricoprimento di un quadrato 2^n senza un quadretto con tessere a L?
-R: Si divide in 4 blocchi 2^{n-1}, una tessera L al centro (tocca i 3 blocchi senza buco) e si applica l'ipotesi induttiva ai 4 blocchi.
+D: Ricoprimento di un quadrato $2^n$ senza un quadretto con tessere a L?
+R: Si divide in 4 blocchi $2^{n-1}$, una tessera L al centro (tocca i 3 blocchi senza buco) e si applica l'ipotesi induttiva ai 4 blocchi.
 
 ## 04 - Logica del primo ordine
 
@@ -307,7 +307,7 @@ D: Come si riconosce se una stringa senza virgole è un termine?
 R: Primo simbolo variabile/costante = primo argomento; se è funzione h, l'argomento arriva alla ")" che bilancia h; si ripete per ar(f) argomenti. Arietà violata (f(xx) con ar f=1) -> non è termine.
 
 D: Cosa sono i termini in L={+,·,1}?
-R: I polinomi a coefficienti in ℕ: +(+(·(x,x),·(+(1,1),x)),1) è x²+2x+1; 3 = 1+(1+1).
+R: I polinomi a coefficienti in ℕ: +(+(·(x,x),·(+(1,1),x)),1) è $x^{2}$+2x+1; 3 = 1+(1+1).
 
 D: Priorità in FOL?
 R: ¬,∀,∃ legano più di tutti ma solo la formula atomica o parentesizzata seguente; poi ∧,∨; poi →,↔ (associazione a destra). ∀zP(z)→Q(z) = (∀zP(z))→Q(z); serve ∀z(P(z)→Q(z)). [DA VERIFICARE se ∧ e ∨ si possono mescolare senza parentesi]
@@ -325,10 +325,10 @@ D: FV e ht di (∀x(P(x,y)→∃z R(z,x)))∨S(z)?
 R: FV={y,z} (z di S(z) libera, z di R(z,x) vincolata). ht=4. [INT]
 
 D: Definizione di L-struttura.
-R: Dominio A≠∅; ogni relazione R -> R^A⊆A^n; ogni funzione f -> f^A:A^n→A TOTALE; ogni costante c -> c^A∈A. ⟨ℕ,−⟩ non è struttura.
+R: Dominio A≠∅; ogni relazione R -> $R^A$⊆$A^n$; ogni funzione f -> $f^A$:$A^n$→A TOTALE; ogni costante c -> $c^A$∈A. ⟨ℕ,−⟩ non è struttura.
 
 D: Come si valuta un termine in una struttura con assegnazione?
-R: Variabile = elemento assegnato; costante c^A; f(t1..tk) = f^A(t1^A,..,tk^A). Dipende solo dalle variabili che occorrono.
+R: Variabile = elemento assegnato; costante $c^A$; f(t1..tk) = $f^A$($t1^A$,..,tk^A). Dipende solo dalle variabili che occorrono.
 
 D: Quando A ⊧ ∃yψ e A ⊧ ∀yψ?
 R: ∃: esiste b∈A tale che ψ è vera sostituendo b a y; ∀: per ogni b∈A. L'assegnazione data a y viene ignorata (sovrascritta).
@@ -461,7 +461,7 @@ R: ∀x(1<x→∃z(P(z)∧x·x<z∧z<(x+1)·(x+1))).
 D: "Ogni naturale ≠0 è somma di due naturali distinti" in ℕ e in ℝ?
 R: ℕ: ∀x(x≠0→∃y∃z(y≠z∧y+z=x)). In ℝ servono N(x), N(y), N(z).
 
-D: Ladro gentiluomo: ∀x(L(x)→¬O(x)) ∧ ∃x(L(x)∧G(x)∧O(x)) è coerente?
+D: Ladro gentiluomo: ∀x(L(x)→¬$O(x)$) ∧ ∃x(L(x)∧G(x)∧$O(x)$) è coerente?
 R: No: le due parti sono contraddittorie (nessun ladro onesto contro un ladro gentiluomo onesto).
 
 D: Goldbach in L={+,·,<,1,P}?
@@ -500,16 +500,16 @@ D: Come ordine e operazioni si determinano a vicenda?
 R: x≤y ⇔ x∧y=x ⇔ x∨y=y.
 
 D: Principio di dualità?
-R: R⁻¹ dà il poset duale; un enunciato valido in tutti i reticoli vale anche col duale (scambiando ∧↔∨ e invertendo ≤).
+R: $R^{-1}$ dà il poset duale; un enunciato valido in tutti i reticoli vale anche col duale (scambiando ∧↔∨ e invertendo ≤).
 
 D: Due assiomatizzazioni del reticolo?
-R: L_ord: rifl, antisim, trans + esistenza di sup e inf. L_ret: commutatività e associatività di ∧,∨ + assorbimento (x∨y)∧y=y, (x∧y)∨y=y.
+R: $L_{ord}$: rifl, antisim, trans + esistenza di sup e inf. $L_{ret}$: commutatività e associatività di ∧,∨ + assorbimento (x∨y)∧y=y, (x∧y)∨y=y.
 
 D: Reticolo completo; Dedekind; ℝ?
 R: Completo: sup X e inf X esistono per OGNI X⊆P (anche vuoto/infinito); ogni reticolo finito è completo. Dedekind (totali): ogni X≠∅ limitato ha sup. ⟨ℝ,≤⟩ è Dedekind-completo ma NON reticolo completo; [a,b] sì.
 
 D: ⟨ℚ∩[0,1],≤⟩ è reticolo completo?
-R: È reticolo (totale) ma non completo: X={q|q²<1/2} non ha sup in ℚ. [INT]
+R: È reticolo (totale) ma non completo: X={q|$q^{2}$<1/2} non ha sup in ℚ. [INT]
 
 D: Enuncia Tarski-Knaster.
 R: P reticolo completo, f:P→P monotona ⇒ f ha almeno un punto fisso.
@@ -601,7 +601,7 @@ D: Trappola: distributività?
 R: Div(n) e P(X) sì; con M3 o N5 come sottoreticolo no (Birkhoff).
 
 D: Trappola: induzione con base diversa da 0?
-R: Base da k se serve (2n+1<2^n da n≥3) e verificare che il passo regga per tutti gli n della base.
+R: Base da k se serve (2n+1<$2^n$ da n≥3) e verificare che il passo regga per tutti gli n della base.
 
 D: Trappola: codominio e immagine?
 R: Suriettività dipende dal codominio dichiarato: x↦-2|x| ℝ→ℝ≤0 è suriettiva, x↦2|x| ℝ→ℝ no.

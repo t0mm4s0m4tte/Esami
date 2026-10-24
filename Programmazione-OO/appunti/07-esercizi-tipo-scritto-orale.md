@@ -77,7 +77,7 @@ Le domande si possono raggruppare per tema; per ognuna conviene preparare una ri
 - Tipo apparente vs tipo esatto; dynamic binding; quando `ClassCastException`.
 - Classe astratta vs interfaccia; ereditarietà multipla e diamond.
 - Generics: cosa risolvono, raw type, type erasure, autoboxing, bounded generics.
-- Perché l'Iterator è meglio di `for + get(i)`? Costo O(n^2) vs O(n).
+- Perché l'Iterator è meglio di `for + get(i)`? Costo $O(n^2)$ vs $O(n)$.
 - BST: invariante, perché Leaf e non null, perché `t = t.insert(x)`, cancellazione con due figli, visite.
 - Checked vs unchecked, quando usare assert vs eccezione, static factory.
 - Singleton/Composite/State: scopo, struttura, esempio.

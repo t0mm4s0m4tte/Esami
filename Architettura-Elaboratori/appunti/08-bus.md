@@ -22,7 +22,7 @@ Le linee del bus si dividono per funzione:
 - le linee **indirizzi** individuano sorgente e destinazione;
 - le linee **controllo** regolano l'accesso e l'uso delle altre linee.
 
-Dal lato della CPU, n piedini di indirizzo permettono di indirizzare 2^n locazioni (valori tipici 16, 20, 32, 64), m piedini di dato trasferiscono una parola di m bit in una operazione, e ci sono poi i piedini di controllo (bus control, interrupt, arbitraggio, coprocessore, stato).
+Dal lato della CPU, n piedini di indirizzo permettono di indirizzare $2^n$ locazioni (valori tipici 16, 20, 32, 64), m piedini di dato trasferiscono una parola di m bit in una operazione, e ci sono poi i piedini di controllo (bus control, interrupt, arbitraggio, coprocessore, stato).
 
 ## Dispositivi
 Sul bus i dispositivi hanno ruoli diversi. Quelli **attivi (master)** possono iniziare un trasferimento e si collegano con un *bus driver*; quelli **passivi (slave)** attendono richieste e si collegano con un *bus receiver*. I dispositivi che possono essere entrambi, come la CPU, usano un *bus transceiver*.
@@ -63,7 +63,7 @@ I bus paralleli tradizionali (ISA, EISA, PCI) trasportano tutti i bit di una par
 I sistemi moderni usano connessioni **punto-punto** con controller dedicati (memory controller, I/O controller); nei SoC c'è un interconnect (AMBA, AXI, NoC). L'evoluzione storica va da Northbridge/Southbridge (fino a circa il 2010) all'Intel PCH (fino a circa il 2020).
 
 ## Cose da saper fare all'esame
-- Elencare linee (dati/indirizzi/controllo) e calcolare la memoria indirizzabile (2^n) e il dato per ciclo.
+- Elencare linee (dati/indirizzi/controllo) e calcolare la memoria indirizzabile ($2^n$) e il dato per ciclo.
 - Disegnare/descrivere un ciclo di lettura in bus sincrono (con wait state) e uno asincrono (handshake a 4 fasi).
 - Confrontare sincrono/asincrono (vantaggi e svantaggi).
 - Spiegare l'arbitraggio daisy chain e la priorità; centralizzato vs decentralizzato.

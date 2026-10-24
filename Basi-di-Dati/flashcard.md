@@ -292,7 +292,7 @@ R: Top-down, bottom-up, inside-out, mista (standard industriale, scheletro da ra
 D: Cosa si considera nel valutare le prestazioni della progettazione logica?
 R: Spazio (volume) e tempo (occorrenze visitate); operazioni interattive (frequenti, puntuali) e batch (rare, massive); regola 80-20; accessi in scrittura pesano 2× la lettura.
 
-D: Analisi di ridondanza: attributo derivato "n° abitanti" in Città (200) da Persona (10^6); op1 500 inserimenti/giorno, op2 stampa città con abitanti 2/giorno. Conviene? [DA VERIFICARE]
+D: Analisi di ridondanza: attributo derivato "n° abitanti" in Città (200) da Persona ($10^6$); op1 500 inserimenti/giorno, op2 stampa città con abitanti 2/giorno. Conviene? [DA VERIFICARE]
 R: Senza: op1 500 S = 1000; op2 2L + 10.000L = 10.002 -> circa 11.000. Con: op1 500S+500L+500S = 2500; op2 = 2 -> circa 2.500. Conviene (le note dicono 3.500 vs 12.000, stesso verdetto).
 
 D: Vantaggi e svantaggi di una ridondanza?
@@ -325,16 +325,16 @@ D: Assiomi di Armstrong usati nel corso e regole derivate?
 R: Riflessività (Y⊆X ⇒ X→Y), unione, transitività. Derivate: espansione (X→Y ⇒ WX→WY), decomposizione, pseudo-transitività (X→Y, WY→Z ⇒ WX→Z), prodotto.
 
 D: Quando due insiemi di DF sono equivalenti?
-R: Quando F⁺ = G⁺, cioè F ⊦ G e G ⊦ F.
+R: Quando $F^{+}$ = $G^{+}$, cioè F ⊦ G e G ⊦ F.
 
 D: Cos'è un attributo estraneo? Esempio.
 R: Attributo la cui rimozione da una DF non cambia la chiusura. F={ABCD→E, B→C}: C è estraneo in ABCD→E perché ABD→B→C; F ≡ {ABD→E, B→C}.
 
-D: Algoritmo di chiusura X⁺ e test di membership?
-R: C:=X; finché esiste Y→Z in F con Y⊆C, C:=C∪Z. X→Y ∈ F⁺ ⇔ Y ⊆ X⁺. Polinomiale (F⁺ è esponenziale).
+D: Algoritmo di chiusura $X^{+}$ e test di membership?
+R: C:=X; finché esiste Y→Z in F con Y⊆C, C:=C∪Z. X→Y ∈ $F^{+}$ ⇔ Y ⊆ $X^{+}$. Polinomiale ($F^{+}$ è esponenziale).
 
 D: Come si riconosce una superchiave e una chiave con la chiusura?
-R: K è superchiave ⇔ K⁺ = tutti gli attributi; chiave = superchiave minimale. Gli attributi che non compaiono mai a destra stanno in ogni chiave.
+R: K è superchiave ⇔ $K^{+}$ = tutti gli attributi; chiave = superchiave minimale. Gli attributi che non compaiono mai a destra stanno in ogni chiave.
 
 D: ESAMI: MATR→NS,IS,CF,DN; CF→MATR; IS→CAP; MATR,Co→Vo,DE,CP; CP→NP,Q; Q→TU; CP→Co. Chiavi?
 R: {MATR,Co} è chiave ({MATR,Co,NS} è superchiave non minimale). Con CP→Co anche {MATR,CP}, {CF,Co}, {CF,CP}.
@@ -346,7 +346,7 @@ D: Condizione di lossless join per R1(A1), R2(A2)?
 R: (A1∩A2 → A1) ∨ (A1∩A2 → A2): l'intersezione è superchiave di almeno una delle due.
 
 D: Cosa significa preservare le DF e come si formalizza?
-R: Le DF originarie si verificano sulle singole relazioni senza join. Restrizione Fi = {X→Y ∈ F⁺ : XY ⊆ Ri}; conservativa se (F1∪F2)⁺ = F⁺ (calcolo esponenziale).
+R: Le DF originarie si verificano sulle singole relazioni senza join. Restrizione Fi = {X→Y ∈ $F^{+}$ : XY ⊆ Ri}; conservativa se (F1∪F2)^{+} = $F^{+}$ (calcolo esponenziale).
 
 D: R(A,B,C), F={A→B}: sono lossless {AB,AC} e {AB,BC}?
 R: {AB,AC}: sì, A→AB. {AB,BC}: no, B non determina né AB né BC, possibili tuple spurie.
@@ -382,10 +382,10 @@ D: Algoritmo di sintesi 3NF?
 R: 1) copertura minimale F'; 2) raggruppa DF con stesso antecedente; 3) una relazione per gruppo; 4) se nessuna contiene una chiave dell'originale, aggiungine una con gli attributi di una chiave; 5) fondi relazioni con stessa chiave ed elimina le contenute. Polinomiale, lossless, preserva le DF.
 
 D: Perché il passo 4 della sintesi (relazione con la chiave)?
-R: Senza di esso si può perdere il legame tra gli attributi (es. CC senza R_key(Titolare,NConto) perde il legame con il titolare).
+R: Senza di esso si può perdere il legame tra gli attributi (es. CC senza $R_{key}$(Titolare,NConto) perde il legame con il titolare).
 
 D: Esercizio: R(A,B,C,D,E,F,G), F={AB→EF, B→G, A→CDG, C→B, E→F}. Chiave?
-R: A non compare mai a destra, A⁺ = A→CDG, C→B, AB→EF = tutti: A è l'unica chiave.
+R: A non compare mai a destra, $A^{+}$ = A→CDG, C→B, AB→EF = tutti: A è l'unica chiave.
 
 D: Stesso esercizio: copertura minimale?
 R: Fmin = {A→C, A→D, A→E, B→G, C→B, E→F} (B estraneo in AB→E/F; ridondanti A→F e A→G).
@@ -394,7 +394,7 @@ D: Stesso esercizio: è in 3NF? Scomposizione.
 R: No: B→G, C→B, E→F con sinistra non superchiave e destra non prima. Sintesi: R1(A,C,D,E), R2(C,B), R3(B,G), R4(E,F); R1 contiene la chiave A.
 
 D: PARTITA(SC,SO,DP,PSC,PSO,A,C,S): chiave e perché non 3NF?
-R: SC e DP mai a destra; {SC,DP}⁺ = tutto, chiave {SC,DP}. Non 3NF: dipendenza parziale SC→S e transitiva A→C.
+R: SC e DP mai a destra; {SC,DP}^{+} = tutto, chiave {SC,DP}. Non 3NF: dipendenza parziale SC→S e transitiva A→C.
 
 D: PARTITA: scomposizione delle note e punto dubbio. [DA VERIFICARE]
 R: RPartita(SC,DP,SO,PSC,PSO), RStadio(SC,S), RArbitro(A,C), RDesignazione(C,DP,A). La sintesi standard aggiunge R(SC,SO,C) per preservare SC,SO→C, assente nelle note.
@@ -429,13 +429,13 @@ D: Tipi di memoria nel recovery?
 R: Temporanea (RAM) e permanente: standard (DB, indici) o stabile (log, dump).
 
 D: Perché serve l'interleaving?
-R: I tempi morti di I/O (disco ~10^6 volte più lento della RAM) renderebbero insostenibile l'esecuzione seriale; l'interleaving massimizza il throughput ma può produrre stati errati.
+R: I tempi morti di I/O (disco ~$10^6$ volte più lento della RAM) renderebbero insostenibile l'esecuzione seriale; l'interleaving massimizza il throughput ma può produrre stati errati.
 
 D: A=1000, B=2000: T1 sposta 50 da A a B, T2 sposta il 10% di A su B. Risultati seriali e storia errata r1(A) r2(A) w2(A) r2(B) w1(A) r1(B) w1(B) w2(B)?
 R: T1T2: A=855, B=2145; T2T1: A=850, B=2150 (somma 3000). La storia errata dà A=950, B=2100 (A+B=3050): lost update, w1(A) ignora w2(A). Non serializzabile.
 
 D: Cos'è una storia e quando è seriale/corretta?
-R: Sequenza delle azioni r_i(X), w_i(X). Seriale: una transazione per intero dopo l'altra. Corretta = equivalente a una seriale = serializzabile.
+R: Sequenza delle azioni $r_i$(X), $w_i$(X). Seriale: una transazione per intero dopo l'altra. Corretta = equivalente a una seriale = serializzabile.
 
 D: Le tre condizioni della view-equivalenza?
 R: Stesso input (letture del valore iniziale); stesse relazioni lettura-da; stesso stato finale (l'ultima w(X) è della stessa transazione).
@@ -491,7 +491,7 @@ R: Le slide usano sia BF sia BS (before state): controllare la notazione dell'es
 ## 07 - Ottimizzazione e struttura fisica
 
 D: Perché il costo di una query è dominato dagli accessi a disco?
-R: RAM ~50-70 ns, disco/SSD 5-20 ms, fattore ~10^6: l'ottimizzatore mira a ridurre i trasferimenti di pagina.
+R: RAM ~50-70 ns, disco/SSD 5-20 ms, fattore ~$10^6$: l'ottimizzatore mira a ridurre i trasferimenti di pagina.
 
 D: Differenza tra ottimizzazione logica e fisica?
 R: Logica: trasformazione algebrica indipendente dalle strutture fisiche. Fisica: sceglie gli algoritmi (Nested Loop, Sort-Merge, Hash join) usando indici, statistiche e hardware.
@@ -506,25 +506,25 @@ D: Statistiche del dizionario dati?
 R: CARD(r) numero di tuple; SIZE(t) ampiezza media; VAL(A,r) valori distinti di A; NPAGE(r) = CARD(r)/fattore di bloccaggio.
 
 D: Fattore di selettività dei predicati?
-R: A=v: 1/VAL(A,r); A≤v: (v−MIN)/(MAX−MIN); AND: f1·f2; NOT: 1−f_p; OR: 1−(1−f1)(1−f2). Distribuzione uniforme.
+R: A=v: 1/VAL(A,r); A≤v: (v−MIN)/(MAX−MIN); AND: f1·f2; NOT: 1−$f_p$; OR: 1−(1−f1)(1−f2). Distribuzione uniforme.
 
-D: La formula del NOT nelle note è "1 − f_{p2}". [DA VERIFICARE]
-R: Probabile refuso: la formula corretta è 1 − f_p.
+D: La formula del NOT nelle note è "1 − $f_{p2}$". [DA VERIFICARE]
+R: Probabile refuso: la formula corretta è 1 − $f_p$.
 
 D: Stima della cardinalità di un join?
 R: FK→PK: cardinalità del lato FK (es. CARD(RICOVERI)). Equi-join generale: ≈ min(1/VAL(A,r), 1/VAL(B,s))·CARD(r)·CARD(s) [formula da confrontare con le slide]. Dopo una selezione VAL_nuovo = min{VAL_vecchio, CARD_risultato}.
 
-D: Pazienti 10^5 (VAL Residenza=100), Ricoveri 10^5 (VAL Inizio=10): massa di tuple dei piani non ottimizzato, con selezioni spinte, con associatività? [DA VERIFICARE]
-R: 10^10 (prodotto 10^5×10^5); 10^7 (10^3 pazienti × 10^4 ricoveri); 10^6 (Medici per primi, una tupla): miglioramento ~10.000×. Esponenti ricostruiti, appiattiti nelle note.
+D: Pazienti $10^5$ (VAL Residenza=100), Ricoveri $10^5$ (VAL Inizio=10): massa di tuple dei piani non ottimizzato, con selezioni spinte, con associatività? [DA VERIFICARE]
+R: $10^{10}$ (prodotto $10^5$×$10^5$); $10^7$ ($10^3$ pazienti × $10^4$ ricoveri); $10^6$ (Medici per primi, una tupla): miglioramento ~10.000×. Esponenti ricostruiti, appiattiti nelle note.
 
 D: Cosa contiene una pagina e cos'è il RID?
 R: PID, array degli offset (in testa), stack dei record, bit di parità. RID = [PID, i], i indice nell'array: permette di spostare i record nella pagina senza cambiare l'indirizzo, base dell'indipendenza fisica.
 
 D: Metodi di accesso e costi di ricerca seriale e sequenziale (N pagine)?
-R: Seriale: (N+1)/2 con successo, N con insuccesso. Sequenziale: insuccesso (N+1)/2 (si ferma superato il valore). Altri: tabellare (indici), diretto (hash, O(1)).
+R: Seriale: (N+1)/2 con successo, N con insuccesso. Sequenziale: insuccesso (N+1)/2 (si ferma superato il valore). Altri: tabellare (indici), diretto (hash, $O(1)$).
 
 D: Perché il B+ albero e non il B albero?
-R: Le chiavi interne sono solo separatori e tutte le chiavi effettive stanno nelle foglie collegate: permettono scansioni di range. Con m=100 e h=3 si indicizzano 10^6 chiavi.
+R: Le chiavi interne sono solo separatori e tutte le chiavi effettive stanno nelle foglie collegate: permettono scansioni di range. Con m=100 e h=3 si indicizzano $10^6$ chiavi.
 
 D: I tre tipi di data entry k*?
 R: Tipo 1 ⟨k, tupla⟩ (clusterizzato); tipo 2 ⟨k, RID⟩; tipo 3 ⟨k, lista di RID⟩ (tipico dei secondari).
@@ -550,7 +550,7 @@ D: Formulario: lossless, BCNF, 3NF, copertura minimale.
 R: Lossless (A1∩A2→A1) ∨ (A1∩A2→A2). BCNF: X superchiave per ogni X→Y non banale. 3NF: X superchiave o Y primi. Copertura: RHS singolo, togli estranei, togli ridondanti.
 
 D: Formulario: lock, recovery, costi.
-R: LS-LS compatibili, tutto il resto no; 2PL prima solo lock poi solo unlock. Recovery: REDO(LC) in avanti, UNDO(LA) a ritroso, abort ignorati. Accesso seriale (N+1)/2 successo, N insuccesso; B+ m=100, h=3 -> 10^6 chiavi.
+R: LS-LS compatibili, tutto il resto no; 2PL prima solo lock poi solo unlock. Recovery: REDO(LC) in avanti, UNDO(LA) a ritroso, abort ignorati. Accesso seriale (N+1)/2 successo, N insuccesso; B+ m=100, h=3 -> $10^6$ chiavi.
 
 D: Esercizio: query con AND di selettività su VAL=100 e VAL=10, come si stima il risultato?
 R: f = 1/100 · 1/10 = 1/1000; risultato = CARD · f.

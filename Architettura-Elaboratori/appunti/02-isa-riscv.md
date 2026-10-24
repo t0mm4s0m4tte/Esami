@@ -33,7 +33,7 @@ RISC significa Reduced Instruction Set Computer, e la filosofia si riassume in t
 Vedremo questi principi applicarsi più volte: le istruzioni hanno sempre tre operandi, tutte sono lunghe 32 bit, i formati sono pochi e simili.
 
 ## Registri e memoria
-Il modello di programmazione di RV32I comprende 32 registri interi `x0..x31` (a 32 bit in RV32I, a 64 in RV64I), 32 registri in virgola mobile `f0..f31`, un PC, 4096 CSR (control status registers) e una memoria con indirizzi a byte (fino a 2^32-1 in RV32I). Una parola (word) è di 32 bit, una doppia parola (doubleword) di 64.
+Il modello di programmazione di RV32I comprende 32 registri interi `x0..x31` (a 32 bit in RV32I, a 64 in RV64I), 32 registri in virgola mobile `f0..f31`, un PC, 4096 CSR (control status registers) e una memoria con indirizzi a byte (fino a $2^{32}$-1 in RV32I). Una parola (word) è di 32 bit, una doppia parola (doubleword) di 64.
 
 I registri hanno anche un nome ABI, che esprime la convenzione d'uso: `zero` per la costante 0, `ra` per l'indirizzo di ritorno, `sp` per lo stack pointer, `a0-a7` per argomenti e valori di ritorno, `t*` per i temporanei e `s*` per i registri da salvare. Dal Lab 3 in poi si usano solo questi nomi.
 
@@ -98,7 +98,7 @@ Con indice costante lo scostamento si calcola a mano (v[3] sta a offset 12). Con
 4. accedi con `lw/sw 0(rd)`.
 
 ## Operazioni logiche e shift
-Gli shift logici sono `sll/slli` (a sinistra) e `srl/srli` (a destra, riempiendo con 0); lo shift aritmetico a destra `sra/srai` replica invece il segno. Non esiste uno shift aritmetico a sinistra, perché sarebbe identico a `sll`. Gli shift hanno un significato aritmetico utile: uno shift a sinistra di k posizioni moltiplica per 2^k, e `srai` di k divide per 2^k gli interi con segno (con arrotondamento verso -inf).
+Gli shift logici sono `sll/slli` (a sinistra) e `srl/srli` (a destra, riempiendo con 0); lo shift aritmetico a destra `sra/srai` replica invece il segno. Non esiste uno shift aritmetico a sinistra, perché sarebbe identico a `sll`. Gli shift hanno un significato aritmetico utile: uno shift a sinistra di k posizioni moltiplica per $2^k$, e `srai` di k divide per $2^k$ gli interi con segno (con arrotondamento verso -inf).
 
 Le operazioni bit a bit sono `and/andi`, `or/ori`, `xor/xori`; `not` è una pseudoistruzione (`xori rd,rs,-1`). Un `and` con una maschera seleziona alcuni bit, mentre un `or` con una maschera forza a 1 i bit della maschera.
 

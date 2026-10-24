@@ -17,7 +17,7 @@ Le trappole seguenti sono quelle in cui gli esercizi di questo corso fanno cader
 9. Cardinalità: sequenze **finite** numerabili, **infinite** continuo; ℝ, P(ℕ), ℕ^ℕ, {0,1}^ℕ stesso continuo; ℚ, ℤ, ℕ×ℕ numerabili.
 10. Divisibilità: 0 massimo, 1 minimo. sup = *minimo* dei maggioranti, può non esistere.
 11. Distributività: Div(n) e P(X) sì; M3 e N5 no (Birkhoff).
-12. Induzione: base da k se serve (2n+1<2^n da n≥3); verificare che il passo regga per tutti gli n della base.
+12. Induzione: base da k se serve (2n+1<$2^n$ da n≥3); verificare che il passo regga per tutti gli n della base.
 13. Codominio ≠ immagine: k:ℝ→ℝ≤0, x↦-2|x| è suriettiva, h:ℝ→ℝ, x↦2|x| no.
 14. Validità FOL: dimostrazione per ogni struttura; soddisfacibilità: un esempio.
 
@@ -54,4 +54,4 @@ g) sequenze infinite di cifre {0,1}: numerabili. **F.**
 
 **Es. 3 (semantica).** Struttura ⟨{0,1,2},<⟩. Valuta: ∃x∀y(x<y∨x=y) (esiste un minimo): V (x=0). ∃x∀y(y<x∨y=x) (massimo): V (x=2). ∀x∃y(x<y): F (x=2 non ha y). Ulteriore: ∀x∃y(x<y) ∧ ∀x¬(x<x) ∧ trans. è soddisfacibile (⟨ℕ,<⟩) ma non ha modelli finiti.
 
-**Es. 4 (dimostrazione).** (a) Per induzione Σ_{i=0}^n (2i+1)=(n+1)². (b) Dimostrare |ℕ|<|P(ℕ)| (diagonale). (c) Hasse Div(12) e dire se è distributivo.
+**Es. 4 (dimostrazione).** (a) Per induzione $\sum _{i=0}^n$ (2i+1)=(n+1)^{2}. (b) Dimostrare |ℕ|<|P(ℕ)| (diagonale). (c) Hasse Div(12) e dire se è distributivo.

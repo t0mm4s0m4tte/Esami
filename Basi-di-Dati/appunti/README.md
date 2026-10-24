@@ -9,7 +9,7 @@ Appello: **2027-02-01**. Appunti condensati dal doc Drive "Basi di Dati - Appunt
 | [02-algebra-e-calcolo-relazionale.md](02-algebra-e-calcolo-relazionale.md) | Algebra, negazione, divisione, 3VL, outer join, TRC | T03, T04, T06 |
 | [03-sql.md](03-sql.md) | DDL, DML, join, aggregati, nidificate, EXISTS, PostgreSQL | L07-L11 |
 | [04-progettazione-er-e-logica.md](04-progettazione-er-e-logica.md) | Requisiti, E-R, pattern, ristrutturazione, traduzione logica | L01, L03-L05 |
-| [05-normalizzazione.md](05-normalizzazione.md) | DF, Armstrong, X⁺, BCNF, 3NF, copertura minimale, esercizi | T08-T10, T14 |
+| [05-normalizzazione.md](05-normalizzazione.md) | DF, Armstrong, $X^{+}$, BCNF, 3NF, copertura minimale, esercizi | T08-T10, T14 |
 | [06-transazioni-concorrenza-ripristino.md](06-transazioni-concorrenza-ripristino.md) | ACID, storie, lock/2PL, log, UNDO/REDO, checkpoint | T07, T11-T13 |
 | [07-ottimizzazione-e-struttura-fisica.md](07-ottimizzazione-e-struttura-fisica.md) | Ottimizzazione logica/fisica, selettività, pagine, B+ | T05, T11 |
 | [08-checklist-esame-ed-esercizi-tipo.md](08-checklist-esame-ed-esercizi-tipo.md) | Checklist, 12 esercizi tipo, formulario, dubbi aggregati | tutte |

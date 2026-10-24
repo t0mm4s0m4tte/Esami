@@ -13,13 +13,13 @@ Fonte: slide Kurose-Ross cap. 2 (`unito_Chapter_2_v8.2-V2.pdf`, slide 2-83...2-1
 
 ## Distribuzione di un file: client-server vs P2P
 
-La domanda di partenza è quanto tempo serve per distribuire un file di dimensione F da un server a N peer, dove la banda è la risorsa limitata. Sia u_s la capacità di upload del server, u_i e d_i la capacità di upload e di download del peer i, e d_min = min d_i la capacità di download del peer più lento.
+La domanda di partenza è quanto tempo serve per distribuire un file di dimensione F da un server a N peer, dove la banda è la risorsa limitata. Sia $u_s$ la capacità di upload del server, $u_i$ e $d_i$ la capacità di upload e di download del peer i, e $d_{min}$ = min $d_i$ la capacità di download del peer più lento.
 
-Nel modello **client-server** il server deve inviare N copie del file in sequenza, quindi spende N·F/u_s, e il client più lento ha bisogno di almeno F/d_min per scaricare. Il tempo minimo di distribuzione è quindi D_cs ≥ max{ N·F/u_s , F/d_min }, e cresce linearmente con N perché il server è il collo di bottiglia.
+Nel modello **client-server** il server deve inviare N copie del file in sequenza, quindi spende N·F/$u_s$, e il client più lento ha bisogno di almeno F/$d_{min}$ per scaricare. Il tempo minimo di distribuzione è quindi $D_{cs}$ ≥ max{ N·F/$u_s$ , F/$d_{min}$ }, e cresce linearmente con N perché il server è il collo di bottiglia.
 
-Nel modello **P2P** il server deve caricare almeno una copia (F/u_s), il client più lento ha ancora il vincolo F/d_min, e in aggregato i peer devono scaricare N·F bit, con una capacità massima di upload dell'intero sistema pari a u_s + Σu_i. Quindi D_P2P ≥ max{ F/u_s , F/d_min , N·F/(u_s + Σu_i) }. Anche qui il tempo cresce con N, ma più lentamente, perché ogni peer che arriva porta anche capacità di servizio: è questa la scalabilità intrinseca del P2P. Nell'esempio delle slide (upload dei client u, F/u = 1 ora, u_s = 10u, d_min ≥ u_s) il tempo client-server cresce linearmente con N, mentre quello P2P resta sotto 1,5 ore anche per N grandi (grafico a pagina 2-86; è una figura e non è riportata qui [DA VERIFICARE sul PDF]).
+Nel modello **P2P** il server deve caricare almeno una copia (F/$u_s$), il client più lento ha ancora il vincolo F/$d_{min}$, e in aggregato i peer devono scaricare N·F bit, con una capacità massima di upload dell'intero sistema pari a $u_s$ + Σu_i. Quindi $D_{P2P}$ ≥ max{ F/$u_s$ , F/$d_{min}$ , N·F/($u_s$ + Σu_i) }. Anche qui il tempo cresce con N, ma più lentamente, perché ogni peer che arriva porta anche capacità di servizio: è questa la scalabilità intrinseca del P2P. Nell'esempio delle slide (upload dei client u, F/u = 1 ora, $u_s$ = 10u, $d_{min}$ ≥ $u_s$) il tempo client-server cresce linearmente con N, mentre quello P2P resta sotto 1,5 ore anche per N grandi (grafico a pagina 2-86; è una figura e non è riportata qui [DA VERIFICARE sul PDF]).
 
-Esempio con numeri: [08-esercizi-cap2.md](08-esercizi-cap2.md) applica queste formule con F = 15 Gbit, u_s = 30 Mbps e d_min = 2 Mbps. I calcoli intermedi sono F/u_s = 500 s e F/d_min = 7500 s.
+Esempio con numeri: [08-esercizi-cap2.md](08-esercizi-cap2.md) applica queste formule con F = 15 Gbit, $u_s$ = 30 Mbps e $d_{min}$ = 2 Mbps. I calcoli intermedi sono F/$u_s$ = 500 s e F/$d_{min}$ = 7500 s.
 
 ## Video: codifica e streaming
 

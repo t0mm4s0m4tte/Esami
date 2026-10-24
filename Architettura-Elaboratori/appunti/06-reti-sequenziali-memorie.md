@@ -29,7 +29,7 @@ Memorizza dunque l'ultimo tra S e R che è stato asserito.
 La combinazione **S=R=1 è vietata**: Q e Q̄ vanno entrambi a 0, e rilasciando insieme i due ingressi lo stato risultante è imprevedibile (oscillazione, anche nei transitori). Poiché in pratica S e R provengono da circuiti combinatori che hanno transitori, non si può garantire che non passino per quella combinazione, e per questo serve il **clock**.
 
 ## Clock
-Il clock è una serie di impulsi con larghezza e intermittenza specifiche. Il tempo di ciclo è l'intervallo tra fronti corrispondenti di due impulsi, e la frequenza è il suo inverso (500 MHz = 2 ns). Si parla di fronti di salita e di discesa. Per le unità: ms=10^-3 s, µs=10^-6, ns=10^-9; KHz=10^3, MHz=10^6, GHz=10^9 Hz.
+Il clock è una serie di impulsi con larghezza e intermittenza specifiche. Il tempo di ciclo è l'intervallo tra fronti corrispondenti di due impulsi, e la frequenza è il suo inverso (500 MHz = 2 ns). Si parla di fronti di salita e di discesa. Per le unità: ms=$10^-3$ s, µs=$10^-6$, ns=$10^-9$; KHz=$10^3$, MHz=$10^6$, GHz=$10^9$ Hz.
 
 ## Latch sincronizzati
 Il clock permette di decidere quando i dati possono entrare nel latch. Nel **SR sincronizzato** delle porte AND abilitano S e R solo quando Clock=1. Resta però il problema di S=R=1: il **D latch** lo elimina avendo un solo ingresso dato D, con S=D e R=D̄. Con Clock=1 memorizza D, con Clock=0 mantiene.
@@ -67,7 +67,7 @@ Il **register file** è un insieme di registri leggibili e scrivibili, indirizza
 La scrittura avviene sul fronte attivo del clock, perciò si può leggere e scrivere lo stesso registro nello stesso ciclo (es. `add x1,x1,x1`): la lettura vede il vecchio valore, mentre il nuovo è visibile al ciclo dopo.
 
 ## Memorie
-Una memoria ha n linee di indirizzo, che selezionano una tra 2^n righe, e b linee di dato, che formano b colonne, più un Write enable. L'esempio della slide è una memoria 4x2 (2 bit di dato, 2 bit di indirizzo, 1 write enable). Le memorie grandi sono matrici 2^n x b con selezione di riga e colonna (es. SRAM 4M x 8 = 8 array di 4K x 1024, con decoder e mux per scegliere il bit nella riga).
+Una memoria ha n linee di indirizzo, che selezionano una tra $2^n$ righe, e b linee di dato, che formano b colonne, più un Write enable. L'esempio della slide è una memoria 4x2 (2 bit di dato, 2 bit di indirizzo, 1 write enable). Le memorie grandi sono matrici $2^n$ x b con selezione di riga e colonna (es. SRAM 4M x 8 = 8 array di 4K x 1024, con decoder e mux per scegliere il bit nella riga).
 
 Le **RAM** si dividono in:
 - **SRAM**: costruite con flip-flop D; velocissime, usate per le cache;
@@ -88,7 +88,7 @@ Il progetto CircuitVerse del Moodle ([file 13 §4](13-esercizi-ed-esami-svolti.m
 - Differenza latch/flip-flop; D latch vs D flip-flop; perché il fronte risolve la trasparenza.
 - Disegnare un registro a n bit e un register file (mux per lettura, decoder per scrittura).
 - Tracciare un diagramma temporale (Q in funzione di D e CLK) per latch D a livello e flip-flop a fronte.
-- Distinguere SRAM/DRAM/ROM e dimensionare una memoria (n linee indirizzo, b bit dato -> 2^n x b bit).
+- Distinguere SRAM/DRAM/ROM e dimensionare una memoria (n linee indirizzo, b bit dato -> $2^n$ x b bit).
 
 ## Dubbi
 - Dettagli del diagramma temporale (setup/hold) sono nelle figure, non ricavabili dal testo estratto.

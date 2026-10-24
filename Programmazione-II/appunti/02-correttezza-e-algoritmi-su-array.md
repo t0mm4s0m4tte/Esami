@@ -4,7 +4,7 @@ Fonte: Drive > "PDF " > `2_Correttezza.pdf` (a.a. 2023-24, esempi dal prof. F. D
 
 ## Mappa
 
-Si parte dall'idea di specifica di una funzione e dai due predicati P_IN / P_OUT (con la notazione con apice per i valori iniziali), si definiscono correttezza parziale, terminazione e correttezza, si descrive il metodo di progettazione per raffinamenti successivi con test suite, e si applica tutto a esempi (minimo, cerca, scambia, scambia_p) e a due algoritmi classici: ricerca binaria e insertion sort.
+Si parte dall'idea di specifica di una funzione e dai due predicati $P_{IN}$ / $P_{OUT}$ (con la notazione con apice per i valori iniziali), si definiscono correttezza parziale, terminazione e correttezza, si descrive il metodo di progettazione per raffinamenti successivi con test suite, e si applica tutto a esempi (minimo, cerca, scambia, scambia_p) e a due algoritmi classici: ricerca binaria e insertion sort.
 
 - [Concetti](#concetti)
 - [Codice essenziale](#codice-essenziale)
@@ -18,14 +18,14 @@ Il filo conduttore del capitolo è che una funzione deve fare ciò che dice la *
 - i **casi saltati** (per esempio la stringa vuota);
 - le **condizioni di uscita** sbagliate.
 
-Per parlare di correttezza in modo preciso servono due predicati. **P_IN(x1..xn)** descrive l'input ed è ciò che deve valere prima dell'esecuzione; **P_OUT(x1..xn, y)** lega input e output ed è ciò che deve valere dopo. Su di essi si definiscono tre nozioni:
-- **correttezza parziale**: per ogni n-upla di valori dei tipi dei parametri, se P_IN è vera e l'esecuzione termina restituendo y, allora P_OUT(x, y) è vera;
-- **terminazione**: per ogni input con P_IN vera, l'esecuzione si conclude;
+Per parlare di correttezza in modo preciso servono due predicati. **$P_{IN}$(x1..xn)** descrive l'input ed è ciò che deve valere prima dell'esecuzione; **$P_{OUT}$(x1..xn, y)** lega input e output ed è ciò che deve valere dopo. Su di essi si definiscono tre nozioni:
+- **correttezza parziale**: per ogni n-upla di valori dei tipi dei parametri, se $P_{IN}$ è vera e l'esecuzione termina restituendo y, allora $P_{OUT}$(x, y) è vera;
+- **terminazione**: per ogni input con $P_{IN}$ vera, l'esecuzione si conclude;
 - **correttezza**: la funzione è parzialmente corretta e terminante.
 
 Si noti che la correttezza parziale non promette nulla se il programma non finisce: è la terminazione a completare il quadro.
 
-Per dimostrare la terminazione di un ciclo si mostra che a ogni iterazione ci si avvicina alla condizione di uscita, e lo si fa sul **codice effettivo**, non sulle intenzioni: `for(i=0;i<N;)` senza incremento non termina. Per scrivere le specifiche serve inoltre una notazione per riferirsi ai valori di partenza: `a'[j]` indica il valore **iniziale** di `a[j]`, e per i puntatori si scrive `(*py)'`. La stessa funzione può avere specifiche diverse a seconda di che garanzie si chiedono: per la divisione si può porre P_IN "divisore != 0", oppure non dare garanzie e stabilire che se il divisore è 0 si restituisce il dividendo con un messaggio d'errore.
+Per dimostrare la terminazione di un ciclo si mostra che a ogni iterazione ci si avvicina alla condizione di uscita, e lo si fa sul **codice effettivo**, non sulle intenzioni: `for(i=0;i<N;)` senza incremento non termina. Per scrivere le specifiche serve inoltre una notazione per riferirsi ai valori di partenza: `a'[j]` indica il valore **iniziale** di `a[j]`, e per i puntatori si scrive `(*py)'`. La stessa funzione può avere specifiche diverse a seconda di che garanzie si chiedono: per la divisione si può porre $P_{IN}$ "divisore != 0", oppure non dare garanzie e stabilire che se il divisore è 0 si restituisce il dividendo con un messaggio d'errore.
 
 Il metodo di progettazione, che conviene seguire nell'ordine, ha questi passi:
 1. fissare le assunzioni sui dati;
@@ -90,7 +90,7 @@ int ricerca_bin(int arr[], int n, int el) {
 La terminazione si dimostra osservando che la porzione [sn..dx] si restringe strettamente a ogni iterazione.
 
 ### Insertion sort
-La specifica è: P_IN, n == lunghezza(arr) >= 0; P_OUT, arr[0..n-1] ordinato e con gli stessi elementi di arr'. L'idea è mantenere ordinata la parte sinistra dell'array: per ogni indice i si inserisce arr[i] al posto giusto in arr[0..i-1], scambiandolo con il predecessore finché l'ordine non è rispettato. L'invariante è dunque "a[0..i-1] ordinato". Si noti come l'ordinamento riusi `scambia` vista sopra.
+La specifica è: $P_{IN}$, n == lunghezza(arr) >= 0; $P_{OUT}$, arr[0..n-1] ordinato e con gli stessi elementi di arr'. L'idea è mantenere ordinata la parte sinistra dell'array: per ogni indice i si inserisce arr[i] al posto giusto in arr[0..i-1], scambiandolo con il predecessore finché l'ordine non è rispettato. L'invariante è dunque "a[0..i-1] ordinato". Si noti come l'ordinamento riusi `scambia` vista sopra.
 
 ```c
 void insertionSort(int arr[], int n) {
@@ -110,11 +110,11 @@ void insertion(int arr[], int i) {
 I quattro programmi `debug1.c`...`debug4.c` del laboratorio sono quattro casi di programma che **non rispetta la specifica**, e permettono di esercitarsi sul ragionamento di questo file: `debug3` (somma di `i * 2` invece di `i`, attesa 15 e ottenuta 30) e `debug4` (conta i dispari invece dei pari) violano la postcondizione; `debug2` (`i <= size`) viola l'invariante sui limiti dell'indice; `debug1` dereferenzia un puntatore nullo, cioè non rispetta la precondizione. Per ciascuno il [file 09 §2](09-esercizi-ed-esami-svolti.md#2-debug-quattro-programmi-con-un-bug-e-gdb) riporta il sintomo osservato, la diagnosi con gdb e la correzione. Ricerca binaria e insertion sort non hanno esercizi nel Moodle.
 
 ## Cose da saper fare all'esame
-- Scrivere **P_IN e P_OUT** di una funzione data (la docente lo dice esplicitamente: "in alcuni esercizi d'esame vi chiederemo di scrivere P_IN e P_OUT").
+- Scrivere **$P_{IN}$ e $P_{OUT}^{*}$* di una funzione data (la docente lo dice esplicitamente: "in alcuni esercizi d'esame vi chiederemo di scrivere $P_{IN}$ e $P_{OUT}$").
 - Dimostrare la **terminazione** di un ciclo/ricorsione indicando cosa decresce / si avvicina all'uscita.
 - Indicare l'**invariante di ciclo** (es. minimo: temp = min di a[0..i-1]).
 - Scrivere il codice per raffinamenti successivi (commenti -> codice) e una **test suite** con i casi (array di un elemento, elemento assente/presente più volte, ecc.).
-- Implementare ricerca binaria e insertion sort con P_IN/P_OUT; esercizio consigliato: riscrivere due funzioni su array/matrici di Prog1 col metodo.
+- Implementare ricerca binaria e insertion sort con $P_{IN}$/$P_{OUT}$; esercizio consigliato: riscrivere due funzioni su array/matrici di Prog1 col metodo.
 
 ## Dubbi
-Formalizzare P_OUT per "stessi elementi di arr'" (cioè una permutazione) non è mostrato nelle slide: [DA VERIFICARE] come lo vuole la docente. Bubble e selection sort non sono nelle slide.
+Formalizzare $P_{OUT}$ per "stessi elementi di arr'" (cioè una permutazione) non è mostrato nelle slide: [DA VERIFICARE] come lo vuole la docente. Bubble e selection sort non sono nelle slide.

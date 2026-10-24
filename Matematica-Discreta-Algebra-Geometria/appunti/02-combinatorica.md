@@ -20,9 +20,9 @@
 
 Contare significa, in fondo, confrontare insiemi tramite funzioni. Due insiemi sono **equipollenti** (hanno la stessa cardinalità) se esiste una biezione A→B; si scopre così, un po' controintuitivamente, che N ≈ 2N (con f(n)=2n), N×N ≈ N (si elencano le coppie per somma a+b crescente), Z ≈ N (0,1,-1,2,-2,...) e Q ≈ N. Si scrive |A| ≤ |B| se esiste una funzione **iniettiva** A→B (equivalentemente una suriettiva B→A). Valgono il teorema di confrontabilità (|A|≤|B| oppure |B|≤|A|) e il teorema di **Schröder-Bernstein**: |A|≤|B| e |B|≤|A| implicano |A|=|B|; entrambi sono enunciati senza dimostrazione.
 
-La distinzione fra finito e infinito si dà senza nominare i numeri: A è **infinito** se è equipollente a un suo sottoinsieme proprio (cioè esiste f: A→A iniettiva non suriettiva), **finito** se ogni f: A→A iniettiva è biettiva. Per un A finito, quindi, f: A→A è iniettiva ⇔ suriettiva ⇔ biettiva (Prop 3.6, estesa a dominio e codominio equipollenti). I prototipi dei finiti sono gli insiemi I_n = {1,...,n}: I_m ≈ I_n ⇔ m=n, ogni finito non vuoto è equipollente a un I_n (e si pone |A|=n), mentre ogni infinito X ha |N| ≤ |X|.
+La distinzione fra finito e infinito si dà senza nominare i numeri: A è **infinito** se è equipollente a un suo sottoinsieme proprio (cioè esiste f: A→A iniettiva non suriettiva), **finito** se ogni f: A→A iniettiva è biettiva. Per un A finito, quindi, f: A→A è iniettiva ⇔ suriettiva ⇔ biettiva (Prop 3.6, estesa a dominio e codominio equipollenti). I prototipi dei finiti sono gli insiemi $I_n$ = {1,...,n}: $I_m$ ≈ $I_n$ ⇔ m=n, ogni finito non vuoto è equipollente a un $I_n$ (e si pone |A|=n), mentre ogni infinito X ha |N| ≤ |X|.
 
-Da qui discende il **principio dei cassetti (o dei piccioni)**: se |A|>|B| non esiste alcuna f: A→B iniettiva, cioè con più piccioni che gabbie una gabbia ne contiene almeno due. Esempio: 10001 smartphone con PIN a 4 cifre (10⁴ PIN possibili) implicano che due abbiano lo stesso PIN.
+Da qui discende il **principio dei cassetti (o dei piccioni)**: se |A|>|B| non esiste alcuna f: A→B iniettiva, cioè con più piccioni che gabbie una gabbia ne contiene almeno due. Esempio: 10001 smartphone con PIN a 4 cifre ($10^{4}$ PIN possibili) implicano che due abbiano lo stesso PIN.
 
 Un insieme è **numerabile** se è equipollente a N, cioè si può elencare come successione. Di Cantor si ricordano solo gli enunciati: esistono infiniti non numerabili, R non è numerabile e |P(X)| > |X|.
 
@@ -38,9 +38,9 @@ Nelle applicazioni aritmetiche i numeri ≤ N divisibili per k sono ⌊N/k⌋, e
 
 ## 3. Metodo delle scelte successive
 
-Il principio base del conteggio è la **Prop 3.16**: |A1×...×Ak| = n1·n2·...·nk. Tradotto in regola pratica: una situazione che si ottiene con k scelte successive, con n_i possibilità alla scelta i, ha n1·...·nk esiti, anche se gli insiemi di scelta dipendono dalle scelte precedenti, purché ne dipenda solo l'insieme e non il NUMERO di possibilità. Se invece le alternative sono **in alternativa** (casi che si escludono a vicenda) si **sommano**, non si moltiplicano. Esempio dei gelati con 1, 2, 3 o 4 gusti su 14: C(n,1)+C(n,2)+C(n,3)+C(n,4); Mori calcola con n=14 (14+91+364+1001 = 1470) ma il testo dice 16 tipi e riporta 1460: dati incoerenti nel testo di Mori (fonte: Mori, cap. 3, Esercizi es. 3; calcolo verificato: con n=14 la somma è 1470, con 16 tipi sarebbe 2516); la regola somma-per-casi resta valida.
+Il principio base del conteggio è la **Prop 3.16**: |A1×...×Ak| = n1·n2·...·nk. Tradotto in regola pratica: una situazione che si ottiene con k scelte successive, con $n_i$ possibilità alla scelta i, ha n1·...·nk esiti, anche se gli insiemi di scelta dipendono dalle scelte precedenti, purché ne dipenda solo l'insieme e non il NUMERO di possibilità. Se invece le alternative sono **in alternativa** (casi che si escludono a vicenda) si **sommano**, non si moltiplicano. Esempio dei gelati con 1, 2, 3 o 4 gusti su 14: C(n,1)+C(n,2)+C(n,3)+C(n,4); Mori calcola con n=14 (14+91+364+1001 = 1470) ma il testo dice 16 tipi e riporta 1460: dati incoerenti nel testo di Mori (fonte: Mori, cap. 3, Esercizi es. 3; calcolo verificato: con n=14 la somma è 1470, con 16 tipi sarebbe 2516); la regola somma-per-casi resta valida.
 
-Applicata alle funzioni, la regola dà **|F_{A,B}| = nᵐ** se |A|=m e |B|=n, perché per ogni elemento di A si sceglie l'immagine fra n possibilità. Esempi: PIN a 4 cifre = 10⁴; targhe con 3 lettere e 4 cifre = 26³·10⁴ = 17.576.000; menù 8·10·12·6 = 5760.
+Applicata alle funzioni, la regola dà **|$F_{A,B}$| = nᵐ** se |A|=m e |B|=n, perché per ogni elemento di A si sceglie l'immagine fra n possibilità. Esempi: PIN a 4 cifre = $10^{4}$; targhe con 3 lettere e 4 cifre = $26^{3}$·$10^{4}$ = 17.576.000; menù 8·10·12·6 = 5760.
 
 ## 4. Ordinamenti, anagrammi, disposizioni
 
@@ -49,11 +49,11 @@ Applicata alle funzioni, la regola dà **|F_{A,B}| = nᵐ** se |A|=m e |B|=n, pe
 <tr>
 <td valign="top">
 
-Quanti modi ci sono di mettere in fila degli oggetti? Un **ordinamento** di A (|A|=n) è una biezione I_n→A, e il loro numero è **n!** (n·(n-1)·...·1, con 0!=1). Se la lista ha elementi ripetuti, gli ordinamenti che differiscono solo per lo scambio di simboli uguali vanno identificati: il numero di **anagrammi** di una lista di lunghezza n in cui il simbolo i compare r_i volte è **n!/(r1!·r2!·...·rk!)**. MATEMATICA: 10!/(3!·2!·2!) = 151.200 (M×2, A×3, T×2). ORO: 3!/2! = 3.
+Quanti modi ci sono di mettere in fila degli oggetti? Un **ordinamento** di A (|A|=n) è una biezione $I_n$→A, e il loro numero è **n!** (n·(n-1)·...·1, con 0!=1). Se la lista ha elementi ripetuti, gli ordinamenti che differiscono solo per lo scambio di simboli uguali vanno identificati: il numero di **anagrammi** di una lista di lunghezza n in cui il simbolo i compare $r_i$ volte è **n!/(r1!·r2!·...·rk!)**. MATEMATICA: 10!/(3!·2!·2!) = 151.200 (M×2, A×3, T×2). ORO: 3!/2! = 3.
 
 Se si scelgono k elementi di A (|A|=n) tenendo conto dell'ordine, i casi sono due:
-- la **disposizione con ripetizione** di ordine k è una k-pla di A^k, ovvero una funzione I_k→A, e ce ne sono **nᵏ**;
-- la **disposizione semplice** (senza ripetizioni, cioè una funzione iniettiva I_k→A) si conta con **D_{n,k} = n(n-1)...(n-k+1) = n!/(n-k)!**; vale 0 se k>n e coincide con gli ordinamenti se k=n.
+- la **disposizione con ripetizione** di ordine k è una k-pla di $A^k$, ovvero una funzione $I_k$→A, e ce ne sono **nᵏ**;
+- la **disposizione semplice** (senza ripetizioni, cioè una funzione iniettiva $I_k$→A) si conta con **$D_{n,k}$ = n(n-1)...(n-k+1) = n!/(n-k)!**; vale 0 se k>n e coincide con gli ordinamenti se k=n.
 
 </td>
 <td valign="top" align="center">
@@ -65,20 +65,20 @@ Se si scelgono k elementi di A (|A|=n) tenendo conto dell'ordine, i casi sono du
 </table>
 
 
-Esempi: podio con 12 atleti = D_{12,3} = 12·11·10 = 1320 (Mori riporta "101.320" per refuso di estrazione: il valore corretto è 1320); password di 8 simboli distinti su 36 = 36·35·...·29.
+Esempi: podio con 12 atleti = $D_{12,3}$ = 12·11·10 = 1320 (Mori riporta "101.320" per refuso di estrazione: il valore corretto è 1320); password di 8 simboli distinti su 36 = 36·35·...·29.
 
 ## 5. Combinazioni e coefficienti binomiali
 
-Quando l'ordine non conta si parla di **combinazioni**: una combinazione semplice di ordine k è un sottoinsieme C⊆A con |C|=k. Ogni sottoinsieme proviene da k! disposizioni (i suoi riordinamenti), quindi **C_{n,k} = D_{n,k}/k! = n(n-1)...(n-k+1)/k!**. Questo numero si scrive con il **coefficiente binomiale** C(n,k) = n!/(k!(n-k)!) per 0≤k≤n, e C(n,k) = C_{n,k}.
+Quando l'ordine non conta si parla di **combinazioni**: una combinazione semplice di ordine k è un sottoinsieme C⊆A con |C|=k. Ogni sottoinsieme proviene da k! disposizioni (i suoi riordinamenti), quindi **$C_{n,k}$ = $D_{n,k}$/k! = n(n-1)...(n-k+1)/k!**. Questo numero si scrive con il **coefficiente binomiale** C(n,k) = n!/(k!(n-k)!) per 0≤k≤n, e C(n,k) = $C_{n,k}$.
 
 I coefficienti binomiali hanno proprietà che si dimostrano con argomenti di conteggio, più che con calcoli:
 - **casi banali**: C(n,0)=C(n,n)=1;
-- **simmetria** C(n,k)=C(n,n-k): nasce dal fatto che passare al complementare, S↦C_A(S), è una biezione fra sottoinsiemi di cardinalità k e n-k; è utile per semplificare i calcoli, ad esempio C(100,96)=C(100,4)=3.921.225;
+- **simmetria** C(n,k)=C(n,n-k): nasce dal fatto che passare al complementare, S↦$C_A$(S), è una biezione fra sottoinsiemi di cardinalità k e n-k; è utile per semplificare i calcoli, ad esempio C(100,96)=C(100,4)=3.921.225;
 - **formula di Stiefel** C(n,k) = C(n-1,k) + C(n-1,k-1): si dimostra fissando a∈A, perché i sottoinsiemi di k elementi o contengono a (C(n-1,k-1) modi) oppure non lo contengono (C(n-1,k) modi).
 
 Stiefel genera il **triangolo di Pascal-Tartaglia** (riga n: 1, n, ..., n, 1).
 
-Il **binomio di Newton** (x+y)ⁿ = Σ_{k=0}^n C(n,k) x^{n-k} y^k spiega il nome "coefficiente binomiale": nell'espansione del prodotto di n fattori, il termine in yᵏ si ottiene scegliendo la y in k dei n fattori, e questo si può fare in C(n,k) modi. Lo si può dimostrare anche per induzione usando Stiefel. Ponendo x=y=1 si ottiene **Σ_{k=0}^n C(n,k) = 2ⁿ**, che è anche il conteggio |P(A)| = Σ_k |P_k(A)| con P_k = sottoinsiemi di cardinalità k. Es. 3.19: per n dispari Σ_{k pari}C(n,k) = Σ_{k dispari}C(n,k) = 2ⁿ⁻¹; per x=1, y=-1 Newton dà 0 se n≥1, quindi Σ pari = Σ dispari anche per n pari.
+Il **binomio di Newton** (x+y)^{n} = $\sum _{k=0}^n$ C(n,k) $x^{n-k}$ $y^k$ spiega il nome "coefficiente binomiale": nell'espansione del prodotto di n fattori, il termine in yᵏ si ottiene scegliendo la y in k dei n fattori, e questo si può fare in C(n,k) modi. Lo si può dimostrare anche per induzione usando Stiefel. Ponendo x=y=1 si ottiene **$\sum _{k=0}^n$ C(n,k) = $2^{n}*$*, che è anche il conteggio |P(A)| = $\sum _k$ |$P_k$(A)| con $P_k$ = sottoinsiemi di cardinalità k. Es. 3.19: per n dispari Σ_{k pari}C(n,k) = Σ_{k dispari}C(n,k) = $2^{n-1}$; per x=1, y=-1 Newton dà 0 se n≥1, quindi Σ pari = Σ dispari anche per n pari.
 
 Nei problemi misti le scelte indipendenti si moltiplicano. Es. (Mori) scegliere 5 ballerini su 9 e 3 ballerine su 11: C(9,5)·C(11,3) = 126·165 = 20790 (calcolo verificato; Mori, cap. 3, Esercizi es. 1, scrive C(9,5)=C(9,4)=84 e riporta 13860 = 84·165, ma C(9,5)=C(9,4)=126 mentre 84 è C(9,3): errore nel testo di Mori) (fonte: Mori, cap. 3, Esercizi). Formazione calcio: 3·126·35·6 = 79.380.
 
@@ -121,7 +121,7 @@ La combinatoria è quasi sempre il Problema 2 dell'esame di Discreta: stringhe c
 ## Cose da saper fare all'esame
 - Riconoscere il tipo di problema (tabella decisionale) e calcolare; distinguere "e" (prodotto) da "oppure" (somma di casi esclusivi).
 - Usare inclusione-esclusione per contare numeri divisibili / insiemi con attributi; ricavare un'intersezione incognita.
-- Dimostrare: Stiefel, Newton, Σ C(n,k)=2ⁿ, C(n,k)=C(n,n-k), formula degli anagrammi, |F_{A,B}|=nᵐ, |P(A)|=2ⁿ.
+- Dimostrare: Stiefel, Newton, Σ C(n,k)=$2^{n}$, C(n,k)=C(n,n-k), formula degli anagrammi, |$F_{A,B}$|=nᵐ, |P(A)|=$2^{n}$.
 - Applicare il principio dei piccioni (trovare il numero minimo che garantisce una coincidenza).
 - Definizioni di finito/infinito, numerabile, equipollente; saper mostrare Z, Q, N×N numerabili.
 

@@ -22,7 +22,7 @@ Appunti scritti in prosa discorsiva (formule, tabelle ed esempi svolti inclusi),
 | 14-teorema-spettrale-e-forme-quadratiche | Prodotti hermitiani, autoaggiunti, teorema spettrale, forma canonica e carattere, Cartesio, Sylvester, coniche |
 | 15-esercizi-endomorfismi | Esercizi risolti: compiti 2022 su endomorfismi, diagonalizzazione con parametro, esercizi misti |
 | [16-esami-md-2024-2025](16-esami-md-2024-2025.md) | Esami di Matematica Discreta 2024-25: formato, quiz tipo, problemi su aritmetica modulare, gruppi, permutazioni, combinatoria |
-| [17-esami-ag-2024-2025](17-esami-ag-2024-2025.md) | Esami di Algebra Lineare 2024-25: formato, quiz tipo, problemi su autovalori con parametro, geometria in R^3, Gram-Schmidt |
+| [17-esami-ag-2024-2025](17-esami-ag-2024-2025.md) | Esami di Algebra Lineare 2024-25: formato, quiz tipo, problemi su autovalori con parametro, geometria in $R^3$, Gram-Schmidt |
 
 ## Ordine di ripasso consigliato
 
@@ -40,8 +40,8 @@ Per il secondo appello (2027-02-05) vale lo stesso ordine, usando le due settima
 
 ## Lacune note
 
-- **Programma ufficiale**: gli esami 2024-25 del Moodle (file 16 e 17) confermano come argomenti d'esame aritmetica modulare, gruppi ciclici e omomorfismi, permutazioni, combinatoria, complessi, spazi vettoriali, autovalori con parametro, geometria in R^3 e Gram-Schmidt; restano non confermati forme quadratiche, formula di Grassmann e Cartesio (non compaiono nei quiz letti).
+- **Programma ufficiale**: gli esami 2024-25 del Moodle (file 16 e 17) confermano come argomenti d'esame aritmetica modulare, gruppi ciclici e omomorfismi, permutazioni, combinatoria, complessi, spazi vettoriali, autovalori con parametro, geometria in $R^3$ e Gram-Schmidt; restano non confermati forme quadratiche, formula di Grassmann e Cartesio (non compaiono nei quiz letti).
 - **Programma ufficiale, nota precedente**: non confermato. Va verificato quali argomenti sono davvero in programma (in particolare forme quadratiche, formula di Grassmann, Cartesio sugli autovalori) [DA VERIFICARE].
 - **Uso del Facchini**: va confermato se e come il testo sia richiesto o consigliato; gli appunti attuali si basano su Buzano-Radeschi e materiale Manno [DA VERIFICARE].
-- **File 12-15 ora presenti**, ma con limiti: il criterio di Sylvester e le coniche non sono in Buzano (solo Cartesio/coniche nelle slide Manno, Sylvester in nessuna fonte letta) [DA VERIFICARE se in programma]; le posizioni reciproche di rette e piani (file 12) sono ricavate dai metodi delle lezioni [INT]; i compiti 2022_07 e 2022_09 non sono stati risolti (coefficienti illeggibili) e la matrice A_k di febbraio 2022 potrebbe essere letta male; i quiz di geometria dei compiti 2019-2023 sono stati letti solo in parte.
+- **File 12-15 ora presenti**, ma con limiti: il criterio di Sylvester e le coniche non sono in Buzano (solo Cartesio/coniche nelle slide Manno, Sylvester in nessuna fonte letta) [DA VERIFICARE se in programma]; le posizioni reciproche di rette e piani (file 12) sono ricavate dai metodi delle lezioni [INT]; i compiti $2022_{07}$ e $2022_{09}$ non sono stati risolti (coefficienti illeggibili) e la matrice $A_k$ di febbraio 2022 potrebbe essere letta male; i quiz di geometria dei compiti 2019-2023 sono stati letti solo in parte.
 - Punti aperti già segnati nei singoli file: dimostrazione del teorema della dimensione, della formula dim W + dim W^⊥ = dim V, rk(A·ᵗA)=rk(A), formula di Grassmann; alcuni esercizi (8.17, 9.13-9.14, 10.9-10.10, 12.10-12.11, 15.14) hanno entrate illeggibili nell'estrazione.

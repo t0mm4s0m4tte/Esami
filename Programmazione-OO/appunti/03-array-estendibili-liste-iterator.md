@@ -35,7 +35,7 @@ public class Node { private int elem; private Node next;
   public Node(int elem, Node next){...}  // get/set per entrambi }
 ```
 
-Il modo giusto di pensare a una lista è la sua **definizione induttiva**: il caso base è la lista vuota, rappresentata da `null`; il passo è un nodo seguito dal resto della lista, senza cicli, con la catena terminata da null. Si entra sempre dalla **testa**. Questa struttura ricorsiva spiega perché le operazioni sulle liste si scrivono altrettanto naturalmente in forma iterativa e ricorsiva (sezione 3). Il confronto con l'array è una traduzione termine a termine: all'indice i corrisponde il nodo p, a `i++` corrisponde `p = p.getNext()`, la fine è length per l'array e null per la lista. L'accesso all'elemento costa O(1) nell'array e O(n) nella lista, ma la lista non ha dimensione predefinita e i suoi nodi possono stare sparsi in memoria.
+Il modo giusto di pensare a una lista è la sua **definizione induttiva**: il caso base è la lista vuota, rappresentata da `null`; il passo è un nodo seguito dal resto della lista, senza cicli, con la catena terminata da null. Si entra sempre dalla **testa**. Questa struttura ricorsiva spiega perché le operazioni sulle liste si scrivono altrettanto naturalmente in forma iterativa e ricorsiva (sezione 3). Il confronto con l'array è una traduzione termine a termine: all'indice i corrisponde il nodo p, a `i++` corrisponde `p = p.getNext()`, la fine è length per l'array e null per la lista. L'accesso all'elemento costa $O(1)$ nell'array e $O(n)$ nella lista, ma la lista non ha dimensione predefinita e i suoi nodi possono stare sparsi in memoria.
 
 Il primo uso è **DynamicStack**, una pila senza limite di capacità il cui unico campo è `top`. L'invariante dice che la pila è vuota se e solo se `top == null`; altrimenti top è la testa e ogni nodo punta al precedente fino a null. Le operazioni diventano immediate:
 - `push(x)`: `top = new Node(x, top)`;
@@ -69,7 +69,7 @@ Per **costruire** `{10,20,30,40}` si procede all'indietro, per inserimento in te
 ## 4. MiniLinkedList e Iterator (Lez. 15)
 MiniLinkedList incapsula la lista in una classe con i campi `first` (il Node di testa) e `size`, e i metodi posizionali `get(i)`, `set(i,x)`, `add(i,x)`, `remove(i)`. Tutti poggiano su `private Node node(i)`, che non va esposto: l'invariante è che size coincida con il numero di nodi raggiungibili da first, e restituire nodi darebbe al client la possibilità di romperla. Per lo stesso motivo rendere `first` pubblico sarebbe un leak di riferimenti (vedi file 02).
 
-Il problema è il costo. L'accesso posizionale costa O(i), quindi scorrere la lista con `for + get(k)` fa `0+1+...+(n-1) = n(n-1)/2` passi, cioè **O(n^2)**. La soluzione è il pattern **Iterator**: un oggetto cursore che ricorda dove si è arrivati. Vive nello **heap**, come oggetto persistente con un campo privato `next`, e offre `hasNext()` e `next()` (restituisce il valore e avanza), per una scansione **O(n)**. Non va confuso con la variabile `temp` di un metodo, che è locale, sta nello stack e vive solo durante quella chiamata. La regola pratica è: mai scorrere una lista con `get(i)`, usare l'iteratore.
+Il problema è il costo. L'accesso posizionale costa $O(i)$, quindi scorrere la lista con `for + get(k)` fa `0+1+...+(n-1) = n(n-1)/2` passi, cioè **$O(n^2)$**. La soluzione è il pattern **Iterator**: un oggetto cursore che ricorda dove si è arrivati. Vive nello **heap**, come oggetto persistente con un campo privato `next`, e offre `hasNext()` e `next()` (restituisce il valore e avanza), per una scansione **$O(n)$**. Non va confuso con la variabile `temp` di un metodo, che è locale, sta nello stack e vive solo durante quella chiamata. La regola pratica è: mai scorrere una lista con `get(i)`, usare l'iteratore.
 
 ## 5. Iterable / Iterator (Lez. 20)
 Java formalizza il pattern con due interfacce: `Iterable<E>` (offre `iterator()`) e `Iterator<E>` (offre `hasNext()` e `next()`). Il ciclo `for (T x : coll)` è solo zucchero sintattico, tradotto in `iterator()` seguito da `while(hasNext()) { x = next(); ... }`. Anche gli array supportano il foreach (secondo il doc "la classe Arrays implementa Iterable" [DA VERIFICARE: in Java gli array hanno foreach per costrutto del linguaggio, non perché implementino Iterable]). I tipi generici richiedono i wrapper (`Integer`), e l'autoboxing converte automaticamente.
@@ -91,7 +91,7 @@ Due esercizi d'esame sulle liste concatenate sono svolti, con il codice original
 - Scrivere iterativo e ricorsivo: length, sum, max, member, equals, sorted, toString su Node.
 - Implementare add/remove di ArrayExt (direzione dei cicli!) e dire perché length>0.
 - Disegnare push/pop di DynamicStack sullo heap; spiegare perché toString usa `temp`.
-- Spiegare O(n^2) del for-con-get e come l'Iterator lo porta a O(n); implementare un Iterator per una lista.
+- Spiegare $O(n^2)$ del for-con-get e come l'Iterator lo porta a $O(n)$; implementare un Iterator per una lista.
 - Scrivere `compareTo` lessicografico.
 
 ## Dubbi

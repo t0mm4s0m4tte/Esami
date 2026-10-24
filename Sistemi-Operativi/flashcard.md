@@ -333,7 +333,7 @@ D: Esercizio: processo di 72.766 B, pagina da 2.048 B. Pagine e frammentazione i
 R: 35 pagine piene piu 1.086 B: 36 pagine. Frammentazione interna = 2.048 - 1.086 = 962 B.
 
 D: Esercizio: indirizzi a 32 bit, pagine da 4 KB, voce da 4 B. Dimensione della page table?
-R: Offset 12 bit, p 20 bit: 2^20 pagine x 4 B = 4 MB per processo.
+R: Offset 12 bit, p 20 bit: $2^{20}$ pagine x 4 B = 4 MB per processo.
 
 D: Cos'e il TLB e formula dell'EAT.
 R: Cache associativa pagina->frame: hit evita l'accesso alla page table, miss richiede l'accesso e aggiorna il TLB. Con memoria a 100 ns e hit ratio a: EAT = a*100 + (1-a)*200 (a=80%: 120 ns; a=99%: 101 ns). [INT] Se il TLB ha costo non nullo, si somma il tempo di ricerca.
@@ -484,7 +484,7 @@ D: Crittografia simmetrica vs asimmetrica.
 R: Simmetrica: stessa chiave (DES insicuro, 3DES, AES, RC4); veloce ma problema di distribuzione della chiave. Asimmetrica: coppia pubblica/privata (RSA, basato sulla difficolta di fattorizzare); si usa per scambiare chiavi simmetriche.
 
 D: Esercizio RSA: p=7, q=13, ke=5, kd=29, m=69.
-R: N=91, (p-1)(q-1)=72, 5*29=145=2*72+1. Cifratura: 69^5 mod 91 = 62. Decifratura: 62^29 mod 91 = 69.
+R: N=91, (p-1)(q-1)=72, 5*29=145=2*72+1. Cifratura: $69^5$ mod 91 = 62. Decifratura: $62^{29}$ mod 91 = 69.
 
 D: MAC vs firma digitale vs certificato.
 R: MAC = H(msg + chiave segreta): integrita e autenticita. Firma digitale = hash cifrato con la chiave privata, verificabile con la pubblica: aggiunge non ripudio. Certificato firmato da una CA: lega un'identita a una chiave pubblica, difende dal man-in-the-middle.

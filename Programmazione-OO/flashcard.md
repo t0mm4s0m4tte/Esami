@@ -128,7 +128,7 @@ R: Una sentinella pari a numContacts (primo indice non valido), preferibile a -1
 D: Comportamento di add, changeName, changeEmail, findEmail in AddressBook.
 R: add: false se nome duplicato o rubrica piena. changeName: false se origine assente o nuovo nome già presente. changeEmail: false se contatto assente. findEmail: `""` se assente.
 
-D: Rimozione O(1) in AddressBook: come funziona?
+D: Rimozione $O(1)$ in AddressBook: come funziona?
 R: Si trova i, si decrementa numContacts e si fa `contacts[i] = contacts[numContacts]` (l'ordine non conta).
 
 D: AddressBook [c0,c1,c2], rimuovo c0: com'è l'array e cosa succede a c0 e all'alias in fondo?
@@ -170,7 +170,7 @@ D: Definizione induttiva di lista concatenata.
 R: Caso base: lista vuota = null. Passo: un nodo (elem, next) seguito dal resto della lista, senza cicli, catena terminata da null. Si entra sempre dalla testa.
 
 D: Traduzione array -> lista: indice, i++, fine?
-R: Indice i = nodo p; `i++` = `p = p.getNext()`; fine: `length` per l'array, `null` per la lista. Accesso: O(1) array, O(n) lista.
+R: Indice i = nodo p; `i++` = `p = p.getNext()`; fine: `length` per l'array, `null` per la lista. Accesso: $O(1)$ array, $O(n)$ lista.
 
 D: DynamicStack: invariante e operazioni push/pop.
 R: Pila vuota sse `top == null`; altrimenti top è la testa e ogni nodo punta al precedente fino a null. `push(x): top = new Node(x, top)`; pop salva `top.getElem()` poi `top = top.getNext()`. (Codice ricostruito nel doc, coerente con la descrizione.)
@@ -205,11 +205,11 @@ R: All'indietro, inserimento in testa: `q=new Node(40,null); q=new Node(30,q); q
 D: MiniLinkedList: invariante e perché `node(i)` è private?
 R: size = numero di nodi raggiungibili da first. Esporre nodi o first darebbe al client modo di romperla (leak di riferimenti).
 
-D: Perché `for + get(k)` su una lista è O(n^2)?
-R: get(k) costa O(k): somma 0+1+...+(n-1) = n(n-1)/2 passi.
+D: Perché `for + get(k)` su una lista è $O(n^2)$?
+R: get(k) costa $O(k)$: somma 0+1+...+(n-1) = n(n-1)/2 passi.
 
 D: Iterator: cos'è, dove vive e differenza dalla variabile `temp` di un metodo?
-R: Oggetto cursore nello heap con campo privato `next`, offre hasNext() e next() (restituisce il valore e avanza): scansione O(n). `temp` è locale, nello stack, vive solo durante la chiamata.
+R: Oggetto cursore nello heap con campo privato `next`, offre hasNext() e next() (restituisce il valore e avanza): scansione $O(n)$. `temp` è locale, nello stack, vive solo durante la chiamata.
 
 D: Come viene tradotto `for (T x : coll)`?
 R: Zucchero sintattico per `iterator()` seguito da `while(hasNext()){ x = next(); ... }`. Richiede che coll sia Iterable.
@@ -330,7 +330,7 @@ R: `@Override public boolean equals(Object o){ if(!(o instanceof Animal)) return
 ## 05 - Alberi di ricerca
 
 D: Invariante del BST e requisito sugli elementi.
-R: Sinistra < radice < destra, senza duplicati; serve un ordine totale (Comparable). La ricerca scarta metà albero a ogni confronto: O(log n) nel caso medio.
+R: Sinistra < radice < destra, senza duplicati; serve un ordine totale (Comparable). La ricerca scarta metà albero a ogni confronto: $O(\log n)$ nel caso medio.
 
 D: Perché Leaf al posto di null in Tree/Leaf/Branch?
 R: Elimina i null-check: grazie al dynamic binding ogni chiamata trova un oggetto che sa rispondere e il caso base si scrive nella Leaf. Le Leaf possono essere una sola istanza condivisa con più riferimenti.
@@ -351,7 +351,7 @@ D: remove(x) con due figli: come si procede?
 R: Si sostituisce l'elemento con `left.max()` e poi `left = left.remove(left.max())` per eliminare il duplicato creato. [DA VERIFICARE: il codice di remove è ricostruito; il caso con un solo figlio Leaf non è descritto esplicitamente (logicamente si restituisce l'altro sottoalbero).]
 
 D: Dipendenza della forma del BST dall'ordine di inserimento.
-R: Interi crescenti = catena a destra; stringhe decrescenti = catena a sinistra; valori di Random.nextDouble = albero circa bilanciato (solo allora O(log n) è realistica).
+R: Interi crescenti = catena a destra; stringhe decrescenti = catena a sinistra; valori di Random.nextDouble = albero circa bilanciato (solo allora $O(\log n)$ è realistica).
 
 D: Ordine e uso delle quattro visite.
 R: Pre (R,SX,DX): clonazione. In (SX,R,DX): BST in ordine crescente. Post (SX,DX,R): valutazione di espressioni. Per livelli (BFS): giochi come gli scacchi.
@@ -469,4 +469,4 @@ D: Orale: perché un getter può rompere l'incapsulamento?
 R: Se restituisce il riferimento a un campo mutabile (security leak): il client ottiene un alias e altera lo stato privato. Difesa: copia difensiva.
 
 D: Orale: cosa risolve il pattern Iterator rispetto a `for + get(i)`?
-R: Evita il costo O(n^2) (get(i) è O(i)): il cursore ricorda dove si è arrivati, scansione O(n).
+R: Evita il costo $O(n^2)$ (get(i) è $O(i)$): il cursore ricorda dove si è arrivati, scansione $O(n)$.

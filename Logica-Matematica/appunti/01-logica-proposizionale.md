@@ -25,7 +25,7 @@ La logica proposizionale studia come la verità di una frase composta dipende so
 | 0 1 | 1 | 0 | 1 | 1 | 0 | 1 | 1 | 0 |
 | 0 0 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 1 |
 
-Con k lettere servono 2^k righe, e vale una regola di metodo che costa punti se violata: per decidere questioni che coinvolgono più formule (le premesse e la conclusione di una conseguenza, per esempio) si costruisce una sola tavola con tutte le colonne, mai tavole separate, perché solo così si confrontano i valori sulla stessa interpretazione.
+Con k lettere servono $2^k$ righe, e vale una regola di metodo che costa punti se violata: per decidere questioni che coinvolgono più formule (le premesse e la conclusione di una conseguenza, per esempio) si costruisce una sola tavola con tutte le colonne, mai tavole separate, perché solo così si confrontano i valori sulla stessa interpretazione.
 
 Il connettivo che crea più confusione è l'implicazione. A→B è falsa soltanto quando A=1 e B=0; se l'antecedente è falso l'implicazione è vera per verità vacua, e non è richiesto alcun nesso causale tra A e B. Tra le altre corrispondenze con il linguaggio naturale conviene ricordare che "ma" e "però" si traducono con ∧, che ∨ è inclusivo (il latino *vel*) e che A⊕B (o esclusivo) equivale a ¬(A↔B). Quando i valori di verità vengono trattati come numeri, i connettivi diventano operazioni aritmetiche: v(¬P)=1-v(P); v(P∧Q)=min; v(P∨Q)=max; v(P→Q)=max{1-v(P),v(Q)}; v(P↔Q)=1-|v(P)-v(Q)|.
 
@@ -87,7 +87,7 @@ Va tenuta distinta la relazione ≡, che sta tra formule, dal connettivo ↔, ch
 Le tavole di verità, la classificazione tautologia/soddisfacibile/contraddizione e le conseguenze logiche sono esercitate in [file 08 §5](08-esercizi-ed-esami-svolti.md#5-logica-proposizionale-eserciziari): le leggi logiche (De Morgan, Peirce, Dummett, importazione), i ventidue esercizi "conseguenza o equivalenza" dei vecchi esami con il verdetto di ogni voce e il problema delle pizze (A, B, C) risolto come sistema di vincoli. Nei temi del 2026 la logica proposizionale compare nell'[Esercizio 1](08-esercizi-ed-esami-svolti.md#1-esercizio-1-quesiti-a-risposta-multipla) come quesiti V/F sulla soddisfacibilità di disgiunzioni e congiunzioni e sulla relazione ⊨ come preordine (23/09). La sintassi (ht, lh, parentesi) è nel [§9](08-esercizi-ed-esami-svolti.md#9-sintassi), con la convenzione che un atomo si scrive (A).
 
 ## Cose da saper fare all'esame
-- Costruire la tavola completa (2^k righe, colonne intermedie) e classificare: tautologia / soddisfacibile / contraddizione.
+- Costruire la tavola completa ($2^k$ righe, colonne intermedie) e classificare: tautologia / soddisfacibile / contraddizione.
 - Decidere P1..Pn ⊧ Q con **una tavola unica** o per assurdo (cerca controesempio); decidere P ≡ Q.
 - Calcolare ht, lh, albero sintattico, connettivo principale; ripristinare le parentesi dalle convenzioni.
 - Calcolare i*(P) per una i data (singola riga).

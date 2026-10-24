@@ -33,11 +33,11 @@ R: Lab 0-3 (superato con almeno 1) + teoria 0-30 (almeno 17), accesso alla teori
 
 ## 02 - Correttezza e algoritmi su array
 
-D: Che cosa sono P_IN e P_OUT?
-R: P_IN(x1..xn) descrive l'input e deve valere prima dell'esecuzione; P_OUT(x1..xn, y) lega input e output e deve valere dopo.
+D: Che cosa sono $P_{IN}$ e $P_{OUT}$?
+R: $P_{IN}$(x1..xn) descrive l'input e deve valere prima dell'esecuzione; $P_{OUT}$(x1..xn, y) lega input e output e deve valere dopo.
 
 D: Definisci correttezza parziale, terminazione e correttezza.
-R: Parziale: se P_IN vale e l'esecuzione termina con y, allora P_OUT(x,y) vale. Terminazione: per ogni input con P_IN vera l'esecuzione finisce. Corretta = parzialmente corretta + terminante.
+R: Parziale: se $P_{IN}$ vale e l'esecuzione termina con y, allora $P_{OUT}$(x,y) vale. Terminazione: per ogni input con $P_{IN}$ vera l'esecuzione finisce. Corretta = parzialmente corretta + terminante.
 
 D: Cosa significano a'[j] e (*py)' nelle specifiche?
 R: Il valore iniziale (prima dell'esecuzione) di a[j] e di *py.
@@ -51,14 +51,14 @@ R: Mostrando sul codice effettivo che a ogni iterazione ci si avvicina alla cond
 D: Quali sono i 4 passi del metodo di progettazione?
 R: (1) assunzioni sui dati, (2) casi da trattare con un esempio per caso, (3) condizione vera a ogni iterazione (invariante), (4) condizione finale. Si scrivono prima i commenti e poi il codice.
 
-D: Scrivi P_IN e P_OUT di MINIMO(int a[], int N).
-R: P_IN: N>0. P_OUT: il risultato è un elemento di a ed è il più piccolo.
+D: Scrivi $P_{IN}$ e $P_{OUT}$ di MINIMO(int a[], int N).
+R: $P_{IN}$: N>0. $P_{OUT}$: il risultato è un elemento di a ed è il più piccolo.
 
-D: Scrivi P_IN e P_OUT di cerca(arr, el), che restituisce un indice o -1.
-R: P_IN: N>0. P_OUT: se ris>=0 allora arr[ris]==el, altrimenti arr[i]!=el per ogni i in 0..N-1. Restituisce l'indice di UNA cella (el può comparire più volte).
+D: Scrivi $P_{IN}$ e $P_{OUT}$ di cerca(arr, el), che restituisce un indice o -1.
+R: $P_{IN}$: N>0. $P_{OUT}$: se ris>=0 allora arr[ris]==el, altrimenti arr[i]!=el per ogni i in 0..N-1. Restituisce l'indice di UNA cella (el può comparire più volte).
 
 D: Scrivi scambia_p(int *px, int *py) con specifica.
-R: P_IN: true. P_OUT: *px==(*py)' e *py==(*px)'. Corpo: int t=*px; *px=*py; *py=t;
+R: $P_{IN}$: true. $P_{OUT}$: *px==(*py)' e *py==(*px)'. Corpo: int t=*px; *px=*py; *py=t;
 
 D: Scrivi la ricerca binaria su array ordinato crescente.
 R: sn=0, dx=n-1; while(sn<=dx){ middle=(sn+dx)/2; if(el<arr[middle]) dx=middle-1; else if(arr[middle]<el) sn=middle+1; else return middle; } return -1;
@@ -70,7 +70,7 @@ D: Perché la ricerca binaria termina?
 R: La porzione [sn..dx] si restringe strettamente a ogni iterazione.
 
 D: Specifica e invariante dell'insertion sort.
-R: P_IN: n>=0. P_OUT: arr[0..n-1] ordinato con gli stessi elementi di arr'. Invariante: a[0..i-1] ordinato.
+R: $P_{IN}$: n>=0. $P_{OUT}$: arr[0..n-1] ordinato con gli stessi elementi di arr'. Invariante: a[0..i-1] ordinato.
 
 D: Scrivi insertionSort usando scambia.
 R: for(i=1;i<n;i++) insertion(arr,i); con insertion: while(i>0 && arr[i-1]>arr[i]){ scambia(arr,i-1,i); i--; } [DA VERIFICARE] forma esatta di insertion usata dalla docente (non è nelle slide).
@@ -232,7 +232,7 @@ D: Coda circolare: init con head=tail=0 ed enqueue che incrementa tail prima di 
 R: No: la prima cella scritta sarebbe la 1 e head=0 punterebbe a una cella vuota. Coerente: tail = MAX-1 in init, oppure enqueue scrive in tail e poi incrementa. Le slide hanno anche succ(Q->tail, MAX) con 2 argomenti: refuso.
 
 D: Coda con lista: perché si tengono head e tail?
-R: head per togliere e tail per aggiungere in O(1) senza scorrere la lista. Vuota quando head==NULL, mai piena.
+R: head per togliere e tail per aggiungere in $O(1)$ senza scorrere la lista. Vuota quando head==NULL, mai piena.
 
 D: Enqueue con lista: qual è l'ordine corretto?
 R: Q->tail->next = nuovo; poi Q->tail = nuovo; (prima aggancia, poi sposta tail). Se la coda è vuota: head = tail = nuovo.
@@ -247,7 +247,7 @@ D: Operazioni del set.
 R: elem, vuoto, init, cardinality, costruisci, crea_max, aggiungi, togli (prima occorrenza), togli_tutti.
 
 D: Set come lista vs come array?
-R: Lista: illimitato, aggiungi = inserzione in testa. Array: limitato, serve ricordare il numero di elementi. Con metadati (struct { lista dati; int numero; }) cardinality e vuoto sono O(1).
+R: Lista: illimitato, aggiungi = inserzione in testa. Array: limitato, serve ricordare il numero di elementi. Con metadati (struct { lista dati; int numero; }) cardinality e vuoto sono $O(1)$.
 
 D: Scrivi togli_elem ricorsiva per riferimento (esito 1/0/-1) e il suo difetto.
 R: if(L) if(*L) if((*L)->dato==el){ *L=(*L)->next; return 1;} else return togli_elem(&(*L)->next,el); else return 0; else return -1; Difetto: manca il free (t=*L; *L=t->next; free(t);).

@@ -39,10 +39,10 @@ Qualunque funzione data da una tabella di verità si può scrivere in due forme 
 Un esempio tipico è la funzione di maggioranza a 3 ingressi. Quando un ingresso non influenza l'uscita si parla di **don't care** (X): è un'informazione sfruttata per semplificare, per esempio nel controllo della ALU (file 07).
 
 ## Decoder
-Il decoder ha n ingressi e 2^n uscite, e per ogni combinazione degli ingressi esattamente una uscita è asserita (a 1). Si usa per abilitare un componente, per selezionare un banco di memoria o per scrivere un solo registro del register file. In Verilog: `assign out[k] = (in == k);`
+Il decoder ha n ingressi e $2^n$ uscite, e per ogni combinazione degli ingressi esattamente una uscita è asserita (a 1). Si usa per abilitare un componente, per selezionare un banco di memoria o per scrivere un solo registro del register file. In Verilog: `assign out[k] = (in == k);`
 
 ## Multiplexer (selettore)
-Il multiplexer è il complemento del decoder: ha 2^n ingressi dati, n linee di controllo e una sola uscita, che coincide con l'ingresso selezionato. Il mux 2:1 si scrive `C = (~S & A) | (S & B)`, ovvero `C = S ? B : A`. Si può realizzare con un decoder, una porta AND tra ciascun dato e la rispettiva uscita del decoder e un OR finale. Un mux a 32 bit non è altro che 32 mux a 1 bit con la stessa linea di controllo.
+Il multiplexer è il complemento del decoder: ha $2^n$ ingressi dati, n linee di controllo e una sola uscita, che coincide con l'ingresso selezionato. Il mux 2:1 si scrive `C = (~S & A) | (S & B)`, ovvero `C = S ? B : A`. Si può realizzare con un decoder, una porta AND tra ciascun dato e la rispettiva uscita del decoder e un OR finale. Un mux a 32 bit non è altro che 32 mux a 1 bit con la stessa linea di controllo.
 
 ## Addizionatori
 Il primo componente aritmetico è l'**half adder**, che somma due bit: Sum = a XOR b e Carry = a AND b. Non basta però per sommare numeri a più bit, perché manca l'ingresso del riporto. Il **full adder** (a, b, CarryIn) risolve il problema: Sum = a XOR b XOR CIn e CarryOut = (a·b) + (CIn·(a XOR b)); si realizza con due half adder più un OR dei due carry. Collegando in cascata più full adder, il CarryOut dell'i-esimo bit diventa il CarryIn dell'(i+1)-esimo: è il ripple carry.

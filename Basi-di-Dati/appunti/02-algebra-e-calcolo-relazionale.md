@@ -125,7 +125,7 @@ La corrispondenza con SQL è diretta: T = SELECT, L = FROM, F = WHERE, con i joi
 - Negazione: {p.(Cognome,Nome) | p(PAZIENTI) | ¬∃m(MEDICI)(m.Cognome=p.Cognome ∧ m.Nome=p.Nome)} ≡ ∀m(...)(m.Cognome≠p.Cognome ∨ m.Nome≠p.Nome) (De Morgan)
 - Divisione (pazienti ricoverati in ogni reparto): {p.* | p(PAZIENTI) | ∀r(REPARTI)(∃r'(RICOVERI)(r.COD=r'.Reparto ∧ p.COD=r'.PAZ))}; in SQL = doppio NOT EXISTS.
 - Con implicazione (autori mai unici firmatari): {a.* | a(AUTORI) | ∀f(FIRMA)(f.A=a.COD → ∃f'(FIRMA)(f'.P=f.P ∧ f'.A≠a.COD))}
-- Confronto tra tuple (capi i cui subalterni guadagnano tutti di più): {i.* | i(IMPIEGATI) | ∀o(ORGANIGRAMMA)(o.Capo=i.MATR → ∃i'(IMPIEGATI)(i'.MATR=o.Impiegato ∧ i'.Stipendio>i.Stipendio))}
+- Confronto tra tuple (capi i cui subalterni guadagnano tutti di più): {i.* | i(IMPIEGATI) | ∀$o(ORGANIGRAMMA)$(o.Capo=i.MATR → ∃i'(IMPIEGATI)(i'.MATR=o.Impiegato ∧ i'.Stipendio>i.Stipendio))}
 
 **Limiti**: il TRC non esprime l'unione in un'unica espressione, e né TRC né algebra esprimono la **ricorsione/chiusura transitiva**. Nonni e bisnonni si ottengono con un numero fisso di join, ma "antenati" no, perché il numero di passi non è noto in anticipo. Il rimedio è nelle CTE ricorsive di SQL moderno.
 

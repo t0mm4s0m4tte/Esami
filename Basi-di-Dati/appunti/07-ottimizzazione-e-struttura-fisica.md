@@ -22,7 +22,7 @@
 
 ## 1. Costo
 
-Tutta l'ottimizzazione parte da un fatto hardware: la RAM risponde in nanosecondi (50-70 ns), il disco o l'SSD in millisecondi (5-20 ms), un fattore di circa **10⁶**. Il tempo di una query è quindi dominato dal numero di accessi al disco, e l'obiettivo dell'ottimizzatore è **ridurre i trasferimenti di pagina**.
+Tutta l'ottimizzazione parte da un fatto hardware: la RAM risponde in nanosecondi (50-70 ns), il disco o l'SSD in millisecondi (5-20 ms), un fattore di circa **$10^{6}*$*. Il tempo di una query è quindi dominato dal numero di accessi al disco, e l'obiettivo dell'ottimizzatore è **ridurre i trasferimenti di pagina**.
 
 ## 2. Ottimizzazione
 
@@ -47,24 +47,24 @@ Per scegliere fra piani alternativi il DBMS ha bisogno di stimare le dimensioni 
 - VAL(A,r): numero di valori distinti di A;
 - NPAGE(r) = CARD(r)/fattore di bloccaggio.
 
-Da queste si ricava il **fattore di selettività f_p** di un predicato, cioè la frazione di tuple che lo soddisfa, assumendo una distribuzione uniforme:
+Da queste si ricava il **fattore di selettività $f_p^{*}$* di un predicato, cioè la frazione di tuple che lo soddisfa, assumendo una distribuzione uniforme:
 
 | Predicato | f |
 |---|---|
 | A = v | 1 / VAL(A,r) |
 | A ≤ v | (v − MIN) / (MAX − MIN) |
 | p1 ∧ p2 | f1 · f2 |
-| ¬p | 1 − f_p |
+| ¬p | 1 − $f_p$ |
 | p1 ∨ p2 | 1 − (1−f1)(1−f2) |
 
 Per i **join**, con vincolo FK→PK la cardinalità è quella del lato FK: \|r⋈s\| = CARD del lato FK (es. CARD(RICOVERI)). Nel caso generale di equi-join A=B: \|r ⋈ s\| ≈ min(1/VAL(A,r), 1/VAL(B,s)) · CARD(r) · CARD(s). Dopo una selezione, il numero di valori distinti si aggiorna come VAL_nuovo = min{VAL_vecchio, CARD_risultato}.
 
-**Caso di studio** che mostra quanto contino i passi: Pazienti 10⁵ tuple, VAL(Residenza)=100 → f=1/100; Ricoveri 10⁵, VAL(Inizio)=10 → f=1/10; Medici 10², con selezione su chiave MATR → 1 tupla.
+**Caso di studio** che mostra quanto contino i passi: Pazienti $10^{5}$ tuple, VAL(Residenza)=100 → f=1/100; Ricoveri $10^{5}$, VAL(Inizio)=10 → f=1/10; Medici $10^{2}$, con selezione su chiave MATR → 1 tupla.
 | Piano | Massa tuple | Motivo |
 |---|---|---|
-| Non ottimizzato (join su tabelle intere) | 10¹⁰ | prodotto 10⁵×10⁵ |
-| Selezioni spinte (passi 1-6) | 10⁷ | 10³ pazienti × 10⁴ ricoveri |
-| + associatività (Medici per primi) | 10⁶ | tabella con una sola tupla |
+| Non ottimizzato (join su tabelle intere) | $10^{10}$ | prodotto $10^{5}$×$10^{5}$ |
+| Selezioni spinte (passi 1-6) | $10^{7}$ | $10^{3}$ pazienti × $10^{4}$ ricoveri |
+| + associatività (Medici per primi) | $10^{6}$ | tabella con una sola tupla |
 
 Il miglioramento complessivo è di circa 10.000×.
 
@@ -78,7 +78,7 @@ I **metodi di accesso** sono:
 - **seriale**: pagine come nel file system, non ordinate;
 - **sequenziale**: ordinate su un attributo;
 - **tabellare**: con indici;
-- **diretto**: hash, O(1).
+- **diretto**: hash, $O(1)$.
 
 Con N = numero di pagine, i costi sono: **seriale** ricerca con successo (N+1)/2, insuccesso N; **sequenziale** insuccesso (N+1)/2, perché la ricerca si ferma superato il valore. Per tabelle grandi la soluzione sono gli indici.
 
@@ -89,7 +89,7 @@ L'indice più usato è il B+ albero. Rispetto al B-albero le chiavi dei nodi int
 - Tipo 2: ⟨k, RID⟩
 - Tipo 3: ⟨k, lista di RID⟩ (tipico dei secondari)
 
-L'efficienza è logaritmica: con m=100 e altezza 3 si indicizzano 10⁶ chiavi; con riempimento al 70% bastano comunque 3-4 accessi a pagina.
+L'efficienza è logaritmica: con m=100 e altezza 3 si indicizzano $10^{6}$ chiavi; con riempimento al 70% bastano comunque 3-4 accessi a pagina.
 
 Indicizzare tutto non conviene, perché ogni indice appesantisce INSERT/UPDATE/DELETE ("più indici ≠ più velocità"). Le **8 euristiche di progettazione fisica** codificano il buon senso:
 1. No indici su tabelle piccole (~10 pagine, già in RAM).
@@ -111,11 +111,11 @@ Il **join** è l'operatore più oneroso, e non va mai simulato con cicli nidific
 
 ## Esercizi svolti collegati
 
-Sei esercizi (cinque appelli più la simulazione) applicano il §2 e il §3 e sono tutti nel [file 09 §6](09-esercizi-ed-esami-svolti.md#6-ottimizzazione-logica-e-conteggio-delle-tuple-mosse), con la tabella dei costi prima e dopo l'ottimizzazione. Usano la spinta delle selezioni verso le foglie (passi 1-2), la selettività di uguaglianze, intervalli, negazioni e OR (la tabella di f_p) e la regola "join lungo chiave esterna = cardinalità del lato FK". Il tema 2025-09-10 aggiunge la selettività di un intervallo `Quantità ≥ 6`, che nella tabella del §3 è scritta solo per `A ≤ v`: con la stessa logica vale (MAX − c)/(MAX − MIN). L'organizzazione fisica, i B+ e l'ottimizzatore fisico (§4-§6) compaiono nello scritto solo come domande teoriche (B-tree contro B+-tree, 2026-06-11, vedi [§8](09-esercizi-ed-esami-svolti.md#8-domande-teoriche-a-risposta-aperta)) e non hanno esercizi numerici.
+Sei esercizi (cinque appelli più la simulazione) applicano il §2 e il §3 e sono tutti nel [file 09 §6](09-esercizi-ed-esami-svolti.md#6-ottimizzazione-logica-e-conteggio-delle-tuple-mosse), con la tabella dei costi prima e dopo l'ottimizzazione. Usano la spinta delle selezioni verso le foglie (passi 1-2), la selettività di uguaglianze, intervalli, negazioni e OR (la tabella di $f_p$) e la regola "join lungo chiave esterna = cardinalità del lato FK". Il tema 2025-09-10 aggiunge la selettività di un intervallo `Quantità ≥ 6`, che nella tabella del §3 è scritta solo per `A ≤ v`: con la stessa logica vale (MAX − c)/(MAX − MIN). L'organizzazione fisica, i B+ e l'ottimizzatore fisico (§4-§6) compaiono nello scritto solo come domande teoriche (B-tree contro B+-tree, 2026-06-11, vedi [§8](09-esercizi-ed-esami-svolti.md#8-domande-teoriche-a-risposta-aperta)) e non hanno esercizi numerici.
 
 ## Cose da saper fare all'esame
 - Applicare i 7 passi a un albero di parsificazione e disegnare l'albero ottimizzato.
-- Calcolare **f_p** di predicati composti, stimare la cardinalità di selezioni e join, confrontare due piani (ordine di grandezza della massa di tuple).
+- Calcolare **$f_p^{*}$* di predicati composti, stimare la cardinalità di selezioni e join, confrontare due piani (ordine di grandezza della massa di tuple).
 - Spiegare RID/array degli offset e l'indipendenza fisica.
 - Costi di accesso seriale/sequenziale; quando conviene un indice (fs<20%); tipi di data entry; perché B+ e non B.
 - Scegliere indici motivando con le 8 euristiche; selezione multipla via RID-intersezione vs indice più selettivo.

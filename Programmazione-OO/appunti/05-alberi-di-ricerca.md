@@ -12,7 +12,7 @@ Fonte: doc Appunti (Lez. 17, 18, 19, 23 es. 3-4).
 - [Dubbi](#dubbi)
 
 ## 1. Struttura
-Un albero binario di ricerca (BST) è, come la lista, una struttura definita induttivamente: o è vuoto, oppure è una radice con due sottoalberi. L'ordinamento si impone con l'**invariante** "sinistra < radice < destra", senza duplicati, e richiede quindi un ordine totale sugli elementi (Comparable). Il vantaggio è la ricerca: a ogni confronto si scarta metà dell'albero, per un costo O(log n) nel caso medio.
+Un albero binario di ricerca (BST) è, come la lista, una struttura definita induttivamente: o è vuoto, oppure è una radice con due sottoalberi. L'ordinamento si impone con l'**invariante** "sinistra < radice < destra", senza duplicati, e richiede quindi un ordine totale sugli elementi (Comparable). Il vantaggio è la ricerca: a ogni confronto si scarta metà dell'albero, per un costo $O(\log n)$ nel caso medio.
 
 La scelta progettuale di questo modello è rappresentare l'albero con una `abstract class Tree` e due sottoclassi: `Leaf`, che è l'albero vuoto e non contiene dati, e `Branch`, con i campi `elem`, `left`, `right`. Usare **Leaf al posto di null** elimina i null-check: grazie al dynamic binding (file 04) ogni chiamata trova sempre un oggetto che sa rispondere, e il caso base della ricorsione si scrive nella Leaf. Per questo motivo le Leaf possono anche essere **una sola istanza condivisa** nello heap, con più riferimenti che puntano ad essa (ad esempio 5).
 
@@ -28,7 +28,7 @@ L'`insert` scende fino a una Leaf e la sostituisce con un Branch; il punto chiav
 
 Da qui nasce la **regola d'oro del client**: scrivere sempre `t = t.insert(x); t = t.remove(x);`. Ignorare il valore restituito lascia un albero obsoleto o errato.
 
-Un'ultima osservazione: la forma dell'albero dipende dall'ordine di inserimento. Interi in ordine crescente producono una catena a destra, stringhe in ordine decrescente una catena a sinistra, valori da `Random.nextDouble` un albero circa bilanciato (e solo in questo caso la O(log n) è realistica).
+Un'ultima osservazione: la forma dell'albero dipende dall'ordine di inserimento. Interi in ordine crescente producono una catena a destra, stringhe in ordine decrescente una catena a sinistra, valori da `Random.nextDouble` un albero circa bilanciato (e solo in questo caso la $O(\log n)$ è realistica).
 
 ## 3. Visite
 Visitare un albero significa decidere in che ordine toccare radice e sottoalberi, e l'ordine scelto determina l'uso.

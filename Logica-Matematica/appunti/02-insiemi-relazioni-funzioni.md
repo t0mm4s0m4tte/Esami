@@ -20,14 +20,14 @@ Le operazioni insiemistiche sono la traduzione dei connettivi logici:
 - l'unione ∪ a ∨;
 - la differenza ∖ a "x∈A∧x∉B";
 - la differenza simmetrica △ è (A∪B)∖(A∩B);
-- il complemento è A^C=U∖A.
+- il complemento è $A^C$=U∖A.
 
-Si estendono a famiglie arbitrarie: ∪_{i∈I}Ai={x|∃i x∈Ai} e ∩_{i}={x|∀i x∈Ai}, dove il quantificatore fa lo stesso lavoro di ∨ e ∧ su infiniti addendi. Valgono le leggi di De Morgan, (A∪B)^C = A^C∩B^C e (A∩B)^C = A^C∪B^C, e la distribuzione A∩(B∪C)=(A∩B)∪(A∩C).
+Si estendono a famiglie arbitrarie: ∪_{i∈I}Ai={x|∃i x∈Ai} e ∩_{i}={x|∀i x∈Ai}, dove il quantificatore fa lo stesso lavoro di ∨ e ∧ su infiniti addendi. Valgono le leggi di De Morgan, (A∪B)^C = $A^C$∩$B^C$ e (A∩B)^C = $A^C$∪$B^C$, e la distribuzione A∩(B∪C)=(A∩B)∪(A∩C).
 
-Questa corrispondenza non è un'analogia: ogni tautologia proposizionale dà un'identità insiemistica, e viceversa per confutare un'identità si può usare la tavola di verità, perché la riga con esito F indica il tipo di punto x che fa da controesempio. Due costruzioni importanti completano il quadro. L'insieme potenza P(A) ha 2^n elementi se |A|=n (P({0,1,2}) ne ha 8); se A={1} si ha P(A)={∅,A} e P(P(A))={∅,{∅},{A},{∅,A}}. Il prodotto A×B è l'insieme delle coppie ordinate, per cui (0,1)≠(1,0), e A^n è l'insieme delle n-uple.
+Questa corrispondenza non è un'analogia: ogni tautologia proposizionale dà un'identità insiemistica, e viceversa per confutare un'identità si può usare la tavola di verità, perché la riga con esito F indica il tipo di punto x che fa da controesempio. Due costruzioni importanti completano il quadro. L'insieme potenza P(A) ha $2^n$ elementi se |A|=n (P({0,1,2}) ne ha 8); se A={1} si ha P(A)={∅,A} e P(P(A))={∅,{∅},{A},{∅,A}}. Il prodotto A×B è l'insieme delle coppie ordinate, per cui (0,1)≠(1,0), e $A^n$ è l'insieme delle n-uple.
 
 ## Relazioni
-Una relazione n-aria è un sottoinsieme di un prodotto A0×…×A(n-1): quella unaria è un predicato (un sottoinsieme), e una tabella di database è proprio una relazione n-aria in cui ogni riga è una n-upla. Nel caso binario si scrive a R b per (a,b)∈R; il dominio è dom(R)={a|∃b aRb}, il range è rng(R)={b|∃a aRb} e l'inversa è R⁻¹={(b,a)|(a,b)∈R}.
+Una relazione n-aria è un sottoinsieme di un prodotto A0×…×A(n-1): quella unaria è un predicato (un sottoinsieme), e una tabella di database è proprio una relazione n-aria in cui ogni riga è una n-upla. Nel caso binario si scrive a R b per (a,b)∈R; il dominio è dom(R)={a|∃b aRb}, il range è rng(R)={b|∃a aRb} e l'inversa è $R^{-1}$={(b,a)|(a,b)∈R}.
 
 Per una relazione su un insieme A contano cinque proprietà:
 - **riflessiva**: ∀x xRx;
@@ -49,16 +49,16 @@ Il legame più importante è quello tra equivalenze e partizioni. Data un'equiva
 Gli ordini si disegnano con il **diagramma di Hasse**: i punti sono gli elementi, si traccia una linea tra x e y (con y più in alto) solo quando y "copre" x, e si omettono sia i cappi sia gli archi che discendono dalla transitività. Un ordine in cui ogni coppia ha estremo superiore e inferiore è un reticolo, tema del file 06.
 
 ## Funzioni
-Una funzione f: A→B è una relazione che soddisfa due condizioni, **totalità** (∀a∃b) e **univocità** (a ogni a corrisponde un solo b). Il dominio è A, il codominio è B, e l'immagine (range) rng(f)={f(a)} è un sottoinsieme del codominio: non vanno confusi, perché molte questioni (a partire dalla suriettività) dipendono dal codominio dichiarato. Per C⊆A l'immagine è f[C], per D⊆B la controimmagine è f⁻¹[D]={a|f(a)∈D}, sempre un insieme, anche se vuoto; la scrittura f⁻¹(b) è ambigua (insieme o elemento) e conviene evitarla. Si usano inoltre la restrizione f↾C e la composizione (g∘f)(a)=g(f(a)): con f=x² e g=2x+3 si ha (g∘f)(2)=11 e (g∘f)(x)=2x²+3. Un'operazione n-aria su A è una funzione f:A^n→A (chiusura): la sottrazione non è un'operazione su ℕ perché 3-5∉ℕ, lo è invece su ℤ.
+Una funzione f: A→B è una relazione che soddisfa due condizioni, **totalità** (∀a∃b) e **univocità** (a ogni a corrisponde un solo b). Il dominio è A, il codominio è B, e l'immagine (range) rng(f)={f(a)} è un sottoinsieme del codominio: non vanno confusi, perché molte questioni (a partire dalla suriettività) dipendono dal codominio dichiarato. Per C⊆A l'immagine è f[C], per D⊆B la controimmagine è $f^{-1}$[D]={a|f(a)∈D}, sempre un insieme, anche se vuoto; la scrittura $f^{-1}$(b) è ambigua (insieme o elemento) e conviene evitarla. Si usano inoltre la restrizione f↾C e la composizione (g∘f)(a)=g(f(a)): con f=$x^{2}$ e g=2x+3 si ha (g∘f)(2)=11 e (g∘f)(x)=2x^{2}+3. Un'operazione n-aria su A è una funzione f:$A^n$→A (chiusura): la sottrazione non è un'operazione su ℕ perché 3-5∉ℕ, lo è invece su ℤ.
 
 Le tre proprietà fondamentali si leggono in termini di frecce:
 - **iniettiva**: f(a1)=f(a2)⇒a1=a2 (al più una freccia in arrivo su ogni elemento di B);
 - **suriettiva**: ∀b∃a f(a)=b (almeno una freccia);
-- **biettiva**: quando valgono entrambe, nel qual caso esiste la vera funzione inversa f⁻¹.
+- **biettiva**: quando valgono entrambe, nel qual caso esiste la vera funzione inversa $f^{-1}$.
 
 Sul grafico cartesiano una retta verticale taglia il grafico in al più un punto se è una funzione; una retta orizzontale lo taglia in al più un punto se è iniettiva e in almeno un punto se è suriettiva.
 
-La differenza tra finito e infinito è il tranello ricorrente. Tra insiemi finiti di pari cardinalità iniettiva e suriettiva sono equivalenti (principio dei cassetti), ma nell'infinito questo cade: n↦n+1 in ℕ è iniettiva non suriettiva, mentre la somma +:ℕ²→ℕ è suriettiva non iniettiva ((1,1) e (0,2) vanno entrambi in 2). Restano valide alcune implicazioni: se f è iniettiva e B finito allora A è finito, se f è suriettiva e A finito allora B è finito. Sono invece **false** "f iniettiva ⇒ ogni controimmagine ha esattamente un elemento" (può essere vuota) e "f iniettiva e B infinito ⇒ A infinito". Infine ogni f: X→Y induce l'equivalenza x1 R_f x2 ⇔ f(x1)=f(x2), con la proiezione canonica X→X/R_f; per la congruenza mod n si ha z1≡z2 mod n, per x² le classi sono {r,-r}.
+La differenza tra finito e infinito è il tranello ricorrente. Tra insiemi finiti di pari cardinalità iniettiva e suriettiva sono equivalenti (principio dei cassetti), ma nell'infinito questo cade: n↦n+1 in ℕ è iniettiva non suriettiva, mentre la somma +:ℕ^{2}→ℕ è suriettiva non iniettiva ((1,1) e (0,2) vanno entrambi in 2). Restano valide alcune implicazioni: se f è iniettiva e B finito allora A è finito, se f è suriettiva e A finito allora B è finito. Sono invece **false** "f iniettiva ⇒ ogni controimmagine ha esattamente un elemento" (può essere vuota) e "f iniettiva e B infinito ⇒ A infinito". Infine ogni f: X→Y induce l'equivalenza x1 $R_f$ x2 ⇔ f(x1)=f(x2), con la proiezione canonica X→X/$R_f$; per la congruenza mod n si ha z1≡z2 mod n, per $x^{2}$ le classi sono {r,-r}.
 
 ## Esempi / esercizi svolti
 1. **Hasse Div(20)** (elementi 1,2,4,5,10,20): coperture 1-2, 1-5, 2-4, 2-10, 5-10, 4-20, 10-20. (ET: ricavate da me.)
@@ -70,13 +70,13 @@ La differenza tra finito e infinito è il tranello ricorrente. Tra insiemi finit
 
 ## Esercizi svolti collegati
 
-Gli esercizi su insiemi, relazioni e funzioni sono in [file 08 §6](08-esercizi-ed-esami-svolti.md#6-insiemi-relazioni-funzioni): le sette equazioni fra insiemi con prove o controesempi, la relazione di divisibilità come ordine con minimo 1 e massimo 0, le proprietà che si conservano per unione, intersezione, composizione, inversa e complemento di relazioni transitive o simmetriche (verificate su tutte le relazioni di tre elementi), e le funzioni con la classificazione iniettiva/suriettiva/biettiva (compresa la biezione N² → N). All'esame le stesse competenze tornano nel [primo esercizio](08-esercizi-ed-esami-svolti.md#1-esercizio-1-quesiti-a-risposta-multipla) come proprietà di relazioni come "essere nati in giorni differenti" e "n e m hanno un divisore primo comune", dove l'unica risposta corretta è quasi sempre "simmetrica"; il file segnala anche i due casi dove la chiave ufficiale dell'8 settembre è discutibile (la relazione "coprima" non è irriflessiva perché 1 R 1).
+Gli esercizi su insiemi, relazioni e funzioni sono in [file 08 §6](08-esercizi-ed-esami-svolti.md#6-insiemi-relazioni-funzioni): le sette equazioni fra insiemi con prove o controesempi, la relazione di divisibilità come ordine con minimo 1 e massimo 0, le proprietà che si conservano per unione, intersezione, composizione, inversa e complemento di relazioni transitive o simmetriche (verificate su tutte le relazioni di tre elementi), e le funzioni con la classificazione iniettiva/suriettiva/biettiva (compresa la biezione $N^{2}$ → N). All'esame le stesse competenze tornano nel [primo esercizio](08-esercizi-ed-esami-svolti.md#1-esercizio-1-quesiti-a-risposta-multipla) come proprietà di relazioni come "essere nati in giorni differenti" e "n e m hanno un divisore primo comune", dove l'unica risposta corretta è quasi sempre "simmetrica"; il file segnala anche i due casi dove la chiave ufficiale dell'8 settembre è discutibile (la relazione "coprima" non è irriflessiva perché 1 R 1).
 
 ## Cose da saper fare all'esame
 - Disegnare Hasse di Div(n), P(A) con ⊆, di una relazione data; trovare minimo/massimo/minimali.
 - Decidere rifl/sim/antisim/trans con giustificazione (o controesempio); riconoscere equivalenza/ordine; trovare classi e quoziente.
 - Per ogni f dire inj/surj/bij **giustificando** (controesempio per iniettività; esibire preimmagine per suriettività; attenzione al codominio dichiarato).
-- Calcolare f∘g, f[C], f⁻¹[D].
+- Calcolare f∘g, f[C], $f^{-1}$[D].
 - Dimostrare identità insiemistiche (doppia inclusione o tavola) e trovare controesempi.
 
 ## Dubbi
