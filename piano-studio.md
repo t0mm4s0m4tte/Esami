@@ -1,4 +1,4 @@
-# Piano di studio (aggiornato 2026-10-16, da piano carriera ufficiale)
+# Piano di studio (aggiornato 2026-10-24, da piano carriera ufficiale variato il 2026-10-23)
 
 Obiettivo dichiarato: laurea a novembre 2027. Lavoro in corso fino al 2026-11-30; dopo, da decidere.
 Ore: 15 h/sett totali (lezioni incluse, 10 h di lezione) fino al 2026-11-30; da dicembre da definire.
@@ -8,7 +8,7 @@ Ore: 15 h/sett totali (lezioni incluse, 10 h di lezione) fino al 2026-11-30; da 
 ### Recuperi (frequentati, non superati): 66 CFU
 | Corso | CFU | Appelli (AAAA-MM-GG) |
 |---|---|---|
-| Matematica Discreta, Algebra e Geometria (esame unico) | 12 | 2027-01-22, 2027-02-05 (l'utente indicava 6 CFU: da chiarire) |
+| Matematica Discreta, Algebra e Geometria (esame unico) | 12 | 2027-01-22, 2027-02-05 (12 CFU confermati dal piano carriera) |
 | Programmazione II | 6 | esonero 2027-02-08, scritto 2027-02-09 |
 | Architettura degli Elaboratori | 6 | 2027-02-01 |
 | Logica Matematica | 6 | 2027-02-08 |
@@ -18,7 +18,7 @@ Ore: 15 h/sett totali (lezioni incluse, 10 h di lezione) fino al 2026-11-30; da 
 | Sistemi Operativi | 9 | 2027-01-22 oppure 2027-02-17 |
 
 ### Terzo anno: 63 CFU (nessuno superato)
-Reti e Sicurezza delle Reti 9 (in corso), Tecnologie Web 6 (in corso), Sviluppo delle Applicazioni Software 9, Metodi Formali dell'Informatica 9, Metodi Formali Parte A 6 (da verificare: potrebbe essere parte dei 9), Cybersecurity 6, Blockchain Sistemi Distribuiti Decentralizzati 6, Prova Finale 3, Stage 9. Date appelli: ignote.
+Reti e Sicurezza delle Reti 9 (in corso), Tecnologie Web 6 (in corso), Economia e Gestione delle Tecnologie Emergenti 6 (in corso, nuova nel piano), Sviluppo delle Applicazioni Software 9, Sistemi Intelligenti 9 (nuova: sostituisce Metodi Formali 9 + Metodi Formali A 6, che non sono più nel piano), Cybersecurity 6, Blockchain Sistemi Distribuiti Decentralizzati 6, Prova Finale 3, Stage 9. Totale 63. Date appelli: ignote. Il totale da dare resta 129 CFU.
 
 ## Già superati (51 CFU)
 Programmazione I (22), Ricerca Operativa (25), Analisi (19), Fondamenti (18), Inglese I, Probabilità e Statistica (18), Economia (19).
@@ -30,6 +30,7 @@ Programmazione I (22), Ricerca Operativa (25), Analisi (19), Fondamenti (18), In
 
 ## Vincoli (dal calendario)
 - Lezioni 10 h/sett: Reti (mar 14-16, mer 14-16, ven 11-13), TWeb (gio 11-13, ven 14-16).
+- EGTE (Aula B, Pironti/Iaia): gio 16-19, ven 16-18 (5 h/sett), sospese 29-30/10 e 3-4/12 (annuncio su Moodle); in calendario "Tommy - Lezione (EGTE)" come eventi settimanali dal 2026-12-10/11, senza data di fine e senza invitati (come richiesto: dal 1 dicembre). Da dicembre le lezioni salgono a ~15 h/sett.
 - Lavoro 17:30-24 lun/mer/ven/sab/dom fino al 2026-11-30 (~32 h/sett). Poi libere, salvo nuovo lavoro/P.IVA.
 - Allenamento ~4,5 h/sett.
 
@@ -39,7 +40,8 @@ Programmazione I (22), Ricerca Operativa (25), Analisi (19), Fondamenti (18), In
 - Per laurearsi a novembre 2027 servirebbero da dicembre ~35-50 h/sett. Con ~30 h/sett: laurea tra primavera e autunno 2028.
 
 ## Da chiarire
-- "Matematica Discreta ✅" su Drive vs piano carriera (esame unico da 12 CFU non superato).
+- "Matematica Discreta ✅" su Drive vs piano carriera: il piano conferma esame unico da 12 CFU, FREQ, non superato (cartella Drive sbagliata o parziale).
+- Orari delle lezioni e date d'appello di Economia delle Tecnologie Emergenti (non in calendario né su Drive).
 - Decisione sull'obiettivo (nov 2027 vs 2028) e ore reali dopo il 2026-11-30.
 - Attività dopo il 2026-11-30; riconoscimento stage.
 - Date appelli del terzo anno.
@@ -57,7 +59,25 @@ Ipotesi (da correggere se sbagliate): 25 h/sett progetti inclusi; fino al 2026-1
 - Totali in calendario da dicembre: ASD ~71 h (con ott-nov ~106 h, in linea con 90-110), Discreta ~87 h (stima 120-150: mancano 35-60 h), Progetti ~24 h.
 - Da verificare: data reale di fine delle lezioni di Reti e TWeb (se vanno oltre il 22/12 le sessioni mattutine del ven e gio possono sovrapporsi), orario dello scritto ASD del 27/1, scadenze dei progetti.
 
-## Piano per la sessione gennaio-febbraio 2027 (proposta del 2026-10-13)
+## Aggiornamento 2026-10-24: sessione centrata su ASD, Reti, TWeb, EGTE
+Richiesta dell'utente: dare insieme Algoritmi e Strutture Dati, Reti e Sicurezza delle Reti, Tecnologie Web ed Economia e Gestione delle Tecnologie Emergenti (EGTE). Sono 30 CFU (9+9+6+6). Questo prevale sulla scelta precedente (PPOO, ASD, SO) nelle sezioni sotto.
+
+| Esame | CFU | Appello | Stato materiale |
+|---|---|---|---|
+| ASD | 9 | scritto 2027-01-27, orale da definire | appunti completi, 35 h ott-nov in calendario |
+| Reti e Sicurezza | 9 | ignota | appunti cap. 1-2 + Sicurezza 01; lezioni mar/mer/ven |
+| Tecnologie Web | 6 | ignota | appunti tutti i deck su Drive; lezioni gio/ven |
+| EGTE | 6 | ignota | nessun materiale, nessuna cartella, orari lezione non noti |
+
+Ipotesi (stime, non dati): Reti e TWeb vanno studiate durante il corso e consolidate a dicembre-gennaio; EGTE è teorica, circa 70-100 h in totale, da pianificare appena si conoscono orari e slide. Il carico complessivo dei 4 esami è circa 450-650 h, di cui ASD 90-110: con 15 h/sett da dicembre non basta, serve il ritmo ~30 h/sett oppure spostare 1-2 esami al secondo appello.
+
+Conseguenze sul resto: PPOO (scritto 01-21), SO, Discreta, BdD, Architettura, Logica, Prog. II non sono più in sessione per scelta; restano 66 CFU di recuperi per il primo appello utile dopo. DECISO (2026-10-24): PPOO è rimandato, in sessione solo ASD, Reti, TWeb, EGTE. I conflitti di date elencati sopra non riguardano più la sessione se non si danno quegli esami.
+
+Prossimi passi: creare la cartella `Economia-Tecnologie-Emergenti/` e caricare gli orari delle lezioni in calendario quando l'utente li comunica; aggiungere sessioni "Studio - EGTE" da dicembre; verificare le date d'appello di Reti, TWeb, EGTE.
+
+Sessioni "Studio - X (lezione)" (calendario "Appunti", caricate il 2026-10-24): Reti e TWeb dal 2026-10-26 (primo evento 27-30/10), EGTE dal 2026-12-10 (le lezioni EGTE sono in calendario da dicembre, 3-4/12 sospese), tutti fino al 2026-12-22 (fine ipotizzata delle lezioni, da verificare), un evento per ogni lezione allo stesso orario, così le ore di lezione contano come studio della materia: Reti mar 14-16, mer 14-16, ven 11-13; TWeb gio 11-13, ven 14-16; EGTE gio 16-19, ven 16-18. Argomenti "[Da aggiornare]" con le slide; link GitHub alla cartella appunti (EGTE senza link finché non esiste la cartella). Le sessioni libere ASD/Discreta di dicembre restano come erano, da rivedere.
+
+## Piano per la sessione gennaio-febbraio 2027 (proposta del 2026-10-13, superata dove in conflitto con l'aggiornamento 2026-10-24)
 
 Legenda: DECISO = dato di fatto o già concordato; DA DECIDERE = proposta in attesa dell'utente. Tutte le ore sono stime, non misure. Nessun evento è stato messo in calendario.
 
@@ -138,3 +158,6 @@ Le flashcard servono per il ripasso a intervalli: 20-30 min al giorno sulla mate
 
 ## Reti e TWeb in calendario (caricati il 2026-10-14, calendario "Appunti")
 Su richiesta, ore aggiunte oltre ad ASD, senza toglierne a ASD: 28 sessioni dal 15/10 al 30/11, rispettando pasti, 30 min di spostamento e niente dopo cena. Reti: ven 8:45-10:15 e lun 14:00-16:00. TWeb: gio 8:45-10:15 e sab 14:00-16:00 (sab 7/11 fino alle 15:30 per il concerto). Totale circa +6,5 h/sett, quindi ~22 h/sett con le lezioni (oltre le 15 h dichiarate: da verificare se reggono). Argomenti basati sulle slide già su Drive (Reti cap. 1-2, Sicurezza 01, TWeb 01-02, Lab 01-02), di cui esistono già gli appunti in `Reti-Sicurezza-Reti/appunti/` e `Tecnologie-Web/appunti/` (le sessioni possono quindi partire dal ripasso degli appunti); le sessioni dal 21-23/11 sono "[Da aggiornare]" quando escono slide nuove. Da dicembre Reti e TWeb NON sono in calendario. Tutte le sessioni "Studio - ..." (ASD, Discreta, Reti, TWeb) hanno ora gli argomenti nella descrizione.
+
+## Appunti del terzo anno (aggiornamento 2026-10-24)
+Dal Moodle UniTO (corsi Reti 3685, TWeb 3637, EGTE 3841 e 3559 del 2025/26) sono stati integrati gli appunti delle tre materie in corso. Reti: nuovo `09-livello-trasporto.md` (cap. 3 di Kurose-Ross, 150 slide); i file 01-08 erano già allineati ai file Moodle. TWeb: nessun file nuovo su Moodle (solo video, link al GitLab degli esercizi `gitlab2.educ.di.unito.it/tweb2627` e al syllabus), gli appunti 01-04 restano invariati. EGTE: nuova cartella `Economia-Tecnologie-Emergenti/` con README e 3 file di appunti dalle slide 2025/26, perché il corso 2026/27 è ancora vuoto. Da fare: figure per `09` di Reti (agente illustratore), flashcard per Reti, TWeb ed EGTE, commit e push (i link GitHub degli eventi Studio funzionano solo dopo il push).
