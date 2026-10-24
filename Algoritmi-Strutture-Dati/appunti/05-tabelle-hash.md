@@ -39,7 +39,7 @@ Si introduce una funzione $\boldsymbol{h: U \to \lbrace 0,\dots,m-1\rbrace}$ con
 
 Due metodi standard per costruire h:
 - **Divisione**: $h(k)=k \bmod m$. Va evitato $m=2^p$, perché userebbe solo i $p$ bit bassi della chiave; la buona euristica è scegliere m **primo** e non vicino a una potenza di 2.
-- **Moltiplicazione**: $h(k)=\lfloor m\cdot(kA \bmod 1)\rfloor$ con $0<A<1$, consigliato $A=(\sqrt{5}-1)/2$; qui la scelta di $m$ non è critica.
+- **Moltiplicazione**: $h(k)=\lfloor m\cdot(kA \bmod 1)\rfloor$ con $0\lt A\lt 1$, consigliato $A=(\sqrt{5}-1)/2$; qui la scelta di $m$ non è critica.
 
 ## Concatenamento (liste di trabocco)
 
@@ -60,7 +60,7 @@ La seconda strategia non usa puntatori: gli elementi stanno dentro T, e se la ce
 - **Quadratica**, $h(k,i)=(h'(k)+c_1 i+c_2 i^2) \bmod m$: riduce il primario ma resta l'**addensamento secondario**, perché chiavi con lo stesso hash iniziale seguono la stessa sequenza.
 - **Doppio hashing**, $h(k,i)=(h_1(k)+i\cdot h_2(k)) \bmod m$: elimina entrambi i problemi.
 
-Nell'ipotesi di hashing uniforme, le ispezioni attese sono $\boldsymbol{\le \frac{1}{1-\alpha}}$ per una ricerca senza successo ($\alpha=0.5 \to 2$; $\alpha=0.9 \to 10$) e $\boldsymbol{\le \frac{1}{\alpha}\ln\frac{1}{1-\alpha}}$ per una con successo ($\alpha=0.5 \to <1.387$; $\alpha=0.9 \to <2.559$). Il costo esplode quando $\alpha$ si avvicina a 1. La cancellazione è delicata: se si svuota semplicemente una cella si interrompono le sequenze di ispezione delle altre chiavi. Una soluzione è marcare la cella come "deleted" invece di svuotarla, così la ricerca prosegue oltre il marcatore; il prezzo è che le celle marcate restano occupate e prima o poi serve ricostruire la tabella (fonte: Wikipedia, "Open addressing", https://en.wikipedia.org/wiki/Open_addressing; livello 3, la slide 11 letta su Drive non copre la cancellazione nella parte accessibile). [ASSUNZIONE: da verificare: che l'inserimento possa riusare le celle "deleted", come si fa di solito, non è confermato da nessuna fonte consultata]
+Nell'ipotesi di hashing uniforme, le ispezioni attese sono $\boldsymbol{\le \frac{1}{1-\alpha}}$ per una ricerca senza successo ($\alpha=0.5 \to 2$; $\alpha=0.9 \to 10$) e $\boldsymbol{\le \frac{1}{\alpha}\ln\frac{1}{1-\alpha}}$ per una con successo ($\alpha=0.5 \to \lt 1.387$; $\alpha=0.9 \to \lt 2.559$). Il costo esplode quando $\alpha$ si avvicina a 1. La cancellazione è delicata: se si svuota semplicemente una cella si interrompono le sequenze di ispezione delle altre chiavi. Una soluzione è marcare la cella come "deleted" invece di svuotarla, così la ricerca prosegue oltre il marcatore; il prezzo è che le celle marcate restano occupate e prima o poi serve ricostruire la tabella (fonte: Wikipedia, "Open addressing", https://en.wikipedia.org/wiki/Open_addressing; livello 3, la slide 11 letta su Drive non copre la cancellazione nella parte accessibile). [ASSUNZIONE: da verificare: che l'inserimento possa riusare le celle "deleted", come si fa di solito, non è confermato da nessuna fonte consultata]
 
 ## Analisi del concatenamento (slide 11)
 

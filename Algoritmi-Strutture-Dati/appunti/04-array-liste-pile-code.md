@@ -34,7 +34,7 @@ L'array ha un grande vantaggio, l'accesso per indice in $O(1)$, e un limite, la 
 | search | $O(N)$ | **$O(\log N)$** (binary search) |
 | delete | $O(N)$ (un passaggio: sposta A[i] in A[i-deleted]) | $O(N)$ (trovi in log N ma il compattamento è lineare) |
 
-Il limite di capacità si supera con un **array ridimensionabile**: quando è pieno si alloca un nuovo blocco e si copiano gli N elementi (costo $O(N)$). La politica con cui si sceglie la nuova dimensione è decisiva. Con un incremento unitario (+1) ogni inserimento su array pieno copia tutto, quindi il costo ammortizzato è $O(m)$ per inserimento: non scala. Con il **raddoppio** ($M \to 2M$) la i-esima insert costa $i$ solo se $i-1$ è una potenza di 2 e 1 altrimenti, cosicché il costo totale di $m$ inserimenti è $\boldsymbol{< 3m}$, cioè **$O(1)$ ammortizzato**. Il risparmio viene dal fatto che le copie costose sono rare e sempre più distanziate. Per non sprecare memoria anche in discesa, si contrae (dimezza) quando gli elementi scendono a $\boldsymbol{1/4}$ della capacità: scegliere $1/4$ e non $1/2$ evita che una sequenza di insert e delete a cavallo della soglia faccia copiare continuamente.
+Il limite di capacità si supera con un **array ridimensionabile**: quando è pieno si alloca un nuovo blocco e si copiano gli N elementi (costo $O(N)$). La politica con cui si sceglie la nuova dimensione è decisiva. Con un incremento unitario (+1) ogni inserimento su array pieno copia tutto, quindi il costo ammortizzato è $O(m)$ per inserimento: non scala. Con il **raddoppio** ($M \to 2M$) la i-esima insert costa $i$ solo se $i-1$ è una potenza di 2 e 1 altrimenti, cosicché il costo totale di $m$ inserimenti è $\boldsymbol{\lt  3m}$, cioè **$O(1)$ ammortizzato**. Il risparmio viene dal fatto che le copie costose sono rare e sempre più distanziate. Per non sprecare memoria anche in discesa, si contrae (dimezza) quando gli elementi scendono a $\boldsymbol{1/4}$ della capacità: scegliere $1/4$ e non $1/2$ evita che una sequenza di insert e delete a cavallo della soglia faccia copiare continuamente.
 
 L'**analisi ammortizzata** usata qui è il metodo dell'aggregazione: costo totale di m operazioni diviso m. Non va confusa con il caso medio probabilistico, perché è una garanzia sul caso peggiore di una *sequenza* di operazioni, senza alcuna ipotesi sulla distribuzione dell'input.
 
@@ -165,7 +165,7 @@ Gli esercizi su liste (Multiples, Rank, Reverse, Palindrome, OddEven, operazioni
 
 **Scritto**
 - Scrivere (ricorsivo e iterativo) operazioni su liste: lunghezza, insert/delete in lista ordinata, deleteall, reverse, clone, fusione di due liste ordinate; indicare costo.
-- Analisi ammortizzata del raddoppio (costo totale $< 3m$).
+- Analisi ammortizzata del raddoppio (costo totale $\lt 3m$).
 - Implementare pila/coda su array circolare (condizioni piena/vuota con modulo).
 
 **Orale**

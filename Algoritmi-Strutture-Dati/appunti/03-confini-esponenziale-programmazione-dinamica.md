@@ -161,4 +161,4 @@ Il lower bound $\Omega(n \log n)$ per l'ordinamento con confronti viene riutiliz
 - Perché Counting sort "batte" $n \log n$; differenza D&I vs DP; sottostruttura ottimale e sottoproblemi ripetuti; perché slowExp è $O(n)$.
 
 ## Dubbi
-- Rapporto precisamente tra Fib(n) del cap. Ricorsione (base $n<2 \to 1$, indice shiftato) e $f_n$ della DP ($f_1=f_2=1$): stessa successione con indice diverso.
+- Rapporto precisamente tra Fib(n) del cap. Ricorsione (base $n\lt 2 \to 1$, indice shiftato) e $f_n$ della DP ($f_1=f_2=1$): stessa successione con indice diverso.

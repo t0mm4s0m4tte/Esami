@@ -103,10 +103,10 @@ Gli intervalli [u.d,u.f] hanno una struttura "a parentesi" ben formata, e questo
 Non esistono sovrapposizioni parziali, perché una visita termina sempre prima di tornare al chiamante.
 
 Gli archi (u,v) si classificano in base al colore di v nel momento in cui l'arco viene esaminato:
-- **albero** ($v$ bianco): $u.d < v.d < v.f < u.f$
-- **all'indietro** ($v$ grigio, antenato di $u$): $v.d \le u.d < u.f \le v.f$; **indica un ciclo**
-- **in avanti** ($v$ nero, discendente di $u$): $u.d < v.d < v.f < u.f$
-- **trasversale** ($v$ nero, altrove): $v.d < v.f < u.d < u.f$
+- **albero** ($v$ bianco): $u.d \lt  v.d \lt  v.f \lt  u.f$
+- **all'indietro** ($v$ grigio, antenato di $u$): $v.d \le u.d \lt  u.f \le v.f$; **indica un ciclo**
+- **in avanti** ($v$ nero, discendente di $u$): $u.d \lt  v.d \lt  v.f \lt  u.f$
+- **trasversale** ($v$ nero, altrove): $v.d \lt  v.f \lt  u.d \lt  u.f$
 
 <p align="center">
 <img src="img/09-classificazione-archi.png" width="560" alt="Grafo con tempi di scoperta e fine, archi d'albero in verde, all'indietro in rosso, in avanti in blu e trasversali in nero"><br>
@@ -139,19 +139,19 @@ Il costo è **$\Theta(\vert V\vert +\vert E\vert )$**, una sola DFS.
 </p>
 
 
-**Correttezza (teorema: su un DAG produce un ordinamento topologico).** Basta mostrare che per ogni arco $(u,v)$ vale $\boldsymbol{v.f < u.f}$, perché allora u viene messo in testa dopo v e quindi sta prima. Se l'arco è d'albero, in avanti o trasversale, le condizioni temporali danno direttamente $v.f < u.f$. Se fosse all'indietro si avrebbe $u.f < v.f$, ma **un arco all'indietro implica un ciclo, impossibile in un DAG**. Dunque la tesi vale.
+**Correttezza (teorema: su un DAG produce un ordinamento topologico).** Basta mostrare che per ogni arco $(u,v)$ vale $\boldsymbol{v.f \lt  u.f}$, perché allora u viene messo in testa dopo v e quindi sta prima. Se l'arco è d'albero, in avanti o trasversale, le condizioni temporali danno direttamente $v.f \lt  u.f$. Se fosse all'indietro si avrebbe $u.f \lt  v.f$, ma **un arco all'indietro implica un ciclo, impossibile in un DAG**. Dunque la tesi vale.
 
 ## Integrazioni dalle slide (17): aciclicità, cammino bianco, componenti fortemente connesse
 
-Le slide formalizzano meglio alcuni punti. Un'**ordinamento topologico** $v_1..v_n$ di $G=(V,E)$ orientato è tale che $i<j \Rightarrow (v_j,v_i)\notin E$; ce ne possono essere più d'uno (A B C D oppure A C B D) e nessuno se G è ciclico. Dal teorema delle parentesi segue un **corollario**: in una foresta DF, $v$ è discendente di $u$ se e solo se $u.d < v.d < v.f < u.f$. Più forte è il **teorema del cammino bianco**: $v$ è discendente di $u$ se e solo se, al tempo $u.d$, esiste un cammino **tutto bianco** da $u$ a $v$.
+Le slide formalizzano meglio alcuni punti. Un'**ordinamento topologico** $v_1..v_n$ di $G=(V,E)$ orientato è tale che $i\lt j \Rightarrow (v_j,v_i)\notin E$; ce ne possono essere più d'uno (A B C D oppure A C B D) e nessuno se G è ciclico. Dal teorema delle parentesi segue un **corollario**: in una foresta DF, $v$ è discendente di $u$ se e solo se $u.d \lt  v.d \lt  v.f \lt  u.f$. Più forte è il **teorema del cammino bianco**: $v$ è discendente di $u$ se e solo se, al tempo $u.d$, esiste un cammino **tutto bianco** da $u$ a $v$.
 
-Con questi strumenti si dimostra il **lemma di aciclicità**: G (orientato o no) è aciclico se e solo se una DF non genera archi all'indietro. L'implicazione (⇐) si prova per assurdo: se $C$ è un ciclo e $(u,v)\in C$ è l'arco con $v.d$ minimo, per il cammino bianco si ha $v.d < u.d < u.f < v.f$, cioè $(u,v)$ è all'indietro.
+Con questi strumenti si dimostra il **lemma di aciclicità**: G (orientato o no) è aciclico se e solo se una DF non genera archi all'indietro. L'implicazione (⇐) si prova per assurdo: se $C$ è un ciclo e $(u,v)\in C$ è l'arco con $v.d$ minimo, per il cammino bianco si ha $v.d \lt  u.d \lt  u.f \lt  v.f$, cioè $(u,v)$ è all'indietro.
 
 La dimostrazione dell'ordinamento topologico si può rifare con i **4 casi dei tempi** per un arco $(u,v)$:
-1. $v.d<v.f<u.d<u.f$: va bene;
-2. $u.d<u.f<v.d<v.f$: impossibile, perché u sarebbe nero con v ancora bianco (v sarebbe stato visitato da u);
-3. $u.d<v.d<v.f<u.f$: va bene;
-4. $v.d<u.d<u.f<v.f$: è un arco all'indietro, cioè un ciclo, impossibile in un DAG.
+1. $v.d\lt v.f\lt u.d\lt u.f$: va bene;
+2. $u.d\lt u.f\lt v.d\lt v.f$: impossibile, perché u sarebbe nero con v ancora bianco (v sarebbe stato visitato da u);
+3. $u.d\lt v.d\lt v.f\lt u.f$: va bene;
+4. $v.d\lt u.d\lt u.f\lt v.f$: è un arco all'indietro, cioè un ciclo, impossibile in un DAG.
 
 ### Componenti fortemente connesse
 Una **componente fortemente connessa (cfc)** è un insieme $C \subseteq V$ massimale tale che $u \leadsto v$ e $v \leadsto u$ per ogni $u,v\in C$. Si indicano con $D(u)$ i discendenti (raggiungibili da $u$) e con $A(u)$ gli antecedenti; la cfc di $u$ è $C(u)=D(u)\cap A(u)$. Una DFS su $G$ dà $D(u)$; per $A(u)$ si usa il **grafo trasposto $G^T$** ($E^T = \lbrace(v,u) \mid (u,v)\in E\rbrace$), in cui gli archi sono invertiti. L'algoritmo naive esegue DFS(G,u) e DFS($G^T$,u) per ogni u, con costo $O(\vert V\vert \cdot (\vert V\vert +\vert E\vert ))$.
@@ -168,7 +168,7 @@ L'algoritmo **Strongly-Connected-Components(G)** (di Kosaraju) fa invece tutto i
 3. DFS-Graph($G^T$) scegliendo i vertici in **ordine decrescente di $f$** (quelli calcolati su $G$).
 4. Ogni albero della foresta di $G^T$ è una cfc.
 
-La correttezza si appoggia su alcuni lemmi. Lemma 1: se $C$ e $C'$ sono cfc distinte, con $u,v\in C$ e $u',v'\in C'$, e $u \leadsto u'$, allora non può essere $v' \leadsto v$. Posto $C.d = \min\lbrace u.d\rbrace$ e $C.f = \max\lbrace u.f\rbrace$, il **Lemma 2** dice che se $(u,v)\in E$ con $u\in C$ e $v\in C'$ in cfc distinte allora $C.f > C'.f$; il corollario è che $(u,v)\in E^T$ implica $C.f \le C'.f$ ($<$ se distinte). Il teorema della \"visita giusta\" conclude: nell'ordine decrescente di $f$, la cfc con $f$ massimo $C$ ha, per ogni arco $(u,v)\in E^T$ uscente da $C$, $C.f \le C(v).f$, da cui $C = C(v)$; l'albero in $G^T$ radicato nel vertice di $f$ massimo è allora $A_G(u)=C$, e si procede per induzione sul numero di alberi.
+La correttezza si appoggia su alcuni lemmi. Lemma 1: se $C$ e $C'$ sono cfc distinte, con $u,v\in C$ e $u',v'\in C'$, e $u \leadsto u'$, allora non può essere $v' \leadsto v$. Posto $C.d = \min\lbrace u.d\rbrace$ e $C.f = \max\lbrace u.f\rbrace$, il **Lemma 2** dice che se $(u,v)\in E$ con $u\in C$ e $v\in C'$ in cfc distinte allora $C.f \gt  C'.f$; il corollario è che $(u,v)\in E^T$ implica $C.f \le C'.f$ ($\lt$ se distinte). Il teorema della \"visita giusta\" conclude: nell'ordine decrescente di $f$, la cfc con $f$ massimo $C$ ha, per ogni arco $(u,v)\in E^T$ uscente da $C$, $C.f \le C(v).f$, da cui $C = C(v)$; l'albero in $G^T$ radicato nel vertice di $f$ massimo è allora $A_G(u)=C$, e si procede per induzione sul numero di alberi.
 
 ## Esercizi svolti collegati
 

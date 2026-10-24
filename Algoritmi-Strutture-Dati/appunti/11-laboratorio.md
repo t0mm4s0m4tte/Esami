@@ -53,7 +53,7 @@ Poi ci sono Riprendi, Pausa, Ferma e Riavvia.
 
 ## Lab 03.2 - HybridSort
 
-L'idea di HybridSort è combinare due ordinamenti sfruttando il punto debole di ciascuno. Il **QuickSort** è veloce in media ($O(n \log n)$) ma ha overhead ricorsivo e rischia $O(n^2)$ con un pivot sfortunato; il **SelectionSort** è sempre $O(n^2)$ ma ha overhead minimo e quindi conviene su array piccoli. Così, se la partizione ha dimensione $n \ge k$ si usa QuickSort, se $n < k$ SelectionSort. La soglia **k va determinata sperimentalmente**, perché dipende da CPU, cache, compilatore e dati: se è troppo bassa il beneficio è nullo, se è troppo alta si tende a $O(n^2)$.
+L'idea di HybridSort è combinare due ordinamenti sfruttando il punto debole di ciascuno. Il **QuickSort** è veloce in media ($O(n \log n)$) ma ha overhead ricorsivo e rischia $O(n^2)$ con un pivot sfortunato; il **SelectionSort** è sempre $O(n^2)$ ma ha overhead minimo e quindi conviene su array piccoli. Così, se la partizione ha dimensione $n \ge k$ si usa QuickSort, se $n \lt  k$ SelectionSort. La soglia **k va determinata sperimentalmente**, perché dipende da CPU, cache, compilatore e dati: se è troppo bassa il beneficio è nullo, se è troppo alta si tende a $O(n^2)$.
 
 Il QuickSort usa la PARTITION di Lomuto: `x=A[r]; i=p-1; for j=p..r-1 if A[j]<=x {i++; swap A[i],A[j]}; swap A[i+1],A[r]; return i+1`. QUICKSORT(A,p,r) è: if p<r: q=PARTITION; QUICKSORT(A,p,q-1); QUICKSORT(A,q+1,r). Costo medio $O(n \log n)$, peggiore $O(n^2)$. Le ottimizzazioni possibili sono il pivot casuale o la mediana di tre e il partizionamento a tre vie (per i duplicati).
 

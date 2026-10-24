@@ -117,7 +117,7 @@ Esempio del doc (5 vertici): le estrazioni avvengono con d = 0, 5, 7, 8, 9, con 
 </div>
 
 
-**Correttezza.** L'invariante è che per ogni $v\in S$ vale $v.d=\delta(s,v)$. Per assurdo, sia $u$ il primo vertice inserito in $S$ con $u.d>\delta(s,u)$. Sul cammino minimo $p$ da $s$ a $u$ esiste un arco $(x,y)$ con $x\in S$ e $y\notin S$ ($y$ è il primo vertice fuori da $S$). Per la minimalità di $u$, $x.d=\delta(s,x)$; rilassando $(x,y)$, per convergenza $y.d=\delta(s,y)$. Poiché i pesi sono $\ge 0$, $\delta(s,y) \le \delta(s,u) < u.d$. Quindi $y.d < u.d$, ma Extract-Min avrebbe scelto y prima di u: contraddizione.
+**Correttezza.** L'invariante è che per ogni $v\in S$ vale $v.d=\delta(s,v)$. Per assurdo, sia $u$ il primo vertice inserito in $S$ con $u.d\gt \delta(s,u)$. Sul cammino minimo $p$ da $s$ a $u$ esiste un arco $(x,y)$ con $x\in S$ e $y\notin S$ ($y$ è il primo vertice fuori da $S$). Per la minimalità di $u$, $x.d=\delta(s,x)$; rilassando $(x,y)$, per convergenza $y.d=\delta(s,y)$. Poiché i pesi sono $\ge 0$, $\delta(s,y) \le \delta(s,u) \lt  u.d$. Quindi $y.d \lt  u.d$, ma Extract-Min avrebbe scelto y prima di u: contraddizione.
 
 <p align="center">
 <img src="img/10-correttezza.png" width="520" alt="Insieme S dei vertici definitivi, con s e x dentro e il primo vertice u con distanza errata fuori, usato nella dimostrazione per assurdo"><br>
@@ -169,12 +169,12 @@ L'ADT **Union-Find** ha MakeSet(U) (partizione discreta), Union(x,y,P) e Find(x,
 Per **MST-Prim** l'invariante è:
 1. $\exists T$ MST con $A\subseteq T$;
 2. $V[A]$ sono i vertici neri o grigi, cioè $V\setminus\lbrace v\in Q \mid v.key=\infty\rbrace$;
-3. se $v\in Q$ e $v.key<\infty$ allora $v.key=w(u,v)$ per qualche $u\in V[A]\setminus Q$, per cui l'arco minimo tra V[A]\Q e la frontiera è leggero per A.
+3. se $v\in Q$ e $v.key\lt \infty$ allora $v.key=w(u,v)$ per qualche $u\in V[A]\setminus Q$, per cui l'arco minimo tra V[A]\Q e la frontiera è leggero per A.
 
 I colori hanno questo significato: bianchi (key=∞), grigi (frontiera, key<∞), neri (già nell'albero). I costi sono MakePriorityQueue (BuildHeap) $O(n \log n)$ secondo le slide (ma in realtà $O(n)$), Extract-Min $O(\log n)$, Decrease-Key $O(\log n)$ (per risalita), quindi $O(m \log n)$; poiché $G$ è connesso, $n=O(m)$.
 
 ### Altri algoritmi per i cammini minimi
-**Bellman-Ford** (1957) gestisce i pesi negativi e costa **$O(\vert V\vert \cdot \vert E\vert )$**; **Pape-D'Esopo** (1974) è superpolinomiale nel caso peggiore ma quasi lineare su grafi planari o stradali con $\lvert E\rvert=O(\lvert V\rvert)$. La dimostrazione del lemma dei sottocammini procede per assurdo: $\delta(u,z)=w(pqr)=w(p)+w(q)+w(r) > w(p)+w(q')+w(r)$ se $q'$ fosse migliore di $q$. La condizione di Bellman è $\delta(s,v) \le \delta(s,u)+w(u,v)$, e va ricordato che **$v.d$ è sempre una stima in eccesso: $v.d \ge \delta(s,v)$**.
+**Bellman-Ford** (1957) gestisce i pesi negativi e costa **$O(\vert V\vert \cdot \vert E\vert )$**; **Pape-D'Esopo** (1974) è superpolinomiale nel caso peggiore ma quasi lineare su grafi planari o stradali con $\lvert E\rvert=O(\lvert V\rvert)$. La dimostrazione del lemma dei sottocammini procede per assurdo: $\delta(u,z)=w(pqr)=w(p)+w(q)+w(r) \gt  w(p)+w(q')+w(r)$ se $q'$ fosse migliore di $q$. La condizione di Bellman è $\delta(s,v) \le \delta(s,u)+w(u,v)$, e va ricordato che **$v.d$ è sempre una stima in eccesso: $v.d \ge \delta(s,v)$**.
 
 In **Dijkstra** la coda Q è uno heap minimo con v.key = v.d. Esempio delle slide (s con archi 10 e 5, pesi 2,3,1,9,4,6,2,7): i d finali dopo le estrazioni sono s=0, 5, 7, 8, 9 (ordine di estrazione), con aggiornamenti 10->8, 14->13, 9. [DA VERIFICARE: topologia del grafo non ricostruibile dal testo della slide.]
 

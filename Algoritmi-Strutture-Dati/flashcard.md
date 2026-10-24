@@ -29,19 +29,19 @@ D: Differenza tra problema insolubile e intrattabile?
 R: Insolubile: nessun algoritmo (halting). Intrattabile: algoritmo esiste ma costo esponenziale (Hanoi $2^n-1$ mosse; NP-completi come Ciclo di Hamilton, nessun algoritmo polinomiale noto).
 
 D: Cos'è una specifica (pre/post-condizione)? Esempio con Div(a,b).
-R: Contratto: pre = ipotesi sull'input, post = proprietà dell'output. Div: pre $a\ge 0,\ b>0$; post $a=bq+r \land 0\le r<b$.
+R: Contratto: pre = ipotesi sull'input, post = proprietà dell'output. Div: pre $a\ge 0,\ b\gt 0$; post $a=bq+r \land 0\le r\lt b$.
 
 D: Correttezza parziale vs totale?
 R: Parziale: se termina, l'output è corretto. Totale = parziale + terminazione.
 
 D: Come si dimostra la correttezza di un ricorsivo? Esempio DIV-REC.
-R: Induzione completa: base + ipotesi induttiva sulle chiamate ricorsive + passo. DIV-REC: base $a<b \to q=0,r=a$ ok; passo $bq+r = b(q'+1)+r = (a-b)+b = a$, con $0\le r<b$ ereditato dall'IH.
+R: Induzione completa: base + ipotesi induttiva sulle chiamate ricorsive + passo. DIV-REC: base $a\lt b \to q=0,r=a$ ok; passo $bq+r = b(q'+1)+r = (a-b)+b = a$, con $0\le r\lt b$ ereditato dall'IH.
 
 D: Le 3 fasi di una dimostrazione con invariante di ciclo?
 R: Inizializzazione (vale all'ingresso), Mantenimento (se vale all'inizio di un'iterazione vale alla fine), Terminazione ($\text{Inv} \land \lnot\text{Guardia} \Rightarrow \text{Post}$).
 
 D: Invariante di DIV-IT (r:=a; q:=0; while r>=b: r-=b; q++)?
-R: $a = bq + r \land 0 \le r$. All'uscita $r<b$, quindi $\text{Inv} \land r<b \Rightarrow \text{post}$.
+R: $a = bq + r \land 0 \le r$. All'uscita $r\lt b$, quindi $\text{Inv} \land r\lt b \Rightarrow \text{post}$.
 
 D: Vero/Falso: "l'invariante del ciclo è la guardia." Motiva.
 R: Falso. La guardia è falsa all'uscita, l'invariante no (vale sempre). Altri errori tipici: invariante come operazione ("r diminuisce di m") invece che proprietà dello stato; invariante troppo debole per implicare la post.
@@ -59,10 +59,10 @@ D: Ordine di progetto invariant-first?
 R: 1) idea di cosa accumulare; 2) invariante; 3) corpo che preserva l'invariante e avvicina alla soluzione; 4) guardia; 5) inizializzazione che rende vero l'invariante.
 
 D: Invariante e struttura della ricerca binaria iterativa su A ordinato.
-R: Inv: $x \notin A[0..i-1] \land x \notin A[j+1..n-1]$; $m=\lfloor(i+j)/2\rfloor$; $A[m]<x \to i=m+1$; $A[m]>x \to j=m-1$; si esce con $i>j$ (assente, $-1$). $O(\log n)$.
+R: Inv: $x \notin A[0..i-1] \land x \notin A[j+1..n-1]$; $m=\lfloor(i+j)/2\rfloor$; $A[m]\lt x \to i=m+1$; $A[m]\gt x \to j=m-1$; si esce con $i\gt j$ (assente, $-1$). $O(\log n)$.
 
 D: Moltiplicazione alla russa: invariante e codice?
-R: Inv $n\cdot m = z + a\cdot b$. $a=n,\ b=m,\ z=0$; while $a>0$: se $a$ dispari $z \mathrel{+}= b$; $a \mathrel{/}= 2$; $b \mathrel{+}= b$. All'uscita $a=0 \Rightarrow z=n\cdot m$. Circa $\log_2 n$ iterazioni (deduzione mia).
+R: Inv $n\cdot m = z + a\cdot b$. $a=n,\ b=m,\ z=0$; while $a\gt 0$: se $a$ dispari $z \mathrel{+}= b$; $a \mathrel{/}= 2$; $b \mathrel{+}= b$. All'uscita $a=0 \Rightarrow z=n\cdot m$. Circa $\log_2 n$ iterazioni (deduzione mia).
 
 D: Invarianti di Selection e Insertion sort?
 R: Selection: $v[0..i-1]$ ordinato e ogni elemento di $v[i..]$ $\ge$ quelli del prefisso (prefisso definitivo). Insertion: solo $v[0..i-1]$ ordinato, nessuna ipotesi sul resto.
@@ -91,10 +91,10 @@ D: Perché si ignorano le costanti? Esempio con $T=2^n$.
 R: Con hardware 1000 volte più veloce $2^{D'}/1000=2^D \Rightarrow D'=D+\log_2(1000)\approx D+10$: conta l'ordine di crescita, non la macchina.
 
 D: Definizioni formali di O, Ω, Θ, o.
-R: $O$: $\exists c>0,\ n_0\ \forall n>n_0:\ f\le c\cdot g$. $\Omega$: $c\cdot g\le f$. $\Theta$: $c_1\cdot g\le f\le c_2\cdot g$, cioè $\Theta=O\cap\Omega$. $o$: $\lim f/g=0$ (allora $f\in O(g)$ e $g\notin O(f)$).
+R: $O$: $\exists c\gt 0,\ n_0\ \forall n\gt n_0:\ f\le c\cdot g$. $\Omega$: $c\cdot g\le f$. $\Theta$: $c_1\cdot g\le f\le c_2\cdot g$, cioè $\Theta=O\cap\Omega$. $o$: $\lim f/g=0$ (allora $f\in O(g)$ e $g\notin O(f)$).
 
 D: Criterio del limite: lim f/g = a.
-R: $0\le a<\infty \Rightarrow O$; $0<a\le\infty \Rightarrow \Omega$; $0<a<\infty \Rightarrow \Theta$.
+R: $0\le a\lt \infty \Rightarrow O$; $0\lt a\le\infty \Rightarrow \Omega$; $0\lt a\lt \infty \Rightarrow \Theta$.
 
 D: Relazione tra O e Ω?
 R: Duali: $f\in O(g) \iff g\in\Omega(f)$.
@@ -112,7 +112,7 @@ D: Quanto vale $\log_2(n!)$ e perché serve?
 R: $\Theta(n \log n)$. Serve per il lower bound $\Omega(n \log n)$ dell'ordinamento (e Heapsort).
 
 D: Gerarchia delle classi di crescita.
-R: $1 < \log n < n^{1/2} < n < n \log n < n^2 < n^p < 2^n$. (Il doc ha un refuso sulla cubica; qui $n^p$.)
+R: $1 \lt  \log n \lt  n^{1/2} \lt  n \lt  n \log n \lt  n^2 \lt  n^p \lt  2^n$. (Il doc ha un refuso sulla cubica; qui $n^p$.)
 
 D: Regole di costo per pseudocodice.
 R: Sequenza: si sommano ($O(\max)$); selezione: test + ramo più costoso; for con $m$ iterazioni: $m\cdot O(f)$; while: serve un limite superiore alle iterazioni.
@@ -142,13 +142,13 @@ D: Merge vs Quick sort.
 R: Merge garantisce $O(n \log n)$ ma $O(n)$ memoria; Quick ha costanti piccole e in-place, migliore in pratica, ma rischia $\Theta(n^2)$ su input ordinati o quasi ordinati.
 
 D: [INT] Enuncia il Master theorem per $T(n)=aT(n/b)+f(n)$.
-R: Confronta $f$ con $n^{\log_b a}$. Caso 1: $f\in O(n^{\log_b a - \varepsilon}) \Rightarrow \Theta(n^{\log_b a})$. Caso 2: $f\in\Theta(n^{\log_b a}) \Rightarrow \Theta(n^{\log_b a}\cdot \log n)$. Caso 3: $f\in\Omega(n^{\log_b a + \varepsilon})$ e regolarità $a\cdot f(n/b)\le c\cdot f(n)$, $c<1 \Rightarrow \Theta(f)$. [INT: non nelle fonti dell'utente]
+R: Confronta $f$ con $n^{\log_b a}$. Caso 1: $f\in O(n^{\log_b a - \varepsilon}) \Rightarrow \Theta(n^{\log_b a})$. Caso 2: $f\in\Theta(n^{\log_b a}) \Rightarrow \Theta(n^{\log_b a}\cdot \log n)$. Caso 3: $f\in\Omega(n^{\log_b a + \varepsilon})$ e regolarità $a\cdot f(n/b)\le c\cdot f(n)$, $c\lt 1 \Rightarrow \Theta(f)$. [INT: non nelle fonti dell'utente]
 
 D: [INT] Risolvi con Master: Merge sort, ricerca binaria, slowExp, fastExp.
 R: Merge $T=2T(n/2)+n$: caso 2, $\Theta(n \log n)$. Ricerca binaria/fastExp $T=T(n/2)+1$: caso 2, $\Theta(\log n)$. slowExp $T=2T(n/2)+1$: $n^{\log_2 2}=n$, caso 1, $\Theta(n)$. [INT]
 
 D: [INT] Risolvi $T(n)=T(n/2)+n$ e verifica la regolarità.
-R: $a=1,\ b=2,\ n^0=1,\ f=n$: caso 3. Regolarità: $1\cdot(n/2)\le(1/2)\cdot n$, $c=1/2<1$. $T=\Theta(n)$. [INT]
+R: $a=1,\ b=2,\ n^0=1,\ f=n$: caso 3. Regolarità: $1\cdot(n/2)\le(1/2)\cdot n$, $c=1/2\lt 1$. $T=\Theta(n)$. [INT]
 
 D: [INT] Karatsuba e Strassen con Master?
 R: Karatsuba $T=3T(n/2)+n$: caso 1, $\Theta(n^{1.585})$. Strassen $T=7T(n/2)+n^2$: $\Theta(n^{2.807})$; ingenua $T=8T(n/2)+n^2$: $\Theta(n^3)$. [INT, DA VERIFICARE se nel programma]
@@ -195,7 +195,7 @@ D: fastExp: idea, formula, ricorrenza.
 R: Una sola chiamata $y=\text{fastExp}(x,\lfloor n/2\rfloor)$; $n$ pari: $y\cdot y$; dispari: $y\cdot y\cdot x$ ($x^{2k}=(x^k)^2$, $x^{2k+1}=x\cdot(x^k)^2$). $T(n)=T(n/2)+1 \Rightarrow O(\log n)$.
 
 D: fastExp iterativo: invariante e codice.
-R: Inv $x^n = y^k \cdot z$. $y=x,\ k=n,\ z=1$; while $k>0$: se $k$ dispari $z \mathrel{*}= y$; $y \mathrel{*}= y$; $k=\lfloor k/2\rfloor$. A $k=0$: $z=x^n$. $O(\log n)$.
+R: Inv $x^n = y^k \cdot z$. $y=x,\ k=n,\ z=1$; while $k\gt 0$: se $k$ dispari $z \mathrel{*}= y$; $y \mathrel{*}= y$; $k=\lfloor k/2\rfloor$. A $k=0$: $z=x^n$. $O(\log n)$.
 
 D: D&I vs programmazione dinamica?
 R: D&I efficiente con sottoproblemi indipendenti; DP con sottoproblemi sovrapposti + sottostruttura ottimale (soluzione ottima composta da soluzioni ottime dei sottoproblemi).
@@ -224,7 +224,7 @@ D: Costi di insert/search/delete in array non ordinato e ordinato.
 R: Non ordinato: $O(1)$, $O(N)$, $O(N)$. Ordinato: insert $O(N)$ (scambi all'indietro), search $O(\log N)$ (binaria), delete $O(N)$ (trova in $\log N$, compatta in $N$).
 
 D: Array ridimensionabile: costo ammortizzato con incremento +1 vs raddoppio?
-R: $+1$: copia a ogni insert su array pieno, $O(m)$ ammortizzato per insert. Raddoppio: l'$i$-esima insert costa $i$ se $i-1$ è potenza di 2, altrimenti 1; totale di $m$ insert $< 3m \Rightarrow O(1)$ ammortizzato (fonte: slide 08, aggregazione, $\sum \le m + 2m = 3m$).
+R: $+1$: copia a ogni insert su array pieno, $O(m)$ ammortizzato per insert. Raddoppio: l'$i$-esima insert costa $i$ se $i-1$ è potenza di 2, altrimenti 1; totale di $m$ insert $\lt 3m \Rightarrow O(1)$ ammortizzato (fonte: slide 08, aggregazione, $\sum \le m + 2m = 3m$).
 
 D: Perché contrarre l'array a 1/4 e non a 1/2?
 R: Contraendo (dimezzando) a $1/4$ di riempimento si evita che una sequenza di insert/delete a cavallo della soglia causi copie continue.
@@ -295,7 +295,7 @@ D: Ispezione lineare, quadratica, doppio hashing: formule e problemi.
 R: Lineare $(h'(k)+i) \bmod m$: addensamento primario. Quadratica $(h'(k)+c_1 i+c_2 i^2) \bmod m$: elimina il primario ma resta il secondario (stessa sequenza per stesso hash iniziale); $c_1,c_2$ vanno scelti perché sia una permutazione. Doppio $(h_1(k)+i\cdot h_2(k)) \bmod m$: elimina entrambi.
 
 D: Ispezioni attese in indirizzamento aperto (hashing uniforme)?
-R: Senza successo $\le \frac{1}{1-\alpha}$ ($\alpha=0.5 \to 2$; $\alpha=0.9 \to 10$). Con successo $\le \frac{1}{\alpha}\ln\frac{1}{1-\alpha}$ ($\alpha=0.5 \to <1.387$; $\alpha=0.9 \to <2.559$). Esplode per $\alpha\to 1$; non superare $\alpha=0.8$.
+R: Senza successo $\le \frac{1}{1-\alpha}$ ($\alpha=0.5 \to 2$; $\alpha=0.9 \to 10$). Con successo $\le \frac{1}{\alpha}\ln\frac{1}{1-\alpha}$ ($\alpha=0.5 \to \lt 1.387$; $\alpha=0.9 \to \lt 2.559$). Esplode per $\alpha\to 1$; non superare $\alpha=0.8$.
 
 D: Vero/Falso: "in indirizzamento aperto basta svuotare la cella per cancellare." Motiva.
 R: Falso: si interrompono le sequenze di ispezione di altre chiavi. Soluzione: marcatore "deleted" (la ricerca prosegue oltre la cella; prima o poi serve ricostruire la tabella) (fonte: Wikipedia, "Open addressing"). [ASSUNZIONE: da verificare: il riuso della cella "deleted" in inserimento non è confermato da fonti]
@@ -318,7 +318,7 @@ D: DFS con pila: ordine dei figli?
 R: L'ultimo inserito è il primo estratto: per visitare da sinistra a destra vanno inseriti in ordine inverso.
 
 D: Definizione di BST e costo delle operazioni.
-R: Per ogni nodo $a$: sottoalbero sinistro $< a.key <$ sottoalbero destro, ricorsivamente. Ogni nodo ha key, left, right, parent. Operazioni $O(h)$: dipendono dal bilanciamento.
+R: Per ogni nodo $a$: sottoalbero sinistro $\lt a.key \lt$ sottoalbero destro, ricorsivamente. Ogni nodo ha key, left, right, parent. Operazioni $O(h)$: dipendono dal bilanciamento.
 
 D: Come si trova minimo, massimo?
 R: Minimo: scendere sempre a sinistra (while T.left != nil); massimo: a destra.
@@ -342,7 +342,7 @@ D: Come l'ordine di inserimento cambia la forma del BST?
 R: 5,3,1,2,8,9,10 -> altezza 3, abbastanza bilanciato; 1,2,3,5,8,9,10 -> albero degenere (lista) di altezza $n-1=6$, operazioni $O(n)$. Caso migliore: albero completo.
 
 D: Perché l'in-order di un BST dà le chiavi ordinate?
-R: Induzione: la lista L del sottoalbero sinistro è ordinata con chiavi $< a$, quella R del destro è ordinata con chiavi $> a$: L, a, R è ordinata.
+R: Induzione: la lista L del sottoalbero sinistro è ordinata con chiavi $\lt a$, quella R del destro è ordinata con chiavi $\gt a$: L, a, R è ordinata.
 
 D: Tree-Inorder con Append vs Tree-Inorder(T,L): costi?
 R: Append(L,Cons(key,R)) costa $O(\lvert L\rvert)$: sul degenere sinistro $1+2+\dots+(n-1) = O(n^2)$. Costruendo all'indietro (prima destro, poi radice in testa, poi sinistro) è $O(n)$.
@@ -391,7 +391,7 @@ D: Le due proprietà di uno heap.
 R: Strutturale: albero completo tranne al più l'ultimo livello riempito da sinistra (altezza logaritmica). Ordinamento: Max-Heap $key(\text{nodo}) \ge key(\text{figli})$ (Min-Heap $\le$). Più debole di un BST: solo padre-figlio.
 
 D: Indici nell'array H[1..n]: padre, figli, foglie.
-R: $\text{Left}(i)=2i$, $\text{Right}(i)=2i+1$, $\text{Parent}(i)=\lfloor i/2\rfloor$. Foglie: $H[\lfloor n/2\rfloor+1..n]$ (per $n>1$, $i$ è foglia sse $n<2i$).
+R: $\text{Left}(i)=2i$, $\text{Right}(i)=2i+1$, $\text{Parent}(i)=\lfloor i/2\rfloor$. Foglie: $H[\lfloor n/2\rfloor+1..n]$ (per $n\gt 1$, $i$ è foglia sse $n\lt 2i$).
 
 D: Insert in un max-heap: algoritmo e costo.
 R: HeapSize++, x in ultima posizione, poi scambio col padre finché H[Parent(i)] < H[i]. $O(\log n)$. Maximum è H[1], $O(1)$.
@@ -429,25 +429,25 @@ D: Teorema delle parentesi.
 R: Per ogni $u,v$ vale esattamente una: intervalli $[u.d,u.f]$ e $[v.d,v.f]$ disgiunti, oppure uno contenuto nell'altro (discendente). Mai sovrapposizioni parziali.
 
 D: Classifica gli archi (u,v) in DFS in base al colore di v.
-R: Albero ($v$ bianco); all'indietro ($v$ grigio, antenato di $u$: $v.d\le u.d<u.f\le v.f$, indica un ciclo); in avanti ($v$ nero, discendente: $u.d<v.d<v.f<u.f$); trasversale ($v$ nero, altrove: $v.d<v.f<u.d<u.f$).
+R: Albero ($v$ bianco); all'indietro ($v$ grigio, antenato di $u$: $v.d\le u.d\lt u.f\le v.f$, indica un ciclo); in avanti ($v$ nero, discendente: $u.d\lt v.d\lt v.f\lt u.f$); trasversale ($v$ nero, altrove: $v.d\lt v.f\lt u.d\lt u.f$).
 
 D: Teorema del cammino bianco e corollario.
-R: $v$ è discendente di $u$ sse al tempo $u.d$ esiste un cammino tutto bianco da $u$ a $v$. Corollario delle parentesi: $v$ discendente di $u$ sse $u.d < v.d < v.f < u.f$.
+R: $v$ è discendente di $u$ sse al tempo $u.d$ esiste un cammino tutto bianco da $u$ a $v$. Corollario delle parentesi: $v$ discendente di $u$ sse $u.d \lt  v.d \lt  v.f \lt  u.f$.
 
 D: Lemma di aciclicità.
-R: $G$ è aciclico sse una DFS non genera archi all'indietro. ($\Leftarrow$) per assurdo: se $C$ ciclo e $(u,v)$ l'arco con $v.d$ minimo, per cammino bianco $v.d<u.d<u.f<v.f$: $(u,v)$ è all'indietro.
+R: $G$ è aciclico sse una DFS non genera archi all'indietro. ($\Leftarrow$) per assurdo: se $C$ ciclo e $(u,v)$ l'arco con $v.d$ minimo, per cammino bianco $v.d\lt u.d\lt u.f\lt v.f$: $(u,v)$ è all'indietro.
 
 D: Ordinamento topologico: definizione, esistenza, algoritmo, costo.
 R: Linearizzazione in cui ogni arco $(u,v)$ ha $u$ prima di $v$. Esiste sse $G$ è un DAG. DFS che inserisce ogni vertice in testa a una lista quando diventa nero. $\Theta(\lvert V\rvert+\lvert E\rvert)$. Ne possono esistere più d'uno.
 
 D: Dimostra la correttezza dell'ordinamento topologico.
-R: Basta $v.f < u.f$ per ogni arco $(u,v)$. Albero, in avanti, trasversale: $v.f<u.f$ dai tempi. All'indietro darebbe $u.f<v.f$ ma implica un ciclo, impossibile in un DAG. (Caso $u.f<v.d$ impossibile: $v$ sarebbe stato visitato da $u$.)
+R: Basta $v.f \lt  u.f$ per ogni arco $(u,v)$. Albero, in avanti, trasversale: $v.f\lt u.f$ dai tempi. All'indietro darebbe $u.f\lt v.f$ ma implica un ciclo, impossibile in un DAG. (Caso $u.f\lt v.d$ impossibile: $v$ sarebbe stato visitato da $u$.)
 
 D: Cos'è una componente fortemente connessa e come si calcola in Θ(V+E) (Kosaraju)?
 R: Insieme massimale $C$ con $u \leadsto v$ e $v \leadsto u$ per ogni coppia. 1) DFS($G$) calcolando $f$; 2) $G^T$ (archi invertiti); 3) DFS($G^T$) scegliendo i vertici in ordine decrescente di $f$; 4) ogni albero della foresta di $G^T$ è una cfc. Naive: DFS($G,u$)+DFS($G^T,u$) per ogni $u$, $O(\lvert V\rvert(\lvert V\rvert+\lvert E\rvert))$; $C(u)=D(u)\cap A(u)$.
 
 D: Perché Kosaraju funziona (a grandi linee)?
-R: Lemma 2: arco $(u,v)$ tra cfc distinte $C \to C'$ implica $C.f > C'.f$. Quindi in $G^T$ gli archi uscenti dalla cfc con $f$ massimo non escono dalla cfc: l'albero radicato nel vertice di $f$ massimo è esattamente $C$; induzione sul numero di alberi.
+R: Lemma 2: arco $(u,v)$ tra cfc distinte $C \to C'$ implica $C.f \gt  C'.f$. Quindi in $G^T$ gli archi uscenti dalla cfc con $f$ massimo non escono dalla cfc: l'albero radicato nel vertice di $f$ massimo è esattamente $C$; induzione sul numero di alberi.
 
 D: BFS vs DFS: struttura dati e applicazioni.
 R: BFS coda, distanze minime in archi; DFS pila/ricorsione, backtracking, rilevazione cicli, ordinamento topologico, cfc. Non dà distanze minime.
@@ -479,7 +479,7 @@ D: Prim: idea, struttura dati, costo.
 R: Cresce un solo albero da un vertice arbitrario, aggiungendo l'arco più leggero tra albero e resto. Min-coda con v.key = peso del più leggero arco verso l'albero ($\infty$ se nessuno); Extract-Min e Decrease-Key. $n$ Extract-Min $O(n \log n)$ + al più $m$ Decrease-Key $O(m \log n) = O(m \log n)$.
 
 D: Invariante di Prim e significato dei colori?
-R: (1) $\exists$ MST $T$ con $A\subseteq T$; (2) $V[A]$ = vertici neri o grigi; (3) se $v\in Q$ e $key<\infty$, $key=w(u,v)$ per qualche $u\in V[A]\setminus Q$. Bianchi $key=\infty$, grigi frontiera, neri già nell'albero.
+R: (1) $\exists$ MST $T$ con $A\subseteq T$; (2) $V[A]$ = vertici neri o grigi; (3) se $v\in Q$ e $key\lt \infty$, $key=w(u,v)$ per qualche $u\in V[A]\setminus Q$. Bianchi $key=\infty$, grigi frontiera, neri già nell'albero.
 
 D: Kruskal vs Prim.
 R: Entrambi $O(m \log n)$ e giustificati dal teorema del taglio. Kruskal: visione globale sugli archi (ordina tutto + Union-Find). Prim: visione locale sui vertici (frontiera con coda di priorità).
@@ -500,7 +500,7 @@ D: Dijkstra: algoritmo.
 R: d=$\infty$, π=nil, s.d=0; Q=coda di priorità su V; while Q≠∅: u=Extract-Min(Q), S=S∪{u}; per ogni v in Adj[u], rilassa (u,v) con Decrease-Key. Inv: $Q=V\setminus S \land \forall v\in S:\ v.d=\delta(s,v)$. Richiede $w\ge 0$.
 
 D: Dimostra la correttezza di Dijkstra.
-R: Per assurdo, $u$ primo vertice inserito in $S$ con $u.d>\delta(s,u)$. Sul cammino minimo a $u$ c'è un arco $(x,y)$, $x\in S$, $y\notin S$ primo fuori. $x.d=\delta(s,x)$ per minimalità di $u$; per convergenza $y.d=\delta(s,y)$. Pesi $\ge 0$: $\delta(s,y)\le\delta(s,u)<u.d$, quindi $y.d<u.d$ e Extract-Min avrebbe scelto $y$: contraddizione.
+R: Per assurdo, $u$ primo vertice inserito in $S$ con $u.d\gt \delta(s,u)$. Sul cammino minimo a $u$ c'è un arco $(x,y)$, $x\in S$, $y\notin S$ primo fuori. $x.d=\delta(s,x)$ per minimalità di $u$; per convergenza $y.d=\delta(s,y)$. Pesi $\ge 0$: $\delta(s,y)\le\delta(s,u)\lt u.d$, quindi $y.d\lt u.d$ e Extract-Min avrebbe scelto $y$: contraddizione.
 
 D: Controesempio di Dijkstra con pesi negativi.
 R: $s\to u$ (3), $s\to v$ (5), $v\to u$ ($-4$): $u$ estratto con 3 e dichiarato definitivo; ma via $v$ si arriva a $5-4=1$. Risultato 3 anziché 1. Serve Bellman-Ford.
@@ -520,7 +520,7 @@ D: Makefile: variabili automatiche principali.
 R: Regola di compilazione `$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c` con `$(CC) $(CFLAGS) -c $< -o $@`; nel linking `$^` = tutti i prerequisiti, `$@` = target. Target all (predefinito) e clean.
 
 D: HybridSort: idea e perché la soglia k va trovata sperimentalmente?
-R: QuickSort se la partizione ha $n\ge k$, SelectionSort se $n<k$ (overhead minimo su array piccoli). $k$ dipende da CPU, cache, compilatore, dati: troppo bassa = nessun beneficio, troppo alta = tende a $O(n^2)$.
+R: QuickSort se la partizione ha $n\ge k$, SelectionSort se $n\lt k$ (overhead minimo su array piccoli). $k$ dipende da CPU, cache, compilatore, dati: troppo bassa = nessun beneficio, troppo alta = tende a $O(n^2)$.
 
 D: PARTITION di Lomuto?
 R: x=A[r]; i=p-1; for j=p..r-1: se A[j]<=x {i++; swap A[i],A[j]}; swap A[i+1],A[r]; return i+1. Ottimizzazioni: pivot casuale o mediana di tre, partizionamento a tre vie per i duplicati.

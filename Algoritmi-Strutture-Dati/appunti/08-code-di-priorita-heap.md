@@ -27,7 +27,7 @@ Una coda di priorità è una struttura che deve fornire velocemente l'elemento d
 
 Nota che l'ordine richiesto è molto più debole di quello dei BST: serve solo il confronto padre-figlio, non una relazione tra fratelli, ed è proprio questa debolezza a rendere le operazioni semplici.
 
-Poiché l'albero è completo, non servono puntatori: lo si memorizza in un **array H[1..n]**. La radice è H[1], il figlio sinistro di i è in 2i, il destro in 2i+1 e $\boldsymbol{\text{Parent}(i)=\lfloor i/2\rfloor}$. Per comodità Left(i) vale $2i$ se $2i\le \text{HeapSize}$ e altrimenti $i$, e Right(i) vale $2i+1$ se $\le \text{HeapSize}$ altrimenti $i$. Le **foglie** sono $H[\lfloor n/2\rfloor+1 .. n]$, e per questo BuildHeap parte da $\lfloor n/2\rfloor$. Dimostrazione: se $n>1$, $H[i]$ è una foglia se e solo se $i\le n$ e $n<2i$, cioè $i > \lfloor n/2\rfloor$ ($n<2i$ implica $\lfloor n/2\rfloor < i$).
+Poiché l'albero è completo, non servono puntatori: lo si memorizza in un **array H[1..n]**. La radice è H[1], il figlio sinistro di i è in 2i, il destro in 2i+1 e $\boldsymbol{\text{Parent}(i)=\lfloor i/2\rfloor}$. Per comodità Left(i) vale $2i$ se $2i\le \text{HeapSize}$ e altrimenti $i$, e Right(i) vale $2i+1$ se $\le \text{HeapSize}$ altrimenti $i$. Le **foglie** sono $H[\lfloor n/2\rfloor+1 .. n]$, e per questo BuildHeap parte da $\lfloor n/2\rfloor$. Dimostrazione: se $n\gt 1$, $H[i]$ è una foglia se e solo se $i\le n$ e $n\lt 2i$, cioè $i \gt  \lfloor n/2\rfloor$ ($n\lt 2i$ implica $\lfloor n/2\rfloor \lt  i$).
 
 <p align="center">
 <img src="img/08-heap-array.png" width="500" alt="Heap con chiavi 16, 9, 14, 7, 4, 8, 10, 3, 2, 1 e il corrispondente array H con gli indici da 1 a 10"><br>

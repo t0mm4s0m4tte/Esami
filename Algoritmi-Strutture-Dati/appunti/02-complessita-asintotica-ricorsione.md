@@ -25,17 +25,17 @@ Per confrontare algoritmi non si misurano secondi ma **operazioni elementari**, 
 
 Il minimo di un vettore, per esempio, ha $T(n)=an+b$: lineare.
 
-Ignorare le costanti moltiplicative è una scelta ragionevole, e lo si capisce da qualche conto. Con $T=2^n$, un hardware 1000 volte più veloce permette di risolvere istanze solo di poco più grandi: $2^{D'}/1000=2^D$ implica $D'=D+\log_2(1000)\approx D+10$ (e solo $+2$ con un hardware 4 volte più veloce). Un algoritmo da $100n$ batte uno da $2n^2$ per $n>50$; $T_1=n^2/100$ contro $T_2=2n+300$ si incrociano a $n=300$ (con $n^2/200$ a $n\ge 517$). Conta l'ordine di crescita, non la macchina.
+Ignorare le costanti moltiplicative è una scelta ragionevole, e lo si capisce da qualche conto. Con $T=2^n$, un hardware 1000 volte più veloce permette di risolvere istanze solo di poco più grandi: $2^{D'}/1000=2^D$ implica $D'=D+\log_2(1000)\approx D+10$ (e solo $+2$ con un hardware 4 volte più veloce). Un algoritmo da $100n$ batte uno da $2n^2$ per $n\gt 50$; $T_1=n^2/100$ contro $T_2=2n+300$ si incrociano a $n=300$ (con $n^2/200$ a $n\ge 517$). Conta l'ordine di crescita, non la macchina.
 
 ## Notazioni (definizioni)
 
 Le notazioni asintotiche formalizzano proprio questa idea di "ordine di crescita". Le definizioni sono:
-- $\boldsymbol{f\in O(g)} \iff \exists c>0,\ \exists n_0\ \forall n>n_0:\ f(n)\le c\cdot g(n)$ ($g$ è un limite superiore).
-- $\boldsymbol{f\in\Omega(g)} \iff \exists c>0,\ \exists n_0\ \forall n>n_0:\ c\cdot g(n)\le f(n)$ (limite inferiore).
-- $\boldsymbol{f\in\Theta(g)} \iff \exists c_1,c_2>0,\ \exists n_0:\ c_1\cdot g\le f\le c_2\cdot g$, cioè $\boldsymbol{\Theta(f)=O(f)\cap\Omega(f)}$.
+- $\boldsymbol{f\in O(g)} \iff \exists c\gt 0,\ \exists n_0\ \forall n\gt n_0:\ f(n)\le c\cdot g(n)$ ($g$ è un limite superiore).
+- $\boldsymbol{f\in\Omega(g)} \iff \exists c\gt 0,\ \exists n_0\ \forall n\gt n_0:\ c\cdot g(n)\le f(n)$ (limite inferiore).
+- $\boldsymbol{f\in\Theta(g)} \iff \exists c_1,c_2\gt 0,\ \exists n_0:\ c_1\cdot g\le f\le c_2\cdot g$, cioè $\boldsymbol{\Theta(f)=O(f)\cap\Omega(f)}$.
 - $\boldsymbol{f\in o(g)} \iff \lim f/g = 0$; allora $f\in O(g) \land g\notin O(f)$ (crescita strettamente inferiore).
 
-Quando i limiti esistono sono la via più rapida: se $\lim f/g = a$, allora $0\le a<\infty$ dà $O$, $0<a\le\infty$ dà $\Omega$ e $0<a<\infty$ dà $\Theta$. Le notazioni hanno una struttura ordinata. $O$ e $\Omega$ sono **duali**: $f\in O(g) \iff g\in\Omega(f)$, perché da $f\le c\cdot g$ segue $(1/c)\cdot f\le g$. **$O$ è un pre-ordine** (riflessiva e transitiva: $f\le c\cdot g\le c\cdot d\cdot h$), mentre **$\Theta$ è una relazione di equivalenza** (riflessiva, simmetrica, transitiva): è proprio per questo che si parla di "classi" di complessità.
+Quando i limiti esistono sono la via più rapida: se $\lim f/g = a$, allora $0\le a\lt \infty$ dà $O$, $0\lt a\le\infty$ dà $\Omega$ e $0\lt a\lt \infty$ dà $\Theta$. Le notazioni hanno una struttura ordinata. $O$ e $\Omega$ sono **duali**: $f\in O(g) \iff g\in\Omega(f)$, perché da $f\le c\cdot g$ segue $(1/c)\cdot f\le g$. **$O$ è un pre-ordine** (riflessiva e transitiva: $f\le c\cdot g\le c\cdot d\cdot h$), mentre **$\Theta$ è una relazione di equivalenza** (riflessiva, simmetrica, transitiva): è proprio per questo che si parla di "classi" di complessità.
 
 Le proprietà operative più usate sono:
 - una costante non conta: $c\cdot f=O(f)$;
@@ -46,7 +46,7 @@ Le proprietà operative più usate sono:
 Due esempi svolti: $3n^2+7n+8 \in O(n^2)$ con $c=4$ e $n_0=8$ (basta che $7n+8\le n^2$ per $n\ge 8$); $4n^2+4n-1 \in \Theta(n^2)$ per somma e riflessività. Sul fattoriale si ha $2^n \le n! \le n^n$ quasi ovunque e soprattutto $\boldsymbol{\log_2(n!) \in \Theta(n \log n)}$, fatto che tornerà nel limite inferiore dell'ordinamento. L'ordine delle classi più comuni (la **gerarchia**) è:
 
 $$
-1 < \log n < n^{1/2} < n < n \log n < n^2 < n^p < 2^n
+1 \lt  \log n \lt  n^{1/2} \lt  n \lt  n \log n \lt  n^2 \lt  n^p \lt  2^n
 $$
 
 Per darne un'idea, con $n=64$ si ha $n^2=4096$ ma $2^{64}\approx 1.8\cdot 10^{19}$.
@@ -87,11 +87,11 @@ Il confronto fra i due va letto così: Merge garantisce $O(n \log n)$ ma richied
 
 > Sezione **[INT]**: non presente nelle fonti dell'utente (il doc risolve le ricorrenze solo con albero di ricorsione e sostituzione). Integrata come strumento di verifica rapida; Karatsuba e Strassen sono qui solo come esempi applicativi e non risultano nel programma [DA VERIFICARE se servono per l'esame].
 
-Le ricorrenze dei divide et impera hanno quasi sempre la forma $\boldsymbol{T(n) = a\cdot T(n/b) + f(n)}$, con $a \ge 1$ sottoproblemi, ciascuno di taglia $n/b$ con $b > 1$, e $f(n)$ il costo di divisione e combinazione. Il Master theorem le risolve confrontando $f(n)$ con la quantità $\boldsymbol{n^{\log_b a}}$. L'intuizione sta nell'albero di ricorsione: al livello $i$ ci sono $a^i$ nodi, ciascuno di taglia $n/b^i$, quindi il costo del livello $i$ è $a^i\cdot f(n/b^i)$. L'albero ha $\log_b n$ livelli e le foglie sono $a^{\log_b n} = n^{\log_b a}$. La domanda è dove si concentra il lavoro: se i costi per livello crescono verso il basso domina il lavoro alle foglie (caso 1), se sono costanti ogni livello pesa uguale (caso 2), se decrescono domina la radice (caso 3). Il teorema ha tre casi:
+Le ricorrenze dei divide et impera hanno quasi sempre la forma $\boldsymbol{T(n) = a\cdot T(n/b) + f(n)}$, con $a \ge 1$ sottoproblemi, ciascuno di taglia $n/b$ con $b \gt  1$, e $f(n)$ il costo di divisione e combinazione. Il Master theorem le risolve confrontando $f(n)$ con la quantità $\boldsymbol{n^{\log_b a}}$. L'intuizione sta nell'albero di ricorsione: al livello $i$ ci sono $a^i$ nodi, ciascuno di taglia $n/b^i$, quindi il costo del livello $i$ è $a^i\cdot f(n/b^i)$. L'albero ha $\log_b n$ livelli e le foglie sono $a^{\log_b n} = n^{\log_b a}$. La domanda è dove si concentra il lavoro: se i costi per livello crescono verso il basso domina il lavoro alle foglie (caso 1), se sono costanti ogni livello pesa uguale (caso 2), se decrescono domina la radice (caso 3). Il teorema ha tre casi:
 
-1. **Caso 1**: se $f(n) \in O(n^{\log_b a - \varepsilon})$ per qualche $\varepsilon>0$, cioè $f$ cresce polinomialmente *meno* di $n^{\log_b a}$, allora $\boldsymbol{T(n) \in \Theta(n^{\log_b a})}$. Domina il lavoro alle foglie.
+1. **Caso 1**: se $f(n) \in O(n^{\log_b a - \varepsilon})$ per qualche $\varepsilon\gt 0$, cioè $f$ cresce polinomialmente *meno* di $n^{\log_b a}$, allora $\boldsymbol{T(n) \in \Theta(n^{\log_b a})}$. Domina il lavoro alle foglie.
 2. **Caso 2**: se $f(n) \in \Theta(n^{\log_b a})$, allora $\boldsymbol{T(n) \in \Theta(n^{\log_b a}\cdot \log n)}$. Ogni livello contribuisce quanto gli altri e si moltiplica per il numero di livelli. (Versione generale: se $f \in \Theta(n^{\log_b a}\cdot \log^k n)$ con $k\ge 0$, allora $T \in \Theta(n^{\log_b a}\cdot \log^{k+1} n)$.)
-3. **Caso 3**: se $f(n) \in \Omega(n^{\log_b a + \varepsilon})$ per qualche $\varepsilon>0$ **e** vale la condizione di regolarità $a\cdot f(n/b) \le c\cdot f(n)$ per qualche $c<1$ (e $n$ grande), allora $\boldsymbol{T(n) \in \Theta(f(n))}$. Domina il lavoro alla radice.
+3. **Caso 3**: se $f(n) \in \Omega(n^{\log_b a + \varepsilon})$ per qualche $\varepsilon\gt 0$ **e** vale la condizione di regolarità $a\cdot f(n/b) \le c\cdot f(n)$ per qualche $c\lt 1$ (e $n$ grande), allora $\boldsymbol{T(n) \in \Theta(f(n))}$. Domina il lavoro alla radice.
 
 Esempi svolti, tutti coerenti con quanto già ricavato a mano nel doc:
 
@@ -106,7 +106,7 @@ Esempi svolti, tutti coerenti con quanto già ricavato a mano nel doc:
 | Strassen (matrici) | $T(n)=7T(n/2)+n^2$ | 7, 2, $n^{\log_2 7}\approx n^{2.807}$, $n^2$ | 1 | $\Theta(n^{2.807})$ |
 | Esempio di caso 3 | $T(n)=T(n/2)+n$ | 1, 2, 1, $n$ | 3 | $\Theta(n)$ |
 
-Per il caso 3 dell'ultimo esempio la regolarità si verifica con $1\cdot(n/2) \le (1/2)\cdot n$, quindi $c=1/2<1$. Per la ricerca binaria il conto è lo stesso di fastExp: dimezza il problema e fa lavoro costante, e il caso 2 dà $\Theta(\log n)$.
+Per il caso 3 dell'ultimo esempio la regolarità si verifica con $1\cdot(n/2) \le (1/2)\cdot n$, quindi $c=1/2\lt 1$. Per la ricerca binaria il conto è lo stesso di fastExp: dimezza il problema e fa lavoro costante, e il caso 2 dà $\Theta(\log n)$.
 
 Il teorema **non** copre tutto, e questi limiti sono domande da orale. Non si applica a ricorrenze con sottoproblemi di taglia $n-1$ come Quick sort nel caso peggiore, $T(n)=T(n-1)+n-1$, né a Fibonacci $T(n)=T(n-1)+T(n-2)+1$ (qui vale l'albero o la sostituzione, come nel doc). Non si applica nemmeno quando $f$ cade nelle "lacune" tra i casi, ad esempio $T(n)=2T(n/2)+n/\log n$: $f$ è più piccola di $n$ ma non polinomialmente più piccola, e il caso 1 non vale. Infine la condizione di regolarità del caso 3 va sempre verificata. Come regola pratica: si applica il Master theorem per ottenere subito la risposta e si controlla, quando è possibile, con l'albero di ricorsione.
 
@@ -140,7 +140,7 @@ La ricorsione si presenta in tre forme, in ordine crescente di efficienza.
 
 La ricorsione **lineare** ha una sola chiamata ricorsiva: $\text{fact}(n)=n\cdot\text{fact}(n-1)$, con caso base $n=0$. Si ha una fase di espansione (le chiamate si accumulano nello stack) seguita da una di contrazione (i prodotti vengono calcolati al ritorno); tempo e spazio sono $O(n)$, con rischio di stack overflow. La ricorsione **di coda** fa sì che la chiamata ricorsiva sia l'ultima operazione e che lo stato viaggi negli accumulatori, quindi non c'è nulla da fare al ritorno: `fact_tail_helper(prod,counter,n)`: if counter==n return prod; else helper(prod*(counter+1), counter+1, n). Lo spazio scende a $O(1)$ e la funzione è equivalente al ciclo `while(counter!=n){prod*=counter+1; counter++;}` con invariante $\text{prod}=\text{counter}!$.
 
-La ricorsione **ad albero** ha più chiamate per livello ed è insidiosa se i sottoproblemi si sovrappongono. $\text{Fib}(n)=\text{Fib}(n-2)+\text{Fib}(n-1)$ (base $n<2 \to 1$) è esponenziale, $O(\varphi^n)$ con $\varphi\approx 1.618$: Fib(5) calcola Fib(3) 2 volte, Fib(2) 3 volte, Fib(1) 5 volte. Lo stesso accade per il coefficiente binomiale $C(n,k)=C(n-1,k-1)+C(n-1,k)$. La versione iterativa Fib_iter usa a=0, b=1 e un ciclo di $n$ iterazioni `temp=b; b=a+b; a=temp` con invariante $a=\text{Fib}(c-1)$, $b=\text{Fib}(c)$, ed è **$O(n)$ in tempo e $O(1)$ in spazio**. La stessa idea, generalizzata, è la programmazione dinamica (vedi 03).
+La ricorsione **ad albero** ha più chiamate per livello ed è insidiosa se i sottoproblemi si sovrappongono. $\text{Fib}(n)=\text{Fib}(n-2)+\text{Fib}(n-1)$ (base $n\lt 2 \to 1$) è esponenziale, $O(\varphi^n)$ con $\varphi\approx 1.618$: Fib(5) calcola Fib(3) 2 volte, Fib(2) 3 volte, Fib(1) 5 volte. Lo stesso accade per il coefficiente binomiale $C(n,k)=C(n-1,k-1)+C(n-1,k)$. La versione iterativa Fib_iter usa a=0, b=1 e un ciclo di $n$ iterazioni `temp=b; b=a+b; a=temp` con invariante $a=\text{Fib}(c-1)$, $b=\text{Fib}(c)$, ed è **$O(n)$ in tempo e $O(1)$ in spazio**. La stessa idea, generalizzata, è la programmazione dinamica (vedi 03).
 
 Ricorsione e iterazione sono comunque **equivalenti**: ogni ricorsione si simula con un'iterazione più una **pila esplicita** (per fact(3): push di 3*?, 2*?, 1*?, poi i pop che completano i prodotti). Questo suggerisce un percorso di ottimizzazione che va dalla ricorsione generica a quella lineare, poi di coda e infine al ciclo. Un caso in cui la ricorsione è decisamente più chiara dell'iterazione sono le **Torri di Hanoi**: si spostano $n-1$ dischi da sorgente ad ausiliario, poi il disco $n$, poi $n-1$ da ausiliario a destinazione, per un totale di $\boldsymbol{2^n - 1}$ mosse.
 
