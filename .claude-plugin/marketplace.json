@@ -1,0 +1,5 @@
+{
+  "name": "universita",
+  "owner": { "name": "tommy" },
+  "plugins": [{ "name": "studio", "source": "./mods/studio" }]
+}
